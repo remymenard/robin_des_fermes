@@ -81,3 +81,7 @@ test:
 production:
   <<: *default
   url: <%= ENV['POSTGRESQL_ADDON_URI'] %>
+
+staging:
+  <<: *default
+  url: <%= ENV['POSTGRESQL_ADDON_URI'] %>

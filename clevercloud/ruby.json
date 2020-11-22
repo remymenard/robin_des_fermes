@@ -1,5 +1,6 @@
 {
   "deploy": {
+    "env": "production",
     "rakegoals": ["assets:precompile", "db:migrate"]
   }
 }
