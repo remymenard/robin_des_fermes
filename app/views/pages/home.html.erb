@@ -1,1 +1,18 @@
+<div class="home">
+  <div class="banner" >
+    <div class="container ">
+      <h2>La vente directe, droit dans le mille</h2>
+      <p>Trouve le produit ou l'exploitation de ton choix, commande en quelques clics, paie en ligne et déguste ta victoire : quand c'est juste, c'est encore meilleur!</p>
+      <%= simple_form_for :search, url: root_path, method: "GET", html: { class: 'form-inline search' } do |f| %>
+        <%= f.input :name, label: false, input_html: {value: "Où habitez-vous ?"}, class: 'search-bar'%>
+        <%= f.submit "RECHERCHER", class: "btn" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="vector">
+
+  </div>
+
+</div>
 
