@@ -5,9 +5,38 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require "open-uri"
+
 Farm.destroy_all
+User.destroy_all
 
-lemon = Ingredient.create!(name: "lemon")
-ice = Ingredient.create!(name: "ice")
-mint_leaves = Ingredient.create!(name: "mint leaves")
+user = User.create!(
+  email: "test@exemp.com",
+  password: "password")
 
+
+
+
+
+
+henry = Farm.new(name: "Famille Henry", user: user)
+henry.photos.attach(io: File.open('app/assets/images/seed/seed-meleze.png'), filename: 'seed-henry.png')
+henry.save!
+
+file2 = File.open('app/assets/images/seed/seed-henry.png')
+meleze = Farm.new(name: "La ferme du Mélèze", user: user)
+meleze.photos.attach(io: file2, filename: 'nes.png', content_type: 'image/png')
+meleze.save!
+
+file3 = URI.open('app/assets/images/seed/seed-henry.png')
+jonas = Farm.create!(name: "La Ferme de Jonas", user: user)
+jonas.photos.attach(io: file3, filename: 'nes.png', content_type: 'image/png')
+
+file4 = URI.open('app/assets/images/seed/seed-henry.png')
+cave = Farm.create!(name: "La Cave de l'Abbatiale", user: user)
+cave.photos.attach(io: file4, filename: 'nes.png', content_type: 'image/png')
+
+file5 = URI.open('app/assets/images/seed/seed-henry.png')
+gallien = Farm.create!(name: "Le Domaine du Gallien", user: user)
+gallien.photos.attach(io: file5, filename: 'nes.png', content_type: 'image/png')

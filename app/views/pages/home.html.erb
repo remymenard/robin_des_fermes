@@ -15,7 +15,9 @@
   </div>
 
   <div class="home-category">
+
     <h2>Du blé, des radis, de l'oseille : les bons produits au juste prix !</h2>
+
     <div class="food">
       <%= link_to "#", class: "navbar-brand" do %>
         <%= image_tag "meat.png", alt: "alttext" %>
@@ -30,38 +32,74 @@
         <p>Produits laitiers</p>
       <% end %>
     </div>
-    <div class="low-vector">
 
-    </div>
+    <div class="low-vector"></div>
 
   </div>
 
 
   <div class="home-farms">
     <h2>Et pour ces bons produits, on dit merci à qui ?</h2>
+    <div >
+
+      <div class="row">
+        <div class="col col-lg-6 ">
+
+          <div class="first-photo">
+
+            <div>
+            <%= cl_image_tag @farms.first.photos.first.key, height: 474, width: 570, crop: :fill  %>
+            </div>
+
+
+            <div class = "name">
+            <p><%= @farms.first.name %></p>
+
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col col-lg-6">
+
+          <div class="all-photo">
+            <% @farms.drop(1).each do |farm|  %>
+
+              <div class = "photo">
+                <%= cl_image_tag farm.photos.first.key, height: 222, width: 270, crop: :fill %>
+                <p><%= farm.name %></p>
+
+              </div>
+            <% end %>
+
+          </div>
+
+    </div>
+
+      </div>
+    </div>
+
 
   </div>
 
-  <div class="vector">
-
-  </div>
+  <div class="vector"></div>
 
   <div class="rdf-presentation">
     <h2>Oyez, oyez, producteurs, rejoignez-nous ! </h2>
 
     <div class = "row">
 
-      <div class= >
+      <div>
         <%= image_tag "sell.png", alt: "alttext" %>
         <p>Vendez vos produits en ligne</p>
       </div>
 
-      <div class= >
+      <div>
         <%= image_tag "presentation.png", alt: "alttext" %>
         <p>Présentez votre exploitation</p>
       </div>
 
-      <div class= >
+      <div>
         <%= image_tag "community.png", alt: "alttext" %>
         <p>Elargissez votre communauté</p>
       </div>
