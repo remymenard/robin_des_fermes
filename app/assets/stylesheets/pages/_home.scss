@@ -9,12 +9,11 @@
   }
 
   .home-category{
-    height: 901px;
     background-color: white;
 
     .low-vector {
       background-image: url('low-vector.png');
-      height: 39px;
+      height: 20px;
       margin-top: 162px;
       background-color: #F8F0E7;
 
@@ -56,6 +55,13 @@
   .home-farms {
     height: 900px;
     background-color: #F8F0E7;
+
+    h2 {
+      font-size: 48px;
+      font-weight: 400;
+      margin-left: 135px;
+      padding-top: 109px;
+    }
 
   }
 }
