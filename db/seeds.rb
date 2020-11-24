@@ -15,6 +15,11 @@ FarmCategory.destroy_all
 pain = Category.create!(name: "Boulangerie")
 boucherie = Category.create!(name: "Viande")
 poisson = Category.create!(name: "Poisson")
+laitier = Category.create!(name: "Laitier")
+fruit = Category.create!(name: "Fruit")
+boulangerie = Category.create!(name: "Boulangerie")
+oeuf = Category.create!(name: "Oeuf")
+cereale = Category.create!(name: "Céréale")
 
 
 user1 = User.create!(
@@ -56,6 +61,12 @@ gallien.photos.attach(io: file5, filename: 'nes.png', content_type: 'image/png')
 
 FarmCategory.create!(category: pain,  farm: henry)
 FarmCategory.create!(category: boucherie,  farm: henry)
+FarmCategory.create!(category: poisson,  farm: henry)
+FarmCategory.create!(category: laitier,  farm: henry)
+FarmCategory.create!(category: fruit,  farm: henry)
+FarmCategory.create!(category: boulangerie,  farm: henry)
+FarmCategory.create!(category: oeuf,  farm: henry)
+FarmCategory.create!(category: cereale,  farm: henry)
 FarmCategory.create!(category: pain,  farm: jonas)
 
 
