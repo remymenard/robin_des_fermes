@@ -2,6 +2,7 @@ class FarmsController < ApplicationController
   def index
     @farms = Farm.all
     @categories = Category.all
+
     if params[:query].present?
       @farms = Farm.where_category_name(params[:query])
     end
