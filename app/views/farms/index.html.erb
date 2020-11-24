@@ -37,12 +37,26 @@
             </div>
 
             <div class="d-flex">
+              <p>Catégories : </p>
+              <% farm.farm_categories.each do |farm_category| %>
+                <%if farm_category.category.name.include?("Viande")%><div class='category-photo'><%= image_tag 'categories/viande.png' %></div><%end%>
+                <%if farm_category.category.name.include?("Laitier")%><div class='category-photo'><%= image_tag 'categories/laitiers.png' %></div><%end%>
+                <%if farm_category.category.name.include?("Poisson")%><div class='category-photo'><%= image_tag 'categories/poissons.png' %></div><%end%>
+                <%if farm_category.category.name.include?("Fruit")%><div class='category-photo'><%= image_tag 'categories/fruits.png' %></div><%end%>
+                <%if farm_category.category.name.include?("Boulangerie")%><div class='category-photo'><%= image_tag 'categories/boulangerie.png' %></div><%end%>
+                <%if farm_category.category.name.include?("Céréale")%><div class='category-photo'><%= image_tag 'categories/cereales.png' %></div><%end%>
+                <%if farm_category.category.name.include?("Divers")%><div class='category-photo'><%= image_tag 'categories/divers.png' %></div><%end%>
+                <%if farm_category.category.name.include?("Huile")%><div class='category-photo'><%= image_tag 'categories/huile.png' %></div><%end%>
+                <%if farm_category.category.name.include?("Oeuf")%><div class='category-photo'><%= image_tag 'categories/oeufs.png' %></div><%end%>
+                <%if farm_category.category.name.include?("Vin")%><div class='category-photo'><%= image_tag 'categories/vins.png' %></div><%end%>
+              <% end %>
+            </div>
+
+            <div class="d-flex">
               <p>Nombre de ventes : </p>
               <p><%= farm.sells  %></p>
             </div>
-            <% farm.farm_categories.each do |farm_category| %>
-              <%= farm_category.category.name  %>
-            <% end %>
+
             <div class="d-flex">
               <p>Adresse : </p>
               <p><%= farm.address  %></p>

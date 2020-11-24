@@ -1,6 +1,6 @@
 class Farm < ApplicationRecord
   belongs_to :user
-  has_many :farm_categories
+  has_many :farm_categories, dependent: :destroy
   has_many :categories, through: :farm_categories
 
   has_many_attached :photos

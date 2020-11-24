@@ -8,6 +8,15 @@
     height: 256px;
     padding-top: 25px;
 
+    .category-photo {
+      margin-top: -8px;
+      padding-left: 5px;
+      img {
+        height: 24px;
+        width: 24px;
+      }
+    }
+
     p {
       font-size: 14px;
       color: black

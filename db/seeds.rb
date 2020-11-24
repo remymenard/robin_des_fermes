@@ -10,9 +10,10 @@ require "open-uri"
 User.destroy_all
 Farm.destroy_all
 Category.destroy_all
+FarmCategory.destroy_all
 
-pain = Category.create!(name: "Pain")
-boucherie = Category.create!(name: "Boucherie")
+pain = Category.create!(name: "Boulangerie")
+boucherie = Category.create!(name: "Viande")
 poisson = Category.create!(name: "Poisson")
 
 
