@@ -14,14 +14,18 @@
   }
 
   .search {
+
     select {
-      width: 140.1px;
+      margin-top: 30px;
+      background-image: url(icons/Arrow.png);
+      background-size: 27px 23px;
+      width: 150.1px;
       height: 40px;
       background-color: #007C50;
       border-radius: 7px;
-      margin-top: 22px;
       border-color: #007C50;
       color: white;
+      font-size: 17px;
     }
 
     .map-marker {
@@ -36,7 +40,7 @@
     }
 
     .btn {
-      width: 140.1px;
+      width: 150.1px;
       height: 40px;
       background-color: #007C50;
       border-radius: 7px;
