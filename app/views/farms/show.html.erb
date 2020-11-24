@@ -1,1 +1,44 @@
+<div class="container">
+  <div class="farm">
+    <h1><%= @farm.name %> </h1>
 
+    <div class="row">
+      <div class="col col-lg-6 ">
+
+        <div class="highlighted-photo">
+
+          <div>
+          <%= cl_image_tag @highlighted_photo.key, height: 452, width: 530, crop: :fill  %>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col col-lg-6 ">
+        <div class="other-photos">
+
+          <div class="row">
+
+            <div class="col col-lg-6">
+              <%= cl_image_tag @second_photo.key, height: 220, width: 270, crop: :fill, class: "second-photo"  %>
+              <%= cl_image_tag @third_photo.key, height: 220, width: 270, crop: :fill, class: "third-photo"  %>
+            </div>
+
+            <div class="col col-lg-6">
+
+              <div class="last-photos">
+                <%= cl_image_tag @fourth_photo.key, height: 220, width: 270, crop: :fill, class: "fourth-photo"  %>
+                <%= cl_image_tag @conquest_photo.key, height: 220, width: 270, crop: :fill,class: "conquest-photo"  %>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

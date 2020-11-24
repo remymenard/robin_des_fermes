@@ -31,7 +31,11 @@ user2.photo.attach(io: File.open('app/assets/images/seed/user2.png'), filename: 
 
 
 henry = Farm.create!(name: "Famille Henry", user: user1, labels: ['bio'], sells: 19, address: 'Nantes', opening_time: '8h-17h')
+henry.photos.attach(io: File.open('app/assets/images/seed/farm1.png'), filename: 'seed-henry.png')
+henry.photos.attach(io: File.open('app/assets/images/seed/farm2.png'), filename: 'seed-henry.png')
 henry.photos.attach(io: File.open('app/assets/images/seed/farm3.png'), filename: 'seed-henry.png')
+henry.photos.attach(io: File.open('app/assets/images/seed/farm1.png'), filename: 'seed-henry.png')
+henry.photos.attach(io: File.open('app/assets/images/seed/farm2.png'), filename: 'seed-henry.png')
 
 
 file2 = File.open('app/assets/images/seed/farm1.png')

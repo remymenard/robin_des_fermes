@@ -9,6 +9,11 @@ class FarmsController < ApplicationController
 
   def show
     @farm = Farm.find(params[:id])
+    @highlighted_photo = @farm.photos.first
+    @second_photo      = @farm.photos[1]
+    @third_photo      = @farm.photos[2]
+    @fourth_photo      = @farm.photos[3]
+    @conquest_photo      = @farm.photos[4]
   end
 
   private
