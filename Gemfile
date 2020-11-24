@@ -66,3 +66,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rails-i18n'
 gem 'httparty'
 gem 'netaddr', '~> 1.5', '>= 1.5.1'
+gem 'money-rails', '~>1.12'

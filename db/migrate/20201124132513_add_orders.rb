@@ -2,11 +2,11 @@ class AddOrders < ActiveRecord::Migration[6.0]
   def change
     create_table :orders do |t|
 
-      t.integer :price
+      t.monetize :price
+      t.string :status, default: "waiting"
       t.integer :transaction_id
-      t.string :currency
-      t.references :buyer_id, foreign_key: { to_table: 'users' }
-      t.references :seller_id, foreign_key: { to_table: 'users' }
+      t.references :buyer, foreign_key: { to_table: 'users' }
+      t.references :seller, foreign_key: { to_table: 'users' }
 
       t.timestamps
     end
