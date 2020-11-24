@@ -15,12 +15,15 @@
   </div>
 
   <div class="cards col col-lg-6">
+
     <% @farms.each do |farm| %>
 
       <div class="d-flex farm">
 
         <div>
-          <%= cl_image_tag farm.photos.first.key, height: 209, width: 207, crop: :fill, class: "photo-farm" %>
+          <%= link_to farm_path(farm) do  %>
+            <%= cl_image_tag(farm.photos.first.key, height: 209, width: 207, crop: :fill, class: "photo-farm") %>
+          <% end %>
         </div>
 
         <div>
