@@ -5,17 +5,30 @@
   font-family: 'Mulish', sans-serif;
   font-size: 17px;
   align-items: center;
+
+  .navbar-collapse {
+    flex-grow: 0;
+  }
+
+  .logo-robin-des-ferme {
+    height: 34px;
+    width: 264px;
+  }
+
+  .nav-item .noun-bag{
+    width: 50px;
+    height: 41.14px;
+  }
+
   .nav-item .price {
     color: #FAF0E1;
     margin-bottom: 0px;
     padding-top: 10px;
-
   }
-
 }
 
 .nav-item {
-  .btn{
+  .btn {
 
     border: 1px solid white;
     border-radius: 12px;
@@ -28,25 +41,9 @@
       width: 30px;
       height: 24.64px;
     }
-
   }
 
   .location {
     text-align: left;
-
   }
-}
-
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .logo-robin-des-ferme {
-  height: 34px;
-  width: 264px;
-}
-
-.navbar-lewagon .nav-item .noun-bag{
-  width: 50px;
-  height: 41.14px;
 }

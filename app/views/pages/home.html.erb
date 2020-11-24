@@ -4,7 +4,7 @@
       <h2>La vente directe, droit dans le mille</h2>
       <p>Trouve le produit ou l'exploitation de ton choix, commande en quelques clics, paie en ligne et déguste ta victoire : quand c'est juste, c'est encore meilleur!</p>
       <%= simple_form_for :search, url: root_path, method: "GET", html: { class: 'form-inline search' } do |f| %>
-        <%= f.input :name, label: false, input_html: {value: "Où habitez-vous ?"}, class: 'search-bar'%>
+        <%= f.input :name, label: false, input_html: {placeholder: "Où habitez-vous ?"}, class: 'search-bar'%>
         <%= f.submit "RECHERCHER", class: "btn" %>
       <% end %>
     </div>
@@ -20,15 +20,15 @@
 
     <div class="food">
       <%= link_to "#", class: "navbar-brand" do %>
-        <%= image_tag "meat.png", alt: "alttext" %>
+        <%= image_tag "categories/meat.png", alt: "alttext" %>
         <p>Viandes</p>
       <% end %>
       <%= link_to "#", class: "navbar-brand" do %>
-        <%= image_tag "fish.png", alt: "alttext" %>
+        <%= image_tag "categories/fish.png", alt: "alttext" %>
         <p>Poissons</p>
       <% end %>
       <%= link_to "#", class: "navbar-brand" do %>
-        <%= image_tag "milk.png", alt: "alttext" %>
+        <%= image_tag "categories/milk.png", alt: "alttext" %>
         <p>Produits laitiers</p>
       <% end %>
     </div>
@@ -92,17 +92,17 @@
     <div class = "row">
 
       <div>
-        <%= image_tag "sell.png", alt: "alttext" %>
+        <%= image_tag "home/sell.png", alt: "alttext" %>
         <p>Vendez vos produits en ligne</p>
       </div>
 
       <div>
-        <%= image_tag "presentation.png", alt: "alttext" %>
+        <%= image_tag "home/presentation.png", alt: "alttext" %>
         <p>Présentez votre exploitation</p>
       </div>
 
       <div>
-        <%= image_tag "community.png", alt: "alttext" %>
+        <%= image_tag "home/community.png", alt: "alttext" %>
         <p>Elargissez votre communauté</p>
       </div>
 
@@ -113,7 +113,7 @@
 </div>
 
 <div class="footer row">
-  <%= image_tag "Robin-des-fermes-logo-2lignes-beiges500px 1.png" %>
+  <%= image_tag "logos/rdf_light_pink.png" %>
 
   <div class="information">
 
@@ -153,9 +153,9 @@
   <div class="link">
     <p class= "title">Retrouvez-nous</p>
     <div class="footer-links">
-      <a href="#"><i class="fab fa-facebook"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.facebook.com/robindesfermes.ch/"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/robin_des_fermes/"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/company/robin-des-fermes/"><i class="fab fa-linkedin"></i></a>
     </div>
 
   </div>

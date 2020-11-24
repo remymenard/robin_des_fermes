@@ -20,14 +20,13 @@ user = User.create!(
 
 
 
-henry = Farm.new(name: "Famille Henry", user: user)
+henry = Farm.create!(name: "Famille Henry", user: user)
 henry.photos.attach(io: File.open('app/assets/images/seed/seed-meleze.png'), filename: 'seed-henry.png')
-henry.save!
 
 file2 = File.open('app/assets/images/seed/seed-henry.png')
-meleze = Farm.new(name: "La ferme du Mélèze", user: user)
+meleze = Farm.create!(name: "La ferme du Mélèze", user: user)
 meleze.photos.attach(io: file2, filename: 'nes.png', content_type: 'image/png')
-meleze.save!
+
 
 file3 = URI.open('app/assets/images/seed/seed-henry.png')
 jonas = Farm.create!(name: "La Ferme de Jonas", user: user)
