@@ -1,0 +1,36 @@
+.farms {
+  background-color: white;
+  span {
+    font-size: 32px;
+    margin-left: 26px;
+    margin-top: 95px;
+    margin-right: 20px;
+  }
+
+  p {
+    font-size: 17px;
+    color: white;
+    padding-left: 7px;
+  }
+
+  .search {
+    .map-marker {
+      width: 30px;
+      height: 24.64px;
+    }
+
+    .arrow {
+      width: 25px;
+      height: 19.88px;
+      margin-top: 3px;
+    }
+
+    .btn {
+      width: 140.1px;
+      height: 40px;
+      background-color: #007C50;
+      border-radius: 7px;
+      margin-top: 95px;
+    }
+  }
+}

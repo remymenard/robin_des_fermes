@@ -6,7 +6,7 @@ class Farm < ApplicationRecord
   LABELS = ['bio']
 
   validates :name, presence: true
-  validates :labels, presence: true
+  # validates :labels, presence: true
   validates :sells, presence: true
   validates :address, presence: true
   validates :opening_time, presence: true
