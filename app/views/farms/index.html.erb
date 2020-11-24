@@ -4,11 +4,11 @@
     <span>Recherche : </span>
 
     <%= link_to "#", class: "d-flex navbar-brand btn" do %>
-      <%= image_tag 'Map_Marker.png', class: "map-marker" %>
+      <%= image_tag 'icons/Map_Marker.png', class: "map-marker" %>
     <% end %>
 
     <%= link_to "#", class: "d-flex navbar-brand btn" do %>
-      <%= image_tag 'Arrow.png', class: "arrow" %>
+      <%= image_tag 'icons/Arrow.png', class: "arrow" %>
       <p>Catégorie</p>
     <% end %>
 
@@ -33,14 +33,16 @@
             <h6> <%= farm.name  %></h6>
 
             <div class="d-flex">
-              <p>Labels :  <%if farm.labels.include?("bio")%><div class='label'><%= image_tag 'bio-label', class: "label" %></div><%end%></p>
+              <p>Labels :  <%if farm.labels.include?("bio")%><div class='label'><%= image_tag 'labels/bio-label', class: "label" %></div><%end%></p>
             </div>
 
             <div class="d-flex">
               <p>Nombre de ventes : </p>
               <p><%= farm.sells  %></p>
             </div>
-
+            <% farm.farm_categories.each do |farm_category| %>
+              <%= farm_category.category.name  %>
+            <% end %>
             <div class="d-flex">
               <p>Adresse : </p>
               <p><%= farm.address  %></p>

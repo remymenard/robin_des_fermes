@@ -9,6 +9,12 @@ require "open-uri"
 
 User.destroy_all
 Farm.destroy_all
+Category.destroy_all
+
+pain = Category.create!(name: "Pain")
+boucherie = Category.create!(name: "Boucherie")
+poisson = Category.create!(name: "Poisson")
+
 
 user1 = User.create!(
   email: "test@exemp.com",
@@ -42,3 +48,9 @@ cave.photos.attach(io: file4, filename: 'nes.png', content_type: 'image/png')
 file5 = URI.open('app/assets/images/seed/farm1.png')
 gallien = Farm.create!(name: "Le Domaine du Gallien", user: user2, labels: ['bio'], sells: 12, address: 'Toulouse', opening_time: '8h-17h')
 gallien.photos.attach(io: file5, filename: 'nes.png', content_type: 'image/png')
+
+FarmCategory.create!(category: pain,  farm: henry)
+FarmCategory.create!(category: boucherie,  farm: henry)
+FarmCategory.create!(category: pain,  farm: jonas)
+
+
