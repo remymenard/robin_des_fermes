@@ -6,11 +6,11 @@
     <%= link_to "#", class: "d-flex navbar-brand btn" do %>
       <%= image_tag 'icons/Map_Marker.png', class: "map-marker" %>
     <% end %>
-
-    <%= link_to "#", class: "d-flex navbar-brand btn" do %>
-      <%= image_tag 'icons/Arrow.png', class: "arrow" %>
-      <p>Catégorie</p>
-    <% end %>
+    <div class="d-flex select">
+      <%= form_tag farms_path, :method => 'get' do %>
+       <%= select_tag(:query, options_for_select(["Viande", "Laitier", "Poisson", "Fruit", "Boulangerie", "Oeuf", "Céréale", "Huile", "Vin", "Divers"],  :selected =>params[:query]), onchange: 'this.form.submit();', class: "form-control custom-select" , include_blank: "Catégorie")  %>
+      <% end %>
+    </div>
 
   </div>
 
