@@ -31,7 +31,7 @@ class PagesController < ApplicationController
     render file: Rails.root.join('public/404.html'), status: :unauthorized
   end
 
-  def matches?(request)
+  def datatrans_ip?(request)
     @ips = []
     @ips << NetAddr::CIDR.create('193.16.220.0/24')
     @ips << NetAddr::CIDR.create('91.223.186.0/24')
@@ -41,9 +41,9 @@ class PagesController < ApplicationController
    end
 
   def payment_post
-    puts request.remote_ip
-    puts "IP"
-    return permission_denied if matches? request
-    "authorized"
+    return permission_denied unless datatrans_ip? request
+    Order.find(params["transactionId"])
+    binding.pry
+
   end
 end

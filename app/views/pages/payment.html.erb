@@ -3,10 +3,6 @@
 </form>
 
 <script>
-    // $("#paymentButton").click(function () {
-    //     Datatrans.startPayment({transactionId: <%= @transaction_id %>});
-    // });
-    console.log("<%= @transaction_id %>")
     const payButton = document.getElementById("paymentButton");
     payButton.addEventListener("click", function() {
       Datatrans.startPayment({
