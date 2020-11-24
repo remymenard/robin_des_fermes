@@ -48,7 +48,7 @@
           <div class="first-photo">
 
             <div>
-            <%= cl_image_tag @farms.first.photos.first.key, height: 474, width: 570, crop: :fill  %>
+            <%= link_to cl_image_tag @farms.first.photos.first.key, height: 474, width: 570, crop: :fill  %>
             </div>
 
 
@@ -66,7 +66,9 @@
             <% @farms.drop(1).each do |farm|  %>
 
               <div class = "photo">
-                <%= cl_image_tag farm.photos.first.key, height: 222, width: 270, crop: :fill %>
+
+                  <%= link_to cl_image_tag(farm.photos.first.key, height: 222, width: 270, crop: :fill )%>
+
                 <p><%= farm.name %></p>
 
               </div>
