@@ -9,7 +9,30 @@
   }
 
   .informations {
+    margin-left: 30px;
     margin-top: 169px;
+
+    .description {
+      max-width: 700px;
+    }
+
+    .number {
+      height: 40px;
+      width: 40px;
+      text-align: center;
+      line-height: 40px;
+      margin-bottom: 24px;
+    }
+
+    .btn-number {
+      height: 40px;
+      width: 40px;
+      background-color: #007C50;
+      text-align: center;
+      border-radius: 8px 8px 8px 8px;
+      color: white;
+      margin-bottom: 24px;
+    }
   }
 }
 
