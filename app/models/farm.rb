@@ -1,6 +1,5 @@
 class Farm < ApplicationRecord
   belongs_to :user
-<<<<<<< HEAD
   has_many :farm_categories, dependent: :destroy
   has_many :categories, through: :farm_categories
 
@@ -10,7 +9,6 @@ class Farm < ApplicationRecord
 
   validates :name, presence: true
   # validates :labels, presence: true
-  validates :sells, presence: true
   validates :address, presence: true
   validates :opening_time, presence: true
 
@@ -19,8 +17,4 @@ class Farm < ApplicationRecord
 
     Farm.all.select { |farm| farm.categories.include?(category) }
   end
-=======
-
-  has_many_attached :photos
->>>>>>> develop
 end

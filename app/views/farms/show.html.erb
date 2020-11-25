@@ -63,9 +63,11 @@
             <p><%= @farm.user.name  %> </p>
 
             <div class="d-flex informations">
-              <% @farm.farm_categories.each do |farm_category| %>
-                <div class='category-photo'><%= cl_image_tag farm_category.category.photo.key %></div>
-              <% end %>
+              <div class="d-flex photos">
+                <% @farm.farm_categories.each do |farm_category| %>
+                  <div class='category-photo'><%= cl_image_tag farm_category.category.photo.key %></div>
+                <% end %>
+              </div>
             </div>
 
             <div class="d-flex informations">
@@ -81,9 +83,6 @@
               <p>Adhérents RDF depuis : </p>
               <p class = "value"><%= @farm.created_at.strftime("%Y.%m.%d")  %></p>
             </div>
-
-            <%= link_to "Voir", "#"  %>
-          </div>
         </div>
       </div>
 
