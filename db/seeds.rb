@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 require "open-uri"
 
 FarmCategory.destroy_all
@@ -77,5 +78,3 @@ gallien.photos.attach(io: file5, filename: 'nes.png', content_type: 'image/png')
 FarmCategory.create!(category: pain,  farm: henry)
 FarmCategory.create!(category: boucherie,  farm: henry)
 FarmCategory.create!(category: pain,  farm: jonas)
-
-
