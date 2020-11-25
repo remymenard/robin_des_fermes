@@ -17,7 +17,11 @@
       <li class="nav-item ">
       <div id="zip_code" data-signedin?="<%= user_signed_in? %>" data-token="<%= form_authenticity_token %>" class="d-flex navbar-brand btn location">
           <%= image_tag 'icons/map_marker.png' %>
-          <p>_______</p>
+          <% if (!user_signed_in? || !current_user.zip_code) %>
+            <p id="zip_code_number">_______</p>
+          <% else %>
+            <p id="zip_code_number"><%= current_user.zip_code %></p>
+          <% end %>
       </div>
       </li>
       <li>

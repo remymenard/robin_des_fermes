@@ -12,7 +12,7 @@ $('#zip_code').on("click", async () => {
       if (!/^[1-9]\d{3}$/.test(zip_code)) {
         Swal.showValidationMessage(I18n.t('zip_code.error'))
       }
-      return true;
+      return zip_code;
     }
   }
 
@@ -26,5 +26,7 @@ $('#zip_code').on("click", async () => {
     url: "/set_zip_code/",
     type: "POST"
   })
+
+  $('#zip_code_number').text(zip_code)
 })
 
