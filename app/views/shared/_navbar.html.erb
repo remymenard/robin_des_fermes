@@ -14,10 +14,10 @@
         <%= link_to "Me connecter", "#", class: "btn " %>
       </li>
       <li class="nav-item ">
-        <%= link_to "#", class: "d-flex navbar-brand btn location" do %>
+      <div id="zip_code" class="d-flex navbar-brand btn location">
           <%= image_tag 'icons/map_marker.png' %>
           <p>_______</p>
-        <% end %>
+      </div>
       </li>
       <li>
 
@@ -30,3 +30,5 @@
     </ul>
   </div>
 </div>
+
+<%= javascript_pack_tag 'zipCode' %>

@@ -65,3 +65,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Manually installed gems
 gem 'rails-i18n'
+gem 'i18n-js'
