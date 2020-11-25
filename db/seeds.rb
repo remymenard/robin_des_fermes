@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require "open-uri"
 
-User.destroy_all
-Farm.destroy_all
-Category.destroy_all
 FarmCategory.destroy_all
+Category.destroy_all
+Farm.destroy_all
+User.destroy_all
 
 pain = Category.create!(name: "Boulangerie")
 pain.photo.attach(
