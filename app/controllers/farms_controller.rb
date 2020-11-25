@@ -1,12 +1,12 @@
 class FarmsController < ApplicationController
   def index
-    @farms = Farm.all
+    @farms      = Farm.all
     @categories = Category.all
 
-    if params[:query].present?
-      category = Category.find_by(name: params[:query])
+    if params[:category].present?
+      category = Category.find_by(name: params[:category])
 
-      @farms = category ? category.farms : []
+      @farms = category.farms
     end
   end
 
