@@ -18,7 +18,11 @@
       <div id="zip_code" data-signedin?="<%= user_signed_in? %>" data-token="<%= form_authenticity_token %>" class="d-flex navbar-brand btn location">
           <%= image_tag 'icons/map_marker.png' %>
           <% if (!user_signed_in? || !current_user.zip_code) %>
+            <% if cookies[:zip_code] %>
+              <p id="zip_code_number"><%= cookies[:zip_code] %></p>
+              <% else %>
             <p id="zip_code_number">_______</p>
+            <% end %>
           <% else %>
             <p id="zip_code_number"><%= current_user.zip_code %></p>
           <% end %>
