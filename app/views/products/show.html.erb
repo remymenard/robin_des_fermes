@@ -1,6 +1,7 @@
 <div class="container">
   <div class="product">
     <h2><%= @product.name %> </h2>
+    <%= cl_image_tag @product.photo.key, height: 64, width: 64, crop: :fill %>
   </div>
 
 </div>
