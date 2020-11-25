@@ -24,9 +24,9 @@ class DatatransService
         'refno' => order.id,
         'amount' => order.price_cents,
         'redirect' => {
-            'successUrl' => 'https://0f774e21fdea.eu.ngrok.io/payment_success',
-            'cancelUrl' => 'https://0f774e21fdea.eu.ngrok.io/payment_cancel',
-            'errorUrl' => 'https://0f774e21fdea.eu.ngrok.io/payment_error'
+            'successUrl' => "#{ENV["NGROK_URL"]}/payment_success",
+            'cancelUrl' => "#{ENV["NGROK_URL"]}/payment_cancel",
+            'errorUrl' => "#{ENV["NGROK_URL"]}/payment_error"
         },
         "theme": {
           "name": "DT2015",
