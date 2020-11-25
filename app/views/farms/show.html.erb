@@ -20,15 +20,15 @@
           <div class="row">
 
             <div class="col col-lg-6">
-              <%= cl_image_tag @second_photo.key, height: 220, width: 270, crop: :fill, class: "second-photo"  %>
-              <%= cl_image_tag @third_photo.key, height: 220, width: 270, crop: :fill, class: "third-photo"  %>
+              <%= cl_image_tag @second_photo&.key, height: 220, width: 270, crop: :fill, class: "second-photo"  %>
+              <%= cl_image_tag @third_photo&.key, height: 220, width: 270, crop: :fill, class: "third-photo"  %>
             </div>
 
             <div class="col col-lg-6">
 
               <div class="last-photos">
-                <%= cl_image_tag @fourth_photo.key, height: 220, width: 270, crop: :fill, class: "fourth-photo"  %>
-                <%= cl_image_tag @conquest_photo.key, height: 220, width: 270, crop: :fill,class: "conquest-photo"  %>
+                <%= cl_image_tag @fourth_photo&.key, height: 220, width: 270, crop: :fill, class: "fourth-photo"  %>
+                <%= cl_image_tag @conquest_photo&.key, height: 220, width: 270, crop: :fill,class: "conquest-photo"  %>
               </div>
             </div>
 
@@ -64,16 +64,7 @@
 
             <div class="d-flex informations">
               <% @farm.farm_categories.each do |farm_category| %>
-                <%if farm_category.category.name.include?("Viande")%><div class='category-photo'><%= image_tag 'categories/viande.png' %></div><%end%>
-                <%if farm_category.category.name.include?("Laitier")%><div class='category-photo'><%= image_tag 'categories/laitiers.png' %></div><%end%>
-                <%if farm_category.category.name.include?("Poisson")%><div class='category-photo'><%= image_tag 'categories/poissons.png' %></div><%end%>
-                <%if farm_category.category.name.include?("Fruit")%><div class='category-photo'><%= image_tag 'categories/fruits.png' %></div><%end%>
-                <%if farm_category.category.name.include?("Boulangerie")%><div class='category-photo'><%= image_tag 'categories/boulangerie.png' %></div><%end%>
-                <%if farm_category.category.name.include?("Céréale")%><div class='category-photo'><%= image_tag 'categories/cereales.png' %></div><%end%>
-                <%if farm_category.category.name.include?("Divers")%><div class='category-photo'><%= image_tag 'categories/divers.png' %></div><%end%>
-                <%if farm_category.category.name.include?("Huile")%><div class='category-photo'><%= image_tag 'categories/huile.png' %></div><%end%>
-                <%if farm_category.category.name.include?("Oeuf")%><div class='category-photo'><%= image_tag 'categories/oeufs.png' %></div><%end%>
-                <%if farm_category.category.name.include?("Vin")%><div class='category-photo'><%= image_tag 'categories/vins.png' %></div><%end%>
+                <div class='category-photo'><%= cl_image_tag farm_category.category.photo.key %></div>
               <% end %>
             </div>
 

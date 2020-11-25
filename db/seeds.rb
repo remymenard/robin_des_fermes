@@ -12,10 +12,10 @@ Farm.destroy_all
 Category.destroy_all
 FarmCategory.destroy_all
 
-pain = Category.create!(name: "Boulangerie")
+pain = Category.create!(name: "Vin")
 pain.photo.attach(
-  io: File.open(Rails.root.join('db/fixtures/categories/cereales.png')),
-  filename: 'cereales.png'
+  io: File.open(Rails.root.join('db/fixtures/categories/vins.png')),
+  filename: 'vins.png'
 )
 
 boucherie = Category.create!(name: "Viande")
@@ -25,14 +25,39 @@ boucherie.photo.attach(
 )
 
 poisson = Category.create!(name: "Poisson")
-laitier = Category.create!(name: "Laitier")
-fruit = Category.create!(name: "Fruit")
-boulangerie = Category.create!(name: "Boulangerie")
-oeuf = Category.create!(name: "Oeuf")
-cereale = Category.create!(name: "Céréale")
 poisson.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/categories/poissons.png')),
-  filename: 'poissons.png'
+  filename: 'poisson.png'
+)
+
+laitier = Category.create!(name: "Laitier")
+laitier.photo.attach(
+  io: File.open(Rails.root.join('db/fixtures/categories/laitiers.png')),
+  filename: 'laitiers.png'
+)
+
+fruit = Category.create!(name: "Fruit")
+fruit.photo.attach(
+  io: File.open(Rails.root.join('db/fixtures/categories/fruits.png')),
+  filename: 'fruits.png'
+)
+
+boulangerie = Category.create!(name: "Boulangerie")
+boulangerie.photo.attach(
+  io: File.open(Rails.root.join('db/fixtures/categories/boulangerie.png')),
+  filename: 'boulangerie.png'
+)
+
+oeuf = Category.create!(name: "Oeuf")
+oeuf.photo.attach(
+  io: File.open(Rails.root.join('db/fixtures/categories/oeufs.png')),
+  filename: 'oeufs.png'
+)
+
+cereale = Category.create!(name: "Céréale")
+cereale.photo.attach(
+  io: File.open(Rails.root.join('db/fixtures/categories/cereales.png')),
+  filename: 'cereales.png'
 )
 
 
@@ -58,15 +83,25 @@ user2.photo.attach(
 
 
 henry = Farm.create!(name: "Famille Henry", user: user1, labels: ['bio'], sells: 19, address: 'Nantes', opening_time: '8h-17h', description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations. La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
-henry.photos.attach(io: File.open('app/assets/images/seed/farm1.png'), filename: 'seed-henry.png')
-henry.photos.attach(io: File.open('app/assets/images/seed/farm2.png'), filename: 'seed-henry.png')
-henry.photos.attach(io: File.open('app/assets/images/seed/farm3.png'), filename: 'seed-henry.png')
-henry.photos.attach(io: File.open('app/assets/images/seed/farm1.png'), filename: 'seed-henry.png')
-henry.photos.attach(io: File.open('app/assets/images/seed/farm2.png'), filename: 'seed-henry.png')
-henry = Farm.create!(name: "Famille Henry", user: user1, labels: ['bio'], sells: 19, address: 'Nantes', opening_time: '8h-17h')
 henry.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm3.png')),
-  filename: 'seed-henry.png'
+  filename: 'farm.png'
+)
+henry.photos.attach(
+  io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
+  filename: 'farm1.png'
+)
+henry.photos.attach(
+  io: File.open(Rails.root.join('db/fixtures/farms/farm1.png')),
+  filename: 'farm2.png'
+)
+henry.photos.attach(
+  io: File.open(Rails.root.join('db/fixtures/farms/farm3.png')),
+  filename: 'farm3.png'
+)
+henry.photos.attach(
+  io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
+  filename: 'farm4.png'
 )
 
 
