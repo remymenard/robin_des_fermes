@@ -1,0 +1,93 @@
+<div class="container">
+  <div class="farm">
+    <h1><%= @farm.name %> </h1>
+
+    <div class="row">
+      <div class="col col-lg-6 ">
+
+        <div class="highlighted-photo">
+
+          <div>
+          <%= cl_image_tag @highlighted_photo.key, height: 452, width: 530, crop: :fill  %>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col col-lg-6 ">
+        <div class="other-photos">
+
+          <div class="row">
+
+            <div class="col col-lg-6">
+              <%= cl_image_tag @second_photo&.key, height: 220, width: 270, crop: :fill, class: "second-photo"  %>
+              <%= cl_image_tag @third_photo&.key, height: 220, width: 270, crop: :fill, class: "third-photo"  %>
+            </div>
+
+            <div class="col col-lg-6">
+
+              <div class="last-photos">
+                <%= cl_image_tag @fourth_photo&.key, height: 220, width: 270, crop: :fill, class: "fourth-photo"  %>
+                <%= cl_image_tag @conquest_photo&.key, height: 220, width: 270, crop: :fill,class: "conquest-photo"  %>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col col-lg-8">
+
+        <div class="farm-name">
+          <h2><%= @farm.name %></h2>
+        </div>
+
+        <div class="description">
+          <h3>A propos</h3>
+          <p><%= @farm.description %></p>
+        </div>
+
+      </div>
+
+      <div class="col col-lg-4">
+        <div class="user">
+
+          <div class="card-user">
+
+            <%= cl_image_tag @farm.user.photo.key, height: 64, width: 64, crop: :fill %>
+            <p><%= @farm.user.name  %> </p>
+
+            <div class="d-flex informations">
+              <div class="d-flex photos">
+                <% @farm.farm_categories.each do |farm_category| %>
+                  <div class='category-photo'><%= cl_image_tag farm_category.category.photo.key %></div>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="d-flex informations">
+              <p><%if @farm.labels.include?("bio")%><div class='label'><%= image_tag 'labels/bio-label', class: "label" %></div><%end%></p>
+            </div>
+
+            <div class="d-flex informations">
+              <p>Nombre de ventes : </p>
+              <p class = "value"> 19</p>
+            </div>
+
+            <div class="d-flex informations">
+              <p>Adhérents RDF depuis : </p>
+              <p class = "value"><%= @farm.created_at.strftime("%Y.%m.%d")  %></p>
+            </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

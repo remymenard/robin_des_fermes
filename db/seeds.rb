@@ -8,34 +8,73 @@
 
 require "open-uri"
 
+FarmCategory.destroy_all
+Category.destroy_all
 Farm.destroy_all
 User.destroy_all
 
-user = User.create!(
+pain = Category.create!(name: "Boulangerie")
+pain.photo.attach(
+  io: File.open(Rails.root.join('db/fixtures/categories/cereales.png')),
+  filename: 'cereales.png'
+)
+
+boucherie = Category.create!(name: "Viande")
+boucherie.photo.attach(
+  io: File.open(Rails.root.join('db/fixtures/categories/viande.png')),
+  filename: 'viande.png'
+)
+
+poisson = Category.create!(name: "Poisson")
+poisson.photo.attach(
+  io: File.open(Rails.root.join('db/fixtures/categories/poissons.png')),
+  filename: 'poissons.png'
+)
+
+
+user1 = User.create!(
   email: "test@exemp.com",
-  password: "password")
+  password: "password",
+  name: "henry")
+user1.photo.attach(
+  io: File.open(Rails.root.join('db/fixtures/users/user1.png')),
+  filename: 'seed-henry.png'
+)
+
+user2 = User.create!(
+  email: "test@exemple.com",
+  password: "password",
+  name: "jonas"
+)
+user2.photo.attach(
+  io: File.open(Rails.root.join('db/fixtures/users/user2.png')),
+  filename: 'seed-henry.png'
+)
 
 
+henry = Farm.create!(name: "Famille Henry", user: user1, labels: ['bio'], address: 'Nantes', opening_time: '8h-17h')
+henry.photos.attach(
+  io: File.open(Rails.root.join('db/fixtures/farms/farm3.png')),
+  filename: 'seed-henry.png'
+)
 
 
-
-
-henry = Farm.create!(name: "Famille Henry", user: user)
-henry.photos.attach(io: File.open('app/assets/images/seed/seed-meleze.png'), filename: 'seed-henry.png')
-
-file2 = File.open('app/assets/images/seed/seed-henry.png')
-meleze = Farm.create!(name: "La ferme du Mélèze", user: user)
+file2 = File.open(Rails.root.join('db/fixtures/farms/farm1.png'))
+meleze = Farm.create!(name: "La ferme du Mélèze", user: user1, labels: ['bio'], address: 'Pornichet', opening_time: '8h-17h')
 meleze.photos.attach(io: file2, filename: 'nes.png', content_type: 'image/png')
 
-
-file3 = URI.open('app/assets/images/seed/seed-henry.png')
-jonas = Farm.create!(name: "La Ferme de Jonas", user: user)
+file3 = URI.open(Rails.root.join('db/fixtures/farms/farm2.png'))
+jonas = Farm.create!(name: "La Ferme de Jonas", user: user2, labels: ['bio'], address: 'Clavan', opening_time: '8h-17h')
 jonas.photos.attach(io: file3, filename: 'nes.png', content_type: 'image/png')
 
-file4 = URI.open('app/assets/images/seed/seed-henry.png')
-cave = Farm.create!(name: "La Cave de l'Abbatiale", user: user)
+file4 = URI.open(Rails.root.join('db/fixtures/farms/farm3.png'))
+cave = Farm.create!(name: "La Cave de l'Abbatiale", user: user2, labels: ['bio'], address: 'Paris', opening_time: '8h-17h')
 cave.photos.attach(io: file4, filename: 'nes.png', content_type: 'image/png')
 
-file5 = URI.open('app/assets/images/seed/seed-henry.png')
-gallien = Farm.create!(name: "Le Domaine du Gallien", user: user)
+file5 = URI.open(Rails.root.join('db/fixtures/farms/farm1.png'))
+gallien = Farm.create!(name: "Le Domaine du Gallien", user: user2, labels: ['bio'], address: 'Toulouse', opening_time: '8h-17h')
 gallien.photos.attach(io: file5, filename: 'nes.png', content_type: 'image/png')
+
+FarmCategory.create!(category: pain,  farm: henry)
+FarmCategory.create!(category: boucherie,  farm: henry)
+FarmCategory.create!(category: pain,  farm: jonas)
