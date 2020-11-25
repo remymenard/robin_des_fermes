@@ -1,33 +1,36 @@
 class OrdersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :payment_post ]
-  skip_before_action :verify_authenticity_token, only: [ :payment_post ]
+  skip_before_action :authenticate_user!, only: [ :payment_webhook ]
+  skip_before_action :verify_authenticity_token, only: [ :payment_webhook ]
 
   def show
+
     @order = Order.find(params[:id])
     if @order.buyer_id != current_user.id
       flash[:alert] = "You are not authorized to view this order."
       redirect_to root_path
     end
+    if @order.status == "waiting"
+      auth = {username: '1100006818', password: ENV['DATATRANS_PASSWORD']}
 
-    auth = {username: '1100006818', password: ENV['DATATRANS_PASSWORD']}
+      puts response = HTTParty.post("https://api.sandbox.datatrans.com/v1/transactions",
+        basic_auth: auth,
+        headers: {'Content-Type' => 'application/json', 'charset' => 'UTF-8'},
+        body: {
+          'currency' => @order.price_currency.downcase,
+          'refno' => @order.id,
+          'amount' => @order.price_cents,
+          'redirect' => {
+            #TODO changer les urls
+              'successUrl' => 'https://0f774e21fdea.eu.ngrok.io/payment_success',
+              'cancelUrl' => 'https://0f774e21fdea.eu.ngrok.io/payment_cancel',
+              'errorUrl' => 'https://0f774e21fdea.eu.ngrok.io/payment_error'
+          }
+      }.to_json
+      )
 
-    puts response = HTTParty.post("https://api.sandbox.datatrans.com/v1/transactions",
-      basic_auth: auth,
-      headers: {'Content-Type' => 'application/json', 'charset' => 'UTF-8'},
-      body: {
-        'currency' => @order.price_currency.downcase,
-        'refno' => @order.id,
-        'amount' => @order.price_cents,
-        'redirect' => {
-            'successUrl' => 'https://0f774e21fdea.eu.ngrok.io/',
-            'cancelUrl' => 'https://pay.sandbox.datatrans.com/upp/merchant/cancelPage.jsp',
-            'errorUrl' => 'https://pay.sandbox.datatrans.com/upp/merchant/errorPage.jsp',
-        }
-    }.to_json
-    )
-
-    @transaction_id = response["transactionId"]
-    # @transaction_id = "201124094850762084"
+      @transaction_id = response["transactionId"]
+      @order.update(transaction_id: @transaction_id)
+    end
   end
 
   def permission_denied
@@ -43,10 +46,35 @@ class OrdersController < ApplicationController
     !valid.empty?
    end
 
-  def payment_post
+  def payment_webhook
     return permission_denied unless datatrans_ip? request
-    Order.find(params["transactionId"])
+    order = Order.find_by(transaction_id: params["transactionId"])
+    order.update(status: "paid")
     # binding.pry
 
+  end
+
+  def payment_success
+    #rediriger à partir de l'id dans l'url vers bon order
+    #find by transaction_id l'order et rediriger à cet order
+    order = Order.find_by(transaction_id: params["datatransTrxId"])
+    flash[:notice] = t 'payment.success'
+    redirect_to order_path(order)
+  end
+
+  def payment_cancel
+    #rediriger à partir de l'id dans l'url vers bon order
+    #find by transaction_id l'order et rediriger à cet order
+    order = Order.find_by(transaction_id: params["datatransTrxId"])
+    flash[:alert] = t 'payment.cancel'
+    redirect_to order_path(order)
+  end
+
+  def payment_error
+    #rediriger à partir de l'id dans l'url vers bon order
+    #find by transaction_id l'order et rediriger à cet order
+    order = Order.find_by(transaction_id: params["datatransTrxId"])
+    flash[:alert] = t 'payment.error'
+    redirect_to order_path(order)
   end
 end

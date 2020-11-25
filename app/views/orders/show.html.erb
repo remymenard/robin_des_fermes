@@ -1,12 +1,15 @@
-<script src="https://pay.sandbox.datatrans.com/upp/payment/js/datatrans-2.0.0.js"></script>
-    <button id="paymentButton" type="button" class="btn btn-success">Pay</button>
-</form>
+<% if @order.status == "waiting" %>
+  <script src="https://pay.sandbox.datatrans.com/upp/payment/js/datatrans-2.0.0.js"></script>
+  <button id="paymentButton" type="button" class="btn btn-success">Pay</button>
 
-<script>
-    const payButton = document.getElementById("paymentButton");
-    payButton.addEventListener("click", function() {
-      Datatrans.startPayment({
-        transactionId:  "<%= @transaction_id %>"
+  <script>
+      const payButton = document.getElementById("paymentButton");
+      payButton.addEventListener("click", function() {
+        Datatrans.startPayment({
+          transactionId:  "<%= @transaction_id %>"
+        });
       });
-    });
-</script>
+  </script>
+<% else %>
+  <h1>Paid</h1>
+<% end %>
