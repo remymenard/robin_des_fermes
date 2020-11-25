@@ -5,7 +5,8 @@ class FarmsController < ApplicationController
 
     if params[:query].present?
       category = Category.find_by(name: params[:query])
-      @farms   = category.farms
+
+      @farms = category ? category.farms : []
     end
   end
 
