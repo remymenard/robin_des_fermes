@@ -1,12 +1,49 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: #007C50;
+  height: 64px;
+  font-family: 'Mulish', sans-serif;
+  font-size: 17px;
+  align-items: center;
+
+  .navbar-collapse {
+    flex-grow: 0;
+  }
+
+  .logo-robin-des-ferme {
+    height: 34px;
+    width: 264px;
+  }
+
+  .nav-item .noun-bag{
+    width: 50px;
+    height: 41.14px;
+  }
+
+  .nav-item .price {
+    color: #FAF0E1;
+    margin-bottom: 0px;
+    padding-top: 10px;
+  }
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
+.nav-item {
+  .btn {
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+    border: 1px solid white;
+    border-radius: 12px;
+    width: 140.1px;
+    height: 40px;
+    margin-right: 10px;
+    color: white;
+
+    img {
+      width: 30px;
+      height: 24.64px;
+    }
+  }
+
+  .location {
+    text-align: left;
+  }
 }
