@@ -7,6 +7,7 @@ class Farm < ApplicationRecord
   has_many_attached :photos
 
   LABELS = ['bio']
+  validates :label, inclusion: { in: LABELS }
 
   validates :name, presence: true
   # validates :labels, presence: true
