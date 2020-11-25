@@ -92,7 +92,6 @@
     </div>
 
 
-
   </div>
   <div class="products">
     <% @farm.categories.each do |category|  %>
@@ -102,7 +101,7 @@
         <% category.products.each do |product| %>
 
           <div class="card-product">
-            <%= link_to farm_product_path(product) do  %>
+            <%= link_to farm_product_path(@farm, product) do  %>
               <%= cl_image_tag product.photo.key, height: 64, width: 64, crop: :fill %>
             <% end %>
 
