@@ -1,7 +1,23 @@
 <div class="container">
   <div class="product">
-    <h2><%= @product.name %> </h2>
-    <%= cl_image_tag @product.photo.key, height: 64, width: 64, crop: :fill %>
+
+    <div class="d-flex">
+
+      <div class="photo">
+        <h2><%= @product.name %> </h2>
+        <%= cl_image_tag @product.photo.key, height: 370, width: 370, crop: :fill, style: "border-radius: 8px 8px 8px 8px" %>
+      </div>
+
+      <div class="informations">
+        <p>Description : <%= @product.description  %> </p>
+        <p>Ingrédients : <%= @product.ingredients  %> </p>
+        <p>Catégorie : <%= cl_image_tag @product.category.photo.key %></p>
+        <p>Label : <%if @product.label.include?("bio")%><div class='label'><%= image_tag 'labels/bio-label', class: "label" %></div><%end%></p>
+        <p>Prix à l'unité : <%= @product.unit_price  %> </p>
+        <p>Producteur : <%= @product.farm.user.name  %> </p>
+        <p>Exploitation :  <%= @product.farm.name  %> </p>
+      </div>
+    </div>
   </div>
 
 </div>
