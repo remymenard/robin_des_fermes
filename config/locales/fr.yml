@@ -1,2 +1,7 @@
 fr:
   hello: "bonjour"
+  zip_code:
+    title: "Code postal"
+    description: "Nous utilisons votre code postal afin de vous proposer les producteurs proches de vous."
+    login: "Se connecter"
+    error: "Veuillez entrer un code postal suisse valide."

@@ -11,10 +11,11 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
+
         <%= link_to "Me connecter", "#", class: "btn " %>
       </li>
       <li class="nav-item ">
-      <div id="zip_code" class="d-flex navbar-brand btn location">
+      <div id="zip_code" data-signedin?="<%= user_signed_in? %>" data-token="<%= form_authenticity_token %>" class="d-flex navbar-brand btn location">
           <%= image_tag 'icons/map_marker.png' %>
           <p>_______</p>
       </div>
