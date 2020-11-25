@@ -7,7 +7,6 @@
   color: #FAF0E1;
   font-weight: 300;
   font-size: 14px;
-  height: 380px;
 
   .row {
     justify-content: space-between;
@@ -58,4 +57,11 @@
   }
 }
 
-
+@media(min-width: 1400px) {
+  .footer {
+    position: absolute;
+    bottom: 0px;
+    width: 1500px;
+    padding-right: -100px;
+  }
+}
