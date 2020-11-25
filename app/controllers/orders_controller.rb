@@ -20,10 +20,15 @@ class OrdersController < ApplicationController
           'refno' => @order.id,
           'amount' => @order.price_cents,
           'redirect' => {
-            #TODO changer les urls
               'successUrl' => 'https://0f774e21fdea.eu.ngrok.io/payment_success',
               'cancelUrl' => 'https://0f774e21fdea.eu.ngrok.io/payment_cancel',
               'errorUrl' => 'https://0f774e21fdea.eu.ngrok.io/payment_error'
+          },
+          "theme": {
+            "name": "DT2015",
+            "configuration": {
+              "brandColor": "#007C50",
+            }
           }
       }.to_json
       )
@@ -50,29 +55,21 @@ class OrdersController < ApplicationController
     return permission_denied unless datatrans_ip? request
     order = Order.find_by(transaction_id: params["transactionId"])
     order.update(status: "paid")
-    # binding.pry
-
   end
 
   def payment_success
-    #rediriger à partir de l'id dans l'url vers bon order
-    #find by transaction_id l'order et rediriger à cet order
     order = Order.find_by(transaction_id: params["datatransTrxId"])
     flash[:notice] = t 'payment.success'
     redirect_to order_path(order)
   end
 
   def payment_cancel
-    #rediriger à partir de l'id dans l'url vers bon order
-    #find by transaction_id l'order et rediriger à cet order
     order = Order.find_by(transaction_id: params["datatransTrxId"])
     flash[:alert] = t 'payment.cancel'
     redirect_to order_path(order)
   end
 
   def payment_error
-    #rediriger à partir de l'id dans l'url vers bon order
-    #find by transaction_id l'order et rediriger à cet order
     order = Order.find_by(transaction_id: params["datatransTrxId"])
     flash[:alert] = t 'payment.error'
     redirect_to order_path(order)
