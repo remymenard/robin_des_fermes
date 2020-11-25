@@ -130,5 +130,3 @@ FarmCategory.create!(category: boulangerie,  farm: henry)
 FarmCategory.create!(category: oeuf,  farm: henry)
 FarmCategory.create!(category: cereale,  farm: henry)
 FarmCategory.create!(category: pain,  farm: jonas)
-
-

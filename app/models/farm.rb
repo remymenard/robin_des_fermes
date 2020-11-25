@@ -1,5 +1,6 @@
 class Farm < ApplicationRecord
   belongs_to :user
+<<<<<<< HEAD
   has_many :farm_categories, dependent: :destroy
   has_many :categories, through: :farm_categories
 
@@ -18,4 +19,8 @@ class Farm < ApplicationRecord
 
     Farm.all.select { |farm| farm.categories.include?(category) }
   end
+=======
+
+  has_many_attached :photos
+>>>>>>> develop
 end

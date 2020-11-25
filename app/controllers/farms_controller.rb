@@ -22,4 +22,5 @@ class FarmsController < ApplicationController
   def article_params
     params.require(:farm).permit(:name, :description, :photo, :adress, :sells, :opening_time, :labels, :category_id)
   end
+
 end
