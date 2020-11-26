@@ -1,6 +1,8 @@
 fr:
   pages:
     home:
+      search_placeholder: "Où habitez-vous ?"
+      search_btn: "RECHERCHER"
       title: "La vente directe, droit dans le mille"
       sub_title: "Trouve le produit ou l'exploitation de ton choix, commande en quelques clics, paie en ligne et déguste ta victoire : quand c'est juste, c'est encore meilleur!"
       products: "Du blé, des radis, de l'oseille : les bons produits au juste prix !"

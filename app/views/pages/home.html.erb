@@ -4,8 +4,8 @@
       <h2><%= t('.title') %></h2>
       <p><%= t('.sub_title') %></p>
       <%= simple_form_for :search, url: root_path, method: "GET", html: { class: 'form-inline search' } do |f| %>
-        <%= f.input :name, label: false, input_html: {placeholder: "Où habitez-vous ?"}, class: 'search-bar'%>
-        <%= f.submit "RECHERCHER", class: "btn" %>
+        <%= f.input :name, label: false, placeholder: t('.search_placeholder'), class: 'search-bar'%>
+        <%= f.submit t('.search_btn'), class: "btn" %>
       <% end %>
     </div>
   </div>
