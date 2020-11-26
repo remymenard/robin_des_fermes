@@ -8,6 +8,13 @@ class FarmsController < ApplicationController
 
       @farms = category.farms
     end
+
+    @markers = @farms.geocoded.map do |farm|
+      {
+        lat: farm.latitude,
+        lng: farm.longitude
+      }
+    end
   end
 
   def show
