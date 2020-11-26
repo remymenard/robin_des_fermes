@@ -135,6 +135,7 @@ file5 = URI.open(Rails.root.join('db/fixtures/farms/farm1.png'))
 gallien = Farm.create!(name: "Le Domaine du Gallien", user: user2, labels: ['bio'], address: 'Toulouse', opening_time: '8h-17h')
 gallien.photos.attach(io: file5, filename: 'nes.png', content_type: 'image/png')
 
+
 FarmCategory.create!(category: viande,  farm: henry)
 FarmCategory.create!(category: divers,  farm: henry)
 # FarmCategory.create!(category: poisson,  farm: henry)
@@ -198,4 +199,3 @@ apple.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/apple.png')),
   filename: 'apple.png'
 )
-

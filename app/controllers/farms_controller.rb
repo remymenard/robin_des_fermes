@@ -1,10 +1,12 @@
 class FarmsController < ApplicationController
   def index
-    @farms = Farm.all
+    @farms      = Farm.all
     @categories = Category.all
 
-    if params[:query].present?
-      @farms = Farm.where_category_name(params[:query])
+    if params[:category].present?
+      category = Category.find_by(name: params[:category])
+
+      @farms = category.farms
     end
   end
 
@@ -20,7 +22,6 @@ class FarmsController < ApplicationController
   private
 
   def article_params
-    params.require(:farm).permit(:name, :description, :photo, :adress, :sells, :opening_time, :labels, :category_id)
+    params.require(:farm).permit(:name, :description, :photo, :adress, :sells, :opening_time, :labels)
   end
-
 end
