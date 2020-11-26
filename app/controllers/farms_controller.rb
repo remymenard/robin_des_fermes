@@ -12,7 +12,8 @@ class FarmsController < ApplicationController
     @markers = @farms.geocoded.map do |farm|
       {
         lat: farm.latitude,
-        lng: farm.longitude
+        lng: farm.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { farm: farm })
       }
     end
   end

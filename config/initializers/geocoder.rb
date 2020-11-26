@@ -1,6 +1,6 @@
 Geocoder.configure(
   # Geocoding options
-  # timeout: 3,                 # geocoding service timeout (secs)
+  timeout: 30,                 # geocoding service timeout (secs)
   # lookup: :nominatim,         # name of geocoding service (symbol)
   # ip_lookup: :ipinfo_io,      # name of IP address geocoding service (symbol)
   # language: :en,              # ISO-639 language code
@@ -20,3 +20,5 @@ Geocoder.configure(
   units: :km,                # :km for kilometers or :mi for miles
   # distances: :linear          # :spherical or :linear
 )
+
+# Geocoder::Configuration.timeout = 15
