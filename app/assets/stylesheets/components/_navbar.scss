@@ -1,4 +1,7 @@
 .navbar-lewagon {
+  z-index: 1;
+  position: sticky;
+  top: 0;
   justify-content: space-between;
   background: #007C50;
   height: 64px;
