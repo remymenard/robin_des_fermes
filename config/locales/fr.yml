@@ -1,2 +1,14 @@
 fr:
-  hello: "bonjour"
+  pages:
+    home:
+      title: "La vente directe, droit dans le mille"
+      sub_title: "Trouve le produit ou l'exploitation de ton choix, commande en quelques clics, paie en ligne et déguste ta victoire : quand c'est juste, c'est encore meilleur!"
+      products: "Du blé, des radis, de l'oseille : les bons produits au juste prix !"
+      viandes: "Viandes"
+      poissons: "Poissons"
+      laitiers: "Produits laitiers"
+      farms: "Et pour ces bons produits, on dit merci à qui ?"
+      presentations_title: "Oyez, oyez, producteurs, rejoignez-nous !"
+      sell: "Vendez vos produits en ligne"
+      presentation: "Présentez votre exploitation"
+      community: "Elargissez votre communauté"
