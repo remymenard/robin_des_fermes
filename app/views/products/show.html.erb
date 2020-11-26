@@ -1,4 +1,4 @@
-<div class="">
+<div class="container">
   <div class="product">
 
     <div class="d-flex">
@@ -14,38 +14,38 @@
           <%= link_to "-", "#", class: "btn btn-number"%>
 
           <div class="number">
-            <p>0</p>
+            <span>0</span>
           </div>
 
           <%= link_to "+", "#", class: "btn btn-number" %>
 
         </div>
 
-        <div class="d-flex">
+        <div class="d-flex one-information">
           <h6>Description : </h6><p> <%= @product.description  %> </p>
         </div>
 
-        <div class="d-flex">
+        <div class="d-flex one-information">
           <h6>Ingrédients : </h6><p> <%= @product.ingredients  %> </p>
         </div>
 
-        <div class="d-flex">
+        <div class="d-flex one-information">
           <h6>Catégorie : </h6><p><%= cl_image_tag @product.category.photo.key %> </p>
         </div>
 
-        <div class="d-flex">
-          <h6>Label : </h6><p> <%if @product.label.include?("bio")%><div class='label'><%= image_tag 'labels/bio-label', class: "label" %></div><%end%> </p>
+        <div class="d-flex one-information">
+          <h6>Label : </h6><%if @product.label.include?("bio")%><p class='label'><%= image_tag 'labels/bio-label', class: "label" %></p><%end%>
         </div>
 
-        <div class="d-flex">
+        <div class="d-flex one-information">
           <h6>Prix à l'unité :</h6><p> <%= @product.unit_price  %> </p>
         </div>
 
-        <div class="d-flex">
+        <div class="d-flex one-information">
           <h6>Producteur : </h6><p> <%= @product.farm.user.name  %></p>
         </div>
 
-        <div class="d-flex">
+        <div class="d-flex one-information">
           <h6>Exploitation : </h6><p> <%= @product.farm.name  %> </p>
         </div>
 
