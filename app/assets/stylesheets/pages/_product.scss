@@ -11,6 +11,17 @@
   .informations {
     margin-left: 30px;
     margin-top: 169px;
+    margin-right: -30px;
+
+    h6 {
+      margin-right: 30px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    p {
+      flex-wrap: wrap;
+    }
 
     .description {
       max-width: 700px;
