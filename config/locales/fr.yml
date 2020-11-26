@@ -12,3 +12,12 @@ fr:
       sell: "Vendez vos produits en ligne"
       presentation: "Présentez votre exploitation"
       community: "Elargissez votre communauté"
+  farms:
+    index:
+      search: "Recherche : "
+      labels: "Labels : "
+      categories: "Catégories : "
+      number_sells: "Nombre de ventes : "
+      date: "Adhérents RDF depuis : "
+      adress: "Adresse : "
+      open: "Ouvertures : "
