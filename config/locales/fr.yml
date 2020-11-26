@@ -28,3 +28,6 @@ fr:
       date: "Adhérents RDF depuis : "
       category: '%{name}'
       product: '%{name}'
+  shared:
+    navbar:
+      log_in_href: "Me Connecter"
