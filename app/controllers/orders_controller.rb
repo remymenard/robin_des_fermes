@@ -18,7 +18,9 @@ class OrdersController < ApplicationController
     @datatrans = DatatransService.new
     return @datatrans.permission_denied unless @datatrans.datatrans_ip? request
     order = Order.find_by(transaction_id: params["transactionId"])
-    order.update(status: "paid")
+    if params["status"] == "settled"
+      order.update(status: "paid")
+    end
   end
 
   def payment_success

@@ -31,8 +31,10 @@ class DatatransService
         "theme": {
           "name": "DT2015",
           "configuration": {
-            "brandColor": "#007C50",
-          }
+            "logoType": "rectangle",
+            "logoSrc": "logo-robin_des_fermes_horizontal-vert.svg",
+            "brandColor": "#007C50"
+         }
         }
     }.to_json
     )
