@@ -2,15 +2,13 @@ class FarmsController < ApplicationController
   require 'date'
 
   def index
-    @farms  = Farm.all
+    @farms = Farm.all
 
     @categories = Category.all
 
     #@code_postal = '1200'
     # @farms = Farm.all.select { |farm| farm.regions.include?(@code_postal) }
     #@farms = Farm.where("regions && ARRAY[?]", @code_postal)
-
-
 
     if params[:category].present?
       category = Category.find_by(name: params[:category])
@@ -37,7 +35,11 @@ class FarmsController < ApplicationController
 
     @date = Date.today
 
+    @code_postal = '1200'
 
+    if @farm.regions.include?(@code_postale)
+      @near_farm = true
+    end
   end
 
   private
