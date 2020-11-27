@@ -69,7 +69,24 @@
       font-size: 24px;
     }
     .cards-delivery {
-      .near-area{
+      span {
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      p {
+        font-size: 14px;
+        font-weight: 400;
+        margin-bottom: 0px;
+      }
+
+      .date {
+        color: #199D3E;
+        font-weight: 300;
+      }
+
+      .card-delivery {
+        margin-right: 30px;
         width: 370px;
         height: 62px;
         border: 1px solid #EAEAEA;
@@ -80,21 +97,6 @@
         padding-right: 16px;
         margin-top: 24px;
 
-        span {
-          font-size: 14px;
-          font-weight: 600;
-        }
-
-        p {
-          font-size: 14px;
-          font-weight: 400;
-          margin-bottom: 0px;
-        }
-
-        .date {
-          color: #199D3E;
-          font-weight: 300;
-        }
       }
     }
   }
