@@ -1,4 +1,7 @@
 class DatatransService
+  def initialize(redirection_urls)
+    @redirection_urls = redirection_urls
+  end
 
   def permission_denied
     render file: Rails.root.join('public/404.html'), status: :unauthorized
@@ -21,26 +24,21 @@ class DatatransService
       headers: {'Content-Type' => 'application/json', 'charset' => 'UTF-8'},
       body: {
         'currency' => order.price_currency.downcase,
-        'refno' => order.id,
-        'amount' => order.price_cents,
-        'redirect' => {
-            'successUrl' => "#{ENV["NGROK_URL"]}/payment_success",
-            'cancelUrl' => "#{ENV["NGROK_URL"]}/payment_cancel",
-            'errorUrl' => "#{ENV["NGROK_URL"]}/payment_error"
-        },
+        'refno'    => order.id,
+        'amount'   => order.price_cents,
+        'redirect' => @redirection_urls,
         "theme": {
           "name": "DT2015",
           "configuration": {
-            "logoType": "rectangle",
-            "logoSrc": "logo-robin_des_fermes_horizontal-vert.svg",
+            "logoType":   "rectangle",
+            "logoSrc":    "logo-robin_des_fermes_horizontal-vert.svg",
             "brandColor": "#007C50"
          }
         }
-    }.to_json
+      }.to_json
     )
 
     @transaction_id = response["transactionId"]
     order.update(transaction_id: @transaction_id)
-    @transaction_id
   end
 end
