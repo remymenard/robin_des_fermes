@@ -70,7 +70,7 @@
 
               </div>
 
-               <div class="card-delivery d-flex">
+               <div class="<%= !@farm.withdrawal ? 'withdrawal' : 'card-delivery' %> d-flex">
 
                 <div>
                   <p>Retrait à la ferme</p>
@@ -92,7 +92,6 @@
                 </div>
 
                 <span>CHF 15</span>
-
               </div>
             </div>
           </div>
