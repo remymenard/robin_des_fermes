@@ -94,6 +94,14 @@
                 <span>CHF 15</span>
               </div>
             </div>
+
+          </div>
+
+          <div class="self-service">
+            <% if @farm.withdrawal? %>
+              <h3>Self-service</h3>
+              <%= DateTime.new(2011,10,1,9).to_s(:time) %>
+            <% end %>
           </div>
         </div>
 

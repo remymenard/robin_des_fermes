@@ -6,10 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require "open-uri"
+require 'tod'
 
 FarmCategory.destroy_all # they belong to a category, so let's destroy them first
 Product.destroy_all
 Category.destroy_all
+OpeningHour.destroy_all
 Farm.destroy_all # they belong to a user, so let's destroy them first
 User.destroy_all
 
@@ -93,7 +95,7 @@ user2.photo.attach(
 henry = Farm.create!(name: "Famille Henry", user: user1, labels: ['bio'],
   address: 'Bahnhofstrasse 4/8, 8001 Zurich', opening_time: '8h-17h',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations. La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.",
-  regions: ['8008', '8001', '1200'], withdrawal: false)
+  regions: ['8008', '8001', '1200'], withdrawal: true)
 henry.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm3.png')),
   filename: 'farm.png'
@@ -120,7 +122,7 @@ file2 = File.open(Rails.root.join('db/fixtures/farms/farm1.png'))
 meleze = Farm.create!(name: "La ferme du Mélèze", user: user1, labels: ['bio'],
   address: 'Gerechtigkeitsgasse 10, 3011 Berne', opening_time: '8h-17h',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations. La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.",
-  regions: ['1200', '1240', '1215'])
+  regions: ['1200', '1240', '1215'], withdrawal: false)
 meleze.photos.attach(io: file2, filename: 'nes.png', content_type: 'image/png')
 
 file3 = File.open(Rails.root.join('db/fixtures/farms/farm2.png'))
@@ -208,3 +210,9 @@ apple.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/apple.png')),
   filename: 'apple.png'
 )
+
+lundi = OpeningHour.create!(farm: henry, day: 1, opens: Tod::TimeOfDay.new(8,30).strftime("%H:%M"), closes: Tod::TimeOfDay.new(17,30).strftime("%H:%M"))
+mardi = OpeningHour.create!(farm: henry, day: 2, opens: Tod::TimeOfDay.new(8,30).strftime("%H:%M"), closes: Tod::TimeOfDay.new(17,30).strftime("%H:%M"))
+mercredi = OpeningHour.create!(farm: henry, day: 3, opens: Tod::TimeOfDay.new(8,30).strftime("%H:%M"), closes: Tod::TimeOfDay.new(17,30).strftime("%H:%M"))
+jeudi = OpeningHour.create!(farm: henry, day: 4, opens: Tod::TimeOfDay.new(8,30).strftime("%H:%M"), closes: Tod::TimeOfDay.new(17,30).strftime("%H:%M"))
+vendredi = OpeningHour.create!(farm: henry, day: 5, opens: Tod::TimeOfDay.new(8,30).strftime("%H:%M"), closes: Tod::TimeOfDay.new(17,30).strftime("%H:%M"))

@@ -5,8 +5,8 @@ class OpeningHour < ApplicationRecord
   validates_inclusion_of :day, :in => 1..7
   validate :opens_before_closes
 
-  validates_uniqueness_of :opens, scope: [:entry_id, :day]
-  validates_uniqueness_of :closes, scope: [:entry_id, :day]
+  validates_uniqueness_of :opens, scope: [:farm_id, :day]
+  validates_uniqueness_of :closes, scope: [:farm_id, :day]
 
   private
 
