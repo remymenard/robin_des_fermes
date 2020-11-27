@@ -101,11 +101,12 @@
             <% if @farm.withdrawal? %>
               <h3>Self-service</h3>
 
-              <div class="hours">
+              <div class="opening">
                 <%@farm.opening_hours.each do |opening_hour|  %>
-                  <%= Date::DAYNAMES[opening_hour.day] %>
-                  <%= opening_hour.opens.to_formatted_s(:time)  %>
-                  <%= opening_hour.closes.to_formatted_s(:time)  %>
+                  <div class="d-flex hours">
+                    <p><%= Date::DAYNAMES[opening_hour.day] %></p>
+                    <p><%= opening_hour.opens.to_formatted_s(:time)  %> - <%= opening_hour.closes.to_formatted_s(:time)  %></p>
+                  </div>
                 <% end %>
               </div>
             <% end %>
