@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_27_071656) do
+ActiveRecord::Schema.define(version: 2020_11_26_145107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +64,10 @@ ActiveRecord::Schema.define(version: 2020_11_27_071656) do
     t.datetime "updated_at", precision: 6, null: false
     t.jsonb "labels", default: [], array: true
     t.jsonb "regions", default: [], array: true
+<<<<<<< HEAD
     t.boolean "withdrawal"
+=======
+>>>>>>> feature/RDF-265_map_with_near_farms
     t.index ["user_id"], name: "index_farms_on_user_id"
   end
 

@@ -19,12 +19,6 @@ pain.photo.attach(
   filename: 'vins.png'
 )
 
-boucherie = Category.create!(name: "Viande")
-boucherie.photo.attach(
-  io: File.open(Rails.root.join('db/fixtures/categories/viande.png')),
-  filename: 'viande.png'
-)
-
 poisson = Category.create!(name: "Poisson")
 poisson.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/categories/poissons.png')),
@@ -97,9 +91,9 @@ user2.photo.attach(
 
 
 henry = Farm.create!(name: "Famille Henry", user: user1, labels: ['bio'],
-  address: 'Nantes', opening_time: '8h-17h',
+  address: 'Bahnhofstrasse 4/8, 8001 Zurich', opening_time: '8h-17h',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations. La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.",
-  withdrawal: true)
+  regions: ['8008', '8001', '1200'])
 henry.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm3.png')),
   filename: 'farm.png'
@@ -124,33 +118,41 @@ henry.photos.attach(
 
 file2 = File.open(Rails.root.join('db/fixtures/farms/farm1.png'))
 meleze = Farm.create!(name: "La ferme du Mélèze", user: user1, labels: ['bio'],
-  address: 'Pornichet', opening_time: '8h-17h', withdrawal: false)
+  address: 'Gerechtigkeitsgasse 10, 3011 Berne', opening_time: '8h-17h',
+  description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations. La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.",
+  regions: ['1200', '1240', '1215'])
 meleze.photos.attach(io: file2, filename: 'nes.png', content_type: 'image/png')
 
-file3 = URI.open(Rails.root.join('db/fixtures/farms/farm2.png'))
+file3 = File.open(Rails.root.join('db/fixtures/farms/farm2.png'))
 jonas = Farm.create!(name: "La Ferme de Jonas", user: user2, labels: ['bio'],
-  address: 'Clavan', opening_time: '8h-17h', withdrawal: false)
+  address: 'Bahnhofstrasse 67, 5000 Aarau ', opening_time: '8h-17h',
+  description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations. La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.",
+  regions: ['5000', '5004', '5001'])
 jonas.photos.attach(io: file3, filename: 'nes.png', content_type: 'image/png')
 
-file4 = URI.open(Rails.root.join('db/fixtures/farms/farm3.png'))
+file4 = File.open(Rails.root.join('db/fixtures/farms/farm3.png'))
 cave = Farm.create!(name: "La Cave de l'Abbatiale", user: user2, labels: ['bio'],
-  address: 'Paris', opening_time: '8h-17h',withdrawal: false)
+  address: 'Rue de Carouge 22, 1205 Genève', opening_time: '8h-17h',
+  description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations. La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.",
+  regions: ['1200', '1209', '1205'])
 cave.photos.attach(io: file4, filename: 'nes.png', content_type: 'image/png')
 
-file5 = URI.open(Rails.root.join('db/fixtures/farms/farm1.png'))
+file5 = File.open(Rails.root.join('db/fixtures/farms/farm1.png'))
 gallien = Farm.create!(name: "Le Domaine du Gallien", user: user2, labels: ['bio'],
-  address: 'Toulouse', opening_time: '8h-17h',withdrawal: true)
+  address: 'Zollikerstrasse 788, 8008 Zurich', opening_time: '8h-17h',
+  description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations. La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.",
+  regions: ['8008', '8001', '8005'])
 gallien.photos.attach(io: file5, filename: 'nes.png', content_type: 'image/png')
 
 
 FarmCategory.create!(category: viande,  farm: henry)
 FarmCategory.create!(category: divers,  farm: henry)
-# FarmCategory.create!(category: poisson,  farm: henry)
-# FarmCategory.create!(category: laitier,  farm: henry)
-# FarmCategory.create!(category: fruit,  farm: henry)
-# FarmCategory.create!(category: boulangerie,  farm: henry)
-# FarmCategory.create!(category: oeuf,  farm: henry)
-# FarmCategory.create!(category: cereale,  farm: henry)
+FarmCategory.create!(category: poisson,  farm: henry)
+FarmCategory.create!(category: laitier,  farm: henry)
+FarmCategory.create!(category: fruit,  farm: henry)
+FarmCategory.create!(category: boulangerie,  farm: henry)
+FarmCategory.create!(category: oeuf,  farm: henry)
+FarmCategory.create!(category: cereale,  farm: henry)
 FarmCategory.create!(category: pain,  farm: jonas)
 
 meat = Product.create!(farm: henry, category: viande, name: "Meat", unit_price: 5, kg_price: 10, unit: "La pièce" )
