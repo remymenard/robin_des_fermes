@@ -19,12 +19,6 @@ pain.photo.attach(
   filename: 'vins.png'
 )
 
-boucherie = Category.create!(name: "Viande")
-boucherie.photo.attach(
-  io: File.open(Rails.root.join('db/fixtures/categories/viande.png')),
-  filename: 'viande.png'
-)
-
 poisson = Category.create!(name: "Poisson")
 poisson.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/categories/poissons.png')),
