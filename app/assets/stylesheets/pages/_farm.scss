@@ -61,6 +61,44 @@
     }
   }
 
+  .delivery {
+    margin-top: 70px;
+
+    h3 {
+      font-weight: 400;
+      font-size: 24px;
+    }
+    .cards-delivery {
+      .near-area{
+        width: 370px;
+        height: 62px;
+        border: 1px solid #EAEAEA;
+        border-radius: 8px;
+        padding-left: 16px;
+        padding-top: 12px;
+        justify-content: space-between;
+        padding-right: 16px;
+        margin-top: 24px;
+
+        span {
+          font-size: 14px;
+          font-weight: 600;
+        }
+
+        p {
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+        }
+
+        .date {
+          color: #199D3E;
+          font-weight: 300;
+        }
+      }
+    }
+  }
+
   .card-user {
     width: 270px;
     height: 350px;

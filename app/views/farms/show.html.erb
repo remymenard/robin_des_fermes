@@ -52,6 +52,22 @@
           <p><%= @farm.description %></p>
         </div>
 
+        <div class="delivery">
+          <h3>Livraison</h3>
+
+          <div class="cards-delivery">
+            <div class="near-area d-flex">
+              <div>
+                <p>Zone proche</p>
+                <p class = "date"> Entre le <%= @date.strftime('%d')  %> et le <%= I18n.l((@date + 10.days), format: :long, locale: :'fr') %></p>
+              </div>
+
+              <span>CHF 5</span>
+
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <div class="col col-lg-4">
@@ -94,6 +110,8 @@
 
 
   </div>
+
+
   <div class="products">
     <% @farm.categories.each do |category|  %>
       <h4><%= category.name  %></h4>

@@ -1,4 +1,6 @@
 class FarmsController < ApplicationController
+  require 'date'
+
   def index
     @farms      = Farm.all
     @categories = Category.all
@@ -17,6 +19,10 @@ class FarmsController < ApplicationController
     @third_photo       = @farm.photos[2]
     @fourth_photo      = @farm.photos[3]
     @conquest_photo    = @farm.photos[4]
+
+    @date = Date.today
+
+
   end
 
   private
