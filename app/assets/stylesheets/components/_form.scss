@@ -4,7 +4,7 @@ body.sign {
   .container {
     justify-content: center;
 
-    .sign-in {
+    .log-in {
       width: 570px;
       height: 452px;
       background-color: white;
@@ -13,83 +13,93 @@ body.sign {
       box-shadow: 2px 0 5px -2px gray, -2px 0 5px -2px gray, 0 5px 5px -2px gray,  ;
       padding-top: 32px;
 
-      img {
-        width: 200px;
-        height: 28px;
+    }
+
+    .sign-in {
+      width: 570px;
+      height: 691px;
+      background-color: white;
+      margin-top: 50px;
+      border-radius: 10px;
+      box-shadow: 2px 0 5px -2px gray, -2px 0 5px -2px gray, 0 5px 5px -2px gray,  ;
+      padding-top: 32px;
+    }
+
+    img {
+      width: 200px;
+      height: 28px;
+      margin: auto;
+      display: block;
+    }
+
+    p {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 20px;
+      margin-bottom: 24px;
+    }
+
+    .form-control {
+      border-color: black;
+      width: 369px;
+      height: 52px;
+      border-radius: 8px;
+      margin: auto;
+      font-size: 20px;
+      padding-left: 20px;
+    }
+
+
+
+    fieldset {
+      font-size: 18px;
+      padding-left: 80px;
+
+      input[type="checkbox"] {
+        visibility: hidden;
+      }
+
+      input[type="checkbox"] + label:before {
+        border: 1px solid black;
+        border-radius: 5px;
+        content: "\00a0";
+        display: inline-block;
+        height: 25px;
+        vertical-align: top;
+        width: 25px;
+        margin-right: 20px;
+      }
+      input[type="checkbox"]:checked + label:before {
+        background: #fff;
+        color: black;
+        content: "\2713";
+        text-align: center;
+        margin-right: 20px;
+      }
+
+      input[type="checkbox"]:checked + label:after {
+        font-weight: bold;
+      }
+    }
+    .form-actions {
+
+      input {
         margin: auto;
         display: block;
-      }
-
-      p {
-        text-align: center;
-        margin-top: 24px;
-        font-size: 20px;
-        margin-bottom: 24px;
-      }
-
-      .form-control {
-        border-color: black;
+        background-color: #007C50;
         width: 369px;
-        height: 52px;
+        height: 60px;
         border-radius: 8px;
-        margin: auto;
-        font-size: 20px;
-        padding-left: 20px;
-      }
-
-
-
-      fieldset {
+        color: white;
         font-size: 18px;
-        padding-left: 80px;
-
-        input[type="checkbox"] {
-          visibility: hidden;
-        }
-
-        input[type="checkbox"] + label:before {
-          border: 1px solid black;
-          border-radius: 5px;
-          content: "\00a0";
-          display: inline-block;
-          height: 25px;
-          vertical-align: top;
-          width: 25px;
-          margin-right: 20px;
-        }
-        input[type="checkbox"]:checked + label:before {
-          background: #fff;
-          color: black;
-          content: "\2713";
-          text-align: center;
-          margin-right: 20px;
-        }
-
-        input[type="checkbox"]:checked + label:after {
-          font-weight: bold;
-        }
-      }
-      .form-actions {
-
-        input {
-          margin: auto;
-          display: block;
-          background-color: #007C50;
-          width: 369px;
-          height: 60px;
-          border-radius: 8px;
-          color: white;
-          font-size: 18px;
-        }
-      }
-
-      a {
-        color: #979797;
-        font-size: 20px;
-        text-decoration: underline;
       }
     }
 
+    a {
+      color: #979797;
+      font-size: 20px;
+      text-decoration: underline;
+    }
     .sign-in-link {
       width: 570px;
       text-align: center;
