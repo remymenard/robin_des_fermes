@@ -11,6 +11,7 @@ FarmCategory.destroy_all # they belong to a category, so let's destroy them firs
 Product.destroy_all
 Category.destroy_all
 Farm.destroy_all # they belong to a user, so let's destroy them first
+Order.destroy_all
 User.destroy_all
 
 pain = Category.create!(name: "Vin")
@@ -79,7 +80,9 @@ divers.photo.attach(
 user1 = User.create!(
   email: "test@exemp.com",
   password: "password",
-  name: "henry")
+  name: "henry",
+  zip_code: 4444
+)
 user1.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/users/user1.png')),
   filename: 'seed-henry.png'
@@ -88,7 +91,8 @@ user1.photo.attach(
 user2 = User.create!(
   email: "test@exemple.com",
   password: "password",
-  name: "jonas"
+  name: "jonas",
+  zip_code: 1202
 )
 user2.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/users/user2.png')),
