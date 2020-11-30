@@ -52,7 +52,7 @@ boulangerie.photo.attach(
   filename: 'boulangerie.png'
 )
 
-oeuf = Category.create!(name: "Œuf")
+oeuf = Category.create!(name: "Oeuf")
 oeuf.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/categories/oeufs.png')),
   filename: 'oeufs.png'
@@ -149,6 +149,8 @@ gallien.photos.attach(io: file5, filename: 'nes.png', content_type: 'image/png')
 
 FarmCategory.create!(category: viande,  farm: henry)
 FarmCategory.create!(category: divers,  farm: henry)
+FarmCategory.create!(category: divers,  farm: gallien)
+FarmCategory.create!(category: divers,  farm: jonas)
 #FarmCategory.create!(category: poisson,  farm: henry)
 #FarmCategory.create!(category: laitier,  farm: henry)
 #FarmCategory.create!(category: fruit,  farm: henry)
