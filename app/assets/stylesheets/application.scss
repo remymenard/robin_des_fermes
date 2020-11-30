@@ -11,3 +11,11 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+body, h1, h2, p {
+  font-family: 'Mulish', sans-serif;
+}
+
+body {
+  background-color: white;
+}

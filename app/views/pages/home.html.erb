@@ -19,16 +19,16 @@
     <h2>Du blé, des radis, de l'oseille : les bons produits au juste prix !</h2>
 
     <div class="food">
-      <%= link_to "#", class: "navbar-brand" do %>
-        <%= image_tag "categories/meat.png", alt: "alttext" %>
+      <%= link_to farms_path, class: "navbar-brand" do %>
+        <%= image_tag "categories/meat.png", alt: "Viande" %>
         <p>Viandes</p>
       <% end %>
-      <%= link_to "#", class: "navbar-brand" do %>
-        <%= image_tag "categories/fish.png", alt: "alttext" %>
+      <%= link_to farms_path, class: "navbar-brand" do %>
+        <%= image_tag "categories/fish.png", alt: "Poisson" %>
         <p>Poissons</p>
       <% end %>
-      <%= link_to "#", class: "navbar-brand" do %>
-        <%= image_tag "categories/milk.png", alt: "alttext" %>
+      <%= link_to farms_path, class: "navbar-brand" do %>
+        <%= image_tag "categories/milk.png", alt: "Lait" %>
         <p>Produits laitiers</p>
       <% end %>
     </div>
@@ -48,7 +48,9 @@
           <div class="first-photo">
 
             <div>
-            <%= link_to cl_image_tag @highlighted_farm.photos.first.key, height: 474, width: 570, crop: :fill  %>
+              <%= link_to farm_path(@highlighted_farm) do %>
+                <%= cl_image_tag(@highlighted_farm.photos.first.key, height: 474, width: 570, crop: :fill)  %>
+              <% end %>
             </div>
 
 
@@ -67,8 +69,9 @@
 
               <div class = "photo">
 
-                  <%= link_to cl_image_tag(farm.photos.first.key, height: 222, width: 270, crop: :fill )%>
-
+                  <%= link_to farm_path(farm) do %>
+                    <%= cl_image_tag(farm.photos.first.key, height: 222, width: 270, crop: :fill )%>
+                  <% end %>
                 <p><%= farm.name %></p>
 
               </div>
