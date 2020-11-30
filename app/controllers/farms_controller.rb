@@ -1,4 +1,5 @@
 class FarmsController < ApplicationController
+  skip_before_action :authenticate_user!
   def index
     @farms      = Farm.all
     @categories = Category.all
