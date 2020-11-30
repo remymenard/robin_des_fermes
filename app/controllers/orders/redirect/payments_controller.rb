@@ -10,6 +10,7 @@ module Orders
       end
 
       def with_error
+        @order.update(status: 'failed')
       end
 
       private

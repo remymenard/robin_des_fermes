@@ -2,6 +2,7 @@ module Orders
   class PaymentsController < ApplicationController
     def new
       @order = Order.find(params[:order_id])
+      @order.update(status: 'waiting')
 
       Datatrans::CreateTransactionService.new(
         @order,

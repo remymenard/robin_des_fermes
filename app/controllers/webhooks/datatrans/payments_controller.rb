@@ -15,7 +15,9 @@ module Webhooks
         order = Order.find_by(transaction_id: params["transactionId"])
 
         if params["status"] == "settled"
-          order.update(status: "paid")
+          order.update(status: DATATRANS_TRANSACTION_ORDER_STATUSES_MAPPING[params["status"]])
+        else
+          # TODO LATER: handle non happy paths
         end
       end
 
