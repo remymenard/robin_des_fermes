@@ -90,6 +90,19 @@ body.sign {
       }
     }
 
+    .sign-in-link {
+      width: 570px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 300;
+
+      a {
+        font-weight: 600;
+        color: black;
+        text-decoration: underline;
+      }
+    }
+
     .log-in-link {
       width: 570px;
       text-align: center;
