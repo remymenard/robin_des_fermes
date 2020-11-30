@@ -3,7 +3,6 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 const initMapbox = () => {
 
-
   const mapElement = document.getElementById('map');
 
   const fitMapToMarkers = (map, markers) => {
@@ -16,7 +15,7 @@ const initMapbox = () => {
     markers.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // add this
 
-      new mapboxgl.Marker()
+      new mapboxgl.Marker(element)
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup) // add this
         .addTo(map);
@@ -32,9 +31,17 @@ const initMapbox = () => {
 
     const markers = JSON.parse(mapElement.dataset.markers);
       markers.forEach((marker) => {
-      new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat ])
-        .addTo(map);
+
+        const element = document.createElement('div');
+        element.className = 'marker';
+        element.style.backgroundImage = `url('${marker.image_url}')`;
+        element.style.backgroundSize = 'contain';
+        element.style.width = '80px';
+        element.style.height = '65px';
+
+        new mapboxgl.Marker(element)
+          .setLngLat([ marker.lng, marker.lat ])
+          .addTo(map);
     });
 
     fitMapToMarkers(map, markers);

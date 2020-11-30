@@ -6,12 +6,9 @@ class FarmsController < ApplicationController
 
     @code_postal = '1200'
 
-
     if params[:category].present?
 
       if @code_postal.present?
-        #category = Category.find_by(name: params[:category])
-        #@farms = Farm.where("regions && ARRAY[?] ", @code_postal)
         @farms = Farm.joins(:categories).where("categories.name = ? AND regions && ARRAY[?] ", params[:category], @code_postal)
       else
         category = Category.find_by(name: params[:category])
@@ -28,7 +25,8 @@ class FarmsController < ApplicationController
       {
         lat: farm.latitude,
         lng: farm.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { farm: farm })
+        infoWindow: render_to_string(partial: "info_window", locals: { farm: farm }),
+        image_url: helpers.asset_url('icons/map_marker_green')
       }
     end
   end
