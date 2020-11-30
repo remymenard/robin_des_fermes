@@ -26,7 +26,7 @@ $('#zip_code').on("click", async () => {
   $.ajax({
     data: { authenticity_token: $('#zip_code').data("token"), zip_code:  zip_code},
     url: setZipCodePath,
-    type: "POST"
+    type: "PATCH"
   })
 
   $('#zip_code_number').text(zip_code)
