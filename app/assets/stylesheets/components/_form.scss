@@ -25,6 +25,26 @@ body.sign {
       padding-top: 32px;
     }
 
+    .name {
+      margin: auto;
+      width: 369px;
+      justify-content: space-between;
+      input {
+        width: 170px;
+      }
+    }
+
+    .form-group.row.radio_buttons {
+      margin: auto;
+      width: 369px;
+      margin-top: -6px;
+      font-size: 18px;
+      margin-bottom: 15px;
+      .col-sm-9 {
+        padding-left: 0px;
+      }
+    }
+
     img {
       width: 200px;
       height: 28px;

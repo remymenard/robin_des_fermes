@@ -8,6 +8,4 @@ class User < ApplicationRecord
   has_one_attached :photo
 
   GENDER = ['Mme', 'M']
-
-  validates :name, presence: true
 end

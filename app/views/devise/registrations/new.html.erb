@@ -9,12 +9,15 @@
 
         <div class="form-inputs">
           <%= f.input :gender, as: :radio_buttons, collection: User::GENDER, wrapper: :horizontal_collection_inline, label: false %>
-          <%= f.input :first_name,
-                      label: false,
-                      placeholder: "Prénom"%>
-          <%= f.input :last_name,
-                      label: false,
-                      placeholder: "Nom"%>
+
+          <div class="d-flex name">
+            <%= f.input :first_name,
+                        label: false,
+                        placeholder: "Prénom"%>
+            <%= f.input :last_name,
+                        label: false,
+                        placeholder: "Nom"%>
+          </div>
           <%= f.input :email,
                       label: false,
                       placeholder: "Adresse email",
@@ -34,12 +37,15 @@
           <%= f.input :address,
                       label: false,
                       placeholder: "Rue et numéro"%>
-          <%= f.input :code_postal,
-                      label: false,
-                      placeholder: "Code postal"%>
-          <%= f.input :city,
-                      label: false,
-                      placeholder: "Localité"%>
+
+          <div class="d-flex name">
+            <%= f.input :code_postal,
+                        label: false,
+                        placeholder: "Code postal"%>
+            <%= f.input :city,
+                        label: false,
+                        placeholder: "Localité"%>
+          </div>
         </div>
 
         <div class="form-actions">
