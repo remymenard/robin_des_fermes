@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_27_094249) do
+ActiveRecord::Schema.define(version: 2020_11_30_062059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,8 @@ ActiveRecord::Schema.define(version: 2020_11_27_094249) do
     t.integer "day"
     t.time "closes"
     t.time "opens"
+    t.datetime "valid_from"
+    t.datetime "valid_through"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["farm_id"], name: "index_opening_hours_on_farm_id"
@@ -85,7 +87,7 @@ ActiveRecord::Schema.define(version: 2020_11_27_094249) do
     t.string "photo"
     t.text "description"
     t.text "ingredients"
-    t.string "label"
+    t.text "label", default: [], array: true
     t.integer "unit_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
