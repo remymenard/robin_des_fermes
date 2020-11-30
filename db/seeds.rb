@@ -15,7 +15,7 @@ OpeningHour.destroy_all
 Farm.destroy_all # they belong to a user, so let's destroy them first
 User.destroy_all
 
-pain = Category.create!(name: "Vin")
+pain = Category.create!(name: "Vins")
 pain.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/categories/vins.png')),
   filename: 'vins.png'
@@ -27,19 +27,19 @@ poisson.photo.attach(
   filename: 'poisson.png'
 )
 
-laitier = Category.create!(name: "Laitier")
+laitier = Category.create!(name: "Produits laitiers")
 laitier.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/categories/laitiers.png')),
   filename: 'laitiers.png'
 )
 
-fruit = Category.create!(name: "Fruit")
+fruit = Category.create!(name: "Fruits & Légumes")
 fruit.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/categories/fruits.png')),
   filename: 'fruits.png'
 )
 
-viande = Category.create!(name: "Viande")
+viande = Category.create!(name: "Viande & Volaille")
 viande.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/categories/viande.png')),
   filename: 'viande.png'
@@ -52,13 +52,13 @@ boulangerie.photo.attach(
   filename: 'boulangerie.png'
 )
 
-oeuf = Category.create!(name: "Oeuf")
+oeuf = Category.create!(name: "Œuf")
 oeuf.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/categories/oeufs.png')),
   filename: 'oeufs.png'
 )
 
-cereale = Category.create!(name: "Céréale")
+cereale = Category.create!(name: "Céréales-Farines")
 cereale.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/categories/cereales.png')),
   filename: 'cereales.png'

@@ -1,26 +1,23 @@
 class FarmsController < ApplicationController
-  require 'date'
-
   def index
     @farms = Farm.all
 
     @categories = Category.all
 
     @code_postal = '1200'
-    #@farms = Farm.all.select { |farm| farm.regions.include?(@code_postal) }
     @farms = Farm.where("regions && ARRAY[?]", @code_postal)
 
-    #if params[:category].present?
-      #category = Category.find_by(name: params[:category])
+    if params[:category].present?
+      category = Category.find_by(name: params[:category])
 
-      #@farms = category.farms
-    #end
+      @farms = category.farms
+    end
 
-    @markers = @farms.geocoded.map do |f|
+    @markers = @farms.geocoded.map do |farm|
         {
-          lat: f.latitude,
-          lng: f.longitude,
-          infoWindow: render_to_string(partial: "info_window", locals: { farm: f })
+          lat: farm.latitude,
+          lng: farm.longitude,
+          infoWindow: render_to_string(partial: "info_window", locals: { farm: farm })
         }
     end
   end
