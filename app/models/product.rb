@@ -4,8 +4,6 @@ class Product < ApplicationRecord
 
   has_one_attached :photo
 
-  LABELS = ['bio']
-
   validates :name, presence: true
   validates :description, presence: true
   validates :ingredients, presence: true

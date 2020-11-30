@@ -101,7 +101,7 @@
         <% category.products.each do |product| %>
 
           <div class="card-product">
-            <%= link_to farm_product_path(@farm, product) do  %>
+            <%= link_to product_path(product) do  %>
               <%= cl_image_tag product.photo.key, height: 64, width: 64, crop: :fill %>
             <% end %>
 
