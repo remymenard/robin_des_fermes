@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   scope '(:locale)', locale: /fr/ do
     devise_for :users
     root to: 'pages#home'
+
+    namespace :users do
+      resource :zip_code, only: [:update]
+    end
+
     resources :farms, only: [:index, :show]
     
     resources :orders, only: [:show] do
