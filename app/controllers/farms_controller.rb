@@ -11,6 +11,7 @@ class FarmsController < ApplicationController
   end
 
   def show
+
     @farm = Farm.find(params[:id])
     @highlighted_photo = @farm.photos.first
     @second_photo      = @farm.photos[1]

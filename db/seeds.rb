@@ -146,55 +146,55 @@ FarmCategory.create!(category: divers,  farm: henry)
 # FarmCategory.create!(category: cereale,  farm: henry)
 FarmCategory.create!(category: pain,  farm: jonas)
 
-meat = Product.create!(farm: henry, category: viande, name: "Meat", unit_price: 5, kg_price: 10, unit: "La pièce" )
+meat = Product.create!(farm: henry, category: viande, name: "Meat", unit_price: 5, kg_price: 10, unit: "La pièce", available: true )
 meat.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/meat.png')),
   filename: 'meat.png'
 )
 
-meat1 = Product.create!(farm: henry, category: viande, name: "Meat1", unit_price: 52, kg_price: 100, unit: "La pièce" )
+meat1 = Product.create!(farm: henry, category: viande, name: "Meat1", unit_price: 52, kg_price: 100, unit: "La pièce", available: true  )
 meat1.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/meat1.png')),
   filename: 'meat1.png'
 )
 
-chicken = Product.create!(farm: henry, category: viande, name: "Chicken", unit_price: 25, kg_price: 120, unit: "La pièce" )
+chicken = Product.create!(farm: henry, category: viande, name: "Chicken", unit_price: 25, kg_price: 120, unit: "La pièce", available: true  )
 chicken.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/chicken.png')),
   filename: 'chicken.png'
 )
 
-juice = Product.create!(farm: henry, category: divers, name: "Jus de pomme", unit_price: 5, kg_price: 10, unit: "La pièce" )
+juice = Product.create!(farm: henry, category: divers, name: "Jus de pomme", unit_price: 5, kg_price: 10, unit: "La pièce", available: true  )
 juice.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/apple-juice.png')),
   filename: 'apple-juice.png'
 )
 
-honey = Product.create!(farm: henry, category: divers, name: "Honey", unit_price: 35, kg_price: 132, unit: "La pièce" )
+honey = Product.create!(farm: henry, category: divers, name: "Honey", unit_price: 35, kg_price: 132, unit: "La pièce", available: true  )
 honey.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/honey.png')),
   filename: 'honey.png'
 )
 
-oil = Product.create!(farm: henry, category: divers, name: "Oil", unit_price: 5, kg_price: 10, unit: "La pièce" )
+oil = Product.create!(farm: henry, category: divers, name: "Oil", unit_price: 5, kg_price: 10, unit: "La pièce", available: true  )
 oil.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/oil.png')),
   filename: 'oil.png'
 )
 
-potato = Product.create!(farm: henry, category: divers, name: "Potato", unit_price: 5, kg_price: 10, unit: "La pièce" )
+potato = Product.create!(farm: henry, category: divers, name: "Potato", unit_price: 5, kg_price: 10, unit: "La pièce", available: true  )
 potato.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/potato.png')),
   filename: 'potato.png'
 )
 
-egg = Product.create!(farm: henry, category: divers, name: "Egg", unit_price: 5, kg_price: 10, unit: "La pièce" )
+egg = Product.create!(farm: henry, category: divers, name: "Egg", unit_price: 5, kg_price: 10, unit: "La pièce", available: true  )
 egg.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/egg.png')),
   filename: 'egg.png'
 )
 
-apple = Product.create!(farm: henry, category: divers, name:"Apple", unit_price: 5, kg_price: 10, unit: "La pièce" )
+apple = Product.create!(farm: henry, category: divers, name:"Apple", unit_price: 5, kg_price: 10, unit: "La pièce", available: false )
 apple.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/apple.png')),
   filename: 'apple.png'
