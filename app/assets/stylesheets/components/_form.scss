@@ -1,1 +1,18 @@
+body.sign {
+  background-color: #FAF0E1;
 
+  .container {
+    justify-content: center;
+
+    .sign-in {
+      width: 570px;
+      height: 452px;
+      background-color: white;
+      margin-top: 134px;
+      border-radius: 10px;
+      box-shadow: 2px 0 5px -2px gray, -2px 0 5px -2px gray, 0 5px 5px -2px gray,  ;
+
+    }
+  }
+
+}
