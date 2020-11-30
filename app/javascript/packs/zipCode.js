@@ -17,9 +17,10 @@ document.addEventListener('turbolinks:load', () => {
         return zip_code;
       }
     }
+    const zipCodeInfos = $('.zip_code');
     //add a "connect" button if the user in not connected
-    if (!$('#zip_code').data("signedin?")) {
-      const loginPath = $('#zip_code').data("login_path")
+    if (!zipCodeInfos.data("signedin?")) {
+      const loginPath = zipCodeInfos.data("login_path")
       baseModal.footer = `<a href="${loginPath}"> ${I18n.t('zip_code.login')} </a>`
     }
 
@@ -27,10 +28,10 @@ document.addEventListener('turbolinks:load', () => {
       value: zip_code
     } = await Swal.fire(baseModal)
     if(/^[1-9]\d{3}$/.test(zip_code)) {
-      const setZipCodePath = $('.zip_code').data("set_zip_code_path")
+      const setZipCodePath = zipCodeInfos.data("set_zip_code_path")
       $.ajax({
         data: {
-          authenticity_token: $('.zip_code').data("token"),
+          authenticity_token: zipCodeInfos.data("token"),
           zip_code: zip_code
         },
         url: setZipCodePath,
