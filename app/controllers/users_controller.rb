@@ -7,7 +7,6 @@ class UsersController < ApplicationController
         if current_user
           current_user.update(zip_code: params["zip_code"])
         else
-          puts "SET"
           cookies.permanent[:zip_code] = params["zip_code"]
         end
       end
