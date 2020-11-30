@@ -8,4 +8,10 @@ class User < ApplicationRecord
   has_one_attached :photo
 
   GENDER = ['Mme', 'M']
+
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :address, presence: true
+  validates :city, presence: true
+  validates :gender, presence: true
 end
