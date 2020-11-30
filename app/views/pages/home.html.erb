@@ -4,7 +4,7 @@
       <h2>La vente directe, droit dans le mille</h2>
       <p>Trouve le produit ou l'exploitation de ton choix, commande en quelques clics, paie en ligne et déguste ta victoire : quand c'est juste, c'est encore meilleur!</p>
       <%= simple_form_for :search, url: root_path, method: "GET", html: { class: 'form-inline search' } do |f| %>
-        <%= f.input :name, label: false, input_html: {placeholder: "Où habitez-vous ?"}, class: 'search-bar'%>
+        <%= f.input :name, label: false, input_html: {id: "zip_code_input", placeholder: "Où habitez-vous ?" }, class: 'search-bar'%>
         <%= f.submit "RECHERCHER", class: "btn" %>
       <% end %>
     </div>
@@ -164,10 +164,3 @@
   </div>
 
 </div>
-
-<script>
-  const zip_code = document.getElementById('zip_code_number').innerText
-  if (zip_code !== '_______') {
-    document.getElementById("search_name").value = zip_code;
-  }
-</script>
