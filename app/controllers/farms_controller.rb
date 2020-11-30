@@ -6,15 +6,15 @@ class FarmsController < ApplicationController
 
     @categories = Category.all
 
-    #@code_postal = '1200'
-    # @farms = Farm.all.select { |farm| farm.regions.include?(@code_postal) }
-    #@farms = Farm.where("regions && ARRAY[?]", @code_postal)
+    @code_postal = '1200'
+    #@farms = Farm.all.select { |farm| farm.regions.include?(@code_postal) }
+    @farms = Farm.where("regions && ARRAY[?]", @code_postal)
 
-    if params[:category].present?
-      category = Category.find_by(name: params[:category])
+    #if params[:category].present?
+      #category = Category.find_by(name: params[:category])
 
-      @farms = category.farms
-    end
+      #@farms = category.farms
+    #end
 
     @markers = @farms.geocoded.map do |f|
         {
