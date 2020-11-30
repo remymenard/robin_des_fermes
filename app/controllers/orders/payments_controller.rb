@@ -3,7 +3,10 @@ module Orders
     def new
       @order = Order.find(params[:order_id])
 
-      DatatransService.new(payment_redirection_urls).create_transaction(@order)
+      Datatrans::CreateTransactionService.new(
+        @order,
+        payment_redirection_urls
+      ).call
 
       @transaction_id = @order.transaction_id
     end
