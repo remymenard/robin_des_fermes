@@ -70,7 +70,7 @@
 
               </div>
 
-               <div class="<%= !@farm.withdrawal ? 'withdrawal' : 'card-delivery' %> d-flex">
+               <div class="<%= !@farm.accepts_take_away ? 'withdrawal' : 'card-delivery' %> d-flex">
 
                 <div>
                   <p>Retrait à la ferme</p>
@@ -98,7 +98,7 @@
           </div>
 
           <div class="self-service">
-            <% if @farm.withdrawal? %>
+            <% if @farm.accepts_take_away? %>
               <h3>Self-service</h3>
 
               <div class="opening">
