@@ -1,8 +1,12 @@
 class Farm < ApplicationRecord
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
   belongs_to :user
   has_many :farm_categories, dependent: :destroy
   has_many :categories, through: :farm_categories
   has_many :products, dependent: :destroy
+  has_many :opening_hours, dependent: :destroy
 
   has_many_attached :photos
 
@@ -13,4 +17,5 @@ class Farm < ApplicationRecord
   # validates :labels, presence: true
   validates :address, presence: true
   validates :opening_time, presence: true
+  validates :regions, presence: true
 end

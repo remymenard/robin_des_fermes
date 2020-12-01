@@ -52,6 +52,67 @@
           <p><%= @farm.description %></p>
         </div>
 
+        <div class="delivery">
+          <h3>Livraison</h3>
+
+          <div class="cards-delivery d-flex">
+
+            <div>
+
+              <div class="<%= @near_farm ? 'withdrawal' : 'card-delivery' %> d-flex">
+
+                <div>
+                  <p>Zone proche</p>
+                  <p class = "date"> Entre le <%= @date.strftime('%d')  %> et le <%= I18n.l((@date + 10.days), format: :long, locale: :'fr') %></p>
+                </div>
+
+                <span>CHF 5</span>
+
+              </div>
+
+               <div class="<%= !@farm.withdrawal ? 'withdrawal' : 'card-delivery' %> d-flex">
+
+                <div>
+                  <p>Retrait à la ferme</p>
+                  <p class = "date"> Entre le <%= @date.strftime('%d')  %> et le <%= I18n.l((@date + 10.days), format: :long, locale: :'fr') %></p>
+                </div>
+
+                <span>Gratuit</span>
+
+              </div>
+            </div>
+
+            <div>
+
+              <div class="<%= !@near_farm ? 'withdrawal' : 'card-delivery' %> d-flex">
+
+                <div>
+                  <p>Zone éloigné</p>
+                  <p class = "date"> Entre le <%= @date.strftime('%d')  %> et le <%= I18n.l((@date + 10.days), format: :long, locale: :'fr') %></p>
+                </div>
+
+                <span>CHF 15</span>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="self-service">
+            <% if @farm.withdrawal? %>
+              <h3>Self-service</h3>
+
+              <div class="opening">
+                <%@farm.opening_hours.each do |opening_hour|  %>
+                  <div class="d-flex hours">
+                    <p><%= Date::DAYNAMES[opening_hour.day] %></p>
+                    <p><%= opening_hour.opens.to_formatted_s(:time)  %> - <%= opening_hour.closes.to_formatted_s(:time)  %></p>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
       </div>
 
       <div class="col col-lg-4">
@@ -94,6 +155,8 @@
 
 
   </div>
+
+
   <div class="products">
     <% @farm.categories.each do |category|  %>
       <h4><%= category.name  %></h4>

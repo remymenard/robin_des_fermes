@@ -11,7 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
+
 ActiveRecord::Schema.define(version: 2020_11_25_162029) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,7 +79,19 @@ ActiveRecord::Schema.define(version: 2020_11_25_162029) do
     t.index ["buyer_id"], name: "index_orders_on_buyer_id"
     t.index ["seller_id"], name: "index_orders_on_seller_id"
     t.jsonb "labels", default: [], array: true
+    t.text "regions", default: [], array: true
+    t.boolean "withdrawal", default: false
     t.index ["user_id"], name: "index_farms_on_user_id"
+  end
+
+  create_table "opening_hours", force: :cascade do |t|
+    t.bigint "farm_id", null: false
+    t.integer "day"
+    t.time "closes"
+    t.time "opens"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["farm_id"], name: "index_opening_hours_on_farm_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -86,7 +100,7 @@ ActiveRecord::Schema.define(version: 2020_11_25_162029) do
     t.bigint "category_id", null: false
     t.string "photo"
     t.text "description"
-    t.string "ingredients"
+    t.text "ingredients"
     t.string "label"
     t.integer "unit_price"
     t.datetime "created_at", precision: 6, null: false
@@ -120,6 +134,7 @@ ActiveRecord::Schema.define(version: 2020_11_25_162029) do
   add_foreign_key "farm_categories", "categories"
   add_foreign_key "farm_categories", "farms"
   add_foreign_key "farms", "users"
+  add_foreign_key "opening_hours", "farms"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "farms"
 end

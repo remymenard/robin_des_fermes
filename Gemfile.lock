@@ -99,6 +99,7 @@ GEM
     ffi (1.13.1)
     font-awesome-sass (5.15.1)
       sassc (>= 1.11)
+    geocoder (1.6.4)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     httparty (0.18.1)
@@ -239,6 +240,7 @@ GEM
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
+    tod (2.2.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -283,6 +285,7 @@ DEPENDENCIES
   font-awesome-sass
   i18n-js
   httparty
+  geocoder
   jbuilder (~> 2.7)
   listen (~> 3.2)
   money-rails (~> 1.12)
@@ -299,6 +302,7 @@ DEPENDENCIES
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
+  tod
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)
