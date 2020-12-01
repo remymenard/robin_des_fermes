@@ -16,10 +16,14 @@ document.addEventListener('turbolinks:load', async () => {
     }
   }
   const zipCodeInfos = $('.zip_code');
+  const pageInfos = $('#pageInfos')
+
   const signedIn = zipCodeInfos.data("signedin?")
   const loginPageHref = zipCodeInfos.data("login_path")
   const ajaxRequestHref = zipCodeInfos.data("set_zip_code_path")
   const authenticityToken = zipCodeInfos.data("token")
+  const isZipCodeDefined = pageInfos.data('zipCodeDefined')
+  const shouldSubmitForm = pageInfos.data('submitForm')
 
 
   // methods
@@ -33,12 +37,17 @@ document.addEventListener('turbolinks:load', async () => {
     }
   }
 
+  const showAlert = ({canClickOutside = true}={}) => {
+    baseModal.allowOutsideClick = canClickOutside;
+    Swal.fire(baseModal).then((zipCode) => {
+      launchAjaxRequest(zipCode.value);
+    })
+  }
+
   const applyClickableEventToButtons = (buttons) => {
     buttons.each(function () {
       $(this).on("click", () => {
-        Swal.fire(baseModal).then((zipCode) => {
-          launchAjaxRequest(zipCode.value);
-        })
+        showAlert();
       })
     })
   }
@@ -51,7 +60,8 @@ document.addEventListener('turbolinks:load', async () => {
           zip_code: zipCode
         },
         url: ajaxRequestHref,
-        type: "PATCH"
+        type: "PATCH",
+        success: submitForm(zipCode)
       })
 
       $('.zip_code_number').each((_index, element) => {
@@ -60,8 +70,23 @@ document.addEventListener('turbolinks:load', async () => {
       $('#zip_code_input').val(zipCode)
     }
   }
+
+  const submitForm = (zipCode) => {
+    if (shouldSubmitForm) {
+      $('#zip').val(zipCode);
+      $('#farm-search-form').trigger("submit");
+    }
+  }
+
+  const autoOpenAlert = () => {
+    // must be strictly false not undefined or true
+    if (isZipCodeDefined === false) {
+      showAlert({canClickOutside: false})
+    }
+  }
   // startup logic
   let buttons = findAllZipCodeButtonsOnPage();
   addConnectButtonOnAlert();
   applyClickableEventToButtons(buttons);
+  autoOpenAlert()
 });
