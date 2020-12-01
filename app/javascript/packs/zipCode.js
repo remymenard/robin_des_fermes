@@ -61,7 +61,7 @@ document.addEventListener('turbolinks:load', async () => {
         },
         url: ajaxRequestHref,
         type: "PATCH",
-        success: submitForm(zipCode)
+        success: (data) => submitForm(data)
       })
 
       $('.zip_code_number').each((_index, element) => {
