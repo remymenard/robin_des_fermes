@@ -9,7 +9,7 @@ module ZipCodeHelper
     if zip_code
       return "<p class='zip_code_number'>#{zip_code}</p>"
     else
-      return "<p class='zip_code_number'>_______</p>"
+      return "<p class='zip_code_number'>______</p>"
     end
   end
 
