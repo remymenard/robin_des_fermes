@@ -1,11 +1,15 @@
 module ZipCodeHelper
 
+  def zip_code?
+    !get_zip_code_number.nil?
+  end
+
   def get_zip_code_div
     zip_code = get_zip_code_number
     if zip_code
       return "<p class='zip_code_number'>#{zip_code}</p>"
     else
-      return "<p class='zip_code_number'>__________</p>"
+      return "<p class='zip_code_number'>______</p>"
     end
   end
 
