@@ -36,6 +36,10 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
 
+gem 'devise-i18n', '~> 1.2'
+
+gem 'i18n-tasks', '~> 0.9.31'
+
 gem 'cloudinary', '~> 1.16.0'
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'

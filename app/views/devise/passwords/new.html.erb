@@ -1,33 +1,18 @@
-<body class = "sign">
-  <div class="container d-flex">
-    <div class="sign-in">
-      <%= image_tag "logos/rdf_green.png", alt: "alttext", center: "mx-auto d-block" %>
-      <p> Mot de passe oublié ?</p>
+<h2><%= t(".forgot_your_password") %></h2>
 
-      <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-        <%= f.error_notification %>
+<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= f.error_notification %>
 
-        <div class="form-inputs">
-          <%= f.input :email,
-                      label: false,
-                      placeholder: "Addresse email",
-                      required: true,
-                      autofocus: true,
-                      input_html: { autocomplete: "email" } %>
-        </div>
-
-        <div class="form-actions">
-          <%= f.button :submit, "Envoyez-moi un email" %>
-        </div>
-      <% end %>
-    </div>
+  <div class="form-inputs">
+    <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" } %>
   </div>
 
-  <div class="container d-flex">
-    <p class = "log-in-link">Envie de nous rejoindre ? <%= link_to "Créer un compte", new_registration_path(resource_name) %></p>
+  <div class="form-actions">
+    <%= f.button :submit, t(".send_me_reset_password_instructions") %>
   </div>
+<% end %>
 
-  <div class="container d-flex">
-    <p class = "sign-in-link">Vous avez un compte ? <%= link_to "Me connecter",  new_session_path(resource_name) %></p>
-  </div>
-</body>
+<%= render "devise/shared/links" %>
