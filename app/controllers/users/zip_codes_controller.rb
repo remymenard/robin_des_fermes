@@ -1,6 +1,6 @@
 module Users
   class ZipCodesController < ApplicationController
-    skip_before_action :authenticate_user!, only: [ :set_zip_code ]
+    skip_before_action :authenticate_user!, only: [ :update ]
 
     def update
       if params["zip_code"].match(/[1-9]\d{3}/)
