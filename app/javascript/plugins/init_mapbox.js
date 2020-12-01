@@ -29,23 +29,42 @@ const initMapbox = () => {
       style: 'mapbox://styles/mapbox/streets-v11',
     });
 
-    const markers = JSON.parse(mapElement.dataset.markers);
-      markers.forEach((marker) => {
+    // Nearby markers
+    const nearbyFarmsMarkers = JSON.parse(mapElement.dataset.nearbyFarmsMarkers);
+    nearbyFarmsMarkers.forEach((marker) => {
 
-        const element = document.createElement('div');
-        element.className = 'marker';
-        element.style.backgroundImage = `url('${marker.image_url}')`;
-        element.style.backgroundSize = 'contain';
-        element.style.width = '80px';
-        element.style.height = '65px';
+      const element = document.createElement('div');
+      element.className = 'marker';
+      element.style.backgroundImage = `url('${marker.image_url}')`;
+      element.style.backgroundSize = 'contain';
+      element.style.width = '80px';
+      element.style.height = '65px';
 
-        new mapboxgl.Marker(element)
-          .setLngLat([ marker.lng, marker.lat ])
+      new mapboxgl.Marker(element)
+        .setLngLat([ marker.lng, marker.lat ])
           .addTo(map);
     });
 
-    fitMapToMarkers(map, markers);
-    addMarkersToMap(map, markers);
+    // Far markers
+    const farFarmsMarkers = JSON.parse(mapElement.dataset.farFarmsMarkers);
+    farFarmsMarkers.forEach((marker) => {
+
+      const element = document.createElement('div');
+      element.className = 'marker';
+      element.style.backgroundImage = `url('${marker.image_url}')`;
+      element.style.backgroundSize = 'contain';
+      element.style.width = '80px';
+      element.style.height = '65px';
+      element.style.backgroundColor = 'pink';
+
+      new mapboxgl.Marker(element)
+        .setLngLat([ marker.lng, marker.lat ])
+          .addTo(map);
+    });
+
+    fitMapToMarkers(map, farFarmsMarkers);
+    addMarkersToMap(map, nearbyFarmsMarkers);
+    addMarkersToMap(map, farFarmsMarkers);
   }
 
 };

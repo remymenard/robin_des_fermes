@@ -22,7 +22,16 @@ class FarmsController < ApplicationController
       @farms = Farm.all
     end
 
-    @markers = @farms.geocoded.map do |farm|
+    @nearby_markers = @farms.geocoded.map do |farm|
+      {
+        lat: farm.latitude,
+        lng: farm.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { farm: farm }),
+        image_url: helpers.asset_url('icons/map_marker_green')
+      }
+    end
+
+    @far_markers = @far_farms.geocoded.map do |farm|
       {
         lat: farm.latitude,
         lng: farm.longitude,
