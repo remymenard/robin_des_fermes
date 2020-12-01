@@ -17,7 +17,9 @@ document.addEventListener('turbolinks:load', async () => {
     }
   }
 
-  const zipCodeButtons = $('.zip_code');
+  const zipCodeButtons = $('.zip_code')
+  const zipCodeText = $('.zip_code_number')
+  const searchInput = $('#zip_code_input')
   const pageInfos = $('#pageInfos')
 
   const signedIn = zipCodeButtons.data("signedin?")
@@ -41,7 +43,7 @@ document.addEventListener('turbolinks:load', async () => {
   }
 
   const applyClickableEventToButtons = () => {
-    zipCodeButtons.each(function () {
+    $.merge(zipCodeButtons, searchInput).each(function () {
       $(this).on("click", showAlert)
     })
   }
@@ -57,18 +59,17 @@ document.addEventListener('turbolinks:load', async () => {
         type: "PATCH",
         success: (data) => submitForm(data)
       })
+    }
 
-      $('.zip_code_number').each((_index, element) => {
+    const submitForm = (zipCode) => {
+      if (shouldSubmitForm) {
+        $('#zip').val(zipCode);
+        $('#farm-search-form').trigger("submit");
+      }
+      zipCodeText.each((_index, element) => {
         $(element).text(zipCode)
       })
-      $('#zip_code_input').val(zipCode)
-    }
-  }
-
-  const submitForm = (zipCode) => {
-    if (shouldSubmitForm) {
-      $('#zip').val(zipCode);
-      $('#farm-search-form').trigger("submit");
+      searchInput.val(zipCode)
     }
   }
 
