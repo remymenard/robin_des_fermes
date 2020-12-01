@@ -1,11 +1,6 @@
 import Swal from 'sweetalert2'
 
 document.addEventListener('turbolinks:load', () => {
-
-  if (/^[1-9]\d{3}$/.test($('.zip_code').text().trim())) {
-    $('#zip_code_input').val($('.zip_code').text().trim())
-  }
-
   $('.zip_code').each(function () {
     $(this).on("click", async () => {
       let baseModal = {
