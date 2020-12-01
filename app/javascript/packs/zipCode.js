@@ -1,6 +1,7 @@
 import Swal from 'sweetalert2'
 
 document.addEventListener('turbolinks:load', async () => {
+
   // variables
   let baseModal = {
     title: I18n.t('zip_code.title'),
@@ -15,22 +16,19 @@ document.addEventListener('turbolinks:load', async () => {
       return zip_code;
     }
   }
-  const zipCodeInfos = $('.zip_code');
+
+  const zipCodeButtons = $('.zip_code');
   const pageInfos = $('#pageInfos')
 
-  const signedIn = zipCodeInfos.data("signedin?")
-  const loginPageHref = zipCodeInfos.data("login_path")
-  const ajaxRequestHref = zipCodeInfos.data("set_zip_code_path")
-  const authenticityToken = zipCodeInfos.data("token")
+  const signedIn = zipCodeButtons.data("signedin?")
+  const loginPageHref = zipCodeButtons.data("login_path")
+  const ajaxRequestHref = zipCodeButtons.data("set_zip_code_path")
+  const authenticityToken = zipCodeButtons.data("token")
   const isZipCodeDefined = pageInfos.data('zipCodeDefined')
   const shouldSubmitForm = pageInfos.data('submitForm')
-
+  // end of variables
 
   // methods
-  const findAllZipCodeButtonsOnPage = () => {
-    return $('.zip_code')
-  }
-
   const addConnectButtonOnAlert = () => {
     if (!signedIn) {
       baseModal.footer = `<a href="${loginPageHref}"> ${I18n.t('zip_code.login')} </a>`
@@ -39,16 +37,12 @@ document.addEventListener('turbolinks:load', async () => {
 
   const showAlert = ({canClickOutside = true}={}) => {
     baseModal.allowOutsideClick = canClickOutside;
-    Swal.fire(baseModal).then((zipCode) => {
-      launchAjaxRequest(zipCode.value);
-    })
+    Swal.fire(baseModal).then(zipCode => launchAjaxRequest(zipCode.value));
   }
 
-  const applyClickableEventToButtons = (buttons) => {
-    buttons.each(function () {
-      $(this).on("click", () => {
-        showAlert();
-      })
+  const applyClickableEventToButtons = () => {
+    zipCodeButtons.each(function () {
+      $(this).on("click", showAlert)
     })
   }
 
@@ -84,9 +78,12 @@ document.addEventListener('turbolinks:load', async () => {
       showAlert({canClickOutside: false})
     }
   }
+  //end of logic
+
   // startup logic
-  let buttons = findAllZipCodeButtonsOnPage();
   addConnectButtonOnAlert();
-  applyClickableEventToButtons(buttons);
-  autoOpenAlert()
+  applyClickableEventToButtons();
+  autoOpenAlert();
+  // end of startup logic
+
 });
