@@ -17,6 +17,7 @@ class FarmsController < ApplicationController
 
     elsif @code_postal.present?
       @farms = Farm.where("regions && ARRAY[?] ", @code_postal)
+      @far_farms = Farm.where.not("regions && ARRAY[?] ", @code_postal)
     else
       @farms = Farm.all
     end

@@ -102,12 +102,12 @@ GEM
     geocoder (1.6.4)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    httparty (0.18.1)
-      mime-types (~> 3.0)
-      multi_xml (>= 0.5.2)
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
+    httparty (0.18.1)
+      mime-types (~> 3.0)
+      multi_xml (>= 0.5.2)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     i18n-js (3.8.0)
@@ -283,9 +283,9 @@ DEPENDENCIES
   devise
   dotenv-rails
   font-awesome-sass
-  i18n-js
-  httparty
   geocoder
+  httparty
+  i18n-js
   jbuilder (~> 2.7)
   listen (~> 3.2)
   money-rails (~> 1.12)
