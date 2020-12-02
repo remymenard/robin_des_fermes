@@ -2,8 +2,8 @@ import places from 'places.js';
 
 const initAutocomplete = () => {
   var placesAutocomplete = places({
-    appId: 'plCLTVBE3BBD',
-    apiKey: 'b3bb8a6ae501e7398a12163dd4a75d9d',
+    appId: process.env.ALGOLIA_APP_ID,
+    apiKey: process.env.ALGOLIA_API_KEY,
     container: document.querySelector('#user_address'),
     templates: {
       value: function(suggestion) {
@@ -15,7 +15,7 @@ const initAutocomplete = () => {
   });
   placesAutocomplete.on('change', function resultSelected(e) {
     document.querySelector('#user_city').value = e.suggestion.city || '';
-    document.querySelector('#user_code_postal').value = e.suggestion.postcode || '';
+    document.querySelector('#user_zip_code').value = e.suggestion.postcode || '';
   });
 };
 

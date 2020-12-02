@@ -1,4 +1,4 @@
-<body class = "sign">
+<div class = "sign">
   <div class="container d-flex">
     <div class="sign-in">
       <%= image_tag "logos/rdf_green.png", alt: "alttext", center: "mx-auto d-block" %>
@@ -39,7 +39,7 @@
                       placeholder: "Rue et numéro"%>
 
           <div class="d-flex name">
-            <%= f.input :code_postal,
+            <%= f.input :zip_code,
                         label: false,
                         placeholder: "Code postal"%>
             <%= f.input :city,
@@ -58,4 +58,4 @@
   <div class="container d-flex">
     <p class = "already-account"><%= link_to "Vous avez déjà un compte ?", new_session_path(resource_name) %></p>
   </div>
-</body>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_30_172244) do
+ActiveRecord::Schema.define(version: 2020_12_02_113741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2020_11_30_172244) do
     t.datetime "updated_at", precision: 6, null: false
     t.jsonb "labels", default: [], array: true
     t.text "regions", default: [], array: true
-    t.boolean "withdrawal", default: false
+    t.boolean "accepts_take_away", default: false
     t.index ["user_id"], name: "index_farms_on_user_id"
   end
 
@@ -100,12 +100,13 @@ ActiveRecord::Schema.define(version: 2020_11_30_172244) do
     t.string "photo"
     t.text "description"
     t.text "ingredients"
-    t.string "label"
     t.integer "unit_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "kg_price"
     t.string "unit"
+    t.text "label", default: [], array: true
+    t.boolean "available"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["farm_id"], name: "index_products_on_farm_id"
   end
@@ -118,11 +119,10 @@ ActiveRecord::Schema.define(version: 2020_11_30_172244) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "zip_code"
+    t.string "zip_code"
     t.string "first_name"
     t.string "last_name"
     t.string "address"
-    t.string "code_postal"
     t.string "gender"
     t.string "city"
     t.string "confirmation_token"

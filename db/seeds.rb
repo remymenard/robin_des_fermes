@@ -83,7 +83,7 @@ user1 = User.create!(
   last_name: "Boucher",
   address: "6 boulevard adolphe",
   city: "nantes",
-  code_postal: "44200",
+  zip_code: "44200",
   gender: "M")
 user1.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/users/user1.png')),
@@ -97,7 +97,7 @@ user2 = User.create!(
   last_name: "Boucher",
   address: "6 boulevard adolphe",
   city: "nantes",
-  code_postal: "44200",
+  zip_code: "44200",
   gender: "M"
 )
 user2.photo.attach(
