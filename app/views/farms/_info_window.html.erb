@@ -1,0 +1,7 @@
+<h2><%= farm.name  %></h2>
+
+<div class="d-flex photos">
+  <% farm.categories.each do |category| %>
+    <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
+  <% end %>
+</div>
