@@ -9,3 +9,18 @@ fr:
     error: "Il y a eu une erreur avec votre paiement."
     cancel: "Votre paiement a été annulé."
     success: "Votre paiement a été effectué avec succès."
+  email:
+    account_confirmation:
+      intro: "Vous pouvez valider votre compte en cliquant sur le lien ci-dessous : "
+      button: "Valider mon compte"
+    account_locked:
+      intro: "Votre compte a été bloqué suite à un nombre de tentative de connections excessif. Cliquez sur le lien ci-dessous pour le débloquer"
+      button: "Débloquer mon compte"
+    email_change:
+      not_validated: "Nous vous contactons pour vous dire que votre compte est en train d'être changé à : "
+      validated: "Nous vous contactons pour vous dire que votre compte a été changé à : "
+    password_reset:
+      intro: "Vous avez demandé à réinitialiser votre mot de passe. Cliquez sur le lien ci-dessous pour lancer la réinitialisation."
+      button: 'Changer mon mot de passe'
+      footer: "Si vous n'avez pas demandé cette réinitialisaiton, ignorez ce mail, votre mot de passe ne sera alors pas changé."
+      confirmation: "Votre mot de passe a été bien été changé."

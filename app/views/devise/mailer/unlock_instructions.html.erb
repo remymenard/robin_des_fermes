@@ -1,7 +1,5 @@
-<p>Hello <%= @resource.email %>!</p>
+<p><%= (I18n.t 'hello').capitalize %> <%= @resource.email %>!</p>
 
-<p>Your account has been locked due to an excessive number of unsuccessful sign in attempts.</p>
+<p><%= I18n.t 'email.account_locked.intro' %></p>
 
-<p>Click the link below to unlock your account:</p>
-
-<p><%= link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token) %></p>
+<p><%= link_to I18n.t('email.account_locked.button'), unlock_url(@resource, unlock_token: @token) %></p>
