@@ -55,7 +55,6 @@ const initMapbox = () => {
       element.style.backgroundSize = 'contain';
       element.style.width = '80px';
       element.style.height = '65px';
-      element.style.backgroundColor = 'pink';
 
       new mapboxgl.Marker(element)
         .setLngLat([ marker.lng, marker.lat ])
