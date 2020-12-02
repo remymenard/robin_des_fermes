@@ -1,0 +1,9 @@
+<%= render 'orders/recap_card', order: @order %>
+
+<button data-transaction-id="<%= @transaction_id %>" id="paymentButton" type="button" class="btn btn-success">
+  Pay
+</button>
+
+<%= content_for(:after_template) do %>
+  <%= javascript_pack_tag 'datatrans_payments' %>
+<% end %>

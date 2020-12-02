@@ -11,13 +11,22 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
+
         <%= link_to "Me connecter", "#", class: "btn " %>
       </li>
       <li class="nav-item ">
-        <%= link_to "#", class: "d-flex navbar-brand btn location" do %>
+      <div id="zip_code" data-signedin?="<%= user_signed_in? %>" data-login_path="<%= new_user_session_path %>" data-set_zip_code_path="<%= users_zip_code_path %>" data-token="<%= form_authenticity_token %>" class="d-flex navbar-brand btn location">
           <%= image_tag 'icons/map_marker.png' %>
-          <p>_______</p>
-        <% end %>
+          <% if (!user_signed_in? || !current_user.zip_code) %>
+            <% if cookies[:zip_code] %>
+              <p id="zip_code_number"><%= cookies[:zip_code] %></p>
+              <% else %>
+            <p id="zip_code_number">_______</p>
+            <% end %>
+          <% else %>
+            <p id="zip_code_number"><%= current_user.zip_code %></p>
+          <% end %>
+      </div>
       </li>
       <li>
 
@@ -30,3 +39,5 @@
     </ul>
   </div>
 </div>
+
+<%= javascript_pack_tag 'zipCode' %>
