@@ -19,15 +19,15 @@
     <h2>Du blé, des radis, de l'oseille : les bons produits au juste prix !</h2>
 
     <div class="food">
-      <%= link_to farms_path(:category => "Viande"), class: "navbar-brand" do %>
+      <%= link_to farms_path(category: "Viande & Volaille"), class: "navbar-brand" do %>
         <%= image_tag "categories/meat.png", alt: "Viande" %>
         <p>Viandes</p>
       <% end %>
-      <%= link_to farms_path(:category => "Poisson"), class: "navbar-brand" do %>
+      <%= link_to farms_path(category: "Poisson"), class: "navbar-brand" do %>
         <%= image_tag "categories/fish.png", alt: "Poisson" %>
         <p>Poissons</p>
       <% end %>
-      <%= link_to farms_path(:category => "Laitier"), class: "navbar-brand" do %>
+      <%= link_to farms_path(category: "Produits Laitiers"), class: "navbar-brand" do %>
         <%= image_tag "categories/milk.png", alt: "Lait" %>
         <p>Produits laitiers</p>
       <% end %>

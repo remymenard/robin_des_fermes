@@ -4,19 +4,19 @@ class FarmsController < ApplicationController
 
     @categories = Category.all
 
-    @code_postal = '1200'
+    @zip_code = '1200'
 
     if params[:category].present?
 
-      if @code_postal.present?
-        @farms = Farm.joins(:categories).where("categories.name = ? AND regions && ARRAY[?] ", params[:category], @code_postal)
+      if @zip_code.present?
+        @farms = Farm.joins(:categories).where("categories.name = ? AND regions && ARRAY[?] ", params[:category], @zip_code)
       else
         category = Category.find_by(name: params[:category])
         @farms = category.farms
       end
 
-    elsif @code_postal.present?
-      @farms = Farm.where("regions && ARRAY[?] ", @code_postal)
+    elsif @zip_code.present?
+      @farms = Farm.where("regions && ARRAY[?] ", @zip_code)
     else
       @farms = Farm.all
     end
@@ -26,7 +26,7 @@ class FarmsController < ApplicationController
         lat: farm.latitude,
         lng: farm.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { farm: farm }),
-        image_url: helpers.asset_url('icons/map_marker_green')
+        image_url: helpers.asset_url('icons/map_marker_green.png')
       }
     end
   end
