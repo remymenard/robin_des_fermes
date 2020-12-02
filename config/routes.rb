@@ -6,32 +6,31 @@ Rails.application.routes.draw do
     resources :products, only: [:show]
   end
 
-    namespace :users do
-      resource :zip_code, only: [:update]
-    end
+  namespace :users do
+    resource :zip_code, only: [:update]
+  end
 
-    resources :farms, only: [:index, :show]
-    
-    resources :orders, only: [:show] do
-      resources :payments, only: [:new], controller: 'orders/payments'
-    end
+  resources :farms, only: [:index, :show]
 
-    namespace :orders do
-      namespace :redirect do
-        resources :payments, only: [] do
-          collection do
-            get :successful
-            get :canceled
-            get :with_error
-          end
+  resources :orders, only: [:show] do
+    resources :payments, only: [:new], controller: 'orders/payments'
+  end
+
+  namespace :orders do
+    namespace :redirect do
+      resources :payments, only: [] do
+        collection do
+          get :successful
+          get :canceled
+          get :with_error
         end
       end
     end
+  end
 
-    namespace :webhooks do
-      namespace :datatrans do
-        resources :payments, only: [:create]
-      end
+  namespace :webhooks do
+    namespace :datatrans do
+      resources :payments, only: [:create]
     end
   end
 end
