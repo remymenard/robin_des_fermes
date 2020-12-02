@@ -13,4 +13,6 @@ class Product < ApplicationRecord
   validates :unit_price, presence: true
   validates :kg_price, presence: true
   validates :unit, presence: true
+
+  scope :available, ->() { where(available: true) }
 end
