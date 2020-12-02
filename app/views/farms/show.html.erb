@@ -52,6 +52,67 @@
           <p><%= @farm.description %></p>
         </div>
 
+        <div class="delivery">
+          <h3>Livraison</h3>
+
+          <div class="cards-delivery d-flex">
+
+            <div>
+
+              <div class="<%= @near_farm ? 'withdrawal' : 'card-delivery' %> d-flex">
+
+                <div>
+                  <p>Zone proche</p>
+                  <p class = "date"> Entre le <%= @date.strftime('%d')  %> et le <%= I18n.l((@date + 10.days), format: :long, locale: :'fr') %></p>
+                </div>
+
+                <span>CHF 5</span>
+
+              </div>
+
+               <div class="<%= !@farm.accepts_take_away ? 'withdrawal' : 'card-delivery' %> d-flex">
+
+                <div>
+                  <p>Retrait à la ferme</p>
+                  <p class = "date"> Entre le <%= @date.strftime('%d')  %> et le <%= I18n.l((@date + 10.days), format: :long, locale: :'fr') %></p>
+                </div>
+
+                <span>Gratuit</span>
+
+              </div>
+            </div>
+
+            <div>
+
+              <div class="<%= !@near_farm ? 'withdrawal' : 'card-delivery' %> d-flex">
+
+                <div>
+                  <p>Zone éloigné</p>
+                  <p class = "date"> Entre le <%= @date.strftime('%d')  %> et le <%= I18n.l((@date + 10.days), format: :long, locale: :'fr') %></p>
+                </div>
+
+                <span>CHF 15</span>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="self-service">
+            <% if @farm.accepts_take_away? %>
+              <h3>Self-service</h3>
+
+              <div class="opening">
+                <%@farm.opening_hours.each do |opening_hour|  %>
+                  <div class="d-flex hours">
+                    <p><%= Date::DAYNAMES[opening_hour.day] %></p>
+                    <p><%= opening_hour.opens.to_formatted_s(:time)  %> - <%= opening_hour.closes.to_formatted_s(:time)  %></p>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+
       </div>
 
       <div class="col col-lg-4">
@@ -92,8 +153,9 @@
     </div>
 
 
-
   </div>
+
+
   <div class="products">
     <% @farm.categories.each do |category|  %>
       <h4><%= category.name  %></h4>
@@ -102,45 +164,46 @@
         <% category.products.each do |product| %>
 
           <div class="card-product">
-            <%= cl_image_tag product.photo.key, height: 64, width: 64, crop: :fill %>
+            <%= link_to product_path(product) do  %>
+              <%= cl_image_tag product.photo.key, height: 64, width: 64, crop: :fill %>
+            <% end %>
 
-            <div class="informations">
+              <div class="informations">
 
-              <div class = "name">
-                <p><%= product.name  %></p>
-              </div>
-
-              <div class="price">
-
-                <div>
-                  <div class = "unit-price">
-                    <p> CHF <%= product.unit_price  %></p>
-                  </div>
-
-                  <div class = "unit">
-                    <p><%= product.unit %></p>
-                  </div>
-
-                  <div class = "kg-price">
-                    <p><%= product.kg_price  %> CHF/kg</p>
-                  </div>
-
+                <div class = "name">
+                  <p><%= product.name  %></p>
                 </div>
 
-                <div class = "d-flex">
-                  <%= link_to "-", "#", class: "btn btn-number"%>
+                <div class="price">
 
-                  <div class="number">
-                    <p>0</p>
+                  <div>
+                    <div class = "unit-price">
+                      <p> CHF <%= product.unit_price  %></p>
+                    </div>
+
+                    <div class = "unit">
+                      <p><%= product.unit %></p>
+                    </div>
+
+                    <div class = "kg-price">
+                      <p><%= product.kg_price  %> CHF/kg</p>
+                    </div>
+
                   </div>
 
-                  <%= link_to "+", "#", class: "btn btn-number" %>
+                  <div class = "d-flex">
+                    <%= link_to "-", "#", class: "btn btn-number"%>
 
+                    <div class="number">
+                      <p>0</p>
+                    </div>
+
+                    <%= link_to "+", "#", class: "btn btn-number" %>
+
+                  </div>
                 </div>
               </div>
             </div>
-
-          </div>
         <% end %>
       </div>
     <% end %>
