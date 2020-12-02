@@ -102,18 +102,19 @@ GEM
     geocoder (1.6.4)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    httparty (0.18.1)
-      mime-types (~> 3.0)
-      multi_xml (>= 0.5.2)
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
+    httparty (0.18.1)
+      mime-types (~> 3.0)
+      multi_xml (>= 0.5.2)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     i18n-js (3.8.0)
       i18n (>= 0.6.6)
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
+    json (2.3.1)
     listen (3.3.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -150,6 +151,11 @@ GEM
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     pg (1.2.3)
+    postmark (1.21.2)
+      json
+    postmark-rails (0.20.0)
+      actionmailer (>= 3.0.0)
+      postmark (~> 1.15)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -284,13 +290,14 @@ DEPENDENCIES
   dotenv-rails
   font-awesome-sass
   geocoder
-  i18n-js
   httparty
+  i18n-js
   jbuilder (~> 2.7)
   listen (~> 3.2)
   money-rails (~> 1.12)
   netaddr (~> 1.5, >= 1.5.1)
   pg (>= 0.18, < 2.0)
+  postmark-rails
   pry-byebug
   pry-rails
   puma (~> 4.1)
