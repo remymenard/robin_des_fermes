@@ -20,15 +20,15 @@
 
     <div class="food">
       <%= link_to farms_path, class: "navbar-brand" do %>
-        <%= image_tag "categories/meat.png", alt: "alttext" %>
+        <%= image_tag "categories/meat.png", alt: "Viande" %>
         <p>Viandes</p>
       <% end %>
       <%= link_to farms_path, class: "navbar-brand" do %>
-        <%= image_tag "categories/fish.png", alt: "alttext" %>
+        <%= image_tag "categories/fish.png", alt: "Poisson" %>
         <p>Poissons</p>
       <% end %>
       <%= link_to farms_path, class: "navbar-brand" do %>
-        <%= image_tag "categories/milk.png", alt: "alttext" %>
+        <%= image_tag "categories/milk.png", alt: "Lait" %>
         <p>Produits laitiers</p>
       <% end %>
     </div>
@@ -48,8 +48,8 @@
           <div class="first-photo">
 
             <div>
-              <%= link_to @farms.first! do %>
-                <%=cl_image_tag(@highlighted_farm.photos.first.key, height: 474, width: 570, crop: :fill)  %>
+              <%= link_to farm_path(@highlighted_farm) do %>
+                <%= cl_image_tag(@highlighted_farm.photos.first.key, height: 474, width: 570, crop: :fill)  %>
               <% end %>
             </div>
 
@@ -114,3 +114,60 @@
   </div>
 
 </div>
+
+<div class="footer row">
+  <%= image_tag "logos/rdf_light_pink.png" %>
+
+  <div class="information">
+
+    <div class="row ">
+
+      <div >
+        <p class= "title">Informations</p>
+        <p>Livraison</p>
+        <p>Mode de paiement</p>
+        <p><%= link_to "FAQ", "#"  %></p>
+        <p><%= link_to "CGV", "#"  %></p>
+
+      </div>
+
+      <div>
+        <br>
+        <br>
+        <p>A propos</p>
+        <p>Contact</p>
+        <p>Livraison</p>
+        <p>Liste des producteurs</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="contact">
+    <p class= "title">Contactez-nous</p>
+    <p>info@robindesfermes.ch</p>
+    <p>021 000 00 00</p>
+
+  </div>
+
+  <div class="link">
+    <p class= "title">Retrouvez-nous</p>
+    <div class="footer-links">
+      <a href="https://www.facebook.com/robindesfermes.ch/"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/robin_des_fermes/"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/company/robin-des-fermes/"><i class="fab fa-linkedin"></i></a>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  const zip_code = document.getElementById('zip_code_number').innerText
+  if (zip_code !== '_______') {
+    document.getElementById("search_name").value = zip_code;
+  }
+</script>

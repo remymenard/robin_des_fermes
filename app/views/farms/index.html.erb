@@ -7,8 +7,13 @@
       <%= image_tag 'icons/map_marker.png', class: "map-marker" %>
     <% end %>
     <div class="d-flex select">
-      <%= form_tag farms_path, :method => 'get' do %>
-       <%= select_tag(:query, options_for_select(["Viande", "Laitier", "Poisson", "Fruit", "Boulangerie", "Oeuf", "Céréale", "Huile & Vinaigre", "Vin", "Divers", "Produit de la ferme"],  :selected =>params[:query]), onchange: 'this.form.submit();', class: "form-control custom-select" , include_blank: "Catégorie")  %>
+      <%= form_tag farms_path, method: :get do %>
+        <%= select_tag :category,
+          options_from_collection_for_select(@categories, :name, :name, @category&.name),
+          onchange: 'this.form.submit();',
+          class: "form-control custom-select",
+          prompt: "Catégorie"
+        %>
       <% end %>
     </div>
 
@@ -36,14 +41,20 @@
           <div class="informations">
             <h6> <%= farm.name  %></h6>
 
-            <div class="d-flex information">
-              <p>Labels :  <%if farm.labels.include?("bio")%><div class='label'><%= image_tag 'labels/bio-label', class: "label" %></div><%end%></p>
+            <div class="d-flex">
+              <p>Labels :
+                <% farm.labels.each do |label| %>
+                  <div class='label'>
+                    <%= image_tag "labels/#{label}-label.png", class: "label" %>
+                  </div>
+                <%end%>
+              </p>
             </div>
 
             <div class="d-flex information">
               <p>Catégories : </p>
-              <% farm.farm_categories.each do |farm_category| %>
-                <div class='category-photo'><%= cl_image_tag farm_category.category.photo.key %></div>
+              <% farm.categories.each do |category| %>
+                <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
               <% end %>
             </div>
 

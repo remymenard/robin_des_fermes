@@ -24,7 +24,11 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import I18n from 'i18n-js/index.js.erb'
 
+global.I18n = I18n;
+I18n.defaultLocale = 'fr'
+I18n.locale = 'fr'
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
