@@ -11,7 +11,8 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
-ActiveRecord::Schema.define(version: 2020_11_25_162029) do
+ActiveRecord::Schema.define(version: 2020_11_30_062059) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,8 +87,8 @@ ActiveRecord::Schema.define(version: 2020_11_25_162029) do
     t.bigint "category_id", null: false
     t.string "photo"
     t.text "description"
-    t.string "ingredients"
-    t.string "label"
+    t.text "ingredients"
+    t.text "label", default: [], array: true
     t.integer "unit_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
