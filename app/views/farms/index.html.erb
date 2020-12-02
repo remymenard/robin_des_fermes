@@ -7,11 +7,13 @@
 
         <span>Recherche : </span>
 
-        <%= link_to "#", class: "d-flex navbar-brand btn" do %>
+        <div class="zip_code d-flex navbar-brand btn">
           <%= image_tag 'icons/map_marker.png', class: "map-marker" %>
-        <% end %>
+          <%= render 'shared/zip_code_div' %>
+        </div>
         <div class="d-flex select">
           <%= form_tag farms_path, method: :get do %>
+            <%= hidden_field_tag 'zip', get_zip_code_number %>
             <%= select_tag :category,
               options_from_collection_for_select(@categories, :name, :name, @category&.name),
               onchange: 'this.form.submit();',
@@ -93,3 +95,4 @@
   </div>
 
 </div>
+<div id="pageInfos" data-zip-code-defined=<%= zip_code_set? %> data-submit-form="true"></div>

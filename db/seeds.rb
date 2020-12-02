@@ -14,6 +14,7 @@ Product.destroy_all
 Category.destroy_all
 OpeningHour.destroy_all
 Farm.destroy_all # they belong to a user, so let's destroy them first
+Order.destroy_all
 User.destroy_all
 
 puts "Create categories"
@@ -75,7 +76,9 @@ user1 = User.create!(
   email: "test@exemp.com",
   password: "password",
   name: "henry",
-  zip_code: 8008)
+  zip_code: 8008
+)
+
 user1.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/users/user1.png')),
   filename: 'seed-henry.png'
@@ -85,7 +88,7 @@ user2 = User.create!(
   email: "test@exemple.com",
   password: "password",
   name: "jonas",
-  zip_code: 8008
+  zip_code: 1202
 )
 user2.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/users/user2.png')),
