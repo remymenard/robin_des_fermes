@@ -1,3 +1,11 @@
 fr:
   hello: "bonjour"
-
+  zip_code:
+    title: "Code postal"
+    description: "Nous utilisons votre code postal afin de vous proposer les producteurs proches de vous."
+    login: "Se connecter"
+    error: "Veuillez entrer un code postal suisse valide."
+  payment:
+    error: "Il y a eu une erreur avec votre paiement."
+    cancel: "Votre paiement a été annulé."
+    success: "Votre paiement a été effectué avec succès."

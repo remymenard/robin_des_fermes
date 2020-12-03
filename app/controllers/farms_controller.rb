@@ -1,4 +1,6 @@
 class FarmsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :index, :show ]
+  
   def index
     @farms = Farm.all
 
@@ -39,7 +41,8 @@ class FarmsController < ApplicationController
     @fourth_photo      = @farm.photos[3]
     @conquest_photo    = @farm.photos[4]
 
-    @date = Date.today
+    @date = Date.current
+
 
     @code_postal = '1200'
 

@@ -5,6 +5,7 @@ class Category < ApplicationRecord
 
   CATEGORIES = ["Viande & Volaille", "Produits laitiers", "Poisson", "Fruits & Légumes", "Boulangerie", "Oeuf", "Céréales-Farines", "Huile & Vinaigre", "Vins", "Divers", "Produit de la ferme", "Boissons"]
 
+
   has_one_attached :photo
 
   validates :name, inclusion: { in: CATEGORIES }
