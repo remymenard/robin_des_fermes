@@ -1,6 +1,12 @@
 .farms {
   background-color: white;
-  h1 {
+
+  #map {
+    position: sticky;
+    top: 0px;
+  }
+
+  span {
     font-size: 32px;
     margin-left: 26px;
     margin-top: 30px;

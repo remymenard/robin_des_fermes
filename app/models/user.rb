@@ -5,6 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates_format_of :zip_code, with: /[1-9]\d{3}/, allow_blank: true
   has_one_attached :photo
 
   validates :name, presence: true

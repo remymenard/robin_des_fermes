@@ -1,4 +1,6 @@
 .footer {
+  min-height: 380px;
+  max-width: 1815px;
   background: #1E0F00;
   display: flex;
   align-items: center;
@@ -7,7 +9,6 @@
   color: #FAF0E1;
   font-weight: 300;
   font-size: 14px;
-  min-height: 380px;
 
   .row {
     justify-content: space-between;
@@ -57,5 +58,4 @@
     }
   }
 }
-
 

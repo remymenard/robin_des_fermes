@@ -1,12 +1,21 @@
 <div class="home">
   <div class="banner" >
     <div class="container ">
+<<<<<<< HEAD
       <h2><%= t('.title') %></h2>
       <p><%= t('.sub_title') %></p>
       <%= simple_form_for :search, url: root_path, method: "GET", html: { class: 'form-inline search' } do |f| %>
         <%= f.input :name, label: false, placeholder: t('.search_placeholder'), class: 'search-bar'%>
         <%= f.submit t('.search_btn'), class: "btn" %>
+=======
+      <h2>La vente directe, droit dans le mille</h2>
+      <p>Trouve le produit ou l'exploitation de ton choix, commande en quelques clics, paie en ligne et déguste ta victoire : quand c'est juste, c'est encore meilleur!</p>
+      <%= form_tag farms_path, method: :get, id: "farm-search-form", class: 'form-inline search' do %>
+        <%= text_field_tag :zip, get_zip_code_number, readonly: true, class: 'form-control search', id: "zip_code_input", placeholder: "Où habitez-vous ?" %>
+        <%= submit_tag "RECHERCHER", class: "btn", name: nil %>
+>>>>>>> develop
       <% end %>
+
     </div>
   </div>
 
@@ -19,15 +28,15 @@
     <h2><%= t('.products') %></h2>
 
     <div class="food">
-      <%= link_to farms_path, class: "navbar-brand" do %>
+      <%= link_to farms_path(category: "Viande & Volaille"), class: "navbar-brand" do %>
         <%= image_tag "categories/meat.png", alt: "Viande" %>
         <p><%= t('.viandes') %></p>
       <% end %>
-      <%= link_to farms_path, class: "navbar-brand" do %>
+      <%= link_to farms_path(category: "Poisson"), class: "navbar-brand" do %>
         <%= image_tag "categories/fish.png", alt: "Poisson" %>
         <p><%= t('.poissons') %></p>
       <% end %>
-      <%= link_to farms_path, class: "navbar-brand" do %>
+      <%= link_to farms_path(category: "Produits Laitiers"), class: "navbar-brand" do %>
         <%= image_tag "categories/milk.png", alt: "Lait" %>
         <p><%= t('.laitiers') %></p>
       <% end %>
