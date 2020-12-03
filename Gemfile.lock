@@ -111,14 +111,15 @@ GEM
     geocoder (1.6.4)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    highline (2.0.3)
     httparty (0.18.1)
       mime-types (~> 3.0)
       multi_xml (>= 0.5.2)
+    highline (2.0.3)
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     httpclient (2.8.3)
+
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     i18n-tasks (0.9.31)
@@ -319,8 +320,8 @@ DEPENDENCIES
   font-awesome-sass
   i18n-tasks (~> 0.9.31)
   geocoder
-  i18n-js
   httparty
+  i18n-js
   jbuilder (~> 2.7)
   letter_opener
   listen (~> 3.2)

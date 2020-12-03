@@ -17,13 +17,12 @@ const addMarkersToMap = (map, markers) => {
     element.style.backgroundSize = 'contain';
     element.style.width = '80px';
     element.style.height = '65px';
-
+    
     new mapboxgl.Marker(element)
       .setLngLat([ marker.lng, marker.lat ])
-      .setPopup(popup)
-      .addTo(map);
+        .addTo(map);
   });
-};
+}
 
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
@@ -35,10 +34,13 @@ const initMapbox = () => {
       style: 'mapbox://styles/mapbox/streets-v11'
     });
 
-    const markers = JSON.parse(mapElement.dataset.markers);
+    const nearbyFarmsMarkers = JSON.parse(mapElement.dataset.nearbyFarmsMarkers);
+    const farFarmsMarkers    = JSON.parse(mapElement.dataset.farFarmsMarkers);
 
-    fitMapToMarkers(map, markers);
-    addMarkersToMap(map, markers);
+    addMarkersToMap(map, nearbyFarmsMarkers);
+    addMarkersToMap(map, farFarmsMarkers);
+    
+    fitMapToMarkers(map, farFarmsMarkers);
   }
 };
 

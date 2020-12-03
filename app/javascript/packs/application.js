@@ -27,8 +27,8 @@ import "bootstrap";
 import I18n from 'i18n-js/index.js.erb'
 
 global.I18n = I18n;
-I18n.defaultLocale = 'fr'
-I18n.locale = 'fr'
+I18n.defaultLocale = 'fr';
+I18n.locale = 'fr';
 // Internal imports, e.g:
 
 import { initMapbox } from '../plugins/init_mapbox';

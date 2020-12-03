@@ -19,7 +19,7 @@ User.destroy_all
 
 puts "Create categories"
 pain = Category.create!(name: "Vins")
-puts "Create categories"
+
 pain.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/categories/vins.png')),
   filename: 'vins.png'
@@ -294,5 +294,4 @@ mardi = OpeningHour.create!(farm: henry, day: 1, opens: DateTime.new(2012, 8, 29
 mercredi = OpeningHour.create!(farm: henry, day: 2, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
 jeudi = OpeningHour.create!(farm: henry, day: 3, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
 vendredi = OpeningHour.create!(farm: henry, day: 4, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
-
 

@@ -12,6 +12,7 @@ class FarmsController < ApplicationController
 
       if @zip_code.present?
         @farms = Farm.joins(:categories).where("categories.name = ? AND regions && ARRAY[?] ", params[:category], @zip_code)
+        @far_farms = Farm.joins(:categories).where("categories.name = ? AND NOT regions && ARRAY[?]", params[:category], @zip_code)
       else
         category = Category.find_by(name: params[:category])
         @farms = category.farms
@@ -19,16 +20,26 @@ class FarmsController < ApplicationController
 
     elsif @zip_code.present?
       @farms = Farm.where("regions && ARRAY[?] ", @zip_code)
+      @far_farms = Farm.where.not("regions && ARRAY[?] ", @zip_code)
     else
       @farms = Farm.all
     end
 
-    @markers = @farms.geocoded.map do |farm|
+    @nearby_markers = @farms.geocoded.map do |farm|
       {
         lat: farm.latitude,
         lng: farm.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { farm: farm }),
         image_url: helpers.asset_url('icons/map_marker_green.png')
+      }
+    end
+
+    @far_markers = @far_farms.geocoded.map do |farm|
+      {
+        lat: farm.latitude,
+        lng: farm.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { farm: farm }),
+        image_url: helpers.asset_url('icons/map_marker_red.png')
       }
     end
   end
@@ -43,7 +54,6 @@ class FarmsController < ApplicationController
     @conquest_photo    = @farm.photos[4]
 
     @date = Date.current
-
 
     @code_postal = '1200'
 
