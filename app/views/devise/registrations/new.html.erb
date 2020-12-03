@@ -8,7 +8,7 @@
         <%= f.error_notification %>
 
         <div class="form-inputs">
-          <%= f.input :gender, as: :radio_buttons, collection: User::GENDER, wrapper: :horizontal_collection_inline, label: false %>
+          <%= f.input :title, as: :radio_buttons, collection: User::TITLE, wrapper: :horizontal_collection_inline, label: false %>
 
           <div class="d-flex name">
             <%= f.input :first_name,
