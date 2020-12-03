@@ -1,7 +1,4 @@
 class OpeningHour < ApplicationRecord
-  require 'date'
-
-  Date::DAYNAMES = %w(lundi Mardi Mercredi Jeudi Vendredi Samedi Dimanche)
 
   belongs_to :farm
 

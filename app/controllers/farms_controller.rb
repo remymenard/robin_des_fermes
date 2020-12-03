@@ -1,27 +1,35 @@
 class FarmsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
-
+  
   def index
     @farms = Farm.all
 
     @categories = Category.all
 
-    #@code_postal = '1200'
-    # @farms = Farm.all.select { |farm| farm.regions.include?(@code_postal) }
-    #@farms = Farm.where("regions && ARRAY[?]", @code_postal)
+    @zip_code = '1200'
 
     if params[:category].present?
-      category = Category.find_by(name: params[:category])
 
-      @farms = category.farms
+      if @zip_code.present?
+        @farms = Farm.joins(:categories).where("categories.name = ? AND regions && ARRAY[?] ", params[:category], @zip_code)
+      else
+        category = Category.find_by(name: params[:category])
+        @farms = category.farms
+      end
+
+    elsif @zip_code.present?
+      @farms = Farm.where("regions && ARRAY[?] ", @zip_code)
+    else
+      @farms = Farm.all
     end
 
-    @markers = @farms.geocoded.map do |f|
-        {
-          lat: f.latitude,
-          lng: f.longitude,
-          infoWindow: render_to_string(partial: "info_window", locals: { farm: f })
-        }
+    @markers = @farms.geocoded.map do |farm|
+      {
+        lat: farm.latitude,
+        lng: farm.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { farm: farm }),
+        image_url: helpers.asset_url('icons/map_marker_green.png')
+      }
     end
   end
 
