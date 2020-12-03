@@ -1,86 +1,97 @@
 <div class="farms">
-  <div class="search d-flex">
+  <div class="d-flex">
 
-    <span>Recherche : </span>
+    <div>
 
-    <%= link_to "#", class: "d-flex navbar-brand btn" do %>
-      <%= image_tag 'icons/map_marker.png', class: "map-marker" %>
-    <% end %>
-    <div class="d-flex select">
-      <%= form_tag farms_path, method: :get do %>
-        <%= select_tag :category,
-          options_from_collection_for_select(@categories, :name, :name, @category&.name),
-          onchange: 'this.form.submit();',
-          class: "form-control custom-select",
-          prompt: "Catégorie"
-        %>
-      <% end %>
-    </div>
+      <div class="search d-flex">
 
-  </div>
+        <span>Recherche : </span>
 
-  <div class="cards col col-lg-6">
-
-    <% @farms.each do |farm| %>
-
-      <div class="d-flex card-farm">
-
-        <div>
-          <%= link_to farm_path(farm) do  %>
-            <%= cl_image_tag(farm.photos.first.key, height: 209, width: 207, crop: :fill, class: "photo-farm") %>
+        <div class="zip_code d-flex navbar-brand btn">
+          <%= image_tag 'icons/map_marker.png', class: "map-marker" %>
+          <%= render 'shared/zip_code_div' %>
+        </div>
+        <div class="d-flex select">
+          <%= form_tag farms_path, method: :get do %>
+            <%= hidden_field_tag 'zip', get_zip_code_number %>
+            <%= select_tag :category,
+              options_from_collection_for_select(@categories, :name, :name, @category&.name),
+              onchange: 'this.form.submit();',
+              class: "form-control custom-select",
+              prompt: "Catégorie"
+            %>
           <% end %>
         </div>
+      </div>
 
-        <div>
-          <div class = "user d-flex">
-            <%= cl_image_tag farm.user.photo.key, height: 24, width: 24, crop: :fill %>
-            <p><%= farm.user.first_name  %></p>
-          </div>
+      <div class="cards col col-lg-6">
 
-          <div class="informations">
-            <h6> <%= farm.name  %></h6>
+        <% @farms.each do |farm| %>
 
-            <div class="d-flex">
-              <p>Labels :
-                <% farm.labels.each do |label| %>
-                  <div class='label'>
-                    <%= image_tag "labels/#{label}-label.png", class: "label" %>
-                  </div>
-                <%end%>
-              </p>
-            </div>
+          <div class="d-flex card-farm">
 
-            <div class="d-flex information">
-              <p>Catégories : </p>
-              <% farm.categories.each do |category| %>
-                <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
+            <div>
+              <%= link_to farm_path(farm) do  %>
+                <%= cl_image_tag(farm.photos.first.key, height: 209, width: 207, crop: :fill, class: "photo-farm") %>
               <% end %>
             </div>
 
-            <div class="d-flex information">
-              <p>Nombre de ventes : </p>
-              <p> 19</p>
-            </div>
+            <div>
+              <div class = "user d-flex">
+                <%= cl_image_tag farm.user.photo.key, height: 24, width: 24, crop: :fill %>
+                <p><%= farm.user.first_name  %></p>
+              </div>
 
-            <div class="d-flex information">
-              <p>Adhérents RDF depuis : </p>
-              <p><%= farm.created_at.strftime("%Y.%m.%d")  %></p>
-            </div>
+              <div class="informations">
+                <h6> <%= farm.name  %></h6>
 
-            <div class="d-flex information">
-              <p>Adresse : </p>
-              <p><%= farm.address  %></p>
-            </div>
+                <div class="d-flex information">
+                  <p>Labels :
+                    <% farm.labels.each do |label| %>
+                      <div class='label'>
+                        <%= image_tag "labels/#{label}-label.png", class: "label" %>
+                      </div>
+                    <%end%>
+                  </p>
+                </div>
 
-            <div class="d-flex information">
-              <p>Ouvertures</p>
-              <p><%= farm.opening_time %></p>
+                <div class="d-flex information">
+                  <p>Catégories : </p>
+                  <% farm.categories.each do |category| %>
+                    <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
+                  <% end %>
+                </div>
+
+                <div class="d-flex information">
+                  <p>Nombre de ventes : </p>
+                  <p> 19</p>
+                </div>
+
+                <div class="d-flex information">
+                  <p>Adhérents RDF depuis : </p>
+                  <p><%= farm.created_at.strftime("%Y.%m.%d")  %></p>
+                </div>
+
+                <div class="d-flex information">
+                  <p>Adresse : </p>
+                  <p><%= farm.address  %></p>
+                </div>
+
+              </div>
+
             </div>
           </div>
+        <% end  %>
 
-        </div>
       </div>
-    <% end  %>
+    </div>
 
+    <div id="map"
+      style="width: 836px; height: 963px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
+
 </div>
+<div id="pageInfos" data-zip-code-defined=<%= zip_code_set? %> data-submit-form="true"></div>

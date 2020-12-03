@@ -37,11 +37,14 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 
 gem 'devise-i18n', '~> 1.2'
-
 gem 'i18n-tasks', '~> 0.9.31'
+gem 'geocoder'
+gem 'tod'
 
 gem 'cloudinary', '~> 1.16.0'
-group :development, :test do  gem 'pry-byebug'
+
+group :development, :test do
+  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
   gem 'letter_opener'
@@ -72,3 +75,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Manually installed gems
 gem 'rails-i18n'
+gem 'i18n-js'
+gem 'httparty'
+gem 'netaddr', '~> 1.5', '>= 1.5.1'
+gem 'money-rails', '~>1.12'

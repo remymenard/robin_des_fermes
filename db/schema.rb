@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2020_12_03_091535) do
     t.datetime "updated_at", precision: 6, null: false
     t.jsonb "labels", default: [], array: true
     t.text "regions", default: [], array: true
-    t.boolean "withdrawal", default: false
+    t.boolean "accepts_take_away", default: false
     t.index ["user_id"], name: "index_farms_on_user_id"
   end
 
