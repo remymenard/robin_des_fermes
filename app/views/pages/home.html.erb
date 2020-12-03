@@ -1,19 +1,11 @@
 <div class="home">
   <div class="banner" >
     <div class="container ">
-<<<<<<< HEAD
       <h2><%= t('.title') %></h2>
       <p><%= t('.sub_title') %></p>
       <%= simple_form_for :search, url: root_path, method: "GET", html: { class: 'form-inline search' } do |f| %>
         <%= f.input :name, label: false, placeholder: t('.search_placeholder'), class: 'search-bar'%>
         <%= f.submit t('.search_btn'), class: "btn" %>
-=======
-      <h2>La vente directe, droit dans le mille</h2>
-      <p>Trouve le produit ou l'exploitation de ton choix, commande en quelques clics, paie en ligne et déguste ta victoire : quand c'est juste, c'est encore meilleur!</p>
-      <%= form_tag farms_path, method: :get, id: "farm-search-form", class: 'form-inline search' do %>
-        <%= text_field_tag :zip, get_zip_code_number, readonly: true, class: 'form-control search', id: "zip_code_input", placeholder: "Où habitez-vous ?" %>
-        <%= submit_tag "RECHERCHER", class: "btn", name: nil %>
->>>>>>> develop
       <% end %>
 
     </div>
@@ -118,56 +110,6 @@
         <p><%= t('.community') %></p>
       </div>
 
-    </div>
-
-  </div>
-
-</div>
-
-<div class="footer row">
-  <%= image_tag "logos/rdf_light_pink.png" %>
-
-  <div class="information">
-
-    <div class="row ">
-
-      <div >
-        <p class= "title">Informations</p>
-        <p>Livraison</p>
-        <p>Mode de paiement</p>
-        <p><%= link_to "FAQ", "#"  %></p>
-        <p><%= link_to "CGV", "#"  %></p>
-
-      </div>
-
-      <div>
-        <br>
-        <br>
-        <p>A propos</p>
-        <p>Contact</p>
-        <p>Livraison</p>
-        <p>Liste des producteurs</p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-
-  <div class="contact">
-    <p class= "title">Contactez-nous</p>
-    <p>info@robindesfermes.ch</p>
-    <p>021 000 00 00</p>
-
-  </div>
-
-  <div class="link">
-    <p class= "title">Retrouvez-nous</p>
-    <div class="footer-links">
-      <a href="https://www.facebook.com/robindesfermes.ch/"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.instagram.com/robin_des_fermes/"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.linkedin.com/company/robin-des-fermes/"><i class="fab fa-linkedin"></i></a>
     </div>
 
   </div>

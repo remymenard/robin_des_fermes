@@ -33,6 +33,17 @@ fr:
   shared:
     navbar:
       log_in_href: "Me Connecter"
+    footer:
+      informations: "Informations"
+      delivery: "Livraison"
+      payment: "Mode de paiement"
+      faq: "FAQ"
+      cgv: "CGV"
+      about: "A propos"
+      contact: "Contact"
+      list: "Liste des producteurs"
+      contact_us: "Contactez-nous"
+      find_us: "Retrouvez-nous"
   hello: "bonjour"
   zip_code:
     title: "Code postal"
