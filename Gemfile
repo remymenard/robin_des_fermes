@@ -40,6 +40,8 @@ gem 'tod'
 
 gem 'cloudinary', '~> 1.16.0'
 
+gem 'crisp-api', '~> 1.0'
+
 group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
