@@ -161,7 +161,7 @@
       <h4><%= category.name  %></h4>
 
       <div class="d-flex all-card-product">
-        <% category.products.available.each do |product| %>
+        <% category.products.in_farm(@farm).available.each do |product| %>
           <div class="card-product">
             <%= link_to product_path(product) do  %>
               <%= cl_image_tag product.photo.key, height: 64, width: 64, crop: :fill %>
