@@ -54,3 +54,16 @@ fr:
     error: "Il y a eu une erreur avec votre paiement."
     cancel: "Votre paiement a été annulé."
     success: "Votre paiement a été effectué avec succès."
+  products:
+    show:
+      name: '%{name}'
+      description: "Description : "
+      product: '%{description}'
+      product_ingredient: '%{ingredients}'
+      ingredients: "Ingrédients : "
+      category: "Catégorie : "
+      label: "Label : "
+      price: "Prix a l'unité"
+      producer: "Producteur : "
+      exploitation: "Exploitation : "
+
