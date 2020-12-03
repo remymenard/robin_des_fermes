@@ -31,7 +31,7 @@ I18n.defaultLocale = 'fr';
 I18n.locale = 'fr';
 // Internal imports, e.g:
 
-import { initMapbox } from '../plugins/init_mapbox';
+import { initMapbox } from '../plugins/init_mapbox';;
 // import { initSelect2 } from '../components/init_select2';
 
 import { initAutocomplete } from '../plugins/init_autocomplete';
