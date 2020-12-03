@@ -87,7 +87,7 @@ user1 = User.create!(
   address: "6 boulevard adolphe",
   city: "nantes",
   zip_code: "44200",
-  gender: "M"
+  title: "M"
 )
 
 user1.photo.attach(
@@ -103,7 +103,7 @@ user2 = User.create!(
   address: "6 boulevard adolphe",
   city: "nantes",
   zip_code: "44200",
-  gender: "M"
+  title: "M"
 )
 user2.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/users/user2.png')),
@@ -167,24 +167,24 @@ gallien.photos.attach(io: file5, filename: 'nes.png', content_type: 'image/png')
 
 
 puts "Create farm categories"
-FarmCategory.create!(category: viande,  farm: henry)
-FarmCategory.create!(category: divers,  farm: henry)
-FarmCategory.create!(category: divers,  farm: gallien)
-FarmCategory.create!(category: divers,  farm: jonas)
-#FarmCategory.create!(category: poisson,  farm: henry)
-#FarmCategory.create!(category: laitier,  farm: henry)
-#FarmCategory.create!(category: fruit,  farm: henry)
-#FarmCategory.create!(category: boulangerie,  farm: henry)
-#FarmCategory.create!(category: oeuf,  farm: henry)
-#FarmCategory.create!(category: cereale,  farm: henry)
-FarmCategory.create!(category: pain,  farm: jonas)
+FarmCategory.create!(category_id: viande.id,  farm: henry)
+FarmCategory.create!(category_id: divers.id,  farm: henry)
+FarmCategory.create!(category_id: divers.id,  farm: gallien)
+FarmCategory.create!(category_id: divers.id,  farm: jonas)
+#FarmCategory.create!(category_id: poisson.id,  farm: henry)
+#FarmCategory.create!(category_id: laitier.id,  farm: henry)
+#FarmCategory.create!(category_id: fruit.id,  farm: henry)
+#FarmCategory.create!(category_id: boulangerie.id,  farm: henry)
+#FarmCategory.create!(category_id: oeuf.id,  farm: henry)
+#FarmCategory.create!(category_id: cereale.id,  farm: henry)
+FarmCategory.create!(category_id: pain.id,  farm: jonas)
 
 puts "Create products"
 meat = Product.create!(farm: henry, category: viande, name: "Meat",
   unit_price: 5, kg_price: 10, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'] 
+  label: ['bio']
 )
 
 meat.photo.attach(
@@ -209,7 +209,7 @@ chicken = Product.create!(farm: henry, category: viande, name: "Chicken",
   unit_price: 25, kg_price: 120, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'] 
+  label: ['bio']
 )
 
 chicken.photo.attach(

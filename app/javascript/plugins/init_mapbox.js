@@ -17,9 +17,10 @@ const addMarkersToMap = (map, markers) => {
     element.style.backgroundSize = 'contain';
     element.style.width = '80px';
     element.style.height = '65px';
-    
+
     new mapboxgl.Marker(element)
       .setLngLat([ marker.lng, marker.lat ])
+        .setPopup(popup)
         .addTo(map);
   });
 }
@@ -39,7 +40,8 @@ const initMapbox = () => {
 
     addMarkersToMap(map, nearbyFarmsMarkers);
     addMarkersToMap(map, farFarmsMarkers);
-    
+
+    fitMapToMarkers(map, nearbyFarmsMarkers);
     fitMapToMarkers(map, farFarmsMarkers);
   }
 };
