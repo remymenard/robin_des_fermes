@@ -52,6 +52,53 @@
           <h6>Exploitation : </h6><p> <%= @product.farm.name  %> </p>
         </div>
 
+         <div class="delivery">
+
+          <div class="cards-delivery d-flex">
+
+            <div>
+
+              <div class="<%= @near_farm ? 'withdrawal' : 'card-delivery' %> d-flex">
+
+                <div>
+                  <p>Zone proche</p>
+                  <p class = "date"> Entre le <%= @date.strftime('%d')  %> et le <%= I18n.l((@date + 10.days), format: :long, locale: :'fr') %></p>
+                </div>
+
+                <span>CHF 5</span>
+
+              </div>
+
+               <div class="<%= !@farm.accepts_take_away ? 'withdrawal' : 'card-delivery' %> d-flex">
+
+                <div>
+                  <p>Retrait à la ferme</p>
+                  <p class = "date"> Entre le <%= @date.strftime('%d')  %> et le <%= I18n.l((@date + 10.days), format: :long, locale: :'fr') %></p>
+                </div>
+
+                <span>Gratuit</span>
+
+              </div>
+            </div>
+
+            <div>
+
+              <div class="<%= !@near_farm ? 'withdrawal' : 'card-delivery' %> d-flex">
+
+                <div>
+                  <p>Zone éloigné</p>
+                  <p class = "date"> Entre le <%= @date.strftime('%d')  %> et le <%= I18n.l((@date + 10.days), format: :long, locale: :'fr') %></p>
+                </div>
+
+                <span>CHF 15</span>
+              </div>
+            </div>
+
+         </div>
+
+
+        </div>
+
       </div>
     </div>
   </div>
