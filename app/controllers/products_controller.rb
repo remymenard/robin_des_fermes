@@ -8,10 +8,8 @@ class ProductsController < ApplicationController
 
     @code_postal = '1200'
 
-
     if @farm.regions.include?(@code_postale)
       @near_farm = true
     end
-
   end
 end
