@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_27_094249) do
+ActiveRecord::Schema.define(version: 2020_12_03_091535) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2020_11_27_094249) do
     t.datetime "updated_at", precision: 6, null: false
     t.jsonb "labels", default: [], array: true
     t.text "regions", default: [], array: true
-    t.boolean "withdrawal", default: false
+    t.boolean "accepts_take_away", default: false
     t.index ["user_id"], name: "index_farms_on_user_id"
   end
 
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 2020_11_27_094249) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "kg_price"
     t.string "unit"
+    t.boolean "available"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["farm_id"], name: "index_products_on_farm_id"
   end
@@ -118,8 +119,17 @@ ActiveRecord::Schema.define(version: 2020_11_27_094249) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
-    t.integer "zip_code"
+    t.string "zip_code"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "address"
+    t.string "title"
+    t.string "city"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

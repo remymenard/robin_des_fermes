@@ -3,10 +3,11 @@
     <div class="container ">
       <h2>La vente directe, droit dans le mille</h2>
       <p>Trouve le produit ou l'exploitation de ton choix, commande en quelques clics, paie en ligne et déguste ta victoire : quand c'est juste, c'est encore meilleur!</p>
-      <%= simple_form_for :search, url: root_path, method: "GET", html: { class: 'form-inline search' } do |f| %>
-        <%= f.input :name, label: false, input_html: {placeholder: "Où habitez-vous ?"}, class: 'search-bar'%>
-        <%= f.submit "RECHERCHER", class: "btn" %>
+      <%= form_tag farms_path, method: :get, id: "farm-search-form", class: 'form-inline search' do %>
+        <%= text_field_tag :zip, get_zip_code_number, readonly: true, class: 'form-control search', id: "zip_code_input", placeholder: "Où habitez-vous ?" %>
+        <%= submit_tag "RECHERCHER", class: "btn", name: nil %>
       <% end %>
+
     </div>
   </div>
 
@@ -19,15 +20,15 @@
     <h2>Du blé, des radis, de l'oseille : les bons produits au juste prix !</h2>
 
     <div class="food">
-      <%= link_to farms_path(:category => "Viande"), class: "navbar-brand" do %>
+      <%= link_to farms_path(category: "Viande & Volaille"), class: "navbar-brand" do %>
         <%= image_tag "categories/meat.png", alt: "Viande" %>
         <p>Viandes</p>
       <% end %>
-      <%= link_to farms_path(:category => "Poisson"), class: "navbar-brand" do %>
+      <%= link_to farms_path(category: "Poisson"), class: "navbar-brand" do %>
         <%= image_tag "categories/fish.png", alt: "Poisson" %>
         <p>Poissons</p>
       <% end %>
-      <%= link_to farms_path(:category => "Laitier"), class: "navbar-brand" do %>
+      <%= link_to farms_path(category: "Produits Laitiers"), class: "navbar-brand" do %>
         <%= image_tag "categories/milk.png", alt: "Lait" %>
         <p>Produits laitiers</p>
       <% end %>
@@ -164,10 +165,3 @@
   </div>
 
 </div>
-
-<script>
-  const zip_code = document.getElementById('zip_code_number').innerText
-  if (zip_code !== '_______') {
-    document.getElementById("search_name").value = zip_code;
-  }
-</script>
