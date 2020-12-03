@@ -30,12 +30,15 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'devise'
 
+gem "algoliasearch-rails"
+
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
 
+gem 'devise-i18n', '~> 1.2'
+gem 'i18n-tasks', '~> 0.9.31'
 gem 'geocoder'
-
 gem 'tod'
 
 gem 'cloudinary', '~> 1.16.0'
@@ -44,6 +47,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
+  gem 'letter_opener'
 
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -24,7 +24,6 @@
         </div>
       </div>
 
-
       <div class="cards col col-lg-6">
 
         <% @farms.each do |farm| %>
@@ -40,7 +39,7 @@
             <div>
               <div class = "user d-flex">
                 <%= cl_image_tag farm.user.photo.key, height: 24, width: 24, crop: :fill %>
-                <p><%= farm.user.name  %></p>
+                <p><%= farm.user.first_name  %></p>
               </div>
 
               <div class="informations">

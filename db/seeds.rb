@@ -82,8 +82,12 @@ divers.photo.attach(
 user1 = User.create!(
   email: "test@exemp.com",
   password: "password",
-  name: "henry",
-  zip_code: 8008
+  first_name: "henry",
+  last_name: "Boucher",
+  address: "6 boulevard adolphe",
+  city: "nantes",
+  zip_code: "44200",
+  gender: "M"
 )
 
 user1.photo.attach(
@@ -94,8 +98,12 @@ user1.photo.attach(
 user2 = User.create!(
   email: "test@exemple.com",
   password: "password",
-  name: "jonas",
-  zip_code: 1202
+  first_name: "jonas",
+  last_name: "Boucher",
+  address: "6 boulevard adolphe",
+  city: "nantes",
+  zip_code: "44200",
+  gender: "M"
 )
 user2.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/users/user2.png')),
