@@ -24,12 +24,20 @@ fr:
       adress: "Adresse : "
       open: "Ouvertures : "
     show:
+      near: "Zone proche"
+      delivery: "Livraison"
       about: "A propos"
       description: '%{description}'
       number_sells: "Nombre de ventes : "
       date: "Adhérents RDF depuis : "
       category: '%{name}'
       product: '%{name}'
+      take_away: "Retrait à la ferme"
+      free: "Gratuit"
+      far: "Zone éloigné"
+      self_service: 'Self-service'
+      date:
+        day_names: [Dimanche, Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi]
   shared:
     navbar:
       log_in_href: "Me Connecter"
