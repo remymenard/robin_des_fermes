@@ -100,12 +100,13 @@ ActiveRecord::Schema.define(version: 2020_12_01_073951) do
     t.string "photo"
     t.text "description"
     t.text "ingredients"
+    t.string "label"
     t.integer "unit_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "kg_price"
     t.string "unit"
-    t.text "label", default: [], array: true
+    t.boolean "available"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["farm_id"], name: "index_products_on_farm_id"
   end
