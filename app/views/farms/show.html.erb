@@ -121,7 +121,7 @@
           <div class="card-user">
 
             <%= cl_image_tag @farm.user.photo.key, height: 64, width: 64, crop: :fill %>
-            <p><%= @farm.user.name  %> </p>
+            <p><%= @farm.user.first_name   %> </p>
 
             <div class="d-flex informations">
               <div class="d-flex photos">
@@ -161,8 +161,7 @@
       <h4><%= t('.category', name: category.name) %></h4>
 
       <div class="d-flex all-card-product">
-        <% category.products.each do |product| %>
-
+        <% category.products.in_farm(@farm).available.each do |product| %>
           <div class="card-product">
             <%= link_to product_path(product) do  %>
               <%= cl_image_tag product.photo.key, height: 64, width: 64, crop: :fill %>

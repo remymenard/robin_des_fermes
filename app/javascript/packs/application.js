@@ -27,15 +27,13 @@ import "bootstrap";
 import I18n from 'i18n-js/index.js.erb'
 
 global.I18n = I18n;
-I18n.defaultLocale = 'fr'
-I18n.locale = 'fr'
-// Internal imports, e.g:
+I18n.defaultLocale = 'fr';
+I18n.locale = 'fr';
 
-import { initMapbox } from '../plugins/init_mapbox';
-// import { initSelect2 } from '../components/init_select2';
+import { initMapbox } from '../plugins/init_mapbox';;
+import { initAutocomplete } from '../plugins/init_autocomplete';
 
 document.addEventListener('turbolinks:load', () => {
-  // Call your functions here, e.g:
-  // initSelect2();
+  initAutocomplete()
   initMapbox();
 });

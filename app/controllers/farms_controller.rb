@@ -1,29 +1,25 @@
 class FarmsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
-  
-  def index
-    @farms = Farm.all
 
+  def index
     @categories = Category.all
 
-    @zip_code = '1200'
+    @farms     = Farm.all
+    @far_farms = Farm.none
 
-    if params[:category].present?
+    @zip_code = params[:zip] || '1200'
 
-      if @zip_code.present?
-        @farms = Farm.joins(:categories).where("categories.name = ? AND regions && ARRAY[?] ", params[:category], @zip_code)
-      else
-        category = Category.find_by(name: params[:category])
-        @farms = category.farms
-      end
-
-    elsif @zip_code.present?
-      @farms = Farm.where("regions && ARRAY[?] ", @zip_code)
-    else
-      @farms = Farm.all
+    if @zip_code.present?
+      @far_farms = @farms.where.not("regions && ARRAY[?] ", @zip_code)
+      @farms     = @farms.where("regions && ARRAY[?] ", @zip_code)
     end
 
-    @markers = @farms.geocoded.map do |farm|
+    if params[:category].present?
+      @far_farms = @far_farms.joins(:categories).where("categories.name = ?", params[:category])
+      @farms     = @farms.joins(:categories).where("categories.name = ?", params[:category])
+    end
+
+    @nearby_markers = @farms.geocoded.map do |farm|
       {
         lat: farm.latitude,
         lng: farm.longitude,
@@ -31,9 +27,19 @@ class FarmsController < ApplicationController
         image_url: helpers.asset_url('icons/map_marker_green.png')
       }
     end
+
+    @far_markers = @far_farms.geocoded.map do |farm|
+      {
+        lat: farm.latitude,
+        lng: farm.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { farm: farm }),
+        image_url: helpers.asset_url('icons/map_marker_red.png')
+      }
+    end
   end
 
   def show
+
     @farm = Farm.find(params[:id])
     @highlighted_photo = @farm.photos.first
     @second_photo      = @farm.photos[1]
@@ -43,10 +49,9 @@ class FarmsController < ApplicationController
 
     @date = Date.current
 
+    @zip_code = '1200'
 
-    @code_postal = '1200'
-
-    if @farm.regions.include?(@code_postale)
+    if @farm.regions.include?(@zip_code)
       @near_farm = true
     end
   end

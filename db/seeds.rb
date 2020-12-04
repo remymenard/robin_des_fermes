@@ -26,6 +26,12 @@ pain.photo.attach(
   filename: 'vins.png'
 )
 
+boucherie = Category.create!(name: "Viande & Volaille")
+boucherie.photo.attach(
+  io: File.open(Rails.root.join('db/fixtures/categories/viande.png')),
+  filename: 'viande.png'
+)
+
 poisson = Category.create!(name: "Poisson")
 poisson.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/categories/poissons.png')),
@@ -78,8 +84,12 @@ divers.photo.attach(
 user1 = User.create!(
   email: "test@exemp.com",
   password: "password",
-  name: "henry",
-  zip_code: 8008
+  first_name: "henry",
+  last_name: "Boucher",
+  address: "6 boulevard adolphe",
+  city: "nantes",
+  zip_code: "44200",
+  title: "M"
 )
 
 user1.photo.attach(
@@ -90,8 +100,12 @@ user1.photo.attach(
 user2 = User.create!(
   email: "test@exemple.com",
   password: "password",
-  name: "jonas",
-  zip_code: 1202
+  first_name: "jonas",
+  last_name: "Boucher",
+  address: "6 boulevard adolphe",
+  city: "nantes",
+  zip_code: "44200",
+  title: "M"
 )
 user2.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/users/user2.png')),
@@ -156,17 +170,17 @@ gallien.photos.attach(io: file5, filename: 'nes.png', content_type: 'image/png')
 
 
 puts "Create farm categories"
-FarmCategory.create!(category: viande,  farm: henry)
-FarmCategory.create!(category: divers,  farm: henry)
-FarmCategory.create!(category: divers,  farm: gallien)
-FarmCategory.create!(category: divers,  farm: jonas)
-#FarmCategory.create!(category: poisson,  farm: henry)
-#FarmCategory.create!(category: laitier,  farm: henry)
-#FarmCategory.create!(category: fruit,  farm: henry)
-#FarmCategory.create!(category: boulangerie,  farm: henry)
-#FarmCategory.create!(category: oeuf,  farm: henry)
-#FarmCategory.create!(category: cereale,  farm: henry)
-FarmCategory.create!(category: pain,  farm: jonas)
+FarmCategory.create!(category_id: viande.id,  farm: henry)
+FarmCategory.create!(category_id: divers.id,  farm: henry)
+FarmCategory.create!(category_id: divers.id,  farm: gallien)
+FarmCategory.create!(category_id: divers.id,  farm: jonas)
+#FarmCategory.create!(category_id: poisson.id,  farm: henry)
+#FarmCategory.create!(category_id: laitier.id,  farm: henry)
+#FarmCategory.create!(category_id: fruit.id,  farm: henry)
+#FarmCategory.create!(category_id: boulangerie.id,  farm: henry)
+#FarmCategory.create!(category_id: oeuf.id,  farm: henry)
+#FarmCategory.create!(category_id: cereale.id,  farm: henry)
+FarmCategory.create!(category_id: pain.id,  farm: jonas)
 
 
 puts "Create products"
@@ -174,17 +188,22 @@ meat = Product.create!(farm: henry, category: viande, name: "Meat",
   unit_price: 5, kg_price: 10, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'] )
+  label: ['bio']
+)
+
 meat.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/meat.png')),
   filename: 'meat.png'
 )
 
+
 meat1 = Product.create!(farm: henry, category: viande, name: "Meat1",
   unit_price: 52, kg_price: 100, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'] )
+  label: ['bio']
+)
+
 meat1.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/meat1.png')),
   filename: 'meat1.png'
@@ -194,7 +213,9 @@ chicken = Product.create!(farm: henry, category: viande, name: "Chicken",
   unit_price: 25, kg_price: 120, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'] )
+  label: ['bio']
+)
+
 chicken.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/chicken.png')),
   filename: 'chicken.png'
@@ -204,7 +225,8 @@ juice = Product.create!(farm: henry, category: divers, name: "Jus de pomme",
   unit_price: 5, kg_price: 10, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'] )
+  label: ['bio']
+)
 juice.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/apple-juice.png')),
   filename: 'apple-juice.png'
@@ -214,7 +236,9 @@ honey = Product.create!(farm: henry, category: divers, name: "Honey",
   unit_price: 35, kg_price: 132, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'] )
+  label: ['bio']
+)
+
 honey.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/honey.png')),
   filename: 'honey.png'
@@ -224,7 +248,9 @@ oil = Product.create!(farm: henry, category: divers, name: "Oil",
   unit_price: 5, kg_price: 10, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'] )
+  label: ['bio']
+)
+
 oil.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/oil.png')),
   filename: 'oil.png'
@@ -234,7 +260,9 @@ potato = Product.create!(farm: henry, category: divers, name: "Potato",
   unit_price: 5, kg_price: 10, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'] )
+  label: ['bio']
+)
+
 potato.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/potato.png')),
   filename: 'potato.png'
@@ -245,7 +273,9 @@ egg = Product.create!(
   unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'] )
+  label: ['bio']
+)
+
 egg.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/egg.png')),
   filename: 'egg.png'
@@ -255,7 +285,9 @@ apple = Product.create!(farm: henry, category: divers, name:"Apple",
   unit_price: 5, kg_price: 10, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'] )
+  label: ['bio']
+)
+
 apple.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/apple.png')),
   filename: 'apple.png'
