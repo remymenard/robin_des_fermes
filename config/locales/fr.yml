@@ -74,4 +74,29 @@ fr:
       price: "Prix a l'unité"
       producer: "Producteur : "
       exploitation: "Exploitation : "
+  devise:
+    sessions:
+      new:
+        title: "Connectez-vous pour accéder à votre compte"
+        email: "Adresse email"
+        password: "Mot de passe"
+        Stay_connected: "Rester connecté"
+        connection: "Se connecter"
+        forget: "Mot de passe oublié ?"
+        join: "Envie de nous rejoindre ?"
+        new_account: "Créer un compte"
+    registrations:
+      new:
+        title: "Inscrivez-vous pour accéder aux produits"
+        first_name: "Prénom"
+        last_name: "Nom"
+        email: "Adresse email"
+        password: "Mot de passe"
+        confirmation: "Confirmer le mot de passe"
+        address: "Rue et numéro"
+        zip_code: "Code postal"
+        city: "Localité"
+        connection: "SE CONNECTER"
+        already_account: "Vous avez déjà un compte ?"
+
 
