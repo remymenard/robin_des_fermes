@@ -41,6 +41,7 @@ fr:
   shared:
     navbar:
       log_in_href: "Me Connecter"
+      log_out_href: "Me Déconnecter"
     footer:
       informations: "Informations"
       delivery: "Livraison"
