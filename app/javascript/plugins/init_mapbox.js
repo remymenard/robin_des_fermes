@@ -42,7 +42,6 @@ const initMapbox = () => {
     addMarkersToMap(map, farFarmsMarkers);
 
     fitMapToMarkers(map, nearbyFarmsMarkers);
-    fitMapToMarkers(map, farFarmsMarkers);
   }
 };
 
