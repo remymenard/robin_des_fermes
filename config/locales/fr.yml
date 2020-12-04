@@ -80,7 +80,7 @@ fr:
         title: "Connectez-vous pour accéder à votre compte"
         email: "Adresse email"
         password: "Mot de passe"
-        Stay_connected: "Rester connecté"
+        stay_connected: "Rester connecté"
         connection: "Se connecter"
         forget: "Mot de passe oublié ?"
         join: "Envie de nous rejoindre ?"
