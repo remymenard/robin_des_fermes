@@ -61,7 +61,7 @@
               <div class="<%= @near_farm ? 'withdrawal' : 'card-delivery' %> d-flex">
 
                 <div>
-                  <p>Zone proche</p>
+                  <p><%= t('.near') %></p>
                   <p class = "date"> Entre le <%= @date.strftime('%d')  %> et le <%= I18n.l((@date + 10.days), format: :long, locale: :'fr') %></p>
                 </div>
 
@@ -72,11 +72,11 @@
                <div class="<%= !@farm.accepts_take_away ? 'withdrawal' : 'card-delivery' %> d-flex">
 
                 <div>
-                  <p>Retrait à la ferme</p>
+                  <p><%= t('.take_away') %></p>
                   <p class = "date"> Entre le <%= @date.strftime('%d')  %> et le <%= I18n.l((@date + 10.days), format: :long, locale: :'fr') %></p>
                 </div>
 
-                <span>Gratuit</span>
+                <span><%= t('.free') %></span>
 
               </div>
             </div>
@@ -86,7 +86,7 @@
               <div class="<%= !@near_farm ? 'withdrawal' : 'card-delivery' %> d-flex">
 
                 <div>
-                  <p>Zone éloigné</p>
+                  <p><%= t('.far') %></p>
                   <p class = "date"> Entre le <%= @date.strftime('%d')  %> et le <%= I18n.l((@date + 10.days), format: :long, locale: :'fr') %></p>
                 </div>
 

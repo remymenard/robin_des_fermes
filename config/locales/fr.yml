@@ -29,12 +29,12 @@ fr:
       about: "A propos"
       description: '%{description}'
       number_sells: "Nombre de ventes : "
-      date: "Adhérents RDF depuis : "
+      adherent: "Adhérents RDF depuis : "
       category: '%{name}'
       product: '%{name}'
       take_away: "Retrait à la ferme"
       free: "Gratuit"
-      far: "Zone éloigné"
+      far: "Zone éloignée"
       self_service: 'Self-service'
       date:
         day_names: [Dimanche, Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi]
@@ -74,6 +74,10 @@ fr:
       price: "Prix a l'unité"
       producer: "Producteur : "
       exploitation: "Exploitation : "
+      near: "Zone proche"
+      take_away: "Retrait à la ferme"
+      free: "Gratuit"
+      far: "Zone éloignée"
   devise:
     sessions:
       new:
