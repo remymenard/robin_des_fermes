@@ -32,8 +32,9 @@ const initMapbox = () => {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11'
+      style: 'mapbox://styles/mapbox/streets-v11',
     });
+
 
     const nearbyFarmsMarkers = JSON.parse(mapElement.dataset.nearbyFarmsMarkers);
     const farFarmsMarkers    = JSON.parse(mapElement.dataset.farFarmsMarkers);
@@ -43,6 +44,8 @@ const initMapbox = () => {
 
     fitMapToMarkers(map, nearbyFarmsMarkers);
     fitMapToMarkers(map, farFarmsMarkers);
+
+    map.addControl(new mapboxgl.NavigationControl());
   }
 };
 
