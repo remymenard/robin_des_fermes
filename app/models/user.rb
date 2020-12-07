@@ -23,25 +23,7 @@ class User < ApplicationRecord
   private
   def subscribe_user_to_mailing_list
     if @wants_to_subscribe_mailing_list == "1"
-      list_id = ENV["MAILCHIMP_LIST_ID"]
-      gibbon = Gibbon::Request.new(api_key: ENV["MAILCHIMP_API_KEY"])
-      gibbon.lists(list_id).members.create(
-        body: {
-          email_address: self.email,
-          status: "subscribed",
-          merge_fields: {
-            FNAME: self.first_name,
-            LNAME: self.last_name,
-            ADDRESS: {
-              addr1: self.address,
-              city: self.city,
-              state: "",
-              country: "Switzerland",
-              zip: self.zip_code
-            }
-          }
-        }
-      )
+      Mailchimp::SubscribeToNewsletterService.new(self).call
     end
   end
 end
