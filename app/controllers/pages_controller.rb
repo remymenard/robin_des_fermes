@@ -8,6 +8,5 @@ class PagesController < ApplicationController
   end
 
   def faq
-
   end
 end
