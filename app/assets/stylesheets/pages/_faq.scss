@@ -1,4 +1,28 @@
 .faq {
+
+  .arrow-down {
+  opacity: 0;
+
+  }
+
+  .arrow-up {
+    opacity: 1 ;
+    position: absolute;
+    right: 15px;
+    top: 5px;
+  }
+
+  .collapsed .arrow-down {
+    opacity: 1;
+    position: absolute;
+    right: 15px;
+    top: 5px;
+  }
+
+  .collapsed .arrow-up {
+    opacity: 0;
+  }
+
   h1 {
     font-size: 32px;
     font-weight: bold;
@@ -22,7 +46,6 @@
 
     button {
       width: 100%;
-      justify-content: space-between;
       height: 64px;
 
       h5 {
