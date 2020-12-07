@@ -29,6 +29,7 @@ gem 'redis', '~> 4.0'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'devise'
+gem 'gibbon', git: 'https://github.com/amro/gibbon.git'
 
 gem "algoliasearch-rails"
 
