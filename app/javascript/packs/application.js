@@ -32,8 +32,10 @@ I18n.locale = 'fr';
 
 import { initMapbox } from '../plugins/init_mapbox';;
 import { initAutocomplete } from '../plugins/init_autocomplete';
+import { initAxeptio } from '../plugins/init_axeptio';
 
 document.addEventListener('turbolinks:load', () => {
-  initAutocomplete()
+  initAutocomplete();
   initMapbox();
+  initAxeptio();
 });
