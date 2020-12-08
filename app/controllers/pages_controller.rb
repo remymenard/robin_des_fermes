@@ -1,9 +1,12 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :home
+  skip_before_action :authenticate_user!, only: [:home, :cgv]
 
   def home
     @farms = Farm.all
     @highlighted_farm = @farms.first
     @other_farms      = @farms[1..-1]
+  end
+
+  def cgv
   end
 end

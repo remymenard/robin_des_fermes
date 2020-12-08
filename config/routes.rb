@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     root to: 'pages#home'
     resources :farms, only: [:index, :show]
     resources :products, only: [:show]
+    get 'cgv', :to => 'pages#cgv'
   end
 
   namespace :users do
