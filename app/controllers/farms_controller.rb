@@ -56,7 +56,9 @@ class FarmsController < ApplicationController
 
     @farm.products.each do |product|
       if (!@near_farm && product.fresh == true)
-        product.available = false
+        @fresh_available = false
+      else
+        @fresh_available = true
       end
     end
   end
