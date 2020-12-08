@@ -13,5 +13,6 @@ class Product < ApplicationRecord
   validates :unit, presence: true
 
   scope :available, -> ()    { where(available: true) }
+  scope :not_fresh, -> ()    { where(fresh: false) }
   scope :in_farm,   -> (farm) { where(farm: farm) }
 end

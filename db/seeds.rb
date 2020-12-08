@@ -302,11 +302,25 @@ apple2 = Product.create!(farm: jonas, category: divers, name:"Apple",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
   label: ['bio'],
-  fresh: true,
+  fresh: false,
   available: true,
 )
 
 apple2.photo.attach(
+  io: File.open(Rails.root.join('db/fixtures/products/apple.png')),
+  filename: 'apple.png'
+)
+
+apple3 = Product.create!(farm: jonas, category: divers, name:"Apple2",
+  unit_price: 5, kg_price: 10, unit: "La pièce",
+  description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+  ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
+  label: ['bio'],
+  fresh: true,
+  available: true,
+)
+
+apple3.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/apple.png')),
   filename: 'apple.png'
 )

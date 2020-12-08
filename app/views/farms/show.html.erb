@@ -149,62 +149,59 @@
 
       </div>
 
-
     </div>
-
 
   </div>
 
-
   <div class="products">
-    <% @farm.categories.each do |category|  %>
-      <h4><%= category.name  %></h4>
+    <% @products_by_category.each do |category, products|  %>
+      <h4><%= category.name.capitalize %></h4>
 
       <div class="d-flex all-card-product">
-        <% category.products.in_farm(@farm).available.each do |product| %>
-          <% if @fresh_available %>
-            <div class="card-product">
-              <%= link_to product_path(product) do  %>
-                <%= cl_image_tag product.photo.key, height: 64, width: 64, crop: :fill %>
-              <% end %>
+        <% products.each do |product| %>
 
-              <div class="informations">
+          <div class="card-product">
+            <%= link_to product_path(product) do  %>
+              <%= cl_image_tag product.photo.key, height: 64, width: 64, crop: :fill %>
+            <% end %>
 
-                <div class = "name">
-                  <p><%= product.name  %></p>
+            <div class="informations">
+
+              <div class = "name">
+                <p><%= product.name  %></p>
+              </div>
+
+              <div class="price">
+
+                <div>
+                  <div class = "unit-price">
+                    <p> CHF <%= product.unit_price  %></p>
+                  </div>
+
+                  <div class = "unit">
+                    <p><%= product.unit %></p>
+                  </div>
+
+                  <div class = "kg-price">
+                    <p><%= product.kg_price  %> CHF/kg</p>
+                  </div>
+
                 </div>
 
-                <div class="price">
+                <div class = "d-flex">
+                  <%= link_to "-", "#", class: "btn btn-number"%>
 
-                  <div>
-                    <div class = "unit-price">
-                      <p> CHF <%= product.unit_price  %></p>
-                    </div>
-
-                    <div class = "unit">
-                      <p><%= product.unit %></p>
-                    </div>
-
-                    <div class = "kg-price">
-                      <p><%= product.kg_price  %> CHF/kg</p>
-                    </div>
-
+                  <div class="number">
+                    <p>0</p>
                   </div>
 
-                  <div class = "d-flex">
-                    <%= link_to "-", "#", class: "btn btn-number"%>
+                  <%= link_to "+", "#", class: "btn btn-number" %>
 
-                    <div class="number">
-                      <p>0</p>
-                    </div>
-
-                    <%= link_to "+", "#", class: "btn btn-number" %>
-
-                  </div>
                 </div>
               </div>
             </div>
-          <% end %>
+          </div>
+
         <% end %>
       </div>
     <% end %>

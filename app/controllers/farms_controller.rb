@@ -50,16 +50,12 @@ class FarmsController < ApplicationController
 
     @zip_code = '1200'
 
-    if @farm.regions.include?(@zip_code)
-      @near_farm = true
-    end
+    @near_farm = true if @farm.regions.include?(@zip_code)
 
-    @farm.products.each do |product|
-      if (!@near_farm && product.fresh == true)
-        @fresh_available = false
-      else
-        @fresh_available = true
-      end
+    if @near_farm
+      @products_by_category = @farm.products.available.group_by(&:category)
+    else
+      @products_by_category = @farm.products.available.not_fresh.group_by(&:category)
     end
   end
 
