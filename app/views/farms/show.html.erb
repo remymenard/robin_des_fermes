@@ -59,7 +59,7 @@
 
             <div>
 
-              <div class="<%= @near_farm ? 'withdrawal' : 'card-delivery' %> d-flex">
+              <div class="<%= !@near_farm ? 'withdrawal' : 'card-delivery' %> d-flex">
 
                 <div>
                   <p>Zone proche</p>
@@ -84,7 +84,7 @@
 
             <div>
 
-              <div class="<%= !@near_farm ? 'withdrawal' : 'card-delivery' %> d-flex">
+              <div class="<%= @near_farm ? 'withdrawal' : 'card-delivery' %> d-flex">
 
                 <div>
                   <p>Zone éloigné</p>

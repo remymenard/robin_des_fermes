@@ -4,6 +4,6 @@ class PagesController < ApplicationController
   def home
     @farms = Farm.all
     @highlighted_farm = @farms.first
-    @other_farms      = @farms[1..-1]
+    @other_farms      = Farm.order("id asc").offset(1).all
   end
 end

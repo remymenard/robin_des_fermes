@@ -39,7 +39,6 @@ class FarmsController < ApplicationController
   end
 
   def show
-
     @farm = Farm.find(params[:id])
     @highlighted_photo = @farm.photos.first
     @second_photo      = @farm.photos[1]
@@ -53,6 +52,12 @@ class FarmsController < ApplicationController
 
     if @farm.regions.include?(@zip_code)
       @near_farm = true
+    end
+
+    @farm.products.each do |product|
+      if (!@near_farm && product.fresh == true)
+        product.available = false
+      end
     end
   end
 
