@@ -2,13 +2,15 @@ class User < ApplicationRecord
   #has_many :farms, dependent: :destroy
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable, :trackable and :omniauthable
-  attr_accessor :wants_to_subscribe_mailing_list
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
-  validates_format_of :zip_code, with: /[1-9]\d{3}/, allow_blank: true
+  after_validation :convert_newsletter_input_to_boolean
+
+  validates_format_of :zip_code, with: /\A[1-9]\d{3}\z/, allow_blank: true
 
   has_one_attached :photo
+
 
   TITLE = ['Mme', 'M']
 
@@ -22,8 +24,11 @@ class User < ApplicationRecord
 
   private
   def subscribe_user_to_mailing_list
-    if @wants_to_subscribe_mailing_list == "1"
+    if @wants_to_subscribe_mailing_list
       Mailchimp::SubscribeToNewsletterService.new(self).call
     end
+  end
+  def convert_newsletter_input_to_boolean
+    @wants_to_subscribe_mailing_list = ActiveModel::Type::Boolean.new.cast(@wants_to_subscribe_mailing_list)
   end
 end
