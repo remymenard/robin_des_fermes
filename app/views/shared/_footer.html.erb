@@ -6,21 +6,21 @@
     <div class="row ">
 
       <div >
-        <p class= "title">Informations</p>
-        <p>Livraison</p>
-        <p>Mode de paiement</p>
-        <p><%= link_to "FAQ", faq_path  %></p>
-        <p><%= link_to "CGV", "#"  %></p>
+        <p class= "title"><%= t('.informations') %></p>
+        <p><%= t('.delivery') %></p>
+        <p><%= t('.payment') %></p>
+        <p><%= link_to t(".faq"), "#"  %></p>
+        <p><%= link_to t(".cgv"), "#"  %></p>
 
       </div>
 
       <div>
         <br>
         <br>
-        <p>A propos</p>
-        <p>Contact</p>
-        <p>Livraison</p>
-        <p>Liste des producteurs</p>
+        <p><%= t('.about') %></p>
+        <p><%= t('.contact') %></p>
+        <p><%= t('.delivery') %></p>
+        <p><%= t('.list') %></p>
 
       </div>
 
@@ -30,14 +30,14 @@
 
 
   <div class="contact">
-    <p class= "title">Contactez-nous</p>
+    <p class= "title"><%= t('.contact_us') %></p>
     <p>info@robindesfermes.ch</p>
     <p>021 000 00 00</p>
 
   </div>
 
   <div class="link">
-    <p class= "title">Retrouvez-nous</p>
+    <p class= "title"><%= t('.find_us') %></p>
     <div class="footer-links">
       <a href="https://www.facebook.com/robindesfermes.ch/"><i class="fab fa-facebook"></i></a>
       <a href="https://www.instagram.com/robin_des_fermes/"><i class="fab fa-instagram"></i></a>
