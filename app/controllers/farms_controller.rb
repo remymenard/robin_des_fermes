@@ -7,7 +7,7 @@ class FarmsController < ApplicationController
     @farms     = Farm.all
     @far_farms = Farm.none
 
-    @zip_code = params[:zip] || '1200'
+    @zip_code = '1200'
 
     if @zip_code.present?
       @far_farms = @farms.where.not("regions && ARRAY[?] ", @zip_code)
@@ -61,6 +61,11 @@ class FarmsController < ApplicationController
       'icons/map_marker_green.png'
     else
       'icons/map_marker_red.png'
+
+    if @near_farm
+      @products_by_category = @farm.products.available.group_by(&:category)
+    else
+      @products_by_category = @farm.products.available.not_fresh.group_by(&:category)
     end
 
     @markers = @farm_show.geocoded.map do |farm|

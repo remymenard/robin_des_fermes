@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  devise_for :users
   scope '(:locale)', locale: /fr/ do
-    devise_for :users
     root to: 'pages#home'
+    get 'faq', :to => 'pages#faq'
     resources :farms, only: [:index, :show]
     resources :products, only: [:show]
+    get 'cgv', :to => 'pages#cgv'
   end
 
   namespace :users do
