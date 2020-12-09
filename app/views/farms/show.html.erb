@@ -59,7 +59,7 @@
 
             <div>
 
-              <div class="<%= !@near_farm ? 'withdrawal' : 'card-delivery' %> d-flex">
+              <div class="<%= @near_farm ? 'card-delivery'  : 'withdrawal' %> d-flex">
 
                 <div>
                   <p><%= t('.near') %></p>
@@ -84,7 +84,7 @@
 
             <div>
 
-              <div class="<%= @near_farm ? 'withdrawal' : 'card-delivery' %> d-flex">
+              <div class="<%= !@near_farm ? 'card-delivery'  : 'withdrawal' %> d-flex">
 
                 <div>
                   <p><%= t('.far') %></p>
@@ -205,6 +205,12 @@
         <% end %>
       </div>
     <% end %>
+    <h2><%= t('.location') %></h2>
+    <div id="map_show"
+      style="width: 1170px; height: 544px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
 
 </div>

@@ -28,12 +28,14 @@ const addMarkersToMap = (map, markers) => {
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
 
+
   if (mapElement) { // only build a map if there's a div#map to inject into
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
     const map = new mapboxgl.Map({
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v11',
     });
+
 
     const nearbyFarmsMarkers = JSON.parse(mapElement.dataset.nearbyFarmsMarkers);
     const farFarmsMarkers    = JSON.parse(mapElement.dataset.farFarmsMarkers);
@@ -47,6 +49,24 @@ const initMapbox = () => {
       fitMapToMarkers(map, nearbyFarmsMarkers)
     }
 
+    map.addControl(new mapboxgl.NavigationControl());
+  }
+
+  const mapShow = document.getElementById('map_show');
+
+  if (mapShow) { // only build a map if there's a div#map to inject into
+    mapboxgl.accessToken = mapShow.dataset.mapboxApiKey;
+    const map = new mapboxgl.Map({
+      container: 'map_show',
+      style: 'mapbox://styles/mapbox/streets-v11',
+    });
+
+
+    const markers = JSON.parse(mapShow.dataset.markers);
+
+    addMarkersToMap(map, markers);
+
+    fitMapToMarkers(map, markers);
 
   }
 };
