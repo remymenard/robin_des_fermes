@@ -42,7 +42,7 @@ const initMapbox = () => {
 
     addMarkersToMap(map, nearbyFarmsMarkers);
     addMarkersToMap(map, farFarmsMarkers);
-    
+
     map.addControl(new mapboxgl.NavigationControl());
   }
 

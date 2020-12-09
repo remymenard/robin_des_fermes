@@ -61,6 +61,7 @@ class FarmsController < ApplicationController
       'icons/map_marker_green.png'
     else
       'icons/map_marker_red.png'
+    end
 
     if @near_farm
       @products_by_category = @farm.products.available.group_by(&:category)
