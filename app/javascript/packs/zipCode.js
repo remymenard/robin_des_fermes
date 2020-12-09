@@ -3,24 +3,11 @@ import Swal from 'sweetalert2'
 document.addEventListener('turbolinks:load', async () => {
 
   // variables
-  let baseModal = {
-    title: I18n.t('zip_code.title'),
-    inputLabel: I18n.t('zip_code.description'),
-    input: 'number',
-    inputPlaceholder: '0000',
-    confirmButtonColor: '#007C50',
-    preConfirm: (zip_code) => {
-      if (!/^[1-9]\d{3}$/.test(zip_code)) {
-        Swal.showValidationMessage(I18n.t('zip_code.error'))
-      }
-      return zip_code;
-    }
-  }
-
   const zipCodeButtons = $('.zip_code')
   const zipCodeText = $('.zip_code_number')
   const searchInput = $('#zip_code_input')
   const pageInfos = $('#pageInfos')
+  const zipCodeMessages = $('#zip_code_messages')
 
   const signedIn = zipCodeButtons.data("signedin?")
   const loginPageHref = zipCodeButtons.data("login_path")
@@ -28,12 +15,31 @@ document.addEventListener('turbolinks:load', async () => {
   const authenticityToken = zipCodeButtons.data("token")
   const isZipCodeDefined = pageInfos.data('zipCodeDefined')
   const shouldSubmitForm = pageInfos.data('submitForm')
+
+  const titleMessage = zipCodeMessages.data('title')
+  const descriptionMessage = zipCodeMessages.data('description')
+  const loginMessage = zipCodeMessages.data('login')
+  const errorMessage = zipCodeMessages.data('error')
+
+  let baseModal = {
+    title: titleMessage,
+    inputLabel: descriptionMessage,
+    input: 'number',
+    inputPlaceholder: '0000',
+    confirmButtonColor: '#007C50',
+    preConfirm: (zip_code) => {
+      if (!/^[1-9]\d{3}$/.test(zip_code)) {
+        Swal.showValidationMessage(errorMessage)
+      }
+      return zip_code;
+    }
+  }
   // end of variables
 
   // methods
   const addConnectButtonOnAlert = () => {
     if (!signedIn) {
-      baseModal.footer = `<a href="${loginPageHref}"> ${I18n.t('zip_code.login')} </a>`
+      baseModal.footer = `<a href="${loginPageHref}"> ${loginMessage} </a>`
     }
   }
 
