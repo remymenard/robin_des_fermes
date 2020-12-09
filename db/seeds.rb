@@ -8,6 +8,7 @@
 require "open-uri"
 require 'date'
 
+
 puts "Clean DB"
 FarmCategory.destroy_all # they belong to a category, so let's destroy them first
 Product.destroy_all
@@ -16,6 +17,7 @@ OpeningHour.destroy_all
 Farm.destroy_all # they belong to a user, so let's destroy them first
 Order.destroy_all
 User.destroy_all
+
 
 puts "Create categories"
 pain = Category.create!(name: "Boulangerie")
@@ -78,6 +80,7 @@ divers.photo.attach(
   filename: 'divers.png'
 )
 
+
 user1 = User.create!(
   email: "test@exemp.com",
   password: "password",
@@ -109,6 +112,7 @@ user2.photo.attach(
   filename: 'seed-henry.png'
 )
 
+puts "creation des fermes"
 
 henry = Farm.create!(name: "Famille Henry", user: user1, labels: ['bio'],
   address: 'Bahnhofstrasse 4/8, 8001 Zurich', opening_time: '8h-17h',
@@ -239,6 +243,7 @@ FarmCategory.create!(category_id: boucherie.id,  farm: meleze)
 FarmCategory.create!(category_id: boucherie.id,  farm: gallien)
 FarmCategory.create!(category_id: divers.id,  farm: cave)
 FarmCategory.create!(category_id: divers.id,  farm: meleze)
+
 
 puts "Create products"
 meat = Product.create!(farm: henry, category: boucherie, name: "Meat",
@@ -461,15 +466,30 @@ apple.photo.attach(
   filename: 'apple.png'
 )
 
-apple2 = Product.create!(farm: gallien, category: divers, name:"Pomme",
+
+apple2 = Product.create!(farm: jonas, category: divers, name:"Pomme",
   unit_price: 5, kg_price: 10, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
   label: ['bio'],
-  available: true
+  fresh: false,
+  available: true,
 )
 
 apple2.photo.attach(
+  io: File.open(Rails.root.join('db/fixtures/products/apple.png')),
+  filename: 'apple.png'
+)
+
+apple3 = Product.create!(farm: jonas, category: divers, name:"Apple bio",
+  unit_price: 5, kg_price: 10, unit: "La pièce",
+  description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+  ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
+  label: ['bio'],
+  fresh: true,
+  available: true,
+)
+apple3.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/apple.png')),
   filename: 'apple.png'
 )
