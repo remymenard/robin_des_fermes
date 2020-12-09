@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   scope '(:locale)', locale: /fr/ do
     root to: 'pages#home'
+    get 'faq', :to => 'pages#faq'
     resources :farms, only: [:index, :show]
     resources :products, only: [:show]
   end
