@@ -42,7 +42,6 @@ const initMapbox = () => {
     addMarkersToMap(map, farFarmsMarkers);
 
     if (nearbyFarmsMarkers === undefined || nearbyFarmsMarkers.length == 0) {
-      console.log(farFarmsMarkers)
       fitMapToMarkers(map, farFarmsMarkers)
     } else {
       fitMapToMarkers(map, nearbyFarmsMarkers)
