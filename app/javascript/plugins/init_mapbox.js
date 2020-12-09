@@ -43,6 +43,12 @@ const initMapbox = () => {
     addMarkersToMap(map, nearbyFarmsMarkers);
     addMarkersToMap(map, farFarmsMarkers);
 
+    if (nearbyFarmsMarkers === undefined || nearbyFarmsMarkers.length == 0) {
+      fitMapToMarkers(map, farFarmsMarkers)
+    } else {
+      fitMapToMarkers(map, nearbyFarmsMarkers)
+    }
+
     map.addControl(new mapboxgl.NavigationControl());
   }
 
