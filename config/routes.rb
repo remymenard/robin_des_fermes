@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get 'faq', :to => 'pages#faq'
     resources :farms, only: [:index, :show]
     resources :products, only: [:show]
+    get 'cgv', :to => 'pages#cgv'
   end
 
   namespace :users do

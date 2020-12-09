@@ -64,6 +64,14 @@ fr:
     cancel: "Votre paiement a été annulé."
     success: "Votre paiement a été effectué avec succès."
   pages:
+    cgv:
+      title: "CONDITIONS GENERALES DE VENTES"
+      sub_title: "Lorem is simply dummy text of the printing and typesetting indust."
+      first_paragraph: "Lorem is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+      second_paragraph: "Lorem is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+      third_paragraph: "Lorem is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+      paragraph_title1: "Lorem is simply dummy text of the printing and typesetting indust."
+      paragraph_title2: "Lorem is simply dummy text of the printing and typesetting indust."
     faq:
       faq: "FAQ"
       question1: "1. Lorem Ipsum is simply dummy text ?"
