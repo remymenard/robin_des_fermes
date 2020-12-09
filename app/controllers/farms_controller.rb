@@ -7,7 +7,7 @@ class FarmsController < ApplicationController
     @farms     = Farm.all
     @far_farms = Farm.none
 
-    @zip_code = params[:zip] || '1200'
+    @zip_code = '1200'
 
     if @zip_code.present?
       @far_farms = @farms.where.not("regions && ARRAY[?] ", @zip_code)
