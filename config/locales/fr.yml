@@ -63,6 +63,10 @@ fr:
     error: "Il y a eu une erreur avec votre paiement."
     cancel: "Votre paiement a été annulé."
     success: "Votre paiement a été effectué avec succès."
+  farms:
+    show:
+      location: "Emplacement"
+
   pages:
     cgv:
       title: "CONDITIONS GENERALES DE VENTES"

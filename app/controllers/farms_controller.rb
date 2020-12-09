@@ -36,10 +36,15 @@ class FarmsController < ApplicationController
         image_url: helpers.asset_url('icons/map_marker_red.png')
       }
     end
+
   end
 
   def show
+
+    @farms = Farm.all
     @farm = Farm.find(params[:id])
+    @farm_show = @farms.where("farms.id = ? ", params[:id])
+
     @highlighted_photo = @farm.photos.first
     @second_photo      = @farm.photos[1]
     @third_photo       = @farm.photos[2]
@@ -50,13 +55,28 @@ class FarmsController < ApplicationController
 
     @zip_code = '1200'
 
-    @near_farm = true if @farm.regions.include?(@zip_code)
+    @near_farm = @farm.regions.include?(@zip_code)
+
+    marker_icon_path = if @near_farm
+      'icons/map_marker_green.png'
+    else
+      'icons/map_marker_red.png'
 
     if @near_farm
       @products_by_category = @farm.products.available.group_by(&:category)
     else
       @products_by_category = @farm.products.available.not_fresh.group_by(&:category)
     end
+
+    @markers = @farm_show.geocoded.map do |farm|
+      {
+        lat: farm.latitude,
+        lng: farm.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { farm: farm }),
+        image_url: helpers.asset_url(marker_icon_path)
+      }
+    end
+
   end
 
   private
