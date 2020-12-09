@@ -55,25 +55,21 @@ class FarmsController < ApplicationController
 
     @zip_code = '1200'
 
-    if @farm.regions.include?(@zip_code)
-      @near_farm = true
-      @markers = @farm_show.geocoded.map do |farm|
-        {
-          lat: farm.latitude,
-          lng: farm.longitude,
-          infoWindow: render_to_string(partial: "info_window", locals: { farm: farm }),
-          image_url: helpers.asset_url('icons/map_marker_green.png')
-        }
-      end
+    @near_farm = @farm.regions.include?(@zip_code)
+
+    marker_icon_path = if @near_farm
+      'icons/map_marker_green.png'
     else
-      @markers = @farm_show.geocoded.map do |farm|
-        {
-          lat: farm.latitude,
-          lng: farm.longitude,
-          infoWindow: render_to_string(partial: "info_window", locals: { farm: farm }),
-          image_url: helpers.asset_url('icons/map_marker_red.png')
-        }
-      end
+      'icons/map_marker_red.png'
+    end
+
+    @markers = @farm_show.geocoded.map do |farm|
+      {
+        lat: farm.latitude,
+        lng: farm.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { farm: farm }),
+        image_url: helpers.asset_url(marker_icon_path)
+      }
     end
 
   end
