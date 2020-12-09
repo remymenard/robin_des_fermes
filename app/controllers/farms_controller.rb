@@ -1,5 +1,6 @@
 class FarmsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
+  include ZipCodeHelper
 
   def index
     @categories = Category.all
@@ -7,7 +8,7 @@ class FarmsController < ApplicationController
     @farms     = Farm.all
     @far_farms = Farm.none
 
-    @zip_code = '1200'
+    @zip_code = get_zip_code_number
 
     if @zip_code.present?
       @far_farms = @farms.where.not("regions && ARRAY[?] ", @zip_code)
@@ -53,7 +54,7 @@ class FarmsController < ApplicationController
 
     @date = Date.current
 
-    @zip_code = '1200'
+    @zip_code = get_zip_code_number
 
     @near_farm = @farm.regions.include?(@zip_code)
 
