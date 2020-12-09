@@ -8,6 +8,7 @@
 require "open-uri"
 require 'date'
 
+
 puts "Clean DB"
 FarmCategory.destroy_all # they belong to a category, so let's destroy them first
 Product.destroy_all
@@ -17,9 +18,9 @@ Farm.destroy_all # they belong to a user, so let's destroy them first
 Order.destroy_all
 User.destroy_all
 
+
 puts "Create categories"
 pain = Category.create!(name: "Vins")
-
 pain.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/categories/vins.png')),
   filename: 'vins.png'
@@ -79,6 +80,7 @@ divers.photo.attach(
   filename: 'divers.png'
 )
 
+
 user1 = User.create!(
   email: "test@exemp.com",
   password: "password",
@@ -110,6 +112,7 @@ user2.photo.attach(
   filename: 'seed-henry.png'
 )
 
+puts "creation des fermes"
 
 henry = Farm.create!(name: "Famille Henry", user: user1, labels: ['bio'],
   address: 'Bahnhofstrasse 4/8, 8001 Zurich', opening_time: '8h-17h',
@@ -178,6 +181,7 @@ FarmCategory.create!(category_id: divers.id,  farm: jonas)
 #FarmCategory.create!(category_id: oeuf.id,  farm: henry)
 #FarmCategory.create!(category_id: cereale.id,  farm: henry)
 FarmCategory.create!(category_id: pain.id,  farm: jonas)
+
 
 puts "Create products"
 meat = Product.create!(farm: henry, category: viande, name: "Meat",
@@ -289,9 +293,10 @@ apple.photo.attach(
   filename: 'apple.png'
 )
 
-lundi = OpeningHour.create!(farm: henry, day: 0, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
-mardi = OpeningHour.create!(farm: henry, day: 1, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
-mercredi = OpeningHour.create!(farm: henry, day: 2, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
-jeudi = OpeningHour.create!(farm: henry, day: 3, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
-vendredi = OpeningHour.create!(farm: henry, day: 4, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
+lundi = OpeningHour.create!(farm: henry, day: 1, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
+mardi = OpeningHour.create!(farm: henry, day: 2, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
+mercredi = OpeningHour.create!(farm: henry, day: 3, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
+jeudi = OpeningHour.create!(farm: henry, day: 4, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
+vendredi = OpeningHour.create!(farm: henry, day: 5, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
+
 
