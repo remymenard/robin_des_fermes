@@ -62,6 +62,7 @@ fr:
       free: "Gratuit"
       far: "Zone éloignée"
       self_service: 'Self-service'
+      location: "Emplacement"
       date:
         day_names: [Dimanche, Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi]
   shared:
@@ -89,9 +90,6 @@ fr:
     error: "Il y a eu une erreur avec votre paiement."
     cancel: "Votre paiement a été annulé."
     success: "Votre paiement a été effectué avec succès."
-  farms:
-    show:
-      location: "Emplacement"
   products:
     show:
       name: '%{name}'
