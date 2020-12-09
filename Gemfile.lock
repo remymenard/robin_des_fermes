@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/amro/gibbon.git
+  revision: be10210fa28205b16502fb5609896e523c6d02f1
+  specs:
+    gibbon (3.3.4)
+      faraday (>= 0.16.0)
+      multi_json (>= 1.11.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -107,6 +115,8 @@ GEM
       railties (>= 3.2)
     erubi (1.10.0)
     execjs (2.7.0)
+    faraday (0.17.3)
+      multipart-post (>= 1.2, < 3)
     ffi (1.13.1)
     font-awesome-sass (5.15.1)
       sassc (>= 1.11)
@@ -167,7 +177,9 @@ GEM
       money (~> 6.13.2)
       railties (>= 3.0)
     msgpack (1.3.3)
+    multi_json (1.15.0)
     multi_xml (0.6.0)
+    multipart-post (2.1.1)
     netaddr (1.5.1)
     netrc (0.11.0)
     nio4r (2.5.4)
@@ -317,6 +329,7 @@ DEPENDENCIES
   dotenv-rails
   font-awesome-sass
   geocoder
+  gibbon!
   httparty
   i18n-tasks (~> 0.9.31)
   jbuilder (~> 2.7)
