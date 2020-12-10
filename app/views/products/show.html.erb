@@ -1,0 +1,106 @@
+<div class="container">
+  <div class="product">
+
+    <div class="d-flex">
+
+      <div class="photo">
+        <h2><%= t('.name', name: @product.name) %> </h2>
+        <%= cl_image_tag @product.photo.key, height: 370, width: 370, crop: :fill, style: "border-radius: 8px 8px 8px 8px" %>
+      </div>
+
+      <div class="informations">
+
+        <div class = "d-flex">
+          <%= link_to "-", "#", class: "btn btn-number"%>
+
+          <div class="number">
+            <span>0</span>
+          </div>
+
+          <%= link_to "+", orders_path, method: :post, class: "btn btn-number" %>
+
+        </div>
+
+        <div class="d-flex one-information">
+          <h6><%= t('.description') %></h6><p><%= t('.product', description: @product.description) %> </p>
+        </div>
+
+        <div class="d-flex one-information">
+          <h6><%= t('.ingredient') %></h6><p> <%= t('.product_ingredient', ingredients: @product.ingredients) %> </p>
+        </div>
+
+        <div class="d-flex one-information">
+          <h6><%= t('.category') %></h6><p><%= cl_image_tag @product.category.photo.key %> </p>
+        </div>
+
+        <div class="d-flex one-information">
+          <h6><%= t('.label') %> </h6>
+            <% @product.label.each do |label| %>
+              <div class='label'><%= image_tag "labels/#{label}-label", class: "label" %></div>
+            <%end%>
+        </div>
+
+        <div class="d-flex one-information">
+          <h6><%= t('.price') %></h6><p> <%= @product.unit_price  %> </p>
+        </div>
+
+        <div class="d-flex one-information">
+          <h6>Producteur : </h6><p> <%= @product.farm.user.first_name  %></p>
+        </div>
+
+        <div class="d-flex one-information">
+          <h6><%= t('.exploitation') %></h6><p> <%= @product.farm.name  %> </p>
+        </div>
+
+         <div class="delivery">
+
+          <div class="cards-delivery d-flex">
+
+            <div>
+
+              <div class="<%= @near_farm ? 'withdrawal' : 'card-delivery' %> d-flex">
+
+                <div>
+                  <p><%= t('.near') %></p>
+                  <p class = "date"> Entre le <%= @date.strftime('%d')  %> et le <%= I18n.l((@date + 10.days), format: :long, locale: :'fr') %></p>
+                </div>
+
+                <span>CHF 5</span>
+
+              </div>
+
+               <div class="<%= !@farm.accepts_take_away ? 'withdrawal' : 'card-delivery' %> d-flex">
+
+                <div>
+                  <p><%= t('.take_away') %></p>
+                  <p class = "date"> Entre le <%= @date.strftime('%d')  %> et le <%= I18n.l((@date + 10.days), format: :long, locale: :'fr') %></p>
+                </div>
+
+                <span><%= t('.free') %></span>
+
+              </div>
+            </div>
+
+            <div>
+
+              <div class="<%= !@near_farm ? 'withdrawal' : 'card-delivery' %> d-flex">
+
+                <div>
+                  <p><%= t('.far') %></p>
+                  <p class = "date"> Entre le <%= @date.strftime('%d')  %> et le <%= I18n.l((@date + 10.days), format: :long, locale: :'fr') %></p>
+                </div>
+
+                <span>CHF 15</span>
+              </div>
+            </div>
+
+         </div>
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

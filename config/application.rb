@@ -15,6 +15,10 @@ module RobinDesFermes
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+    I18n.load_path += Dir[Rails.root.join('lib', 'locale', '*.{rb,yml}')]
+    I18n.config.enforce_available_locales = true
+    I18n.config.available_locales = [:fr]
+    I18n.default_locale = :fr
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

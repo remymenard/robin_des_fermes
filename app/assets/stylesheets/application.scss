@@ -7,7 +7,23 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import 'mapbox-gl/dist/mapbox-gl';
+@import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder';
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+body, h1, h2, p {
+  font-family: 'Mulish', sans-serif;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-color: white;
+  width: 100%;
+  margin-right: -100px
+}

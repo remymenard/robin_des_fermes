@@ -1,0 +1,62 @@
+
+.farms {
+
+  #map {
+    position: sticky;
+    top: 60px;
+    right: 0px;
+
+    .mapboxgl-ctrl-compass {
+      display: none !important;
+    }
+  }
+
+
+  p {
+    font-size: 17px;
+    color: white;
+    padding-left: 7px;
+  }
+
+  .search {
+
+    span {
+      font-size: 32px;
+      margin-left: 26px;
+      margin-top: 30px;
+      margin-right: 20px;
+    }
+
+    select {
+      margin-top: 30px;
+      background-image: url(icons/Arrow.png);
+      background-size: 27px 23px;
+      width: 150.1px;
+      height: 40px;
+      background-color: #007C50;
+      border-radius: 7px;
+      border-color: #007C50;
+      color: white;
+      font-size: 17px;
+    }
+
+    .map-marker {
+      width: 30px;
+      height: 24.64px;
+    }
+
+    .arrow {
+      width: 25px;
+      height: 19.88px;
+      margin-top: 3px;
+    }
+
+    .btn {
+      width: 150.1px;
+      height: 40px;
+      background-color: #007C50;
+      border-radius: 7px;
+      margin-top: 30px;
+    }
+  }
+}

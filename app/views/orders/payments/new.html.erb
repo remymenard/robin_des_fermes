@@ -1,0 +1,17 @@
+<div class="container" style="display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 47vh;">
+<%= render 'orders/recap_card', order: @order %>
+<p><%= @order.price_cents / 100 %>CHF</p>
+
+<button data-transaction-id="<%= @transaction_id %>" id="paymentButton" type="button" class="btn btn-success">
+  Pay
+</button>
+  </div>
+
+<%= content_for(:after_template) do %>
+  <!-- Can't install Datatrans SDK through yarn -->
+  <script src="https://pay.sandbox.datatrans.com/upp/payment/js/datatrans-2.0.0.js"></script>
+  <%= javascript_pack_tag 'datatrans_payments' %>
+<% end %>
