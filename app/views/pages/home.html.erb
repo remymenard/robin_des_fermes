@@ -14,29 +14,39 @@
   <div class="vector">
 
   </div>
+  <div class="container">
+    <div class="home-category">
 
-  <div class="home-category">
+      <h2><%= t('.products') %></h2>
 
-    <h2><%= t('.products') %></h2>
+      <div class="food d-flex">
+        <div>
+          <%= link_to farms_path(category: "Viande & Volaille"), class: "navbar-brand" do %>
+            <%= image_tag "categories/meat.png", alt: "Viande" %>
+            <p><%= t('.viandes') %></p>
+          <% end %>
+        </div>
 
-    <div class="food">
-      <%= link_to farms_path(category: "Viande & Volaille"), class: "navbar-brand" do %>
-        <%= image_tag "categories/meat.png", alt: "Viande" %>
-        <p><%= t('.viandes') %></p>
-      <% end %>
-      <%= link_to farms_path(category: "Poisson"), class: "navbar-brand" do %>
-        <%= image_tag "categories/fish.png", alt: "Poisson" %>
-        <p><%= t('.poissons') %></p>
-      <% end %>
-      <%= link_to farms_path(category: "Produits Laitiers"), class: "navbar-brand" do %>
-        <%= image_tag "categories/milk.png", alt: "Lait" %>
-        <p><%= t('.laitiers') %></p>
-      <% end %>
+        <div>
+          <%= link_to farms_path(category: "Poisson"), class: "navbar-brand" do %>
+            <%= image_tag "categories/fish.png", alt: "Poisson" %>
+            <p><%= t('.poissons') %></p>
+          <% end %>
+        </div>
+
+        <div>
+          <%= link_to farms_path(category: "Produits Laitiers"), class: "navbar-brand" do %>
+            <%= image_tag "categories/milk.png", alt: "Lait" %>
+            <p><%= t('.laitiers') %></p>
+          <% end %>
+        </div>
+      </div>
+
     </div>
 
-    <div class="low-vector"></div>
 
   </div>
+  <div class="low-vector"></div>
 
 
   <div class="home-farms">
@@ -90,24 +100,27 @@
 
   <div class="vector"></div>
 
-  <div class="rdf-presentation">
-    <h2><%= t('.presentations_title') %> </h2>
+  <div class="container">
+    <div class="rdf-presentation">
+      <h2><%= t('.presentations_title') %> </h2>
 
-    <div class = "row">
+      <div class = "row">
 
-      <div>
-        <%= image_tag "home/sell.png", alt: "alttext" %>
-        <p><%= t('.sell') %></p>
-      </div>
+        <div>
+          <%= image_tag "home/sell.png", alt: "alttext" %>
+          <p><%= t('.sell') %></p>
+        </div>
 
-      <div>
-        <%= image_tag "home/presentation.png", alt: "alttext" %>
-        <p><%= t('.presentation') %></p>
-      </div>
+        <div>
+          <%= image_tag "home/presentation.png", alt: "alttext" %>
+          <p><%= t('.presentation') %></p>
+        </div>
 
-      <div>
-        <%= image_tag "home/community.png", alt: "alttext" %>
-        <p><%= t('.community') %></p>
+        <div>
+          <%= image_tag "home/community.png", alt: "alttext" %>
+          <p><%= t('.community') %></p>
+        </div>
+
       </div>
 
     </div>
