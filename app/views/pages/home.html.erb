@@ -50,51 +50,52 @@
 
 
   <div class="home-farms">
-    <h2><%= t('.farms') %></h2>
-    <div >
+    <div class="container">
 
-      <div class="row">
-        <div class="col col-lg-6 ">
+      <h2><%= t('.farms') %></h2>
 
-          <div class="first-photo">
+      <div>
+        <div class="row">
+          <div class="col col-lg-6 ">
 
-            <div>
-              <%= link_to farm_path(@highlighted_farm) do %>
-                <%= cl_image_tag(@highlighted_farm.photos.first.key, height: 474, width: 570, crop: :fill)  %>
-              <% end %>
+            <div class="first-photo">
+
+              <div>
+                <%= link_to farm_path(@highlighted_farm) do %>
+                  <%= cl_image_tag(@highlighted_farm.photos.first.key, height: 474, width: 570, crop: :fill)  %>
+                <% end %>
+              </div>
+
+
+              <div class = "name">
+              <p><%= @farms.first.name %></p>
+
+              </div>
+
             </div>
-
-
-            <div class = "name">
-            <p><%= @farms.first.name %></p>
-
-            </div>
-
           </div>
-        </div>
 
-        <div class="col col-lg-6">
+          <div class="col col-lg-6">
 
-          <div class="all-photo">
-            <% @other_farms.each do |farm|  %>
+            <div class="all-photo">
+              <% @other_farms.each do |farm|  %>
 
-              <div class = "photo">
+                <div class="photo">
 
                   <%= link_to farm_path(farm) do %>
                     <%= cl_image_tag(farm.photos.first.key, height: 222, width: 270, crop: :fill )%>
                   <% end %>
-                <p><%= farm.name %></p>
+                  <p><%= farm.name %></p>
 
-              </div>
-            <% end %>
+                </div>
+              <% end %>
+            </div>
 
           </div>
 
-    </div>
-
+        </div>
       </div>
     </div>
-
 
   </div>
 
