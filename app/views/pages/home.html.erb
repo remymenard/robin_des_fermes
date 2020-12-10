@@ -61,9 +61,11 @@
             <div class="first-photo">
 
               <div>
+              <% unless @highlighted_farm.nil? %>
                 <%= link_to farm_path(@highlighted_farm) do %>
                   <%= cl_image_tag(@highlighted_farm.photos.first.key, height: 474, width: 570, crop: :fill)  %>
                 <% end %>
+              <% end %>
               </div>
 
 
