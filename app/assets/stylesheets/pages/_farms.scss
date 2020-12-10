@@ -1,6 +1,10 @@
 
 .farms {
 
+  .cards_maps {
+    justify-content: space-between;
+  }
+
   #map {
     position: sticky;
     top: 60px;

@@ -1,6 +1,6 @@
 <div class="farms">
 
-  <div class="d-flex">
+  <div class="d-flex cards_maps">
     <div>
 
       <div class="search d-flex">
@@ -142,7 +142,7 @@
     </div>
 
     <div id="map"
-      style="width: 836px; height: 963px;"
+      style="width: 50%; height: 100vh;"
       data-nearby-farms-markers="<%= @nearby_markers.to_json %>"
       data-far-farms-markers="<%= @far_markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
