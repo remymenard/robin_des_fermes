@@ -1,6 +1,7 @@
 Rails.application.configure do
+
   # Uncomment this line when you want to use ngrok in development
-  # config.hosts.clear
+  config.hosts.clear
 
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -33,6 +34,11 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :cloudinary
+
+  # config.action_mailer.default_url_options = { host: "http://robindesfermes.com" }
+  config.action_mailer.delivery_method = :postmark
+  config.action_mailer.postmark_settings = { api_token: ENV["POSTMARK_API_TOKEN"] }
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
