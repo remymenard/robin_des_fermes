@@ -70,8 +70,9 @@
 
 
               <div class = "name">
-              <p><%= @farms.first.name unless @farms.nil? %></p>
-
+              <% unless @farms.nil? %>
+              <p><%= @farms.first.name %></p>
+              <% end %>
               </div>
 
             </div>
