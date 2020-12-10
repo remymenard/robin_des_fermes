@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  http_basic_authenticate_with name: "rdf_admin", password: "rdf_rdf_2020" if Rails.env.staging?
+
   def set_locale
     I18n.locale = params.fetch(:locale, I18n.default_locale).to_sym
   end
