@@ -61,7 +61,7 @@
             <div class="first-photo">
 
               <div>
-              <% unless @highlighted_farm.nil? %>
+              <% if @highlighted_farm.present? %>
                 <%= link_to farm_path(@highlighted_farm) do %>
                   <%= cl_image_tag(@highlighted_farm.photos.first.key, height: 474, width: 570, crop: :fill)  %>
                 <% end %>
@@ -70,7 +70,7 @@
 
 
               <div class = "name">
-              <% unless @farms.nil? %>
+              <% if @farms.present? %>
               <p><%= @farms.first.name %></p>
               <% end %>
               </div>
@@ -81,7 +81,7 @@
           <div class="col col-lg-6">
 
             <div class="all-photo">
-            <% unless @other_farms.nil? %>
+            <% if @other_farms.present? %>
 
               <% @other_farms.each do |farm|  %>
 
