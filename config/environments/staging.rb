@@ -1,9 +1,6 @@
 Rails.application.configure do
-  # config.action_mailer.default_url_options = { host: "https://staging.robindesfermes.ch" }
+  config.action_mailer.default_url_options = { host: "https://app-a38798ef-4d73-4bd1-b187-585f2c584033.cleverapps.io/" }
   # Settings specified here will take precedence over those in config/application.rb.
-  config.action_mailer.delivery_method = :postmark
-  config.action_mailer.postmark_settings = { api_token: ENV["POSTMARK_API_TOKEN"] }
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # Code is not reloaded between requests.
   config.cache_classes = true
