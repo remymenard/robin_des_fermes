@@ -70,7 +70,7 @@
 
 
               <div class = "name">
-              <p><%= @farms.first.name %></p>
+              <p><%= @farms.first.name unless @farms.nil? %></p>
 
               </div>
 
@@ -80,6 +80,8 @@
           <div class="col col-lg-6">
 
             <div class="all-photo">
+            <% unless @other_farms.nil? %>
+
               <% @other_farms.each do |farm|  %>
 
                 <div class="photo">
@@ -91,6 +93,7 @@
 
                 </div>
               <% end %>
+            <% end %>
             </div>
 
           </div>
