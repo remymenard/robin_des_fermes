@@ -88,7 +88,7 @@ user1 = User.create!(
   last_name: "Boucher",
   address: "6 boulevard adolphe",
   city: "nantes",
-  zip_code: "44200",
+  zip_code: "1200",
   title: "M"
 )
 
@@ -104,7 +104,7 @@ user2 = User.create!(
   last_name: "Boucher",
   address: "6 boulevard adolphe",
   city: "nantes",
-  zip_code: "44200",
+  zip_code: "1200",
   title: "M"
 )
 user2.photo.attach(
@@ -286,9 +286,9 @@ meat1.photo.attach(
 )
 
 steack = Product.create!(farm: meleze, category: boucherie, name: "Steack",
-  unit_price: 52, kg_price: 100, unit: "La pièce",
-  description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-  ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
+  unit_price: 7, kg_price: 10, unit: "La pièce",
+  description: "Dégustez ce savoureux steak de boeuf.",
+  ingredients: "boeuf",
   label: ['bio'],
   available: true
 )
