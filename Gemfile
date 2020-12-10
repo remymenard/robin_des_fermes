@@ -29,6 +29,7 @@ gem 'redis', '~> 4.0'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'devise'
+gem 'gibbon', git: 'https://github.com/amro/gibbon.git'
 
 gem "algoliasearch-rails"
 
@@ -77,7 +78,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Manually installed gems
 gem 'rails-i18n'
-gem 'i18n-js'
 gem 'httparty'
 gem 'netaddr', '~> 1.5', '>= 1.5.1'
 gem 'money-rails', '~>1.12'

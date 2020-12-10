@@ -2,7 +2,7 @@
   <div class="container d-flex">
     <div class="sign-in">
       <%= image_tag "logos/rdf_green.png", alt: "alttext", center: "mx-auto d-block" %>
-      <p>Inscrivez-vous pour accéder aux produits</p>
+      <p><%= t('.title') %></p>
 
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= f.error_notification %>
@@ -13,49 +13,50 @@
           <div class="d-flex name">
             <%= f.input :first_name,
                         label: false,
-                        placeholder: "Prénom"%>
+                        placeholder: t('.first_name')%>
             <%= f.input :last_name,
                         label: false,
-                        placeholder: "Nom"%>
+                        placeholder: t('.last_name')%>
           </div>
           <%= f.input :email,
                       label: false,
-                      placeholder: "Adresse email",
+                      placeholder: t('.email'),
                       required: true,
                       autofocus: true,
                       input_html: { autocomplete: "email" }%>
           <%= f.input :password,
                       label: false,
-                      placeholder: "Mot de passe",
+                      placeholder: t('.password'),
                       required: true,
                       input_html: { autocomplete: "new-password" } %>
           <%= f.input :password_confirmation,
                       label: false,
-                      placeholder: "Confirmer le mot de passe",
+                      placeholder: t('.confirmation'),
                       required: true,
                       input_html: { autocomplete: "new-password" } %>
           <%= f.input :address,
                       label: false,
-                      placeholder: "Rue et numéro"%>
+                      placeholder: t('.address')%>
 
           <div class="d-flex name">
             <%= f.input :zip_code,
                         label: false,
-                        placeholder: "Code postal"%>
+                        placeholder: t('.zip_code')%>
             <%= f.input :city,
                         label: false,
-                        placeholder: "Localité"%>
+                        placeholder: t('.city')%>
           </div>
+          <%= f.input :wants_to_subscribe_mailing_list, label: "Inscrivez vous à la newsletter", as: :boolean %>
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "SE CONNECTER" %>
+          <%= f.button :submit, t('.connection') %>
         </div>
       <% end %>
 
     </div>
   </div>
   <div class="container d-flex">
-    <p class = "already-account"><%= link_to "Vous avez déjà un compte ?", new_session_path(resource_name) %></p>
+    <p class = "already-account"><%= link_to t('.already_account'), new_session_path(resource_name) %></p>
   </div>
 </div>

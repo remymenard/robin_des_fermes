@@ -4,9 +4,10 @@
   border-radius: 5px;
 
   h2 {
-    font-size: 10px;
+    font-size: 10px !important;
     margin-right: 15px;
     font-weight: 600;
+    margin-top: 0px !important;
   }
 
   img {
@@ -24,4 +25,9 @@
 
 .mapboxgl-popup-content {
   text-align: center;
+}
+
+#map_show {
+  margin-top: 30px;
+  margin-bottom: 55px;
 }

@@ -5,9 +5,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
-  validates_format_of :zip_code, with: /[1-9]\d{3}/, allow_blank: true
-  
+  validates_format_of :zip_code, with: /\A[1-9]\d{3}\z/, allow_blank: true
+
   has_one_attached :photo
+
 
   TITLE = ['Mme', 'M']
 
@@ -16,4 +17,13 @@ class User < ApplicationRecord
   validates :address, presence: true
   validates :city, presence: true
   validates :title, presence: true
+
+  before_create :subscribe_user_to_mailing_list
+
+  private
+  def subscribe_user_to_mailing_list
+    if @wants_to_subscribe_mailing_list
+      Mailchimp::SubscribeToNewsletterService.new(self).call
+    end
+  end
 end
