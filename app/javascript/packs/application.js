@@ -25,10 +25,13 @@ require("channels")
 // External imports
 import "bootstrap";
 
+
 import { initMapbox } from '../plugins/init_mapbox';;
 import { initAutocomplete } from '../plugins/init_autocomplete';
+import { initAxeptio } from '../plugins/init_axeptio';
 
 document.addEventListener('turbolinks:load', () => {
+  initAutocomplete();
   initMapbox();
-  initAutocomplete()
+  initAxeptio();
 });

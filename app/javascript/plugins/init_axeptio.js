@@ -1,6 +1,6 @@
 const initAxeptio = () => {
   window.axeptioSettings = {
-    clientId: "5fca4e9fde1c8731d1892986",
+    clientId: process.env.AXEPTIO_CLIENT_ID,
     cookiesVersion: "robin_des_fermes-base",
   };
 
