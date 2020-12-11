@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "http://TODO_PUT_YOUR_DOMAIN_HERE" }
+  config.action_mailer.default_url_options = { host: "https://https://app-a38798ef-4d73-4bd1-b187-585f2c584033.cleverapps.io" }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
