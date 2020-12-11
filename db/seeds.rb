@@ -82,7 +82,7 @@ divers.photo.attach(
 
 
 user1 = User.create!(
-  email: "test@exemp.com",
+  email: "test@gra.app",
   password: "password",
   first_name: "henry",
   last_name: "Boucher",
@@ -98,7 +98,7 @@ user1.photo.attach(
 )
 
 user2 = User.create!(
-  email: "test@exemple.com",
+  email: "test2@gra.app",
   password: "password",
   first_name: "jonas",
   last_name: "Boucher",
