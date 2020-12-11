@@ -82,7 +82,7 @@ divers.photo.attach(
 
 
 user1 = User.create!(
-  email: "test@gra.app",
+  email: "postmaster@gra.app",
   password: "password",
   first_name: "henry",
   last_name: "Boucher",
@@ -94,21 +94,6 @@ user1 = User.create!(
 
 user1.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/users/user1.png')),
-  filename: 'seed-henry.png'
-)
-
-user2 = User.create!(
-  email: "test2@gra.app",
-  password: "password",
-  first_name: "jonas",
-  last_name: "Boucher",
-  address: "6 boulevard adolphe",
-  city: "nantes",
-  zip_code: "1200",
-  title: "M"
-)
-user2.photo.attach(
-  io: File.open(Rails.root.join('db/fixtures/users/user2.png')),
   filename: 'seed-henry.png'
 )
 
@@ -164,7 +149,7 @@ meleze.photos.attach(
 )
 
 file3 = File.open(Rails.root.join('db/fixtures/farms/farm3.png'))
-jonas = Farm.create!(name: "La Ferme de Jonas", user: user2, labels: ['bio'],
+jonas = Farm.create!(name: "La Ferme de Jonas", user: user1, labels: ['bio'],
   address: 'Bahnhofstrasse 67, 5000 Aarau ', opening_time: '8h-17h',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations. La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.",
   regions: ['5000', '5004', '5001'], accepts_take_away: false)
@@ -187,7 +172,7 @@ jonas.photos.attach(
 )
 
 file4 = File.open(Rails.root.join('db/fixtures/farms/farm1.png'))
-cave = Farm.create!(name: "La Cave de l'Abbatiale", user: user2, labels: ['bio'],
+cave = Farm.create!(name: "La Cave de l'Abbatiale", user: user1, labels: ['bio'],
   address: 'Rue de Carouge 22, 1205 Genève', opening_time: '8h-17h',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations. La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.",
   regions: ['1200', '1209', '1205'], accepts_take_away: false)
@@ -210,7 +195,7 @@ cave.photos.attach(
 )
 
 file5 = File.open(Rails.root.join('db/fixtures/farms/farm2.png'))
-gallien = Farm.create!(name: "Le Domaine du Gallien", user: user2, labels: ['bio'],
+gallien = Farm.create!(name: "Le Domaine du Gallien", user: user1, labels: ['bio'],
   address: 'Zollikerstrasse 788, 8008 Zurich', opening_time: '8h-17h',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations. La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.",
   regions: ['8008', '8001', '8005'], accepts_take_away: false)
