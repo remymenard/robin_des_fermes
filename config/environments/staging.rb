@@ -1,6 +1,6 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "localhost:3000" }
-  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.delivery_method   = :postmark
+  config.action_mailer.postmark_settings = { :api_key => ENV["c3fc6d36-8278-4c7e-8ae4-019e149f1b38"] }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
