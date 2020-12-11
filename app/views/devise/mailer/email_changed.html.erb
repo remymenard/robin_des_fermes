@@ -1,7 +1,7 @@
-<p><%= (I18n.t 'hello').capitalize %> <%= @email %>!</p>
+<p><%= t('.greeting', recipient: @email) %></p>
 
 <% if @resource.try(:unconfirmed_email?) %>
-  <p><%= I18n.t 'email.email_change.not_validated' %><%= @resource.unconfirmed_email %>.</p>
+  <p><%= t('.message', email: @resource.unconfirmed_email) %></p>
 <% else %>
-  <p><%= I18n.t 'email.email_change.validated' %><%= @resource.email %>.</p>
+  <p><%= t('.message', email: @resource.email) %></p>
 <% end %>

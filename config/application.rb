@@ -19,7 +19,7 @@ module RobinDesFermes
     I18n.config.enforce_available_locales = true
     I18n.config.available_locales = [:fr]
     I18n.default_locale = :fr
-
+    
     config.action_mailer.delivery_method = :postmark
 
     config.action_mailer.postmark_settings = {

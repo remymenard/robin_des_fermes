@@ -1,5 +1,7 @@
-<p><%= (I18n.t 'hello').capitalize %> <%= @resource.email %>!</p>
+<p><%= t('.greeting', recipient: @resource.email) %></p>
 
-<p><%= I18n.t 'email.account_locked.intro' %></p>
+<p><%= t('.message') %></p>
 
-<p><%= link_to I18n.t('email.account_locked.button'), unlock_url(@resource, unlock_token: @token) %></p>
+<p><%= t('.instruction') %></p>
+
+<p><%= link_to t('.action'), unlock_url(@resource, unlock_token: @token) %></p>

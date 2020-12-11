@@ -10,10 +10,10 @@
     "bootstrap": "^4.5.3",
     "i18n-js": "^3.8.0",
     "jquery": "^3.5.1",
+    "places.js": "^1.19.0",
     "mapbox-gl": "^1.13.0",
     "popper.js": "^1.16.1",
     "turbolinks": "^5.2.0",
-    "vue": "^2.6.12",
     "rails-erb-loader": "^5.5.2",
     "sweetalert2": "^10.10.2"
   },

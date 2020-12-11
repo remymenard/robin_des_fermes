@@ -1,5 +1,5 @@
-<p><%= (I18n.t 'hello').capitalize %> <%= @email %>!</p>
+<p><%= t('.greeting', recipient: @email) %></p>
 
-<p><%= I18n.t 'email.account_confirmation.intro' %></p>
+<p><%= t('.instruction') %></p>
 
-<p><%= link_to I18n.t('email.account_confirmation.button'), confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= link_to t('.action'), confirmation_url(@resource, confirmation_token: @token) %></p>

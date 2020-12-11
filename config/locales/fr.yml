@@ -1,4 +1,85 @@
 fr:
+  pages:
+    home:
+      search_placeholder: "Où habitez-vous ?"
+      search_btn: "RECHERCHER"
+      title: "La vente directe, droit dans le mille"
+      sub_title: "Trouve le produit ou l'exploitation de ton choix, commande en quelques clics, paie en ligne et déguste ta victoire : quand c'est juste, c'est encore meilleur!"
+      products: "Du blé, des radis, de l'oseille : les bons produits au juste prix !"
+      viandes: "Viandes"
+      poissons: "Poissons"
+      laitiers: "Produits laitiers"
+      farms: "Et pour ces bons produits, on dit merci à qui ?"
+      presentations_title: "Oyez, oyez, producteurs, rejoignez-nous !"
+      sell: "Vendez vos produits en ligne"
+      presentation: "Présentez votre exploitation"
+      community: "Elargissez votre communauté"
+    cgv:
+      title: "CONDITIONS GENERALES DE VENTES"
+      sub_title: "Lorem is simply dummy text of the printing and typesetting indust."
+      first_paragraph: "Lorem is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+      second_paragraph: "Lorem is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+      third_paragraph: "Lorem is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+      paragraph_title1: "Lorem is simply dummy text of the printing and typesetting indust."
+      paragraph_title2: "Lorem is simply dummy text of the printing and typesetting indust."
+    faq:
+      faq: "FAQ"
+      question1: "1. Lorem Ipsum is simply dummy text ?"
+      reponse1: "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS."
+      reponse2: "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS."
+      reponse3: "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS."
+      reponse4: "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS."
+      reponse5: "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS."
+      reponse6: "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS."
+      reponse7: "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS."
+      reponse8: "Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS."
+      question2: "2. Lorem Ipsum is simply dummy text ?"
+      question3: "3. Lorem Ipsum is simply dummy text ?"
+      question4: "4. Lorem Ipsum is simply dummy text ?"
+      question5: "5. Lorem Ipsum is simply dummy text ?"
+      question6: "6. Lorem Ipsum is simply dummy text ?"
+      question7: "7. Lorem Ipsum is simply dummy text ?"
+      question8: "8. Lorem Ipsum is simply dummy text ?"
+  farms:
+    index:
+      search: "Recherche : "
+      labels: "Labels : "
+      categories: "Catégories : "
+      number_sells: "Nombre de ventes : "
+      date: "Adhérents RDF depuis : "
+      adress: "Adresse : "
+      open: "Ouvertures : "
+    show:
+      near: "Zone proche"
+      delivery: "Livraison"
+      about: "A propos"
+      description: '%{description}'
+      number_sells: "Nombre de ventes : "
+      adherent: "Adhérents RDF depuis : "
+      category: '%{name}'
+      product: '%{name}'
+      take_away: "Retrait à la ferme"
+      free: "Gratuit"
+      far: "Zone éloignée"
+      self_service: 'Self-service'
+      location: "Emplacement"
+      date:
+        day_names: [Dimanche, Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi]
+  shared:
+    navbar:
+      log_in_href: "Me Connecter"
+      log_out_href: "Me Déconnecter"
+    footer:
+      informations: "Informations"
+      delivery: "Livraison"
+      payment: "Mode de paiement"
+      faq: "FAQ"
+      cgv: "CGV"
+      about: "A propos"
+      contact: "Contact"
+      list: "Liste des producteurs"
+      contact_us: "Contactez-nous"
+      find_us: "Retrouvez-nous"
   hello: "bonjour"
   zip_code:
     title: "Code postal"
@@ -9,18 +90,43 @@ fr:
     error: "Il y a eu une erreur avec votre paiement."
     cancel: "Votre paiement a été annulé."
     success: "Votre paiement a été effectué avec succès."
-  email:
-    account_confirmation:
-      intro: "Vous pouvez valider votre compte en cliquant sur le lien ci-dessous : "
-      button: "Valider mon compte"
-    account_locked:
-      intro: "Votre compte a été bloqué suite à un nombre de tentative de connections excessif. Cliquez sur le lien ci-dessous pour le débloquer"
-      button: "Débloquer mon compte"
-    email_change:
-      not_validated: "Nous vous contactons pour vous dire que votre compte est en train d'être changé à : "
-      validated: "Nous vous contactons pour vous dire que votre compte a été changé à : "
-    password_reset:
-      intro: "Vous avez demandé à réinitialiser votre mot de passe. Cliquez sur le lien ci-dessous pour lancer la réinitialisation."
-      button: 'Changer mon mot de passe'
-      footer: "Si vous n'avez pas demandé cette réinitialisaiton, ignorez ce mail, votre mot de passe ne sera alors pas changé."
-      confirmation: "Votre mot de passe a été bien été changé."
+  products:
+    show:
+      name: '%{name}'
+      description: "Description : "
+      product: '%{description}'
+      product_ingredient: '%{ingredients}'
+      ingredients: "Ingrédients : "
+      category: "Catégorie : "
+      label: "Label : "
+      price: "Prix a l'unité"
+      producer: "Producteur : "
+      exploitation: "Exploitation : "
+      near: "Zone proche"
+      take_away: "Retrait à la ferme"
+      free: "Gratuit"
+      far: "Zone éloignée"
+  devise:
+    sessions:
+      new:
+        title: "Connectez-vous pour accéder à votre compte"
+        email: "Adresse email"
+        password: "Mot de passe"
+        stay_connected: "Rester connecté"
+        connection: "Se connecter"
+        forget: "Mot de passe oublié ?"
+        join: "Envie de nous rejoindre ?"
+        new_account: "Créer un compte"
+    registrations:
+      new:
+        title: "Inscrivez-vous pour accéder aux produits"
+        first_name: "Prénom"
+        last_name: "Nom"
+        email: "Adresse email"
+        password: "Mot de passe"
+        confirmation: "Confirmer le mot de passe"
+        address: "Rue et numéro"
+        zip_code: "Code postal"
+        city: "Localité"
+        connection: "SE CONNECTER"
+        already_account: "Vous avez déjà un compte ?"
