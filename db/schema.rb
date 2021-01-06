@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_06_122922) do
+ActiveRecord::Schema.define(version: 2021_01_06_123527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,14 @@ ActiveRecord::Schema.define(version: 2021_01_06_122922) do
     t.index ["farm_id"], name: "index_opening_hours_on_farm_id"
   end
 
+  create_table "order_line_items", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "product_id", null: false
+    t.integer "quantity", default: 1
+    t.index ["order_id"], name: "index_order_line_items_on_order_id"
+    t.index ["product_id"], name: "index_order_line_items_on_product_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "CHF", null: false
@@ -154,6 +162,8 @@ ActiveRecord::Schema.define(version: 2021_01_06_122922) do
   add_foreign_key "farm_categories", "farms"
   add_foreign_key "farms", "users"
   add_foreign_key "opening_hours", "farms"
+  add_foreign_key "order_line_items", "orders"
+  add_foreign_key "order_line_items", "products"
   add_foreign_key "orders", "users", column: "buyer_id"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "farms"
