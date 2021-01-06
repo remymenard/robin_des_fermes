@@ -182,3 +182,9 @@
     }
   }
 }
+
+@media screen and (max-width: 990px) {
+  .food {
+    flex-direction: column-reverse !important;
+  }
+}
