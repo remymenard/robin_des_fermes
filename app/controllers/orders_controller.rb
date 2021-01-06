@@ -3,6 +3,8 @@ class OrdersController < ApplicationController
   def create
     order = Order.create!(price_cents: 700, buyer: current_user, seller: User.first)
     redirect_to new_order_payment_path order
+
+    authorize @order
   end
 
   def show
@@ -13,5 +15,7 @@ class OrdersController < ApplicationController
       flash[:alert] = "You are not authorized to view this order."
       return redirect_to root_path
     end
+
+    authorize @order
   end
 end
