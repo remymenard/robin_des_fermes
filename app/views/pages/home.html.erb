@@ -2,7 +2,7 @@
   <div class="banner" >
     <div class="container ">
       <h2><%= t('.title') %></h2>
-      <p><%= t('.sub_title') %></p>
+      <p><%= t('.sub_title1') %> <strong><%= t('.sub_title_bold1') %></strong><%= t('.sub_title2') %><strong><%= t('.sub_title_bold2') %></strong><%= t('.sub_title3') %><strong><%= t('.sub_title_bold3') %></strong><%= t('.sub_title4') %><strong><%= t('.sub_title_bold4') %></strong><%= t('.sub_title5') %></p>
       <%= form_tag farms_path, method: :get, id: "farm-search-form", class: 'form-inline search' do %>
         <%= text_field_tag :zip, get_zip_code_number, readonly: true, class: 'form-control search', id: "zip_code_input", placeholder: "Où habitez-vous ?" %>
         <%= submit_tag "RECHERCHER", class: "btn", name: nil %>
