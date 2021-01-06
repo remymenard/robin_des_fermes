@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
     order = Order.create!(price_cents: 700, buyer: current_user, seller: User.first)
     redirect_to new_order_payment_path order
 
-    authorize @order
+    authorize order
   end
 
   def show

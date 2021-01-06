@@ -19,6 +19,8 @@ module Webhooks
         else
           # TODO LATER: handle non happy paths
         end
+
+        authorize order
       end
 
       private
