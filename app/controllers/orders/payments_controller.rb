@@ -10,6 +10,8 @@ module Orders
       ).call
 
       @transaction_id = @order.transaction_id
+
+      authorize @order
     end
 
     private
