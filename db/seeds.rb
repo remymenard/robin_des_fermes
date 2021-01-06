@@ -86,7 +86,7 @@ user1 = User.create!(
   password: "password",
   first_name: "henry",
   last_name: "Boucher",
-  address: "6 boulevard adolphe",
+  address_line_1: "6 boulevard adolphe",
   city: "nantes",
   zip_code: "1200",
   title: "M"
