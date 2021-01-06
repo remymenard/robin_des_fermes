@@ -17,29 +17,44 @@
   <div class="container">
     <div class="home-category">
 
-      <h2><%= t('.products') %></h2>
+      <div class="food d-flex">
 
-      <div class="food">
         <div>
-          <%= link_to farms_path(category: "Viande & Volaille"), class: "navbar-brand" do %>
+          <div>
             <%= image_tag "categories/meat.png", alt: "Viande" %>
-            <p><%= t('.viandes') %></p>
-          <% end %>
-        </div>
+            <h6><%= t('.viandes') %></h6>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. A tortor ut morbi ornare sit quam tortor, sit. Quam dignissim morbi tincidunt neque. </p>
+            <%= link_to farms_path(category: "Viande & Volaille"), class: "navbar-brand d-flex" do %>
+              <%= image_tag "categories/line.png", alt: "line" %>
+              <p>DÉCOUVRIR LES VIANDES</p>
+            <% end %>
+          </div>
 
-        <div>
-          <%= link_to farms_path(category: "Poisson"), class: "navbar-brand" do %>
-            <%= image_tag "categories/fish.png", alt: "Poisson" %>
-            <p><%= t('.poissons') %></p>
-          <% end %>
-        </div>
-
-        <div>
-          <%= link_to farms_path(category: "Produits Laitiers"), class: "navbar-brand" do %>
+          <div>
             <%= image_tag "categories/milk.png", alt: "Lait" %>
-            <p><%= t('.laitiers') %></p>
-          <% end %>
+            <h6><%= t('.laitiers') %></h6>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. A tortor ut morbi ornare sit quam tortor, sit. Quam dignissim morbi tincidunt neque. </p>
+            <%= link_to farms_path(category: "Produits Laitiers"), class: "navbar-brand d-flex" do %>
+              <%= image_tag "categories/line.png", alt: "line" %>
+              <p>DÉCOUVRIR LES PRODUITS LAITIERS</p>
+            <% end %>
+          </div>
         </div>
+
+        <div>
+          <h2><%= t('.products') %></h2>
+
+          <div>
+            <%= image_tag "categories/fish.png", alt: "Vin" %>
+            <h6><%= t('.vins') %></h6>
+            <p>Tu aimes la bonne vinaille ? Retrouve nos vignerons </p>
+            <%= link_to farms_path(category: "Vin"), class: "navbar-brand d-flex" do %>
+              <%= image_tag "categories/line.png", alt: "line" %>
+              <p> DÉCOUVRIR LES VINS</p>
+            <% end %>
+          </div>
+        </div>
+
       </div>
 
     </div>

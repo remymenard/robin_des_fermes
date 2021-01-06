@@ -14,9 +14,14 @@
 @import "components/index";
 @import "pages/index";
 
-body, h1, h2, p {
+body, h1, h6, p {
   font-family: 'Mulish', sans-serif;
 }
+
+body, h2 {
+  font-family: 'BioRhyme', serif;
+}
+
 
 html {
   height: 100%;
