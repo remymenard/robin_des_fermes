@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/custombox/4.0.3/custombox.min.css" integrity="sha512-PM9ifWpnonqOGgdRGVGrqhgE8+tca/Rbgpx9VtNNR8BGCsWfT89Ccf1ooVNzQo7JDsIsZYp2SnXH+dSvuQdbrA==" crossorigin="anonymous" />
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "logos/rdf_white_line.png", class: "logo-robin-des-ferme" %>
@@ -39,6 +40,13 @@
       </li>
     </ul>
   </div>
+<div id="basket">
+<div id="header">
+  <span id="title"><%= t "basket.title" %></span>
+  <div id="cross"><%= image_tag "icons/cross.png", alt: "close" %></div>
+</div>
+</div>
 </div>
 
 <%= javascript_pack_tag 'zipCode' %>
+<%= javascript_pack_tag 'basket' %>

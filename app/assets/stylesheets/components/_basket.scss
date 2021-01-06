@@ -1,0 +1,39 @@
+#basket {
+  min-width: 600px;
+  min-height: 200px;
+  background-color: white;
+  display: none;
+  #header {
+    background-color: #F0ECE8;
+    min-height: 64px;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    align-items: center;
+  }
+  #title {
+    font-family: 'BioRhyme', serif;
+    position: absolute;
+    flex: 0 1 auto;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-left: 50px;
+    color: #6C5C5C;
+    @include small {
+      margin-left: 0px;
+      font-size: 30px;
+    }
+  }
+  #cross {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 1 auto;
+    width: 100px;
+    height: 19px;
+    @include small {
+      height: 31px;
+    }
+    margin-left: auto;
+  }
+}
