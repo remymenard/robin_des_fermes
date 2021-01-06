@@ -1,5 +1,8 @@
 #basket {
-  min-width: 600px;
+  width: 100%;
+  @include small {
+    width: 600px;
+  }
   min-height: 200px;
   background-color: white;
   display: none;
@@ -10,6 +13,8 @@
     justify-content: flex-start;
     position: relative;
     align-items: center;
+    border-bottom: 1px solid #dee2e6;
+
   }
   #title {
     font-family: 'BioRhyme', serif;
@@ -17,11 +22,9 @@
     flex: 0 1 auto;
     left: 50%;
     transform: translateX(-50%);
-    margin-left: 50px;
     color: #6C5C5C;
     @include small {
-      margin-left: 0px;
-      font-size: 30px;
+      font-size: 20px;
     }
   }
   #cross {
@@ -30,10 +33,74 @@
     align-items: center;
     flex: 0 1 auto;
     width: 100px;
-    height: 19px;
-    @include small {
-      height: 31px;
+    img {
+      height: 19px;
+      @include small {
+        height: 27px;
+      }
     }
+
+
     margin-left: auto;
+  }
+  #content {
+    .col {
+      min-width: 50%;
+      padding: 0;
+    }
+    padding-top: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+    .product-image {
+      height: 70px;
+      width: 70px;
+      @include small {
+        height: 90px;
+        width: 90px;
+      }
+      border-radius: 10px;
+    }
+    .product-infos {
+      display: inline-flex;
+      width: 80%;
+      padding: 10px;
+      .product-title {
+        color: #25201D;
+        font-family: 'BioRhyme', serif;
+        font-size: 17px;
+        @include small {
+          font-size: 25px;
+        }
+      }
+      .price {
+        font-family: 'Mulish', sans-serif;
+        font-size: 28px;
+        @include small {
+          font-size: 36px;
+        }
+        color: #33B084;
+        display: inline-block;
+      }
+      .currency {
+        font-family: 'Mulish', sans-serif;
+        font-size: 13px;
+        @include small {
+          font-size: 18px;
+        }
+        color: #33B084;
+        display: inline-block;
+        vertical-align: super;
+      }
+      .remove {
+        font-size: 13px;
+        @include small {
+          font-size: 17px;
+        }
+        color: #898989;
+        opacity: 0.4;
+      }
+    }
   }
 }

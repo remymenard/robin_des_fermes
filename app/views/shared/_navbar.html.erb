@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/custombox/4.0.3/custombox.min.css" integrity="sha512-PM9ifWpnonqOGgdRGVGrqhgE8+tca/Rbgpx9VtNNR8BGCsWfT89Ccf1ooVNzQo7JDsIsZYp2SnXH+dSvuQdbrA==" crossorigin="anonymous" />
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "logos/rdf_white_line.png", class: "logo-robin-des-ferme" %>
@@ -36,7 +35,6 @@
       <li class="nav-item dropdown d-flex">
         <p class="price"> 00.00 CHF</p>
         <%= image_tag "icons/bag.png", class: "noun-bag dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-
       </li>
     </ul>
   </div>
@@ -44,6 +42,31 @@
 <div id="header">
   <span id="title"><%= t "basket.title" %></span>
   <div id="cross"><%= image_tag "icons/cross.png", alt: "close" %></div>
+</div>
+<div id="content">
+  <%= cl_image_tag Product.first.photo.key, class: "product-image" %>
+  <div class="product-infos">
+  <div class="container">
+  <div class="row justify-content-between align-items-center">
+    <div class="col">
+    <div class="product-title">
+      Viande
+    </div>
+    </div>
+    <div class="col text-right">
+      <div class="price">30</div><div class="currency">CHF</div>
+    </div>
+  </div>
+  <div class="row justify-content-between align-items-center">
+    <div class="col"></div>
+    <div class="col text-right">
+    <div class="remove">
+      Supprimer
+    </div>
+    </div>
+  </div>
+  </div>
+</div>
 </div>
 </div>
 </div>
