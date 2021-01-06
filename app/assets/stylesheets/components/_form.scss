@@ -1,6 +1,5 @@
 .sign {
   background-color: #FAF0E1;
-  height: 100vh;
 
   .container {
     justify-content: center;
@@ -18,12 +17,13 @@
 
     .sign-in {
       width: 570px;
-      height: 691px;
+      min-height: 691px;
       background-color: white;
       margin-top: 50px;
       border-radius: 10px;
       box-shadow: 2px 0 5px -2px gray, -2px 0 5px -2px gray, 0 5px 5px -2px gray,  ;
       padding-top: 32px;
+      padding-bottom: 10px;
     }
 
     .name {
@@ -113,6 +113,7 @@
         border-radius: 8px;
         color: white;
         font-size: 18px;
+        margin-bottom: 30px;
       }
     }
 
@@ -149,7 +150,6 @@
     }
 
     .already-account {
-      margin-bottom: 40px;
 
       a {
         font-size: 20px;
