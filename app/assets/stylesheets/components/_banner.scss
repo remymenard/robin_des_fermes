@@ -12,7 +12,7 @@
     font-size: 54px;
     max-width: 582px;
     font-family: 'BioRhyme', serif;
-    padding-top: 82px;
+    padding-top: 15vh;
   }
 
   p {
@@ -26,25 +26,31 @@
   }
 
   .search {
-    padding-top: 10px;
+    padding-top: 34px;
     justify-content: center;
 
     .btn {
-      background-color: #007C50!important;
+      background-color: #33B084!important;
       color: white;
       font-weight: 300;
       font-size: 14px;
-      height: 60px;
+      height: 53px;
       border-radius: 0px 10px 10px 0px;
-      width: 152px;
+      width: 329px;
+      font-family: 600;
+      letter-spacing: 2.5px;
+      line-height: 24px;
     }
 
     .form-control {
-      color: black !important;
+      padding-top: 0px;
+      color: #7C7977 !important;
       text-align: center;
-      height: 60px;
+      height: 53px;
       border-radius: 10px 0px 0px 10px;
-      width: 218px;
+      border-color: #F0ECE8;
+      width: 270px;
+      background-color: white;
     }
   }
 
