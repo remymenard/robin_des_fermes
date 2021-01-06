@@ -8,7 +8,6 @@ class Order < ApplicationRecord
   }
   validates :status, inclusion: { in: ["paid", "waiting"] }
   validates :buyer_id, presence: true
-  validates :seller_id, presence: true
 
   DATATRANS_TRANSACTION_ORDER_STATUSES_MAPPING = {
     # status datatrans transaction => status order
