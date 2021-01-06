@@ -41,7 +41,7 @@
         </div>
 
         <div class="d-flex one-information">
-          <h6><%= t('.price') %></h6><p> <%= @product.unit_price  %> </p>
+          <h6><%= t('.price') %></h6><p> <%= @product.price_cents * 100 %> </p>
         </div>
 
         <div class="d-flex one-information">
