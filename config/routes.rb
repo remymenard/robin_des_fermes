@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {confirmations: 'users/confirmations', registrations: 'users/registrations', sessions: 'users/sessions'}
   scope '(:locale)', locale: /fr/ do
     root to: 'pages#home'
     get 'faq', :to => 'pages#faq'
