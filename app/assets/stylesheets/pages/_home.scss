@@ -108,5 +108,17 @@
 @media screen and (max-width: 990px) {
   .food {
     flex-direction: column-reverse !important;
+    align-items: center !important;
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .cards-rdf {
+    flex-direction: column !important;
+    align-items: center !important;
+
+    .card-rdf {
+      margin-top: 30px;
+    }
   }
 }
