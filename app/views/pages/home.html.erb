@@ -110,8 +110,6 @@
 
           <p><%= farm.products.count  %> <%= t('.products_number') %> </p>
 
-          <p><%= t('.categories') %> </p>
-
           <% farm.categories.each do |category| %>
             <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
           <% end %>
