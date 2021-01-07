@@ -33,6 +33,11 @@ fr:
       know_more: "EN SAVOIR PLUS"
       best_farms: "Lorem ipsum meilleures fermes ?"
       products_number: "produits"
+      openning: '%{openning}'
+      testimony_title: "Ils en parlent pour nous !"
+      testimony1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget donec interdum porta velit mi non suspendisse. "
+      testimony2: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget donec interdum porta velit mi non suspendisse. "
+      testimony3: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget donec interdum porta velit mi non suspendisse. "
     cgv:
       title: "CONDITIONS GENERALES DE VENTES"
       sub_title: "Lorem is simply dummy text of the printing and typesetting indust."

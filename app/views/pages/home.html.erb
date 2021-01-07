@@ -117,7 +117,7 @@
                 <%end%>
               </div>
 
-              <p class="openning"><%= farm.opening_time  %></p>
+              <p class="openning"><%= t('.openning', openning: farm.opening_time) %></p>
 
               <p class="products-number"><%= farm.products.count  %> <%= t('.products_number') %> </p>
 
@@ -128,7 +128,6 @@
               </div>
 
               <div class="categories"></div>
-
             </div>
 
           </div>
@@ -136,6 +135,37 @@
         <% end %>
       </div>
 
+    </div>
+  </div>
+
+  <div class="contaire">
+
+    <div class="testimonials">
+      <h2><%= t('.testimony_title') %></h2>
+
+      <div class="d-flex">
+
+        <div class="testimony">
+          <p> <%= t('.testimony1') %></p>
+          <%= image_tag "testimony/testimony", alt: "alttext" %>
+          <p>John Doe</p>
+          <p>Lorem ipsum</p>
+        </div>
+
+        <div class="testimony">
+          <p> <%= t('.testimony2') %></p>
+          <%= image_tag "testimony/testimony2", alt: "alttext" %>
+          <p>John Doe</p>
+          <p>Lorem ipsum</p>
+        </div>
+
+        <div class="testimony">
+          <p> <%= t('.testimony3') %></p>
+          <%= image_tag "testimony/testimony3", alt: "alttext" %>
+          <p>John Doe</p>
+          <p>Lorem ipsum</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
