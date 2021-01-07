@@ -11,9 +11,6 @@
     </div>
   </div>
 
-  <div class="vector">
-
-  </div>
   <div class="container">
     <div class="home-category">
 
@@ -53,94 +50,6 @@
               <p> DÉCOUVRIR LES VINS</p>
             <% end %>
           </div>
-        </div>
-
-      </div>
-
-    </div>
-
-
-  </div>
-  <div class="low-vector"></div>
-
-
-  <div class="home-farms">
-    <div class="container">
-
-      <h2><%= t('.farms') %></h2>
-
-      <div>
-        <div class="row">
-          <div class="col col-lg-6 ">
-
-            <div class="first-photo">
-
-              <div>
-              <% if @highlighted_farm.present? %>
-                <%= link_to farm_path(@highlighted_farm) do %>
-                  <%= cl_image_tag(@highlighted_farm.photos.first.key, height: 474, width: 570, crop: :fill)  %>
-                <% end %>
-              <% end %>
-              </div>
-
-
-              <div class = "name">
-              <% if @farms.present? %>
-              <p><%= @farms.first.name %></p>
-              <% end %>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="col col-lg-6">
-
-            <div class="all-photo">
-            <% if @other_farms.present? %>
-
-              <% @other_farms.each do |farm|  %>
-
-                <div class="photo">
-
-                  <%= link_to farm_path(farm) do %>
-                    <%= cl_image_tag(farm.photos.first.key, height: 222, width: 270, crop: :fill )%>
-                  <% end %>
-                  <p><%= farm.name %></p>
-
-                </div>
-              <% end %>
-            <% end %>
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="vector"></div>
-
-  <div class="container">
-    <div class="rdf-presentation">
-      <h2><%= t('.presentations_title') %> </h2>
-
-      <div class = "row">
-
-        <div>
-          <%= image_tag "home/sell.png", alt: "alttext" %>
-          <p><%= t('.sell') %></p>
-        </div>
-
-        <div>
-          <%= image_tag "home/presentation.png", alt: "alttext" %>
-          <p><%= t('.presentation') %></p>
-        </div>
-
-        <div>
-          <%= image_tag "home/community.png", alt: "alttext" %>
-          <p><%= t('.community') %></p>
         </div>
 
       </div>

@@ -1,12 +1,6 @@
 // Specific CSS for your home-page
 .home {
 
-  .vector {
-    background-image: image-url('Vector.png');
-    height: 37.99px;
-    margin-top: -38px;
-  }
-
   .low-vector {
     background-image: image-url('low-vector.png');
     height: 20px;
@@ -34,6 +28,7 @@
 
     .food {
       justify-content: space-between;
+      margin-top: 50px;
 
       h6{
         padding-top: 30px;
