@@ -6,10 +6,12 @@
   align-items: center;
   justify-content: space-between;
   padding: 0px 50px;
-  color: #FAF0E1;
   font-weight: 300;
   font-size: 14px;
 
+  p {
+    color: #FAF0E1 !important;
+  }
   .row {
     justify-content: space-between;
     min-width: 300px;

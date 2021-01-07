@@ -20,20 +20,20 @@
           <div>
             <%= image_tag "categories/meat.png", alt: "Viande" %>
             <h6><%= t('.viandes') %></h6>
-            <p><%= t('.paragraph-meat') %> </p>
+            <p><%= t('.paragraph_meat') %> </p>
             <%= link_to farms_path(category: "Viande & Volaille"), class: "navbar-brand d-flex" do %>
               <%= image_tag "categories/line.png", alt: "line" %>
-              <p><%= t('.discover-meat') %> </p>
+              <p><%= t('.discover_meat') %> </p>
             <% end %>
           </div>
 
           <div>
             <%= image_tag "categories/milk.png", alt: "Lait" %>
             <h6><%= t('.laitiers') %></h6>
-            <p><%= t('.paragraph-milk') %> </p>
+            <p><%= t('.paragraph_milk') %> </p>
             <%= link_to farms_path(category: "Produits Laitiers"), class: "navbar-brand d-flex" do %>
               <%= image_tag "categories/line.png", alt: "line" %>
-              <p><%= t('.discover-milk') %> </p>
+              <p><%= t('.discover_milk') %> </p>
             <% end %>
           </div>
         </div>
@@ -44,10 +44,10 @@
           <div>
             <%= image_tag "categories/fish.png", alt: "Vin" %>
             <h6><%= t('.vins') %></h6>
-            <p><%= t('.paragraph-wine') %> </p>
+            <p><%= t('.paragraph_wine') %> </p>
             <%= link_to farms_path(category: "Vin"), class: "navbar-brand d-flex" do %>
               <%= image_tag "categories/line.png", alt: "line" %>
-              <p><%= t('.discover-wine') %> </p>
+              <p><%= t('.discover_wine') %> </p>
             <% end %>
           </div>
         </div>
@@ -57,28 +57,30 @@
     </div>
 
     <div class="rdf-presentation">
-      <h2><%= t('.title-rdf') %></h2>
+      <h2><%= t('.title_rdf') %></h2>
 
       <div class="d-flex cards-rdf">
 
         <div class="card-rdf">
           <%= image_tag "home/rdf-presentation.png", alt: "rdf" %>
           <h6><%= t('.find') %></h6>
-          <p><%= t('.find-paragraph') %></p>
+          <p><%= t('.find_paragraph') %></p>
         </div>
 
         <div class="card-rdf">
           <%= image_tag "home/rdf-presentation.png", alt: "rdf" %>
           <h6><%= t('.ordered') %></h6>
-          <p><%= t('.ordered-paragraph') %></p>
+          <p><%= t('.ordered_paragraph') %></p>
         </div>
 
         <div class="card-rdf">
           <%= image_tag "home/rdf-presentation.png", alt: "rdf" %>
           <h6><%= t('.taste') %></h6>
-          <p><%= t('.taste-paragraph') %></p>
+          <p><%= t('.taste_paragraph') %></p>
         </div>
       </div>
+
+      <%= link_to t(".know_more"), root_path, class: "btn"%>
     </div>
 
   </div>
