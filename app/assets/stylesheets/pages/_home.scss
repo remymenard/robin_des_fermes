@@ -115,13 +115,19 @@
       width: 226px;
       letter-spacing: 2.5px;
       line-height: 43px;
-      margin-bottom: 50px;
+      margin-bottom: 90px;
     }
   }
 
   .best-farms {
     background-color: #EFF2EA;
     text-align: center;
+    padding-top: 110px;
+    padding-bottom: 90px;
+
+    h2 {
+      padding-bottom: 50px;
+    }
   }
 }
 

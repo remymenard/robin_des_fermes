@@ -89,30 +89,49 @@
     <div class="container">
       <h2><%= t('.best_farms') %></h2>
 
-      <div class="cards">
+      <div class="cards ">
         <% @farms.take(4).each do |farm| %>
 
-          <%= link_to farm_path(farm) do  %>
-            <%= cl_image_tag(farm.photos.first.key, height: 192, width: 192, crop: :fill, class: "photo-farm") %>
-          <% end %>
+          <div class="card-product d-flex">
 
-          <p><%= farm.address  %></p>
-
-          <h6> <%= farm.name  %></h6>
-
-          <% farm.labels.each do |label| %>
-            <div class='label'>
-              <%= image_tag "labels/#{label}-label.png", class: "label" %>
+            <div class="photo-farm">
+              <%= link_to farm_path(farm) do  %>
+                <%= cl_image_tag(farm.photos.first.key, height: 192, width: 192, crop: :fill, class: "photo-farm") %>
+              <% end %>
             </div>
-          <%end%>
 
-          <p><%= farm.opening_time  %></p>
+            <div class="informations">
 
-          <p><%= farm.products.count  %> <%= t('.products_number') %> </p>
+              <div class="d-flex address">
+                <%= image_tag "icons/marker_cards_farms", class: "marker" %>
+                <p><%= farm.address.upcase  %></p>
+              </div>
 
-          <% farm.categories.each do |category| %>
-            <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
-          <% end %>
+              <div class="name d-flex">
+                <h6> <%= farm.name  %></h6>
+
+                <% farm.labels.each do |label| %>
+                  <div class='label'>
+                    <%= image_tag "labels/#{label}-label.png", class: "label" %>
+                  </div>
+                <%end%>
+              </div>
+
+              <p class="openning"><%= farm.opening_time  %></p>
+
+              <p class="products-number"><%= farm.products.count  %> <%= t('.products_number') %> </p>
+
+              <div class="all-photos d-flex">
+                <% farm.categories.each_with_index do |category, index| %>
+                  <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
+                <% end %>
+              </div>
+
+              <div class="categories"></div>
+
+            </div>
+
+          </div>
 
         <% end %>
       </div>
