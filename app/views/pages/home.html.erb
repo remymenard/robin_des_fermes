@@ -93,7 +93,7 @@
         <% @farms.take(4).each do |farm| %>
 
           <%= link_to farm_path(farm) do  %>
-            <%= cl_image_tag(farm.photos.first.key, height: 209, width: 207, crop: :fill, class: "photo-farm") %>
+            <%= cl_image_tag(farm.photos.first.key, height: 192, width: 192, crop: :fill, class: "photo-farm") %>
           <% end %>
 
           <p><%= farm.address  %></p>
