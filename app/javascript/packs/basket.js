@@ -6,8 +6,8 @@ $(() => {
     // Instantiate new modal
     var modal = new box.modal({
       content: {
-        speedIn: 120,
-        speedOut: 120,
+        speedIn: 100,
+        speedOut: 90,
         effect: 'blur',
         target: '#basket',
         positionX: 'right',
@@ -23,7 +23,8 @@ $(() => {
     e.preventDefault();
   });
 
-  $('#cross').on('click', () => {
+  $('#cross').on('click', (e) => {
     box.modal.close();
+    e.preventDefault();
   })
 });

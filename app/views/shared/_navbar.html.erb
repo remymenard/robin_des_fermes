@@ -2,17 +2,13 @@
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "logos/rdf_white_line.png", class: "logo-robin-des-ferme" %>
   <% end %>
-
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
   <!-- zip code messages -->
   <div id="zip_code_messages" data-title="<%= t('zip_code.title') %>" data-description="<%= t('zip_code.description') %>" data-login="<%= t('zip_code.login') %>" data-error="<%= t('zip_code.error') %>" %></div>
-
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-
       <% if user_signed_in? %>
         <li class="nav-item active">
           <%= link_to t(".log_out_href"), destroy_user_session_path, method: :delete, class: "btn" %>
@@ -22,15 +18,13 @@
           <%= link_to t(".log_in_href"), new_user_session_path, class: "btn" %>
         </li>
       <% end %>
-
       <li class="nav-item ">
         <div data-signedin?="<%= user_signed_in? %>" data-login_path="<%= new_user_session_path %>" data-set_zip_code_path="<%= users_zip_code_path %>" data-token="<%= form_authenticity_token %>" class="zip_code d-flex navbar-brand btn location">
-            <%= image_tag 'icons/map_marker.png' %>
-            <%= render 'shared/zip_code_div' %>
+          <%= image_tag 'icons/map_marker.png' %>
+          <%= render 'shared/zip_code_div' %>
         </div>
       </li>
       <li>
-
       </li>
       <li class="nav-item dropdown d-flex">
         <p class="price"> 00.00 CHF</p>
@@ -38,38 +32,94 @@
       </li>
     </ul>
   </div>
-<div id="basket">
-<div id="header">
-  <span id="title"><%= t "basket.title" %></span>
-  <div id="cross"><%= image_tag "icons/cross.png", alt: "close" %></div>
-</div>
-<div id="content">
-  <%= cl_image_tag Product.first.photo.key, class: "product-image" %>
-  <div class="product-infos">
-  <div class="container">
-  <div class="row justify-content-between align-items-center">
-    <div class="col">
-    <div class="product-title">
-      Viande
+  <div id="basket">
+    <div id="header">
+      <span id="title"><%= t "basket.title" %></span>
+      <a href="" id="cross"><%= image_tag "icons/cross.png", alt: "close" %></a>
     </div>
+    <div id="product">
+      <%= cl_image_tag Product.first.photo.key, class: "product-image" %>
+      <div class="product-infos">
+        <div class="left-column">
+          <div class="product-title">
+            Viande
+          </div>
+          <div class="infos">
+            250g
+          </div>
+          <div>
+            <div class="counter">
+              <%= image_tag 'icons/remove_item.png', class: "icons" %>
+              <div class="item-count">
+                3
+              </div>
+              <%= image_tag 'icons/add_item.png', class: "icons" %>
+            </div>
+          </div>
+        </div>
+        <div class="right-column">
+          <div class="d-flex text-right justify-content-end">
+            <div class="price">30</div>
+            <div class="currency">CHF</div>
+          </div>
+          <div class="infos">
+            (soit 30 CHF/litre)
+          </div>
+          <div class="remove">
+            Supprimer
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col text-right">
-      <div class="price">30</div><div class="currency">CHF</div>
+    <div id="product">
+      <%= cl_image_tag Product.first.photo.key, class: "product-image" %>
+      <div class="product-infos">
+        <div class="left-column">
+          <div class="product-title">
+            Viande
+          </div>
+          <div class="infos">
+            250g
+          </div>
+          <div>
+            <div class="counter">
+              <%= image_tag 'icons/remove_item.png', class: "icons" %>
+              <div class="item-count">
+                3
+              </div>
+              <%= image_tag 'icons/add_item.png', class: "icons" %>
+            </div>
+          </div>
+        </div>
+        <div class="right-column">
+          <div class="d-flex text-right justify-content-end">
+            <div class="price">30</div>
+            <div class="currency">CHF</div>
+          </div>
+          <div class="infos">
+            (soit 30 CHF/litre)
+          </div>
+          <div class="remove">
+            Supprimer
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item-spacer"></div>
+    <div id="footer">
+      <div class="d-flex justify-content-between m-3">
+        <div class="total">TOTAL</div>
+        <div>
+          <div class="price-total">39</div>
+          <div class="price-currency">CHF</div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary btn-lg btn-block">VALIDER MON PANIER</button>
+      <div class="continue-button">
+        <a href="">Continuer mes achats</a>
+      </div>
     </div>
   </div>
-  <div class="row justify-content-between align-items-center">
-    <div class="col"></div>
-    <div class="col text-right">
-    <div class="remove">
-      Supprimer
-    </div>
-    </div>
-  </div>
-  </div>
 </div>
-</div>
-</div>
-</div>
-
 <%= javascript_pack_tag 'zipCode' %>
 <%= javascript_pack_tag 'basket' %>

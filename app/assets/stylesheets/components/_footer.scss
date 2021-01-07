@@ -1,4 +1,9 @@
 .footer {
+  //disable footer on mobile
+  display: none !important;
+  @include small {
+    display: flex;
+  }
   min-height: 380px;
   background: #1E0F00;
   display: flex;
