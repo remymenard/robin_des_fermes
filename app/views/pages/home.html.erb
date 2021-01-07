@@ -85,4 +85,40 @@
 
   </div>
 
+  <div class="best-farms">
+    <div class="container">
+      <h2><%= t('.best_farms') %></h2>
+
+      <div class="cards">
+        <% @farms.each do |farm| %>
+
+          <%= link_to farm_path(farm) do  %>
+            <%= cl_image_tag(farm.photos.first.key, height: 209, width: 207, crop: :fill, class: "photo-farm") %>
+          <% end %>
+
+          <p><%= farm.address  %></p>
+
+          <h6> <%= farm.name  %></h6>
+
+          <% farm.labels.each do |label| %>
+            <div class='label'>
+              <%= image_tag "labels/#{label}-label.png", class: "label" %>
+            </div>
+          <%end%>
+
+          <p><%= farm.opening_time  %></p>
+
+          <p><%= farm.products.count  %> <%= t('.products_number') %> </p>
+
+          <p><%= t('.categories') %> </p>
+
+          <% farm.categories.each do |category| %>
+            <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
+          <% end %>
+
+        <% end %>
+      </div>
+
+    </div>
+  </div>
 </div>
