@@ -38,6 +38,12 @@ fr:
       testimony1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget donec interdum porta velit mi non suspendisse. "
       testimony2: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget donec interdum porta velit mi non suspendisse. "
       testimony3: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eget donec interdum porta velit mi non suspendisse. "
+      testimony_text3: "Lorem ipsum"
+      testimony_text2: "Lorem ipsum"
+      testimony_text1: "Lorem ipsum"
+      registration: "Oyez, oyez, producteurs, rejoignez-nous !"
+      registration_text: "Vendez vos produits en ligne, présentez votre exploitation et élargissez votre communauté"
+      registration_btn: "JE M'INSCRIS"
     cgv:
       title: "CONDITIONS GENERALES DE VENTES"
       sub_title: "Lorem is simply dummy text of the printing and typesetting indust."

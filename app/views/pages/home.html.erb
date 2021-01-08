@@ -152,7 +152,7 @@
             <h6> <%= t('.testimony1') %></h6>
             <%= image_tag "testimony/testimony", alt: "alttext" %>
             <p class="name">John Doe</p>
-            <p class="text">Lorem ipsum</p>
+            <p class="text"><%= t('.testimony_text1') %></p>
           </div>
         </div>
 
@@ -163,7 +163,7 @@
             <h6> <%= t('.testimony2') %></h6>
             <%= image_tag "testimony/testimony2", alt: "alttext" %>
             <p class="name">John Doe</p>
-            <p class="text">Lorem ipsum</p>
+            <p class="text"><%= t('.testimony_text2') %></p>
           </div>
         </div>
 
@@ -174,7 +174,7 @@
             <h6> <%= t('.testimony3') %></h6>
             <%= image_tag "testimony/testimony3", alt: "alttext" %>
             <p class="name">John Doe</p>
-            <p class="text">Lorem ipsum</p>
+            <p class="text"><%= t('.testimony_text3') %></p>
           </div>
         </div>
       </div>
@@ -182,5 +182,14 @@
   </div>
   <div class="registration">
 
+    <div class="container">
+
+      <div class="text">
+        <h2><%= t('.registration') %></h2>
+        <h6><%= t('.registration_text') %></h6>
+
+        <%= link_to t('.registration_btn') , root_path, class: "btn" %>
+      </div>
+    </div>
   </div>
 </div>
