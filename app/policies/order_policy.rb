@@ -6,7 +6,7 @@ class OrderPolicy < ApplicationPolicy
   end
 
   def create?
-    record.user == user
+    record.user == user || user.admin?
   end
 
   def show?
