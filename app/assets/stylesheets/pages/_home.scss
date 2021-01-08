@@ -222,9 +222,9 @@
     background-color: #FAF7F3;
     text-align: center;
 
-    .all-reinsurance {
+    .all-reinsurances {
       justify-content: space-between;
-      padding-top: 50px;
+      padding-top: 80px;
       padding-bottom: 50px;
     }
 
@@ -348,6 +348,38 @@
     .all-testimonials {
       flex-direction: column !important;
       align-items: center !important;
+    }
+  }
+
+  @media screen and (max-width: 770px) {
+    .all-reinsurances {
+      flex-direction: column !important;
+      align-items: center !important;
+
+      .payement {
+        border-right:  1px solid #FAF7F3!important;
+        padding-right: 0px !important;
+        margin-top: 30px;
+      }
+
+      .local {
+        border-right:  1px solid #FAF7F3 !important;
+        padding-right: 0px !important;
+        padding-left: 0px !important;
+        margin-top: 30px;
+      }
+
+      .help {
+        border-right:  1px solid #FAF7F3 !important;
+        padding-right: 0px !important;
+        padding-left: 0px !important;
+        margin-top: 30px;
+      }
+
+      .producers {
+        padding-left: 0px !important;
+        margin-top: 30px;
+      }
     }
   }
 
