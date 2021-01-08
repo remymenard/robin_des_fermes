@@ -178,6 +178,13 @@
       }
     }
   }
+
+  .registration {
+    background-image: image-url('home/registration.png');
+    min-height: 125vh;
+    background-size: cover;
+    background-position: center;
+  }
 }
 
 @media screen and (max-width: 990px) {
