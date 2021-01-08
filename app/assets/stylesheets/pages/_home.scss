@@ -217,6 +217,72 @@
       line-height: 43px;
     }
   }
+
+  .quadriptic {
+    background-color: #FAF7F3;
+    text-align: center;
+
+    .all-reinsurance {
+      justify-content: space-between;
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+
+    h6 {
+      color: #25201D;
+      font-weight: 600;
+      line-height: 32px;
+      max-width: 225px;
+    }
+
+    p {
+      line-height: 21px;
+      max-width: 231px;
+    }
+
+    .payement {
+      border-right:  1px solid rgba(108, 92, 92, 0.2);
+      padding-right: 50px;
+
+      img {
+        margin-top: -15px;
+        width: 67px;
+        height: 60.2px;
+      }
+    }
+
+    .local {
+      border-right:  1px solid rgba(108, 92, 92, 0.2);
+      padding-right: 50px;
+      padding-left: 50px;
+      img {
+        margin-top: -15px;
+        width: 48.26px;
+        height: 62px;
+      }
+    }
+
+    .help {
+      border-right:  1px solid rgba(108, 92, 92, 0.2);
+      padding-right: 50px;
+      padding-left: 50px;
+
+      img {
+        margin-top: -15px;
+        width: 69px;
+        height: 60.12px;
+      }
+    }
+
+    .producers {
+      padding-left: 50px;
+      img {
+        margin-top: -15px;
+        width: 50px;
+        height: 59.26px;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 990px) {

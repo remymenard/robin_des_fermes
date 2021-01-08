@@ -44,6 +44,15 @@ fr:
       registration: "Oyez, oyez, producteurs, rejoignez-nous !"
       registration_text: "Vendez vos produits en ligne, présentez votre exploitation et élargissez votre communauté"
       registration_btn: "JE M'INSCRIS"
+      payment_title: "Paiement 100% sécurisé"
+      local_title: "100% local"
+      help_title: "Besoin d'aide ?"
+      producers_title: "producteurs certifiés"
+      payement: "Vous achetez ici en sécurité"
+      local: "Des produits de producteurs qui vous entourent"
+      help: "Nous répondons à vos questions dans les 2h"
+      producers: "Les producteurs respectent la charte de Robin des fermes"
+
     cgv:
       title: "CONDITIONS GENERALES DE VENTES"
       sub_title: "Lorem is simply dummy text of the printing and typesetting indust."
