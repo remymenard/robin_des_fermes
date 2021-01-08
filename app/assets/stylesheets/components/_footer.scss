@@ -1,4 +1,9 @@
 .footer {
+  //disable footer on mobile
+  display: none !important;
+  @include small {
+    display: flex;
+  }
   min-height: 380px;
   background: #1E0F00;
   display: flex;
@@ -6,10 +11,12 @@
   align-items: center;
   justify-content: space-between;
   padding: 0px 50px;
-  color: #FAF0E1;
   font-weight: 300;
   font-size: 14px;
 
+  p {
+    color: #FAF0E1 !important;
+  }
   .row {
     justify-content: space-between;
     min-width: 300px;
