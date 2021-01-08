@@ -89,7 +89,8 @@ user1 = User.create!(
   address_line_1: "6 boulevard adolphe",
   city: "nantes",
   zip_code: "1200",
-  title: "M"
+  title: "M",
+  admin: true,
 )
 
 user1.photo.attach(
