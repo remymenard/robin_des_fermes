@@ -196,4 +196,12 @@
       margin-top: 30px;
     }
   }
+
+  @media screen and (max-width: 990px) {
+    .all-testimonials {
+      flex-direction: column !important;
+      align-items: center !important;
+    }
+  }
+
 }
