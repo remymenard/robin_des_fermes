@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_09_085646) do
+ActiveRecord::Schema.define(version: 2021_01_08_100936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string "namespace"
+    t.text "body"
+    t.string "resource_type"
+    t.bigint "resource_id"
+    t.string "author_type"
+    t.bigint "author_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
+    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
+    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -40,6 +54,16 @@ ActiveRecord::Schema.define(version: 2020_12_09_085646) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "delivery_choices", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "farm_id", null: false
+    t.boolean "takeaway_at_farm"
+    t.boolean "standard_shipping"
+    t.boolean "express_shipping"
+    t.index ["farm_id"], name: "index_delivery_choices_on_farm_id"
+    t.index ["order_id"], name: "index_delivery_choices_on_order_id"
   end
 
   create_table "farm_categories", force: :cascade do |t|
@@ -78,6 +102,14 @@ ActiveRecord::Schema.define(version: 2020_12_09_085646) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["farm_id"], name: "index_opening_hours_on_farm_id"
+  end
+
+  create_table "order_line_items", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "product_id", null: false
+    t.integer "quantity", default: 1
+    t.index ["order_id"], name: "index_order_line_items_on_order_id"
+    t.index ["product_id"], name: "index_order_line_items_on_product_id"
   end
 
   create_table "orders", force: :cascade do |t|
