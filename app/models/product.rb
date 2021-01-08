@@ -17,6 +17,7 @@ class Product < ApplicationRecord
     greater_than_or_equal_to: 0,
   }
   validates :unit, presence: true
+  validates :weight, presence: true
 
   scope :available, -> ()    { where(available: true) }
   scope :not_fresh, -> ()    { where(fresh: false) }

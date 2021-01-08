@@ -16,7 +16,10 @@
           <div class="number">
             <span>0</span>
           </div>
-
+          <a href="/" class="add-to-basket btn btn-number" data-product-id="<%= @product.id %>"
+          data-product-image="<%= @product.photo.service_url %>" >
+            +
+          </a>
           <%= link_to "+", orders_path, method: :post, class: "btn btn-number" %>
 
         </div>
@@ -104,3 +107,5 @@
   </div>
 
 </div>
+
+<%= javascript_pack_tag "basketProductManager" %>
