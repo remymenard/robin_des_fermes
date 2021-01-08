@@ -62,7 +62,6 @@
           padding-top: 0px;
         }
       }
-
     }
   }
 
@@ -208,6 +207,10 @@
     .food {
       flex-direction: column-reverse !important;
       align-items: center !important;
+
+      .two-products {
+        margin-left: 57px;
+      }
 
       p {
         max-width: 350px !important;
