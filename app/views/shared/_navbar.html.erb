@@ -2,17 +2,13 @@
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "logos/rdf_white_line.png", class: "logo-robin-des-ferme" %>
   <% end %>
-
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
   <!-- zip code messages -->
   <div id="zip_code_messages" data-title="<%= t('zip_code.title') %>" data-description="<%= t('zip_code.description') %>" data-login="<%= t('zip_code.login') %>" data-error="<%= t('zip_code.error') %>" %></div>
-
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-
       <% if user_signed_in? %>
         <li class="nav-item active">
           <%= link_to t(".log_out_href"), destroy_user_session_path, method: :delete, class: "btn" %>
@@ -22,23 +18,21 @@
           <%= link_to t(".log_in_href"), new_user_session_path, class: "btn" %>
         </li>
       <% end %>
-
       <li class="nav-item ">
         <div data-signedin?="<%= user_signed_in? %>" data-login_path="<%= new_user_session_path %>" data-set_zip_code_path="<%= users_zip_code_path %>" data-token="<%= form_authenticity_token %>" class="zip_code d-flex navbar-brand btn location">
-            <%= image_tag 'icons/map_marker.png' %>
-            <%= render 'shared/zip_code_div' %>
+          <%= image_tag 'icons/map_marker.png' %>
+          <%= render 'shared/zip_code_div' %>
         </div>
       </li>
       <li>
-
       </li>
       <li class="nav-item dropdown d-flex">
         <p class="price"> 00.00 CHF</p>
         <%= image_tag "icons/bag.png", class: "noun-bag dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-
       </li>
     </ul>
   </div>
+  <!-- this import the basket modal -->
+  <%= render 'shared/basket' %>
 </div>
-
 <%= javascript_pack_tag 'zipCode' %>

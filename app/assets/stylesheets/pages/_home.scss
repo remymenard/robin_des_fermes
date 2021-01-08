@@ -145,15 +145,15 @@
     }
 
   }
-}
+  @media(max-width: 1400px) {
+    .row {
+      display: grid;
+      grid-template-columns: 1fr;
 
-@media(max-width: 1400px) {
-  .row {
-    display: grid;
-    grid-template-columns: 1fr;
-
-    .all-photo {
-      padding-left: 135px;
+      .all-photo {
+        padding-left: 135px;
+      }
     }
   }
 }
+

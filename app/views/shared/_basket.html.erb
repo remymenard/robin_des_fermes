@@ -1,0 +1,90 @@
+<div id="basket">
+  <div id="header">
+    <span id="title"><%= t "basket.title" %></span>
+    <a href="" id="cross"><%= image_tag "icons/cross.png", alt: "close" %></a>
+  </div>
+  <div id="product">
+    <%= cl_image_tag Product.first.photo.key, class: "product-image" %>
+    <div class="product-infos">
+      <div class="left-column">
+        <div class="product-title">
+          Viande
+        </div>
+        <div class="infos">
+          250g
+        </div>
+        <div>
+          <div class="counter">
+            <%= image_tag 'icons/remove_item.png', class: "icons" %>
+            <div class="item-count">
+              3
+            </div>
+            <%= image_tag 'icons/add_item.png', class: "icons" %>
+          </div>
+        </div>
+      </div>
+      <div class="right-column">
+        <div class="d-flex text-right justify-content-end">
+          <div class="price">30</div>
+          <div class="currency">CHF</div>
+        </div>
+        <div class="infos">
+          (soit 30 CHF/litre)
+        </div>
+        <div class="remove">
+          Supprimer
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="product">
+    <%= cl_image_tag Product.first.photo.key, class: "product-image" %>
+    <div class="product-infos">
+      <div class="left-column">
+        <div class="product-title">
+          Viande
+        </div>
+        <div class="infos">
+          250g
+        </div>
+        <div>
+          <div class="counter">
+            <%= image_tag 'icons/remove_item.png', class: "icons" %>
+            <div class="item-count">
+              3
+            </div>
+            <%= image_tag 'icons/add_item.png', class: "icons" %>
+          </div>
+        </div>
+      </div>
+      <div class="right-column">
+        <div class="d-flex text-right justify-content-end">
+          <div class="price">30</div>
+          <div class="currency">CHF</div>
+        </div>
+        <div class="infos">
+          (soit 30 CHF/litre)
+        </div>
+        <div class="remove">
+          Supprimer
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="item-spacer"></div>
+  <div id="footer">
+    <div class="d-flex justify-content-between m-3">
+      <div class="total">TOTAL</div>
+      <div>
+        <div class="price-total">39</div>
+        <div class="price-currency">CHF</div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary btn-lg btn-block">VALIDER MON PANIER</button>
+    <div class="continue-button">
+      <a href="">Continuer mes achats</a>
+    </div>
+  </div>
+</div>
+
+<%= javascript_pack_tag 'basket' %>
