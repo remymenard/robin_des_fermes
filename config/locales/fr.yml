@@ -1,4 +1,6 @@
 fr:
+  alerts:
+    user_not_authorized: "Vous n'êtes pas authorisé à effectuer cette action."
   pages:
     home:
       search_placeholder: "Où habitez-vous ?"
