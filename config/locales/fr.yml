@@ -169,3 +169,5 @@ fr:
         city: "Localité"
         connection: "S'INSCRIRE"
         already_account: "Vous avez déjà un compte ?"
+  basket:
+    title: "Votre panier"
