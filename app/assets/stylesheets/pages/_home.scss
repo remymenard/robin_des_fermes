@@ -133,6 +133,50 @@
   .testimonials {
     text-align: center;
     padding-top: 110px;
+    margin-bottom: 110px;
+
+
+    .all-testimonials {
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .testimony {
+      padding-top: 30px;
+      height: 367px;
+      width: 350px;
+
+      img {
+        height: 100px;
+        width: 100px;
+      }
+
+      .informations {
+        margin-top: -45px;
+
+        h6 {
+          color: #6C5C5C;
+          line-height: 32px;
+        }
+
+        .name {
+          margin-top: 10px;
+          margin-bottom: 5px;
+          color: #25201D;
+          line-height: 24px;
+          font-family: 'BioRhyme', serif;
+          font-size: 20px;
+        }
+
+        .text {
+          color: #7C7977;
+          font-weight: 600;
+          font-size: 11px;
+          line-height: 21px;
+          letter-spacing: 2px;
+        }
+      }
+    }
   }
 }
 
