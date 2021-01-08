@@ -194,6 +194,37 @@
   }
 }
 
+@media screen and (max-width: 500px) {
+  .home-category {
+
+    h2 {
+      max-width: 350px !important;
+    }
+
+    img {
+      width: 350px !important;
+    }
+
+    .food {
+      flex-direction: column-reverse !important;
+      align-items: center !important;
+
+      p {
+        max-width: 350px !important;
+      }
+
+      a {
+
+        img {
+          width: 48px !important;
+          height: 1px !important;
+          padding-top: 0px;
+        }
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 990px) {
   .cards-rdf {
     flex-direction: column !important;
