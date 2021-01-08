@@ -1,12 +1,6 @@
 // Specific CSS for your home-page
 .home {
 
-  .vector {
-    background-image: image-url('Vector.png');
-    height: 37.99px;
-    margin-top: -38px;
-  }
-
   .low-vector {
     background-image: image-url('low-vector.png');
     height: 20px;
@@ -16,142 +10,375 @@
 
   .home-category{
     background-color: white;
+    padding-top: 50px;
 
 
     h2 {
-      font-size: 48px;
-      max-width: 1003px;
+      padding-top: 60px;
+      font-size: 36px;
       text-align: left;
-      padding-top: 136px;
+      line-height: 135%;
+      max-width: 448px;
+      color: #6C5C5C;
     }
 
     img {
-      height: 370px;
-      width: 370px;
+      width: 448px;
       padding-top: 60px;
     }
 
     .food {
       justify-content: space-between;
+      margin-top: 50px;
 
-      a {
-        color: black;
-        text-align: left;
-
-        p {
-          padding-top: 30px;
-          font-weight: bold;
-          font-size: 24px;
-        }
+      h6{
+        padding-top: 30px;
+        font-weight: bold;
+        font-size: 18px;
+        color: #25201D;
+        line-height: 32px;
+        margin-bottom: 0px !important;
       }
-    }
-  }
-
-  .home-farms {
-    background-color: #F8F0E7;
-    padding-bottom: 140px;
-
-    p {
-      font-size: 18px;
-      font-weight: bold;
-      line-height: 135.9%;
-    }
-
-    .row {
-      justify-content: start;
-    }
-
-    .all-photo {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 30px;
-      margin-top: 59px;
-      margin-left: 30px;
-
-
-
-      .photo {
-        background-color:white;
-        width: 270px;
-        height: 270px;
-        border-radius: 24px 24px 24px 24px;
-
-        p {
-          margin-top: 10px;
-          margin-left: 10px;
-        }
-
-      }
-    }
-
-    .first-photo {
-      margin-top: 59px;
-
 
       p {
-        margin-left: 45px;
-        line-height: 96px;
+        max-width: 448px;
+        line-height: 24px;
+      }
+
+      a {
+
+        p {
+          color: #FF4136;
+          margin-top: -8px;
+          padding-left: 20px;
+          letter-spacing: 2.5px;
+          line-height: 21px;
+          margin-bottom: 45px;
+        }
+
+        img {
+          width: 48px;
+          height: 1px;
+          padding-top: 0px;
+        }
       }
     }
-
-    .name {
-      background-color: white;
-      width: 570px;
-      height: 96px;
-      border-radius: 0px 0px 24px 24px;
-
-    }
-
-    h2 {
-      font-size: 48px;
-      font-weight: 400;
-      padding-top: 109px;
-    }
-
-    img {
-      border-radius: 24px 24px 0px 0px;
-    }
-
   }
 
   .rdf-presentation {
+    margin-top: 50px;
+    text-align: center;
 
-    background-color: white;
-    padding-bottom: 136px;
+    h2 {
+      padding-top: 30px;
+      max-width: 450px;
+      margin: 0 auto;
+      line-height: 32px;
+    }
 
-    .row {
+    p {
+      max-width: 303px;
+      margin: 0 auto;
+    }
+
+    .cards-rdf {
+      padding-top: 50px;
       justify-content: space-between;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+
+    .card-rdf {
+      border-radius: 10px;
+      text-align: center;
+      height: 324px;
+      width: 350px;
+      justify-content: center;
+      border: 1px solid #FAF7F3;
+      box-shadow: 0 1px 20px rgba(0,0,0,0.07);
+
+      img {
+        padding-top: 30px;
+        padding-bottom: 30px;
+      }
+    }
+
+    .btn {
+      font-family: 'Mulish', sans-serif;
+      background-color: #339E72!important;
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      height: 53px;
+      border-radius: 10px;
+      width: 226px;
+      letter-spacing: 2.5px;
+      line-height: 43px;
+      margin-bottom: 90px;
+    }
+  }
+
+  .best-farms {
+    background-color: #EFF2EA;
+    text-align: center;
+    padding-top: 110px;
+    padding-bottom: 90px;
+
+    h2 {
+      padding-bottom: 50px;
+    }
+  }
+
+  .testimonials {
+    text-align: center;
+    padding-top: 110px;
+    margin-bottom: 110px;
+
+
+    .all-testimonials {
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .testimony {
+      padding-top: 30px;
+      height: 367px;
+      width: 350px;
+
+      img {
+        height: 100px;
+        width: 100px;
+      }
+
+      .informations {
+        margin-top: -45px;
+
+        h6 {
+          color: #6C5C5C;
+          line-height: 32px;
+        }
+
+        .name {
+          margin-top: 10px;
+          margin-bottom: 5px;
+          color: #25201D;
+          line-height: 24px;
+          font-family: 'BioRhyme', serif;
+          font-size: 20px;
+        }
+
+        .text {
+          color: #7C7977;
+          font-weight: 600;
+          font-size: 11px;
+          line-height: 21px;
+          letter-spacing: 2px;
+        }
+      }
+    }
+  }
+
+  .registration {
+    background-image: image-url('home/registration.png');
+    min-height: 125vh;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+
+    h6 {
+      margin: 0 auto;
+      max-width: 442px;
+      color: #000000;
+      opacity: 0.7;
+      padding-top: 40px;
+      line-height: 32px;
+    }
+
+    h2 {
+      margin: 0 auto;
+      padding-top: 430px;
+      max-width: 526px;
+      color: #000000;
+      opacity: 0.7;
+    }
+
+    .btn {
+      margin-top: 24px;
+      font-family: 'Mulish', sans-serif;
+      background-color: #339E72!important;
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      height: 53px;
+      border-radius: 10px;
+      width: 226px;
+      height: 53px;
+      letter-spacing: 2.5px;
+      line-height: 43px;
+    }
+  }
+
+  .quadriptic {
+    background-color: #FAF7F3;
+    text-align: center;
+
+    .all-reinsurances {
+      justify-content: space-between;
+      padding-top: 80px;
+      padding-bottom: 50px;
+    }
+
+    h6 {
+      color: #25201D;
+      font-weight: 600;
+      line-height: 32px;
+      max-width: 225px;
+    }
+
+    p {
+      line-height: 21px;
+      max-width: 231px;
+    }
+
+    .payement {
+      border-right:  1px solid rgba(108, 92, 92, 0.2);
+      padding-right: 50px;
+
+      img {
+        margin-top: -15px;
+        width: 67px;
+        height: 60.2px;
+      }
+    }
+
+    .local {
+      border-right:  1px solid rgba(108, 92, 92, 0.2);
+      padding-right: 50px;
+      padding-left: 50px;
+      img {
+        margin-top: -15px;
+        width: 48.26px;
+        height: 62px;
+      }
+    }
+
+    .help {
+      border-right:  1px solid rgba(108, 92, 92, 0.2);
+      padding-right: 50px;
+      padding-left: 50px;
+
+      img {
+        margin-top: -15px;
+        width: 69px;
+        height: 60.12px;
+      }
+    }
+
+    .producers {
+      padding-left: 50px;
+      img {
+        margin-top: -15px;
+        width: 50px;
+        height: 59.26px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .food {
+    flex-direction: column-reverse !important;
+    align-items: center !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .home-category {
+
+    h2 {
+      max-width: 350px !important;
     }
 
     img {
-      height: 370px;
-      width: 370px;
-      padding-top: 60px;
+      width: 350px !important;
     }
 
+    .food {
+      flex-direction: column-reverse !important;
+      align-items: center !important;
+
+      .two-products {
+        margin-left: 57px;
+      }
+
+      p {
+        max-width: 350px !important;
+      }
+
+      a {
+
+        p {
+          padding-left: 10px;
+          letter-spacing: 0px;
+
+        }
 
 
-
-    h2 {
-      font-size: 48px;
-      font-weight: 400;
-      padding-top: 136px;
+        img {
+          width: 30px !important;
+          height: 1px !important;
+          padding-top: 0px;
+        }
+      }
     }
-
-    p{
-      padding-top: 32px;
-      font-size: 24px;
-      font-weight: bold;
-    }
-
   }
-  @media(max-width: 1400px) {
-    .row {
-      display: grid;
-      grid-template-columns: 1fr;
+}
 
-      .all-photo {
-        padding-left: 135px;
+@media screen and (max-width: 990px) {
+  .cards-rdf {
+    flex-direction: column !important;
+    align-items: center !important;
+
+    .card-rdf {
+      margin-top: 30px;
+    }
+  }
+
+  @media screen and (max-width: 990px) {
+    .all-testimonials {
+      flex-direction: column !important;
+      align-items: center !important;
+    }
+  }
+
+  @media screen and (max-width: 770px) {
+    .all-reinsurances {
+      flex-direction: column !important;
+      align-items: center !important;
+
+      .payement {
+        border-right:  1px solid #FAF7F3!important;
+        padding-right: 0px !important;
+        margin-top: 30px;
+      }
+
+      .local {
+        border-right:  1px solid #FAF7F3 !important;
+        padding-right: 0px !important;
+        padding-left: 0px !important;
+        margin-top: 30px;
+      }
+
+      .help {
+        border-right:  1px solid #FAF7F3 !important;
+        padding-right: 0px !important;
+        padding-left: 0px !important;
+        margin-top: 30px;
+      }
+
+      .producers {
+        padding-left: 0px !important;
+        margin-top: 30px;
       }
     }
   }
