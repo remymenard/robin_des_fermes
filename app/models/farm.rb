@@ -2,7 +2,7 @@ class Farm < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
-  belongs_to :user
+  belongs_to :user, optional: true
   has_many :farm_categories, dependent: :destroy
   has_many :categories, through: :farm_categories
   has_many :products, dependent: :destroy
@@ -13,9 +13,9 @@ class Farm < ApplicationRecord
   LABELS = ["bio"]
   # validates :labels, inclusion: { in: LABELS }
 
-  validates :name, presence: true
+  # validates :name, presence: true
   # validates :labels, presence: true
-  validates :address, presence: true
-  validates :opening_time, presence: true
-  validates :regions, presence: true
+  # validates :address, presence: true
+  # validates :opening_time, presence: true
+  # validates :regions, presence: true
 end

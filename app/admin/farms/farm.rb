@@ -1,12 +1,38 @@
 ActiveAdmin.register Farm do
-  form name: 'A custom title' do |f|
-    inputs 'Details' do
-      input :name
-      input :address, label: "Publish Post At"
-      input :opening_time
+  permit_params :name, :description, :photo, :address, :lagitude, :longitude, :opening_time, :labels, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away
+
+  form title: 'Exploitations' do |f|
+    tabs do
+      tab 'Etape 1' do
+        panel 'Renseigner les informations de l’exploitations' do
+          inputs 'Coordonnées' do
+            input :name, label: false, placeholder: "Dénomination"
+            input :address, label: false, placeholder: "Adresse"
+            input :zip_code, label: false, placeholder: "CP"
+            input :city, label: false, placeholder: "Ville"
+            input :country, label: false, :as => :string, placeholder: "Pays"
+          end
+          inputs 'Informations légales' do
+            input :farmer_number, label: false, placeholder: "Numéro exploitant"
+          end
+          inputs 'Informations bancaires' do
+            input :iban, label: false, placeholder: "IBAN"
+          end
+        end
+      end
+      tab 'Advanced', html_options: { class: 'specific_css_class' } do
+        f.inputs 'Advanced Details' do
+          f.input :city
+        end
+      end
     end
     actions
   end
 
-  permit_params :name, :description, :photo, :address, :lagitude, :longitude, :opening_time, :labels, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away
+  controller do
+    def create
+      @farm = Farm.new(permitted_params[:farm])
+      @farm.save
+    end
+  end
 end
