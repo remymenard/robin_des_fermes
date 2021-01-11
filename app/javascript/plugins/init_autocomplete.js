@@ -1,7 +1,7 @@
 import places from 'places.js';
 
 const initAutocomplete = () => {
-  const input = document.querySelector('#user_address')
+  const input = document.querySelector('#user_address_line_1')
 
   if (input) {
     var placesAutocomplete = places({

@@ -1,5 +1,6 @@
 ActiveAdmin.register Farm do
   permit_params :name, :description, :photo, :address, :lagitude, :longitude, :opening_time, :labels, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id
+  LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
 
   form title: 'Exploitations' do |f|
     tabs do
@@ -26,11 +27,11 @@ ActiveAdmin.register Farm do
           inputs 'Description courte' do
             input :description, label: false
           end
-          inputs 'Informations légales' do
-            input :farmer_number, label: false, placeholder: "Numéro exploitant"
+          inputs 'Description longue' do
+            input :long_description, label: false
           end
-          inputs 'Informations bancaires' do
-            input :iban, label: false, placeholder: "IBAN"
+          inputs "Labels de l'exploitation" do
+            input :labels,  label: false, as: :check_boxes, collection: LABELS
           end
         end
       end

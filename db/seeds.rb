@@ -100,7 +100,7 @@ user1.photo.attach(
 
 puts "creation des fermes"
 
-henry = Farm.create!(name: "Famille Henry", user: user1, labels: ['bio'],
+henry = Farm.create!(name: "Famille Henry", user: user1, labels: ['Bio-Suisse'],
   address: 'Bahnhofstrasse 4/8, 8001 Zurich',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations. La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.",
   regions: ['8008', '8001', '8005'], accepts_take_away: true,
@@ -128,7 +128,7 @@ henry.photos.attach(
 
 
 file2 = File.open(Rails.root.join('db/fixtures/farms/farm2.png'))
-meleze = Farm.create!(name: "La ferme du Mélèze", user: user1, labels: ['bio'],
+meleze = Farm.create!(name: "La ferme du Mélèze", user: user1, labels: ['Bio-Suisse'],
   address: 'Gerechtigkeitsgasse 10, 3011 Berne',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations. La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.",
   regions: ['1200', '1240', '1215'], accepts_take_away: false,
@@ -152,7 +152,7 @@ meleze.photos.attach(
 )
 
 file3 = File.open(Rails.root.join('db/fixtures/farms/farm3.png'))
-jonas = Farm.create!(name: "La Ferme de Jonas", user: user1, labels: ['bio'],
+jonas = Farm.create!(name: "La Ferme de Jonas", user: user1, labels: ['Bio-Suisse'],
   address: 'Bahnhofstrasse 67, 5000 Aarau ',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations. La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.",
   regions: ['5000', '5004', '5001'], accepts_take_away: false,
@@ -176,7 +176,7 @@ jonas.photos.attach(
 )
 
 file4 = File.open(Rails.root.join('db/fixtures/farms/farm1.png'))
-cave = Farm.create!(name: "La Cave de l'Abbatiale", user: user1, labels: ['bio'],
+cave = Farm.create!(name: "La Cave de l'Abbatiale", user: user1, labels: ['Bio-Suisse'],
   address: 'Rue de Carouge 22, 1205 Genève',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations. La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.",
   regions: ['1200', '1209', '1205'], accepts_take_away: false,
@@ -200,7 +200,7 @@ cave.photos.attach(
 )
 
 file5 = File.open(Rails.root.join('db/fixtures/farms/farm2.png'))
-gallien = Farm.create!(name: "Le Domaine du Gallien", user: user1, labels: ['bio'],
+gallien = Farm.create!(name: "Le Domaine du Gallien", user: user1, labels: ['Bio-Suisse'],
   address: 'Zollikerstrasse 788, 8008 Zurich',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations. La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.",
   regions: ['8008', '8001', '8005'], accepts_take_away: false,
