@@ -1,5 +1,4 @@
 import { openBasket } from './base';
-import { addProductHTML } from './utils/productHTML'
 
 require("jquery-form");
 
@@ -11,7 +10,7 @@ $(() => {
     e.preventDefault();
     $(this).ajaxSubmit({
       success: (answer) => {
-        addProductHTML(answer);
+        $("#products").html(answer)
         openBasket();
         $(".add-to-basket").removeAttr("disabled");
       }

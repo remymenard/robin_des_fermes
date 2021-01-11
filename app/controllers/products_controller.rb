@@ -1,5 +1,8 @@
 class ProductsController < ApplicationController
   include ZipCodeHelper
+
+  skip_before_action :authenticate_user!
+
   def show
     @product = Product.find(params[:id])
     @farm    = @product.farm

@@ -1,8 +1,7 @@
 module BasketHelper
-  def get_products
-    if user_signed_in?
-      order = Order.find_or_create_by(buyer: current_user)
-      OrderLineItem.where(order: order)
-    end
+  def products_list
+    order_id = Basket::AddProductService.new(@id, current_user).call
+    products_in_basket = OrderLineItem.where(order_id: order_id)
+    products_instance = products_in_basket.map { |product_in_basket| product_in_basket.product }
   end
 end

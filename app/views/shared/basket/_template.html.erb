@@ -4,13 +4,7 @@
     <a href="" id="cross"><%= image_tag "icons/cross.png", alt: "close" %></a>
   </div>
   <div id="products">
-    <% if get_products.empty? %>
-      <span class="empty-basket">Votre panier est vide</span>
-    <% else %>
-      <% get_products.each do |product| %>
-        <%= render 'basket/product' %>
-      <% end %>
-    <% end %>
+
   </div>
   <div id="footer">
     <div class="d-flex justify-content-between m-3">

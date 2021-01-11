@@ -1,3 +1,7 @@
+<% if products.empty? %>
+  <span class="empty-basket">Votre panier est vide</span>
+<% else %>
+<% products.each do |product| %>
 <div class="product-basket">
     <%= cl_image_tag product.photo.key, class: "product-image" %>
     <div class="product-infos">
@@ -32,3 +36,5 @@
       </div>
     </div>
   </div>
+<% end %>
+<% end %>
