@@ -16,11 +16,11 @@
           <div class="number">
             <span>0</span>
           </div>
-          <a href="/" class="add-to-basket btn btn-number" data-product-id="<%= @product.id %>"
-          data-product-image="<%= @product.photo.service_url %>" >
-            +
-          </a>
-          <%= link_to "+", orders_path, method: :post, class: "btn btn-number" %>
+
+          <%= form_tag basket_order_line_items_path, method: :post, id: "add-product-form" do %>
+            <%= hidden_field_tag 'product-id', @product.id %>
+            <%= submit_tag "+", class: "btn btn-number add-to-basket", name: nil %>
+          <% end %>
 
         </div>
 

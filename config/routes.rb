@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     resources :payments, only: [:new], controller: 'orders/payments'
   end
 
+  namespace :basket do
+    resources :order_line_items, only: [:create]
+  end
+
   namespace :orders do
     namespace :redirect do
       resources :payments, only: [] do
