@@ -4,8 +4,8 @@ module Basket
 
     def create
       @id = params["product-id"]
-      @product = Product.select(:name, :description).find(@id)
-      render json: @product
+      @product = Product.find(@id)
+      render partial: 'shared/basket/product', locals: { product: @product}
     end
   end
 end

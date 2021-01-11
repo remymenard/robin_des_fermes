@@ -1,0 +1,34 @@
+<div class="product-basket">
+    <%= cl_image_tag product.photo.key, class: "product-image" %>
+    <div class="product-infos">
+      <div class="left-column">
+        <div class="product-title">
+          <%= product.name %>
+        </div>
+        <div class="infos">
+          <%= product.subtitle %>
+        </div>
+        <div>
+          <div class="counter">
+            <%= image_tag 'icons/remove_item.png', class: "icons" %>
+            <div class="item-count">
+              3
+            </div>
+            <%= image_tag 'icons/add_item.png', class: "icons" %>
+          </div>
+        </div>
+      </div>
+      <div class="right-column">
+        <div class="d-flex text-right justify-content-end">
+          <div class="price">30</div>
+          <div class="currency">CHF</div>
+        </div>
+        <div class="infos">
+          (soit 30 CHF/litre)
+        </div>
+        <div class="remove">
+          Supprimer
+        </div>
+      </div>
+    </div>
+  </div>

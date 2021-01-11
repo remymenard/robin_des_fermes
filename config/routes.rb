@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :farms, only: [:index, :show]
 
-  resources :orders, only: [:show, :create] do
+  resources :orders, only: [:show] do
     resources :payments, only: [:new], controller: 'orders/payments'
   end
 

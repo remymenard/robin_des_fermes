@@ -9,13 +9,9 @@
   background-color: white;
   display: none;
 
-  .item-spacer {
-    height: 40px;
-    background-color: white;
-  }
-
   #products {
     background-color: white;
+    padding-top: 30px;
   }
 
   #header {
@@ -57,10 +53,18 @@
     margin-left: auto;
   }
 
+  .empty-basket {
+    margin-top: -30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+  }
+
   .product-basket {
-    margin: 40px 7px 0 7px;
+    margin: 0 7px 40px 7px;
     @include small {
-      margin: 40px 40px 0 40px;
+      margin: 0 40px 40px 40px;
     }
 
     .col {

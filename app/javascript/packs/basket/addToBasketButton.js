@@ -1,10 +1,20 @@
-import {openBasket} from './base'
-import {getAddProductAnswer} from './utils/requestsManager'
+import { openBasket } from './base';
+import { addProductHTML } from './utils/productHTML'
+
+require("jquery-form");
 
 $(() => {
-  $('.add-to-basket').on('click', (e) => {
-    getAddProductAnswer();
-    openBasket();
+  // the button is disabled by default so the user can't use the form before JS loads
+  $(".add-to-basket").removeAttr("disabled");
+
+  $('#add-product-form').on('submit', function (e) {
     e.preventDefault();
-  })
+    $(this).ajaxSubmit({
+      success: (answer) => {
+        addProductHTML(answer);
+        openBasket();
+        $(".add-to-basket").removeAttr("disabled");
+      }
+    });
+  });
 });
