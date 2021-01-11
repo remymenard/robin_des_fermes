@@ -81,16 +81,6 @@ class FarmsController < ApplicationController
 
   end
 
-  def create
-    @farm = Farm.new(farm_params)
-    @farm.save
-  end
-
-
-  def new
-    @farm = Farm.new
-  end
-
   private
 
   def farm_params
