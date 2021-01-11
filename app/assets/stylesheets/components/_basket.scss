@@ -11,6 +11,11 @@
 
   .item-spacer {
     height: 40px;
+    background-color: white;
+  }
+
+  #products {
+    background-color: white;
   }
 
   #header {
@@ -52,15 +57,17 @@
     margin-left: auto;
   }
 
-  #product {
-    padding: 0 41px;
+  .product-basket {
+    margin: 40px 7px 0 7px;
+    @include small {
+      margin: 40px 40px 0 40px;
+    }
 
     .col {
       min-width: 50%;
       padding: 0;
     }
 
-    padding-top: 40px;
     display: flex;
     align-items: start;
     height: 100%;
@@ -76,8 +83,7 @@
       justify-content: space-between;
       width: 80%;
       min-height: 100px;
-      padding: 0 10px;
-      margin-left: 10px;
+      margin-left: 20px;
 
       .product-title {
         color: #25201D;
@@ -146,10 +152,13 @@
 
       .item-count {
         font-weight: 600;
-        margin: 0 23px;
+        margin: 0 7px;
         font-size: 23px;
         color: $primary;
         display: inline-block;
+        @include small {
+          margin: 0 23px;
+        }
       }
 
       .icons {

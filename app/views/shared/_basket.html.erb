@@ -3,7 +3,8 @@
     <span id="title"><%= t "basket.title" %></span>
     <a href="" id="cross"><%= image_tag "icons/cross.png", alt: "close" %></a>
   </div>
-  <div id="product">
+  <div id="products">
+  <div class="product-basket">
     <%= cl_image_tag Product.first.photo.key, class: "product-image" %>
     <div class="product-infos">
       <div class="left-column">
@@ -37,7 +38,7 @@
       </div>
     </div>
   </div>
-  <div id="product">
+  <div class="product-basket">
     <%= cl_image_tag Product.first.photo.key, class: "product-image" %>
     <div class="product-infos">
       <div class="left-column">
@@ -69,6 +70,7 @@
           Supprimer
         </div>
       </div>
+    </div>
     </div>
   </div>
   <div class="item-spacer"></div>
