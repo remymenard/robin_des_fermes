@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_08_102631) do
+ActiveRecord::Schema.define(version: 2021_01_11_083137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,11 @@ ActiveRecord::Schema.define(version: 2021_01_08_102631) do
     t.jsonb "labels", default: [], array: true
     t.text "regions", default: [], array: true
     t.boolean "accepts_take_away", default: false
+    t.string "zip_code"
+    t.string "city"
+    t.string "country"
+    t.integer "farmer_number"
+    t.string "iban"
     t.index ["user_id"], name: "index_farms_on_user_id"
   end
 

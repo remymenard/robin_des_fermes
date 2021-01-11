@@ -81,9 +81,19 @@ class FarmsController < ApplicationController
 
   end
 
+  def create
+    @farm = Farm.new(farm_params)
+    @farm.save
+  end
+
+
+  def new
+    @farm = Farm.new
+  end
+
   private
 
-  def article_params
-    params.require(:farm).permit(:name, :description, :photo, :adress, :sells, :opening_time, :labels)
+  def farm_params
+    params.require(:farm).permit(:name, :description, :photo, :address, :lagitude, :longitude, :opening_time, :labels, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away)
   end
 end
