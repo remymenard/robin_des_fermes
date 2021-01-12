@@ -33,11 +33,14 @@ ActiveAdmin.register Farm, as: "Exploitations" do
           inputs "Labels de l'exploitation" do
             input :labels, label: false, as: :check_boxes, collection: LABELS
           end
-          f.has_many :opening_hours, heading: "Retrait a la ferme", new_record: 'Ajouter une horaire' do |openning|
-            openning.inputs do
-              openning.input :day, label: "Jour", as: :select, collection: [["Lundi", 1], ["Mardi", 2], ["Mercredi", 3], ["Jeudi", 4], ["Vendredi", 5], ["Samedi", 6], ["Dimanche", 0]]
-              openning.input :opens, label: "Ouverture"
-              openning.input :closes, label: "Fermeture"
+          inputs "Retrait a la ferme" do
+            input :accepts_take_away, label: "Accepte le retrait à la ferme"
+            f.has_many :opening_hours, heading: "", new_record: 'Ajouter une horaire' do |openning|
+              openning.inputs do
+                openning.input :day, label: "Jour", as: :select, collection: [["Lundi", 1], ["Mardi", 2], ["Mercredi", 3], ["Jeudi", 4], ["Vendredi", 5], ["Samedi", 6], ["Dimanche", 0]]
+                openning.input :opens, label: "Ouverture"
+                openning.input :closes, label: "Fermeture"
+              end
             end
           end
         end
