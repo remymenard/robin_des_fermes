@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_11_160724) do
+ActiveRecord::Schema.define(version: 2021_01_12_094028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,8 @@ ActiveRecord::Schema.define(version: 2021_01_11_160724) do
     t.integer "farmer_number"
     t.string "iban"
     t.string "long_description"
+    t.boolean "accept_delivery", default: false
+    t.integer "delivery_delay"
     t.index ["user_id"], name: "index_farms_on_user_id"
   end
 

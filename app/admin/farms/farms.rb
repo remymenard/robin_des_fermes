@@ -1,5 +1,5 @@
 ActiveAdmin.register Farm, as: "Exploitations" do
-  permit_params :name, :description, :photo, :address, :lagitude, :longitude, :opening_time, :labels, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id
+  permit_params :name, :description, :photos, :address, :lagitude, :longitude, :opening_time, :labels, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accept_delivery
   LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
 
   form title: 'Exploitations' do |f|
@@ -42,6 +42,15 @@ ActiveAdmin.register Farm, as: "Exploitations" do
                 openning.input :closes, label: "Fermeture"
               end
             end
+          end
+          inputs 'Expéditions' do
+            input :accept_delivery, label: "Accepte les expéditions"
+          end
+          inputs 'Délais de livraison' do
+            input :delivery_delay, label: false
+          end
+          inputs 'Photos' do
+            input :photos, as: :file, input_html: { multiple: true }, label: false
           end
         end
       end
