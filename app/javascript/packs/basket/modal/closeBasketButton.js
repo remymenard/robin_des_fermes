@@ -1,4 +1,4 @@
-import { closeBasket } from '../base'
+import { closeBasket } from '../utils/basketOpener'
 
 $(() => {
   $('#cross').on('click', (e) => {

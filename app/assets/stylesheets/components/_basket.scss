@@ -157,12 +157,13 @@
 
       .item-count {
         font-weight: 600;
-        margin: 0 7px;
+        min-width: 37px;
         font-size: 23px;
         color: $primary;
         display: inline-block;
+        text-align: center;
         @include small {
-          margin: 0 23px;
+          min-width: 69px;
         }
       }
 

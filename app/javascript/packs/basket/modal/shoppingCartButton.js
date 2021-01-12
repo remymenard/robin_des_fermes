@@ -1,4 +1,4 @@
-import { openBasket } from '../base'
+import { openBasket } from '../utils/basketOpener'
 
 $(() => {
   $('#navbarDropdown').on('click', (e) => {

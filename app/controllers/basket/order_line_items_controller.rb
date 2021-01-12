@@ -1,14 +1,20 @@
 module Basket
   class OrderLineItemsController < ApplicationController
+    include BasketHelper
     skip_before_action :authenticate_user!
 
     def create
-      @id = params["product-id"]
-      order_id = Basket::AddProductService.new(@id, current_user, cookies[:order_id]).call
-      cookies.permanent[:order_id] = order_id
-      products_in_basket = OrderLineItem.where(order_id: order_id)
-      products_instance = products_in_basket.map { |product_in_basket| product_in_basket.product }
-      render partial: 'shared/basket/product', locals: { products: products_instance}
+      @id = params["product_id"]
+      create_order if order_id.nil?
+      @product = Product.find @id
+      @order = order_id
+      @item_in_basket = OrderLineItem.find_by(order: @order, product: @product)
+      if @product && @order
+        @item_in_basket ? @item_in_basket.increment(:quantity).save : OrderLineItem.create(product: @product, order: @order)
+        products_list
+      else
+        head(:bad_request)
+      end
     end
   end
 end

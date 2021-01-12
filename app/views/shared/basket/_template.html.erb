@@ -4,7 +4,7 @@
     <a href="" id="cross"><%= image_tag "icons/cross.png", alt: "close" %></a>
   </div>
   <div id="products">
-
+    <%= products_list %>
   </div>
   <div id="footer">
     <div class="d-flex justify-content-between m-3">
@@ -21,4 +21,5 @@
   </div>
 </div>
 
-<%= javascript_pack_tag 'basket/utils/closeBasketButton' %>
+<%= javascript_pack_tag 'basket/modal/closeBasketButton' %>
+<%= javascript_pack_tag 'basket/modal/incrementQuantityButton' %>

@@ -1,7 +1,8 @@
 <% if products.empty? %>
   <span class="empty-basket">Votre panier est vide</span>
 <% else %>
-<% products.each do |product| %>
+<% products.each do |product_basket| %>
+<% product = product_basket.product %>
 <div class="product-basket">
     <%= cl_image_tag product.photo.key, class: "product-image" %>
     <div class="product-infos">
@@ -16,16 +17,16 @@
           <div class="counter">
             <%= image_tag 'icons/remove_item.png', class: "icons" %>
             <div class="item-count">
-              3
+              <%= product_basket.quantity %>
             </div>
-            <%= image_tag 'icons/add_item.png', class: "icons" %>
+             <%= image_tag 'icons/add_item.png', class: "icons increment-button", data: {path: basket_order_line_items_path, product_id: product.id, token: form_authenticity_token} %>
           </div>
         </div>
       </div>
       <div class="right-column">
         <div class="d-flex text-right justify-content-end">
-          <div class="price">30</div>
-          <div class="currency">CHF</div>
+          <div class="price"><%= product.price * product_basket.quantity %></div>
+          <div class="currency"><%= product.price_currency %></div>
         </div>
         <div class="infos">
           (soit 30 CHF/litre)

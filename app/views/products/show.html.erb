@@ -18,7 +18,7 @@
           </div>
 
           <%= form_tag basket_order_line_items_path, method: :post, id: "add-product-form" do %>
-            <%= hidden_field_tag 'product-id', @product.id %>
+            <%= hidden_field_tag :product_id, @product.id %>
             <%= submit_tag "+", class: "btn btn-number add-to-basket", name: nil, disabled: true %>
           <% end %>
 
@@ -108,4 +108,4 @@
 
 </div>
 
-<%= javascript_pack_tag "basket/addToBasketButton" %>
+<%= javascript_pack_tag "basket/pages/addToBasketButton" %>
