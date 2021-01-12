@@ -52,12 +52,19 @@ ActiveAdmin.register Farm, as: "Exploitations" do
           inputs 'Photos' do
             input :photos, as: :file, input_html: { multiple: true }, label: false
             input :photos, as: :file, input_html: { multiple: true }, label: false
+            input :photos, as: :file, input_html: { multiple: true }, label: false
+            input :photos, as: :file, input_html: { multiple: true }, label: false
+            input :photos, as: :file, input_html: { multiple: true }, label: false
           end
         end
       end
     end
     f.actions do
-      f.action :submit, as: :button, label: 'Créer une exploitation'
+      if resource.persisted?
+        f.action :submit, as: :button, label: "Modifier l'exploitation"
+      else
+        f.action :submit, as: :button, label: "Créer l'exploitation"
+      end
     end
   end
 
