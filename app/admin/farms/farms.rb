@@ -1,8 +1,8 @@
-ActiveAdmin.register Farm do
+ActiveAdmin.register Farm, as: "Exploitations" do
   permit_params :name, :description, :photo, :address, :lagitude, :longitude, :opening_time, :labels, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id
   LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
 
-  form title: 'Exploitations', new_record: 'Ajouter une horaire' do |f|
+  form title: 'Exploitations' do |f|
     tabs do
       tab 'Etape 1' do
         panel 'Renseigner les informations de l’exploitations' do
@@ -43,13 +43,17 @@ ActiveAdmin.register Farm do
         end
       end
     end
-    actions
+    f.actions do
+      f.action :submit, as: :button, label: 'Créer une exploitation'
+    end
   end
 
   controller do
     def create
       @farm = Farm.new(permitted_params[:farm])
       @farm.save
+
+      redirect_to admin_exploitations_path
     end
   end
 end
