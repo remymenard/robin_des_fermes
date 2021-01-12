@@ -1,11 +1,16 @@
 ActiveAdmin.register Farm, as: "Exploitations" do
-  permit_params :name, :description, :address, :lagitude, :longitude, :opening_time, :labels, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accept_delivery, photos: []
+  permit_params :name, :description, :address, :lagitude, :longitude, :opening_time, :labels, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accept_delivery, photos: [], user: [:email, :first_name]
   LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
 
   form title: 'Exploitations' do |f|
     tabs do
       tab 'Etape 1' do
         panel 'Renseigner les informations de l’exploitations' do
+          inputs "Propriétaire", for: [:user, User.new] do |u|
+            u.input :email
+            u.input :first_name
+          end
+
           inputs 'Coordonnées' do
             input :user_id, label: false, placeholder: "user_id"
             input :name, label: false, placeholder: "Dénomination"
