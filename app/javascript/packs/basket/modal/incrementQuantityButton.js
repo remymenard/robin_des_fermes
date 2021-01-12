@@ -1,4 +1,4 @@
-$(() => {
+export function initQuantityButtons() {
   $('#basket').on('click', '.increment-button', (e) => {
     e.preventDefault();
     const hrefPath = $(e.target).data("path");
@@ -12,8 +12,8 @@ $(() => {
       url: hrefPath,
       type: "POST",
       success: (answer) => {
-        $("#products").html(answer)
+        $("#basket").html(answer)
       }
     })
   });
-});
+};

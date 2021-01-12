@@ -1,5 +1,4 @@
 import { openBasket } from '../utils/basketOpener';
-import { updateTotalPrice } from '../utils/updateTotalPrice'
 
 require("jquery-form");
 
@@ -14,7 +13,6 @@ $(() => {
         $("#products").html(answer)
         openBasket();
         $(".add-to-basket").removeAttr("disabled");
-        updateTotalPrice();
       },
       error: () => {
         alert('eror')

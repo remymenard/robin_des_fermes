@@ -11,7 +11,7 @@ module Basket
       @item_in_basket = OrderLineItem.find_by(order: @order, product: @product)
       if @product && @order
         @item_in_basket ? @item_in_basket.increment(:quantity).save : OrderLineItem.create(product: @product, order: @order)
-        products_list
+        render partial: 'shared/basket'
       else
         head(:bad_request)
       end

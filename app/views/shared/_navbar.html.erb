@@ -33,7 +33,9 @@
     </ul>
   </div>
   <!-- this import the basket modal -->
-  <%= render 'shared/basket/template' %>
+  <div id="basket">
+  <%= render 'shared/basket' %>
+  </div>
 </div>
 <%= javascript_pack_tag 'zipCode' %>
 <%= javascript_pack_tag 'basket/modal/shoppingCartButton' %>

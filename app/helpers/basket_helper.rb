@@ -1,8 +1,11 @@
 module BasketHelper
   def products_list
     create_order if order_id.nil?
-    products_in_basket = OrderLineItem.where(order_id: order_id).order("created_at DESC")
-    render partial: 'shared/basket/product', locals: { products: products_in_basket}
+    OrderLineItem.where(order_id: order_id).order("created_at DESC")
+  end
+
+  def total_price(products = products_list)
+    products.sum { |basket_product| basket_product.product.price * basket_product.quantity }
   end
 
   private
