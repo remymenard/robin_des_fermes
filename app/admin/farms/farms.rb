@@ -2,7 +2,7 @@ ActiveAdmin.register Farm do
   permit_params :name, :description, :photo, :address, :lagitude, :longitude, :opening_time, :labels, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id
   LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
 
-  form title: 'Exploitations' do |f|
+  form title: 'Exploitations', new_record: 'Ajouter une horaire' do |f|
     tabs do
       tab 'Etape 1' do
         panel 'Renseigner les informations de l’exploitations' do
@@ -22,7 +22,7 @@ ActiveAdmin.register Farm do
           end
         end
       end
-      tab 'Etape 2', html_options: { class: 'specific_css_class' } do
+      tab 'Etape 2' do
         panel 'Créer la boutique' do
           inputs 'Description courte' do
             input :description, label: false
@@ -31,7 +31,14 @@ ActiveAdmin.register Farm do
             input :long_description, label: false
           end
           inputs "Labels de l'exploitation" do
-            input :labels,  label: false, as: :check_boxes, collection: LABELS
+            input :labels, label: false, as: :check_boxes, collection: LABELS
+          end
+          f.has_many :opening_hours, heading: "Retrait a la ferme", new_record: 'Ajouter une horaire' do |openning|
+            openning.inputs do
+              openning.input :day, label: "Jour", as: :select, collection: [["Lundi", 1], ["Mardi", 2], ["Mercredi", 3], ["Jeudi", 4], ["Vendredi", 5], ["Samedi", 6], ["Dimanche", 0]]
+              openning.input :opens, label: "Ouverture"
+              openning.input :closes, label: "Fermeture"
+            end
           end
         end
       end
