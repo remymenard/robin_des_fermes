@@ -6,10 +6,17 @@ class OrderPolicy < ApplicationPolicy
   end
 
   def create?
-    record.user == user || user.admin?
+    # user.confirmed? || user.admin?
+    true || user.admin?
   end
 
   def show?
-    record.user == user || user.admin?
+    record.buyer == user || user.admin?
+    # order.buyer == user || user.admin?
   end
+
+  # private
+  # def order
+  #   record
+  # end
 end

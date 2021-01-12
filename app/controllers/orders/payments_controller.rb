@@ -1,5 +1,7 @@
 module Orders
   class PaymentsController < ApplicationController
+    # skip_before_action :verify_authorized, only: [:new]
+
     def new
       @order = Order.find(params[:order_id])
       @order.update(status: 'waiting')
@@ -11,7 +13,7 @@ module Orders
 
       @transaction_id = @order.transaction_id
 
-      authorize @order
+      authorize [:payments, @order]
     end
 
     private
@@ -24,4 +26,9 @@ module Orders
       }
     end
   end
+
+  # private
+  # def skip_pundit?
+  #   true
+  # end
 end
