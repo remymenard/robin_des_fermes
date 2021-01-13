@@ -1,7 +1,7 @@
 import { closeBasket } from '../utils/basketOpener'
 
 export function initCloseBasketButton() {
-  $('#cross, .continue-button').on('click', (e) => {
+  $('#basket').on('click', '#cross, .continue-button', (e) => {
     closeBasket();
     e.preventDefault();
   })

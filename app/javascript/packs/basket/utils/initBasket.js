@@ -2,6 +2,7 @@ import { initQuantityButtons } from '../modal/changeQuantityButton'
 import { initCloseBasketButton } from '../modal/closeBasketButton'
 import { initOpenBasketButton } from '../modal/shoppingCartButton'
 import { initRemoveButton } from '../modal/removeButton'
+import { initAddToBasketButton } from '../pages/addToBasketButton';
 
 export function initBasket() {
   $(() => {
@@ -9,5 +10,6 @@ export function initBasket() {
     initCloseBasketButton();
     initOpenBasketButton();
     initRemoveButton();
+    initAddToBasketButton();
   });
 }
