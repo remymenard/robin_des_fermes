@@ -1,18 +1,25 @@
 ActiveAdmin.register Farm, as: "Exploitations" do
-  permit_params :name, :description, :address, :lagitude, :longitude, :opening_time, :labels, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accept_delivery, photos: [], user: [:email, :first_name]
+  permit_params :name, :description, :address, :lagitude, :longitude, :opening_time, :labels, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accept_delivery, photos: [],
+                opening_hours_attributes: [ :id, :day, :opens, :closes ], user: [:email, :first_name]
   LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
 
   form title: 'Exploitations' do |f|
     tabs do
       tab 'Etape 1' do
-        panel 'Renseigner les informations de l’exploitations' do
-          inputs "Propriétaire", for: [:user, User.new] do |u|
-            u.input :email
+        panel 'Déclarer un Propriétaire' do
+          inputs "Renseigner un propriétaire", for: [:user, User.new] do |u|
             u.input :first_name
+            u.input :last_name
+            u.input :email
+            u.input :number_phone
+            u.input :wants_to_subscribe_mailing_list
           end
-
+        end
+      end
+      tab 'Etape 2' do
+        panel "Renseigner les informations de l'exploitation" do
           inputs 'Coordonnées' do
-            input :user_id, label: false, placeholder: "user_id"
+            input :user_id
             input :name, label: false, placeholder: "Dénomination"
             input :address, label: false, placeholder: "Adresse"
             input :zip_code, label: false, placeholder: "CP", :wrapper_html => { :class => 'fl' }
@@ -27,7 +34,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
           end
         end
       end
-      tab 'Etape 2' do
+      tab 'Etape 3' do
         panel 'Créer la boutique' do
           inputs 'Description courte' do
             input :description, label: false
@@ -75,6 +82,8 @@ ActiveAdmin.register Farm, as: "Exploitations" do
 
   controller do
     def create
+      @opening_hour = OpeningHour.new(permitted_params[:opening_hours])
+      @opening_hour.save
       @farm = Farm.new(permitted_params[:farm])
       @farm.save
 
