@@ -17,9 +17,9 @@
             <div class="product-title">
               <%= product.name %>
             </div>
-            <div class="infos">
+            <p class="infos">
               <%= product.subtitle %>
-            </div>
+            </p>
             <div>
               <div class="counter">
               <% if product_basket.quantity <= 1 %>
@@ -27,9 +27,9 @@
               <% else %>
                 <%= link_to image_tag 'icons/remove_item.png', class: "icons decrement-button", data: {path: decrement_basket_order_line_item_path(product), token: form_authenticity_token} %>
               <% end %>
-                <div class="item-count">
+                <p class="item-count">
                   <%= product_basket.quantity %>
-                </div>
+                </p>
                 <%= link_to image_tag 'icons/add_item.png', class: "icons increment-button", data: {path: increment_basket_order_line_item_path(product), token: form_authenticity_token} %>
               </div>
             </div>
@@ -37,14 +37,16 @@
           <div class="right-column">
           <div>
             <div class="d-flex text-right justify-content-end">
-              <div class="price"><%= product.price * product_basket.quantity %></div>
-              <div class="currency"><%= product.price_currency %></div>
+              <p class="price mb-0"><%= product.price * product_basket.quantity %></p>
+              <p class="currency mb-0"><%= product.price_currency %></p>
             </div>
-            <div class="infos">
+            <p class="infos">
               (<%= t "basket.price_per_unit_first_word" %> <%= product.price_per_unit %> <%= product.price_per_unit_currency %>/<%= product.unit %>)
-            </div>
+            </p>
           </div>
+          <p class="m-0">
             <%= link_to "Supprimer", "/", class: "remove-item-button", data: {path: basket_order_line_item_path(product_basket), token: form_authenticity_token} %>
+          </p>
           </div>
         </div>
       </div>
@@ -53,14 +55,12 @@
 </div>
 <div id="footer">
   <div class="d-flex justify-content-between m-3">
-    <div class="total"><%= t "basket.total" %></div>
+    <p class="total"><%= t "basket.total" %></p>
     <div>
-      <div class="price-total"><%= total_price(products) %></div>
-      <div class="price-currency">CHF</div>
+      <p class="price-total"><%= total_price(products) %></p>
+      <p class="price-currency">CHF</p>
     </div>
   </div>
   <button type="button" class="btn btn-primary btn-lg btn-block"><%= t "basket.validate" %></button>
-  <div class="continue-button">
-    <a href=""><%= t "basket.continue" %></a>
-  </div>
+  <a class="continue-button" href=""><%= t "basket.continue" %></a>
 </div>
