@@ -1,7 +1,6 @@
 import {sendAjaxRequest} from '../utils/ajaxRequest'
 
 export function initQuantityButtons() {
-  $('#basket').on('click', '.increment-button, .decrement-button', (e) => {
-    if ($(e.target).hasClass('disabled-button')) return;
+  $('#basket').on('click', 'a.increment-button, a.decrement-button', (e) => {
     sendAjaxRequest(e, "POST")});
 };
