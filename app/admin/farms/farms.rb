@@ -1,7 +1,7 @@
 ActiveAdmin.register Farm, as: "Exploitations" do
   permit_params :name, :description, :address, :lagitude, :longitude, :opening_time, :labels, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accept_delivery, photos: [],
                 opening_hours_attributes: [:id, :day, :opens, :closes],
-                user_attributes: [:id, :email, :first_name, :last_name, :number_phone, :wants_to_subscribe_mailing_list, :photo, :password, :title, :password_confirmation, :address_line_1, :city, :zip_code]
+                user_attributes: [:id, :email, :first_name, :last_name, :number_phone, :wants_to_subscribe_mailing_list, :photo, :password, :title, :password_confirmation, :address_line_1, :city, :zip_code, :farm_id]
   LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
 
   form title: 'Exploitations' do |f|
@@ -9,20 +9,19 @@ ActiveAdmin.register Farm, as: "Exploitations" do
       tab 'Etape 1' do
         panel 'Déclarer un Propriétaire' do
           f.inputs "Renseigner un propriétaire" do
-            f.has_many :user, class_name: 'Abcd::User' do |u|
-              u.input :title, collection: User::TITLE
-              u.input :first_name
-              u.input :last_name
-              u.input :email
-              u.input :number_phone
-              u.input :address_line_1
-              u.input :city
-              u.input :zip_code
-              u.input :password
-              u.input :password_confirmation
-              u.input :wants_to_subscribe_mailing_list
-              u.input :admin
-              u.input :photo, as: :file
+            f.has_many :user, class_name: 'Abcd::User', new_record: 'Ajouter un propriétaire', heading: "" do |u|
+              u.input :title, collection: User::TITLE, label: "Genre"
+              u.input :first_name, label: false, placeholder: "Prénom"
+              u.input :last_name, label: false, placeholder: "Nom"
+              u.input :email, label: false, placeholder: "Mail"
+              u.input :number_phone, label: false, placeholder: "Téléphone"
+              u.input :address_line_1, label: false, placeholder: "Adresse"
+              u.input :city, label: false, placeholder: "Ville"
+              u.input :zip_code, label: false, placeholder: "Code postal"
+              u.input :password, label: false, placeholder: "Mot de passe"
+              u.input :password_confirmation, label: false, placeholder: "Confirmation du mot de passe"
+              u.input :wants_to_subscribe_mailing_list, label: "L'inscrire a la newsletter"
+              u.input :photo, as: :file, label: "Mettre une photo de profil"
             end
           end
         end
