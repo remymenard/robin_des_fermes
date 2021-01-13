@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_08_102631) do
+ActiveRecord::Schema.define(version: 2021_01_12_122601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,6 +108,8 @@ ActiveRecord::Schema.define(version: 2021_01_08_102631) do
     t.bigint "order_id", null: false
     t.bigint "product_id", null: false
     t.integer "quantity", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["order_id"], name: "index_order_line_items_on_order_id"
     t.index ["product_id"], name: "index_order_line_items_on_product_id"
   end
@@ -117,9 +119,9 @@ ActiveRecord::Schema.define(version: 2021_01_08_102631) do
     t.string "price_currency", default: "CHF", null: false
     t.string "status", default: "waiting"
     t.string "transaction_id"
-    t.bigint "buyer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "buyer_id"
     t.index ["buyer_id"], name: "index_orders_on_buyer_id"
   end
 
@@ -140,6 +142,7 @@ ActiveRecord::Schema.define(version: 2021_01_08_102631) do
     t.string "price_per_unit_currency", default: "CHF", null: false
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "CHF", null: false
+    t.string "subtitle"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["farm_id"], name: "index_products_on_farm_id"
   end

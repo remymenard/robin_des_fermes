@@ -9,8 +9,10 @@
   background-color: white;
   display: none;
 
-  .item-spacer {
-    height: 40px;
+  #products {
+    background-color: white;
+    padding-top: 30px;
+    padding-bottom: 10px;
   }
 
   #header {
@@ -52,15 +54,25 @@
     margin-left: auto;
   }
 
-  #product {
-    padding: 0 41px;
+  .empty-basket {
+    margin-top: -30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 150px;
+  }
+
+  .product-basket {
+    margin: 0 7px 40px 7px;
+    @include small {
+      margin: 0 40px 40px 40px;
+    }
 
     .col {
       min-width: 50%;
       padding: 0;
     }
 
-    padding-top: 40px;
     display: flex;
     align-items: start;
     height: 100%;
@@ -76,8 +88,7 @@
       justify-content: space-between;
       width: 80%;
       min-height: 100px;
-      padding: 0 10px;
-      margin-left: 10px;
+      margin-left: 20px;
 
       .product-title {
         color: #25201D;
@@ -122,17 +133,19 @@
         vertical-align: super;
       }
 
-      .remove {
-        line-height: 16px;
+      .remove-item-button {
+        line-height: 24px;
         font-size: 12px;
-        color: #898989;
+        color: #898989 !important;
         opacity: 0.4;
         margin: 7px 0;
+        &:hover {
+          text-decoration: none;
+          opacity: 0.6;
+        }
       }
 
       .infos {
-        font-size: 10px;
-        line-height: 10px;
         font-size: 12px;
         line-height: 17px;
         color: #7C7977;
@@ -146,14 +159,23 @@
 
       .item-count {
         font-weight: 600;
-        margin: 0 23px;
+        min-width: 37px;
         font-size: 23px;
         color: $primary;
         display: inline-block;
+        text-align: center;
+        @include small {
+          min-width: 69px;
+        }
       }
 
       .icons {
         height: 36px;
+      }
+
+      .disabled-button {
+        filter: grayscale(61%);
+        opacity: 0.4;
       }
     }
   }
