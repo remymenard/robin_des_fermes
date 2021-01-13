@@ -1,6 +1,5 @@
 module Orders
   class PaymentsController < ApplicationController
-    # skip_before_action :verify_authorized, only: [:new]
 
     def new
       @order = Order.find(params[:order_id])
@@ -27,8 +26,4 @@ module Orders
     end
   end
 
-  # private
-  # def skip_pundit?
-  #   true
-  # end
 end
