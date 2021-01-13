@@ -11,5 +11,8 @@ class ProductsController < ApplicationController
     if @farm.regions.include?(@zip_code)
       @near_farm = true
     end
+
+    authorize @product
   end
+
 end

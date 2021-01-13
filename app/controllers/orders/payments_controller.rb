@@ -1,5 +1,6 @@
 module Orders
   class PaymentsController < ApplicationController
+
     def new
       @order = Order.find(params[:order_id])
       @order.update(status: 'waiting')
@@ -10,6 +11,8 @@ module Orders
       ).call
 
       @transaction_id = @order.transaction_id
+
+      authorize [:payments, @order]
     end
 
     private
@@ -22,4 +25,5 @@ module Orders
       }
     end
   end
+
 end

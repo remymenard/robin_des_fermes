@@ -14,6 +14,8 @@ module Users
       else
         render status: 404
       end
+
+      authorize zip_code
     end
   end
 end

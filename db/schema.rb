@@ -163,6 +163,7 @@ ActiveRecord::Schema.define(version: 2021_01_08_102631) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.boolean "wants_to_subscribe_mailing_list"
+    t.boolean "admin"
     t.string "address_line_2"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
