@@ -1,17 +1,9 @@
-$(() => {
-  // the button is disabled by default so the user can't use the form before JS loads
-  $(".add-to-basket").removeAttr("disabled");
+import { sendAjaxRequest } from "../utils/ajaxRequest"
+import { openBasket } from "../utils/basketOpener";
 
-  $('#add-product-form').on('submit', function () {
-    e.preventDefault();
-    $(this).ajaxSubmit({
-      success: (answer) => {
-        $("#products").html(answer)
-        $(".add-to-basket").removeAttr("disabled");
-      },
-      error: () => {
-        alert('eror')
-      }
-    });
-  });
+$(() => {
+  $(".add-to-basket").on("click", (e) => {
+    openBasket();
+    sendAjaxRequest(e, "POST");
+  })
 });
