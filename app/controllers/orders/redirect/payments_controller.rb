@@ -4,9 +4,11 @@ module Orders
       before_action :set_order
 
       def successful
+        authorize [:payments, @order]
       end
 
       def canceled
+        authorize [:payments, @order]
       end
 
       def with_error
