@@ -1,4 +1,5 @@
 const box = require('custombox');
+require("gasparesganga-jquery-loading-overlay")
 
 const modalObject = {
   content: {
@@ -15,9 +16,10 @@ const modalObject = {
   }
 };
 
-export function openBasket() {
+export async function openBasket() {
   const customBoxModal = new box.modal(modalObject);
-  customBoxModal.open();
+  await customBoxModal.open();
+  return customBoxModal;
 }
 
 export function closeBasket() {

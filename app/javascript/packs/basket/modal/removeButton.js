@@ -1,5 +1,5 @@
 import { sendAjaxRequest } from '../utils/ajaxRequest'
 
 export function initRemoveButton() {
-  $(".remove-item-button").on("click", (e) => sendAjaxRequest(e, "DELETE"))
+  $("#basket").on("click", '.remove-item-button', (e) => sendAjaxRequest(e, "DELETE"))
 }
