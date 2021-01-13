@@ -1,0 +1,66 @@
+
+<div id="header">
+  <span id="title"><%= t "basket.title" %></span>
+  <a href="" id="cross"><%= image_tag "icons/cross.png", alt: "close" %></a>
+</div>
+<div id="products">
+  <% products =  products_list %>
+  <% if products.empty? %>
+    <span class="empty-basket"><%= t "basket.empty" %></span>
+  <% else %>
+    <% products.each do |product_basket| %>
+      <% product = product_basket.product %>
+      <div class="product-basket">
+        <%= cl_image_tag product.photo.key, class: "product-image" %>
+        <div class="product-infos">
+          <div class="left-column">
+            <div class="product-title">
+              <%= product.name %>
+            </div>
+            <div class="infos">
+              <%= product.subtitle %>
+            </div>
+            <div>
+              <div class="counter">
+              <% if product_basket.quantity <= 1 %>
+                <%= image_tag 'icons/remove_item.png', class: "icons decrement-button disabled-button" %>
+              <% else %>
+                <%= link_to image_tag 'icons/remove_item.png', class: "icons decrement-button", data: {path: decrement_basket_order_line_item_path(product), token: form_authenticity_token} %>
+              <% end %>
+                <div class="item-count">
+                  <%= product_basket.quantity %>
+                </div>
+                <%= link_to image_tag 'icons/add_item.png', class: "icons increment-button", data: {path: increment_basket_order_line_item_path(product), token: form_authenticity_token} %>
+              </div>
+            </div>
+          </div>
+          <div class="right-column">
+          <div>
+            <div class="d-flex text-right justify-content-end">
+              <div class="price"><%= product.price * product_basket.quantity %></div>
+              <div class="currency"><%= product.price_currency %></div>
+            </div>
+            <div class="infos">
+              (<%= t "basket.price_per_unit_first_word" %> <%= product.price_per_unit %> <%= product.price_per_unit_currency %>/<%= product.unit %>)
+            </div>
+          </div>
+            <%= link_to "Supprimer", "/", class: "remove-item-button", data: {path: basket_order_line_item_path(product_basket), token: form_authenticity_token} %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+<div id="footer">
+  <div class="d-flex justify-content-between m-3">
+    <div class="total"><%= t "basket.total" %></div>
+    <div>
+      <div class="price-total"><%= total_price(products) %></div>
+      <div class="price-currency">CHF</div>
+    </div>
+  </div>
+  <button type="button" class="btn btn-primary btn-lg btn-block"><%= t "basket.validate" %></button>
+  <div class="continue-button">
+    <a href=""><%= t "basket.continue" %></a>
+  </div>
+</div>

@@ -17,8 +17,7 @@
             <span>0</span>
           </div>
 
-          <%= link_to "+", orders_path, method: :post, class: "btn btn-number" %>
-
+          <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(@product)%>" data-token="<%= form_authenticity_token %>" >+</button>
         </div>
 
         <div class="d-flex one-information">
@@ -41,7 +40,7 @@
         </div>
 
         <div class="d-flex one-information">
-          <h6><%= t('.price') %></h6><p> <%= @product.unit_price  %> </p>
+          <h6><%= t('.price') %></h6><p> <%= @product.price_cents * 100 %> </p>
         </div>
 
         <div class="d-flex one-information">
@@ -104,3 +103,5 @@
   </div>
 
 </div>
+
+<%= javascript_pack_tag "basket/pages/addToBasketButton" %>
