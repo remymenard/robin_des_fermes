@@ -6,7 +6,7 @@
 <div id="products">
   <% products =  products_list %>
   <% if products.empty? %>
-    <span class="empty-basket">Votre panier est vide</span>
+    <span class="empty-basket"><%= t "basket.empty" %></span>
   <% else %>
     <% products.each do |product_basket| %>
       <% product = product_basket.product %>
@@ -41,7 +41,7 @@
               <div class="currency"><%= product.price_currency %></div>
             </div>
             <div class="infos">
-              (soit <%= product.price_per_unit %> <%= product.price_per_unit_currency %>/<%= product.unit %>)
+              (<%= t "basket.price_per_unit_first_word" %> <%= product.price_per_unit %> <%= product.price_per_unit_currency %>/<%= product.unit %>)
             </div>
           </div>
             <%= link_to "Supprimer", "/", class: "remove-item-button", data: {path: basket_order_line_item_path(product_basket), token: form_authenticity_token} %>
@@ -53,14 +53,14 @@
 </div>
 <div id="footer">
   <div class="d-flex justify-content-between m-3">
-    <div class="total">TOTAL</div>
+    <div class="total"><%= t "basket.total" %></div>
     <div>
       <div class="price-total"><%= total_price(products) %></div>
       <div class="price-currency">CHF</div>
     </div>
   </div>
-  <button type="button" class="btn btn-primary btn-lg btn-block">VALIDER MON PANIER</button>
+  <button type="button" class="btn btn-primary btn-lg btn-block"><%= t "basket.validate" %></button>
   <div class="continue-button">
-    <a href="">Continuer mes achats</a>
+    <a href=""><%= t "basket.continue" %></a>
   </div>
 </div>

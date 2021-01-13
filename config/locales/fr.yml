@@ -132,3 +132,9 @@ fr:
         already_account: "Vous avez déjà un compte ?"
   basket:
     title: "Votre panier"
+    empty: "Votre panier est vide"
+    price_per_unit_first_word: "soit"
+    total: "TOTAL"
+    validate: "VALIDER MON PANIER"
+    continue: "Continuer mes achats"
+
