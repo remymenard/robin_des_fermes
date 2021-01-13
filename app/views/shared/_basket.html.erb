@@ -6,7 +6,7 @@
 <div id="products">
   <% products =  products_list %>
   <% if products.empty? %>
-    <span class="empty-basket"><%= t "basket.empty" %></span>
+    <p class="empty-basket m-0"><%= t "basket.empty" %></p>
   <% else %>
     <% products.each do |product_basket| %>
       <% product = product_basket.product %>
