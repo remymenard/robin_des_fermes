@@ -85,3 +85,5 @@ gem 'netaddr', '~> 1.5', '>= 1.5.1'
 gem 'money-rails', '~>1.12'
 gem 'postmark'
 gem 'postmark-rails'
+
+gem 'activeadmin'

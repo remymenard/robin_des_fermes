@@ -21,7 +21,8 @@ module Mailchimp
           FNAME: @user.first_name,
           LNAME: @user.last_name,
           ADDRESS: {
-            addr1: @user.address,
+            addr1: @user.address_line_1,
+            addr2: @user.address_line_2,
             city: @user.city,
             state: "",
             country: "Switzerland",

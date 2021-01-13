@@ -1,4 +1,5 @@
 const { environment } = require('@rails/webpacker')
+const jquery = require('./plugins/jquery')
 const erb = require('./loaders/erb')
 
 const webpack = require('webpack');
@@ -13,4 +14,5 @@ environment.plugins.prepend('Provide',
   })
 );
 environment.loaders.prepend('erb', erb)
+environment.plugins.prepend('jquery', jquery)
 module.exports = environment

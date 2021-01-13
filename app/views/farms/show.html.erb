@@ -173,7 +173,7 @@
 
                 <div>
                   <div class = "unit-price">
-                    <p> CHF <%= product.unit_price  %></p>
+                    <p> CHF <%= product.price_cents * 100 %></p>
                   </div>
 
                   <div class = "unit">
@@ -181,7 +181,7 @@
                   </div>
 
                   <div class = "kg-price">
-                    <p><%= product.kg_price  %> CHF/kg</p>
+                    <p><%= product.price_per_unit_cents * 100 %> CHF/kg</p>
                   </div>
 
                 </div>
