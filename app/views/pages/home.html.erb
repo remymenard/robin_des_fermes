@@ -2,136 +2,227 @@
   <div class="banner" >
     <div class="container ">
       <h2><%= t('.title') %></h2>
-      <p><%= t('.sub_title') %></p>
+      <p><%= t('.sub_title1') %> <strong><%= t('.sub_title_bold1') %></strong><%= t('.sub_title2') %><strong><%= t('.sub_title_bold2') %></strong><%= t('.sub_title3') %><strong><%= t('.sub_title_bold3') %></strong><%= t('.sub_title4') %><strong><%= t('.sub_title_bold4') %></strong><%= t('.sub_title5') %></p>
       <%= form_tag farms_path, method: :get, id: "farm-search-form", class: 'form-inline search' do %>
         <%= text_field_tag :zip, get_zip_code_number, readonly: true, class: 'form-control search', id: "zip_code_input", placeholder: "Où habitez-vous ?" %>
-        <%= submit_tag "RECHERCHER", class: "btn", name: nil %>
+        <%= submit_tag "DECOUVRIR LES PRODUCTEURS", class: "btn", name: nil %>
       <% end %>
 
     </div>
   </div>
 
-  <div class="vector">
-
-  </div>
   <div class="container">
     <div class="home-category">
 
-      <h2><%= t('.products') %></h2>
-
       <div class="food d-flex">
-        <div>
-          <%= link_to farms_path(category: "Viande & Volaille"), class: "navbar-brand" do %>
+
+        <div class="two-products">
+          <div>
             <%= image_tag "categories/meat.png", alt: "Viande" %>
-            <p><%= t('.viandes') %></p>
-          <% end %>
-        </div>
-
-        <div>
-          <%= link_to farms_path(category: "Poisson"), class: "navbar-brand" do %>
-            <%= image_tag "categories/fish.png", alt: "Poisson" %>
-            <p><%= t('.poissons') %></p>
-          <% end %>
-        </div>
-
-        <div>
-          <%= link_to farms_path(category: "Produits Laitiers"), class: "navbar-brand" do %>
-            <%= image_tag "categories/milk.png", alt: "Lait" %>
-            <p><%= t('.laitiers') %></p>
-          <% end %>
-        </div>
-      </div>
-
-    </div>
-
-
-  </div>
-  <div class="low-vector"></div>
-
-
-  <div class="home-farms">
-    <div class="container">
-
-      <h2><%= t('.farms') %></h2>
-
-      <div>
-        <div class="row">
-          <div class="col col-lg-6 ">
-
-            <div class="first-photo">
-
-              <div>
-              <% if @highlighted_farm.present? %>
-                <%= link_to farm_path(@highlighted_farm) do %>
-                  <%= cl_image_tag(@highlighted_farm.photos.first.key, height: 474, width: 570, crop: :fill)  %>
-                <% end %>
-              <% end %>
-              </div>
-
-
-              <div class = "name">
-              <% if @farms.present? %>
-              <p><%= @farms.first.name %></p>
-              <% end %>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="col col-lg-6">
-
-            <div class="all-photo">
-            <% if @other_farms.present? %>
-
-              <% @other_farms.each do |farm|  %>
-
-                <div class="photo">
-
-                  <%= link_to farm_path(farm) do %>
-                    <%= cl_image_tag(farm.photos.first.key, height: 222, width: 270, crop: :fill )%>
-                  <% end %>
-                  <p><%= farm.name %></p>
-
-                </div>
-              <% end %>
+            <h6><%= t('.viandes') %></h6>
+            <p><%= t('.paragraph_meat') %> </p>
+            <%= link_to farms_path(category: "Viande & Volaille"), class: "navbar-brand d-flex" do %>
+              <%= image_tag "categories/line.png", alt: "line" %>
+              <p><%= t('.discover_meat') %> </p>
             <% end %>
-            </div>
-
           </div>
 
+          <div>
+            <%= image_tag "categories/milk.png", alt: "Lait" %>
+            <h6><%= t('.laitiers') %></h6>
+            <p><%= t('.paragraph_milk') %> </p>
+            <%= link_to farms_path(category: "Produits Laitiers"), class: "navbar-brand d-flex" do %>
+              <%= image_tag "categories/line.png", alt: "line" %>
+              <p><%= t('.discover_milk') %> </p>
+            <% end %>
+          </div>
+        </div>
+
+        <div>
+          <h2><%= t('.products') %></h2>
+
+          <div>
+            <%= image_tag "categories/fish.png", alt: "Vin" %>
+            <h6><%= t('.vins') %></h6>
+            <p><%= t('.paragraph_wine') %> </p>
+            <%= link_to farms_path(category: "Vin"), class: "navbar-brand d-flex" do %>
+              <%= image_tag "categories/line.png", alt: "line" %>
+              <p><%= t('.discover_wine') %> </p>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="rdf-presentation">
+      <h2><%= t('.title_rdf') %></h2>
+
+      <div class="d-flex cards-rdf">
+
+        <div class="card-rdf">
+          <%= image_tag "home/rdf-presentation.png", alt: "rdf" %>
+          <h6><%= t('.find') %></h6>
+          <p><%= t('.find_paragraph') %></p>
+        </div>
+
+        <div class="card-rdf">
+          <%= image_tag "home/rdf-presentation.png", alt: "rdf" %>
+          <h6><%= t('.ordered') %></h6>
+          <p><%= t('.ordered_paragraph') %></p>
+        </div>
+
+        <div class="card-rdf">
+          <%= image_tag "home/rdf-presentation.png", alt: "rdf" %>
+          <h6><%= t('.taste') %></h6>
+          <p><%= t('.taste_paragraph') %></p>
         </div>
       </div>
+
+      <%= link_to t(".know_more"), root_path, class: "btn"%>
     </div>
 
   </div>
 
-  <div class="vector"></div>
+  <div class="best-farms">
+    <div class="container">
+      <h2><%= t('.best_farms') %></h2>
+
+      <div class="cards ">
+        <% @farms.take(4).each do |farm| %>
+
+          <div class="card-product d-flex">
+
+            <div class="photo-farm">
+              <%= link_to farm_path(farm) do  %>
+                <%= cl_image_tag(farm.photos.first.key, height: 192, width: 192, crop: :fill, class: "photo-farm") %>
+              <% end %>
+            </div>
+
+            <div class="informations">
+
+              <div class="d-flex address">
+                <%= image_tag "icons/marker_cards_farms", class: "marker" %>
+                <p><%= farm.address.upcase  %></p>
+              </div>
+
+              <div class="name d-flex">
+                <h6> <%= farm.name  %></h6>
+
+                <% farm.labels.each do |label| %>
+                  <div class='label'>
+                    <%= image_tag "labels/#{label}-label.png", class: "label" %>
+                  </div>
+                <%end%>
+              </div>
+
+              <p class="openning"><%= t('.openning', openning: farm.opening_time) %></p>
+
+              <p class="products-number"><%= farm.products.count  %> <%= t('.products_number') %> </p>
+
+              <div class="all-photos d-flex">
+                <% farm.categories.each_with_index do |category, index| %>
+                  <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
+                <% end %>
+              </div>
+
+              <div class="categories"></div>
+            </div>
+
+          </div>
+
+        <% end %>
+      </div>
+
+    </div>
+  </div>
 
   <div class="container">
-    <div class="rdf-presentation">
-      <h2><%= t('.presentations_title') %> </h2>
 
-      <div class = "row">
+    <div class="testimonials">
+      <h2><%= t('.testimony_title') %></h2>
 
-        <div>
-          <%= image_tag "home/sell.png", alt: "alttext" %>
-          <p><%= t('.sell') %></p>
+      <div class="all-testimonials d-flex">
+
+        <div class="testimony">
+          <%= image_tag "home/slice.png", alt: "alttext" %>
+
+          <div class="informations">
+            <h6> <%= t('.testimony1') %></h6>
+            <%= image_tag "testimony/testimony", alt: "alttext" %>
+            <p class="name">John Doe</p>
+            <p class="text"><%= t('.testimony_text1') %></p>
+          </div>
         </div>
 
-        <div>
-          <%= image_tag "home/presentation.png", alt: "alttext" %>
-          <p><%= t('.presentation') %></p>
+        <div class="testimony">
+          <%= image_tag "home/slice.png", alt: "alttext" %>
+
+          <div class="informations">
+            <h6> <%= t('.testimony2') %></h6>
+            <%= image_tag "testimony/testimony2", alt: "alttext" %>
+            <p class="name">John Doe</p>
+            <p class="text"><%= t('.testimony_text2') %></p>
+          </div>
         </div>
 
-        <div>
-          <%= image_tag "home/community.png", alt: "alttext" %>
-          <p><%= t('.community') %></p>
-        </div>
+        <div class="testimony">
+          <%= image_tag "home/slice.png", alt: "alttext" %>
 
+          <div class="informations">
+            <h6> <%= t('.testimony3') %></h6>
+            <%= image_tag "testimony/testimony3", alt: "alttext" %>
+            <p class="name">John Doe</p>
+            <p class="text"><%= t('.testimony_text3') %></p>
+          </div>
+        </div>
       </div>
-
     </div>
+  </div>
+  <div class="registration">
 
+    <div class="container">
+
+      <div class="text">
+        <h2><%= t('.registration') %></h2>
+        <h6><%= t('.registration_text') %></h6>
+
+        <%= link_to t('.registration_btn') , root_path, class: "btn" %>
+      </div>
+    </div>
   </div>
 
+  <div class="quadriptic">
+
+    <div class="container">
+
+     <div class="all-reinsurances d-flex">
+
+       <div class="payement">
+         <%= image_tag "home/payment.png", alt: "alttext" %>
+         <h6><%= t('.payment_title') %></h6>
+         <p><%= t('.payment') %></p>
+       </div>
+
+       <div class="local">
+         <%= image_tag "home/local.png", alt: "alttext" %>
+         <h6><%= t('.local_title') %></h6>
+         <p><%= t('.local') %></p>
+       </div>
+
+       <div class="help">
+         <%= image_tag "home/help.png", alt: "alttext" %>
+         <h6><%= t('.help_title') %></h6>
+         <p><%= t('.help') %></p>
+       </div>
+
+       <div class="producers">
+         <%= image_tag "home/producers.png", alt: "alttext" %>
+         <h6><%= t('.producers_title') %></h6>
+         <p><%= t('.producers') %></p>
+       </div>
+     </div>
+    </div>
+  </div>
 </div>
