@@ -1,7 +1,13 @@
-import {initQuantityButtons} from '../modal/incrementQuantityButton'
-import { closeBasketButton } from '../modal/closeBasketButton'
+import { initQuantityButtons } from '../modal/changeQuantityButton'
+import { initCloseBasketButton } from '../modal/closeBasketButton'
+import { initOpenBasketButton } from '../modal/shoppingCartButton'
+import { initRemoveButton } from '../modal/removeButton'
 
 export function initBasket() {
-  initQuantityButtons();
-  closeBasketButton();
+  $(() => {
+    initQuantityButtons();
+    initCloseBasketButton();
+    initOpenBasketButton();
+    initRemoveButton();
+  });
 }

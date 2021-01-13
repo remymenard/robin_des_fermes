@@ -19,7 +19,12 @@ Rails.application.routes.draw do
   end
 
   namespace :basket do
-    resources :order_line_items, only: [:create]
+    resources :order_line_items, only: [:destroy] do
+      member do
+        post :increment
+        post :decrement
+      end
+    end
   end
 
   namespace :orders do

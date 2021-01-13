@@ -17,11 +17,7 @@
             <span>0</span>
           </div>
 
-          <%= form_tag basket_order_line_items_path, method: :post, id: "add-product-form" do %>
-            <%= hidden_field_tag :product_id, @product.id %>
-            <%= submit_tag "+", class: "btn btn-number add-to-basket", name: nil, disabled: true %>
-          <% end %>
-
+          <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(@product)%>" data-token="<%= form_authenticity_token %>" >+</button>
         </div>
 
         <div class="d-flex one-information">

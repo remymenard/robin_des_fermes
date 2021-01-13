@@ -1,0 +1,15 @@
+export function sendAjaxRequest(e, requestType) {
+  e.preventDefault();
+  const hrefPath = $(e.target).data("path");
+  const token = $(e.target).data("token");
+  $.ajax({
+    data: {
+      authenticity_token: token,
+    },
+    url: hrefPath,
+    type: requestType,
+    success: (answer) => {
+      $("#basket").html(answer)
+    }
+  })
+};

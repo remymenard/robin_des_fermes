@@ -133,17 +133,19 @@
         vertical-align: super;
       }
 
-      .remove {
-        line-height: 16px;
+      .remove-item-button {
+        line-height: 24px;
         font-size: 12px;
-        color: #898989;
+        color: #898989 !important;
         opacity: 0.4;
         margin: 7px 0;
+        &:hover {
+          text-decoration: none;
+          opacity: 0.6;
+        }
       }
 
       .infos {
-        font-size: 10px;
-        line-height: 10px;
         font-size: 12px;
         line-height: 17px;
         color: #7C7977;
@@ -169,6 +171,11 @@
 
       .icons {
         height: 36px;
+      }
+
+      .disabled-button {
+        filter: grayscale(61%);
+        opacity: 0.4;
       }
     }
   }
