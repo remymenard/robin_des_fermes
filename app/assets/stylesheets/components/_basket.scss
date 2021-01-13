@@ -117,7 +117,7 @@
         flex-basis: 10%;
         font-weight: bold;
         line-height: 19px;
-        margin: 0 4px 4px 0;
+        margin-right: 4px;
         font-size: 24px;
         color: $primary;
         display: inline-block;
@@ -158,12 +158,14 @@
       }
 
       .item-count {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        margin-bottom: 0;
         font-weight: 600;
         min-width: 37px;
         font-size: 23px;
         color: $primary;
-        display: inline-block;
-        text-align: center;
         @include small {
           min-width: 69px;
         }
@@ -208,10 +210,13 @@
     }
 
     .continue-button {
-      padding-top: 14px;
-      width: 100%;
       font-size: 14px;
+      font-family: 'Mulish', sans-serif;
       text-align: center;
+      display: flex;
+      justify-content: center;
+      margin-top: 14px;
+      text-decoration: none;
     }
   }
 }
