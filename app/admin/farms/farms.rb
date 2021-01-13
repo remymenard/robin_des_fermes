@@ -1,6 +1,7 @@
 ActiveAdmin.register Farm, as: "Exploitations" do
   permit_params :name, :description, :address, :lagitude, :longitude, :opening_time, :labels, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accept_delivery, photos: [],
-                opening_hours_attributes: [ :id, :day, :opens, :closes ], user: [:email, :first_name]
+                opening_hours_attributes: [:id, :day, :opens, :closes],
+                user_attributes: [:id, :email, :first_name, :last_name, :number_phone, :wants_to_subscribe_mailing_list, :photo, :password, :title, :password_confirmation, :address_line_1, :city, :zip_code, ]
   LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
 
   form title: 'Exploitations' do |f|
@@ -8,18 +9,24 @@ ActiveAdmin.register Farm, as: "Exploitations" do
       tab 'Etape 1' do
         panel 'Déclarer un Propriétaire' do
           inputs "Renseigner un propriétaire", for: [:user, User.new] do |u|
+            u.input :title, collection: User::TITLE
             u.input :first_name
             u.input :last_name
             u.input :email
             u.input :number_phone
+            u.input :address_line_1
+            u.input :city
+            u.input :zip_code
+            u.input :password
+            u.input :password_confirmation
             u.input :wants_to_subscribe_mailing_list
+            u.input :photo, as: :file
           end
         end
       end
       tab 'Etape 2' do
         panel "Renseigner les informations de l'exploitation" do
           inputs 'Coordonnées' do
-            input :user_id
             input :name, label: false, placeholder: "Dénomination"
             input :address, label: false, placeholder: "Adresse"
             input :zip_code, label: false, placeholder: "CP", :wrapper_html => { :class => 'fl' }
@@ -84,10 +91,20 @@ ActiveAdmin.register Farm, as: "Exploitations" do
     def create
       @opening_hour = OpeningHour.new(permitted_params[:opening_hours])
       @opening_hour.save
+      @user = User.new(permitted_params[:user])
+      @user.save
       @farm = Farm.new(permitted_params[:farm])
-      @farm.save
+      @farm.save!
+      create! { |success, failure|
+        success.html do
+          redirect_to admin_exploitations_path, :notice => "Resource created successfully."
+        end
+        failure.html do
+          render 'new'
+        end
+      }
 
-      redirect_to admin_exploitations_path
+
     end
   end
 end
