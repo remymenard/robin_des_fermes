@@ -1,26 +1,29 @@
 ActiveAdmin.register Farm, as: "Exploitations" do
   permit_params :name, :description, :address, :lagitude, :longitude, :opening_time, :labels, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accept_delivery, photos: [],
                 opening_hours_attributes: [:id, :day, :opens, :closes],
-                user_attributes: [:id, :email, :first_name, :last_name, :number_phone, :wants_to_subscribe_mailing_list, :photo, :password, :title, :password_confirmation, :address_line_1, :city, :zip_code, ]
+                user_attributes: [:id, :email, :first_name, :last_name, :number_phone, :wants_to_subscribe_mailing_list, :photo, :password, :title, :password_confirmation, :address_line_1, :city, :zip_code]
   LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
 
   form title: 'Exploitations' do |f|
     tabs do
       tab 'Etape 1' do
         panel 'Déclarer un Propriétaire' do
-          inputs "Renseigner un propriétaire", for: [:user, User.new] do |u|
-            u.input :title, collection: User::TITLE
-            u.input :first_name
-            u.input :last_name
-            u.input :email
-            u.input :number_phone
-            u.input :address_line_1
-            u.input :city
-            u.input :zip_code
-            u.input :password
-            u.input :password_confirmation
-            u.input :wants_to_subscribe_mailing_list
-            u.input :photo, as: :file
+          f.inputs "Renseigner un propriétaire" do
+            f.has_many :user, class_name: 'Abcd::User' do |u|
+              u.input :title, collection: User::TITLE
+              u.input :first_name
+              u.input :last_name
+              u.input :email
+              u.input :number_phone
+              u.input :address_line_1
+              u.input :city
+              u.input :zip_code
+              u.input :password
+              u.input :password_confirmation
+              u.input :wants_to_subscribe_mailing_list
+              u.input :admin
+              u.input :photo, as: :file
+            end
           end
         end
       end
@@ -103,8 +106,12 @@ ActiveAdmin.register Farm, as: "Exploitations" do
           render 'new'
         end
       }
+    end
 
-
+    def update
+      @farm = Farm.find(params[:id])
+      @farm.update(permitted_params[:farm])
+      redirect_to admin_exploitations_path
     end
   end
 end
