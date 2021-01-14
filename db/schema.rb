@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_12_122601) do
+ActiveRecord::Schema.define(version: 2021_01_13_085846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,12 +83,20 @@ ActiveRecord::Schema.define(version: 2021_01_12_122601) do
     t.float "latitude"
     t.float "longitude"
     t.string "opening_time"
-    t.string "description"
+    t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.jsonb "labels", default: [], array: true
     t.text "regions", default: [], array: true
     t.boolean "accepts_take_away", default: false
+    t.string "zip_code"
+    t.string "city"
+    t.string "country"
+    t.integer "farmer_number"
+    t.string "iban"
+    t.text "long_description"
+    t.boolean "accept_delivery", default: false
+    t.integer "delivery_delay"
     t.index ["user_id"], name: "index_farms_on_user_id"
   end
 
@@ -168,6 +176,7 @@ ActiveRecord::Schema.define(version: 2021_01_12_122601) do
     t.boolean "wants_to_subscribe_mailing_list"
     t.string "address_line_2"
     t.boolean "admin"
+    t.string "number_phone"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resource :zip_code, only: [:update]
   end
 
-  resources :farms, only: [:index, :show]
+  resources :farms
 
   resources :orders, only: [:show] do
     resources :payments, only: [:new], controller: 'orders/payments'
