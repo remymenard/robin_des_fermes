@@ -3,6 +3,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
                 opening_hours_attributes: [:id, :day, :opens, :closes],
                 products_attributes: [:id, :name, :category_id],
                 user_attributes: [:id, :email, :first_name, :last_name, :number_phone, :wants_to_subscribe_mailing_list, :photo, :password, :title, :password_confirmation, :address_line_1, :city, :zip_code, :farm_id]
+
   LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
 
   form title: 'Exploitations' do |f|
@@ -101,6 +102,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
   controller do
     def create
       @farm = Farm.new(permitted_params[:farm])
+      @farm.labels.reject!(&:empty?)
       @farm.save!
 
       @opening_hour = OpeningHour.new(permitted_params[:opening_hours])
@@ -112,7 +114,6 @@ ActiveAdmin.register Farm, as: "Exploitations" do
       @product.save
 
       @user = User.new(permitted_params[:user])
-      @user.valid = true
       @user.save
 
       create! do |success, failure|

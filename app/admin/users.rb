@@ -1,7 +1,7 @@
 ActiveAdmin.register User, as: "Utilisateurs" do
   permit_params :id, :email, :first_name, :last_name, :number_phone, :wants_to_subscribe_mailing_list, :photo, :password, :title, :password_confirmation, :address_line_1, :city, :zip_code, :farm_id
 
-  form title: 'A custom title' do |f|
+  form title: 'Utilisateurs' do |f|
     inputs "Renseigner un propriétaire" do
       input :title, collection: User::TITLE, label: "Genre"
       input :first_name, label: false, placeholder: "Prénom"
@@ -27,13 +27,12 @@ ActiveAdmin.register User, as: "Utilisateurs" do
 
   controller do
     def create
-
       @user = User.new(permitted_params[:user])
       @user.save
 
       create! do |success, failure|
         success.html do
-          redirect_to admin_exploitations_path, :notice => "Resource created successfully."
+          redirect_to admin_exploitations_path, notice: "Resource created successfully."
         end
 
         failure.html do
@@ -49,6 +48,10 @@ ActiveAdmin.register User, as: "Utilisateurs" do
       update! do |success, failure|
         success.html do
           redirect_to admin_utilisateurs_path
+        end
+
+        failure.html do
+          render 'edit'
         end
       end
     end
