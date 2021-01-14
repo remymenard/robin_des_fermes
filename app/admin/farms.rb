@@ -82,15 +82,26 @@ ActiveAdmin.register Farm, as: "Exploitations" do
         end
       end
       tab 'Etape 4' do
+        panel 'Créer les catégorie' do
+          f.input :category_ids, as: :check_boxes, collection: Category.all
+        end
         panel 'Créer un produit' do
-         f.input :category_ids, as: :check_boxes, collection: Category.all
-          # f.has_many :products, heading: "", new_record: 'Ajouter un produit' do |product|
-          #   product.inputs do
-          #     product.input :name
-          #     product.input :available
-          #     product.input :category_id, as: :select, collection: Category.all
-          #   end
-          # end
+          f.has_many :products, heading: "", new_record: 'Ajouter un produit' do |product|
+            product.inputs do
+              product.input :name
+              product.input :category_id, as: :select, collection: Category.all
+              product.input :price_cents
+              product.input :unit
+              product.input :price_per_unit_cents
+              product.input :fresh
+              product.input :label, label: false, as: :check_boxes, collection: LABELS
+              product.input :available
+              product.input :description
+              product.input :ingredients
+              product.input :photo, as: :file
+              product.input :weight
+            end
+          end
         end
       end
     end
