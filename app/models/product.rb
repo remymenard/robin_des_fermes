@@ -2,7 +2,7 @@ class Product < ApplicationRecord
   belongs_to :farm
   belongs_to :category
 
-  #has_one_attached :photo
+  has_one_attached :photo
 
   validates :name, presence: true
   #validates :description, presence: true
