@@ -7,8 +7,12 @@ class Farm < ApplicationRecord
   accepts_nested_attributes_for :user, allow_destroy: true
 
   has_many :farm_categories, dependent: :destroy
+
   has_many :categories, through: :farm_categories
+  accepts_nested_attributes_for :categories, allow_destroy: true
+
   has_many :products, dependent: :destroy
+  accepts_nested_attributes_for :products, allow_destroy: true
 
   has_many :opening_hours, dependent: :destroy
   accepts_nested_attributes_for :opening_hours, allow_destroy: true

@@ -112,7 +112,7 @@
 
                 <% farm.labels.each do |label| %>
                   <div class='label'>
-                    <%= image_tag "labels/#{label}-label.png", class: "label" %>
+                    <%if label == "Bio-Suisse"  %><%= image_tag "labels/Bio-Suisse-label.png", class: "label" %><% end %>
                   </div>
                 <%end%>
               </div>

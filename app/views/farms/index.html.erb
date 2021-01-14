@@ -50,7 +50,7 @@
                   <p><%= t('.labels') %>
                     <% farm.labels.each do |label| %>
                       <div class='label'>
-                        <%= image_tag "labels/#{label}-label.png", class: "label" %>
+                        <%if label == "Bio-Suisse"  %><%= image_tag "labels/Bio-Suisse-label.png", class: "label" %><% end %>
                       </div>
                     <%end%>
                   </p>
@@ -103,11 +103,13 @@
 
                 <div class="d-flex information">
                   <p><%= t('.labels') %>
-                    <% farm.labels.each do |label| %>
-                      <div class='label'>
-                        <%= image_tag "labels/#{label}-label.png", class: "label" %>
-                      </div>
-                    <%end%>
+                    <% if farm.labels != [""] %>
+                      <% farm.labels.each do |label| %>
+                        <div class='label'>
+                          <%if label == "Bio-Suisse"  %><%= image_tag "labels/Bio-Suisse-label.png", class: "label" %><% end %>
+                        </div>
+                      <%end%>
+                    <% end %>
                   </p>
                 </div>
 

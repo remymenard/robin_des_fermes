@@ -1,6 +1,7 @@
 ActiveAdmin.register Farm, as: "Exploitations" do
-  permit_params :name, :description, :address, :lagitude, :longitude, :opening_time, :labels, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accept_delivery, photos: [],
+  permit_params :name, :description, :address, :lagitude, :longitude, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accept_delivery, labels: [], photos: [],
                 opening_hours_attributes: [:id, :day, :opens, :closes],
+                products_attributes: [:id, :name, :category_id],
                 user_attributes: [:id, :email, :first_name, :last_name, :number_phone, :wants_to_subscribe_mailing_list, :photo, :password, :title, :password_confirmation, :address_line_1, :city, :zip_code, :farm_id]
   LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
 
@@ -77,6 +78,16 @@ ActiveAdmin.register Farm, as: "Exploitations" do
           end
         end
       end
+      tab 'Etape 4' do
+        panel 'Créer un produit' do
+          f.has_many :products, heading: "", new_record: 'Ajouter un produit' do |product|
+            product.inputs do
+              product.input :name
+              product.input :category_id, as: :select, collection: Category.all
+            end
+          end
+        end
+      end
     end
     f.actions do
       if resource.persisted?
@@ -89,14 +100,20 @@ ActiveAdmin.register Farm, as: "Exploitations" do
 
   controller do
     def create
+      @farm = Farm.new(permitted_params[:farm])
+      @farm.save!
+
       @opening_hour = OpeningHour.new(permitted_params[:opening_hours])
+      @opening_hour.farm = @farm
       @opening_hour.save
 
-      @user = User.new(permitted_params[:user])
-      @user.save
+      @product = Product.new(permitted_params[:products])
+      @product.farm = @farm
+      @product.save
 
-      @farm = Farm.new(permitted_params[:farm])
-      @farm.save
+      @user = User.new(permitted_params[:user])
+      @user.valid = true
+      @user.save
 
       create! do |success, failure|
         success.html do
@@ -111,7 +128,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
 
     def update
       @farm = Farm.find(params[:id])
-      @user = User.find(@farm.user_id)
+      #@user = User.find(@farm.user_id)
       @farm.update(permitted_params[:farm])
       redirect_to admin_exploitations_path
     end
