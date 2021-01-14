@@ -6,8 +6,6 @@ ActiveAdmin.setup do |config|
   #
   config.site_title = "Robin Des Fermes"
 
-  config.register_stylesheet 'active_admin.scss'
-
   # Set the link url for the title. For example, to take
   # users to your main site. Defaults to no link.
   #
@@ -56,7 +54,7 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # within the application controller.
-  # config.authentication_method = :authenticate_admin_user!
+  config.authentication_method = :authenticate_admin_user!
 
   # == User Authorization
   #
@@ -65,8 +63,6 @@ ActiveAdmin.setup do |config|
   # ensure that there is a user with proper rights. You can use
   # CanCanAdapter or make your own. Please refer to documentation.
   # config.authorization_adapter = ActiveAdmin::CanCanAdapter
-
-  config.authorization_adapter = ActiveAdminAdapter
 
   # In case you prefer Pundit over other solutions you can here pass
   # the name of default policy class. This policy will be used in every
@@ -86,7 +82,7 @@ ActiveAdmin.setup do |config|
   # because, by default, user gets redirected to Dashboard. If user
   # doesn't have access to Dashboard, he'll end up in a redirect loop.
   # Method provided here should be defined in application_controller.rb.
-  config.on_unauthorized_access = :access_denied
+  # config.on_unauthorized_access = :access_denied
 
   # == Current User
   #
@@ -95,7 +91,7 @@ ActiveAdmin.setup do |config|
   #
   # This setting changes the method which Active Admin calls
   # (within the application controller) to return the currently logged in user.
-  config.current_user_method = :current_user
+  config.current_user_method = :current_admin_user
 
   # == Logging Out
   #
@@ -107,13 +103,13 @@ ActiveAdmin.setup do |config|
   # will call the method to return the path.
   #
   # Default:
-  config.logout_link_path = :destroy_user_session_path
+  config.logout_link_path = :destroy_admin_user_session_path
 
   # This setting changes the http method used when rendering the
   # link. For example :get, :delete, :put, etc..
   #
   # Default:
-  config.logout_link_method = :delete
+  # config.logout_link_method = :get
 
   # == Root
   #
