@@ -131,6 +131,8 @@ ActiveAdmin.register Farm, as: "Exploitations" do
       @farm = Farm.find(params[:id])
       #@user = User.find(@farm.user_id)
       @farm.update(permitted_params[:farm])
+      @farm.labels.reject!(&:empty?)
+      @farm.save
       redirect_to admin_exploitations_path
     end
 
