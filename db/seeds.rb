@@ -528,3 +528,4 @@ mardi = OpeningHour.create!(farm: cave, day: 1, opens: DateTime.new(2012, 8, 29,
 mercredi = OpeningHour.create!(farm: cave, day: 2, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
 jeudi = OpeningHour.create!(farm: cave, day: 3, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
 vendredi = OpeningHour.create!(farm: cave, day: 4, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

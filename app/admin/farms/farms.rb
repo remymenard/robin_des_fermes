@@ -8,21 +8,19 @@ ActiveAdmin.register Farm, as: "Exploitations" do
     tabs do
       tab 'Etape 1' do
         panel 'Déclarer un Propriétaire' do
-          f.inputs "Renseigner un propriétaire" do
-            f.has_many :user, class_name: 'Abcd::User', new_record: 'Ajouter un propriétaire', heading: "" do |u|
-              u.input :title, collection: User::TITLE, label: "Genre"
-              u.input :first_name, label: false, placeholder: "Prénom"
-              u.input :last_name, label: false, placeholder: "Nom"
-              u.input :email, label: false, placeholder: "Mail"
-              u.input :number_phone, label: false, placeholder: "Téléphone"
-              u.input :address_line_1, label: false, placeholder: "Adresse"
-              u.input :city, label: false, placeholder: "Ville"
-              u.input :zip_code, label: false, placeholder: "Code postal"
-              u.input :password, label: false, placeholder: "Mot de passe"
-              u.input :password_confirmation, label: false, placeholder: "Confirmation du mot de passe"
-              u.input :wants_to_subscribe_mailing_list, label: "L'inscrire a la newsletter"
-              u.input :photo, as: :file, label: "Mettre une photo de profil"
-            end
+          inputs "Renseigner un propriétaire", for: [:user, params[:id] ? Farm.find(params[:id]).user : User.new] do |u|
+            u.input :title, collection: User::TITLE, label: "Genre"
+            u.input :first_name, label: false, placeholder: "Prénom"
+            u.input :last_name, label: false, placeholder: "Nom"
+            u.input :email, label: false, placeholder: "Mail"
+            u.input :number_phone, label: false, placeholder: "Téléphone"
+            u.input :address_line_1, label: false, placeholder: "Adresse"
+            u.input :city, label: false, placeholder: "Ville"
+            u.input :zip_code, label: false, placeholder: "Code postal"
+            u.input :password, label: false, placeholder: "Mot de passe"
+            u.input :password_confirmation, label: false, placeholder: "Confirmation du mot de passe"
+            u.input :wants_to_subscribe_mailing_list, label: "L'inscrire a la newsletter"
+            u.input :photo, as: :file, label: "Mettre une photo de profil"
           end
         end
       end
@@ -93,22 +91,27 @@ ActiveAdmin.register Farm, as: "Exploitations" do
     def create
       @opening_hour = OpeningHour.new(permitted_params[:opening_hours])
       @opening_hour.save
+
       @user = User.new(permitted_params[:user])
       @user.save
+
       @farm = Farm.new(permitted_params[:farm])
-      @farm.save!
-      create! { |success, failure|
+      @farm.save
+
+      create! do |success, failure|
         success.html do
           redirect_to admin_exploitations_path, :notice => "Resource created successfully."
         end
+
         failure.html do
           render 'new'
         end
-      }
+      end
     end
 
     def update
       @farm = Farm.find(params[:id])
+      @user = User.find(@farm.user_id)
       @farm.update(permitted_params[:farm])
       redirect_to admin_exploitations_path
     end

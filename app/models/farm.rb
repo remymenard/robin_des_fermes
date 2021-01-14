@@ -4,7 +4,7 @@ class Farm < ApplicationRecord
 
 
   belongs_to :user
-  accepts_nested_attributes_for :user
+  accepts_nested_attributes_for :user, allow_destroy: true
 
   has_many :farm_categories, dependent: :destroy
   has_many :categories, through: :farm_categories
