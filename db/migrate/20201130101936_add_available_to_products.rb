@@ -1,5 +1,5 @@
 class AddAvailableToProducts < ActiveRecord::Migration[6.0]
   def change
-    add_column :products, :available, :boolean
+    add_column :products, :available, :boolean, default: false
   end
 end
