@@ -1,7 +1,9 @@
 ActiveAdmin.register Farm, as: "Exploitations" do
-  permit_params :name, :description, :address, :lagitude, :longitude, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accept_delivery, labels: [], photos: [],
+  permit_params :name, :description, :address, :lagitude, :longitude, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accept_delivery, :categories, labels: [], photos: [],
                 opening_hours_attributes: [:id, :day, :opens, :closes],
                 products_attributes: [:id, :name, :available, :category_id],
+                categories_attributes: [:id, :name],
+                category_ids: [],
                 user_attributes: [:id, :email, :first_name, :last_name, :number_phone, :wants_to_subscribe_mailing_list, :photo, :password, :title, :password_confirmation, :address_line_1, :city, :zip_code, :farm_id]
 
   LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
@@ -81,13 +83,14 @@ ActiveAdmin.register Farm, as: "Exploitations" do
       end
       tab 'Etape 4' do
         panel 'Créer un produit' do
-          f.has_many :products, heading: "", new_record: 'Ajouter un produit' do |product|
-            product.inputs do
-              product.input :name
-              product.input :available
-              product.input :category_id, as: :select, collection: Category.all
-            end
-          end
+         f.input :category_ids, as: :check_boxes, collection: Category.all
+          # f.has_many :products, heading: "", new_record: 'Ajouter un produit' do |product|
+          #   product.inputs do
+          #     product.input :name
+          #     product.input :available
+          #     product.input :category_id, as: :select, collection: Category.all
+          #   end
+          # end
         end
       end
     end
@@ -106,6 +109,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
       @farm.user.skip_confirmation_notification!
       @farm.validate!
       @farm.labels.reject!(&:empty?)
+
       if @farm.save
         redirect_to admin_exploitations_path, notice: "Resource created successfully."
       else
