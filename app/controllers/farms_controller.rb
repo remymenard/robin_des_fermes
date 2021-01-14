@@ -38,6 +38,7 @@ class FarmsController < ApplicationController
       }
     end
 
+    @farms = policy_scope(Farm)
   end
 
   def show
@@ -79,6 +80,7 @@ class FarmsController < ApplicationController
       }
     end
 
+    authorize @farm
   end
 
   private

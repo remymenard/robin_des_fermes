@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :admin_users, {class_name: 'User'}.merge(ActiveAdmin::Devise.config)
   ActiveAdmin.routes(self)
-  devise_for :users
+  devise_for :users, controllers: {confirmations: 'users/confirmations', registrations: 'users/registrations', sessions: 'users/sessions'}
+
   scope '(:locale)', locale: /fr/ do
     root to: 'pages#home'
     get 'faq', :to => 'pages#faq'
@@ -16,8 +17,17 @@ Rails.application.routes.draw do
 
   resources :farms
 
-  resources :orders, only: [:show, :create] do
+  resources :orders, only: [:show] do
     resources :payments, only: [:new], controller: 'orders/payments'
+  end
+
+  namespace :basket do
+    resources :order_line_items, only: [:destroy] do
+      member do
+        post :increment
+        post :decrement
+      end
+    end
   end
 
   namespace :orders do

@@ -1,5 +1,8 @@
 class ProductsController < ApplicationController
   include ZipCodeHelper
+
+  skip_before_action :authenticate_user!
+
   def show
     @product = Product.find(params[:id])
     @farm    = @product.farm
@@ -11,5 +14,8 @@ class ProductsController < ApplicationController
     if @farm.regions.include?(@zip_code)
       @near_farm = true
     end
+
+    authorize @product
   end
+
 end
