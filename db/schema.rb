@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_13_085846) do
+ActiveRecord::Schema.define(version: 2021_01_14_112315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 2021_01_13_085846) do
     t.text "long_description"
     t.boolean "accept_delivery", default: false
     t.integer "delivery_delay"
+    t.boolean "active", default: false
     t.index ["user_id"], name: "index_farms_on_user_id"
   end
 

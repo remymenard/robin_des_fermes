@@ -1,5 +1,5 @@
 ActiveAdmin.register Farm, as: "Exploitations" do
-  permit_params :name, :description, :address, :lagitude, :longitude, :opening_time, :labels, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accept_delivery, photos: [],
+  permit_params :active, :name, :description, :address, :lagitude, :longitude, :opening_time, :labels, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accept_delivery, photos: [],
                 opening_hours_attributes: [:id, :day, :opens, :closes],
                 user_attributes: [:id, :email, :first_name, :last_name, :number_phone, :wants_to_subscribe_mailing_list, :photo, :password, :title, :password_confirmation, :address_line_1, :city, :zip_code, :farm_id]
   LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
@@ -7,6 +7,9 @@ ActiveAdmin.register Farm, as: "Exploitations" do
   form title: 'Exploitations' do |f|
     tabs do
       tab 'Etape 1' do
+        panel 'Activer la ferme'do
+          input :active, label: " Disponible ?"
+        end
         panel 'Déclarer un Propriétaire' do
           inputs "Renseigner un propriétaire", for: [:user, params[:id] ? Farm.find(params[:id]).user : User.new] do |u|
             u.input :title, collection: User::TITLE, label: "Genre"
@@ -112,7 +115,16 @@ ActiveAdmin.register Farm, as: "Exploitations" do
     def update
       @farm = Farm.find(params[:id])
       @user = User.find(@farm.user_id)
-      @farm.update(permitted_params[:farm])
+      @farm.assign_attributes(permitted_params[:farm])
+      if @farm.active
+        unless @farm.save
+          @farm.active = false
+          @farm.save(validate: false)
+          flash[:alert] = "Veuillez à compléter toutes les informations afin de rendre l'exploitation disponible."
+        end
+      else
+        @farm.save(validate: false)
+      end
       redirect_to admin_exploitations_path
     end
   end
