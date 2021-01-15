@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_15_081342) do
+ActiveRecord::Schema.define(version: 2021_01_15_084940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -154,8 +154,8 @@ ActiveRecord::Schema.define(version: 2021_01_15_081342) do
     t.string "minimum_weight"
     t.boolean "display_minimum_weight", default: false
     t.string "conditioning"
-    t.string "preorder"
     t.string "total_weight"
+    t.date "preorder"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["farm_id"], name: "index_products_on_farm_id"
   end
