@@ -5,9 +5,9 @@ class Product < ApplicationRecord
   has_one_attached :photo
 
   validates :name, presence: true
-  validates :description, presence: true
-  validates :ingredients, presence: true
-  validates :label, presence: true
+  #validates :description, presence: true
+  #validates :ingredients, presence: true
+  #validates :label, presence: true
   monetize :price_cents, allow_nil: false,
   numericality: {
     greater_than_or_equal_to: 0,
@@ -16,7 +16,7 @@ class Product < ApplicationRecord
   numericality: {
     greater_than_or_equal_to: 0,
   }
-  validates :unit, presence: true
+  #validates :unit, presence: true
 
   scope :available, -> ()    { where(available: true) }
   scope :not_fresh, -> ()    { where(fresh: false) }

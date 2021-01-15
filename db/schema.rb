@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_14_112315) do
+
+ActiveRecord::Schema.define(version: 2021_01_15_084940) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,7 +88,6 @@ ActiveRecord::Schema.define(version: 2021_01_14_112315) do
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.jsonb "labels", default: [], array: true
     t.text "regions", default: [], array: true
     t.boolean "accepts_take_away", default: false
     t.string "zip_code"
@@ -97,6 +98,7 @@ ActiveRecord::Schema.define(version: 2021_01_14_112315) do
     t.text "long_description"
     t.boolean "accept_delivery", default: false
     t.integer "delivery_delay"
+    t.text "labels", array: true
     t.boolean "active", default: false
     t.index ["user_id"], name: "index_farms_on_user_id"
   end
@@ -128,9 +130,9 @@ ActiveRecord::Schema.define(version: 2021_01_14_112315) do
     t.string "price_currency", default: "CHF", null: false
     t.string "status", default: "waiting"
     t.string "transaction_id"
+    t.bigint "buyer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "buyer_id"
     t.index ["buyer_id"], name: "index_orders_on_buyer_id"
   end
 
@@ -145,13 +147,18 @@ ActiveRecord::Schema.define(version: 2021_01_14_112315) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "unit"
     t.text "label", default: [], array: true
-    t.boolean "available"
+    t.boolean "available", default: false
     t.boolean "fresh"
     t.integer "price_per_unit_cents", default: 0, null: false
     t.string "price_per_unit_currency", default: "CHF", null: false
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "CHF", null: false
     t.string "subtitle"
+    t.string "minimum_weight"
+    t.boolean "display_minimum_weight", default: false
+    t.string "conditioning"
+    t.string "total_weight"
+    t.date "preorder"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["farm_id"], name: "index_products_on_farm_id"
   end
@@ -175,8 +182,8 @@ ActiveRecord::Schema.define(version: 2021_01_14_112315) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.boolean "wants_to_subscribe_mailing_list"
-    t.string "address_line_2"
     t.boolean "admin"
+    t.string "address_line_2"
     t.string "number_phone"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

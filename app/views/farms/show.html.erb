@@ -123,8 +123,8 @@
 
             <div class="d-flex informations">
               <div class="d-flex photos">
-                <% @farm.farm_categories.each do |farm_category| %>
-                  <div class='category-photo'><%= cl_image_tag farm_category.category.photo.key %></div>
+                <% @farm.categories.each do |category| %>
+                  <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
                 <% end %>
               </div>
             </div>
@@ -160,7 +160,6 @@
   <div class="products">
     <% @products_by_category.each do |category, products|  %>
       <h4><%= t('.category', name: category.name.capitalize) %></h4>
-
       <div class="d-flex all-card-product">
         <% products.each do |product| %>
 
@@ -198,8 +197,7 @@
                   <div class="number">
                     <p>0</p>
                   </div>
-
-                  <%= link_to "+", orders_path, method: :post, class: "btn btn-number" %>
+                  <%= link_to "+", order_path, method: :post, class: "btn btn-number" %>
 
                 </div>
               </div>

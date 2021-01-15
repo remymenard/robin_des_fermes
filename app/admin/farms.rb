@@ -1,7 +1,12 @@
 ActiveAdmin.register Farm, as: "Exploitations" do
+  before_action :remove_password_params_if_blank, only: [:update]
   permit_params :active, :name, :description, :address, :lagitude, :longitude, :opening_time, :labels, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accept_delivery, photos: [],
                 opening_hours_attributes: [:id, :day, :opens, :closes],
+                products_attributes: [:id, :name, :available, :category_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning, :preorder, :total_weight, label:[] ],
+                categories_attributes: [:id, :name],
+                category_ids: [],
                 user_attributes: [:id, :email, :first_name, :last_name, :number_phone, :wants_to_subscribe_mailing_list, :photo, :password, :title, :password_confirmation, :address_line_1, :city, :zip_code, :farm_id]
+
   LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
 
   form title: 'Exploitations' do |f|
@@ -80,41 +85,70 @@ ActiveAdmin.register Farm, as: "Exploitations" do
           end
         end
       end
+      tab 'Etape 4' do
+        panel 'Ajouter les catégorie' do
+          f.input :category_ids, as: :check_boxes, collection: Category.all, label: false
+        end
+        panel 'Créer un produit' do
+          f.has_many :products, heading: "", new_record: 'Ajouter un produit' do |product|
+            product.inputs do
+              product.input :name, label: "Nom"
+              product.input :category_id, as: :select, collection: Category.all, label: "Catégorie"
+              product.input :price_cents, label: "Prix CHF"
+              product.input :display_minimum_weight, label: "Afficher poids Minimum ?"
+              product.input :minimum_weight, label: "Poids ou volume"
+              product.input :unit, label: "Unité"
+              product.input :price_per_unit_cents, label: "Prix au kg"
+              product.input :conditioning, label: "Conditionnement"
+              product.input :fresh, label: "Frais"
+              product.input :label, label: false, as: :check_boxes, collection: LABELS, label: "Label"
+              product.input :available, label: "Actif"
+              product.input :preorder, label: "Date livraison précommande"
+              product.input :description, label: "Description"
+              product.input :ingredients, label: "Ingrédients"
+              product.input :photo, as: :file, label: "Image du produit"
+              product.input :total_weight, label: "Poids total"
+            end
+          end
+        end
+      end
     end
     f.actions do
       if resource.persisted?
-        f.action :submit, as: :button, label: "Modifier l'exploitation"
+        f.action :submit, label: "Modifier l'exploitation"
       else
-        f.action :submit, as: :button, label: "Créer l'exploitation"
+        f.action :submit, label: "Créer l'exploitation"
       end
     end
   end
 
   controller do
     def create
-      @opening_hour = OpeningHour.new(permitted_params[:opening_hours])
-      @opening_hour.save
-
-      @user = User.new(permitted_params[:user])
-      @user.save
-
       @farm = Farm.new(permitted_params[:farm])
-      @farm.save
+      @farm.user.skip_confirmation_notification!
+      @farm.validate!
+      @farm.products.each do |product|
+        product.label.reject!(&:empty?)
+      end
 
-      create! do |success, failure|
-        success.html do
-          redirect_to admin_exploitations_path, :notice => "Resource created successfully."
-        end
+      @farm.labels.reject!(&:empty?)
 
-        failure.html do
-          render 'new'
-        end
+      if @farm.save
+        redirect_to admin_exploitations_path, notice: "Resource created successfully."
+      else
+        render :new
       end
     end
 
     def update
       @farm = Farm.find(params[:id])
-      @user = User.find(@farm.user_id)
+
+      @farm.update!(permitted_params[:farm])
+      @farm.labels.reject!(&:empty?)
+      @farm.products.each do |product|
+        product.label.reject!(&:empty?)
+      end
+
       @farm.assign_attributes(permitted_params[:farm])
       if @farm.active
         unless @farm.save
@@ -125,7 +159,21 @@ ActiveAdmin.register Farm, as: "Exploitations" do
       else
         @farm.save(validate: false)
       end
+
+      if @farm.save
+        redirect_to admin_exploitations_path
+      else
+        render :edit
+      end
+
       redirect_to admin_exploitations_path
+    end
+
+    def remove_password_params_if_blank
+      if params[:farm][:user_attributes][:password].blank? && params[:farm][:user_attributes][:password_confirmation].blank?
+        params[:farm][:user_attributes].delete(:password)
+        params[:farm][:user_attributes].delete(:password_confirmation)
+      end
     end
   end
 end
