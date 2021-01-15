@@ -6,6 +6,7 @@ class FarmsController < ApplicationController
     @categories = Category.all
 
     @farms     = Farm.all
+    @farms = @farms.active
     @far_farms = Farm.none
 
     @zip_code = get_zip_code_number
@@ -38,7 +39,7 @@ class FarmsController < ApplicationController
       }
     end
 
-    @farms = policy_scope(Farm)
+    @farms = policy_scope(@farms)
   end
 
   def show

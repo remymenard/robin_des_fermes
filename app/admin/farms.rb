@@ -149,16 +149,16 @@ ActiveAdmin.register Farm, as: "Exploitations" do
         product.label.reject!(&:empty?)
       end
 
-      @farm.assign_attributes(permitted_params[:farm])
-      if @farm.active
-        unless @farm.save
-          @farm.active = false
-          @farm.save(validate: false)
-          flash[:alert] = "Veuillez à compléter toutes les informations afin de rendre l'exploitation disponible."
-        end
-      else
-        @farm.save(validate: false)
-      end
+      # @farm.assign_attributes(permitted_params[:farm])
+      # if @farm.active
+      #   unless @farm.save
+      #     @farm.active = false
+      #     @farm.save(validate: false)
+      #     flash[:alert] = "Veuillez à compléter toutes les informations afin de rendre l'exploitation disponible."
+      #   end
+      # else
+      #   @farm.save(validate: false)
+      # end
 
       if @farm.save
         redirect_to admin_exploitations_path
