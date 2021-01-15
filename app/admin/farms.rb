@@ -139,7 +139,6 @@ ActiveAdmin.register Farm, as: "Exploitations" do
 
     def update
       @farm = Farm.find(params[:id])
-      @user = User.find(@farm.user_id)
 
       @farm.update!(permitted_params[:farm])
       @farm.labels.reject!(&:empty?)
