@@ -10,34 +10,11 @@
     <div class="collapse navbar-collapse" id="navbar4">
       <ul class="navbar-nav mr-auto pl-lg-4">
         <li class="nav-item px-lg-2 zip-code" ><p>Ton code postal</p><a class="nav-link zip_code background" data-signedin?="<%= user_signed_in? %>" data-login_path="<%= new_user_session_path %>" data-set_zip_code_path="<%= users_zip_code_path %>" data-token="<%= form_authenticity_token %>" href="#"><p class="text"><i class="fas fa-map-marker-alt marker"></i><%= render 'shared/zip_code_div' %></p></a></li>
-        <li class="nav-item px-lg-2"> <a class="nav-link" href="#"><span class="d-inline-block d-lg-none icon-width"><i class="far fa-user"></i></i></span>About</a> </li>
-      <li class="nav-item px-lg-2 dropdown d-menu">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="d-inline-block d-lg-none icon-width"><i class="far fa-caret-square-down"></i></span>Dropdown
-          <svg  id="arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </a>
-        <div class="dropdown-menu shadow-sm sm-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item px-lg-2"> <a class="nav-link" href="#"><span class="d-inline-block d-lg-none icon-width"><i class="far fa-envelope"></i></span>Contact</a> </li>
+
     </ul>
     <ul class="navbar-nav ml-auto mt-3 mt-lg-0">
-      <li class="nav-item"> <a class="nav-link" href="#">
-          <i class="fab fa-twitter"></i><span class="d-lg-none ml-3">Twitter</span>
-        </a> </li>
-      <li class="nav-item"> <a class="nav-link" href="#">
-          <i class="fab fa-facebook"></i><span class="d-lg-none ml-3">Facebook</span>
-        </a> </li>
-      <li class="nav-item"> <a class="nav-link" href="#">
-          <i class="fab fa-instagram"></i><span class="d-lg-none ml-3">Instagram</span>
-        </a> </li>
-      <li class="nav-item"> <a class="nav-link" href="#">
-          <i class="fab fa-linkedin"></i><span class="d-lg-none ml-3">Linkedin</span>
-        </a> </li>
+      <li class="nav-item"> <a class="nav-link" href="#">Qui sommes-nous</a> </li>
+      <li class="nav-item"> <a class="nav-link" href="#">Nos producteurs</a> </li>
     </ul>
   </div>
 </div>
