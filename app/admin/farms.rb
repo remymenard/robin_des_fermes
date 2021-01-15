@@ -1,6 +1,6 @@
 ActiveAdmin.register Farm, as: "Exploitations" do
   before_action :remove_password_params_if_blank, only: [:update]
-  permit_params :name, :description, :address, :lagitude, :longitude, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accept_delivery, :categories, labels: [], photos: [],
+  permit_params :active, :name, :description, :address, :lagitude, :longitude, :opening_time, :labels, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accept_delivery, photos: [],
                 opening_hours_attributes: [:id, :day, :opens, :closes],
                 products_attributes: [:id, :name, :available, :category_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning, :preorder, :total_weight, label:[] ],
                 categories_attributes: [:id, :name],
@@ -12,6 +12,9 @@ ActiveAdmin.register Farm, as: "Exploitations" do
   form title: 'Exploitations' do |f|
     tabs do
       tab 'Etape 1' do
+        panel 'Activer la ferme'do
+          input :active, label: " Disponible ?"
+        end
         panel 'Déclarer un Propriétaire' do
           inputs "Renseigner un propriétaire", for: [:user, params[:id] ? Farm.find(params[:id]).user : User.new] do |u|
             u.input :title, collection: User::TITLE, label: "Genre"
@@ -146,11 +149,24 @@ ActiveAdmin.register Farm, as: "Exploitations" do
         product.label.reject!(&:empty?)
       end
 
+      @farm.assign_attributes(permitted_params[:farm])
+      if @farm.active
+        unless @farm.save
+          @farm.active = false
+          @farm.save(validate: false)
+          flash[:alert] = "Veuillez à compléter toutes les informations afin de rendre l'exploitation disponible."
+        end
+      else
+        @farm.save(validate: false)
+      end
+
       if @farm.save
         redirect_to admin_exploitations_path
       else
         render :edit
       end
+
+      redirect_to admin_exploitations_path
     end
 
     def remove_password_params_if_blank
