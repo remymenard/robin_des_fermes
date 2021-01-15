@@ -6,7 +6,6 @@ class FarmsController < ApplicationController
     @categories = Category.all
 
     @farms     = Farm.all
-    @farms = @farms.active
     @far_farms = Farm.none
 
     @zip_code = get_zip_code_number
@@ -39,13 +38,21 @@ class FarmsController < ApplicationController
       }
     end
 
-    @farms = policy_scope(@farms)
+    @farms = policy_scope(@farms).active
+    @far_farms = policy_scope(@far_farms).active
   end
 
   def show
 
     @farms = Farm.all
     @farm = Farm.find(params[:id])
+
+    # if @farm.active
+    #   @farm = @farm
+    # else
+    #   @farm = nil
+    # end
+
     @farm_show = @farms.where("farms.id = ? ", params[:id])
 
     @highlighted_photo = @farm.photos.first
