@@ -82,28 +82,28 @@ ActiveAdmin.register Farm, as: "Exploitations" do
         end
       end
       tab 'Etape 4' do
-        panel 'Créer les catégorie' do
-          f.input :category_ids, as: :check_boxes, collection: Category.all
+        panel 'Ajouter les catégorie' do
+          f.input :category_ids, as: :check_boxes, collection: Category.all, label: false
         end
         panel 'Créer un produit' do
           f.has_many :products, heading: "", new_record: 'Ajouter un produit' do |product|
             product.inputs do
-              product.input :name
-              product.input :category_id, as: :select, collection: Category.all
-              product.input :price_cents
-              product.input :minimum_weight
-              product.input :display_minimum_weight
-              product.input :unit
-              product.input :price_per_unit_cents
-              product.input :conditioning
-              product.input :fresh
-              product.input :label, label: false, as: :check_boxes, collection: LABELS
-              product.input :available
-              product.input :preorder
-              product.input :description
-              product.input :ingredients
-              product.input :photo, as: :file
-              product.input :total_weight
+              product.input :name, label: "Nom"
+              product.input :category_id, as: :select, collection: Category.all, label: "Catégorie"
+              product.input :price_cents, label: "Prix CHF"
+              product.input :display_minimum_weight, label: "Afficher poids Minimum ?"
+              product.input :minimum_weight, label: "Poids ou volume"
+              product.input :unit, label: "Unité"
+              product.input :price_per_unit_cents, label: "Prix au kg"
+              product.input :conditioning, label: "Conditionnement"
+              product.input :fresh, label: "Frais"
+              product.input :label, label: false, as: :check_boxes, collection: LABELS, label: "Label"
+              product.input :available, label: "Actif"
+              product.input :preorder, label: "Date livraison précommande"
+              product.input :description, label: "Description"
+              product.input :ingredients, label: "Ingrédients"
+              product.input :photo, as: :file, label: "Image du produit"
+              product.input :total_weight, label: "Poids total"
             end
           end
         end

@@ -17,3 +17,13 @@
 //   .status_tag { background: #6090DB; }
 
 
+li {
+  list-style:none;
+  background-image:none;
+  background-repeat:none;
+  background-position:0;
+}
+
+form fieldset > ol > li.boolean label {
+  padding-left: 5px !important;
+}
