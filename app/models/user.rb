@@ -2,6 +2,7 @@ class User < ApplicationRecord
   #has_many :farms, dependent: :destroy
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable, :trackable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
@@ -10,6 +11,7 @@ class User < ApplicationRecord
   has_one_attached :photo
 
   has_many :farms, dependent: :destroy
+  accepts_nested_attributes_for :farms, :allow_destroy => false
 
   TITLE = ['Mme', 'M']
 

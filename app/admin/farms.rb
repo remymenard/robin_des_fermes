@@ -1,4 +1,5 @@
 ActiveAdmin.register Farm, as: "Exploitations" do
+  before_action :remove_password_params_if_blank, only: [:update]
   permit_params :name, :description, :address, :lagitude, :longitude, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accept_delivery, :categories, labels: [], photos: [],
                 opening_hours_attributes: [:id, :day, :opens, :closes],
                 products_attributes: [:id, :name, :available, :category_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning, :preorder, :total_weight, label:[] ],
@@ -138,7 +139,9 @@ ActiveAdmin.register Farm, as: "Exploitations" do
 
     def update
       @farm = Farm.find(params[:id])
-      @farm.update(permitted_params[:farm])
+      @user = User.find(@farm.user_id)
+
+      @farm.update!(permitted_params[:farm])
       @farm.labels.reject!(&:empty?)
       @farm.products.each do |product|
         product.label.reject!(&:empty?)
@@ -151,9 +154,11 @@ ActiveAdmin.register Farm, as: "Exploitations" do
       end
     end
 
-    def update_resource(object, attributes)
-      update_method = attributes.first[:password].present? ? :update_attributes : :update_without_password
-      object.send(update_method, *attributes)
+    def remove_password_params_if_blank
+      if params[:farm][:user_attributes][:password].blank? && params[:farm][:user_attributes][:password_confirmation].blank?
+        params[:farm][:user_attributes].delete(:password)
+        params[:farm][:user_attributes].delete(:password_confirmation)
+      end
     end
   end
 end

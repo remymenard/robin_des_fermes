@@ -1,4 +1,6 @@
 ActiveAdmin.register User, as: "Utilisateurs" do
+  before_action :remove_password_params_if_blank, only: [:update]
+
   permit_params :id, :email, :first_name, :last_name, :number_phone, :wants_to_subscribe_mailing_list, :photo, :password, :title, :password_confirmation, :address_line_1, :city, :zip_code, :farm_id
 
   form title: 'Utilisateurs' do |f|
@@ -43,22 +45,20 @@ ActiveAdmin.register User, as: "Utilisateurs" do
 
     def update
       @user = User.find(params[:id])
-      @user.update(permitted_params[:user])
+      @user.update!(permitted_params[:user])
 
-      update! do |success, failure|
-        success.html do
-          redirect_to admin_utilisateurs_path
-        end
-
-        failure.html do
-          render 'edit'
-        end
+      if @user.save
+        redirect_to admin_utilisateurs_path
+      else
+        render :edit
       end
     end
 
-    def update_resource(object, attributes)
-      update_method = attributes.first[:password].present? ? :update_attributes : :update_without_password
-      object.send(update_method, *attributes)
+    def remove_password_params_if_blank
+      if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+        params[:user].delete(:password)
+        params[:user].delete(:password_confirmation)
+      end
     end
   end
 end
