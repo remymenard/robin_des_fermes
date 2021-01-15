@@ -1,52 +1,15 @@
-.navbar-lewagon {
-  z-index: 2;
-  position: sticky;
-  top: 0;
-  justify-content: space-between;
-  background: #007C50;
-  height: 64px;
-  font-family: 'Mulish', sans-serif;
-  font-size: 17px;
-  align-items: center;
-
-  .navbar-collapse {
-    flex-grow: 0;
-  }
-
-  .logo-robin-des-ferme {
-    height: 34px;
-    width: 264px;
-  }
-
-  .nav-item .noun-bag{
-    width: 50px;
-    height: 41.14px;
-  }
-
-  .nav-item .price {
-    color: #FAF0E1;
-    margin-bottom: 0px;
-    padding-top: 10px;
-  }
+.dropdown-toggle::after {
+  display: none;
 }
+.text-decoration-none{
+text-decoration: none!important;
+}
+/* Font Awesome Icons have variable width. Added fixed width to fix that.*/
+.icon-width { width: 2rem;}
 
-.nav-item {
-  .btn {
-
-    border: 1px solid white;
-    border-radius: 12px;
-    width: 150.1px;
-    height: 40px;
-    margin-right: 10px;
-    color: white;
-
-    img {
-      width: 30px;
-      height: 24.64px;
-    }
-  }
-
-  .location {
-    text-align: left;
+.navbar {
+  background-color: $primary;
+  .navbar-logo {
+    width: 200px;
   }
 }
