@@ -56,7 +56,10 @@ document.addEventListener('turbolinks:load', async () => {
 
   const applyClickableEventToButtons = () => {
     $.merge(zipCodeButtons, searchInput).each(function () {
-      $(this).on("click", showAlert)
+      $(this).on("click", (e) => {
+        e.preventDefault();
+        showAlert()
+      })
     })
   }
 

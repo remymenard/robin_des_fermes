@@ -1,15 +1,66 @@
-.dropdown-toggle::after {
-  display: none;
-}
-.text-decoration-none{
-text-decoration: none!important;
-}
-/* Font Awesome Icons have variable width. Added fixed width to fix that.*/
-.icon-width { width: 2rem;}
 
 .navbar {
   background-color: $primary;
   .navbar-logo {
     width: 200px;
   }
+  .dropdown-toggle::after {
+    display: none;
+  }
+  .text-decoration-none{
+  text-decoration: none!important;
+  }
+  /* Font Awesome Icons have variable width. Added fixed width to fix that.*/
+  .icon-width { width: 2rem;}
+
+  p {
+    margin-bottom: 0px;
+    color:white;
+    font-size: 14px;
+  }
+  .zip-code {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .background {
+      margin-left: 12px;
+      background-color: #174230;
+      border-radius: 60px;
+      padding: 4px 17px;
+      display: flex;
+      justify-content: center;
+    }
+    .marker {
+      margin-right: 8px;
+    }
+    .text {
+      font-weight: bold;
+      margin: 0;
+      color: white;
+    }
+  }
 }
+//   .flex-bar {
+//     display: flex;
+//     flex-wrap: wrap;
+//     align-items: center;
+//     justify-content: space-between;
+//     margin-right: auto;
+//     margin-left: auto;
+//     width: 100%;
+//   }
+//   .zip-code-text {
+//     margin-bottom: 0px;
+//     margin-left: 40px;
+//     color: white;
+//   }
+//   .basket-icon {
+//     width: 20px
+//   }
+//   .profile-icon {
+//     width: 20px;
+//     position: relative;
+//     top: 6px;
+//     margin-right: 25px;
+//   }
+// }
