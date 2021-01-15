@@ -160,7 +160,6 @@
   <div class="products">
     <% @products_by_category.each do |category, products|  %>
       <h4><%= t('.category', name: category.name.capitalize) %></h4>
-
       <div class="d-flex all-card-product">
         <% products.each do |product| %>
 
