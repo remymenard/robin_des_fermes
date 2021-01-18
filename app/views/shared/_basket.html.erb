@@ -5,6 +5,7 @@
 </div>
 <div id="products">
   <% products =  products_list %>
+  <% items_sum = 0 %>
   <% if products.empty? %>
     <p class="empty-basket m-0"><%= t "basket.empty" %></p>
   <% else %>
@@ -22,6 +23,7 @@
             </p>
             <div>
               <div class="counter">
+              <% items_sum += product_basket.quantity %>
               <% if product_basket.quantity <= 1 %>
                 <%= image_tag 'icons/remove_item.png', class: "icons decrement-button disabled-button" %>
               <% else %>
@@ -63,4 +65,5 @@
   </div>
   <button type="button" class="btn btn-primary btn-lg btn-block"><%= t "basket.validate" %></button>
   <a class="continue-button" href=""><%= t "basket.continue" %></a>
+  <div id="items-count" data-count="<%= items_sum %>"></div>
 </div>

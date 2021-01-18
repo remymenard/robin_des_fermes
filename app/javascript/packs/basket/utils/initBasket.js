@@ -3,6 +3,7 @@ import { initCloseBasketButton } from '../modal/closeBasketButton'
 import { initOpenBasketButton } from '../modal/shoppingCartButton'
 import { initRemoveButton } from '../modal/removeButton'
 import { initAddToBasketButton } from '../pages/addToBasketButton';
+import { updateItemsCount } from './updateItemsCount';
 
 export function initBasket() {
   $(() => {
@@ -11,5 +12,6 @@ export function initBasket() {
     initOpenBasketButton();
     initRemoveButton();
     initAddToBasketButton();
+    updateItemsCount();
   });
 }

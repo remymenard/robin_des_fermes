@@ -74,5 +74,17 @@
       margin-top: 0px;
     }
   }
+  .items-number {
+    position: absolute;
+    display: inline-block;
+    border-radius: 13px;
+    left: 10px;
+    padding: 0px 6px;
+    bottom: 25px;
+    background: #FF4136;
+    font-weight: bold;
+    font-size: 11px;
+    color: white;
+  }
 }
 
