@@ -2,6 +2,32 @@
 
 .home {
 
+  .zip-search {
+      padding-top: 0px;
+      color: #7C7977 !important;
+      text-align: center;
+      border-radius: 10px 0px 0px 10px;
+      border-color: #F0ECE8;
+      width: 317px;
+      height: 54px;
+      background-color: white;
+  }
+
+  .zip-button {
+    background: #339E72;
+    border-radius: 0px 10px 10px 0px;
+      font-family: Mulish;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      height: 54px;
+      text-align: center;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: #FFFFFF;
+  }
+
   .low-vector {
     background-image: image-url('low-vector.png');
     height: 20px;

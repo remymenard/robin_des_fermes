@@ -2,15 +2,16 @@ import Swal from 'sweetalert2'
 
 document.addEventListener('turbolinks:load', async () => {
   // variables
-  const zipCodeButtons = $('.zip_code')
+  const zipCodeButtons = $('.zip-code-infos')
   const zipCodeText = $('.zip_code_number')
-  const searchInput = $('#zip_code_input')
+  const searchInput = $('.zip_code_input')
   const pageInfos = $('#pageInfos')
   const zipCodeMessages = $('#zip_code_messages')
 
   const signedIn = zipCodeButtons.data("signedin?")
   const loginPageHref = zipCodeButtons.data("login_path")
   const ajaxRequestHref = zipCodeButtons.data("set_zip_code_path")
+  console.log(zipCodeButtons)
   const authenticityToken = zipCodeButtons.data("token")
   const isZipCodeDefined = pageInfos.data('zipCodeDefined')
   const shouldSubmitForm = pageInfos.data('submitForm')
@@ -77,7 +78,9 @@ document.addEventListener('turbolinks:load', async () => {
       zipCodeText.each((_index, element) => {
         $(element).text(zipCode)
       })
-      searchInput.val(zipCode)
+      searchInput.each((_index, input) => {
+        $(input).val(zipCode)
+      })
     }
   }
 
