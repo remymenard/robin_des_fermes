@@ -112,7 +112,7 @@
 
                 <% farm.labels.each do |label| %>
                   <div class='label'>
-                    <%= image_tag "labels/#{label}-label.png", class: "label" %>
+                    <p> <%= label.upcase  %></p>
                   </div>
                 <%end%>
               </div>
@@ -173,7 +173,7 @@
           <div class="informations">
             <h6> <%= t('.testimony3') %></h6>
             <%= image_tag "testimony/testimony3", alt: "alttext" %>
-            <p class="name">John Doe</p>
+            <p class="name">Francis Joye</p>
             <p class="text"><%= t('.testimony_text3') %></p>
           </div>
         </div>

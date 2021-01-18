@@ -28,4 +28,6 @@ class Farm < ApplicationRecord
   validates :address, presence: true
   # validates :opening_time, presence: true
   # validates :regions, presence: true
+
+  scope :active, -> ()    { where(active: true) }
 end

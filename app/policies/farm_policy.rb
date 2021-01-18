@@ -14,7 +14,7 @@ class FarmPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    record.active
   end
 
   def update?
