@@ -9,6 +9,25 @@ ActiveAdmin.register Farm, as: "Exploitations" do
 
   LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
 
+  index do
+    column  "Nom", :name
+    column "Propriétaire", :user do |col|
+      col.user.first_name
+    end
+    column "Mail", :user do |col|
+      col.user.email
+    end
+    column "Communes", :regions
+    column "Délais préparation", :delivery_delay
+  end
+
+  filter :active, as: :boolean, label: "Active ?"
+  filter :name, label: "Nom de l'exploitation"
+  filter :user, label: "Propriétaire"
+  filter :categories, label: "Catégories"
+  filter :updated_at, label: "Dernière modification"
+
+
   form title: 'Exploitations' do |f|
     tabs do
       tab 'Etape 1' do
