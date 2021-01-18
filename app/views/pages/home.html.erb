@@ -3,8 +3,8 @@
     <div class="container ">
       <h2><%= t('.title') %></h2>
       <p><%= t('.sub_title1') %> <strong><%= t('.sub_title_bold1') %></strong><%= t('.sub_title2') %><strong><%= t('.sub_title_bold2') %></strong><%= t('.sub_title3') %><strong><%= t('.sub_title_bold3') %></strong><%= t('.sub_title4') %><strong><%= t('.sub_title_bold4') %></strong><%= t('.sub_title5') %></p>
-      <%= form_tag farms_path, method: :get, id: "farm-search-form", class: 'form-inline search' do %>
-        <%= text_field_tag :zip, get_zip_code_number, readonly: true, class: 'form-control search', id: "zip_code_input", placeholder: "Où habitez-vous ?" %>
+      <%= form_tag farms_path, method: :get, class: 'form-inline search' do %>
+        <%= text_field_tag :zip, get_zip_code_number, readonly: true, class: 'form-control search zip_code_input', id: 'zip1', placeholder: "Où habitez-vous ?" %>
         <%= submit_tag "DECOUVRIR LES PRODUCTEURS", class: "btn", name: nil %>
       <% end %>
 
@@ -50,6 +50,12 @@
               <p><%= t('.discover_wine') %> </p>
             <% end %>
           </div>
+          <h2>En manque de victuailles ?</h2>
+          <p>Indique ta bourgade et découvre tous les producteurs locaux</p>
+          <%= form_tag farms_path, method: :get, class: 'form-inline search' do %>
+            <%= text_field_tag :zip, get_zip_code_number, readonly: true, class: 'form-control zip-search zip_code_input', placeholder: "Où habitez-vous ?" %>
+            <%= submit_tag "C'EST PARTI", class: "btn zip-button", name: nil %>
+          <% end %>
         </div>
 
       </div>
