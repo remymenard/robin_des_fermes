@@ -2,7 +2,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
   before_action :remove_password_params_if_blank, only: [:update]
   permit_params :active, :name, :description, :address, :lagitude, :longitude, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accept_delivery, photos: [], labels: [],
                 opening_hours_attributes: [:id, :day, :opens, :closes],
-                products_attributes: [:id, :name, :available, :category_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning, :preorder, :total_weight, label:[] ],
+                products_attributes: [:id, :active, :name, :available, :category_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning, :preorder, :total_weight, label:[] ],
                 categories_attributes: [:id, :name],
                 category_ids: [],
                 user_attributes: [:id, :email, :first_name, :last_name, :number_phone, :wants_to_subscribe_mailing_list, :photo, :password, :title, :password_confirmation, :address_line_1, :city, :zip_code, :farm_id]
@@ -92,6 +92,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
         panel 'Créer un produit' do
           f.has_many :products, heading: "", new_record: 'Ajouter un produit' do |product|
             product.inputs do
+              product.input :available, label: "Disponible ?"
               product.input :name, label: "Nom"
               product.input :category_id, as: :select, collection: Category.all, label: "Catégorie"
               product.input :price_cents, label: "Prix CHF"
@@ -102,7 +103,6 @@ ActiveAdmin.register Farm, as: "Exploitations" do
               product.input :conditioning, label: "Conditionnement"
               product.input :fresh, label: "Frais"
               product.input :label, label: false, as: :check_boxes, collection: LABELS, label: "Label"
-              product.input :available, label: "Actif"
               product.input :preorder, label: "Date livraison précommande"
               product.input :description, label: "Description"
               product.input :ingredients, label: "Ingrédients"

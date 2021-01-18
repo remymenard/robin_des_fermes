@@ -10,7 +10,7 @@ class ProductPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    record.available?
   end
 
   def update?
