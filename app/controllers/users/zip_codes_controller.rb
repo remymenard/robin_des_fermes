@@ -4,6 +4,7 @@ module Users
 
     def update
       zip_code = params["zip_code"]
+      skip_authorization
       if zip_code.match(/[1-9]\d{3}/)
         if current_user
           current_user.update(zip_code: zip_code)
@@ -15,7 +16,6 @@ module Users
         render status: 404
       end
 
-      authorize zip_code
     end
   end
 end

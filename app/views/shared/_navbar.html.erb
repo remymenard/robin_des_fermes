@@ -1,40 +1,32 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "logos/rdf_white_line.png", class: "logo-robin-des-ferme" %>
-  <% end %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <!-- zip code messages -->
-  <div id="zip_code_messages" data-title="<%= t('zip_code.title') %>" data-description="<%= t('zip_code.description') %>" data-login="<%= t('zip_code.login') %>" data-error="<%= t('zip_code.error') %>" %></div>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to t(".log_out_href"), destroy_user_session_path, method: :delete, class: "btn" %>
-        </li>
-      <% else %>
-        <li class="nav-item active">
-          <%= link_to t(".log_in_href"), new_user_session_path, class: "btn" %>
+<nav class="navbar navbar-expand-lg margin-navbar navbar-light shadow-sm fixed-top">
+  <div class="container"> <a class="navbar-brand d-flex align-items-center" href="#">
+      <%= link_to root_path, class: "ml-3" do %>
+        <%= image_tag "logos/rdf_white_line.png", class: 'navbar-logo' %>
+      <% end %>
+    </a> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar4">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="zip_code_messages" data-title="<%= t('zip_code.title') %>" data-description="<%= t('zip_code.description') %>" data-login="<%= t('zip_code.login') %>" data-error="<%= t('zip_code.error') %>" %></div>
+    <div class="collapse navbar-collapse" id="navbar4">
+      <ul class="navbar-nav mr-auto pl-lg-4">
+      <% unless current_page? root_path %>
+        <li class="nav-item px-lg-2 zip-code" >
+          <p>Ton code postal</p>
+          <a class="nav-link zip_code background" data-signedin?="<%= user_signed_in? %>" data-login_path="<%= new_user_session_path %>" data-set_zip_code_path="<%= users_zip_code_path %>" data-token="<%= form_authenticity_token %>" href="#">
+          <p class="text"><i class="fas fa-map-marker-alt marker"></i><%= render 'shared/zip_code_div' %></p></a>
         </li>
       <% end %>
-      <li class="nav-item ">
-        <div data-signedin?="<%= user_signed_in? %>" data-login_path="<%= new_user_session_path %>" data-set_zip_code_path="<%= users_zip_code_path %>" data-token="<%= form_authenticity_token %>" class="zip_code d-flex navbar-brand btn location">
-          <%= image_tag 'icons/map_marker.png' %>
-          <%= render 'shared/zip_code_div' %>
-        </div>
-      </li>
-      <li>
-      </li>
-      <li class="nav-item dropdown d-flex">
-        <p class="price"> 00.00 CHF</p>
-        <%= image_tag "icons/bag.png", class: "noun-bag dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto mt-3 mt-lg-0">
+      <li class="nav-item"> <a class="nav-link text-light" href="#">Qui sommes-nous ?</a> </li>
+      <li class="nav-item"> <a class="nav-link text-light" href="#">Nos producteurs</a> </li>
+      <li class="nav-item"><a href="#" class="nav-link p-0"><%= image_tag 'icons/profile.png', class: "profile-icon mt-1" %></a></li>
+      <li class="nav-item basket-div"><a href="#" class="nav-link p-0"><%= image_tag 'icons/basket.png', class: "basket-icon" %> <span class="price-text">39</span><span class="price-currency">CHF</span> </a></li>
     </ul>
   </div>
-  <!-- this import the basket modal -->
-  <div id="basket">
+</div>
+</nav>
+<div id="basket">
   <%= render 'shared/basket' %>
   </div>
-</div>
 <%= javascript_pack_tag 'zipCode' %>

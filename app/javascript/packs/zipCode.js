@@ -1,7 +1,6 @@
 import Swal from 'sweetalert2'
 
 document.addEventListener('turbolinks:load', async () => {
-
   // variables
   const zipCodeButtons = $('.zip_code')
   const zipCodeText = $('.zip_code_number')
@@ -50,7 +49,10 @@ document.addEventListener('turbolinks:load', async () => {
 
   const applyClickableEventToButtons = () => {
     $.merge(zipCodeButtons, searchInput).each(function () {
-      $(this).on("click", showAlert)
+      $(this).on("click", (e) => {
+        e.preventDefault();
+        showAlert()
+      })
     })
   }
 
