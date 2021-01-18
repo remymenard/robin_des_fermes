@@ -1,4 +1,5 @@
 import { startLoadingAnimation, stopLoadingAnimation } from "./loadingAnimation";
+import { updateItemsCount } from "./updateItemsCount";
 
 export function sendAjaxRequest(e, requestType) {
   e.preventDefault();
@@ -14,6 +15,7 @@ export function sendAjaxRequest(e, requestType) {
     success: (answer) => {
       $("#basket").html(answer)
       stopLoadingAnimation();
+      updateItemsCount();
     }
   })
 };
