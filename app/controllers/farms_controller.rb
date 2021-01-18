@@ -43,15 +43,8 @@ class FarmsController < ApplicationController
   end
 
   def show
-
     @farms = Farm.all
     @farm = Farm.find(params[:id])
-
-    # if @farm.active
-    #   @farm = @farm
-    # else
-    #   @farm = nil
-    # end
 
     @farm_show = @farms.where("farms.id = ? ", params[:id])
 
