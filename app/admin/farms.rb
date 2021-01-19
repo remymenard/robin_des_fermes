@@ -9,7 +9,10 @@ ActiveAdmin.register Farm, as: "Exploitations" do
 
   LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
 
+  actions :all
+
   index do
+    actions defaults: true
     bool_column :active
     column  "Nom", :name
     column "Propriétaire", :user do |col|
@@ -20,9 +23,6 @@ ActiveAdmin.register Farm, as: "Exploitations" do
     end
     column "Communes", :regions
     column "Délais préparation", :delivery_delay
-    column :action do |resource|
-      link_to "Editer", edit_admin_exploitation_path(resource)
-    end
   end
 
   filter :active, as: :boolean, label: "Active ?"

@@ -92,6 +92,10 @@ GEM
     arbre (1.4.0)
       activesupport (>= 3.0.0, < 6.2)
       ruby2_keywords (>= 0.0.2, < 1.0)
+    arctic_admin (3.3.0)
+      activeadmin (>= 1.1.0, < 3.0)
+      font-awesome-sass (~> 5.0)
+      jquery-rails
     ast (2.4.1)
     autoprefixer-rails (10.0.3.0)
       execjs
@@ -402,6 +406,7 @@ DEPENDENCIES
   activeadmin
   activeadmin_addons
   algoliasearch-rails
+  arctic_admin
   autoprefixer-rails
   bootsnap (>= 1.4.2)
   byebug
