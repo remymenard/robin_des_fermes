@@ -168,8 +168,9 @@ ActiveAdmin.register Farm, as: "Exploitations" do
 
     def update
       @farm = Farm.find(params[:id])
+      params[:farm].delete(:user_id) if params[:farm][:user_id] == ""
 
-      @farm.update!(permitted_params[:farm])
+      @farm.update(permitted_params[:farm])
       @farm.labels.reject!(&:empty?)
       @farm.products.each do |product|
         product.label.reject!(&:empty?)
