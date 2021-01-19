@@ -31,6 +31,7 @@ import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initAxeptio } from '../plugins/init_axeptio';
 import { initBasket } from './basket/utils/initBasket'
 import { loadResponsiveNavbar } from './navbar'
+import { initSelect2 } from '../plugins/init_select2'
 
 document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
@@ -38,4 +39,5 @@ document.addEventListener('turbolinks:load', () => {
   initAxeptio();
   initBasket();
   loadResponsiveNavbar();
+  initSelect2();
 });

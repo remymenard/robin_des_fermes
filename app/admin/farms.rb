@@ -10,6 +10,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
   LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
 
   index do
+    bool_column :active
     column  "Nom", :name
     column "Propriétaire", :user do |col|
       col.user.first_name
@@ -19,6 +20,9 @@ ActiveAdmin.register Farm, as: "Exploitations" do
     end
     column "Communes", :regions
     column "Délais préparation", :delivery_delay
+    column :action do |resource|
+      link_to "Editer", edit_admin_exploitation_path(resource)
+    end
   end
 
   filter :active, as: :boolean, label: "Active ?"
@@ -35,6 +39,11 @@ ActiveAdmin.register Farm, as: "Exploitations" do
           input :active, label: " Disponible ?"
         end
         panel 'Déclarer un Propriétaire' do
+          # f.input :user, as: :search_select, url: search_for_users_path	, fields: [:first_name]
+          f.input :user_id, as: :search_select, url: search_users_admin_path,
+          fields: [:first_name, :last_name, :email, :number_phone], display_name: :full_name, minimum_input_length: 3,
+          order_by: 'description_asc'
+          # f.input :user, as: :select, collection: User.all {|category| [category.name, category.id] }
           inputs "Renseigner un propriétaire", for: [:user, params[:id] ? Farm.find(params[:id]).user : User.new] do |u|
             u.input :title, collection: User::TITLE, label: "Genre"
             u.input :first_name, label: false, placeholder: "Prénom"

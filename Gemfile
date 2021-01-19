@@ -89,3 +89,5 @@ gem 'postmark'
 gem 'postmark-rails'
 
 gem 'activeadmin'
+gem 'activeadmin_addons'
+gem 'ransack'

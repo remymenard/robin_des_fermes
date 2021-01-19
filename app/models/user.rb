@@ -2,7 +2,6 @@ class User < ApplicationRecord
   #has_many :farms, dependent: :destroy
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable, :trackable and :omniauthable
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
@@ -22,6 +21,10 @@ class User < ApplicationRecord
   validates :title, presence: true
 
   before_create :subscribe_user_to_mailing_list
+
+  def full_name
+    [first_name.capitalize, last_name.capitalize].compact.join(' ')
+  end
 
   private
   def subscribe_user_to_mailing_list
