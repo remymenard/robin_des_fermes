@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   namespace :users do
     resource :zip_code, only: [:update]
+    resource :admin, only: [] do
+      get :search
+    end
   end
 
   resources :farms

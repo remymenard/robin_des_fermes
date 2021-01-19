@@ -9,7 +9,11 @@ ActiveAdmin.register Farm, as: "Exploitations" do
 
   LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
 
+  actions :all
+
   index do
+    actions defaults: true
+    bool_column :active
     column  "Nom", :name
     column "Propriétaire", :user do |col|
       col.user.first_name
@@ -35,7 +39,10 @@ ActiveAdmin.register Farm, as: "Exploitations" do
           input :active, label: " Disponible ?"
         end
         panel 'Déclarer un Propriétaire' do
-          inputs "Renseigner un propriétaire", for: [:user, params[:id] ? Farm.find(params[:id]).user : User.new] do |u|
+          f.input :user_id, as: :search_select, id: "select-user", url: search_users_admin_path,
+          fields: [:first_name, :last_name, :email, :number_phone], display_name: :full_name, minimum_input_length: 3,
+          order_by: 'description_asc', label: 'Chercher un propriétaire existant', clearable: false
+          inputs "Informations du propriétaire", class: "owner-form", for: [:user, params[:id] ? Farm.find(params[:id]).user : User.new] do |u|
             u.input :title, collection: User::TITLE, label: "Genre"
             u.input :first_name, label: false, placeholder: "Prénom"
             u.input :last_name, label: false, placeholder: "Nom"
@@ -161,8 +168,9 @@ ActiveAdmin.register Farm, as: "Exploitations" do
 
     def update
       @farm = Farm.find(params[:id])
+      params[:farm].delete(:user_id) if params[:farm][:user_id] == ""
 
-      @farm.update!(permitted_params[:farm])
+      @farm.update(permitted_params[:farm])
       @farm.labels.reject!(&:empty?)
       @farm.products.each do |product|
         product.label.reject!(&:empty?)
@@ -188,10 +196,13 @@ ActiveAdmin.register Farm, as: "Exploitations" do
     end
 
     def remove_password_params_if_blank
-      if params[:farm][:user_attributes][:password].blank? && params[:farm][:user_attributes][:password_confirmation].blank?
-        params[:farm][:user_attributes].delete(:password)
-        params[:farm][:user_attributes].delete(:password_confirmation)
+      unless params[:farm][:user_attributes].nil?
+        if params[:farm][:user_attributes][:password].blank? && params[:farm][:user_attributes][:password_confirmation].blank?
+          params[:farm][:user_attributes].delete(:password)
+          params[:farm][:user_attributes].delete(:password_confirmation)
+        end
       end
     end
+
   end
 end
