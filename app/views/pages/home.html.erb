@@ -96,7 +96,7 @@
       <h2><%= t('.best_farms') %></h2>
 
       <div class="cards ">
-        <% @farms.take(4).each do |farm| %>
+        <% @farms.active.take(4).each do |farm| %>
 
           <div class="card-product d-flex">
 
