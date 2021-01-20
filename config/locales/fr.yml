@@ -162,6 +162,9 @@ fr:
     navbar:
       log_in_href: "Me Connecter"
       log_out_href: "Me Déconnecter"
+      who_are_we: "Qui sommes-nous ?"
+      your_zip_code: "Ton code postal"
+      our_farmers: "Nos producteurs"
     footer:
       informations: "Informations"
       delivery: "Livraison"
