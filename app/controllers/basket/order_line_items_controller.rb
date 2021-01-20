@@ -1,6 +1,5 @@
 module Basket
   class OrderLineItemsController < ApplicationController
-    include BasketHelper
     skip_before_action :authenticate_user!
 
     def increment
