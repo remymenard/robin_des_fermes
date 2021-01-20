@@ -10,21 +10,15 @@
             <%= hidden_field_tag 'zip', get_zip_code_number %>
             <%= select_tag :category,
               options_from_collection_for_select(@categories, :name, :name, @category&.name),
-              onchange: 'this.form.submit();',
               class: "form-control custom-select",
               prompt: "Catégorie"
             %>
-          <% end %>
-        </div>
-
-        <div class="labels">
-          <%= form_tag farms_path, method: :get, id: "farm-search-form" do %>
             <%= select_tag :labels,
               options_for_select(Farm::LABELS),
-              onchange: 'this.form.submit();',
-              class: "form-control custom-select"
+              class: "form-control custom-select",
+              prompt: "Label"
             %>
-
+            <%= submit_tag "Rechercher", name: nil %>
           <% end %>
         </div>
       </div>
