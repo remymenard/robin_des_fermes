@@ -19,6 +19,14 @@ $primary-color: #339E72;
 //
 //   .status_tag { background: #6090DB; }
 
+#product_submit_action {
+  display: flex;
+  justify-content: center;
+  input {
+    width: auto;
+    padding: 20px 83px;
+  }
+}
 
 li {
   list-style:none;

@@ -54,6 +54,9 @@ fr:
       local: "Des produits de producteurs qui vous entourent"
       help: "Nous répondons à vos questions dans les 2h"
       producers: "Les producteurs respectent la charte de Robin des fermes"
+      second_zip_code_input_title: "En manque de victuailles ?"
+      second_zip_code_input_description: "Indique ta bourgade et découvre tous les producteurs locaux."
+      second_zip_code_input_button: "C'EST PARTI"
 
     cgv:
       title: "CONDITIONS GENERALES DE VENTES"
@@ -162,6 +165,9 @@ fr:
     navbar:
       log_in_href: "Me Connecter"
       log_out_href: "Me Déconnecter"
+      who_are_we: "Qui sommes-nous ?"
+      your_zip_code: "Ton code postal"
+      our_farmers: "Nos producteurs"
     footer:
       informations: "Informations"
       delivery: "Livraison"
