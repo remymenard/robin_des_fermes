@@ -4,13 +4,11 @@
     <div>
 
       <div class="search d-flex">
-
-        <span><%= t('.search') %> </span>
-
         <div class="zip-code-infos d-flex navbar-brand btn">
           <%= image_tag 'icons/map_marker.png', class: "map-marker" %>
           <%= render 'shared/zip_code_div' %>
         </div>
+
         <div class="d-flex select">
           <%= form_tag farms_path, method: :get, id: "farm-search-form" do %>
             <%= hidden_field_tag 'zip', get_zip_code_number %>
@@ -20,6 +18,17 @@
               class: "form-control custom-select",
               prompt: "Catégorie"
             %>
+          <% end %>
+        </div>
+
+        <div class="labels">
+          <%= form_tag farms_path, method: :get, id: "farm-search-form" do %>
+            <%= select_tag :labels,
+              options_for_select(Farm::LABELS),
+              onchange: 'this.form.submit();',
+              class: "form-control custom-select"
+            %>
+
           <% end %>
         </div>
       </div>
@@ -50,7 +59,7 @@
                   <p><%= t('.labels') %>
                     <% farm.labels.each do |label| %>
                       <div class='label'>
-                        <%= image_tag "labels/#{label}-label.png", class: "label" %>
+                        <p> <%= label.upcase  %></p>
                       </div>
                     <%end%>
                   </p>
