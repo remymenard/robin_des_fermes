@@ -101,11 +101,15 @@
           <div class="card-product d-flex">
 
             <div class="photo-farm">
-              <% farm.labels.each do |label| %>
-                <div class='label'>
-                  <p> <%= label.upcase  %></p>
-                </div>
-              <%end%>
+
+              <div class="labels">
+
+                <% farm.labels.each do |label| %>
+                  <div class='label'>
+                    <p> <%= label.upcase  %></p>
+                  </div>
+                <%end%>
+              </div>
 
               <%= link_to farm_path(farm) do  %>
                 <%= cl_image_tag(farm.photos.first.key, height: 192, width: 192, crop: :fill, class: "photo") %>
