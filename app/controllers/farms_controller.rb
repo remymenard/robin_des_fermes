@@ -20,6 +20,10 @@ class FarmsController < ApplicationController
       @farms     = @farms.joins(:categories).where("categories.name = ?", params[:category])
     end
 
+    if params[:labels].present?
+      @far_farms = @far_farms.where("labels && ARRAY[?] ", params[:labels])
+      @farms     = @farms.where("labels && ARRAY[?]", params[:labels])
+    end
     @nearby_markers = @farms.geocoded.map do |farm|
       {
         lat: farm.latitude,
