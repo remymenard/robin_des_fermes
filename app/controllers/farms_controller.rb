@@ -15,14 +15,16 @@ class FarmsController < ApplicationController
       @farms     = @farms.where("regions && ARRAY[?] ", @zip_code)
     end
 
-    if params[:category].present?
-      @far_farms = @far_farms.joins(:categories).where("categories.name = ?", params[:category])
-      @farms     = @farms.joins(:categories).where("categories.name = ?", params[:category])
+    @category = Category.find_by(name: params[:category])
+    if @category.present?
+      @far_farms = @far_farms.joins(:categories).where(categories: { name:  @category.name })
+      @farms     = @farms.joins(:categories).where(categories: { name: @category.name })
     end
 
-    if params[:labels].present?
-      @far_farms = @far_farms.where("labels && ARRAY[?] ", params[:labels])
-      @farms     = @farms.where("labels && ARRAY[?]", params[:labels])
+    @label = params[:labels]
+    if @label.present?
+      @far_farms = @far_farms.where("labels && ARRAY[?] ", @label)
+      @farms     = @farms.where("labels && ARRAY[?]", @label)
     end
 
     @nearby_markers = @farms.geocoded.map do |farm|
