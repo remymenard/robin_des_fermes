@@ -11,13 +11,13 @@
             <%= select_tag :category,
               options_from_collection_for_select(@categories, :name, :name, @category&.name),
               onchange: 'this.form.submit();',
-              class: "form-control custom-select",
+              class: "form-control custom-select category",
               prompt: "Catégorie"
             %>
             <%= select_tag :labels,
               options_for_select(Farm::LABELS, @label),
               onchange: 'this.form.submit();',
-              class: "form-control custom-select",
+              class: "form-control custom-select label",
               prompt: "Label"
             %>
           <% end %>

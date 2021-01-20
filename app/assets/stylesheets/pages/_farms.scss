@@ -1,5 +1,7 @@
 
 .farms {
+  padding-left: 136px;
+  background-color: #F9FAF7;
 
   .cards_maps {
     justify-content: space-between;
@@ -32,35 +34,27 @@
     }
 
     select {
+      background-image: image-url("icons/arrow.png");
       margin-top: 30px;
-      background-image: image-url("icons/Arrow.png");
-      background-size: 27px 23px;
-      width: 150.1px;
+      background-size: 8px 8px;
       height: 40px;
-      background-color: #007C50;
-      border-radius: 7px;
-      border-color: #007C50;
-      color: white;
-      font-size: 17px;
+      background-color: white;
+      border-radius: 6px;
+      border-color: #F0ECE8;
+      color: #7C7977;
+      font-size: 14px;
+      margin-left: 20px;
+      font-family: 'Mulish', sans-serif;
     }
 
-    .map-marker {
-      width: 30px;
-      height: 24.64px;
+    .category {
+      width: 170px;
     }
 
-    .arrow {
-      width: 25px;
-      height: 19.88px;
-      margin-top: 3px;
+    .label {
+      width: 200px;
     }
 
-    .btn {
-      width: 150.1px;
-      height: 40px;
-      background-color: #007C50;
-      border-radius: 7px;
-      margin-top: 30px;
-    }
+
   }
 }
