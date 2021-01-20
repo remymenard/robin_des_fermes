@@ -96,14 +96,22 @@
       <h2><%= t('.best_farms') %></h2>
 
       <div class="cards ">
-        <% @farms.take(4).each do |farm| %>
+        <% @farms.active.take(4).each do |farm| %>
 
           <div class="card-product d-flex">
 
             <div class="photo-farm">
+              <% farm.labels.each do |label| %>
+                <div class='label'>
+                  <p> <%= label.upcase  %></p>
+                </div>
+              <%end%>
+
               <%= link_to farm_path(farm) do  %>
-                <%= cl_image_tag(farm.photos.first.key, height: 192, width: 192, crop: :fill, class: "photo-farm") %>
+                <%= cl_image_tag(farm.photos.first.key, height: 192, width: 192, crop: :fill, class: "photo") %>
               <% end %>
+
+
             </div>
 
             <div class="informations">
@@ -116,11 +124,6 @@
               <div class="name d-flex">
                 <h6> <%= farm.name  %></h6>
 
-                <% farm.labels.each do |label| %>
-                  <div class='label'>
-                    <p> <%= label.upcase  %></p>
-                  </div>
-                <%end%>
               </div>
 
               <p class="openning"><%= t('.openning', openning: farm.opening_time) %></p>
