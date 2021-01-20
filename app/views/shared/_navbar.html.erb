@@ -3,28 +3,30 @@
       <%= link_to root_path do %>
         <%= image_tag "logos/rdf_white_line.png", class: 'navbar-logo' %>
       <% end %>
-    </a> <button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar4">
+    </a> <button class="navbar-toggler navbar-toggler-right border-0 mobile-dropdown-position" type="button" data-toggle="collapse" data-target="#navbar4">
       <span class="navbar-toggler-icon"></span>
     </button>
+    <div class="d-flex justify-content-between min-width">
     <div id="zip_code_messages" data-title="<%= t('zip_code.title') %>" data-description="<%= t('zip_code.description') %>" data-login="<%= t('zip_code.login') %>" data-error="<%= t('zip_code.error') %>" %></div>
     <div class="collapse navbar-collapse" id="navbar4">
       <ul class="navbar-nav mr-auto pl-lg-4">
       <div class="zip-code-infos" data-signedin?="<%= user_signed_in? %>" data-login_path="<%= new_user_session_path %>" data-set_zip_code_path="<%= users_zip_code_path %>" data-token="<%= form_authenticity_token %>" ></div>
       <% unless current_page? root_path %>
         <li class="nav-item px-lg-2 zip-code" >
-          <p>Ton code postal</p>
+          <p><%= t 'shared.navbar.your_zip_code' %></p>
           <a class="nav-link background zip-code-infos" href="#">
           <p class="text"><i class="fas fa-map-marker-alt marker"></i><%= render 'shared/zip_code_div' %></p></a>
         </li>
       <% end %>
     </ul>
     <ul class="navbar-nav ml-auto mt-3 mt-lg-0">
-      <li class="nav-item"> <a class="nav-link text-light" href="#">Qui sommes-nous ?</a> </li>
-      <li class="nav-item"> <a class="nav-link text-light" href="#">Nos producteurs</a> </li>
+      <li class="nav-item"> <a class="nav-link text-light" href="#"><%= t 'shared.navbar.who_are_we' %></a> </li>
+      <li class="nav-item"> <a class="nav-link text-light" href="#"><%= t 'shared.navbar.our_farmers' %></a> </li>
       <li class="nav-item"><a href="#" class="nav-link p-0"><%= image_tag 'icons/profile.png', class: "profile-icon mt-1" %></a></li>
       <li class="nav-item basket-div"><a href="#" class="nav-link p-0 position-relative"><%= image_tag 'icons/basket.png', class: "basket-icon" %> <div class="items-number d-none">/</div> <span class="price-text">39</span><span class="price-currency">CHF</span> </a></li>
     </ul>
   </div>
+    </div>
 </div>
 </nav>
 <div id="basket">
