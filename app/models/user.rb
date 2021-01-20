@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_one_attached :photo
 
   has_many :farms, dependent: :destroy
+  has_many :orders, source: :buyer, foreign_key: :buyer_id
+
   accepts_nested_attributes_for :farms, :allow_destroy => false
 
   TITLE = ['Mme', 'M']
