@@ -1,7 +1,7 @@
 import 'select2';
 
 const initSelect2 = () => {
-  $('select').each((_index, select) => {
+  $('.select2').each((_index, select) => {
     $(select).select2();
     }
   )};
