@@ -50,11 +50,11 @@
               <p><%= t('.discover_wine') %> </p>
             <% end %>
           </div>
-          <h2>En manque de victuailles ?</h2>
-          <p>Indique ta bourgade et découvre tous les producteurs locaux</p>
+          <h2><%= t '.second_zip_code_input_title' %></h2>
+          <p><%= t '.second_zip_code_input_description' %></p>
           <%= form_tag farms_path, method: :get, class: 'form-inline search' do %>
-            <%= text_field_tag :zip, get_zip_code_number, readonly: true, class: 'form-control zip-search zip_code_input', placeholder: "Où habitez-vous ?" %>
-            <%= submit_tag "C'EST PARTI", class: "btn zip-button", name: nil %>
+            <%= text_field_tag :zip, get_zip_code_number, readonly: true, class: 'form-control zip-search zip_code_input', placeholder: t('search_placeholder') %>
+            <%= submit_tag t(".second_zip_code_input_button"), class: "btn zip-button", name: nil %>
           <% end %>
         </div>
 
