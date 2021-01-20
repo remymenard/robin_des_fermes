@@ -13,7 +13,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
 
   index do
     actions defaults: true
-    bool_column :active
+    column :active
     column  "Nom", :name
     column "Propriétaire", :user do |col|
       col.user.first_name
@@ -114,6 +114,17 @@ ActiveAdmin.register Farm, as: "Exploitations" do
       tab 'Etape 4' do
         panel 'Ajouter les catégorie' do
           f.input :category_ids, as: :check_boxes, collection: Category.all, label: false
+        end
+        panel "Produit(s) existant(s)" do
+          table_for resource.products do
+            column "Nom du produit", :name
+            column "Catégorie du produit", :category, sortable: true
+            column "Prix (CHF)", :price, sortable: true
+            column "Actif", :active
+            column do |produit|
+              link_to 'Modifier', edit_admin_produit_path(produit), data: {confirm: 'Les modifications effectuées non sauvegardées seront perdues. Etes vous sûr de continuer ?'}
+            end
+          end
         end
         panel 'Créer un produit' do
           f.has_many :products, heading: "", new_record: 'Ajouter un produit' do |product|
