@@ -22,8 +22,26 @@
     <ul class="navbar-nav ml-auto mt-3 mt-lg-0">
       <li class="nav-item"> <a class="nav-link text-light" href="#"><%= t 'shared.navbar.who_are_we' %></a> </li>
       <li class="nav-item"> <a class="nav-link text-light" href="#"><%= t 'shared.navbar.our_farmers' %></a> </li>
-      <li class="nav-item"><a href="#" class="nav-link p-0"><%= image_tag 'icons/profile.png', class: "profile-icon mt-1" %></a></li>
-      <li class="nav-item basket-div"><a href="#" class="nav-link p-0 position-relative"><%= image_tag 'icons/basket.png', class: "basket-icon" %> <div class="items-number d-none">/</div> <span class="price-text">39</span><span class="price-currency">CHF</span> </a></li>
+      <li class="nav-item">
+
+      <% if user_signed_in? %>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fas fa-sign-out-alt profile-icon mt-1 logout"></i>
+        <% end %>
+      <% else %>
+        <%= link_to new_user_session_path do %>
+          <%= image_tag 'icons/profile.png', class: "profile-icon mt-1" %>
+        <% end %>
+      <% end %>
+
+      </li>
+      <li class="nav-item basket-div"><a href="#" class="nav-link p-0 position-relative"><%= image_tag 'icons/basket.png', class: "basket-icon" %> <div class="items-number d-none">/</div> <span class="price-text">
+      <% if current_order_available? %>
+        <%= current_order.price %>
+      <% else %>
+        0.00
+      <% end %>
+      </span><span class="price-currency">CHF</span> </a></li>
     </ul>
   </div>
     </div>

@@ -11,7 +11,6 @@ document.addEventListener('turbolinks:load', async () => {
   const signedIn = zipCodeButtons.data("signedin?")
   const loginPageHref = zipCodeButtons.data("login_path")
   const ajaxRequestHref = zipCodeButtons.data("set_zip_code_path")
-  console.log(zipCodeButtons)
   const authenticityToken = zipCodeButtons.data("token")
   const isZipCodeDefined = pageInfos.data('zipCodeDefined')
   const shouldSubmitForm = pageInfos.data('submitForm')
