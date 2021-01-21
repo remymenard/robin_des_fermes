@@ -28,12 +28,12 @@
           </div>
 
           <div>
-            <%= image_tag "categories/milk.png", alt: "Lait" %>
-            <h6><%= t('.laitiers') %></h6>
-            <p><%= t('.paragraph_milk') %> </p>
-            <%= link_to farms_path(category: "Produits Laitiers"), class: "navbar-brand d-flex" do %>
+            <%= image_tag "categories/vegetables.png", alt: "Lait" %>
+            <h6><%= t('.vegetables') %></h6>
+            <p><%= t('.paragraph_vegetables') %> </p>
+            <%= link_to farms_path(category: "Fruits & Légumes"), class: "navbar-brand d-flex" do %>
               <%= image_tag "categories/line.png", alt: "line" %>
-              <p><%= t('.discover_milk') %> </p>
+              <p><%= t('.discover_vegetables') %> </p>
             <% end %>
           </div>
         </div>
@@ -42,7 +42,7 @@
           <h2><%= t('.products') %></h2>
 
           <div>
-            <%= image_tag "categories/fish.png", alt: "Vin" %>
+            <%= image_tag "categories/wine.png", alt: "Vin" %>
             <h6><%= t('.vins') %></h6>
             <p><%= t('.paragraph_wine') %> </p>
             <%= link_to farms_path(category: "Vin"), class: "navbar-brand d-flex" do %>
