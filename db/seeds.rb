@@ -81,18 +81,21 @@ divers.photo.attach(
   filename: 'divers.png'
 )
 
-
-user1 = User.create!(
-  email: "postmaster@gra.app",
-  password: "password",
-  first_name: "henry",
-  last_name: "Boucher",
-  address_line_1: "6 boulevard adolphe",
-  city: "nantes",
-  zip_code: "1200",
-  title: "M",
-  admin: true,
-)
+unless Rails.env.production?
+  user1 = User.new(
+    email: "admin@drakkr.com",
+    password: "password",
+    first_name: "henry",
+    last_name: "Boucher",
+    address_line_1: "6 boulevard adolphe",
+    city: "nantes",
+    zip_code: "1200",
+    title: "M",
+    admin: true,
+  )
+  user1.skip_confirmation!
+  user1.save!
+end
 
 user1.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/users/user1.png')),
