@@ -5,6 +5,8 @@ ruby '2.6.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
+
+gem 'country_select', '~> 4.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -21,6 +23,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+gem 'pundit'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -83,3 +87,8 @@ gem 'netaddr', '~> 1.5', '>= 1.5.1'
 gem 'money-rails', '~>1.12'
 gem 'postmark'
 gem 'postmark-rails'
+
+gem 'activeadmin'
+gem 'activeadmin_addons'
+gem 'ransack'
+gem 'arctic_admin'

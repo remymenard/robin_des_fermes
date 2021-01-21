@@ -29,9 +29,15 @@ import "bootstrap";
 import { initMapbox } from '../plugins/init_mapbox';;
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initAxeptio } from '../plugins/init_axeptio';
+import { initBasket } from './basket/utils/initBasket'
+import { loadResponsiveNavbar } from './navbar'
+import { initSelect2 } from '../plugins/init_select2'
 
 document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
   initMapbox();
   initAxeptio();
+  initBasket();
+  loadResponsiveNavbar();
+  initSelect2();
 });

@@ -2,6 +2,7 @@
 @import "config/fonts";
 @import "config/colors";
 @import "config/bootstrap_variables";
+@import "config/mixins";
 
 // External libraries
 @import "bootstrap/scss/bootstrap";
@@ -9,14 +10,33 @@
 @import "font-awesome";
 @import 'mapbox-gl/dist/mapbox-gl';
 @import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder';
+@import 'custombox/dist/custombox.min.css';
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
 
-body, h1, h2, p {
+body, h1, h6, p {
   font-family: 'Mulish', sans-serif;
 }
+
+body, h6 {
+  color: #25201D;
+  font-size: 18px;
+}
+
+body, h2 {
+  font-family: 'BioRhyme', serif;
+  color: #6C5C5C;
+  font-size: 36px;
+  line-height: 135%;
+}
+
+body, p {
+  color: #6C5C5C;
+  font-size: 14px;
+}
+
 
 html {
   height: 100%;

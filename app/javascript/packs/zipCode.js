@@ -1,11 +1,10 @@
 import Swal from 'sweetalert2'
 
 document.addEventListener('turbolinks:load', async () => {
-
   // variables
-  const zipCodeButtons = $('.zip_code')
+  const zipCodeButtons = $('.zip-code-infos')
   const zipCodeText = $('.zip_code_number')
-  const searchInput = $('#zip_code_input')
+  const searchInput = $('.zip_code_input')
   const pageInfos = $('#pageInfos')
   const zipCodeMessages = $('#zip_code_messages')
 
@@ -50,7 +49,10 @@ document.addEventListener('turbolinks:load', async () => {
 
   const applyClickableEventToButtons = () => {
     $.merge(zipCodeButtons, searchInput).each(function () {
-      $(this).on("click", showAlert)
+      $(this).on("click", (e) => {
+        e.preventDefault();
+        showAlert()
+      })
     })
   }
 
@@ -75,7 +77,9 @@ document.addEventListener('turbolinks:load', async () => {
       zipCodeText.each((_index, element) => {
         $(element).text(zipCode)
       })
-      searchInput.val(zipCode)
+      searchInput.each((_index, input) => {
+        $(input).val(zipCode)
+      })
     }
   }
 

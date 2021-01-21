@@ -20,6 +20,9 @@ class FarmsController < ApplicationController
       @farms     = @farms.joins(:categories).where("categories.name = ?", params[:category])
     end
 
+    @farms = policy_scope(@farms).active
+    @far_farms = policy_scope(@far_farms).active
+
     @nearby_markers = @farms.geocoded.map do |farm|
       {
         lat: farm.latitude,
@@ -37,13 +40,12 @@ class FarmsController < ApplicationController
         image_url: helpers.asset_url('icons/map_marker_red.png')
       }
     end
-
   end
 
   def show
-
     @farms = Farm.all
     @farm = Farm.find(params[:id])
+
     @farm_show = @farms.where("farms.id = ? ", params[:id])
 
     @highlighted_photo = @farm.photos.first
@@ -79,11 +81,12 @@ class FarmsController < ApplicationController
       }
     end
 
+    authorize @farm
   end
 
   private
 
-  def article_params
-    params.require(:farm).permit(:name, :description, :photo, :adress, :sells, :opening_time, :labels)
+  def farm_params
+    params.require(:farm).permit(:name, :description, :address, :lagitude, :longitude, :opening_time, :labels, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accept_delivery,  photos: [])
   end
 end

@@ -1,52 +1,104 @@
-.navbar-lewagon {
-  z-index: 1;
-  position: sticky;
-  top: 0;
-  justify-content: space-between;
-  background: #007C50;
-  height: 64px;
-  font-family: 'Mulish', sans-serif;
-  font-size: 17px;
-  align-items: center;
-
-  .navbar-collapse {
-    flex-grow: 0;
-  }
-
-  .logo-robin-des-ferme {
-    height: 34px;
-    width: 264px;
-  }
-
-  .nav-item .noun-bag{
-    width: 50px;
-    height: 41.14px;
-  }
-
-  .nav-item .price {
-    color: #FAF0E1;
-    margin-bottom: 0px;
-    padding-top: 10px;
-  }
+.margin-navbar {
+  padding-right: 40px !important;
 }
 
-.nav-item {
-  .btn {
-
-    border: 1px solid white;
-    border-radius: 12px;
-    width: 150.1px;
-    height: 40px;
-    margin-right: 10px;
-    color: white;
-
-    img {
-      width: 30px;
-      height: 24.64px;
+.navbar {
+  background-color: $primary;
+  .basket-icon {
+    height: 30px;
+  }
+  .profile-icon {
+    height: 24px;
+    padding: 0 0;
+    @include navbar {
+      padding: 0 1.5rem;
     }
   }
+  .navbar-logo {
+    width: 200px;
+  }
+  .dropdown-toggle::after {
+    display: none;
+  }
+  .text-decoration-none{
+  text-decoration: none!important;
+  }
+  /* Font Awesome Icons have variable width. Added fixed width to fix that.*/
+  .icon-width { width: 2rem;}
 
-  .location {
-    text-align: left;
+  p {
+    margin-bottom: 0px;
+    color:white;
+    font-size: 14px;
+  }
+  .zip-code {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .background {
+      margin-left: 12px;
+      background-color: #174230;
+      border-radius: 60px;
+      padding: 4px 17px;
+      display: flex;
+      justify-content: center;
+    }
+    .marker {
+      margin-right: 8px;
+    }
+
+  }
+  .text {
+    font-weight: bold;
+    margin: 0;
+    color: white;
+  }
+  .price-text {
+    font-family: 'Mulish', sans-serif;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 25px;
+    vertical-align: bottom;
+    color: #B2D7C5;
+  }
+  .price-currency {
+    font-family: 'Mulish', sans-serif;
+    font-weight: bold;
+    font-size: 11px;
+    color: #B2D7C5;
+  }
+  .basket-div {
+    display: flex;
+    margin-top: 9px;
+    @include navbar {
+      margin-top: 0px;
+    }
+  }
+  .items-number {
+    position: absolute;
+    display: inline-block;
+    border-radius: 13px;
+    left: 10px;
+    padding: 0px 6px;
+    bottom: 25px;
+    background: #FF4136;
+    font-weight: bold;
+    font-size: 11px;
+    color: white;
+  }
+
+  .mobile-dropdown-position {
+    position: absolute;
+    right: 12%;
+  }
+
+  .min-width {
+    min-width: 500px;
+  }
+
+  .logout {
+    font-size: 26px;
+    color: #B2D7C5;
   }
 }
+

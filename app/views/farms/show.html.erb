@@ -123,14 +123,20 @@
 
             <div class="d-flex informations">
               <div class="d-flex photos">
-                <% @farm.farm_categories.each do |farm_category| %>
-                  <div class='category-photo'><%= cl_image_tag farm_category.category.photo.key %></div>
+                <% @farm.categories.each do |category| %>
+                  <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
                 <% end %>
               </div>
             </div>
 
             <div class="d-flex informations">
-              <p><%if @farm.labels.include?("bio")%><div class='label'><%= image_tag 'labels/bio-label.png', class: "label" %></div><%end%></p>
+              <p><%= t('.labels') %>
+                <% @farm.labels.each do |label| %>
+                  <div class='label'>
+                    <%= image_tag "labels/#{label}-label.png", class: "label" %>
+                  </div>
+                <%end%>
+              </p>
             </div>
 
             <div class="d-flex informations">
@@ -154,7 +160,6 @@
   <div class="products">
     <% @products_by_category.each do |category, products|  %>
       <h4><%= t('.category', name: category.name.capitalize) %></h4>
-
       <div class="d-flex all-card-product">
         <% products.each do |product| %>
 
@@ -173,7 +178,7 @@
 
                 <div>
                   <div class = "unit-price">
-                    <p> CHF <%= product.unit_price  %></p>
+                    <p> CHF <%= product.price_cents * 100 %></p>
                   </div>
 
                   <div class = "unit">
@@ -181,19 +186,22 @@
                   </div>
 
                   <div class = "kg-price">
-                    <p><%= product.kg_price  %> CHF/kg</p>
+                    <p><%= product.price_per_unit_cents * 100 %> CHF/kg</p>
                   </div>
 
                 </div>
 
                 <div class = "d-flex">
+                  <!--
                   <%= link_to "-", "#", class: "btn btn-number"%>
 
                   <div class="number">
                     <p>0</p>
                   </div>
+                  -->
 
-                  <%= link_to "+", orders_path, method: :post, class: "btn btn-number" %>
+                  <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" >+</button>
+
 
                 </div>
               </div>

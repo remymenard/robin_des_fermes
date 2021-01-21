@@ -11,7 +11,7 @@ $font-size-base: 1rem;
 
 // Colors
 $body-color: $gray;
-$primary:    $blue;
+$primary:    #339E72;
 $success:    $green;
 $info:       $yellow;
 $danger:     $red;
@@ -23,3 +23,11 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+.btn-block {
+  font-family: Mulish;
+  font-weight: 600 !important;
+  font-size: 12px !important;
+  padding: 12px 0 !important;
+  letter-spacing: 2.5px;
+  border-radius: 8px !important;
+}
