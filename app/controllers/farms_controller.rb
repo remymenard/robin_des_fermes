@@ -20,6 +20,9 @@ class FarmsController < ApplicationController
       @farms     = @farms.joins(:categories).where("categories.name = ?", params[:category])
     end
 
+    @farms = policy_scope(@farms).active
+    @far_farms = policy_scope(@far_farms).active
+
     @nearby_markers = @farms.geocoded.map do |farm|
       {
         lat: farm.latitude,
@@ -37,9 +40,6 @@ class FarmsController < ApplicationController
         image_url: helpers.asset_url('icons/map_marker_red.png')
       }
     end
-
-    @farms = policy_scope(@farms).active
-    @far_farms = policy_scope(@far_farms).active
   end
 
   def show
