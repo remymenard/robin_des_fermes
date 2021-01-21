@@ -38,7 +38,6 @@ class FarmsController < ApplicationController
       end
     end
 
-
     @nearby_markers = @farms.geocoded.map do |farm|
       {
         lat: farm.latitude,
