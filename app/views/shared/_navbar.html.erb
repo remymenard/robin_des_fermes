@@ -35,7 +35,13 @@
       <% end %>
 
       </li>
-      <li class="nav-item basket-div"><a href="#" class="nav-link p-0 position-relative"><%= image_tag 'icons/basket.png', class: "basket-icon" %> <div class="items-number d-none">/</div> <span class="price-text">39</span><span class="price-currency">CHF</span> </a></li>
+      <li class="nav-item basket-div"><a href="#" class="nav-link p-0 position-relative"><%= image_tag 'icons/basket.png', class: "basket-icon" %> <div class="items-number d-none">/</div> <span class="price-text">
+      <% if current_order_available? %>
+        <%= current_order.price %>
+      <% else %>
+        0.00
+      <% end %>
+      </span><span class="price-currency">CHF</span> </a></li>
     </ul>
   </div>
     </div>
