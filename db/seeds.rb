@@ -11,6 +11,7 @@ require 'date'
 
 puts "Clean DB"
 FarmCategory.destroy_all # they belong to a category, so let's destroy them first
+OrderLineItem.destroy_all
 Product.destroy_all
 Category.destroy_all
 OpeningHour.destroy_all
