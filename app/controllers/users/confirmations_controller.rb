@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::ConfirmationsController < Devise::ConfirmationsController
-  skip_before_action :verify_authorized, only: [:show, :after_confirmation_path_for]
+  # skip_before_action :verify_authorized, only: [:show, :after_confirmation_path_for]
   # GET /resource/confirmation/new
   # def new
   #   super
