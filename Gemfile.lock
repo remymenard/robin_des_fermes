@@ -432,7 +432,7 @@ DEPENDENCIES
   postmark-rails
   pry-byebug
   pry-rails
-  puma (~> 5.1, >= 5.1.1)
+  puma
   pundit
   rails (~> 6.0.3, >= 6.0.3.4)
   rails-i18n
@@ -454,4 +454,4 @@ RUBY VERSION
    ruby 2.6.6p146
 
 BUNDLED WITH
-   2.2.4
+   2.2.6
