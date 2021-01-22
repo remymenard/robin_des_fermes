@@ -6,10 +6,10 @@ class PagesController < ApplicationController
     @highlighted_farm = @farms.first
     @other_farms      = Farm.order("id asc").offset(1).all
   end
-  
+
   def cgv
-  end 
-  
+  end
+
   def faq
   end
 end
