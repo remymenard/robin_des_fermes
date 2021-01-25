@@ -133,7 +133,7 @@
               <p><%= t('.labels') %>
                 <% @farm.labels.each do |label| %>
                   <div class='label'>
-                    <%= image_tag "labels/#{label}-label.png", class: "label" %>
+                    <p> <%= label.upcase  %></p>
                   </div>
                 <%end%>
               </p>

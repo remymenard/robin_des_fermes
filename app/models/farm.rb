@@ -20,7 +20,7 @@ class Farm < ApplicationRecord
 
   has_many_attached :photos
 
-  LABELS = ["Bio-Suiss", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
+  LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
   # validates :labels, inclusion: { in: LABELS }
 
   validates :name, presence: true

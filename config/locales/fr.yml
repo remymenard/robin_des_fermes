@@ -138,7 +138,6 @@ fr:
       response7_packaging: "Si un emballage réutilisable est endommagé ou n’est pas retourné, Robin des Fermes se réserve le droit de facturer le montant dû."
   farms:
     index:
-      search: "Recherche : "
       labels: "Labels : "
       categories: "Catégories : "
       number_sells: "Nombre de ventes : "
