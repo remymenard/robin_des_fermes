@@ -1,23 +1,21 @@
-
-
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <%= cl_image_tag @highlighted_photo.key, class: ""%>
-    </div>
-    <div class="carousel-item">
-      <%= cl_image_tag @second_photo&.key, class: "second-photo"  %>
-    </div>
-    <div class="carousel-item">
-      <%= cl_image_tag @third_photo&.key, class: "third-photo "  %>
-    </div>
-    <div class="carousel-item">
-      <%= cl_image_tag @fourth_photo&.key, class: "fourth-photo"  %>
-    </div>
-    <div class="carousel-item">
-      <%= cl_image_tag @conquest_photo&.key, class: "conquest-photo"  %>
+<div class="owl-carousel owl-theme">
+  <div class="item">
+    <%= cl_image_tag @highlighted_photo.key%>
+  </div>
+  <div class="item">
+    <%= cl_image_tag @second_photo&.key, class: "second-photo"  %>
+  </div>
+  <div class="item">
+    <%= cl_image_tag @third_photo&.key, class: "third-photo"  %>
+  </div>
+  <div class="item">
+    <%= cl_image_tag @fourth_photo&.key, class: "fourth-photo"  %>
+  </div>
+  <div class="item">
+    <%= cl_image_tag @conquest_photo&.key, class: "conquest-photo"  %>
   </div>
 </div>
+
 
 <div class="container">
   <div class="farm">

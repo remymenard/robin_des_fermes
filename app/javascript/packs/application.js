@@ -9,6 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 
 
+
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -25,13 +26,13 @@ require("channels")
 // External imports
 import "bootstrap";
 
-
 import { initMapbox } from '../plugins/init_mapbox';;
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initAxeptio } from '../plugins/init_axeptio';
 import { initBasket } from './basket/utils/initBasket'
 import { loadResponsiveNavbar } from './navbar'
 import { initSelect2 } from '../plugins/init_select2'
+import { Carousel } from '../plugins/owl_carousel'
 
 document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
@@ -40,4 +41,6 @@ document.addEventListener('turbolinks:load', () => {
   initBasket();
   loadResponsiveNavbar();
   initSelect2();
+  Carousel();
 });
+
