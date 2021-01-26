@@ -29,7 +29,7 @@
       <p> <%= t('.description', description: @farm.description) %> <%= link_to 'Lire la suite', "#" %> </p>
     </div>
 
-    <%= link_to "#", class: "products-link navbar-brand d-flex" do %>
+    <%= link_to "#all-products", class: "products-link navbar-brand d-flex" do %>
       <%= image_tag "categories/line.png", alt: "line" %>
       <p><%= t('.show_products') %> </p>
     <% end %>
@@ -39,7 +39,7 @@
 
 <div class="container">
 
-  <div class="products">
+  <div class="products" id="all-products">
     <% @products_by_category.each do |category, products|  %>
       <h4><%= t('.category', name: category.name.capitalize) %></h4>
       <div class="d-flex all-card-product">
