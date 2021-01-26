@@ -13,7 +13,7 @@
 
   .description {
     background-color: white;
-    height: 371px;
+    //height: 371px;
     width: 672px;
     position: absolute;
     right: 0;
@@ -21,6 +21,7 @@
     margin-top: -450px;
     z-index: 1;
     border-radius: 6px 6px 6px 6px;
+    border: 1px solid #F0ECE8;
 
     h1 {
       padding-left: 40px;
@@ -69,6 +70,10 @@
       padding-left: 40px;
       align-items: center;
 
+      h1 {
+        display: none;
+      }
+
       p {
         margin-left: 10px;
         font-size: 14px !important;
@@ -77,92 +82,145 @@
   }
 }
 
-.delivery {
-  margin-top: 70px;
+// .delivery {
+//   margin-top: 70px;
 
-  h3 {
-    font-weight: 400;
-    font-size: 24px;
-    margin-bottom: 24px;
-  }
-  .cards-delivery {
-    span {
-      font-size: 14px;
-      font-weight: 600;
-    }
+//   h3 {
+//     font-weight: 400;
+//     font-size: 24px;
+//     margin-bottom: 24px;
+//   }
+//   .cards-delivery {
+//     span {
+//       font-size: 14px;
+//       font-weight: 600;
+//     }
 
-    p {
-      font-size: 14px;
-      font-weight: 400;
-      margin-bottom: 0px;
-    }
+//     p {
+//       font-size: 14px;
+//       font-weight: 400;
+//       margin-bottom: 0px;
+//     }
 
-    .date {
-      color: #199D3E;
-      font-weight: 300;
-    }
+//     .date {
+//       color: #199D3E;
+//       font-weight: 300;
+//     }
 
-    .card-delivery {
-      margin-right: 30px;
-      width: 370px;
-      height: 62px;
-      border: 1px solid #EAEAEA;
-      border-radius: 8px;
-      padding-left: 16px;
-      padding-top: 12px;
-      padding-right: 16px;
-      margin-bottom: 24px;
-      justify-content: space-between;
-    }
+//     .card-delivery {
+//       margin-right: 30px;
+//       width: 370px;
+//       height: 62px;
+//       border: 1px solid #EAEAEA;
+//       border-radius: 8px;
+//       padding-left: 16px;
+//       padding-top: 12px;
+//       padding-right: 16px;
+//       margin-bottom: 24px;
+//       justify-content: space-between;
+//     }
 
-    .withdrawal {
-      background-color: #FAF0E1;
-      opacity: 0.5;
-      width: 370px;
-      height: 62px;
-      margin-right: 30px;
-      border: 1px solid #BDBDBD;
-      border-radius: 8px;
-      padding-left: 16px;
-      padding-top: 12px;
-      padding-right: 16px;
-      margin-bottom: 24px;
-      justify-content: space-between;
-    }
-  }
+//     .withdrawal {
+//       background-color: #FAF0E1;
+//       opacity: 0.5;
+//       width: 370px;
+//       height: 62px;
+//       margin-right: 30px;
+//       border: 1px solid #BDBDBD;
+//       border-radius: 8px;
+//       padding-left: 16px;
+//       padding-top: 12px;
+//       padding-right: 16px;
+//       margin-bottom: 24px;
+//       justify-content: space-between;
+//     }
+//   }
 
-  .self-service {
-    font-weight: 400;
-    font-size: 24px;
-    margin-top: 48px;
+//   .self-service {
+//     font-weight: 400;
+//     font-size: 24px;
+//     margin-top: 48px;
 
-    .opening {
-      margin-top: 30px;
+//     .opening {
+//       margin-top: 30px;
 
-      .hours{
-        width: 300px;
-        justify-content: space-between;
-      }
+//       .hours{
+//         width: 300px;
+//         justify-content: space-between;
+//       }
 
-      p {
-        font-weight: 400;
-        font-size: 18px;
-        margin-right: 30px;
-      }
-    }
-  }
-}
+//       p {
+//         font-weight: 400;
+//         font-size: 18px;
+//         margin-right: 30px;
+//       }
+//     }
+//   }
+// }
 
 .products {
+  margin-top: 500px;
   h2 {
     font-size: 36px;
     margin-top: 50px;
   }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 901px) {
   .owl-stage {
     left: 0px;
+  }
+
+  .farm {
+    .description {
+      width: 80%;
+      margin-top: 0px !important;
+      margin-right: 0px !important;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      h1 {
+        display: none;
+      }
+
+      p {
+        font-size: 14px;
+        padding-left: 20px;
+        line-height: 24px;
+      }
+       .products-link {
+        margin-top: 20px;
+        p {
+          margin-top: -10px;
+          padding-left: 20px;
+          font-size: 14px;
+        }
+
+        img {
+          margin-left: 20px;
+        }
+      }
+      .header-description {
+        height: 51px;
+        width: 100%;
+        padding-left: 20px;
+
+        h1 {
+          display: block;
+          font-size: 24px;
+          line-height: 24px;
+          padding-left: 0px;
+        }
+
+        img{
+          display: none;
+        }
+
+        p {
+          display: none;
+        }
+      }
+    }
   }
 }
 

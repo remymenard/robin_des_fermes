@@ -21,6 +21,7 @@
     <div class="header-description d-flex">
       <%= cl_image_tag @farm.user.photo.key, height: 48, width: 48, crop: :fill %>
       <p> <%=@farm.user.first_name.capitalize  %> <%=@farm.user.last_name.capitalize  %> </p>
+      <h1> <%= @farm.name.capitalize  %></h1>
     </div>
 
     <h1> <%= @farm.name.capitalize  %></h1>
@@ -93,12 +94,12 @@
         <% end %>
       </div>
     <% end %>
-    <h2><%= t('.location') %></h2>
+   <!--  <h2><%= t('.location') %></h2>
     <div id="map_show"
       style="width: 1170px; height: 544px;"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
+    </div> -->
   </div>
 
 </div>
