@@ -27,7 +27,7 @@ const Carousel = () => {
             autoplayTimeout:7000,
             autoplayHoverPause:false,
         },
-    }
+      }
     })
   })
 };
