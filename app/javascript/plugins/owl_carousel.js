@@ -1,5 +1,4 @@
 import owlCarousel from "owl.carousel2";
-import "owl.carousel2/dist/assets/owl.carousel.css";
 
 const Carousel = () => {
   $(document).ready(function(){

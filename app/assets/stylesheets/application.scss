@@ -10,14 +10,13 @@
 @import "font-awesome";
 @import 'mapbox-gl/dist/mapbox-gl';
 @import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder';
-@import 'custombox/dist/custombox.min.css';
+@import url(https://cdnjs.cloudflare.com/ajax/libs/custombox/4.0.3/custombox.min.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css);
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
 
-//= require owl.carousel
-//= require owl.theme
 
 body, h6, p {
   font-family: 'Mulish', sans-serif;
