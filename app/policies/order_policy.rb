@@ -12,4 +12,8 @@ class OrderPolicy < ApplicationPolicy
   def show?
     record.buyer == user || user.admin?
   end
+
+  def confirmation?
+    record.buyer == user || user.admin?
+  end
 end

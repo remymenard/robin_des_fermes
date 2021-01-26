@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   resources :farms
 
   resources :orders, only: [:show] do
+    member do
+      get :confirmation
+    end
     resources :payments, only: [:new], controller: 'orders/payments'
   end
 
