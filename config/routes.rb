@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :admin_users, {class_name: 'User'}.merge(ActiveAdmin::Devise.config)
-  ActiveAdmin.routes(self)
   devise_for :users, controllers: {confirmations: 'users/confirmations', registrations: 'users/registrations', sessions: 'users/sessions'}
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, {class_name: 'User'}.merge(ActiveAdmin::Devise.config)
 
   scope '(:locale)', locale: /fr/ do
     root to: 'pages#home'

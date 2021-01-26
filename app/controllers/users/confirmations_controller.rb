@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::ConfirmationsController < Devise::ConfirmationsController
-  skip_before_action :verify_authorized, only: [:show, :after_confirmation_path_for]
+  # skip_before_action :verify_authorized, only: [:show, :after_confirmation_path_for]
   # GET /resource/confirmation/new
   # def new
   #   super
@@ -28,6 +28,6 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
 
   # The path used after confirmation.
   def after_confirmation_path_for(resource_name, ressource)
-    stored_location_for(resource) || super
+    stored_location_for(:user) || super
   end
 end
