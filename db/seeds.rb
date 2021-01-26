@@ -81,21 +81,21 @@ divers.photo.attach(
   filename: 'divers.png'
 )
 
-unless Rails.env.production?
-  user1 = User.new(
-    email: "admin@drakkr.com",
-    password: "password",
-    first_name: "henry",
-    last_name: "Boucher",
-    address_line_1: "6 boulevard adolphe",
-    city: "nantes",
-    zip_code: "1200",
-    title: "M",
-    admin: true,
-  )
-  user1.skip_confirmation!
-  user1.save!
-end
+user1 = User.new(
+  email: "admin@drakkr.com",
+  password: "password",
+  first_name: "henry",
+  last_name: "Boucher",
+  address_line_1: "6 boulevard adolphe",
+  city: "nantes",
+  zip_code: "1200",
+  title: "M",
+  admin: true,
+)
+user1.skip_confirmation!
+user1.save!
+
+user1 = User.last
 
 user1.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/users/user1.png')),
@@ -139,20 +139,20 @@ meleze = Farm.create!(name: "La ferme du Mélèze", user: user1, labels: ['Bio-S
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true)
 meleze.photos.attach(io: file2, filename: 'nes.png', content_type: 'image/png')
 meleze.photos.attach(
-  io: File.open(Rails.root.join('db/fixtures/farms/farm.png')),
-  filename: 'farm.png'
+  io: File.open(Rails.root.join('db/fixtures/farms/farm1.png')),
+  filename: 'farm1.png'
 )
 meleze.photos.attach(
-  io: File.open(Rails.root.join('db/fixtures/farms/farm.png')),
-  filename: 'farm.png'
+  io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
+  filename: 'farm2.png'
 )
 meleze.photos.attach(
-  io: File.open(Rails.root.join('db/fixtures/farms/farm.png')),
-  filename: 'farm.png'
+  io: File.open(Rails.root.join('db/fixtures/farms/farm3.png')),
+  filename: 'farm3.png'
 )
 meleze.photos.attach(
-  io: File.open(Rails.root.join('db/fixtures/farms/farm.png')),
-  filename: 'farm.png'
+  io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
+  filename: 'farm4.png'
 )
 
 file3 = File.open(Rails.root.join('db/fixtures/farms/farm3.png'))
@@ -229,6 +229,7 @@ gallien.photos.attach(
   filename: 'farm4.png'
 )
 
+Farm.update(delivery_delay: 3)
 
 puts "Create farm categories"
 FarmCategory.create!(category_id: boucherie.id,  farm: henry)

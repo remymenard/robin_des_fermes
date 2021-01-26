@@ -28,7 +28,7 @@ ActiveAdmin.register Product, as: 'Produits' do
       product.input :price_per_unit_cents, label: 'Prix au kg'
       product.input :conditioning, label: 'Conditionnement'
       product.input :fresh, label: 'Frais'
-      product.input :label, label: false, as: :check_boxes, collection: LABELS, label: 'Label'
+      product.input :label, label: 'Label', as: :check_boxes, collection: LABELS
       product.input :preorder, label: 'Date livraison précommande'
       product.input :description, label: 'Description'
       product.input :ingredients, label: 'Ingrédients'
