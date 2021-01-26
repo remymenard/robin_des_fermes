@@ -19,8 +19,14 @@
 //= require owl.carousel
 //= require owl.theme
 
-body, h1, h6, p {
+body, h6, p {
   font-family: 'Mulish', sans-serif;
+}
+
+body, h1 {
+  color: #25201D;
+  font-size: 54px;
+  font-family: 'BioRhyme', serif;
 }
 
 body, h6 {

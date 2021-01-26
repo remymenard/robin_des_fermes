@@ -16,13 +16,27 @@
   </div>
 </div>
 
-
-  <div class="farm">
-    <div class="description">
-
+<div class="farm">
+  <div class="description">
+    <div class="header-description d-flex">
+      <%= cl_image_tag @farm.user.photo.key, height: 48, width: 48, crop: :fill %>
+      <p> <%=@farm.user.first_name.capitalize  %> <%=@farm.user.last_name.capitalize  %> </p>
     </div>
 
+    <h1> <%= @farm.name.capitalize  %></h1>
+
+    <div class="d-flex">
+      <p> <%= t('.description', description: @farm.description) %> <%= link_to 'Lire la suite', "#" %> </p>
+    </div>
+
+    <%= link_to "#", class: "products-link navbar-brand d-flex" do %>
+      <%= image_tag "categories/line.png", alt: "line" %>
+      <p><%= t('.show_products') %> </p>
+    <% end %>
   </div>
+
+</div>
+
 <div class="container">
 
   <div class="products">

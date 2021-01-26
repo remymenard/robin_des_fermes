@@ -20,6 +20,60 @@
     margin-right: 200px;
     margin-top: -450px;
     z-index: 1;
+    border-radius: 6px 6px 6px 6px;
+
+    h1 {
+      padding-left: 40px;
+      line-height: 64px;
+      margin-top: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      padding-left: 40px;
+      line-height: 32px;
+      margin-top: 20px;
+
+      a {
+        font-size: 12px;
+        color: #6C5C5C;
+        line-height: 16px;
+        opacity: 0.5;
+        margin-left: 5px;
+      }
+    }
+     .products-link {
+      margin-top: 20px;
+      p {
+        color: #FF4136;
+        margin-top: -10px;
+        padding-left: 20px;
+        letter-spacing: 2.5px;
+        line-height: 21px;
+        margin-bottom: 45px;
+      }
+
+      img {
+        margin-left: 40px;
+        width: 48px;
+        height: 1px;
+        padding-top: 0px;
+      }
+    }
+    .header-description {
+      width: 672px;
+      height: 78px;
+      border-radius: 6px 6px 0px 0px;
+      background-color: #FAF7F3;
+      border: 1px solid #F0ECE8;
+      padding-left: 40px;
+      align-items: center;
+
+      p {
+        margin-left: 10px;
+        font-size: 14px !important;
+      }
+    }
   }
 }
 
@@ -118,11 +172,10 @@
   }
 
   .farm {
-  .description {
-    margin-top: -500px !important;
-    margin-right: 300px !important;
+    .description {
+      margin-top: -500px !important;
+      margin-right: 300px !important;
+    }
   }
-}
-
 }
 
