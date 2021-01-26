@@ -9,171 +9,331 @@
 }
 
 .farm {
+  position: relative;
 
-  h1 {
-    margin-top: 30px;
-    font-size: 48px;
-  }
+  .informations {
+      background-color: white;
+      border-radius: 4px 4px 4px 4px;
+      border: 1px solid #F0ECE8;
+      box-shadow: 0 1px 20px rgba(0,0,0,0.07);
+      width: 65%;
+      height: 172px;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+      justify-content: space-around;
 
-  h2 {
-    font-size: 36px;
-    margin-top: 50px;
-  }
+      h6 {
+        letter-spacing: 2.5px;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
 
-  h3 {
-    font-size: 24px;
-  }
+      .delivery {
+        text-align: center;
+        padding-right: 20px;
+        margin-top: 40px;
+        width: 30%;
+        height: 100px;
+        border-right:  1px solid rgba(108, 92, 92, 0.2);
 
-  p {
-    font-size: 18px;
-  }
+        p {
+          color: #25201D;
+          opacity: 0.6;
+        }
 
-  .farm-name{
-    height: 67px;
-    border-bottom: 1px solid #bbbfca;
-  }
+        a {
+          color: #25201D;
+          text-decoration: underline;
+        }
+      }
+
+      .hours {
+        padding-right: 20px;
+        text-align: center;
+        margin-top: 40px;
+        width: 30%;
+        height: 100px;
+        border-right:  1px solid rgba(108, 92, 92, 0.2);
+
+        h6 {
+          width: 100%;
+        }
+
+        p {
+          color: #25201D;
+          opacity: 0.6;
+        }
+      }
+
+      .address {
+        padding-right: 20px;
+        text-align: center;
+        margin-top: 40px;
+        width: 30%;
+        height: 100px;
+
+        p {
+          color: #25201D;
+          opacity: 0.6;
+        }
+      }
+    }
 
   .description {
-    margin-top: 30px;
+    background-color: white;
+    width: 672px;
+    position: absolute;
+    right: 0;
+    margin-right: 150px;
+    margin-top: -500px;
+    z-index: 1;
+    border-radius: 6px 6px 6px 6px;
+    border: 1px solid #F0ECE8;
 
-    h3 {
-      margin-bottom: 10px;
-    }
-  }
-
-  .card-user {
-    width: 270px;
-    height: 350px;
-    border: 1px solid #bbbfca;
-    border-radius: 8px;
-    margin-top: 121px;
-    margin: 115px auto;
-    text-align: center;
-    padding-top: 30px;
-
-    .photos {
-      flex-wrap: wrap;
-      width: 150px;
-      justify-content: center;
-    }
-
-    .category-photo {
-      padding-left: 5px;
-      margin-left: 5px;
-
-      img {
-        height: 24px;
-        width: 24px;
-      }
-    }
-
-    .label {
-      img {
-        margin-top: 25px;
-        margin-bottom: 25px;
-        height: 24px;
-        width: 27px;
-      }
-    }
-
-    .informations {
-      justify-content: center;
-
-      p {
-        font-size: 14px;
-        line-height: 10px;
-      }
-
-      .value {
-        margin-left: 5px;
-      }
-    }
-  }
-
-  .user {
-    width: 500px;
-  }
-}
-
-.delivery {
-  margin-top: 70px;
-
-  h3 {
-    font-weight: 400;
-    font-size: 24px;
-    margin-bottom: 24px;
-  }
-  .cards-delivery {
-    span {
-      font-size: 14px;
-      font-weight: 600;
+    h1 {
+      padding-left: 40px;
+      line-height: 64px;
+      margin-top: 10px;
     }
 
     p {
-      font-size: 14px;
-      font-weight: 400;
-      margin-bottom: 0px;
+      font-size: 18px;
+      padding-left: 40px;
+      line-height: 32px;
+      margin-top: 20px;
+
+      a {
+        font-size: 12px;
+        color: #6C5C5C;
+        line-height: 16px;
+        opacity: 0.5;
+        margin-left: 5px;
+      }
     }
+     .products-link {
+      margin-top: 20px;
+      p {
+        color: #FF4136;
+        margin-top: -10px;
+        padding-left: 20px;
+        letter-spacing: 2.5px;
+        line-height: 21px;
+        margin-bottom: 45px;
+      }
 
-    .date {
-      color: #199D3E;
-      font-weight: 300;
+      img {
+        margin-left: 40px;
+        width: 48px;
+        height: 1px;
+        padding-top: 0px;
+      }
     }
+    .header-description {
+      width: 672px;
+      height: 78px;
+      border-radius: 6px 6px 0px 0px;
+      background-color: #FAF7F3;
+      border: 1px solid #F0ECE8;
+      padding-left: 40px;
+      align-items: center;
 
-    .card-delivery {
-      margin-right: 30px;
-      width: 370px;
-      height: 62px;
-      border: 1px solid #EAEAEA;
-      border-radius: 8px;
-      padding-left: 16px;
-      padding-top: 12px;
-      padding-right: 16px;
-      margin-bottom: 24px;
-      justify-content: space-between;
-    }
-
-    .withdrawal {
-      background-color: #FAF0E1;
-      opacity: 0.5;
-      width: 370px;
-      height: 62px;
-      margin-right: 30px;
-      border: 1px solid #BDBDBD;
-      border-radius: 8px;
-      padding-left: 16px;
-      padding-top: 12px;
-      padding-right: 16px;
-      margin-bottom: 24px;
-      justify-content: space-between;
-    }
-  }
-
-  .self-service {
-    font-weight: 400;
-    font-size: 24px;
-    margin-top: 48px;
-
-    .opening {
-      margin-top: 30px;
-
-      .hours{
-        width: 300px;
-        justify-content: space-between;
+      h1 {
+        display: none;
       }
 
       p {
-        font-weight: 400;
-        font-size: 18px;
-        margin-right: 30px;
+        margin-left: 10px;
+        font-size: 14px !important;
       }
     }
   }
 }
 
+// .delivery {
+//   margin-top: 70px;
+
+//   h3 {
+//     font-weight: 400;
+//     font-size: 24px;
+//     margin-bottom: 24px;
+//   }
+//   .cards-delivery {
+//     span {
+//       font-size: 14px;
+//       font-weight: 600;
+//     }
+
+//     p {
+//       font-size: 14px;
+//       font-weight: 400;
+//       margin-bottom: 0px;
+//     }
+
+//     .date {
+//       color: #199D3E;
+//       font-weight: 300;
+//     }
+
+//     .card-delivery {
+//       margin-right: 30px;
+//       width: 370px;
+//       height: 62px;
+//       border: 1px solid #EAEAEA;
+//       border-radius: 8px;
+//       padding-left: 16px;
+//       padding-top: 12px;
+//       padding-right: 16px;
+//       margin-bottom: 24px;
+//       justify-content: space-between;
+//     }
+
+//     .withdrawal {
+//       background-color: #FAF0E1;
+//       opacity: 0.5;
+//       width: 370px;
+//       height: 62px;
+//       margin-right: 30px;
+//       border: 1px solid #BDBDBD;
+//       border-radius: 8px;
+//       padding-left: 16px;
+//       padding-top: 12px;
+//       padding-right: 16px;
+//       margin-bottom: 24px;
+//       justify-content: space-between;
+//     }
+//   }
+
+//   .self-service {
+//     font-weight: 400;
+//     font-size: 24px;
+//     margin-top: 48px;
+
+//     .opening {
+//       margin-top: 30px;
+
+//       .hours{
+//         width: 300px;
+//         justify-content: space-between;
+//       }
+
+//       p {
+//         font-weight: 400;
+//         font-size: 18px;
+//         margin-right: 30px;
+//       }
+//     }
+//   }
+// }
+
 .products {
+  margin-top: 500px;
   h2 {
     font-size: 36px;
     margin-top: 50px;
   }
 }
+@media screen and (max-width: 530px) {
+  .informations {
+    flex-direction: column !important;
+    align-items: center !important;
+    height: 450px !important;
+    margin-top: 400px !important;
+  }
+}
+
+@media screen and (max-width: 901px) {
+  .products {
+    margin-top: 700px;
+  }
+
+  .owl-stage {
+    left: 0px;
+  }
+
+  .farm {
+    .informations {
+      margin-top: 240px;
+      width: 80%;
+
+      .delivery {
+        border-right:  1px solid white!important;
+        width: 75%;
+      }
+
+      .hours {
+        border-right:  1px solid white!important;
+        width: 75%;
+      }
+
+      .address {
+        width: 75%;
+      }
+    }
+
+    .description {
+      width: 80%;
+      margin-top: 0px !important;
+      margin-right: 0px !important;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      h1 {
+        display: none;
+      }
+
+      p {
+        font-size: 14px;
+        padding-left: 20px;
+        line-height: 24px;
+      }
+       .products-link {
+        margin-top: 20px;
+        p {
+          margin-top: -10px;
+          padding-left: 20px;
+          font-size: 14px;
+        }
+
+        img {
+          margin-left: 20px;
+        }
+      }
+      .header-description {
+        height: 51px;
+        width: 100%;
+        padding-left: 20px;
+
+        h1 {
+          display: block;
+          font-size: 24px;
+          line-height: 24px;
+          padding-left: 0px;
+        }
+
+        img{
+          display: none;
+        }
+
+        p {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .owl-stage {
+    left: -250px;
+  }
+
+  .farm {
+    .description {
+      margin-top: -500px !important;
+      margin-right: 300px !important;
+    }
+  }
+}
+

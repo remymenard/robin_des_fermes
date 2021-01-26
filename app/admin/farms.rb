@@ -102,6 +102,9 @@ ActiveAdmin.register Farm, as: "Exploitations" do
           inputs 'Délais de livraison' do
             input :delivery_delay, label: false
           end
+          inputs "Horaires d'ouverture" do
+            input :opening_time, label: false
+          end
           inputs 'Photos' do
             input :photos, as: :file, input_html: { multiple: true }, label: false
             input :photos, as: :file, input_html: { multiple: true }, label: false

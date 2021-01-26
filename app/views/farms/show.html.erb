@@ -16,129 +16,56 @@
   </div>
 </div>
 
+<div class="farm">
+  <div class="description">
+    <div class="header-description d-flex">
+      <%= cl_image_tag @farm.user.photo.key, height: 48, width: 48, crop: :fill %>
+      <p> <%=@farm.user.first_name.capitalize  %> <%=@farm.user.last_name.capitalize  %> </p>
+      <h1> <%= @farm.name.capitalize  %></h1>
+    </div>
 
-<div class="container">
-  <div class="farm">
+    <h1> <%= @farm.name.capitalize  %></h1>
 
-    <div class="row">
+    <div class="d-flex">
+      <p> <%= t('.description', description: @farm.description) %> <%= link_to t('.more_description'), "#" %> </p>
+    </div>
 
-      <div class="col col-lg-8">
+    <%= link_to "#all-products", class: "products-link navbar-brand d-flex" do %>
+      <%= image_tag "categories/line.png", alt: "line" %>
+      <p><%= t('.show_products') %> </p>
+    <% end %>
+  </div>
 
-        <div class="farm-name">
-          <h2><%= @farm.name %></h2>
-        </div>
+  <div class="informations d-flex">
 
-        <div class="description">
-          <h3><%= t('.about') %></h3>
-          <p><%= t('.description', description: @farm.description) %></p>
-        </div>
+    <div class="hours">
+      <h6><%= t('.hours') %> </h6>
+      <p><%= @farm.opening_time  %></p>
+    </div>
 
-        <div class="delivery">
-          <h3><%= t('.delivery') %></h3>
 
-          <div class="cards-delivery d-flex">
+    <div class="delivery d-flex">
 
-            <div>
-
-              <div class="<%= @near_farm ? 'card-delivery'  : 'withdrawal' %> d-flex">
-                <div>
-                  <p><%= t('.near') %></p>
-                  <p class = "date"> Entre le <%= @date.strftime('%d')  %> et le <%= I18n.l((@date + 10.days), format: :long, locale: :'fr') %></p>
-                </div>
-
-                <span>CHF 5</span>
-
-              </div>
-
-               <div class="<%= !@farm.accepts_take_away ? 'withdrawal' : 'card-delivery' %> d-flex">
-
-                <div>
-                  <p><%= t('.take_away') %></p>
-                  <p class = "date"> Entre le <%= @date.strftime('%d')  %> et le <%= I18n.l((@date + 10.days), format: :long, locale: :'fr') %></p>
-                </div>
-
-                <span><%= t('.free') %></span>
-
-              </div>
-            </div>
-
-            <div>
-
-              <div class="<%= !@near_farm ? 'card-delivery'  : 'withdrawal' %> d-flex">
-                <div>
-                  <p><%= t('.far') %></p>
-                  <p class = "date"> Entre le <%= @date.strftime('%d')  %> et le <%= I18n.l((@date + 10.days), format: :long, locale: :'fr') %></p>
-                </div>
-
-                <span>CHF 15</span>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="self-service">
-            <% if @farm.accepts_take_away? %>
-              <h3><%= t('.self_service') %></h3>
-
-              <div class="opening">
-                <%@farm.opening_hours.each do |opening_hour|  %>
-                  <div class="d-flex hours">
-                    <p><%= I18n.t('date.day_names')[opening_hour.day] %></p>
-                    <p><%= opening_hour.opens.to_formatted_s(:time)  %> - <%= opening_hour.closes.to_formatted_s(:time)  %></p>
-                  </div>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="col col-lg-4">
-        <div class="user">
-
-          <div class="card-user">
-
-            <%= cl_image_tag @farm.user.photo.key, height: 64, width: 64, crop: :fill %>
-            <p><%= @farm.user.first_name   %> </p>
-
-            <div class="d-flex informations">
-              <div class="d-flex photos">
-                <% @farm.categories.each do |category| %>
-                  <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
-                <% end %>
-              </div>
-            </div>
-
-            <div class="d-flex informations">
-              <p><%= t('.labels') %>
-                <% @farm.labels.each do |label| %>
-                  <div class='label'>
-                    <p> <%= label.upcase  %></p>
-                  </div>
-                <%end%>
-              </p>
-            </div>
-
-            <div class="d-flex informations">
-              <p><%= t('.number_sells') %></p>
-              <p class = "value"> 19</p>
-            </div>
-
-            <div class="d-flex informations">
-              <p><%= t('.adherent') %> </p>
-              <p class = "value"><%= @farm.created_at.strftime("%Y.%m.%d")  %></p>
-            </div>
-          </div>
-        </div>
-
+      <div>
+        <h6><%= t('.delivery') %> </h6>
+        <p class = "date"> <%= t('.hours_delivery') %> <%= @date.strftime('%d')  %> <%= t('.and_delivery') %> <%= I18n.l((@date + @farm.delivery_delay.days), format: "%d %B", locale: :'fr') %>.</p>
+        <%= link_to t('.more_delivery'), "#"  %>
       </div>
 
     </div>
 
+
+    <div class="address">
+      <h6><%= t('.address') %> </h6>
+      <p><%= @farm.address  %></p>
+    </div>
   </div>
 
-  <div class="products">
+</div>
+
+<div class="container">
+
+  <div class="products" id="all-products">
     <% @products_by_category.each do |category, products|  %>
       <h4><%= t('.category', name: category.name.capitalize) %></h4>
       <div class="d-flex all-card-product">
@@ -192,12 +119,12 @@
         <% end %>
       </div>
     <% end %>
-    <h2><%= t('.location') %></h2>
+   <!--  <h2><%= t('.location') %></h2>
     <div id="map_show"
       style="width: 1170px; height: 544px;"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>
+    </div> -->
   </div>
 
 </div>
