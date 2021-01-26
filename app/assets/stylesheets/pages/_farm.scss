@@ -9,89 +9,17 @@
 }
 
 .farm {
-
-  h1 {
-    margin-top: 30px;
-    font-size: 48px;
-  }
-
-  h2 {
-    font-size: 36px;
-    margin-top: 50px;
-  }
-
-  h3 {
-    font-size: 24px;
-  }
-
-  p {
-    font-size: 18px;
-  }
-
-  .farm-name{
-    height: 67px;
-    border-bottom: 1px solid #bbbfca;
-  }
+  position: relative;
 
   .description {
-    margin-top: 30px;
-
-    h3 {
-      margin-bottom: 10px;
-    }
-  }
-
-  .card-user {
-    width: 270px;
-    height: 350px;
-    border: 1px solid #bbbfca;
-    border-radius: 8px;
-    margin-top: 121px;
-    margin: 115px auto;
-    text-align: center;
-    padding-top: 30px;
-
-    .photos {
-      flex-wrap: wrap;
-      width: 150px;
-      justify-content: center;
-    }
-
-    .category-photo {
-      padding-left: 5px;
-      margin-left: 5px;
-
-      img {
-        height: 24px;
-        width: 24px;
-      }
-    }
-
-    .label {
-      img {
-        margin-top: 25px;
-        margin-bottom: 25px;
-        height: 24px;
-        width: 27px;
-      }
-    }
-
-    .informations {
-      justify-content: center;
-
-      p {
-        font-size: 14px;
-        line-height: 10px;
-      }
-
-      .value {
-        margin-left: 5px;
-      }
-    }
-  }
-
-  .user {
-    width: 500px;
+    background-color: white;
+    height: 371px;
+    width: 672px;
+    position: absolute;
+    right: 0;
+    margin-right: 200px;
+    margin-top: -450px;
+    z-index: 1;
   }
 }
 
@@ -182,4 +110,19 @@
   .owl-stage {
     left: 0px;
   }
+}
+
+
+@media screen and (min-width: 1600px) {
+  .owl-stage {
+    left: -250px;
+  }
+
+  .farm {
+  .description {
+    margin-top: -500px !important;
+    margin-right: 300px !important;
+  }
+}
+
 }

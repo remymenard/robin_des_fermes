@@ -18,6 +18,15 @@ const Carousel = () => {
             autoplayTimeout:7000,
             autoplayHoverPause:false,
         },
+        1600 : {
+            stagePadding: 250,
+            loop: true,
+            margin:10,
+            items: 1,
+            autoplay: true,
+            autoplayTimeout:7000,
+            autoplayHoverPause:false,
+        },
     }
     })
   })
