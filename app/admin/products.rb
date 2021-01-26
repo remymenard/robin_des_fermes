@@ -1,16 +1,15 @@
 ActiveAdmin.register Product, as: 'Produits' do
-  permit_params :id, :active, :farm_id, :active, :name, :available, :category_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning, :preorder, :total_weight, label: []
+  permit_params :id, :farm_id, :name, :available, :category_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning, :preorder, :total_weight, label: []
   actions :all
   index do
     actions defaults: true
-    column 'Actif', :active
+    column 'En stock', :available
     column 'Nom du produit', :name
     column :farm_id do |product|
       product.farm.name
     end
     column :category, sortable: true
     column 'Prix (CHF)', :price, sortable: true
-    column 'En stock', :available
   end
 
   filter :farm, label: 'Ferme'
@@ -35,7 +34,6 @@ ActiveAdmin.register Product, as: 'Produits' do
       product.input :ingredients, label: 'Ingrédients'
       product.input :photo, as: :file, label: 'Image du produit'
       product.input :total_weight, label: 'Poids total'
-      product.input :active, label: 'Activé ?'
       product.inputs '', class: 'save-product' do
         product.action :submit, label: 'Sauvegarder', data: { id: 'submit-products' } do
           redirect_to root_path
