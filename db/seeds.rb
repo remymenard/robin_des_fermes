@@ -181,7 +181,7 @@ jonas.photos.attach(
 )
 
 file4 = File.open(Rails.root.join('db/fixtures/farms/farm1.png'))
-  
+
 cave = Farm.create!(name: "La Cave de l'Abbatiale", user: user1, labels: ['Bio-Suisse'],
   address: 'Rue de Carouge 22, 1205 Genève',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations. La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.",
@@ -247,7 +247,7 @@ meat = Product.create!(farm: henry, category: boucherie, name: "Meat",
   price_cents: 5, price_per_unit_cents: 10, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'],
+  label: ['Bio-Suisse'],
   available: true,
   fresh: false,
 )
@@ -261,7 +261,7 @@ oeuf = Product.create!(farm: jonas, category: oeuf, name: "Oeuf",
   price_cents: 500, price_per_unit_cents: 1000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'],
+  label: ['Bio-Suisse'],
   available: true,
   fresh: false
 )
@@ -275,7 +275,7 @@ meat1 = Product.create!(farm: henry, category: boucherie, name: "steack",
   price_cents: 5200, price_per_unit_cents: 10000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'],
+  label: ['Bio-Suisse'],
   available: true,
   fresh: false
 )
@@ -289,7 +289,7 @@ steack = Product.create!(farm: meleze, category: boucherie, name: "Steack",
   price_cents: 700, price_per_unit_cents: 1000, unit: "La pièce",
   description: "Dégustez ce savoureux steak de boeuf.",
   ingredients: "boeuf",
-  label: ['bio'],
+  label: ['Bio-Suisse'],
   available: true,
   fresh: false
 )
@@ -303,7 +303,7 @@ chicken = Product.create!(farm: henry, category: boucherie, name: "Poulet",
   price_cents: 2500, price_per_unit_cents: 12000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'],
+  label: ['Bio-Suisse'],
   available: true,
   fresh: false
 )
@@ -317,7 +317,7 @@ chicken2 = Product.create!(farm: gallien, category: boucherie, name: "Poulet",
   price_cents: 2500, price_per_unit_cents: 12000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio']
+  label: ['Bio-Suisse']
 )
 
 chicken2.photo.attach(
@@ -329,7 +329,7 @@ juice = Product.create!(farm: henry, category: divers, name: "Jus de pomme",
   price_cents: 500, price_per_unit_cents: 1000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'],
+  label: ['Bio-Suisse'],
   available: true,
   fresh: false
 )
@@ -342,7 +342,7 @@ apple_juice = Product.create!(farm: cave, category: divers, name: "Jus de pomme"
   price_cents: 500, price_per_unit_cents: 1000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'],
+  label: ['Bio-Suisse'],
   available: true,
   fresh: false
 )
@@ -355,7 +355,7 @@ honey = Product.create!(farm: henry, category: divers, name: "Miel",
   price_cents: 3500, price_per_unit_cents: 13200, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'],
+  label: ['Bio-Suisse'],
   available: true,
   fresh: false
 )
@@ -369,7 +369,7 @@ jam = Product.create!(farm: jonas, category: divers, name: "confiture",
   price_cents: 3500, price_per_unit_cents: 13200, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'],
+  label: ['Bio-Suisse'],
   available: true,
   fresh: false
 )
@@ -383,7 +383,7 @@ oil = Product.create!(farm: henry, category: divers, name: "Oil",
   price_cents: 500, price_per_unit_cents: 1000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'],
+  label: ['Bio-Suisse'],
   available: true,
   fresh: false
 )
@@ -397,7 +397,7 @@ vinegar = Product.create!(farm: meleze, category: divers, name: "Vinaigre",
   price_cents: 500, price_per_unit_cents: 1000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'],
+  label: ['Bio-Suisse'],
   available: true,
   fresh: false
 )
@@ -411,7 +411,7 @@ potato = Product.create!(farm: henry, category: divers, name: "Patate",
   price_cents: 500, price_per_unit_cents: 1000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'],
+  label: ['Bio-Suisse'],
   available: true
 )
 
@@ -424,7 +424,7 @@ chips = Product.create!(farm: cave, category: divers, name: "Potato",
   price_cents: 500, price_per_unit_cents: 1000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'],
+  label: ['Bio-Suisse'],
   available: true,
   fresh: false
 )
@@ -439,7 +439,7 @@ egg = Product.create!(
   unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'],
+  label: ['Bio-Suisse'],
   available: true
 )
 
@@ -453,7 +453,7 @@ egg2 = Product.create!(
   unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'],
+  label: ['Bio-Suisse'],
   available: true,
   fresh: false
 )
@@ -467,7 +467,7 @@ apple = Product.create!(farm: henry, category: divers, name:"Pomme",
   price_cents: 500, price_per_unit_cents: 1000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'],
+  label: ['Bio-Suisse'],
   available: true,
   fresh: false
 )
@@ -482,7 +482,7 @@ apple2 = Product.create!(farm: jonas, category: divers, name:"Pomme",
   price_cents: 500, price_per_unit_cents: 1000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'],
+  label: ['Bio-Suisse'],
   fresh: false,
   available: true,
 )
@@ -496,7 +496,7 @@ apple3 = Product.create!(farm: jonas, category: divers, name:"Apple bio",
   price_cents: 500, price_per_unit_cents: 1000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['bio'],
+  label: ['Bio-Suisse'],
   fresh: true,
   available: true,
 )

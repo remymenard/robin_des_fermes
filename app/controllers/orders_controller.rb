@@ -18,4 +18,13 @@ class OrdersController < ApplicationController
 
     authorize @order
   end
+
+  def confimation
+    @order = Order.find(params[:id])
+    if @order.buyer_id != current_user.id
+      flash[:alert] = "You are not authorized to view this order."
+      return redirect_to root_path
+    end
+    authorize @order
+  end
 end
