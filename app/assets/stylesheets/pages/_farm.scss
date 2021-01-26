@@ -11,14 +11,26 @@
 .farm {
   position: relative;
 
+  .informations {
+      background-color: white;
+      border-radius: 4px 4px 4px 4px;
+      border: 1px solid #F0ECE8;
+      box-shadow: 0 1px 20px rgba(0,0,0,0.07);
+      width: 65%;
+      height: 172px;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+
   .description {
     background-color: white;
-    //height: 371px;
     width: 672px;
     position: absolute;
     right: 0;
-    margin-right: 200px;
-    margin-top: -450px;
+    margin-right: 150px;
+    margin-top: -500px;
     z-index: 1;
     border-radius: 6px 6px 6px 6px;
     border: 1px solid #F0ECE8;
