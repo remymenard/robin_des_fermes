@@ -1,0 +1,114 @@
+#confirmation {
+  display: flex;
+  .frame {
+    background: #FFFFFF;
+    /* Black 100 */
+
+    border: 1px solid #F0ECE8;
+    box-sizing: border-box;
+    width: 420px;
+    height: 351px;
+    /* DropShadow-Robin */
+
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.06);
+    border-radius: 8px;
+  }
+  .delivery-option {
+    background: #F8F6F4;
+    border-radius: 10px;
+  }
+
+  .shipping-title {
+    font-family: BioRhyme;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 36px;
+    text-align: center;
+    color: #25201D;
+  }
+
+  .shipping-count {
+    font-family: Mulish;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 11px;
+    line-height: 21px;
+    /* or 191% */
+
+    text-align: center;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    /* Black 700 */
+
+    color: #7C7977;
+  }
+
+  .shipping-alert {
+    font-family: Mulish;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    color: #4488EE;
+  }
+
+  .shipping-option {
+    background: #F8F6F4;
+    border-radius: 10px;
+    display: inline-block;
+    width: 155px;
+    height: 183px;
+  }
+
+  .price-details {
+    background: #FFFFFF;
+    border-radius: 8px;
+    filter: drop-shadow(0px 0px 25px rgba(0, 0, 0, 0.06));
+    width: 270px;
+    height: 361px;
+  }
+
+}
+#header-confirmation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 467px;
+  margin: auto;
+  .step {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 155px;
+    .step-name {
+      font-family: BioRhyme;
+      font-size: 16px;
+      line-height: 32px;
+      text-align: center;
+      color: #7C7977;
+      opacity: 0.45;
+    }
+  }
+  .circle-number {
+    width: 53px;
+    height: 53px;
+    background: #E6E4E4;
+    border: 1px solid #E6E4E4;
+    border-radius: 26.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span {
+      font-family: Mulish;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 18px;
+      color: #7C7977;
+      opacity: 0.6;
+    }
+  }
+}
