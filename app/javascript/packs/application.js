@@ -44,3 +44,6 @@ document.addEventListener('turbolinks:load', () => {
   Carousel();
 });
 
+$(document).on('turbolinks:before-cache', function() {
+  $(".owl-carousel").owlCarousel('destroy');
+});
