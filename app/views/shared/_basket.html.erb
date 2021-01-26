@@ -68,7 +68,11 @@
       <% end %>
     </div>
   </div>
+  <% if current_order.price > 0 %>
+  <%= link_to t("basket.validate"), confirmation_order_path(current_order), class: "btn btn-primary btn-lg btn-block" %>
+  <% else %>
   <button type="button" class="btn btn-primary btn-lg btn-block"><%= t "basket.validate" %></button>
+  <% end %>
   <a class="continue-button" href=""><%= t "basket.continue" %></a>
   <div id="items-count" data-count="<%= current_order_items_count %>"></div>
 </div>

@@ -28,6 +28,6 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
 
   # The path used after confirmation.
   def after_confirmation_path_for(resource_name, ressource)
-    stored_location_for(resource) || super
+    stored_location_for(:user) || super
   end
 end

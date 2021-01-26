@@ -145,12 +145,15 @@ fr:
       adress: "Adresse : "
       open: "Ouvertures : "
     show:
-      near: "Zone proche"
-      delivery: "Livraison"
-      about: "A propos"
+      show_products: "VOIR LES PRODUITS"
+      more_description: "Lire la suite"
+      more_delivery: "En savoir plus"
+      delivery: "LIVRAISON"
+      hours: "HORAIRES"
+      hours_delivery: "Vous serez livré entre le"
+      and_delivery: "et le"
+      address: "ADRESSE"
       description: '%{description}'
-      number_sells: "Nombre de ventes : "
-      adherent: "Adhérents RDF depuis : "
       category: '%{name}'
       product: '%{name}'
       take_away: "Retrait à la ferme"
