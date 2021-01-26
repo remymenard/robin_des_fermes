@@ -27,7 +27,7 @@
     <h1> <%= @farm.name.capitalize  %></h1>
 
     <div class="d-flex">
-      <p> <%= t('.description', description: @farm.description) %> <%= link_to 'Lire la suite', "#" %> </p>
+      <p> <%= t('.description', description: @farm.description) %> <%= link_to t('.more_description'), "#" %> </p>
     </div>
 
     <%= link_to "#all-products", class: "products-link navbar-brand d-flex" do %>
@@ -37,23 +37,25 @@
   </div>
 
   <div class="informations d-flex">
-    <div class="hours">
-      <p><%= t('.hours') %> </p>
+
+    <div class="hours d-flex">
+      <h6><%= t('.hours') %> </h6>
     </div>
 
-    <div class="delivery">
-      <p><%= t('.delivery') %> </p>
-      <div class="<%= @near_farm ? 'near-delivery'  : 'display-none' %>">
-        <div>
-          <p><%= t('.near') %></p>
-          <p class = "date"> <%= t('.hours_delivery') %> <%= @date.strftime('%d')  %> <%= t('.and_delivery') %> <%= I18n.l((@date + @farm.delivery_delay.days), format: "%d %B", locale: :'fr') %></p>
-        </div>
+
+    <div class="delivery d-flex">
+
+      <div>
+        <h6><%= t('.delivery') %> </h6>
+        <p class = "date"> <%= t('.hours_delivery') %> <%= @date.strftime('%d')  %> <%= t('.and_delivery') %> <%= I18n.l((@date + @farm.delivery_delay.days), format: "%d %B", locale: :'fr') %>.</p>
+        <%= link_to t('.more_delivery'), "#"  %>
       </div>
 
     </div>
 
+
     <div class="address">
-      <p><%= t('.address') %> </p>
+      <h6><%= t('.address') %> </h6>
       <p><%= @farm.address  %></p>
     </div>
   </div>

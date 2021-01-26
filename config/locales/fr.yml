@@ -146,7 +146,8 @@ fr:
       open: "Ouvertures : "
     show:
       show_products: "VOIR LES PRODUITS"
-      near: "L'exploitation est proche !"
+      more_description: "Lire la suite"
+      more_delivery: "En savoir plus"
       delivery: "LIVRAISON"
       hours: "HORAIRES"
       hours_delivery: "Vous serez livré entre le"
