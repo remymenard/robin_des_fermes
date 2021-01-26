@@ -146,8 +146,12 @@ fr:
       open: "Ouvertures : "
     show:
       show_products: "VOIR LES PRODUITS"
-      near: "Zone proche"
-      delivery: "Livraison"
+      near: "L'exploitation est proche !"
+      delivery: "LIVRAISON"
+      hours: "HORAIRES"
+      hours_delivery: "Vous serez livré entre le"
+      and_delivery: "et le"
+      address: "ADRESSE"
       description: '%{description}'
       category: '%{name}'
       product: '%{name}'

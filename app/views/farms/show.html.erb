@@ -36,17 +36,25 @@
     <% end %>
   </div>
 
-  <div class="informations">
+  <div class="informations d-flex">
     <div class="hours">
-
+      <p><%= t('.hours') %> </p>
     </div>
 
     <div class="delivery">
+      <p><%= t('.delivery') %> </p>
+      <div class="<%= @near_farm ? 'near-delivery'  : 'display-none' %>">
+        <div>
+          <p><%= t('.near') %></p>
+          <p class = "date"> <%= t('.hours_delivery') %> <%= @date.strftime('%d')  %> <%= t('.and_delivery') %> <%= I18n.l((@date + @farm.delivery_delay.days), format: "%d %B", locale: :'fr') %></p>
+        </div>
+      </div>
 
     </div>
 
-    <div class="contact">
-
+    <div class="address">
+      <p><%= t('.address') %> </p>
+      <p><%= @farm.address  %></p>
     </div>
   </div>
 
