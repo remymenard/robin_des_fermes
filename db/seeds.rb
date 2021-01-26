@@ -131,7 +131,7 @@ henry.photos.attach(
 )
 
 
-file2 = File.open(Rails.root.join('db/fixtures/farms/farm2.png'))
+file2 = File.open(Rails.root.join('db/fixtures/farms/farm.png'))
 meleze = Farm.create!(name: "La ferme du Mélèze", user: user1, labels: ['Bio-Suisse'],
   address: 'Gerechtigkeitsgasse 10, 3011 Berne',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations. La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.",
@@ -139,20 +139,20 @@ meleze = Farm.create!(name: "La ferme du Mélèze", user: user1, labels: ['Bio-S
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true)
 meleze.photos.attach(io: file2, filename: 'nes.png', content_type: 'image/png')
 meleze.photos.attach(
-  io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
-  filename: 'farm1.png'
+  io: File.open(Rails.root.join('db/fixtures/farms/farm.png')),
+  filename: 'farm.png'
 )
 meleze.photos.attach(
-  io: File.open(Rails.root.join('db/fixtures/farms/farm1.png')),
-  filename: 'farm2.png'
+  io: File.open(Rails.root.join('db/fixtures/farms/farm.png')),
+  filename: 'farm.png'
 )
 meleze.photos.attach(
-  io: File.open(Rails.root.join('db/fixtures/farms/farm3.png')),
-  filename: 'farm3.png'
+  io: File.open(Rails.root.join('db/fixtures/farms/farm.png')),
+  filename: 'farm.png'
 )
 meleze.photos.attach(
-  io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
-  filename: 'farm4.png'
+  io: File.open(Rails.root.join('db/fixtures/farms/farm.png')),
+  filename: 'farm.png'
 )
 
 file3 = File.open(Rails.root.join('db/fixtures/farms/farm3.png'))

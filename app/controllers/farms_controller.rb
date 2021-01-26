@@ -15,9 +15,27 @@ class FarmsController < ApplicationController
       @farms     = @farms.where("regions && ARRAY[?] ", @zip_code)
     end
 
-    if params[:category].present?
-      @far_farms = @far_farms.joins(:categories).where("categories.name = ?", params[:category])
-      @farms     = @farms.joins(:categories).where("categories.name = ?", params[:category])
+    @category = Category.find_by(name: params[:category])
+    if @category.present?
+      @far_farms = @far_farms.joins(:categories).where(categories: { name:  @category.name })
+      @farms     = @farms.joins(:categories).where(categories: { name: @category.name })
+    end
+
+    @label = params[:labels]
+    if @label.present?
+      @far_farms = @far_farms.where("labels && ARRAY[?] ", @label)
+      @farms     = @farms.where("labels && ARRAY[?]", @label)
+    end
+
+    @delivery = params[:farms]
+    if @delivery.present?
+      if @delivery == "retrait à l’exploitation"
+        @far_farms = @far_farms.where(accepts_take_away: true)
+        @farms     = @farms.where(accepts_take_away: true)
+      elsif @delivery == "Distribution régionale" || "Expédition nationale"
+        @far_farms = @far_farms.where(accept_delivery: true)
+        @farms     = @farms.where(accept_delivery: true)
+      end
     end
 
     @farms = policy_scope(@farms).active
@@ -87,6 +105,6 @@ class FarmsController < ApplicationController
   private
 
   def farm_params
-    params.require(:farm).permit(:name, :description, :address, :lagitude, :longitude, :opening_time, :labels, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accept_delivery,  photos: [])
+    params.require(:farm).permit(:name, :description, :address, :lagitude, :longitude, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accept_delivery,  photos: [], labels: [])
   end
 end

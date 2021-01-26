@@ -16,6 +16,9 @@
 @import "components/index";
 @import "pages/index";
 
+//= require owl.carousel
+//= require owl.theme
+
 body, h1, h6, p {
   font-family: 'Mulish', sans-serif;
 }
