@@ -38,6 +38,7 @@ module Basket
       if @product && @order
         @item_in_basket.decrement_quantity
         @item_in_basket.save
+        @order.compute_total_price
 
         render partial: 'shared/basket'
       else
@@ -53,6 +54,7 @@ module Basket
         authorize @item_in_basket
 
         @item_in_basket.destroy
+        @order.compute_total_price
 
         render partial: 'shared/basket'
       end

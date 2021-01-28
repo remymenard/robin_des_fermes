@@ -15,12 +15,14 @@ class OrderLineItem < ApplicationRecord
   def increment_quantity
     self.quantity += 1
     compute_total_price
+    self.save
   end
 
   def decrement_quantity
     if self.quantity > 0
       self.quantity -= 1
       compute_total_price
+      self.save
     end
   end
 
