@@ -19,6 +19,11 @@ class OrdersController < ApplicationController
     authorize @order
   end
 
+  def review
+    @order = Order.find(params[:id])
+    authorize @order
+  end
+
   def confimation
     @order = Order.find(params[:id])
     if @order.buyer_id != current_user.id

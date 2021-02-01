@@ -69,7 +69,7 @@
     </div>
   </div>
   <% if current_order.price > 0 %>
-  <%= link_to t("basket.validate"), confirmation_order_path(current_order), class: "btn btn-primary btn-lg btn-block" %>
+  <%= link_to t("basket.validate"), review_order_path(current_order), class: "btn btn-primary btn-lg btn-block" %>
   <% else %>
   <button type="button" class="btn btn-primary btn-lg btn-block"><%= t "basket.validate" %></button>
   <% end %>

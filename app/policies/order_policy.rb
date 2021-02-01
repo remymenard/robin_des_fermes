@@ -13,6 +13,10 @@ class OrderPolicy < ApplicationPolicy
     record.buyer == user || user.admin?
   end
 
+  def review?
+    record.buyer == user || user.admin?
+  end
+
   def confirmation?
     record.buyer == user || user.admin?
   end
