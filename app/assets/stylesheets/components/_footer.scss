@@ -6,7 +6,6 @@
   background: #1E0F00;
   display: flex;
   margin-bottom: 0px;
-  align-items: center;
   justify-content: space-around;
   padding: 0px 50px;
   font-weight: 300;
@@ -17,38 +16,48 @@
   }
   .row {
     justify-content: space-between;
-    min-width: 300px;
+    width: 100%;
   }
+
+  .information {
+    width: 200px;
+    margin-left: 30px;
+  }
+
+  .community {
+    width: 150px;
+  }
+
 
   .title {
     font-weight: bold;
     font-size: 16px;
+    margin-top: 100px;
+    margin-bottom: 30px;
+  }
+
+  .contact-title {
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 30px;
   }
 
   img {
+    margin-top: 100px;
     height: 218px;
     width: 176px;
   }
 
-  .information {
-    margin-top: 80px;
-    padding-left: 100px;
-
-    .title{
-      width: 100%;
-    }
-
-    a {
-      color: #FAF0E1;
-      &:hover {
-        text-decoration: none;
-      }
+  a {
+    color: #FAF0E1;
+    &:hover {
+      text-decoration: none;
     }
   }
 
-  .link {
-    margin-top: -40px;
 
+  .link {
     .footer-links {
       display: flex;
       align-items: center;
@@ -63,6 +72,12 @@
 }
 @media screen and (max-width: 500px) {
   .footer {
-    display: block;
+
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .footer {
+    flex-wrap: wrap;
   }
 }
