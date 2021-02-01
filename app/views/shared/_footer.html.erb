@@ -2,22 +2,12 @@
   <%= image_tag "logos/rdf_light_pink.png" %>
 
   <div class="information">
-    <p class= "title"><%= t('.about') %></p>
-    <div class="d-flex row">
-      <div class="mission">
-        <p><%= t('.mission') %></p>
-        <p><%= t('.concept') %></p>
-        <p><%= t('.gang') %></p>
-        <p><%= t('.delivery') %></p>
-      </div>
-
-      <div class="press">
-        <p><%= t('.press') %></p>
-        <p><%= link_to t(".faq"), faq_path  %></p>
-        <p><%= link_to t(".cgv"), cgv_path  %></p>
-      </div>
-    </div>
-
+    <p class= "title"><%= t('.information') %></p>
+    <p><%= t('.about') %></p>
+    <p><%= t('.gang') %></p>
+    <p><%= link_to t(".faq"), faq_path  %></p>
+    <p><%= link_to t(".cgv"), cgv_path  %></p>
+    <p><%= t('.impressum') %></p>
   </div>
 
   <div class="community">
