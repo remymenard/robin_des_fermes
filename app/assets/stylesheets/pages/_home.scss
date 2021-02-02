@@ -330,8 +330,14 @@
       flex-direction: column-reverse !important;
       align-items: left !important;
 
+      a {
+        p {
+          letter-spacing: 0px !important;
+        }
+      }
+
       .two-products {
-        margin-left: 57px;
+
       }
 
       p {
