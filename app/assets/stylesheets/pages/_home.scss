@@ -326,14 +326,14 @@
 
     .food {
       flex-direction: column-reverse !important;
-      align-items: center !important;
+      align-items: left !important;
 
       .two-products {
         margin-left: 57px;
       }
 
       p {
-        max-width: 350px !important;
+        max-width: 300px !important;
       }
 
       a {

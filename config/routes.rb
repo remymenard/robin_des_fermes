@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :products, only: [:show]
     get 'cgv', :to => 'pages#cgv'
     get 'team', :to => 'pages#team'
+    get 'about', :to => 'pages#about'
   end
 
   namespace :users do
