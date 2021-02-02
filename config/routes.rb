@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :farms, only: [:index, :show]
     resources :products, only: [:show]
     get 'cgv', :to => 'pages#cgv'
+    get 'team', :to => 'pages#team'
   end
 
   namespace :users do
