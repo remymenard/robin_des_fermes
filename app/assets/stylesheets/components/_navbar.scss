@@ -37,14 +37,17 @@
     font-size: 14px;
   }
   .zip-code {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+    @include media-breakpoint-up(sm) {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
     .background {
       margin-left: 12px;
       background-color: #174230;
       border-radius: 60px;
       padding: 4px 17px;
+      width: 80px;
       display: flex;
       justify-content: center;
     }
