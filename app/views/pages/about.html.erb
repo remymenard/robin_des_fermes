@@ -2,19 +2,19 @@
   <div class="container">
     <h1><%= t('.about') %></h1>
     <h2><%= t('.mission') %></h2>
-    <p><%= t('.mission_description') %></p>
+    <p class= "mission"><%= t('.mission_description') %></p>
 
     <h6><%= t('.solution_title') %></h6>
 
     <ul>
-      <li><p><%= t('.first_solution') %></p></li>
-      <li><p><%= t('.second_solution') %></p></li>
-      <li><p><%= t('.third_solution') %></p></li>
-      <li><p><%= t('.fourth_solution') %></p></li>
+      <li><%= t('.first_solution') %></li>
+      <li><%= t('.second_solution') %></li>
+      <li><%= t('.third_solution') %></li>
+      <li><%= t('.fourth_solution') %></li>
     </ul>
 
     <h6><%= t('.project') %></h6>
-    <p><%= t('.porposition') %></p>
+    <p><%= t('.proposition') %></p>
 
     <h6><%= t('.values') %></h6>
     <p><%= t('.values_paragraph') %></p>
@@ -27,19 +27,19 @@
     <h2><%= t('.concept') %></h2>
     <h4><%= t('.sub_title_concept') %></h4>
 
-    <div class="d-flex">
+    <div class="d-flex concept">
 
-      <div>
+      <div class="concept-example">
         <h6><%= t('.supports') %></h6>
-        <p><%= t('.supports_paragraph') %></p>
+        <span><%= t('.supports_paragraph') %></span>
         <h6><%= t('.healthy') %></h6>
-        <p><%= t('.healthy_paragraph') %></p>
+        <span><%= t('.healthy_paragraph') %></span>
         <h6><%= t('.planet') %></h6>
-        <p><%= t('.planet_paragraph') %></p>
+        <span><%= t('.planet_paragraph') %></span>
       </div>
 
-      <div>
-        <h6><%= t('.who') %></h6>
+      <div class="who">
+        <h6 class="who-title"><%= t('.who') %></h6>
 
         <ol>
           <li><%= t('.first_who') %></li>
