@@ -76,11 +76,14 @@
   background: #FFFFFF;
   border-radius: 8px;
   width: 270px;
-  height: 324px;
   margin-top: -40px;
   margin-bottom: 55px;
   @include media-breakpoint-down(sm) {
     width: 100% !important;
+  }
+  .recap-line {
+    width: 100%;
+    border: 1px solid #FAF7F3;
   }
   p {
     margin-bottom: 20px;
