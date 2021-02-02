@@ -24,7 +24,10 @@ module BasketHelper
     if user_signed_in?
       order = current_user.orders.waiting.order(created_at: :desc).first
 
-      order || create_order_for_current_user
+      if order.nil?
+         return create_order_for_current_user
+      end
+      order
     else
       Order.waiting.find_by(id: cookies[:order_id]) || create_order_for_guest
     end
@@ -34,14 +37,14 @@ module BasketHelper
 
   def create_order_for_current_user
     order = Order.create!(buyer: current_user)
-    cookies[:order_id] = order.id
+    cookies.permanent[:order_id] = order.id
 
     return order
   end
 
   def create_order_for_guest
     order = Order.create!
-    cookies[:order_id] = order.id
+    cookies.permanent[:order_id] = order.id
 
     return order
   end

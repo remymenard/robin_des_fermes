@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:show] do
     member do
+      get :review
       get :confirmation
     end
     resources :payments, only: [:new], controller: 'orders/payments'

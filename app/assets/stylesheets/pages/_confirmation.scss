@@ -93,8 +93,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 467px;
   margin: auto;
+  margin-top: 32px;
+  margin-bottom: 70px;
+  .active {
+    .circle-number {
+      border: 2px solid #339E72;
+      box-sizing: border-box;
+      background: #FEFEFE !important;
+    }
+    span {
+      color: #339E72 !important;
+    }
+  }
+  .completed {
+    .circle-number {
+      background: #339E72 !important;
+    }
+    span {
+      color: white !important;
+    }
+    .step-name {
+      color: #339E72 !important;
+    }
+  }
   .step {
     display: flex;
     align-items: center;
@@ -107,17 +129,17 @@
       font-size: 16px;
       line-height: 32px;
       text-align: center;
-      color: #7c7977;
-      opacity: 0.45;
+      color: #C5C3C2;
     }
   }
   .step-link {
     position: absolute;
-    width: 103px;
+    width: 121px;
     height: 0px;
-    left: 103px;
+    left: 89px;
     top: 26px;
     border: 1px solid #e1deda;
+    z-index: 1;
   }
   .circle-number {
     width: 53px;
@@ -128,13 +150,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 2;
     span {
       font-family: Mulish;
       font-style: normal;
       font-weight: 600;
       font-size: 18px;
-      color: #7c7977;
-      opacity: 0.6;
+      color: #A7A4A3;
     }
   }
 }

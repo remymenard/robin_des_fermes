@@ -1,7 +1,6 @@
 // Specific CSS for your home-page
 
 .home {
-
   .zip-search {
       padding-top: 0px;
       color: #7C7977 !important;
@@ -9,6 +8,9 @@
       border-radius: 10px 0px 0px 10px;
       border-color: #F0ECE8;
       width: 317px;
+      @include media-breakpoint-down(sm) {
+        width: 179px;
+      }
       height: 54px;
       background-color: white;
   }
