@@ -205,6 +205,14 @@ fr:
       offers: "Nous travaillons sur une série d’offres dont tu pourras bénéficier auprès des producteurs, mais tu peux déjà précommander ta carte par e-mail à"
       mail: "info@robindesfermes.ch"
       informations: "(en indiquant ton nom, prénom et adresse)."
+    charter:
+      charter: "Charte Robin des Fermes"
+      accompany: "Notre travail consiste à accompagner les producteurs dans le développement de leur concept de vente directe."
+      guarantee: "Dans ce sens et afin de garantir aux consommateurs le circuit le plus court et transparent possible, nous demandons à chaque producteur de respecter la charte suivante :"
+      first_guarantee: "Le producteur possède un N° d’exploitation qui atteste qu’il est producteur ou produit de la matière première pour l’élaboration de ces produits (apiculteur, pêcheur, etc.…)."
+      second_guarantee: "Les produits proposés sont issus de sa propre production ou de sa propre fabrication. Le producteur peut également proposer des produits de producteurs partenaires ou artisans en lien avec un producteur, pour autant qu’ils soient de la même région et que l’information soit expressément inscrite sur son profil et/ou dans la description du produit."
+      third_guarantee: "La composition des produits doit être majoritairement de matières régionales ou suisses."
+      fourth_guarantee: "Les normes d’hygiènes et environnementales sont en tout-temps respectées."
   farms:
     index:
       labels: "Labels : "

@@ -24,4 +24,7 @@ class PagesController < ApplicationController
 
   def community
   end
+
+  def charter
+  end
 end
