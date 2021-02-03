@@ -183,6 +183,18 @@ fr:
       fourth_who: " Paie ta commande en ligne, au prix juste pour le producteur !"
       fifth_who: "Remercie le producteur."
       sixth_who: "Déguste ta victoire : quand c’est juste, c’est encore meilleur !"
+    impressum:
+      impressum: "Impressum"
+      address_title: "Adresse"
+      rdf: "Robin des Fermes Sàrl"
+      address: "C/O Jorat Coworking Chemin de Dronchire 3"
+      zip_code: "1077 Servion"
+      contact: "Contact"
+      mail: "info@robindesfermes.ch"
+      phone: "079 674 63 69"
+      credit: "Crédits"
+      writing: "Rédaction des textes par: "
+      annick: " Annick Goumaz"
   farms:
     index:
       labels: "Labels : "

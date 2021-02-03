@@ -3,11 +3,11 @@
 
   <div class="information">
     <p class= "title"><%= t('.information') %></p>
-    <p><%= t('.about') %></p>
-    <p><%= t('.gang') %></p>
+    <p><%= link_to t('.about'), about_path %></p>
+    <p><%= link_to t('.gang'), team_path %></p>
     <p><%= link_to t(".faq"), faq_path  %></p>
     <p><%= link_to t(".cgv"), cgv_path  %></p>
-    <p><%= t('.impressum') %></p>
+    <p><%= link_to t('.impressum'), impressum_path %></p>
   </div>
 
   <div class="community">

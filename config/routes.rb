@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get 'cgv', :to => 'pages#cgv'
     get 'team', :to => 'pages#team'
     get 'about', :to => 'pages#about'
+    get 'impressum', :to => 'pages#impressum'
   end
 
   namespace :users do
