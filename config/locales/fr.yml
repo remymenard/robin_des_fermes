@@ -193,8 +193,18 @@ fr:
       mail: "info@robindesfermes.ch"
       phone: "079 674 63 69"
       credit: "Crédits"
-      writing: "Rédaction des textes par: "
+      writing: "Rédaction des textes par : "
       annick: " Annick Goumaz"
+    community:
+      community: "Communauté"
+      companion: "Devenir compagnon"
+      distribute_wealth: "Robin des Fermes répartit les richesses ici et maintenant."
+      combat: "Nous luttons contre les injustices auxquelles font face nos producteurs, mais nous n’y arriverons pas seuls: nous avons besoin de nombreux compagnons !"
+      local: "Tu es un fervent défenseur d’une consommation locale et équitable pour tous ? Tu souhaites profiter d’expériences et de moments enrichissants directement auprès des producteurs ?"
+      become: "Deviens compagnon Robin des Fermes, reçois ta carte membre, et soutiens les producteurs Robin des Fermes grâce aux nombreux avantages de ta carte."
+      offers: "Nous travaillons sur une série d’offres dont tu pourras bénéficier auprès des producteurs, mais tu peux déjà précommander ta carte par e-mail à"
+      mail: "info@robindesfermes.ch"
+      informations: "(en indiquant ton nom, prénom et adresse)."
   farms:
     index:
       labels: "Labels : "

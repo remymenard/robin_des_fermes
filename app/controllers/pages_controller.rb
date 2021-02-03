@@ -21,4 +21,7 @@ class PagesController < ApplicationController
 
   def impressum
   end
+
+  def community
+  end
 end

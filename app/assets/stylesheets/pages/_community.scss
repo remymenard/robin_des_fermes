@@ -1,0 +1,28 @@
+.community {
+  margin-top: 90px;
+  margin-bottom: 150px;
+
+  h2 {
+    color: black;
+    margin-top: 50px;
+    margin-bottom: 30px;
+  }
+
+  h6 {
+    color: #6C5C5C;
+    margin-bottom: 20px;
+  }
+
+  span {
+    color: #33B084;
+    text-decoration: underline;
+  }
+}
+
+@media screen and (max-width: 500px) {
+    .community {
+      h1 {
+        font-size: 45px;
+      }
+    }
+  }
