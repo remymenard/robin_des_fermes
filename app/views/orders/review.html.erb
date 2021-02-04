@@ -18,13 +18,16 @@
 <div class="review">
 <div class="row w-100 reverse-on-mobile">
   <div class="col-lg-8 col-12 p-0">
-    <div class="mx-4 mx-lg-0 text-center text-lg-left">
-      <p class="basket-number">Panier 1/2</p>
-      <h4 class="farm-name">La Ferme de Jonas</h4>
-      <p class="basket-number">3 produits</p>
+    <% @order = current_order %>
+    <% @order.farm_orders.order("created_at desc").each_with_index do |farm_order, index| %>
+    <div class="mx-4 mx-lg-0 my-4 text-center text-lg-left">
+      <p class="basket-number">Panier <%= index + 1 %>/<%= @order.farm_orders.size %></p>
+      <h4 class="farm-name"><%= farm_order.farm.name %></h4>
+      <p class="basket-number"><%= farm_order.order_line_items.size %> produits</p>
     </div>
+
+    <% farm_order.order_line_items.order("created_at desc").each do |product_basket| %>
     <div class="product-card">
-    <% current_order.order_line_items.order("updated_at desc").each do |product_basket| %>
         <% product = product_basket.product %>
         <div class="product-basket">
 
@@ -68,29 +71,29 @@
             </div>
           </div>
       </div>
-      <% end %>
       </div>
+    <% end %>
+    <% end %>
   </div>
-  <div class="col-lg-4 col-12 align-items-end p-0">
+  <div class="col-lg-4 col-12 align-items-end p-0 position-relative">
     <div class="recap-card">
     <div class="px-3">
       <h2 class="recap-title">Recapitulatif</h2>
+      <% @order.farm_orders.order("created_at desc").each_with_index do |farm_order, index| %>
       <div class="d-flex justify-content-between">
-        <p class="line-style">Panier (5 articles)</p>
-        <div><p class="price">30</p><p class="currency">CHF</p></div>
+        <p class="line-style"><span class="font-weight-bold"><%= farm_order.farm.name %></span><br><span class="font-weight-light">(<%= farm_order.order_line_items.size %> articles)</span></p>
+        <div><p class="price"><%= farm_order.price %></p><p class="currency"><%= farm_order.price_currency %></p></div>
       </div>
-      <div class="d-flex justify-content-between">
-        <p class="line-style">Frais livraison estimé</p>
-        <div><p class="price">20</p><p class="currency">CHF</p></div>
-      </div>
+      <% end %>
     </div>
       <div class="recap-line"></div>
       <div class="d-flex justify-content-between pt-3 px-3">
         <p class="total-style">TOTAL</p>
-        <div><p class="price">30</p><p class="currency">CHF</p></div>
+        <div><p class="price"><%= @order.price %></p><p class="currency"><%= @order.price_currency %></p></div>
       </div>
       <%= link_to 'FINALISER MON PANIER', confirmation_order_path(current_order), class: "btn btn-primary btn-lg btn-block confirm-button" %>
     </div>
   </div>
 </div>
+<%= link_to 'FINALISER MON PANIER', confirmation_order_path(current_order), class: "btn btn-primary btn-lg btn-block confirm-button mobile-confirm-button"%>
 </div>

@@ -2,6 +2,8 @@ class Order < ApplicationRecord
   belongs_to :buyer, class_name: 'User', optional: true
   has_many :order_line_items, dependent: :destroy
 
+  has_many :farm_orders
+
   monetize :price_cents, allow_nil: false,
   numericality: {
     greater_than_or_equal_to: 0,
