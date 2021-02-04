@@ -27,4 +27,7 @@ class PagesController < ApplicationController
 
   def charter
   end
+
+  def partners
+  end
 end

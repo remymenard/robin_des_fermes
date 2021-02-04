@@ -213,6 +213,15 @@ fr:
       second_guarantee: "Les produits proposés sont issus de sa propre production ou de sa propre fabrication. Le producteur peut également proposer des produits de producteurs partenaires ou artisans en lien avec un producteur, pour autant qu’ils soient de la même région et que l’information soit expressément inscrite sur son profil et/ou dans la description du produit."
       third_guarantee: "La composition des produits doit être majoritairement de matières régionales ou suisses."
       fourth_guarantee: "Les normes d’hygiènes et environnementales sont en tout-temps respectées."
+    partners:
+      partners: "Nos partenaires"
+      blanc: "L’entreprise Blanc & Cie SA est une société familiale active dans l’entretien et la maintenance, les parquets et revêtements de sols, ainsi que le nettoyage et l’assainissement. Ils se reconnaissent dans les valeurs éthiques et écologiques du projet Robin des Fermes et ont donc décidé de soutenir le projet, notamment en commandant des produits pour leurs événements d’entreprises."
+      yes_we_farm: "Yes We Farm est une plateforme de financement participatif (crowdfunding) dédiée à l’agriculture et à l’alimentation. Nous partageons le même combat, à savoir la promotion des producteurs et productrices, et sommes heureux de les compter parmi nos partenaires."
+      liaudet_pial: "Liaudet Pial est une société d’assainissement basée à Renens. L’entreprise a une forte responsabilité sociétale et s’engage activement en faveur du développement durable. En témoigne leur certification EcoEntreprise, obtenue avec la classification « Excellence », ainsi que leur soutien à notre initiative."
+      anick_goumaz: "Anick Goumaz est une rédactrice indépendante. Ses mots sont capables de « convaincre un ours d’hiberner en été pour skier en hiver ». On a notamment eu la chance de le constater grâce à plusieurs textes qu’elle nous a écrit pour notre campagne de crowdfunding ainsi que sur ce site."
+      jorat_coworking: "Le Jorat Coworking, c’est l’endroit où plusieurs « Robin » et « Robine » travaillent et se réunissent pour discuter des prochains challenges qui nous attendent. Le café et la vue y sont tout particulièrement appréciés."
+      lausanne_region: "Lausanne Région, à travers son guichet entreprise, nous conseille et met en relation avec des entités régionales dans le but de faire évoluer notre projet."
+      sonnay_charpente: "Sonnay Charpente est une société qui réalise des travaux de charpentes, revêtement intérieur et extérieur, menuiseries et divers travaux spéciaux. Particulièrement sensible aux causes paysannes et de consommation local, Daniel Sonnay a souhaité soutenir le projet"
   farms:
     index:
       labels: "Labels : "

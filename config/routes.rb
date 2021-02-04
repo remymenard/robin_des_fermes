@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get 'impressum', :to => 'pages#impressum'
     get 'community', :to => 'pages#community'
     get 'charter', :to => 'pages#charter'
+    get 'partners', :to => 'pages#partners'
   end
 
   namespace :users do
