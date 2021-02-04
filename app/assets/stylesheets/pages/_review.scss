@@ -66,6 +66,9 @@
   width: 568px;
   height: 141px;
   margin-top: 24px;
+  @include media-breakpoint-down(md) {
+    margin: auto;
+  }
   @include media-breakpoint-down(sm) {
     width: 100% !important;
   }
@@ -78,6 +81,9 @@
   width: 270px;
   margin-top: -40px;
   margin-bottom: 55px;
+  @include media-breakpoint-down(md) {
+    margin: auto;
+  }
   @include media-breakpoint-down(sm) {
     width: 100% !important;
   }
@@ -122,6 +128,28 @@
     font-family: Mulish;
     font-size: 14px;
     color: #25201D;
+  }
+  .total-style {
+    font-family: Mulish;
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #000000;
+  }
+  .confirm-button {
+    margin-top: -5px;
+    border-radius: 0px 0px 10px 10px !important;
+    height: 53px;
+    font-family: Mulish;
+    font-style: normal;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
 }
