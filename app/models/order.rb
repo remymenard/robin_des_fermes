@@ -20,6 +20,5 @@ class Order < ApplicationRecord
 
   def compute_total_price
     self.price = order_line_items.sum { |order_line_item| order_line_item.total_price }
-    self.save
   end
 end
