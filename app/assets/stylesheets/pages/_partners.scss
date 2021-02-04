@@ -10,7 +10,6 @@
 
     .partner {
       margin-bottom: 60px;
-      max-width: 30%;
 
       img {
         height: 200px;
@@ -29,6 +28,30 @@
         color: #6C5C5C;
         line-height: 32px;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .partners {
+    .partner {
+      max-width: 100% !important;
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .partners {
+    .partner {
+      max-width: 45% ;
+    }
+  }
+}
+
+@media screen and (min-width: 901px) {
+  .partners {
+    .partner {
+      max-width: 30% ;
     }
   }
 }
