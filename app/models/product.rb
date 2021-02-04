@@ -2,6 +2,8 @@ class Product < ApplicationRecord
   belongs_to :farm
   belongs_to :category
 
+  has_many :farm_orders
+
   has_one_attached :photo
 
   validates :name, presence: true

@@ -3,6 +3,7 @@ class OrderLineItem < ApplicationRecord
 
   belongs_to :order, optional: true
   belongs_to :product
+  belongs_to :farm_order
 
   validates :product, presence: true
   validates :quantity, presence: true
