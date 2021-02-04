@@ -2,16 +2,16 @@
   <div class="step active">
     <div class="step-link"></div>
     <div class="circle-number"><span>1</span></div>
-    <span class="step-name">Panier</span>
+    <span class="step-name"><%= t(".header.step1") %></span>
   </div>
   <div class="step">
     <div class="step-link"></div>
     <div class="circle-number"><span>2</span></div>
-    <span class="step-name">Livraison</span>
+    <span class="step-name"><%= t(".header.step2") %></span>
   </div>
   <div class="step">
     <div class="circle-number"><span>3</span></div>
-    <span class="step-name">Paiement</span>
+    <span class="step-name"><%= t(".header.step3") %></span>
   </div>
 </div>
   <!--<h2 class="my-5 your-basket" style="margin-left: 8%;">Ton panier</h2>-->
@@ -21,9 +21,9 @@
     <% @order = current_order %>
     <% @order.farm_orders.order("created_at desc").each_with_index do |farm_order, index| %>
     <div class="mx-4 mx-lg-0 mb-4 text-center text-lg-left">
-      <p class="basket-number">Panier <%= index + 1 %>/<%= @order.farm_orders.size %></p>
+      <p class="basket-number"><%= t(".basket") %> <%= index + 1 %>/<%= @order.farm_orders.count %></p>
       <h4 class="farm-name"><%= farm_order.farm.name %></h4>
-      <p class="basket-number"><%= farm_order.order_line_items.size %> produits</p>
+      <p class="basket-number"><%= sum = farm_order.order_line_items.sum { |item| item.quantity } %> <%= sum > 1 ? t(".product").pluralize : t(".product") %></p>
     </div>
 
     <% farm_order.order_line_items.order("created_at desc").each do |product_basket| %>
@@ -79,22 +79,24 @@
   <div class="col-lg-4 col-12 align-items-end p-0 position-relative">
     <div class="recap-card">
     <div class="px-3">
-      <h2 class="recap-title">Recapitulatif</h2>
+      <h2 class="recap-title"><%= t(".recap") %></h2>
       <% @order.farm_orders.order("created_at desc").each_with_index do |farm_order, index| %>
       <div class="d-flex justify-content-between">
-        <p class="line-style"><span class="font-weight-bold"><%= farm_order.farm.name %></span><br><span class="font-weight-light">(<%= farm_order.order_line_items.size %> articles)</span></p>
+        <p class="line-style font-weight-light">
+          <%= farm_order.farm.name %>
+        </p>
         <div><p class="price"><%= farm_order.price %></p><p class="currency"><%= farm_order.price_currency %></p></div>
       </div>
       <% end %>
     </div>
       <div class="recap-line"></div>
       <div class="d-flex justify-content-between pt-3 px-3">
-        <p class="total-style">TOTAL</p>
+        <p class="total-style"><%= t(".total") %></p>
         <div><p class="price"><%= @order.price %></p><p class="currency"><%= @order.price_currency %></p></div>
       </div>
-      <%= link_to 'FINALISER MON PANIER', confirmation_order_path(current_order), class: "btn btn-primary btn-lg btn-block confirm-button" %>
+      <%= link_to t(".confirm"), confirmation_order_path(current_order), class: "btn btn-primary btn-lg btn-block confirm-button" %>
     </div>
   </div>
 </div>
-<%= link_to 'FINALISER MON PANIER', confirmation_order_path(current_order), class: "btn btn-primary btn-lg btn-block confirm-button mobile-confirm-button"%>
+<%= link_to t(".confirm"), confirmation_order_path(current_order), class: "btn btn-primary btn-lg btn-block confirm-button mobile-confirm-button"%>
 </div>
