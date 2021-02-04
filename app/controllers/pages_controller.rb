@@ -30,4 +30,7 @@ class PagesController < ApplicationController
 
   def partners
   end
+
+  def producer
+  end
 end
