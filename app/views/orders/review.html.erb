@@ -20,7 +20,7 @@
   <div class="col-lg-8 col-12 p-0">
     <% @order = current_order %>
     <% @order.farm_orders.order("created_at desc").each_with_index do |farm_order, index| %>
-    <div class="mx-4 mx-lg-0 my-4 text-center text-lg-left">
+    <div class="mx-4 mx-lg-0 mb-4 text-center text-lg-left">
       <p class="basket-number">Panier <%= index + 1 %>/<%= @order.farm_orders.size %></p>
       <h4 class="farm-name"><%= farm_order.farm.name %></h4>
       <p class="basket-number"><%= farm_order.order_line_items.size %> produits</p>
@@ -73,6 +73,7 @@
       </div>
       </div>
     <% end %>
+    <div class="farm-spacer"></div>
     <% end %>
   </div>
   <div class="col-lg-4 col-12 align-items-end p-0 position-relative">

@@ -80,8 +80,7 @@
   background: #FFFFFF;
   border-radius: 8px;
   width: 270px;
-  margin-top: -40px;
-  margin-bottom: 55px;
+  margin-bottom: 55px !important;
   position: fixed;
   @include media-breakpoint-down(md) {
     margin: auto;
@@ -160,7 +159,9 @@
       display: none;
     }
   }
-
+}
+.farm-spacer {
+  height: 64px;
 }
 
 .mobile-confirm-button {
@@ -168,7 +169,6 @@
     display: none;
   }
   border-radius: 0px !important;
-  margin-top: -5px;
   height: 53px;
   font-family: Mulish;
   font-style: normal;
