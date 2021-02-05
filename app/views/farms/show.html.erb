@@ -66,6 +66,7 @@
 <div class="container">
 
   <div class="products" id="all-products">
+    <h2><%= t('.show_products') %></h2>
     <% @products_by_category.each do |category, products|  %>
       <h4><%= t('.category', name: category.name.capitalize) %></h4>
       <div class="d-flex all-card-product">
@@ -76,17 +77,18 @@
               <%= cl_image_tag product.photo.key, height: 64, width: 64, crop: :fill %>
             <% end %>
 
-            <div class="informations">
+            <div class="informations d-flex">
 
               <div class = "name">
-                <p><%= t('.product', name: product.name) %></p>
+                <h6><%= t('.product', name: product.name) %></h6>
+                <p><%= t('.conditioning', conditioning: product.conditioning) %></p>
               </div>
 
               <div class="price">
 
                 <div>
                   <div class = "unit-price">
-                    <p> CHF <%= product.price_cents * 100 %></p>
+                    <h4><%= product.price_cents.to_f %></h4><p>CHF </p>
                   </div>
 
                   <div class = "unit">
@@ -94,26 +96,14 @@
                   </div>
 
                   <div class = "kg-price">
-                    <p><%= product.price_per_unit_cents * 100 %> CHF/kg</p>
+                    <p><%= product.price_per_unit_cents.to_f%> CHF/kg</p>
                   </div>
 
                 </div>
 
-                <div class = "d-flex">
-                  <!--
-                  <%= link_to "-", "#", class: "btn btn-number"%>
-
-                  <div class="number">
-                    <p>0</p>
-                  </div>
-                  -->
-
-                  <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" >+</button>
-
-
-                </div>
               </div>
             </div>
+            <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" >+</button>
           </div>
 
         <% end %>
