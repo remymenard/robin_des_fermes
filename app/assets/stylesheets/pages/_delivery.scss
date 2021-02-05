@@ -1,33 +1,43 @@
+.informations-frame {
+  background: #ffffff;
+  border: 1px solid #f0ece8;
+  box-sizing: border-box;
+  width: 876px;
+  height: 99px;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+  .edit-infos {
+    color: #898989 !important;
+    opacity: 0.4;
+  }
+}
+
 #confirmation {
-  display: flex;
-  padding-left: 135px;
   .full-width {
     width: 100%;
   }
-  .informations-frame {
-    background: #ffffff;
-    border: 1px solid #f0ece8;
-    box-sizing: border-box;
-    width: 876px;
-    height: 99px;
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.06);
-    border-radius: 8px;
+  .recap-card {
+    @include media-breakpoint-up(lg) {
+      right: 0;
+      margin-right: 3%;
+    }
   }
 
-  .frame {
-    background: #ffffff;
-    padding: 20px;
-    width: 420px;
+  .delivery-card {
     height: 351px;
-    /* Black 100 */
-
-    border: 1px solid #f0ece8;
     box-sizing: border-box;
-    /* DropShadow-Robin */
-
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.06);
     border-radius: 8px;
+    background: #FFFFFF;
+    display: inline-block;
   }
+
+  .info-name {
+    font-family: BioRhyme;
+    font-size: 24px;
+    color: #25201D;
+  }
+
   .delivery-option {
     background: #f8f6f4;
     border-radius: 10px;
@@ -116,6 +126,9 @@
     .step-name {
       color: #339E72 !important;
     }
+    .step-link {
+      border: 1px solid #339E72 !important;
+    }
   }
   .step {
     display: flex;
@@ -145,7 +158,6 @@
     width: 53px;
     height: 53px;
     background: #e6e4e4;
-    border: 1px solid #e6e4e4;
     border-radius: 26.5px;
     display: flex;
     align-items: center;
