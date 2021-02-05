@@ -27,17 +27,6 @@ class FarmsController < ApplicationController
       @farms     = @farms.where("labels && ARRAY[?]", @label)
     end
 
-    @delivery = params[:farms]
-    if @delivery.present?
-      if @delivery == "retrait à l’exploitation"
-        @far_farms = @far_farms.where(accepts_take_away: true)
-        @farms     = @farms.where(accepts_take_away: true)
-      elsif @delivery == "Distribution régionale" || "Expédition nationale"
-        @far_farms = @far_farms.where(accept_delivery: true)
-        @farms     = @farms.where(accept_delivery: true)
-      end
-    end
-
     @farms = policy_scope(@farms).active
     @far_farms = policy_scope(@far_farms).active
 

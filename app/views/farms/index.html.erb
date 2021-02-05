@@ -20,12 +20,6 @@
               class: "form-control custom-select label",
               prompt: "Label"
             %>
-            <%= select_tag :farms,
-              options_for_select(["retrait à l’exploitation", "Distribution régionale", "Expédition nationale"], @delivery),
-              onchange: 'this.form.submit();',
-              class: "form-control custom-select livraison",
-              prompt: "Livraison"
-            %>
           <% end %>
         </div>
       </div>
