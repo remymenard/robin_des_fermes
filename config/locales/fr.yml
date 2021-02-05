@@ -253,11 +253,8 @@ fr:
       description: '%{description}'
       category: '%{name}'
       product: '%{name}'
-      take_away: "Retrait à la ferme"
-      free: "Gratuit"
-      far: "Zone éloignée"
-      self_service: 'Self-service'
-      location: "Emplacement"
+      add: "Ajouter au panier"
+      pre_order: "Précommander"
       date:
         day_names: [Dimanche, Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi]
   shared:

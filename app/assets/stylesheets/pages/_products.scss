@@ -9,6 +9,8 @@
   }
 
   .card-product {
+    border: 1px solid #FAF7F3;
+    box-shadow: 0 1px 20px rgba(0,0,0,0.07);
     height: 417px;
     width: 252px;
     background-color: white;
@@ -16,6 +18,15 @@
     margin-top: 23px;
     margin-right: 25px;
     border-radius: 10px 10px 10px 10px;
+
+    .btn-number {
+      height: 53px;
+      width: 252px;
+      background-color: #339E72;
+      text-align: center;
+      border-radius: 0px 0px 10px 10px;
+      color: white;
+    }
 
     img {
       height: 248px;
@@ -31,14 +42,27 @@
       .price {
         margin-right: 15px;
 
-        .btn-number {
-          height: 40px;
-          width: 40px;
-          background-color: #007C50;
-          text-align: center;
-          border-radius: 8px 8px 8px 8px;
-          color: white;
+        .unit-price {
+          h4 {
+            font-weight: bold;
+            color: #33B084 !important;
+          }
+
+          p {
+            font-weight: bold;
+            color: #33B084 !important;
+            margin-top: 5px;
+            margin-left: 2px;
+            font-size: 12px;
+          }
         }
+
+        .kg-price {
+
+          p {
+            font-size: 12px;
+            color: #7C7977;        }
+          }
       }
 
       .name {
@@ -59,29 +83,6 @@
         }
       }
 
-      .unit-price {
-        color: #33B084;
-        font-weight: bold;
-
-        p {
-          margin-bottom: -3px;
-          font-size: 12px;
-        }
-      }
-
-      .unit {
-        font-size: 10px;
-        font-weight: 300;
-
-        p{
-          margin-bottom: 0px;
-        }
-      }
-
-      .kg-price {
-        font-size: 10px;
-        font-weight: 300;
-      }
     }
   }
 }

@@ -68,7 +68,7 @@
   <div class="products" id="all-products">
     <h2><%= t('.show_products') %></h2>
     <% @products_by_category.each do |category, products|  %>
-      <h4><%= t('.category', name: category.name.capitalize) %></h4>
+      <h4 class="category-title"><%= t('.category', name: category.name.capitalize) %></h4>
       <div class="d-flex all-card-product">
         <% products.each do |product| %>
 
@@ -87,23 +87,23 @@
               <div class="price">
 
                 <div>
-                  <div class = "unit-price">
+                  <div class = "unit-price d-flex">
                     <h4><%= product.price_cents.to_f %></h4><p>CHF </p>
                   </div>
 
-                  <div class = "unit">
-                    <p><%= product.unit %></p>
-                  </div>
-
                   <div class = "kg-price">
-                    <p><%= product.price_per_unit_cents.to_f%> CHF/kg</p>
+                    <p>(<%= product.price_per_unit_cents.to_f%> CHF/<%= product.unit %>)</p>
                   </div>
 
                 </div>
 
               </div>
             </div>
-            <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" >+</button>
+            <% if product.preorder.present? %>
+              <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" ><%= t('.pre_order') %></button>
+            <% else %>
+              <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" ><%= t('.add') %></button>
+            <% end %>
           </div>
 
         <% end %>
