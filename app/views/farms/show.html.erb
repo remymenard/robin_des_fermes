@@ -73,9 +73,22 @@
         <% products.each do |product| %>
 
           <div class="card-product">
-            <%= link_to product_path(product) do  %>
-              <%= cl_image_tag product.photo.key, height: 64, width: 64, crop: :fill %>
-            <% end %>
+            <div class="photo-farm">
+
+              <div class="labels d-flex">
+
+                <% product.label.each do |label| %>
+                  <div class='label'>
+                    <p> <%= label.upcase  %></p>
+                  </div>
+                <%end%>
+              </div>
+
+              <%= link_to product_path(product) do  %>
+                <%= cl_image_tag product.photo.key, height: 64, width: 64, crop: :fill %>
+              <% end %>
+
+            </div>
 
             <div class="informations d-flex">
 

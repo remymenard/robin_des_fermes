@@ -45,6 +45,7 @@ ActiveAdmin.register Product, as: 'Produits' do
   controller do
     def create
       @product = Product.new(permitted_params[:product])
+      @product.label.reject!(&:empty?)
       if @product.save
         redirect_to admin_produits_path
       else
@@ -56,6 +57,7 @@ ActiveAdmin.register Product, as: 'Produits' do
     def update
       @product = Product.find(params[:id])
       @product.assign_attributes(permitted_params[:product])
+      @product.label.reject!(&:empty?)
       if @product.save
         redirect_to admin_produits_path
       else
