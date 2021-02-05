@@ -9,6 +9,7 @@
   }
 
   .card-product {
+    position: relative;
     border: 1px solid #FAF7F3;
     box-shadow: 0 1px 20px rgba(0,0,0,0.07);
     height: 417px;
@@ -24,7 +25,7 @@
       position: relative;
 
       img {
-        border-radius: 10px 0 0 10px;
+        border-radius: 10px 10px 0 0px;
       }
 
       .labels {
@@ -60,6 +61,9 @@
       text-align: center;
       border-radius: 0px 0px 10px 10px;
       color: white;
+      position: absolute;
+      bottom: 0;
+      left: 0;
     }
 
     img {
@@ -71,7 +75,7 @@
     .informations {
       justify-content: space-between;
       margin-left: 10px;
-      margin-top: 25px;
+      margin-top: 15px;
 
       .price {
         margin-right: 15px;

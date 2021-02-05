@@ -161,6 +161,14 @@
 }
 
 @media screen and (max-width: 530px) {
+  .products {
+    margin-top: 700px !important;
+
+    .all-card-product {
+      justify-content: space-around;
+    }
+  }
+
   .informations {
     flex-direction: column !important;
     align-items: center !important;
@@ -171,7 +179,11 @@
 
 @media screen and (max-width: 901px) {
   .products {
-    margin-top: 700px;
+    margin-top: 400px;
+
+    .all-card-product {
+      justify-content: space-around;
+    }
   }
 
   .owl-stage {

@@ -253,7 +253,7 @@ fr:
       description: '%{description}'
       category: '%{name}'
       product: '%{name}'
-      add: "AjJOUTER AU PANIER"
+      add: "AJOUTER AU PANIER"
       pre_order: "PRÉCOMMANDER"
       date:
         day_names: [Dimanche, Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi]
