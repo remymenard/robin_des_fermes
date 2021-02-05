@@ -51,6 +51,7 @@ class FarmsController < ApplicationController
 
   def show
     @farms = Farm.all
+    @far_farms = Farm.none
     @farm = Farm.find(params[:id])
 
     @farm_show = @farms.where("farms.id = ? ", params[:id])

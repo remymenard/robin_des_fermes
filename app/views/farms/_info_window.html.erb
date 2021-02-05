@@ -4,10 +4,12 @@
 
   <p class="products-number"><%= farm.products.count  %> <%= t('.products_number') %> </p>
 
-  <div class="fresh-products d-flex">
-    <%= image_tag "cards/flake.png", alt: "Flocon" %>
-    <p> <span> <%= farm.products.fresh.count %> <%= t('.products') %> </span><%= t('.withdrawal') %> </p>
-  </div>
+  <% if @far_farms.include?(farm)  %>
+    <div class="fresh-products d-flex">
+      <%= image_tag "cards/flake.png", alt: "Flocon" %>
+      <p> <span> <%= farm.products.fresh.count %> <%= t('.products') %> </span><%= t('.withdrawal') %> </p>
+    </div>
+  <% end %>
 
   <div class="d-flex photos">
     <% farm.categories.each do |category| %>
