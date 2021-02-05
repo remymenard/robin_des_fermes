@@ -25,6 +25,10 @@
 
 .mapboxgl-popup-content {
   text-align: center;
+
+  p {
+    color: black;
+  }
 }
 
 #map_show {

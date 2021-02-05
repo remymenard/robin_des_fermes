@@ -227,6 +227,10 @@ fr:
       contact: "Ne perds pas de temps et contacte-nous via ce formulaire "
       button_contact: "CONTACTE-NOUS"
   farms:
+    info_window:
+      products_number: "produits"
+      products: "produits"
+      withdrawal: "en retrait uniquement"
     index:
       labels: "Labels : "
       categories: "Catégories : "
