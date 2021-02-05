@@ -147,6 +147,16 @@ fr:
       recap: "Recapitulatif"
       total: "TOTAL"
       confirm: "FINALISER MON PANIER"
+    delivery:
+      header:
+        step1: "Panier"
+        step2: "Livraison"
+        step3: "Paiement"
+      basket: "Panier"
+      product: "produit"
+      recap: "Recapitulatif"
+      total: "TOTAL"
+      confirm: "FINALISER MON PANIER"
   farms:
     index:
       labels: "Labels : "

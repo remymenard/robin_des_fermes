@@ -94,9 +94,9 @@
         <p class="total-style"><%= t(".total") %></p>
         <div><p class="price"><%= @order.price %></p><p class="currency"><%= @order.price_currency %></p></div>
       </div>
-      <%= link_to t(".confirm"), confirmation_order_path(current_order), class: "btn btn-primary btn-lg btn-block confirm-button" %>
+      <%= link_to t(".confirm"), delivery_order_path(current_order), class: "btn btn-primary btn-lg btn-block confirm-button" %>
     </div>
   </div>
 </div>
-<%= link_to t(".confirm"), confirmation_order_path(current_order), class: "btn btn-primary btn-lg btn-block confirm-button mobile-confirm-button"%>
+<%= link_to t(".confirm"), delivery_order_path(current_order), class: "btn btn-primary btn-lg btn-block confirm-button mobile-confirm-button"%>
 </div>
