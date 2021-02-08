@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Erreur 400</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    .rails-default-error-page {
+      background: url('erreur.png');
+      background-size: cover;
+      background-position: top;
+      min-height: 125vh;
+      text-align: center;
+
+    }
+
+    p {
+      margin: 0 auto;
+      max-width: 442px;
+      color: #000000;
+      opacity: 0.7;
+      padding-top: 40px;
+      line-height: 32px;
+      font-size: 14px;
+      padding-bottom: 100px;
+    }
+
+    h2 {
+      font-family: 'BioRhyme', serif;
+      font-size: 36px;
+      line-height: 135%;
+      margin: 0 auto;
+      padding-top: 430px;
+      max-width: 526px;
+      color: #000000;
+      opacity: 0.7;
+
+    }
+
+    .btn {
+      font-family: 'Mulish', sans-serif;
+      background-color: #339E72!important;
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      border-radius: 10px;
+      padding: 15px;
+      text-decoration: none;
+      width: 226px;
+      height: 53px;
+      letter-spacing: 2.5px;
+      line-height: 43px;
+    }
+
+    @media(max-width: 550px) {
+      .btn {
+        font-size: 14px;
+      }
+
+      h2 {
+        font-size: 28px !important;
+        padding-top: 280px;
+      }
+
+      p {
+        font-size: 18px;
+      }
+
+      .rails-default-error-page {
+        background: url('erreur-mobile.png');
+        background-size: cover;
+        background-position: top;
+        max-height: 500px;
+      }
+    }
+  </style>
+</head>
+
+<body class="rails-default-error-page">
+  <!-- This file lives in public/404.html -->
+
+  <h2>Erreur 404</h2>
+  <p>Que nenni ! Vise mieux!</p>
+  <a href="javascript:history.back()" class="btn">Revenons à nos moutons</a>
+
+
+</body>
+</html>
