@@ -78,6 +78,7 @@ class FarmsController < ApplicationController
       @products_by_category = @farm.products.available.group_by(&:category)
     else
       @products_by_category = @farm.products.available.not_fresh.group_by(&:category)
+      @products_by_category_fresh = @farm.products.available.fresh.group_by(&:category)
     end
 
     @markers = @farm_show.geocoded.map do |farm|
