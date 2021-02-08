@@ -1,0 +1,44 @@
+.team {
+  text-align: center;
+  margin-top: 90px;
+
+  .team-description {
+    letter-spacing: 2.5px;
+    width: 80%;
+    margin-top: 60px;
+    margin-bottom: 90px;
+    margin-left: 10%;
+  }
+
+  .all-presentations{
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    .presentation {
+      width: 350px;
+      margin-bottom: 50px;
+
+      img {
+        height: 100px;
+        width: 100px;
+        margin-bottom: 20px;
+      }
+
+      .name {
+        font-size: 20px;
+        font-family: 'BioRhyme', serif;
+        color: #25201D;
+      }
+
+      .work {
+        color: #7C7977;
+        font-size: 11px;
+      }
+
+      h6 {
+        color: #6C5C5C;
+      }
+    }
+  }
+
+}

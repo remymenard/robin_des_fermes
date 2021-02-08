@@ -12,4 +12,25 @@ class PagesController < ApplicationController
 
   def faq
   end
+
+  def team
+  end
+
+  def about
+  end
+
+  def impressum
+  end
+
+  def community
+  end
+
+  def charter
+  end
+
+  def partners
+  end
+
+  def producer
+  end
 end

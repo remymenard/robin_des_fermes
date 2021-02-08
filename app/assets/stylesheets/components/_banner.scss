@@ -1,5 +1,5 @@
 .banner {
-  background-image: image-url('Background.png');
+  background-image: image-url('home/Background.png');
   background-size: cover;
   background-position: center;
   min-height: 125vh;
@@ -54,15 +54,35 @@
   }
 
   @media(max-width: 770px) {
-  .btn {
-    width: 200px !important;
-    letter-spacing: 0px !important;
-    font-size: 10px !important;
-  }
+    .btn {
+      width: 200px !important;
+      letter-spacing: 0px !important;
+      font-size: 10px !important;
+    }
 
-  .form-control {
-    width: 130px !important;
+    .form-control {
+      width: 130px !important;
+    }
   }
 }
 
+@media(max-width: 500px) {
+  .banner {
+    background-image: image-url('home/background-mobile.png') !important;
+    background-size: cover;
+    background-position: center;
+    height: 677px;
+    width: 100%;
+    margin-top: -100px;
+
+    h2 {
+      padding-top: 200px;
+      font-size: 32px;
+      line-height: 36px;
+    }
+
+    .search {
+      display: none;
+    }
+  }
 }

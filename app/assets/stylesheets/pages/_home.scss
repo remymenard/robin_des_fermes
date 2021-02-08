@@ -30,13 +30,6 @@
       color: #FFFFFF;
   }
 
-  .low-vector {
-    background-image: image-url('low-vector.png');
-    height: 20px;
-    margin-top: 162px;
-    background-color: #F8F0E7;
-  }
-
   .home-category{
     background-color: white;
     padding-top: 50px;
@@ -179,7 +172,7 @@
         width: 100px;
       }
 
-      .informations {
+      .testimonials-informations {
         margin-top: -45px;
 
         h6 {
@@ -323,6 +316,22 @@
 }
 
 @media screen and (max-width: 500px) {
+  .registration {
+    background-image: image-url('home/registration-mobile.png') !important;
+    min-height: 100vh !important;
+
+    h6 {
+      font-size: 18px !important;
+      padding-top: 20px !important;
+    }
+
+    h2 {
+      padding-top: 150px !important;
+      font-size: 28px !important;
+      max-width: 250px !important;
+    }
+  }
+
   .home-category {
 
     h2 {
@@ -335,14 +344,20 @@
 
     .food {
       flex-direction: column-reverse !important;
-      align-items: center !important;
+      align-items: left !important;
+
+      a {
+        p {
+          letter-spacing: 0px !important;
+        }
+      }
 
       .two-products {
-        margin-left: 57px;
+
       }
 
       p {
-        max-width: 350px !important;
+        max-width: 300px !important;
       }
 
       a {

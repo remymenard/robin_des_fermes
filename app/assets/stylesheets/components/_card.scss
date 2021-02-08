@@ -1,58 +1,60 @@
-.cards {
-  margin-top: 23px;
-  margin-left: 26px;
+.farms {
+  .cards {
+    margin-top: 23px;
+    margin-left: 26px;
 
-  a:link {
-    text-decoration:none;
-  }
+    a:link {
+      text-decoration:none;
+    }
 
 
-  .card-farm {
-    width: 570px;
-    border-top: 1px solid #bbbfca;
-    height: 256px;
-    padding-top: 25px;
+    .card-farm {
+      width: 570px;
+      border-top: 1px solid #bbbfca;
+      height: 256px;
+      padding-top: 25px;
 
-    .information {
+      .information {
 
-      p{
-        margin-bottom: 0px;
+        p{
+          margin-bottom: 0px;
+        }
+      }
+
+      .category-photo {
+        margin-top: -8px;
+        padding-left: 5px;
+        img {
+          height: 24px;
+          width: 24px;
+        }
+      }
+
+      p {
+        font-size: 14px;
+        color: black
+      }
+
+      h6 {
+        font-size: 18px;
+        font-weight: bold;
+        margin-left: 5px;
+      }
+
+      .photo-farm {
+        margin-right: 20px;
+      }
+
+      .user {
+        margin-left: 5px;
       }
     }
 
-    .category-photo {
-      margin-top: -8px;
-      padding-left: 5px;
+    .label {
       img {
-        height: 24px;
-        width: 24px;
+        height: 18px;
+        width: 22px;
       }
-    }
-
-    p {
-      font-size: 14px;
-      color: black
-    }
-
-    h6 {
-      font-size: 18px;
-      font-weight: bold;
-      margin-left: 5px;
-    }
-
-    .photo-farm {
-      margin-right: 20px;
-    }
-
-    .user {
-      margin-left: 5px;
-    }
-  }
-
-  .label {
-    img {
-      height: 18px;
-      width: 22px;
     }
   }
 }
@@ -72,13 +74,17 @@
       border: 1px solid #FAF7F3;
       box-shadow: 0 1px 20px rgba(0,0,0,0.07);
 
-      .informations {
+      .icards-nformations {
         position: relative;
       }
 
       .photo-farm {
         border-radius: 10px 0 0 10px;
         position: relative;
+
+        img {
+          border-radius: 10px 0 0 10px;
+        }
 
         .labels {
           margin-bottom: -24px;
@@ -180,7 +186,6 @@
         opacity: 0.4;
         height: 48px;
         width: 376px;
-        position: absolute;
         bottom: 0px;
         border-radius: 0 0px 10px 0;
 
