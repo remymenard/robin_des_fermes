@@ -37,10 +37,6 @@
       border-radius: 50px 50px 0 0;
       color: #7C7977;
 
-      .image-active {
-        display: none;
-      }
-
       .image {
         margin-top: 4%;
       }
@@ -209,6 +205,43 @@
         }
       }
 
+    }
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .products {
+    margin-top: 700px !important;
+
+    .tabs-products {
+
+      .withdrawal-content {
+        margin-top: 10px;
+      }
+
+      .delivery-content {
+        margin-top: 10px;
+      }
+
+      .delivery-computer {
+        display: none;
+      }
+
+      img {
+        display: none;
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: 531px) {
+  .products {
+
+    .tabs-products {
+      .delivery-mobile {
+        display: none;
+      }
     }
   }
 }

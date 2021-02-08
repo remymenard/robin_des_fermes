@@ -170,11 +170,13 @@
     }
   }
 
-  .informations {
-    flex-direction: column !important;
-    align-items: center !important;
-    height: 450px !important;
-    margin-top: 400px !important;
+  .farm {
+    .informations {
+      flex-direction: column !important;
+      align-items: center !important;
+      height: 450px !important;
+      margin-top: 400px !important;
+    }
   }
 }
 

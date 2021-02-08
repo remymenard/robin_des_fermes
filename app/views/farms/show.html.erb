@@ -73,13 +73,15 @@
         <div class="d-flex delivery-content">
           <div class="image"><%= image_tag "products/delivery.png", alt: "alttext" %> </div>
           <div class="image-active"><%= image_tag "products/delivery-active.png", alt: "alttext" %> </div>
-          <p> <%= t('.delivery_products') %></p>
+          <p class="delivery-computer"> <%= t('.delivery_products') %></p>
+          <p class="delivery-mobile"> <%= t('.delivery_products_mobile') %></p>
         </div></a></li>
       <li class="withdrawal nav-item"><a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">
         <div class="d-flex withdrawal-content">
           <div class="image"> <%= image_tag "products/withdrawal.png", alt: "alttext" %></div>
           <div class="image-active"> <%= image_tag "products/withdrawal-active.png", alt: "alttext" %></div>
-          <p> <%= t('.withdrawal_products') %></p>
+          <p class="delivery-computer"> <%= t('.withdrawal_products') %></p>
+          <p class="delivery-mobile"> <%= t('.withdrawal_products_mobile') %></p>
         </div></a></li>
     </ul>
     <div class="tab-content">
