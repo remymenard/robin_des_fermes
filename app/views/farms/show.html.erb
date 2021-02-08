@@ -67,61 +67,72 @@
 
   <div class="products" id="all-products">
     <h2><%= t('.show_products') %></h2>
-    <% @products_by_category.each do |category, products|  %>
-      <h4 class="category-title"><%= t('.category', name: category.name.capitalize) %></h4>
-      <div class="d-flex all-card-product">
-        <% products.each do |product| %>
+    <h6><%= t('.not_delivery') %></h6>
+    <ul class="nav justify-content-center">
+      <li class=""> <a href="#home" data-target="#home" data-toggle="tab">Home</a></li>
+      <li><a href="#profile" data-target="#profile" data-toggle="tab">Profile</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active fade in" id="home">
+        <% @products_by_category.each do |category, products|  %>
+          <h4 class="category-title"><%= t('.category', name: category.name.capitalize) %></h4>
+          <div class="d-flex all-card-product">
+            <% products.each do |product| %>
 
-          <div class="card-product">
-            <div class="photo-farm">
+              <div class="card-product">
+                <div class="photo-farm">
 
-              <div class="labels d-flex">
+                  <div class="labels d-flex">
 
-                <% product.label.each do |label| %>
-                  <div class='label'>
-                    <p> <%= label.upcase  %></p>
-                  </div>
-                <%end%>
-              </div>
-
-              <%= link_to product_path(product) do  %>
-                <%= cl_image_tag product.photo.key, height: 64, width: 64, crop: :fill %>
-              <% end %>
-
-            </div>
-
-            <div class="informations d-flex">
-
-              <div class = "name">
-                <h6><%= t('.product', name: product.name) %></h6>
-                <p><%= t('.conditioning', conditioning: product.conditioning) %></p>
-              </div>
-
-              <div class="price">
-
-                <div>
-                  <div class = "unit-price d-flex">
-                    <h4><%= product.price_cents.to_f %></h4><p>CHF </p>
+                    <% product.label.each do |label| %>
+                      <div class='label'>
+                        <p> <%= label.upcase  %></p>
+                      </div>
+                    <%end%>
                   </div>
 
-                  <div class = "kg-price">
-                    <p>(<%= product.price_per_unit_cents.to_f%> CHF/<%= product.unit %>)</p>
-                  </div>
+                  <%= link_to product_path(product) do  %>
+                    <%= cl_image_tag product.photo.key, height: 64, width: 64, crop: :fill %>
+                  <% end %>
 
                 </div>
 
+                <div class="informations d-flex">
+
+                  <div class = "name">
+                    <h6><%= t('.product', name: product.name) %></h6>
+                    <p><%= t('.conditioning', conditioning: product.conditioning) %></p>
+                  </div>
+
+                  <div class="price">
+
+                    <div>
+                      <div class = "unit-price d-flex">
+                        <h4><%= product.price_cents.to_f %></h4><p>CHF </p>
+                      </div>
+
+                      <div class = "kg-price">
+                        <p>(<%= product.price_per_unit_cents.to_f%> CHF/<%= product.unit %>)</p>
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+                <% if product.preorder.present? %>
+                  <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" ><%= t('.pre_order') %></button>
+                <% else %>
+                  <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" ><%= t('.add') %></button>
+                <% end %>
               </div>
-            </div>
-            <% if product.preorder.present? %>
-              <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" ><%= t('.pre_order') %></button>
-            <% else %>
-              <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" ><%= t('.add') %></button>
+
             <% end %>
           </div>
-
         <% end %>
       </div>
-    <% end %>
+      <div class="tab-pane" id="profile"><h1>BOnjour</h1> </div>
+    </div>
+
     <h2><%= t('.location') %></h2>
     <div id="map_show"
       style="width: 1170px; height: 544px;"
