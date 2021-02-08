@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_26_152343) do
+ActiveRecord::Schema.define(version: 2021_02_08_133502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -159,6 +159,7 @@ ActiveRecord::Schema.define(version: 2021_01_26_152343) do
     t.string "conditioning"
     t.string "total_weight"
     t.date "preorder"
+    t.boolean "available_for_preorder", default: false
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["farm_id"], name: "index_products_on_farm_id"
   end
