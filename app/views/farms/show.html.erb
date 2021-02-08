@@ -69,11 +69,11 @@
     <h2><%= t('.show_products') %></h2>
     <h6><%= t('.not_delivery') %></h6>
     <ul class="nav justify-content-center">
-      <li class=""> <a href="#home" data-target="#home" data-toggle="tab">Home</a></li>
+      <li class="active"> <a href="#home" data-target="#home" data-toggle="tab">Home</a></li>
       <li><a href="#profile" data-target="#profile" data-toggle="tab">Profile</a></li>
     </ul>
     <div class="tab-content">
-      <div class="tab-pane active fade in" id="home">
+      <div class="tab-pane active" id="home">
         <% @products_by_category.each do |category, products|  %>
           <h4 class="category-title"><%= t('.category', name: category.name.capitalize) %></h4>
           <div class="d-flex all-card-product">
