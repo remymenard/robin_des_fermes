@@ -25,9 +25,14 @@
         color: #339E72 !important;
       }
 
+      img {
+        margin-top: 10px;
+      }
+
       .image {
         display: none;
       }
+
     }
 
     .delivery {
@@ -37,8 +42,19 @@
       border-radius: 50px 50px 0 0;
       color: #7C7977;
 
+      .active {
+        background-image: url("products/delivery-active.png");
+        background-repeat: no-repeat;
+        background-size: 55px 35px;
+        background-position: 100px 30px;
+      }
+
       .image {
         margin-top: 4%;
+      }
+
+      .image-active {
+        display: none;
       }
 
       .delivery-content {
@@ -63,6 +79,12 @@
       color: #7C7977;
       height: 80px;
       border-radius: 50px 50px 0 0;
+
+      .active {
+        background-image: url("products/withdrawal-active.png");
+        background-repeat: no-repeat;
+        background-size: 46px 46px;
+      }
 
       .image-active {
         display: none;
