@@ -6,17 +6,17 @@ Rails.application.routes.draw do
 
   scope '(:locale)', locale: /fr/ do
     root to: 'pages#home'
-    get 'faq', :to => 'pages#faq'
+    get 'faq', to: 'pages#faq'
     resources :farms, only: [:index, :show]
     resources :products, only: [:show]
-    get 'cgv', :to => 'pages#cgv'
-    get 'team', :to => 'pages#team'
-    get 'about', :to => 'pages#about'
-    get 'impressum', :to => 'pages#impressum'
-    get 'community', :to => 'pages#community'
-    get 'charter', :to => 'pages#charter'
-    get 'partners', :to => 'pages#partners'
-    get 'producer', :to => 'pages#producer'
+    get 'cgv', to: 'pages#cgv'
+    get 'team', to: 'pages#team'
+    get 'about', to: 'pages#about'
+    get 'impressum', to: 'pages#impressum'
+    get 'community', to: 'pages#community'
+    get 'charter', to: 'pages#charter'
+    get 'partners', to: 'pages#partners'
+    get 'producer', to: 'pages#producer'
   end
 
   namespace :users do
