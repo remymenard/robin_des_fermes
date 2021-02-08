@@ -7,11 +7,24 @@
 
   .tabs-products {
     margin-top: 32px;
+    border-bottom: white 1px solid;
 
     p {
       font-size: 20px;
       font-family: 'BioRhyme', serif;
       opacity: 0.8;
+    }
+
+    .active {
+      width: 100%;
+      background-color: #D6ECE3;
+      height: 80px;
+      border-radius: 50px 50px 0 0;
+
+      p {
+
+      color: #339E72 !important;
+      }
     }
 
     .delivery {

@@ -68,12 +68,12 @@
   <div class="products" id="all-products">
     <h2><%= t('.show_products') %></h2>
     <h6><%= t('.not_delivery') %></h6>
-    <ul class="nav justify-content-between tabs-products">
-      <li class="active delivery"> <a href="#home" data-target="#home" data-toggle="tab"><div class="d-flex delivery-content"><%= image_tag "products/delivery.png", alt: "alttext" %> <p> <%= t('.delivery_products') %></p></div></a></li>
-      <li class="withdrawal"><a href="#profile" data-target="#profile" data-toggle="tab"><div class="d-flex withdrawal-content"><%= image_tag "products/withdrawal.png", alt: "alttext" %><p> <%= t('.withdrawal_products') %></p></div></a></li>
+    <ul class="nav nav-tabs justify-content-between tabs-products">
+      <li class=" delivery nav-item" > <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><div class="d-flex delivery-content"><%= image_tag "products/delivery.png", alt: "alttext" %> <p> <%= t('.delivery_products') %></p></div></a></li>
+      <li class="withdrawal nav-item"><a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true"><div class="d-flex withdrawal-content"><%= image_tag "products/withdrawal.png", alt: "alttext" %><p> <%= t('.withdrawal_products') %></p></div></a></li>
     </ul>
     <div class="tab-content">
-      <div class="tab-pane active" id="home">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
         <div class="d-flex all-card-product">
           <% @products_available.each do |product| %>
             <div class="card-product">
@@ -126,7 +126,7 @@
           <% end %>
         </div>
       </div>
-      <div class="tab-pane" id="profile">
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
         <div class="d-flex all-card-product">
           <% @products_available_fresh.each.each do |product| %>
 
