@@ -1,8 +1,66 @@
 .products {
 
   h6 {
+    margin-top: 20px;
     color: #6C5C5C;
   }
+
+  .tabs-products {
+    margin-top: 32px;
+
+    p {
+      font-size: 20px;
+    }
+
+    .delivery {
+      width: 49%;
+      background-color: #FAF7F3;
+      height: 80px;
+      border-radius: 50px 50px 0 0;
+      color: #7C7977;
+
+      .delivery-content {
+        width: 100%;
+        justify-content: center;
+
+        p {
+          margin-top: 5%;
+        }
+
+        img {
+          margin-right: 20px;
+          margin-top: 3%;
+          height: 35px;
+          width: 55.33px;
+        }
+      }
+    }
+
+    .withdrawal {
+      width: 49%;
+      background-color: #FAF7F3;
+      color: #7C7977;
+      height: 80px;
+      border-radius: 50px 50px 0 0;
+
+      .withdrawal-content {
+        width: 100%;
+        justify-content: center;
+
+        p {
+          margin-top: 5%;
+        }
+
+        img {
+          margin-right: 20px;
+          margin-top: 3%;
+          height: 48px;
+          width: 46px;
+        }
+      }
+    }
+  }
+
   .all-card-product {
     flex-wrap: wrap;
     margin-bottom: 30px;

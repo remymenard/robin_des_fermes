@@ -241,6 +241,8 @@ fr:
       products: "produits"
       withdrawal: "en retrait uniquement"
     show:
+      delivery_products: "Produits livrables"
+      withdrawal_products: "A retirer uniquement à la ferme"
       not_delivery: "Certains produits (frais / réfrigérés) ne sont pas livrables pour ta localisation"
       show_products: "Tous les produits"
       conditioning: "%{conditioning}"
