@@ -161,6 +161,85 @@
   }
 }
 
+.farm-delivery {
+  margin-top: 95px;
+  text-align: center;
+
+  h1 {
+    color: #6C5C5C;
+  }
+
+  h6 {
+    margin-top: 20px;
+    color: #6C5C5C;
+  }
+
+  .delivery-options {
+    margin-top: 34px;
+    justify-content: center;
+
+    .delivery_option {
+      width: 357px;
+      margin-left: 20px;
+      margin-right: 20px;
+      height: 305px;
+      border: 1px solid #FAF7F3;
+      box-shadow: 0 1px 20px rgba(0,0,0,0.07);
+      border-radius: 10px;
+      padding-right: 35px;
+      padding-left: 35px;
+      margin-bottom: 50px;
+
+      h6 {
+        color: black !important;
+        font-weight: bold;
+      }
+
+      .hours {
+        p {
+          font-weight: bold;
+          padding-left: 55px;
+          padding-right: 55px;
+        }
+      }
+
+      .price {
+        h6 {
+          color: #339E72 !important;
+          margin-top: 0px !important;
+          font-weight: bold;
+        }
+
+        span {
+          font-size: 12px;
+          color: #339E72;
+          margin-left: 5px;
+        }
+      }
+
+      p {
+        color: #7C7977;
+      }
+
+      .withdrawal-image {
+        img {
+          margin-top: 40px;
+          height: 48px;
+          width: 46px;
+        }
+      }
+
+      .delivery-image {
+        img {
+          margin-top: 40px;
+          height: 49.97px;
+          width: 79px;
+        }
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 530px) {
   .products {
     margin-top: 700px !important;

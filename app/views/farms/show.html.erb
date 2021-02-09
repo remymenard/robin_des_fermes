@@ -218,4 +218,46 @@
     </div> -->
   </div>
 
+  <div class="farm-delivery">
+    <h1><%= t('.delivery_title') %></h1>
+    <h6><%= t('.delivery_options') %></h6>
+    <div class="delivery-options d-flex">
+      <div class="delivery_option">
+
+        <div class="delivery-image"><%= image_tag "products/delivery.png", alt: "alttext" %></div>
+
+        <% if @farm.regions.include?(@zip_code) %>
+          <h6><%= t('.delivery_regional') %></h6>
+
+          <div class="d-flex justify-content-center">
+            <h6>6</h6>
+            <span>CHF</span>
+          </div>
+
+          <p><%= t('.delivery_regional_description') %></p>
+        <% else %>
+          <h6><%= t('.delivery_national') %></h6>
+
+          <div class="d-flex justify-content-center price">
+            <h6>15</h6>
+            <span>CHF</span>
+          </div>
+
+          <p><%= t('.delivery_national_description') %></p>
+        <% end %>
+
+        <div class="hours"><p class = "date"><%= t('.expected_delivery') %> <%= @date.strftime('%d')  %> <%= t('.and_delivery') %> <%= I18n.l((@date + @farm.delivery_delay.days), format: "%d %B", locale: :'fr') %>.</p></div>
+
+      </div>
+
+      <div class="delivery_option">
+        <div class="withdrawal-image"><%= image_tag "products/withdrawal.png", alt: "alttext" %>
+          <h6><%= t('.withdrawal') %></h6>
+          <div class="price"> <h6>Gratuit</h6></div>
+          <p><%= t('.withdrawal_description') %></p>
+          <div class="hours"> <p><%= @farm.opening_time  %></p></div>
+      </div>
+    </div>
+  </div>
+
 </div>
