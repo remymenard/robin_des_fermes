@@ -31,8 +31,7 @@ class OrdersController < ApplicationController
         if @farm_order.farm.accepts_take_away
           @farm_order.update(status: 'waiting', takeaway_at_farm: true, standard_shipping: false, express_shipping: false, shipping_price: FarmOrder.shipping_prices["takeaway"])
         else
-          render json: {transaction: 'error' }
-          return 'error'
+          return throw_error
         end
       when 'delivery'
         if @farm_order.farm.accepts_delivery
@@ -42,12 +41,16 @@ class OrdersController < ApplicationController
             @farm_order.update(status: 'waiting', takeaway_at_farm: false, standard_shipping: true, express_shipping: false, shipping_price: FarmOrder.shipping_prices["standard"])
           end
         else
-          render json: {transaction: 'error' }
-          return 'error'
+          return throw_error
         end
       end
     end
-
+    #not mandatory by avoid users to edit the page and remove input making him able not to pay shipping costs
+    @order.farm_orders.each do |farm_order|
+      if farm_order.status.nil?
+        return throw_error
+      end
+    end
     @order.update(status: 'waiting')
 
     Datatrans::CreateTransactionService.new(
@@ -77,5 +80,10 @@ class OrdersController < ApplicationController
       cancelUrl:  delivery_order_url(@order),
       errorUrl:   delivery_order_url(@order)
     }
+  end
+
+  def throw_error
+    render json: {transaction: 'error' }
+    'error'
   end
 end
