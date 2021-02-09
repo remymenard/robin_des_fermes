@@ -22,16 +22,16 @@ module Datatrans
     private
 
     def update_order_with_transaction_id
-      order.update(transaction_id: response["transactionId"])
+      @order.update(transaction_id: response["transactionId"])
     end
 
     def request_body
       {
-        refno:    order.id,
-        currency: order.price_currency.downcase,
-        amount:   order.price_cents,
+        refno:    @order.id,
+        currency: @order.price_currency.downcase,
+        amount:   @order.price_cents,
         theme:    theme,
-        redirect: redirection_urls
+        redirect: @redirection_urls
       }.to_json
     end
 
