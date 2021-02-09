@@ -28,10 +28,16 @@ module Datatrans
       {
         refno:    @order.id,
         currency: @order.price_currency.downcase,
-        amount:   @order.price_cents,
+        amount:   calculate_price,
         theme:    theme,
         redirect: @redirection_urls
       }.to_json
+    end
+
+    def calculate_price
+      @total_price = @order.price_cents
+      @total_price += @order.farm_orders.sum {|farm_order| farm_order.shipping_price_cents}
+      @total_price
     end
 
     def headers
