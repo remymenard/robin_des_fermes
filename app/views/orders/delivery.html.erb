@@ -23,7 +23,7 @@
     <div class="row w-100 reverse-on-mobile">
       <div class="col-lg-8 col-12 p-0">
         <div class="row">
-          <h2 class="info-name">Informations de livraison</h2>
+          <h2 class="info-name ml-2 ml-lg-0">Informations de livraison</h2>
           <div class="informations-frame size-876">
             <div class="row p-3  h-100 align-items-center">
               <h4 class="col m-0"><%= current_user.full_name %></h4>
@@ -35,7 +35,7 @@
             </div>
           </div>
         </div>
-        <h2 class="info-name">Mode de livraison</h2>
+        <h2 class="info-name ml-2 ml-lg-0">Mode de livraison</h2>
           <div class="d-flex">
           <div class="row w-100 justify-content-between">
         <% @order.farm_orders.order("created_at desc").each_with_index do |farm_order, index| %>
@@ -47,7 +47,7 @@
             <p class="shipping-title"><%= farm_order.farm.name %></p>
             <p class="basket-number text-center"><%= sum = farm_order.order_line_items.sum { |item| item.quantity } %> <%= sum > 1 ? t(".product").pluralize : t(".product") %></p>
             <div class="aditional-infos"></div>
-            <div class="d-flex">
+            <div class="d-flex justify-content-center">
             <% if accepts_delivery %>
             <a href="#"  id="deliverySend" class="shipping-option unselected mr-1">
             <div class="shipping-icon mb-2">
