@@ -6,6 +6,7 @@
   height: 99px;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.06);
   border-radius: 8px;
+  margin-bottom: 54px;
   .edit-infos {
     color: #898989 !important;
     opacity: 0.4;
@@ -91,6 +92,9 @@
     height: 47px;
   }
 
+  a {
+    text-decoration: none;
+  }
   .shipping-option {
     background: #f8f6f4;
     border-radius: 10px;
@@ -117,6 +121,10 @@
       path {
         fill: black !important;
       }
+      .price {
+        color: #339E72;
+        opacity: 1;
+      }
     }
     &.active {
       border: 2px solid #339E72;
@@ -130,13 +138,18 @@
       path {
         fill: #339E72 !important;
       }
+      .price {
+        color: #339E72;
+        opacity: 1;
+      }
     }
     .price {
       font-family: Mulish;
       font-weight: bold;
       font-size: 18px;
       margin-bottom: 5px;
-      color: #339E72;
+      color: #000000;
+      opacity: 0.3;
     }
     .title {
       font-family: Mulish;
@@ -155,6 +168,7 @@
       color: #7C7977;
       opacity: 0.6;
       line-height: 11px;
+      height: 15px;
     }
   }
 

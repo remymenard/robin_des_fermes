@@ -1,3 +1,4 @@
+<%= form_tag update_delivery_methods_order_path, method: :patch, id: "delivery-choices", 'data-type' => :json do %>
 <div id="confirmation">
   <div id="header-confirmation">
     <div class="step completed">
@@ -37,45 +38,48 @@
           <div class="d-flex">
           <div class="row w-100 justify-content-between">
         <% @order.farm_orders.order("created_at desc").each_with_index do |farm_order, index| %>
+          <% accepts_take_away = farm_order.farm.accepts_take_away %>
+          <% accepts_delivery = farm_order.farm.accept_delivery %>
           <div class="delivery-card col-12 col-md-5 my-3 py-4 px-3">
+            <%= hidden_field_tag farm_order.id.to_s %>
             <p class="shipping-title"><%= farm_order.farm.name %></p>
             <p class="basket-number text-center"><%= sum = farm_order.order_line_items.sum { |item| item.quantity } %> <%= sum > 1 ? t(".product").pluralize : t(".product") %></p>
             <div class="aditional-infos"></div>
             <div class="d-flex">
-            <div class="shipping-option mr-1">
+            <% if accepts_delivery %>
+            <a href="#"  id="deliverySend" class="shipping-option unselected mr-1">
             <div class="shipping-icon mb-2">
-              <%= show_svg('icons/delivery-bag.svg') %>
+              <%= show_svg('icons/delivery-truck.svg') %>
             </div>
-              <span class="title">Expédition nationale</span>
-              <span class="subtitle">Indisponible pour votre panier</span>
+              <span class="title"><% if farm_order.farm.regions.include?(get_zip_code_number) %>
+                Distribution régionale
+                <% else %>
+                  Expédition nationale
+                <% end %>
+              </span>
+              <span class="price">30CHF</span>
+              <span class="subtitle"><%= t('farms.show.hours_delivery') %> <%= Date.current.strftime('%d')  %> <%= t('farms.show.and_delivery') %> <%= I18n.l((Date.current + farm_order.farm.delivery_delay.days), format: "%d %B", locale: :'fr') %></span>
+            </a>
+            <% else %>
+             <div class="shipping-option mr-1">
+            <div class="shipping-icon mb-2">
+              <%= show_svg('icons/delivery-truck.svg') %>
             </div>
-            <div class="shipping-option ml-1"></div>
+              <span class="title">Expédition</span>
+                <span class="subtitle">Indisponible pour votre panier</span>
             </div>
-          </div>
-        <% end %>
-          <div class="delivery-card col-12 col-md-5 my-3 py-4 px-3">
-            <p class="shipping-title">test</p>
-            <p class="basket-number text-center">4</p>
-            <div class="aditional-infos"></div>
-            <div class="d-flex">
-            <div class="shipping-option active mr-1">
-              <div class="shipping-icon mb-2">
-                <%= show_svg('icons/delivery-truck.svg') %>
-              </div>
-              <span class="title">Expédition nationale</span>
-              <span class="price">Gratuit</span>
-              <span class="subtitle">Indisponible pour votre panier</span>
-            </div>
-            <div class="shipping-option unselected mr-1">
+            <% end %>
+            <<%= accepts_take_away ? "a" : "div" %> href="#" id="deliveryPickup" class="shipping-option <%= "unselected" if accepts_take_away %> mr-1">
                 <div class="shipping-icon mb-2">
                 <%= show_svg('icons/delivery-bag.svg') %>
               </div>
-              <span class="title">Expédition nationale</span>
+              <span class="title">Retrait à la ferme</span>
               <span class="price">Gratuit</span>
-              <span class="subtitle">Indisponible pour votre panier</span>
-            </div>
+                <span class="subtitle"><% unless accepts_take_away %>Indisponible pour votre panier<% end %></span>
+              </<%= accepts_take_away ? "a" : "div" %>>
             </div>
           </div>
+        <% end %>
           </div>
           </div>
       </div>
@@ -103,10 +107,13 @@
               <p class="currency"><%= @order.price_currency %></p>
             </div>
           </div>
-          <%= link_to t(".confirm"), delivery_order_path(current_order), class: "btn btn-primary btn-lg btn-block confirm-button" %>
+          <%= submit_tag t(".confirm"), class: "btn btn-primary btn-lg btn-block confirm-button", disabled: true %>
         </div>
       </div>
     </div>
-    <%= link_to t(".confirm"), delivery_order_path(current_order), class: "btn btn-primary btn-lg btn-block confirm-button mobile-confirm-button"%>
+    <%= submit_tag t(".confirm"), class: "btn btn-primary btn-lg btn-block confirm-button mobile-confirm-button"%>
   </div>
 </div>
+<% end %>
+<script src="https://pay.sandbox.datatrans.com/upp/payment/js/datatrans-2.0.0.js"></script>
+<%= javascript_pack_tag 'delivery' %>
