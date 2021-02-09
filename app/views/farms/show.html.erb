@@ -229,7 +229,7 @@
         <% if @farm.regions.include?(@zip_code) %>
           <h6><%= t('.delivery_regional') %></h6>
 
-          <div class="d-flex justify-content-center">
+          <div class="d-flex price justify-content-center">
             <h6>6</h6>
             <span>CHF</span>
           </div>
@@ -250,12 +250,17 @@
 
       </div>
 
-      <div class="delivery_option">
-        <div class="withdrawal-image"><%= image_tag "products/withdrawal.png", alt: "alttext" %>
+      <div class="delivery_option <%= @farm.accepts_take_away == false  ? 'no-accept' : 'yes-accept'%> ">
+        <div class="withdrawal-image"><%= image_tag "products/withdrawal.png", alt: "alttext" %></div>
+
+        <div class="accept">
           <h6><%= t('.withdrawal') %></h6>
           <div class="price"> <h6>Gratuit</h6></div>
           <p><%= t('.withdrawal_description') %></p>
           <div class="hours"> <p><%= @farm.opening_time  %></p></div>
+        </div>
+
+        <div class="no-withdrawal"> <p><%= t('.no_withdrawal') %></p></div>
       </div>
     </div>
   </div>

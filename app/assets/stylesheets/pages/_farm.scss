@@ -178,6 +178,28 @@
     margin-top: 34px;
     justify-content: center;
 
+    .no-withdrawal {
+      p {
+        margin-top: 50px !important;
+        color: black !important;
+      }
+    }
+
+     .no-accept {
+      background-color: #dfe0df;
+
+      .accept {
+        display: none;
+      }
+
+     }
+
+    .yes-accept {
+      .no-withdrawal {
+        display: none;
+      }
+    }
+
     .delivery_option {
       width: 357px;
       margin-left: 20px;
@@ -219,6 +241,7 @@
 
       p {
         color: #7C7977;
+        margin-bottom: 5px !important;
       }
 
       .withdrawal-image {
