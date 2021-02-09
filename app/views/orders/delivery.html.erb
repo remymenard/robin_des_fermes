@@ -40,8 +40,9 @@
         <% @order.farm_orders.order("created_at desc").each_with_index do |farm_order, index| %>
           <% accepts_take_away = farm_order.farm.accepts_take_away %>
           <% accepts_delivery = farm_order.farm.accepts_delivery %>
+          <% is_in_close_zone = farm_order.farm.regions.include?(get_zip_code_number) %>
           <div class="delivery-card col-12 col-md-5 my-3 py-4 px-3">
-            <%= hidden_field_tag farm_order.id.to_s %>
+            <%= hidden_field_tag farm_order.id.to_s, "X", data: {takeaway: @shipping_prices["takeaway"], delivery: is_in_close_zone ? @shipping_prices["express"] : @shipping_prices["standard"]} %>
             <p class="shipping-title"><%= farm_order.farm.name %></p>
             <p class="basket-number text-center"><%= sum = farm_order.order_line_items.sum { |item| item.quantity } %> <%= sum > 1 ? t(".product").pluralize : t(".product") %></p>
             <div class="aditional-infos"></div>
@@ -51,13 +52,13 @@
             <div class="shipping-icon mb-2">
               <%= show_svg('icons/delivery-truck.svg') %>
             </div>
-              <span class="title"><% if farm_order.farm.regions.include?(get_zip_code_number) %>
+              <span class="title"><% if is_in_close_zone %>
                 Distribution régionale
                 <% else %>
                   Expédition nationale
                 <% end %>
               </span>
-              <span class="price">30CHF</span>
+              <span class="price"><% if is_in_close_zone %><%= @shipping_prices["express"] %><% else%><%= @shipping_prices["standard"] %><% end %> CHF</span>
               <span class="subtitle"><%= t('farms.show.hours_delivery') %> <%= Date.current.strftime('%d')  %> <%= t('farms.show.and_delivery') %> <%= I18n.l((Date.current + farm_order.farm.delivery_delay.days), format: "%d %B", locale: :'fr') %></span>
             </a>
             <% else %>
@@ -124,6 +125,5 @@
   </div>
 </div>
 <% end %>
-<div id="delivery-cost-prices" data-takeaway="<%= @shipping_prices["takeaway"] %>" data-express="<%= @shipping_prices["express"] %>" data-standard="<%= @shipping_prices["standard"] %>" ></div>
 <script src="https://pay.sandbox.datatrans.com/upp/payment/js/datatrans-2.0.0.js"></script>
 <%= javascript_pack_tag 'delivery' %>

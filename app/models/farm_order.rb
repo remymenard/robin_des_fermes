@@ -1,8 +1,8 @@
 class FarmOrder < ApplicationRecord
   enum shipping_prices: {
-    'takeaway' => Money.new(0, 'CHF'),
-    'express' => Money.new(1500, 'CHF'),
-    'standard' => Money.new(3000, 'CHF')
+    'takeaway' => 0,
+    'express' => 15,
+    'standard' => 30
   }
 
   belongs_to :order

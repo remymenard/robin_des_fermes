@@ -9,7 +9,7 @@ function initDeliveryChoicesButton() {
     if (!$(event.currentTarget).hasClass("active")) {
       $(event.currentTarget).parent().children("#deliveryPickup").removeClass('active')
       $(event.currentTarget).addClass('active')
-      $(event.currentTarget).parent().parent().children('input').val('express')
+      $(event.currentTarget).parent().parent().children('input').val('delivery')
       activateConfirmButton();
       updateRecapCard("express");
     }
@@ -21,7 +21,7 @@ function initDeliveryChoicesButton() {
       $(event.currentTarget).addClass('active')
       $(event.currentTarget).parent().parent().children('input').val('takeaway')
       activateConfirmButton();
-      updateRecapCard("takeaway");
+      updateRecapCard();
     }
   })
   $('#delivery-choices').ajaxForm({
@@ -40,10 +40,6 @@ function initDeliveryChoicesButton() {
 });
 }
 
-const takeawayPrice = parseFloat($('#delivery-cost-prices').data('takeaway'))
-const expressPrice = parseFloat($('#delivery-cost-prices').data('express'))
-const standardPrice = parseFloat($('#delivery-cost-prices').data('standard'))
-
 function generateTotalPrice() {
   let sum = 0
   $('.farm-order-price').each((_index, element) => {
@@ -55,17 +51,14 @@ function generateTotalPrice() {
 function generateShippingPrice() {
   let sum = 0
   $('.delivery-card input').each((_index, element) => {
-    const value = $(element).val();
-    switch (value) {
-      case "takeaway":
-        sum += takeawayPrice;
-      break;
-      case "express":
-        sum += expressPrice;
-      break;
-      case "standard":
-        sum += standardPrice;
-      break;
+    const deliveryType = $(element).val();
+    const takeawayPrice = parseFloat($(element).data("takeaway"));
+    const deliveryPrice = parseFloat($(element).data("delivery"));
+
+    if (deliveryType === "takeaway") {
+      sum += takeawayPrice;
+    } else if (deliveryType === "delivery") {
+      sum += deliveryPrice;
     }
   })
   return sum;
@@ -83,7 +76,7 @@ function updateRecapCard() {
 function activateConfirmButton() {
   let allInputEntered = true;
   document.querySelectorAll('.delivery-card input').forEach((element) => {
-    if(element.value === "") allInputEntered = false;
+    if(element.value === "X") allInputEntered = false;
   })
   if(allInputEntered) {
     $('.confirm-button').each((_index, element) => {
