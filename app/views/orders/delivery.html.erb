@@ -39,7 +39,7 @@
           <div class="row w-100 justify-content-between">
         <% @order.farm_orders.order("created_at desc").each_with_index do |farm_order, index| %>
           <% accepts_take_away = farm_order.farm.accepts_take_away %>
-          <% accepts_delivery = farm_order.farm.accept_delivery %>
+          <% accepts_delivery = farm_order.farm.accepts_delivery %>
           <div class="delivery-card col-12 col-md-5 my-3 py-4 px-3">
             <%= hidden_field_tag farm_order.id.to_s %>
             <p class="shipping-title"><%= farm_order.farm.name %></p>
@@ -93,17 +93,26 @@
                   <%= farm_order.farm.name %>
                 </p>
                 <div>
-                  <p class="price"><%= farm_order.price %></p>
+                  <p class="price farm-order-price"><%= farm_order.price %></p>
                   <p class="currency"><%= farm_order.price_currency %></p>
                 </div>
               </div>
             <% end %>
+            <div class="d-flex justify-content-between">
+                <p class="line-style font-weight-light">
+                  Frais livraison estimé
+                </p>
+                <div>
+                  <p id="delivery-price" class="price">0</p>
+                  <p class="currency"><%= @order.price_currency %></p>
+                </div>
+              </div>
           </div>
           <div class="recap-line"></div>
           <div class="d-flex justify-content-between pt-3 px-3">
             <p class="total-style"><%= t(".total") %></p>
             <div>
-              <p class="price"><%= @order.price %></p>
+              <p id="totalPrice" class="price"><%= @order.price %></p>
               <p class="currency"><%= @order.price_currency %></p>
             </div>
           </div>
@@ -115,5 +124,6 @@
   </div>
 </div>
 <% end %>
+<div id="delivery-cost-prices" data-takeaway="<%= @shipping_prices["takeaway"] %>" data-express="<%= @shipping_prices["express"] %>" data-standard="<%= @shipping_prices["standard"] %>" ></div>
 <script src="https://pay.sandbox.datatrans.com/upp/payment/js/datatrans-2.0.0.js"></script>
 <%= javascript_pack_tag 'delivery' %>

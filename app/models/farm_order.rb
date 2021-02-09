@@ -1,4 +1,10 @@
 class FarmOrder < ApplicationRecord
+  enum shipping_prices: {
+    'takeaway' => Money.new(0, 'CHF'),
+    'express' => Money.new(1500, 'CHF'),
+    'standard' => Money.new(3000, 'CHF')
+  }
+
   belongs_to :order
   belongs_to :farm
 
@@ -12,12 +18,6 @@ class FarmOrder < ApplicationRecord
   monetize :shipping_price_cents, allow_nil: false,
   numericality: {
     greater_than_or_equal_to: 0,
-  }
-
-  SHIPPING_PRICES = {
-    'takeaway' => 0,
-    'express' => 15,
-    'standart' => 30
   }
 
   def compute_total_price
