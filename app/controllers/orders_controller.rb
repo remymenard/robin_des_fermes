@@ -74,8 +74,8 @@ class OrdersController < ApplicationController
   def payment_redirection_urls
     {
       successUrl: successful_orders_redirect_payments_url,
-      cancelUrl:  canceled_orders_redirect_payments_url,
-      errorUrl:   with_error_orders_redirect_payments_url
+      cancelUrl:  delivery_order_url(@order),
+      errorUrl:   delivery_order_url(@order)
     }
   end
 end
