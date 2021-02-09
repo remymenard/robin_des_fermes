@@ -3,7 +3,7 @@ require('jquery-form')
 require("gasparesganga-jquery-loading-overlay")
 
 
-function initDeliveryChoicesButton() {
+function initEvents() {
   $(document).on('click', 'a#deliverySend', (event) => {
     event.preventDefault();
     if (!$(event.currentTarget).hasClass("active")) {
@@ -26,18 +26,18 @@ function initDeliveryChoicesButton() {
   })
   $('#delivery-choices').ajaxForm({
     dataType: 'json',
-        success: (response) => {
-          startLoadingAnimation();
-          Datatrans.startPayment({
-            transactionId:  response["transaction"],
-            'loaded': () => {
-              stopLoadingAnimation();
-              activateConfirmButton();
-            }
-          });
-
+    beforeSubmit: startLoadingAnimation,
+    success: (response) => {
+      Datatrans.startPayment({
+        transactionId:  response["transaction"],
+        'loaded': () => {
+          stopLoadingAnimation();
+          activateConfirmButton();
         }
-});
+      });
+
+    }
+  });
 }
 
 function generateTotalPrice() {
@@ -95,4 +95,4 @@ function stopLoadingAnimation() {
   $("body").LoadingOverlay("hide");
 }
 
-document.addEventListener('turbolinks:load', initDeliveryChoicesButton);
+document.addEventListener('turbolinks:load', initEvents);
