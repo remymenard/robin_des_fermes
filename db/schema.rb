@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_09_084843) do
+ActiveRecord::Schema.define(version: 2021_02_09_141020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(version: 2021_02_09_084843) do
     t.integer "farmer_number"
     t.string "iban"
     t.text "long_description"
-    t.boolean "accept_delivery", default: false
+    t.boolean "accepts_delivery", default: false
     t.integer "delivery_delay"
     t.boolean "active", default: false
     t.text "labels", array: true

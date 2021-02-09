@@ -15,7 +15,6 @@ module Datatrans
         headers:    headers,
         body:       request_body
       )
-
       update_order_with_transaction_id
     end
 

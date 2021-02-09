@@ -33,8 +33,8 @@ class FarmsController < ApplicationController
         @far_farms = @far_farms.where(accepts_take_away: true)
         @farms     = @farms.where(accepts_take_away: true)
       elsif @delivery == "Distribution régionale" || "Expédition nationale"
-        @far_farms = @far_farms.where(accept_delivery: true)
-        @farms     = @farms.where(accept_delivery: true)
+        @far_farms = @far_farms.where(accepts_delivery: true)
+        @farms     = @farms.where(accepts_delivery: true)
       end
     end
 
@@ -105,6 +105,6 @@ class FarmsController < ApplicationController
   private
 
   def farm_params
-    params.require(:farm).permit(:name, :description, :address, :lagitude, :longitude, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accept_delivery,  photos: [], labels: [])
+    params.require(:farm).permit(:name, :description, :address, :lagitude, :longitude, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accepts_delivery,  photos: [], labels: [])
   end
 end
