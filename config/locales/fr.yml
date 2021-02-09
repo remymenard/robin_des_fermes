@@ -148,15 +148,16 @@ fr:
       total: "TOTAL"
       confirm: "FINALISER MON PANIER"
     delivery:
-      header:
-        step1: "Panier"
-        step2: "Livraison"
-        step3: "Paiement"
-      basket: "Panier"
-      product: "produit"
-      recap: "Recapitulatif"
-      total: "TOTAL"
-      confirm: "FINALISER MON PANIER"
+      edit_personal_infos: "Modifier mes informations"
+      delivery_infos: "Informations de livraison"
+      delivery_mode: "Mode de livraison"
+      local_delivery: "Distribution régionale"
+      national_delivery: "Expédition nationale"
+      delivery: "Expédition"
+      unavailable: "Indisponible pour votre panier"
+      takeaway: "Retrait à la ferme"
+      free: "Gratuit"
+      estimated_delivery_price: "Frais livraison estimés"
   farms:
     index:
       labels: "Labels : "
