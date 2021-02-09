@@ -3,7 +3,9 @@
   <div id="header-confirmation">
     <div class="step completed">
       <div class="step-link"></div>
+    <%= link_to review_order_path(@order) do %>
       <div class="circle-number"><span>1</span></div>
+    <% end %>
       <span class="step-name"><%= t(".header.step1") %></span>
     </div>
     <div class="step active">
@@ -34,7 +36,6 @@
           </div>
         </div>
         <h2 class="info-name">Mode de livraison</h2>
-        <% @order = current_order %>
           <div class="d-flex">
           <div class="row w-100 justify-content-between">
         <% @order.farm_orders.order("created_at desc").each_with_index do |farm_order, index| %>
