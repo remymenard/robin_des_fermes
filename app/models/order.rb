@@ -2,7 +2,7 @@ class Order < ApplicationRecord
   belongs_to :buyer, class_name: 'User', optional: true
   has_many :order_line_items, dependent: :destroy
 
-  has_many :farm_orders
+  has_many :farm_orders, dependent: :destroy
 
   monetize :price_cents, allow_nil: false,
   numericality: {
@@ -21,7 +21,7 @@ class Order < ApplicationRecord
   scope :waiting, -> { where(status: :waiting) }
 
   def compute_total_price
-    self.price = order_line_items.empty? ? 0 : order_line_items.sum { |order_line_item| order_line_item.total_price }
+    self.price = farm_orders.empty? ? 0 : farm_orders.sum { |farm_order| farm_order.price + farm_order.shipping_price }
     self.save
     self.price
   end
