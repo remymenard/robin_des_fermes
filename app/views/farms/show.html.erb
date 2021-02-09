@@ -91,7 +91,13 @@
             <div class="card-product">
               <div class="photo-farm">
 
-                <div class="labels d-flex">
+               <div class="labels d-flex">
+
+                  <% if product.available_for_preorder? %>
+                    <div class='preorder'>
+                      <p> <%= t('.preorder_date') %> <%= product.preorder.strftime("%d.%m.%Y") %></p>
+                    </div>
+                  <% end %>
 
                   <% product.label.each do |label| %>
                     <div class='label'>
@@ -148,7 +154,13 @@
               <div class="card-product">
                 <div class="photo-farm">
 
+
                   <div class="labels d-flex">
+                    <% if product.available_for_preorder? %>
+                      <div class='preorder'>
+                        <p> <%= t('.preorder_date') %> <%= product.preorder.strftime("%d.%m.%Y") %></p>
+                      </div>
+                    <% end %>
 
                     <% product.label.each do |label| %>
                       <div class='label'>

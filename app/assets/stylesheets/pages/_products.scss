@@ -141,15 +141,33 @@
         z-index: 1;
         position: absolute;
         flex-direction: column;
-      }
-      .label {
-        display: inline-block;
-        margin-top: 10px;
-        background-color: #339E72;
-        height: 19px;
-        border-radius: 2px;
-        padding-left: 5px;
-        padding-right: 5px;
+
+        .label {
+          display: inline-block;
+          margin-top: 10px;
+          background-color: #339E72;
+          height: 19px;
+          border-radius: 2px;
+          padding-left: 5px;
+          padding-right: 5px;
+
+          p {
+            color: white !important;
+            font-weight: 400 !important;
+            font-size: 11px !important;
+            line-height: 21px !important;
+          }
+        }
+
+        .preorder {
+          display: inline-block;
+          margin-top: 10px;
+          background-color: #FF4136;
+          height: 19px;
+          border-radius: 2px;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
 
         p {
           color: white !important;

@@ -241,6 +241,7 @@ fr:
       products: "produits"
       withdrawal: "en retrait uniquement"
     show:
+      preorder_date: "DÈS LE "
       delivery_products_mobile: "Livraison"
       withdrawal_products_mobile: "retrait"
       delivery_products: "Produits livrables"
