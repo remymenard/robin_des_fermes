@@ -140,7 +140,9 @@
       </div>
       <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
         <div class="d-flex all-card-product">
-          <% if @far_farms.include?(@farm)%>
+          <% if @farm.regions.include?(@zip_code) || @products_available_fresh == []%>
+            <h6>Aucun produits n'est disponible uniquement au retrait</h6>
+          <% else %>
             <% @products_available_fresh.each.each do |product| %>
 
               <div class="card-product">
@@ -191,8 +193,6 @@
               </div>
 
             <% end %>
-          <% else %>
-            <h6>Aucun produits n'est disponible uniquement au retrait</h6>
           <% end %>
         </div>
       </div>
