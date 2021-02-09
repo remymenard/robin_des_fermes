@@ -175,8 +175,10 @@
   }
 
   .delivery-options {
+    flex-wrap: wrap !important;
     margin-top: 34px;
     justify-content: center;
+    width: 100%;
 
     .no-withdrawal {
       p {
