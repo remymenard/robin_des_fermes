@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     member do
       get :review
       get :delivery
+      patch :update_delivery_methods
     end
     resources :payments, only: [:new], controller: 'orders/payments'
   end
