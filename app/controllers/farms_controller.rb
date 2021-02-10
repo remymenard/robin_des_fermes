@@ -50,6 +50,7 @@ class FarmsController < ApplicationController
   end
 
   def show
+    @reinsurances = true
     @farms = Farm.all
     @far_farms = Farm.none
     @farm = Farm.find(params[:id])
