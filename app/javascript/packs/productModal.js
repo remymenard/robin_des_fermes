@@ -30,7 +30,7 @@ export function initProductModal () {
     const ingredients = dataElement.data('ingredients')
     const addUrl = $(product).find('.add-to-basket').data('path')
     const token = $(product).find('.add-to-basket').data('token')
-    $('.product-modal img').attr('src', imageUrl);
+    $('.product-modal .product-image').attr('src', imageUrl);
     $('.product-modal .unit').text(unit);
     $('.product-modal h1').text(name)
     $('.product-modal .price').text(price)
@@ -42,6 +42,11 @@ export function initProductModal () {
 
     const customBoxModal = new box.modal(modalObject);
     customBoxModal.open();
+  })
+
+  $('.product-modal #cross').on('click', (event) => {
+    event.preventDefault();
+    box.modal.close('productModal');
   })
 
   $('.product-modal .add-to-basket').on('click', () => {

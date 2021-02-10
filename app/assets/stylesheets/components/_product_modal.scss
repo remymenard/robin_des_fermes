@@ -6,11 +6,17 @@
   border-radius: 10px;
   text-align: center;
   position: relative;
+  #cross {
+    position: absolute;
+    right: 0;
+    margin: 12px 10px 0 0;
+    filter: brightness(50);
+  }
   .texts {
     padding-left: 22px;
     padding-right: 22px;
   }
-  img {
+  .product-image {
     filter: drop-shadow(0px 0px 25px rgba(0, 0, 0, 0.06));
     border-radius: 10px 10px 0px 0px;
     width: 100%;
