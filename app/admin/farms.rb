@@ -59,7 +59,6 @@ ActiveAdmin.register Farm, as: "Exploitations" do
       tab 'Etape 2' do
         panel "Renseigner les informations de l'exploitation" do
           inputs 'Coordonnées' do
-            input :regions, as: :check_boxes, collection: OFFICES
             input :name, label: false, placeholder: "Dénomination"
             input :address, label: false, placeholder: "Adresse"
             input :zip_code, label: false, placeholder: "CP", :wrapper_html => { :class => 'fl' }
@@ -71,6 +70,9 @@ ActiveAdmin.register Farm, as: "Exploitations" do
           end
           inputs 'Informations bancaires' do
             input :iban, label: false, placeholder: "IBAN"
+          end
+          inputs 'Offices de livraison' do
+            input :regions, label: false, as: :check_boxes, collection: OFFICES
           end
         end
       end
@@ -172,6 +174,8 @@ ActiveAdmin.register Farm, as: "Exploitations" do
       end
 
       @farm.labels.reject!(&:empty?)
+
+      @farm.regions = @farm.regions.join(" ").split
       @farm.regions.reject!(&:empty?)
 
       if @farm.save
@@ -187,21 +191,8 @@ ActiveAdmin.register Farm, as: "Exploitations" do
 
       @farm.update!(permitted_params[:farm])
       @farm.labels.reject!(&:empty?)
+      @farm.regions = @farm.regions.join(" ").split
       @farm.regions.reject!(&:empty?)
-      @farm.products.each do |product|
-        product.label.reject!(&:empty?)
-      end
-
-      # @farm.assign_attributes(permitted_params[:farm])
-      # if @farm.active
-      #   unless @farm.save
-      #     @farm.active = false
-      #     @farm.save(validate: false)
-      #     flash[:alert] = "Veuillez à compléter toutes les informations afin de rendre l'exploitation disponible."
-      #   end
-      # else
-      #   @farm.save(validate: false)
-      # end
 
       if @farm.save
         redirect_to admin_exploitations_path
