@@ -152,8 +152,8 @@ meleze.photos.attach(
 )
 meleze.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
-  filename: 'farm4.png'
-)
+  filename: 'farm4.png')
+
 
 file3 = File.open(Rails.root.join('db/fixtures/farms/farm3.png'))
 
