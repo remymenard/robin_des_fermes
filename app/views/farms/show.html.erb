@@ -72,6 +72,9 @@
         <% products.each do |product| %>
 
           <div class="card-product">
+            <div id="product-data" data-image-url="<%= cl_image_path(product.photo.key) %>" data-name="<%= product.name %>"
+            data-price="<%= product.price %>" data-currency="<%= product.price_currency %>" data-unit="<%= product.unit %>"
+            data-ingredients="<%= product.ingredients %>" data-description="<%= product.description %>" ></div>
             <%= link_to product_path(product) do  %>
               <%= cl_image_tag product.photo.key, height: 64, width: 64, crop: :fill %>
             <% end %>
@@ -126,5 +129,5 @@
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div> -->
   </div>
-
+  <%= render 'shared/product_modal' %>
 </div>
