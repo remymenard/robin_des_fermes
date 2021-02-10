@@ -172,6 +172,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
       end
 
       @farm.labels.reject!(&:empty?)
+      @farm.regions.reject!(&:empty?)
 
       if @farm.save
         redirect_to admin_exploitations_path, notice: "Resource created successfully."
@@ -186,6 +187,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
 
       @farm.update!(permitted_params[:farm])
       @farm.labels.reject!(&:empty?)
+      @farm.regions.reject!(&:empty?)
       @farm.products.each do |product|
         product.label.reject!(&:empty?)
       end
