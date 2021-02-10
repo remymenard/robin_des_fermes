@@ -37,8 +37,8 @@ fr:
       products_number: "produits"
       openning: '%{openning}'
       testimony_title: "Ils en parlent pour nous !"
-      testimony1: "Au bureau ou dans le métro, je peux commander mes produits en un clic et soutenir ma région. Grâce à Robin des Fermes, manger local n'a jamais été si simple."
-      testimony2: Enfin une plateforme e-commerce équitable pour tous les acteurs ! En plus d’avoir des valeurs humaines aux goût du jour, Robin des Fermes est une solution fiable et efficace"
+      testimony2: "Au bureau ou dans le métro, je peux commander mes produits en un clic et soutenir ma région. Grâce à Robin des Fermes, manger local n'a jamais été si simple."
+      testimony1: "Enfin une plateforme e-commerce équitable pour tous les acteurs ! En plus d’avoir des valeurs humaines aux goût du jour, Robin des Fermes est une solution fiable et efficace"
       testimony3: "Robin des fermes m’offre un choix de produits variés et locaux que je peux me faire livrer par la poste ou aller chercher directement à la ferme. Le tout au juste prix pour tous les acteurs concernés !"
       testimony_text3: "ENSEIGNANT"
       testimony_text2: "ENSEIGNANTE"
@@ -223,10 +223,14 @@ fr:
       lausanne_region: "Lausanne Région, à travers son guichet entreprise, nous conseille et met en relation avec des entités régionales dans le but de faire évoluer notre projet."
       sonnay_charpente: "Sonnay Charpente est une société qui réalise des travaux de charpentes, revêtement intérieur et extérieur, menuiseries et divers travaux spéciaux. Particulièrement sensible aux causes paysannes et de consommation local, Daniel Sonnay a souhaité soutenir le projet"
     producer:
-      become: "Deviens un producteur  Robin des fermes "
+      become_producer: "Deviens un producteur Robin des fermes "
       contact: "Ne perds pas de temps et contacte-nous via ce formulaire "
       button_contact: "CONTACTE-NOUS"
   farms:
+    info_window:
+      products_number: "produits"
+      products: "produits"
+      withdrawal: "en retrait uniquement"
     index:
       labels: "Labels : "
       categories: "Catégories : "
@@ -234,6 +238,8 @@ fr:
       date: "Adhérents RDF depuis : "
       adress: "Adresse : "
       open: "Ouvertures : "
+      products: "produits"
+      withdrawal: "en retrait uniquement"
     show:
       show_products: "VOIR LES PRODUITS"
       more_description: "Lire la suite"

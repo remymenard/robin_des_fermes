@@ -21,4 +21,5 @@ class Product < ApplicationRecord
   scope :available, -> ()    { where(available: true) }
   scope :not_fresh, -> ()    { where(fresh: false) }
   scope :in_farm,   -> (farm) { where(farm: farm) }
+  scope :fresh, -> ()    { where(fresh: true) }
 end
