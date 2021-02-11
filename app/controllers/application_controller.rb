@@ -56,4 +56,8 @@ class ApplicationController < ActionController::Base
   def active_admin_controller?
     is_a?(ActiveAdmin::BaseController)
   end
+
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
 end
