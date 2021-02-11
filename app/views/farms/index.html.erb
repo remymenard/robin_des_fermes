@@ -1,7 +1,7 @@
 <div class="farms">
 
   <div class="d-flex cards_maps">
-    <div>
+    <div style="padding-left: 136px;">
 
       <div class="search d-flex">
 
@@ -151,10 +151,25 @@
     </div>
 
     <div id="map"
-      style="width: 50%; height: 100vh;"
       data-nearby-farms-markers="<%= @nearby_markers.to_json %>"
       data-far-farms-markers="<%= @far_markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      <div class="map-infos">
+        <div class="d-flex h-100 w-100 justify-content-center align-items-center">
+          <div class="row">
+            <div class="col-12">
+              <%= image_tag "icons/marker-orange.png", class: "marker" %>
+              <span>Test</span>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+          <div class="col-12">
+            <%= image_tag "icons/marker-purple.png", class: "marker" %>
+            <span>Test</span>
+          </div>
+          </div>
+      </div>
     </div>
   </div>
 
