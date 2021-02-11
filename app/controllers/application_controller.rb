@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options
-    { locale: I18n.locale == I18n.default_locale ? nil : I18n.locale }
+    { locale: I18n.locale == I18n.default_locale ? nil : I18n.locale, host: ENV["DOMAIN"] || "localhost:3000" }
   end
 
   def configure_permitted_parameters
@@ -55,9 +55,5 @@ class ApplicationController < ActionController::Base
 
   def active_admin_controller?
     is_a?(ActiveAdmin::BaseController)
-  end
-
-  def default_url_options
-    { host: ENV["DOMAIN"] || "localhost:3000" }
   end
 end
