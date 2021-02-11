@@ -38,7 +38,40 @@
     .marker {
       height: 18px;
     }
-    .line-1 {
+    .shipping-name {
+      font-size: 14px;
+      line-height: 21px;
+      color: #7C7977;
+      margin-left: 10px;
+    }
+    .price {
+      font-size: 18px;
+      line-height: 32px;
+      color: #7C7977;
+      font-weight: bold;
+    }
+    .currency {
+      color: #7C7977;
+      font-weight: bold;
+      font-size: 10px;
+      vertical-align: top;
+      line-height: 27px;
+    }
+    .question-mark {
+      background: #7C7977;
+      box-sizing: border-box;
+      width: 16px;
+      height: 16px;
+      color: white;
+      border-radius: 8px;
+      margin-top: 10px;
+      vertical-align: top;
+      display: inline-flex !important;
+      justify-content: center;
+      align-items: center;
+      font-family: Mulish;
+      font-weight: 800;
+      font-size: 11px;
     }
   }
 
