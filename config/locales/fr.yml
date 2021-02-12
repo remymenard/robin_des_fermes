@@ -224,6 +224,7 @@ fr:
       products: "produits"
       withdrawal: "en retrait uniquement"
     index:
+      openning: '%{openning}'
       labels: "Labels : "
       categories: "Catégories : "
       number_sells: "Nombre de ventes : "
@@ -231,6 +232,7 @@ fr:
       adress: "Adresse : "
       open: "Ouvertures : "
       products: "produits"
+      products_number: "produits"
       withdrawal: "en retrait uniquement"
     show:
       preorder_date: "DÈS LE "

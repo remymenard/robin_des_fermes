@@ -23,130 +23,123 @@
           <% end %>
         </div>
       </div>
+      <div class="best-farms">
 
-      <div class="cards col col-lg-6">
+        <div class="cards-index col col-lg-6 ">
 
-        <% @farms.active.each do |farm| %>
+          <% @farms.active.each do |farm| %>
 
-          <%= link_to farm_path(farm) do  %>
-            <div class="d-flex card-farm">
+            <%= link_to farm_path(farm) do  %>
+              <div class="card-product d-flex">
 
-              <div>
-                  <%= cl_image_tag(farm.photos.first.key, height: 209, width: 207, crop: :fill, class: "photo-farm") %>
-              </div>
+                <div class="photo-farm">
 
-              <div>
-                <div class = "user d-flex">
-                  <%= cl_image_tag farm.user.photo.key, height: 24, width: 24, crop: :fill %>
-                  <p><%= farm.user.first_name  %></p>
+                  <div class="labels">
+
+                    <% farm.labels.each do |label| %>
+                      <div class='label'>
+                        <p> <%= label.upcase  %></p>
+                      </div>
+                    <%end%>
+                  </div>
+
+                  <%= cl_image_tag(farm.photos.first.key, height: 192, width: 192, crop: :fill, class: "photo") %>
+
+
                 </div>
 
+                <div class="cards-informations">
 
-                <div class="informations">
-                  <h6> <%= farm.name  %></h6>
+                  <div class="d-flex address">
+                    <%= image_tag "icons/marker_cards_farms.png", class: "marker" %>
+                    <p><%= farm.address.upcase  %></p>
+                  </div>
+
+                  <div class="name d-flex">
+                    <h6> <%= farm.name  %></h6>
+
+                  </div>
+
+                  <p class="openning"><%= t('.openning', openning: farm.opening_time) %></p>
+
+                  <p class="products-number"><%= farm.products.count  %> <%= t('.products_number') %> </p>
+
+                  <div class="all-photos d-flex">
+                    <% farm.categories.each_with_index do |category, index| %>
+                      <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
+                    <% end %>
+                  </div>
+
+                  <div class="categories"></div>
+                </div>
+
+              </div>
+
+            <% end %>
+
+          <% end  %>
+
+          <% @far_farms.active.each do |farm| %>
+
+            <%= link_to farm_path(farm) do  %>
+              <div class="card-product d-flex">
+
+                <div class="photo-farm">
+
+                  <div class="labels">
+
+                    <% farm.labels.each do |label| %>
+                      <div class='label'>
+                        <p> <%= label.upcase  %></p>
+                      </div>
+                    <%end%>
+                  </div>
+
+                  <%= cl_image_tag(farm.photos.first.key, height: 192, width: 192, crop: :fill, class: "photo") %>
+
+
+                </div>
+
+                <div class="cards-informations">
+
+                  <div class="d-flex address">
+                    <%= image_tag "icons/marker_cards_farms.png", class: "marker" %>
+                    <p><%= farm.address.upcase  %></p>
+                  </div>
+
+                  <div class="name d-flex">
+                    <h6> <%= farm.name  %></h6>
+
+                  </div>
+
+
+                  <p class="openning"><%= t('.openning', openning: farm.opening_time) %></p>
 
                   <div class="d-flex">
-                    <p><%= t('.labels') %>
-                      <% farm.labels.each do |label| %>
-                        <div class='label'>
-                          <p> <%= label.upcase  %></p>
-                        </div>
-                      <%end%>
-                    </p>
+                    <p class="products-number"><%= farm.products.count  %> <%= t('.products_number') %> </p>
+
+                    <div class="fresh-products d-flex">
+                      <%= image_tag "cards/flake.png", alt: "Flocon" %>
+                      <p> <span> <%= farm.products.fresh.count %> <%= t('.products') %> </span><%= t('.withdrawal') %> </p>
+                    </div>
                   </div>
 
-                  <div class="d-flex information">
-                    <p><%= t('.categories') %> </p>
-                    <% farm.categories.each do |category| %>
+                  <div class="all-photos d-flex">
+                    <% farm.categories.each_with_index do |category, index| %>
                       <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
                     <% end %>
                   </div>
 
-                  <div class="d-flex information">
-                    <p><%= t('.number_sells') %> </p>
-                    <p> 19</p>
-                  </div>
-
-                  <div class="d-flex information">
-                    <p><%= t('.date') %></p>
-                    <p><%= farm.created_at.strftime("%Y.%m.%d")  %></p>
-                  </div>
-
-                  <div class="d-flex information">
-                    <p><%= t('.adress') %></p>
-                    <p><%= farm.address  %></p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          <% end %>
-
-        <% end  %>
-
-        <% @far_farms.active.each do |farm| %>
-
-          <%= link_to farm_path(farm) do  %>
-            <div class="d-flex card-farm">
-
-              <div>
-                <%= cl_image_tag(farm.photos.first.key, height: 209, width: 207, crop: :fill, class: "photo-farm") %>
-              </div>
-
-              <div>
-                <div class = "user d-flex">
-                  <%= cl_image_tag farm.user.photo.key, height: 24, width: 24, crop: :fill %>
-                  <p><%= farm.user.first_name  %></p>
+                  <div class="categories"></div>
                 </div>
 
-                <div class="informations">
-                  <h6> <%= farm.name  %></h6>
-
-                  <div class="d-flex information">
-                    <p><%= t('.labels') %>
-                      <% if farm.labels != [""] %>
-                        <% farm.labels.each do |label| %>
-                          <div class='label'>
-                            <%if label == "Bio-Suisse"  %><%= image_tag "labels/Bio-Suisse-label.png", class: "label" %><% end %>
-                          </div>
-                        <%end%>
-                      <% end %>
-                    </p>
-                  </div>
-
-                  <div class="fresh-products d-flex">
-                    <%= image_tag "cards/flake.png", alt: "Flocon" %>
-                    <p> <span> <%= farm.products.fresh.count %> <%= t('.products') %> </span><%= t('.withdrawal') %> </p>
-                  </div>
-
-                  <div class="d-flex information">
-                    <p><%= t('.categories') %></p>
-                    <% farm.categories.each do |category| %>
-                      <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
-                    <% end %>
-                  </div>
-
-                  <div class="d-flex information">
-                    <p><%= t('.number_sells') %></p>
-                    <p> 19</p>
-                  </div>
-
-                  <div class="d-flex information">
-                    <p><%= t('.date') %></p>
-                    <p><%= farm.created_at.strftime("%Y.%m.%d")  %></p>
-                  </div>
-
-                  <div class="d-flex information">
-                    <p><%= t('.adress') %> </p>
-                    <p><%= farm.address  %></p>
-                  </div>
-
-                </div>
               </div>
-            </div>
-          <% end %>
 
-        <% end  %>
+            <% end %>
 
+          <% end  %>
+
+        </div>
       </div>
     </div>
 
