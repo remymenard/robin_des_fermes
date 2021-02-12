@@ -1,12 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :verify_order_owner, except: [:create]
-
-  def create
-    order = Order.create!(price_cents: 700, buyer: current_user, seller: User.first)
-    redirect_to new_order_payment_path order
-
-    authorize order
-  end
+  before_action :verify_order_owner
 
   def show
   end
