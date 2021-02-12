@@ -27,7 +27,35 @@
     }
   }
 
+  .mobile-big-question-mark {
+    @include media-breakpoint-down(sm) {
+      display: inline-flex;
+    }
+    display: none;
+    position: absolute;
+    z-index: 999;
+    margin-top: 14px;
+    margin-left: 16px;
+    background: #7C7977;
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    color: white;
+    border-radius: 16px;
+    margin-top: 10px;
+    vertical-align: top;
+    justify-content: center;
+    align-items: center;
+    font-family: Mulish;
+    font-weight: 800;
+    font-size: 16px;
+  }
+
   .map-infos {
+    @include media-breakpoint-down(sm) {
+      display: none;
+      margin-top: 7px;
+    }
     width: 269px;
     height: 85px;
     background-color:white;
@@ -35,6 +63,12 @@
     z-index: 999;
     margin-top: 14px;
     margin-left: 16px;
+    .close-infos {
+      position: absolute;
+      right: 7px;
+      top: 0;
+
+    }
     .marker {
       height: 18px;
     }
@@ -82,6 +116,15 @@
       left: 51px;
       width: 300px;
       height: 78px;
+      @include media-breakpoint-down(sm) {
+        z-index: 1000;
+        position: absolute;
+        top: -26px;
+        left: -176px;
+        width: 236px;
+        height: 78px;
+        transform: rotate(180deg);
+      }
     }
     .shipping-description {
       position: absolute;
@@ -94,6 +137,19 @@
       text-align: center;
       color: #F9FAF7;
       opacity: 0.6;
+      @include media-breakpoint-down(sm) {
+        position: absolute;
+        top: -4.5px;
+        left: -159px;
+        width: 192px;
+        font-family: Mulish;
+        font-size: 9px;
+        line-height: 13px;
+        text-align: center;
+        color: #F9FAF7;
+        opacity: 0.6;
+        z-index: 1001;
+      }
     }
     .popup-question-mark {
       display: none;
