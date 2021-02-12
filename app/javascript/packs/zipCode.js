@@ -81,6 +81,9 @@ document.addEventListener('turbolinks:load', async () => {
         $('#farm-search-form').trigger("submit");
         $('.search').trigger("submit");
       }
+      else {
+        location.reload()
+      }
     }
   }
 
