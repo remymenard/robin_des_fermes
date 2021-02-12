@@ -57,4 +57,4 @@ function initProductModal () {
   })
 }
 
-document.addEventListener('turbolinks:load', initProductModal)
+document.addEventListener('DOMContentLoaded', initProductModal)
