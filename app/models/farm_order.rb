@@ -1,10 +1,4 @@
 class FarmOrder < ApplicationRecord
-  enum shipping_prices: {
-    'takeaway' => 0,
-    'express' => 15,
-    'standard' => 30
-  }
-
   belongs_to :order
   belongs_to :farm
 
@@ -24,5 +18,18 @@ class FarmOrder < ApplicationRecord
     self.price = order_line_items.empty? ? 0 : order_line_items.sum { |order_line_item| order_line_item.total_price }
     self.save
     self.price
+  end
+
+  def farm_in_close_zone?(zip_code)
+    farm.regions.include?(zip_code)
+  end
+
+  def delivery_price(zip_code)
+    farm_in_close_zone?(zip_code) ? ShippingPrice.express : ShippingPrice.standard
+  end
+
+  def total_items_count
+    # Memoization
+    @total_items_count ||= order_line_items.sum { |item| item.quantity }
   end
 end
