@@ -2,6 +2,15 @@
 <%= link_to farm_path(farm) do  %>
   <h2><%= farm.name  %></h2>
 
+  <p class="products-number"><%= farm.products.count  %> <%= t('.products_number') %> </p>
+
+  <% if @far_farms.include?(farm)  %>
+    <div class="fresh-products d-flex">
+      <%= image_tag "cards/flake.png", alt: "Flocon" %>
+      <p> <span> <%= farm.products.fresh.count %> <%= t('.products') %> </span><%= t('.withdrawal') %> </p>
+    </div>
+  <% end %>
+
   <div class="d-flex photos">
     <% farm.categories.each do |category| %>
       <div class='category-photo'><%= cl_image_tag category.photo.key %></div>

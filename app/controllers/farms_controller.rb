@@ -27,17 +27,6 @@ class FarmsController < ApplicationController
       @farms     = @farms.where("labels && ARRAY[?]", @label)
     end
 
-    @delivery = params[:farms]
-    if @delivery.present?
-      if @delivery == "retrait à l’exploitation"
-        @far_farms = @far_farms.where(accepts_take_away: true)
-        @farms     = @farms.where(accepts_take_away: true)
-      elsif @delivery == "Distribution régionale" || "Expédition nationale"
-        @far_farms = @far_farms.where(accept_delivery: true)
-        @farms     = @farms.where(accept_delivery: true)
-      end
-    end
-
     @farms = policy_scope(@farms).active
     @far_farms = policy_scope(@far_farms).active
 
@@ -46,7 +35,7 @@ class FarmsController < ApplicationController
         lat: farm.latitude,
         lng: farm.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { farm: farm }),
-        image_url: helpers.asset_url('icons/map_marker_green.png')
+        image_url: helpers.asset_url('icons/marker-orange.png')
       }
     end
 
@@ -55,13 +44,14 @@ class FarmsController < ApplicationController
         lat: farm.latitude,
         lng: farm.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { farm: farm }),
-        image_url: helpers.asset_url('icons/map_marker_red.png')
+        image_url: helpers.asset_url('icons/marker-purple.png')
       }
     end
   end
 
   def show
     @farms = Farm.all
+    @far_farms = Farm.none
     @farm = Farm.find(params[:id])
 
     @farm_show = @farms.where("farms.id = ? ", params[:id])
@@ -79,9 +69,9 @@ class FarmsController < ApplicationController
     @near_farm = @farm.regions.include?(@zip_code)
 
     marker_icon_path = if @near_farm
-      'icons/map_marker_green.png'
+      'icons/marker-orange.png'
     else
-      'icons/map_marker_red.png'
+      'icons/marker-purple.png'
     end
 
     if @near_farm

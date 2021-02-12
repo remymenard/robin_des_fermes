@@ -7,12 +7,27 @@
       text-decoration:none;
     }
 
-
     .card-farm {
       width: 570px;
       border-top: 1px solid #bbbfca;
       height: 256px;
       padding-top: 25px;
+
+      .fresh-products {
+        img {
+          width: 12px;
+          height: 12px;
+          margin-top: 5px;
+        }
+
+        p {
+          color: #4488EE;
+
+          span {
+            font-weight: bold;
+          }
+        }
+      }
 
       .information {
 
@@ -73,6 +88,17 @@
       text-align: left;
       border: 1px solid #FAF7F3;
       box-shadow: 0 1px 20px rgba(0,0,0,0.07);
+
+      .fresh-products {
+        img {
+          width: 12px;
+          height: 12px;
+        }
+
+        p {
+          color: #4488EE;
+        }
+      }
 
       .icards-nformations {
         position: relative;

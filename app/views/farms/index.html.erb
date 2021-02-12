@@ -1,7 +1,7 @@
 <div class="farms">
 
   <div class="d-flex cards_maps">
-    <div>
+    <div style="padding-left: 136px;">
 
       <div class="search d-flex">
 
@@ -20,19 +20,13 @@
               class: "form-control custom-select label",
               prompt: "Label"
             %>
-            <%= select_tag :farms,
-              options_for_select(["retrait à l’exploitation", "Distribution régionale", "Expédition nationale"], @delivery),
-              onchange: 'this.form.submit();',
-              class: "form-control custom-select livraison",
-              prompt: "Livraison"
-            %>
           <% end %>
         </div>
       </div>
 
       <div class="cards col col-lg-6">
 
-        <% @farms.each do |farm| %>
+        <% @farms.active.each do |farm| %>
 
           <%= link_to farm_path(farm) do  %>
             <div class="d-flex card-farm">
@@ -89,7 +83,7 @@
 
         <% end  %>
 
-        <% @far_farms.each do |farm| %>
+        <% @far_farms.active.each do |farm| %>
 
           <%= link_to farm_path(farm) do  %>
             <div class="d-flex card-farm">
@@ -117,6 +111,11 @@
                         <%end%>
                       <% end %>
                     </p>
+                  </div>
+
+                  <div class="fresh-products d-flex">
+                    <%= image_tag "cards/flake.png", alt: "Flocon" %>
+                    <p> <span> <%= farm.products.fresh.count %> <%= t('.products') %> </span><%= t('.withdrawal') %> </p>
                   </div>
 
                   <div class="d-flex information">
@@ -152,12 +151,48 @@
     </div>
 
     <div id="map"
-      style="width: 50%; height: 100vh;"
       data-nearby-farms-markers="<%= @nearby_markers.to_json %>"
       data-far-farms-markers="<%= @far_markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        <div class="mobile-big-question-mark">?</div>
+      <div class="map-infos">
+        <div class="close-infos"><i class="fas fa-times"></i></div>
+        <div class="d-flex h-100 w-100 flex-column justify-content-center ml-4">
+          <div class="row align-items-center">
+            <div class="col-7 p-0 m-0">
+              <%= image_tag "icons/marker-orange.png", class: "marker" %>
+              <span class="shipping-name">Distribution régionale</span>
+            </div>
+            <div class="col-5 m-0 p-0">
+              <span class="price">15</span>
+              <span class="currency">CHF</span>
+              <div class="question-mark">?</div>
+              <div class="popup-question-mark">
+                <%= image_tag "icons/bubble.png", class: "bubble"%>
+                <p class="shipping-description">Reçois tes produits à la maison, la livraison est assurée par le producteur ou par ton office de poste régional.</p>
+              </div>
+
+          </div>
+          </div>
+          <div class="row align-items-center">
+          <div class="col-7 p-0 m-0">
+            <%= image_tag "icons/marker-purple.png", class: "marker" %>
+            <span class="shipping-name">Expédition nationale</span>
+
+          </div>
+          <div class="col-5 m-0 p-0">
+            <span class="price">15</span>
+            <span class="currency">CHF</span>
+            <div class="question-mark">?</div>
+            <div class="popup-question-mark">
+              <%= image_tag "icons/bubble.png", class: "bubble"%>
+              <p class="shipping-description">Reçois tes produits à la maison, la livraison est assurée par la poste. Les produits frais ne sont pas disponibles avec cette option.</p>
+            </div>
+          </div>
+      </div>
     </div>
   </div>
 
 </div>
 <div id="pageInfos" data-zip-code-defined=<%= zip_code_set? %> data-submit-form="true"></div>
+<%= javascript_pack_tag 'mapInfos' %>
