@@ -15,13 +15,16 @@ const modalObject = {
   }
 };
 
-export function initProductModal () {
+function initProductModal () {
   $('.card-product').on('click', (event) => {
     event.preventDefault();
-    if($(event.target).is("button")) return;
+    // if($(event.target).is("button")) return;
     const product = event.currentTarget;
     const dataElement = $(product).children('#product-data');
+    console.log(product)
+    console.log(dataElement)
     const imageUrl = dataElement.data('imageUrl')
+    console.log(imageUrl)
     const name = dataElement.data('name')
     const unit = dataElement.data('unit')
     const price = dataElement.data('price')
@@ -54,5 +57,4 @@ export function initProductModal () {
   })
 }
 
-
-
+document.addEventListener('DOMContentLoaded', initProductModal)

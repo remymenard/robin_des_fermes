@@ -305,7 +305,7 @@ fr:
   hello: "bonjour"
   zip_code:
     title: "Code postal"
-    description: "Nous utilisons votre code postal afin de vous proposer les producteurs proches de vous."
+    description: "Nous utilisons ton code postal afin de te proposer les producteurs proches de toi."
     login: "Se connecter"
     error: "Veuillez entrer un code postal suisse valide."
   payment:
@@ -359,4 +359,7 @@ fr:
     total: "TOTAL"
     validate: "VALIDER MON PANIER"
     continue: "Continuer mes achats"
-
+  users:
+    delivery_infos:
+      edit:
+        connection: 'Modifier mes informations'
