@@ -24,21 +24,21 @@ class OrdersController < ApplicationController
       order_id      = param[0]
       delivery_type = param[1]
 
-      @farm_order = FarmOrder.find(order_id)
+      farm_order = FarmOrder.find(order_id)
 
       case delivery_type
       when 'takeaway'
-        if @farm_order.farm.accepts_take_away
-          @farm_order.update(status: 'waiting', takeaway_at_farm: true, standard_shipping: false, express_shipping: false, shipping_price: FarmOrder::ShippingPrice.takeaway)
+        if farm_order.farm.accepts_take_away
+          farm_order.update(status: 'waiting', takeaway_at_farm: true, standard_shipping: false, express_shipping: false, shipping_price: FarmOrder::ShippingPrice.takeaway)
         else
           return throw_error
         end
       when 'delivery'
-        if @farm_order.farm.accepts_delivery
-          if @farm_order.farm.regions.include?(@zip_code)
-            @farm_order.update(status: 'waiting', takeaway_at_farm: false, standard_shipping: false, express_shipping: true, shipping_price: FarmOrder::ShippingPrice.express)
+        if farm_order.farm.accepts_delivery
+          if farm_order.farm.regions.include?(@zip_code)
+            farm_order.update(status: 'waiting', takeaway_at_farm: false, standard_shipping: false, express_shipping: true, shipping_price: FarmOrder::ShippingPrice.express)
           else
-            @farm_order.update(status: 'waiting', takeaway_at_farm: false, standard_shipping: true, express_shipping: false, shipping_price: FarmOrder::ShippingPrice.standard)
+            farm_order.update(status: 'waiting', takeaway_at_farm: false, standard_shipping: true, express_shipping: false, shipping_price: FarmOrder::ShippingPrice.standard)
           end
         else
           return throw_error
@@ -86,7 +86,7 @@ class OrdersController < ApplicationController
   end
 
   def throw_error
-    render json: {transaction: 'error' }
+    render json: { transaction: 'error' }
     'error'
   end
 end

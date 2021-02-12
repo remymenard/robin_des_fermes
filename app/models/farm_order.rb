@@ -32,4 +32,8 @@ class FarmOrder < ApplicationRecord
     # Memoization
     @total_items_count ||= order_line_items.sum { |item| item.quantity }
   end
+
+  def shipping_choice_made?
+    takeaway_at_farm || standard_shipping || express_shipping
+  end
 end

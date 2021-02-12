@@ -8,170 +8,34 @@
 
 <%= form_tag update_delivery_methods_order_path, method: :patch, id: "delivery-choices", 'data-type' => :json do %>
   <div id="confirmation">
-    <div id="header-confirmation">
-      <div class="step completed">
-        <div class="step-link"></div>
-      <%= link_to review_order_path(@order) do %>
-        <div class="circle-number">
-          <span>1</span>
-        </div>
-      <% end %>
-        <span class="step-name"><%= t("orders.review.header.step1") %></span>
-      </div>
-      <div class="step active">
-        <div class="step-link"></div>
-        <div class="circle-number"><span>2</span></div>
-        <span class="step-name"><%= t("orders.review.header.step2") %></span>
-      </div>
-      <div class="step">
-        <div class="circle-number"><span>3</span></div>
-        <span class="step-name"><%= t("orders.review.header.step3") %></span>
-      </div>
-    </div>
-    <!--<h2 class="my-5 your-basket" style="margin-left: 8%;">Ton panier</h2>-->
+    <%= render 'orders/delivery/user_progress', order: @order, active_step: :delivery_choices %>
+
     <div class="review">
       <div class="row w-100 reverse-on-mobile">
         <div class="col-lg-8 col-12 p-0">
           <div class="row">
             <h2 class="info-name ml-2 ml-lg-0"><%= t('.delivery_infos') %></h2>
-            <div class="informations-frame size-876">
-              <div class="row p-3  h-100 align-items-center">
-                <h4 class="col m-0"><%= current_user.full_name %></h4>
-                <p class="col m-0"><%= current_user.address_line_1 %><br/>
-                  <%= current_user.address_line_2 %></p>
-                <p class="col m-0"><%= current_user.email %><br/>
-                  <%= current_user.number_phone %></p>
-                <p class="col m-0 text-right"><%= link_to t('.edit_personal_infos'), root_path, class: "edit-infos" %></p>
-              </div>
-            </div>
+            <%= render 'orders/delivery/recap_user', user: current_user %>
           </div>
+
           <h2 class="info-name ml-2 ml-lg-0"><%= t('.delivery_modes') %></h2>
+
           <div class="d-flex">
             <div class="row w-100 justify-content-between">
               <% @order.farm_orders.order("created_at desc").each_with_index do |farm_order, index| %>
-                <% accepts_take_away = farm_order.farm.accepts_take_away %>
-                <% accepts_delivery  = farm_order.farm.accepts_delivery %>
-
-                <div class="delivery-card col-12 col-md-5 my-3 py-4 px-3">
-                  <%= hidden_field_tag farm_order.id.to_s, "X", data: {
-                    takeaway: FarmOrder::ShippingPrice.takeaway.price.to_s,
-                    delivery: farm_order.delivery_price(get_zip_code_number).price.to_s
-                  } %>
-
-                  <p class="shipping-title"><%= farm_order.farm.name %></p>
-
-                  <p class="basket-number text-center">
-                    <%= farm_order.total_items_count %> <%= t("orders.review.product").pluralize(farm_order.total_items_count) %>
-                  </p>
-                  <div class="aditional-infos"></div>
-                  <div class="d-flex justify-content-center">
-                    <% if accepts_delivery %>
-                      <a href="#"  id="deliverySend" class="shipping-option unselected mr-1">
-                        <div class="shipping-icon mb-2">
-                          <%= show_svg('icons/delivery-truck.svg') %>
-                        </div>
-                        <span class="title">
-                          <% if farm_order.farm_in_close_zone?(get_zip_code_number) %>
-                            <%= t('.local_delivery') %>
-                          <% else %>
-                            <%= t('.national_delivery') %>
-                          <% end %>
-                        </span>
-                        <span class="price">
-                          <% if farm_order.farm_in_close_zone?(get_zip_code_number) %>
-                            <%= FarmOrder::ShippingPrice.express.price.to_s %>
-                          <% else%>
-                            <%= FarmOrder::ShippingPrice.standard.price.to_s %>
-                          <% end %>
-                          CHF
-                        </span>
-                        <span class="subtitle">
-                          <%= t('farms.show.hours_delivery') %>
-                          <%= Date.current.strftime('%d')  %>
-                          <%= t('farms.show.and_delivery') %>
-                          <%= I18n.l((Date.current + farm_order.farm.delivery_delay.days), format: "%d %B", locale: :'fr') %>
-                        </span>
-                      </a>
-                    <% else %>
-                      <div class="shipping-option mr-1">
-                        <div class="shipping-icon mb-2">
-                          <%= show_svg('icons/delivery-truck.svg') %>
-                        </div>
-                        <span class="title"><%= t('.delivery') %></span>
-                        <span class="subtitle"><%= t('.unavailable') %></span>
-                      </div>
-                    <% end %>
-                    <% if accepts_take_away %>
-                      <a href="" id="deliveryPickup" class="shipping-option unselected mr-1">
-                        <div class="shipping-icon mb-2">
-                          <%= show_svg('icons/delivery-bag.svg') %>
-                        </div>
-                        <span class="title"><%= t('.takeaway') %></span>
-                        <span class="price"><%= t('.free') %></span>
-                        <span class="subtitle">
-                          <% unless accepts_take_away %>
-                            <%= t('.unavailable') %>
-                          <% end %>
-                        </span>
-                      </a>
-                    <% else %>
-                      <div id="deliveryPickup" class="shipping-option mr-1">
-                        <div class="shipping-icon mb-2">
-                          <%= show_svg('icons/delivery-bag.svg') %>
-                        </div>
-                        <span class="title"><%= t('.takeaway') %></span>
-                        <span class="price"><%= t('.free') %></span>
-                        <span class="subtitle">
-                          <% unless accepts_take_away %>
-                            <%= t('.unavailable') %>
-                          <% end %>
-                        </span>
-                      </div>
-                    <% end %>
-                  </div>
-                </div>
+                <%= render 'orders/delivery/farm_order_shipping_choice',
+                  farm_order:        farm_order,
+                  accepts_take_away: farm_order.farm.accepts_take_away,
+                  accepts_delivery:  farm_order.farm.accepts_delivery %>
               <% end %>
             </div>
           </div>
         </div>
         <div class="col-lg-4 col-12 align-items-end p-0 position-relative">
-          <div class="recap-card">
-            <div class="px-3">
-              <h2 class="recap-title"><%= t("orders.review.recap") %></h2>
-              <% @order.farm_orders.order("created_at desc").each_with_index do |farm_order, index| %>
-                <div class="d-flex justify-content-between">
-                  <p class="line-style font-weight-light">
-                    <%= farm_order.farm.name %>
-                  </p>
-                  <div>
-                    <p class="price farm-order-price"><%= farm_order.price %></p>
-                    <p class="currency"><%= farm_order.price_currency %></p>
-                  </div>
-                </div>
-              <% end %>
-              <div class="d-flex justify-content-between">
-                  <p class="line-style font-weight-light">
-                    <%= t('.estimated_delivery_price') %>
-                  </p>
-                  <div>
-                    <p id="delivery-price" class="price">0</p>
-                    <p class="currency"><%= @order.price_currency %></p>
-                  </div>
-                </div>
-            </div>
-            <div class="recap-line"></div>
-            <div class="d-flex justify-content-between pt-3 px-3">
-              <p class="total-style"><%= t("orders.review.total") %></p>
-              <div>
-                <p id="totalPrice" class="price"><%= @order.price %></p>
-                <p class="currency"><%= @order.price_currency %></p>
-              </div>
-            </div>
-            <%= submit_tag t("orders.review.confirm"), class: "btn btn-primary btn-lg btn-block confirm-button", disabled: true %>
-          </div>
+          <%= render 'orders/delivery/recap_price', order: @order, active_step: :delivery_choices %>
         </div>
       </div>
-      <%= submit_tag t("orders.review.confirm"), class: "btn btn-primary btn-lg btn-block confirm-button mobile-confirm-button", disabled: true%>
+      <%= submit_tag t("orders.review.confirm"), class: "btn btn-primary btn-lg btn-block confirm-button mobile-confirm-button", disabled: !@order.all_shipping_choices_made? %>
     </div>
   </div>
 <% end %>

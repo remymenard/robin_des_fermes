@@ -25,4 +25,8 @@ class Order < ApplicationRecord
     self.save
     self.price
   end
+
+  def all_shipping_choices_made?
+    farm_orders.all? {|farm_order| farm_order.shipping_choice_made? }
+  end
 end

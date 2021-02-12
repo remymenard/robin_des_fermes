@@ -2,7 +2,6 @@ require('jquery-form')
 
 require("gasparesganga-jquery-loading-overlay")
 
-
 function initEvents() {
   $(document).on('click', 'a#deliverySend', (event) => {
     event.preventDefault();
@@ -14,6 +13,7 @@ function initEvents() {
       updateRecapCard("express");
     }
   })
+
   $(document).on('click', 'a#deliveryPickup', (event) => {
     event.preventDefault();
     if (!$(event.currentTarget).hasClass("active")) {
@@ -24,6 +24,7 @@ function initEvents() {
       updateRecapCard();
     }
   })
+
   $('#delivery-choices').ajaxForm({
     dataType: 'json',
     beforeSubmit: startLoadingAnimation,
@@ -35,7 +36,6 @@ function initEvents() {
           activateConfirmButton();
         }
       });
-
     }
   });
 }
@@ -65,12 +65,10 @@ function generateShippingPrice() {
 }
 
 function updateRecapCard() {
-
   const currentPrice = generateTotalPrice();
   const shippingPrice = generateShippingPrice();
   $('#delivery-price').text(shippingPrice)
   $('#totalPrice').text(currentPrice + shippingPrice)
-
 }
 
 function activateConfirmButton() {
