@@ -71,10 +71,12 @@
       <div class="d-flex all-card-product">
         <% products.each do |product| %>
 
-          <div class="card-product">
             <%= link_to product_path(product) do  %>
+          <div class="card-product">
+            <div id="product-data" data-image-url="<%= cl_image_path(product.photo.key) %>" data-name="<%= product.name %>"
+            data-price="<%= product.price %>" data-currency="<%= product.price_currency %>" data-unit="<%= product.unit %>"
+            data-ingredients="<%= product.ingredients %>" data-description="<%= product.description %>" ></div>
               <%= cl_image_tag product.photo.key, height: 64, width: 64, crop: :fill %>
-            <% end %>
 
             <div class="informations">
 
@@ -115,7 +117,7 @@
               </div>
             </div>
           </div>
-
+          <% end %>
         <% end %>
       </div>
     <% end %>
@@ -126,5 +128,5 @@
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
   </div>
-
+  <%= render 'shared/product_modal' %>
 </div>

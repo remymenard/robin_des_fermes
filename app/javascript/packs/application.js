@@ -33,6 +33,7 @@ import { initBasket } from './basket/utils/initBasket'
 import { loadResponsiveNavbar } from './navbar'
 import { initSelect2 } from '../plugins/init_select2'
 import { Carousel } from '../plugins/owl_carousel'
+import { initProductModal } from '../packs/productModal'
 
 document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
@@ -42,6 +43,7 @@ document.addEventListener('turbolinks:load', () => {
   loadResponsiveNavbar();
   initSelect2();
   Carousel();
+  initProductModal();
 });
 
 $(document).on('turbolinks:before-cache', function() {
