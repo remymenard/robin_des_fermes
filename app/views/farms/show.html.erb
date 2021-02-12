@@ -330,7 +330,7 @@
 
 <div id="description-farm">
   <div class="container">
-    <div class="d-flex justify-content-between">
+    <div class="description-farm d-flex">
 
       <div class="long-description">
         <h2><%= t('.description_title') %></h2>
@@ -342,7 +342,7 @@
       </div>
 
       <div class="photo">
-        <%= cl_image_tag @farm.photo_portrait.key%>
+        <%= cl_image_tag @farm.photo_portrait.key, class: "mx-auto d-block"%>
       </div>
     </div>
 
@@ -350,7 +350,7 @@
 
 </div>
 
-<div class="farm">
+<div class="farm farm-map">
   <h2><%= t('.location') %></h2>
   <div id="map_show"
     style="width: 1170px; height: 544px;"

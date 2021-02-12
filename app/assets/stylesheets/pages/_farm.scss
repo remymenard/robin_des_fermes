@@ -8,6 +8,10 @@
   }
 }
 
+.description-farm {
+  justify-content: space-between;
+}
+
 #description-farm {
   height: 706px;
   background-image: url("farm/description-background.png");
@@ -404,6 +408,32 @@
         p {
           display: none;
         }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .farm-map {
+    display: none;
+  }
+
+  .description-farm {
+    justify-content: center;
+    flex-direction: column-reverse;
+  }
+
+  #description-farm {
+    height: 1200px;
+    background-image: url("farm/description-background.png");
+    background-size: cover;
+    background-position: center;
+
+    .photo {
+
+      img {
+        width: 230px;
+        height: 254px;
       }
     }
   }
