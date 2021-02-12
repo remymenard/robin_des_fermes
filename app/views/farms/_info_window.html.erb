@@ -12,7 +12,10 @@
   <% end %>
 
   <div class="d-flex photos">
-    <% farm.categories.each do |category| %>
+    <% if farm.categories.count > 3 %>
+      <div class='category-photo'> <%= image_tag "many-categories", alt: "alttext" %> <p>+<%= farm.categories.count - 3  %> </p></div>
+    <% end %>
+    <% farm.categories.take(3).each do |category| %>
       <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
     <% end %>
   </div>

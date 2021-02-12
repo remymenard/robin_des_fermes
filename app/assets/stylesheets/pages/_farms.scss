@@ -3,15 +3,16 @@
   background-color: #F9FAF7;
 
   .cards_maps {
-    justify-content: space-between;
+    justify-content: flex-end;
     @include media-breakpoint-down(lg) {
       flex-direction: column-reverse;
     }
   }
 
   #map {
+    //margin-right: -350px;
     position: sticky;
-    top: 60px;
+    top: 0px;
     right: 0px;
     height: 100vh;
     width: 50%;
@@ -166,6 +167,7 @@
   }
 
   .search {
+    margin-right: 10%;
 
     span {
       font-size: 32px;
@@ -191,7 +193,7 @@
       width: 170px;
     }
 
-    .label {
+    .label-search {
       width: 200px;
     }
 

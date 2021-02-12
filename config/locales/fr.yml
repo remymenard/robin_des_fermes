@@ -46,14 +46,6 @@ fr:
       registration: "Oyez, oyez, producteurs, rejoignez-nous !"
       registration_text: "Vendez vos produits en ligne, présentez votre exploitation et élargissez votre communauté"
       registration_btn: "JE M'INSCRIS"
-      payment_title: "Paiement 100% sécurisé"
-      local_title: "100% local"
-      help_title: "Besoin d'aide ?"
-      producers_title: "producteurs certifiés"
-      payement: "Vous achetez ici en sécurité"
-      local: "Des produits de producteurs qui vous entourent"
-      help: "Nous répondons à vos questions dans les 2h"
-      producers: "Les producteurs respectent la charte de Robin des fermes"
       second_zip_code_input_title: "En manque de victuailles ?"
       second_zip_code_input_description: "Indique ta bourgade et découvre tous les producteurs locaux."
       second_zip_code_input_button: "C'EST PARTI"
@@ -232,6 +224,7 @@ fr:
       products: "produits"
       withdrawal: "en retrait uniquement"
     index:
+      openning: '%{openning}'
       labels: "Labels : "
       categories: "Catégories : "
       number_sells: "Nombre de ventes : "
@@ -239,12 +232,29 @@ fr:
       adress: "Adresse : "
       open: "Ouvertures : "
       products: "produits"
+      products_number: "produits"
       withdrawal: "en retrait uniquement"
     show:
-      show_products: "VOIR LES PRODUITS"
+      preorder_date: "DÈS LE "
+      delivery_products_mobile: "Livraison"
+      withdrawal_products_mobile: "retrait"
+      delivery_products: "Produits livrables"
+      withdrawal_products: "A retirer uniquement à la ferme"
+      not_delivery: "Certains produits (frais / réfrigérés) ne sont pas livrables pour ta localisation"
+      show_products: "Tous les produits"
+      conditioning: "%{conditioning}"
       more_description: "Lire la suite"
       more_delivery: "En savoir plus"
       delivery: "LIVRAISON"
+      expected_delivery: "Livraison prévue entre le"
+      delivery_title: "Livraison"
+      delivery_regional: "Distribution régionale"
+      delivery_national: "Distribution nationale"
+      withdrawal: "Retrait à la ferme"
+      delivery_regional_description: "Reçois tes produits à la maison, la livraison est assurée par le producteur ou par ton office de poste régional."
+      delivery_national_description: "Reçois tes produits à la maison, la livraison est assurée par la poste. Les produits frais ne sont pas disponible avec cette option."
+      withdrawal_description: "Retire ta commande auprès du producteur, tu seras averti lorsque ta commande  sera prête."
+      delivery_options: "Les options suivantes sont possibles pour ta localisation."
       hours: "HORAIRES"
       hours_delivery: "Vous serez livré entre le"
       and_delivery: "et le"
@@ -252,11 +262,10 @@ fr:
       description: '%{description}'
       category: '%{name}'
       product: '%{name}'
-      take_away: "Retrait à la ferme"
-      free: "Gratuit"
-      far: "Zone éloignée"
-      self_service: 'Self-service'
-      location: "Emplacement"
+      no_withdrawal: "Aucun produit disponible."
+      not_accept_withdrawal: "Le producteur n’a pas activé le retrait à son exploitation"
+      add: "AJOUTER AU PANIER"
+      pre_order: "PRÉCOMMANDER"
       date:
         day_names: [Dimanche, Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi]
   shared:
@@ -284,6 +293,15 @@ fr:
       producers: "Producteurs"
       producer: "Devenir producteur"
       charte: "Charte"
+    reinsurances:
+      payment_title: "Paiement 100% sécurisé"
+      local_title: "100% local"
+      help_title: "Besoin d'aide ?"
+      producers_title: "producteurs certifiés"
+      payement: "Vous achetez ici en sécurité"
+      local: "Des produits de producteurs qui vous entourent"
+      help: "Nous répondons à vos questions dans les 2h"
+      producers: "Les producteurs respectent la charte de Robin des fermes"
   hello: "bonjour"
   zip_code:
     title: "Code postal"

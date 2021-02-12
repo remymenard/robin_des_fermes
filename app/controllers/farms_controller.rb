@@ -50,6 +50,7 @@ class FarmsController < ApplicationController
   end
 
   def show
+    @reinsurances = true
     @farms = Farm.all
     @far_farms = Farm.none
     @farm = Farm.find(params[:id])
@@ -75,9 +76,10 @@ class FarmsController < ApplicationController
     end
 
     if @near_farm
-      @products_by_category = @farm.products.available.group_by(&:category)
+      @products_available = @farm.products.available
     else
-      @products_by_category = @farm.products.available.not_fresh.group_by(&:category)
+      @products_available = @farm.products.available.not_fresh
+      @products_available_fresh = @farm.products.available.fresh
     end
 
     @markers = @farm_show.geocoded.map do |farm|
