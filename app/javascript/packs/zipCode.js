@@ -70,16 +70,17 @@ document.addEventListener('turbolinks:load', async () => {
     }
 
     const submitForm = (zipCode) => {
-      if (shouldSubmitForm) {
-        $('#zip').val(zipCode);
-        $('#farm-search-form').trigger("submit");
-      }
       zipCodeText.each((_index, element) => {
         $(element).text(zipCode)
       })
       searchInput.each((_index, input) => {
         $(input).val(zipCode)
       })
+      if (shouldSubmitForm) {
+        $('#zip').val(zipCode);
+        $('#farm-search-form').trigger("submit");
+        $('.search').trigger("submit");
+      }
     }
   }
 
