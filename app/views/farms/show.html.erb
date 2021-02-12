@@ -72,9 +72,7 @@
         <% @products_available.each do |product| %>
           <%= link_to product_path(product) do  %>
             <div class="card-product">
-              <div id="product-data" data-image-url="<%= cl_image_path(product.photo.key) %>" data-name="<%= product.name %>"
-              data-price="<%= product.price %>" data-currency="<%= product.price_currency %>" data-unit="<%= product.unit %>"
-              data-ingredients="<%= product.ingredients %>" data-description="<%= product.description %>" ></div>
+              <div id="product-data" data-image-url="<%= cl_image_path(product.photo.key) %>" data-name="<%= product.name %>" data-price="<%= product.price %>" data-currency="<%= product.price_currency %>" data-unit="<%= product.unit %>" data-ingredients="<%= product.ingredients %>" data-description="<%= product.description %>" ></div>
               <%= cl_image_tag product.photo.key, height: 64, width: 64, crop: :fill %>
               <div class="photo-farm">
 
@@ -156,6 +154,8 @@
               <% @products_available.each do |product| %>
                 <%= link_to product_path(product) do  %>
                   <div class="card-product">
+                    <div id="product-data" data-image-url="<%= cl_image_path(product.photo.key) %>" data-name="<%= product.name %>" data-price="<%= product.price %>" data-currency="<%= product.price_currency %>" data-unit="<%= product.unit %>" data-ingredients="<%= product.ingredients %>" data-description="<%= product.description %>" ></div>
+
                     <div class="photo-farm">
 
                      <div class="labels d-flex">
@@ -221,6 +221,8 @@
                   <%= link_to product_path(product) do  %>
 
                     <div class="card-product">
+                      <div id="product-data" data-image-url="<%= cl_image_path(product.photo.key) %>" data-name="<%= product.name %>" data-price="<%= product.price %>" data-currency="<%= product.price_currency %>" data-unit="<%= product.unit %>" data-ingredients="<%= product.ingredients %>" data-description="<%= product.description %>" ></div>
+
                       <div class="photo-farm">
 
 
@@ -337,3 +339,4 @@
   <%= render 'shared/product_modal' %>
 </div>
 <div id="pageInfos" data-zip-code-defined=<%= zip_code_set? %>></div>
+<%= javascript_pack_tag 'productModal' %>
