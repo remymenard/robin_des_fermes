@@ -257,6 +257,7 @@ fr:
       products_number: "produits"
       withdrawal: "en retrait uniquement"
     show:
+      order_products: "Commander les produits"
       preorder_date: "DÈS LE "
       delivery_products_mobile: "Livraison"
       withdrawal_products_mobile: "retrait"
@@ -282,6 +283,8 @@ fr:
       and_delivery: "et le"
       address: "ADRESSE"
       description: '%{description}'
+      description_title: "Une histoire de temps"
+      long_description: '%{long_description}'
       category: '%{name}'
       product: '%{name}'
       no_withdrawal: "Aucun produit disponible."
