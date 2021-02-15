@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_09_141020) do
+ActiveRecord::Schema.define(version: 2021_02_15_094547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,13 +84,13 @@ ActiveRecord::Schema.define(version: 2021_02_09_141020) do
     t.datetime "waiting_for_shipping_at"
     t.datetime "shipped_at"
     t.datetime "issue_raised_at"
-    t.string "status"
     t.bigint "order_id", null: false
     t.bigint "farm_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "shipping_price_cents", default: 0, null: false
     t.string "shipping_price_currency", default: "CHF", null: false
+    t.string "status", default: "En préparation"
     t.index ["farm_id"], name: "index_farm_orders_on_farm_id"
     t.index ["order_id"], name: "index_farm_orders_on_order_id"
   end
@@ -116,8 +116,10 @@ ActiveRecord::Schema.define(version: 2021_02_09_141020) do
     t.text "long_description"
     t.boolean "accepts_delivery", default: false
     t.integer "delivery_delay"
-    t.boolean "active", default: false
     t.text "labels", array: true
+    t.boolean "active", default: false
+    t.string "photo_portrait"
+    t.text "offices", default: [], array: true
     t.index ["user_id"], name: "index_farms_on_user_id"
   end
 
