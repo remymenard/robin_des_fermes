@@ -2,46 +2,41 @@
   <%= image_tag "logos/rdf_light_pink.png" %>
 
   <div class="information">
-
-    <div class="row ">
-
-      <div >
-        <p class= "title"><%= t('.informations') %></p>
-        <p><%= t('.delivery') %></p>
-        <p><%= t('.payment') %></p>
-        <p><%= link_to t(".faq"), faq_path  %></p>
-        <p><%= link_to t(".cgv"), cgv_path  %></p>
-
-      </div>
-
-      <div>
-        <br>
-        <br>
-        <p><%= t('.about') %></p>
-        <p><%= t('.contact') %></p>
-        <p><%= t('.delivery') %></p>
-        <p><%= t('.list') %></p>
-
-      </div>
-
-    </div>
-
+    <p class= "title"><%= t('.information') %></p>
+    <p><%= link_to t('.about'), about_path %></p>
+    <p><%= link_to t('.gang'), team_path %></p>
+    <p><%= link_to t(".faq"), faq_path  %></p>
+    <p><%= link_to t(".cgv"), cgv_path  %></p>
+    <p><%= link_to t('.impressum'), impressum_path %></p>
   </div>
 
+  <div class="community">
+    <p class= "title"><%= t('.community') %></p>
+    <p><%= link_to t('.companion'), community_path %></p>
+    <p><%= link_to t('.partners'), partners_path %></p>
+    <p><%= t('.newsletter') %></p>
+  </div>
 
-  <div class="contact">
-    <p class= "title"><%= t('.contact_us') %></p>
-    <p>info@robindesfermes.ch</p>
-    <p>021 000 00 00</p>
-
+  <div class="producers">
+    <p class= "title"><%= t('.producers') %></p>
+    <p><%= link_to t('.producer'), producer_path %></p>
+    <p><%= link_to t('.charter'), charter_path %></p>
   </div>
 
   <div class="link">
     <p class= "title"><%= t('.find_us') %></p>
+
     <div class="footer-links">
-      <a href="https://www.facebook.com/robindesfermes.ch/"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.instagram.com/robin_des_fermes/"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.linkedin.com/company/robin-des-fermes/"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.facebook.com/robindesfermes.ch/" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/robin_des_fermes/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/company/robin-des-fermes/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </div>
+
+    <div class="contact">
+      <p class= "contact-title"><%= t('.contact_us') %></p>
+      <p>info@robindesfermes.ch</p>
+      <p>021 000 00 00</p>
+
     </div>
 
   </div>

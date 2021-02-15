@@ -1,8 +1,8 @@
 ActiveAdmin.register Farm, as: "Exploitations" do
   before_action :remove_password_params_if_blank, only: [:update]
-  permit_params :active, :name, :description, :address, :lagitude, :longitude, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accepts_delivery, photos: [], labels: [],
+  permit_params :active, :name, :description, :address, :lagitude, :longitude, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accept_delivery, photos: [], labels: [], regions: [],
                 opening_hours_attributes: [:id, :day, :opens, :closes],
-                products_attributes: [:id, :active, :name, :available, :category_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning, :preorder, :total_weight, label:[] ],
+                products_attributes: [:id, :active, :available_for_preorder, :name, :available, :category_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning, :preorder, :total_weight, label:[] ],
                 categories_attributes: [:id, :name],
                 category_ids: [],
                 user_attributes: [:id, :email, :first_name, :last_name, :number_phone, :wants_to_subscribe_mailing_list, :photo, :password, :title, :password_confirmation, :address_line_1, :city, :zip_code, :farm_id]
@@ -105,6 +105,9 @@ ActiveAdmin.register Farm, as: "Exploitations" do
           inputs "Horaires d'ouverture" do
             input :opening_time, label: false
           end
+          inputs 'Offices de livraison' do
+            input :regions, label: false, as: :check_boxes, collection: OFFICES
+          end
           inputs 'Photos' do
             input :photos, as: :file, input_html: { multiple: true }, label: false
             input :photos, as: :file, input_html: { multiple: true }, label: false
@@ -143,6 +146,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
               product.input :conditioning, label: "Conditionnement"
               product.input :fresh, label: "Frais"
               product.input :label, label: false, as: :check_boxes, collection: LABELS, label: "Label"
+              product.input :available_for_preorder, label: "Disponible en précommande"
               product.input :preorder, label: "Date livraison précommande"
               product.input :description, label: "Description"
               product.input :ingredients, label: "Ingrédients"
@@ -173,6 +177,9 @@ ActiveAdmin.register Farm, as: "Exploitations" do
 
       @farm.labels.reject!(&:empty?)
 
+      @farm.regions = @farm.regions.join(" ").split
+      @farm.regions.reject!(&:empty?)
+
       if @farm.save
         redirect_to admin_exploitations_path, notice: "Resource created successfully."
       else
@@ -184,22 +191,14 @@ ActiveAdmin.register Farm, as: "Exploitations" do
       @farm = Farm.find(params[:id])
       params[:farm].delete(:user_id) if params[:farm][:user_id] == ""
 
-      @farm.update(permitted_params[:farm])
+      @farm.update!(permitted_params[:farm])
       @farm.labels.reject!(&:empty?)
+      @farm.regions = @farm.regions.join(" ").split
+      @farm.regions.reject!(&:empty?)
+
       @farm.products.each do |product|
         product.label.reject!(&:empty?)
       end
-
-      # @farm.assign_attributes(permitted_params[:farm])
-      # if @farm.active
-      #   unless @farm.save
-      #     @farm.active = false
-      #     @farm.save(validate: false)
-      #     flash[:alert] = "Veuillez à compléter toutes les informations afin de rendre l'exploitation disponible."
-      #   end
-      # else
-      #   @farm.save(validate: false)
-      # end
 
       if @farm.save
         redirect_to admin_exploitations_path

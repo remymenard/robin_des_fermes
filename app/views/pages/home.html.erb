@@ -98,53 +98,53 @@
       <div class="cards ">
         <% @farms.active.take(4).each do |farm| %>
 
-          <div class="card-product d-flex">
+          <%= link_to farm_path(farm) do  %>
+            <div class="card-product d-flex">
 
-            <div class="photo-farm">
+              <div class="photo-farm">
 
-              <div class="labels">
+                <div class="labels">
 
-                <% farm.labels.each do |label| %>
-                  <div class='label'>
-                    <p> <%= label.upcase  %></p>
-                  </div>
-                <%end%>
-              </div>
+                  <% farm.labels.each do |label| %>
+                    <div class='label'>
+                      <p> <%= label.upcase  %></p>
+                    </div>
+                  <%end%>
+                </div>
 
-              <%= link_to farm_path(farm) do  %>
                 <%= cl_image_tag(farm.photos.first.key, height: 192, width: 192, crop: :fill, class: "photo") %>
-              <% end %>
 
+
+              </div>
+
+              <div class="cards-informations">
+
+                <div class="d-flex address">
+                  <%= image_tag "icons/marker_cards_farms.png", class: "marker" %>
+                  <p><%= farm.address.upcase  %></p>
+                </div>
+
+                <div class="name d-flex">
+                  <h6> <%= farm.name  %></h6>
+
+                </div>
+
+                <p class="openning"><%= t('.openning', openning: farm.opening_time) %></p>
+
+                <p class="products-number"><%= farm.products.count  %> <%= t('.products_number') %> </p>
+
+                <div class="all-photos d-flex">
+                  <% farm.categories.each_with_index do |category, index| %>
+                    <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
+                  <% end %>
+                </div>
+
+                <div class="categories"></div>
+              </div>
 
             </div>
 
-            <div class="informations">
-
-              <div class="d-flex address">
-                <%= image_tag "icons/marker_cards_farms.png", class: "marker" %>
-                <p><%= farm.address.upcase  %></p>
-              </div>
-
-              <div class="name d-flex">
-                <h6> <%= farm.name  %></h6>
-
-              </div>
-
-              <p class="openning"><%= t('.openning', openning: farm.opening_time) %></p>
-
-              <p class="products-number"><%= farm.products.count  %> <%= t('.products_number') %> </p>
-
-              <div class="all-photos d-flex">
-                <% farm.categories.each_with_index do |category, index| %>
-                  <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
-                <% end %>
-              </div>
-
-              <div class="categories"></div>
-            </div>
-
-          </div>
-
+          <% end %>
         <% end %>
       </div>
 
@@ -161,7 +161,7 @@
         <div class="testimony">
           <%= image_tag "home/slice.png", alt: "alttext" %>
 
-          <div class="informations">
+          <div class="testimonials-informations">
             <h6> <%= t('.testimony1') %></h6>
             <%= image_tag "testimony/testimony.png", alt: "alttext" %>
             <p class="name">Alex Fracheboud</p>
@@ -172,7 +172,7 @@
         <div class="testimony">
           <%= image_tag "home/slice.png", alt: "alttext" %>
 
-          <div class="informations">
+          <div class="testimonials-informations">
             <h6> <%= t('.testimony2') %></h6>
             <%= image_tag "testimony/testimony2.png", alt: "alttext" %>
             <p class="name">Diane Baud</p>
@@ -183,7 +183,7 @@
         <div class="testimony">
           <%= image_tag "home/slice.png", alt: "alttext" %>
 
-          <div class="informations">
+          <div class="testimonials-informations">
             <h6> <%= t('.testimony3') %></h6>
             <%= image_tag "testimony/testimony3.png", alt: "alttext" %>
             <p class="name">Francis Joye</p>
@@ -201,41 +201,10 @@
         <h2><%= t('.registration') %></h2>
         <h6><%= t('.registration_text') %></h6>
 
-        <%= link_to t('.registration_btn') , root_path, class: "btn" %>
+        <%= link_to t('.registration_btn') , "https://aghasnzeh7f.typeform.com/to/Y2rBljOl", class: "btn" %>
       </div>
     </div>
   </div>
-
-  <div class="quadriptic">
-
-    <div class="container">
-
-     <div class="all-reinsurances d-flex">
-
-       <div class="payement">
-         <%= image_tag "home/payment.png", alt: "alttext" %>
-         <h6><%= t('.payment_title') %></h6>
-         <p><%= t('.payment') %></p>
-       </div>
-
-       <div class="local">
-         <%= image_tag "home/local.png", alt: "alttext" %>
-         <h6><%= t('.local_title') %></h6>
-         <p><%= t('.local') %></p>
-       </div>
-
-       <div class="help">
-         <%= image_tag "home/help.png", alt: "alttext" %>
-         <h6><%= t('.help_title') %></h6>
-         <p><%= t('.help') %></p>
-       </div>
-
-       <div class="producers">
-         <%= image_tag "home/producers.png", alt: "alttext" %>
-         <h6><%= t('.producers_title') %></h6>
-         <p><%= t('.producers') %></p>
-       </div>
-     </div>
-    </div>
-  </div>
 </div>
+<div id="pageInfos" data-submit-form="true"></div>
+

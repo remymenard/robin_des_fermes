@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
   include BasketHelper
 
   before_action :store_user_location!, if: :storable_location?
@@ -45,7 +46,7 @@ class ApplicationController < ActionController::Base
   end
 
   def storable_location?
-    request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
+    request.get? && is_navigational_format? && !devise_controller? && !request.xhr? && controller_name != "delivery_infos"
   end
 
   def store_user_location!

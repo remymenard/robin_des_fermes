@@ -46,7 +46,7 @@ class FarmsController < ApplicationController
         lat: farm.latitude,
         lng: farm.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { farm: farm }),
-        image_url: helpers.asset_url('icons/map_marker_green.png')
+        image_url: helpers.asset_url('icons/marker-orange.png')
       }
     end
 
@@ -55,13 +55,15 @@ class FarmsController < ApplicationController
         lat: farm.latitude,
         lng: farm.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { farm: farm }),
-        image_url: helpers.asset_url('icons/map_marker_red.png')
+        image_url: helpers.asset_url('icons/marker-purple.png')
       }
     end
   end
 
   def show
+    @reinsurances = true
     @farms = Farm.all
+    @far_farms = Farm.none
     @farm = Farm.find(params[:id])
 
     @farm_show = @farms.where("farms.id = ? ", params[:id])
@@ -79,15 +81,16 @@ class FarmsController < ApplicationController
     @near_farm = @farm.regions.include?(@zip_code)
 
     marker_icon_path = if @near_farm
-      'icons/map_marker_green.png'
+      'icons/marker-orange.png'
     else
-      'icons/map_marker_red.png'
+      'icons/marker-purple.png'
     end
 
     if @near_farm
-      @products_by_category = @farm.products.available.group_by(&:category)
+      @products_available = @farm.products.available
     else
-      @products_by_category = @farm.products.available.not_fresh.group_by(&:category)
+      @products_available = @farm.products.available.not_fresh
+      @products_available_fresh = @farm.products.available.fresh
     end
 
     @markers = @farm_show.geocoded.map do |farm|
