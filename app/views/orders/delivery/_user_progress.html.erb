@@ -1,0 +1,42 @@
+<div id="header-confirmation">
+  <% if active_step == :delivery_choices %>
+    <div class="step completed">
+      <div class="step-link"></div>
+      <%= link_to review_order_path(order) do %>
+        <div class="circle-number">
+          <span>1</span>
+        </div>
+      <% end %>
+      <span class="step-name"><%= t("orders.review.header.step1") %></span>
+    </div>
+
+    <div class="step active">
+      <div class="step-link"></div>
+      <div class="circle-number"><span>2</span></div>
+      <span class="step-name"><%= t("orders.review.header.step2") %></span>
+    </div>
+
+    <div class="step">
+      <div class="circle-number"><span>3</span></div>
+      <span class="step-name"><%= t("orders.review.header.step3") %></span>
+    </div>
+
+  <% elsif active_step == :cart_review %>
+    <div class="step active">
+      <div class="step-link"></div>
+      <div class="circle-number"><span>1</span></div>
+      <span class="step-name"><%= t("orders.review.header.step1") %></span>
+    </div>
+
+    <div class="step">
+      <div class="step-link"></div>
+      <div class="circle-number"><span>2</span></div>
+      <span class="step-name"><%= t("orders.review.header.step2") %></span>
+    </div>
+
+    <div class="step">
+      <div class="circle-number"><span>3</span></div>
+      <span class="step-name"><%= t("orders.review.header.step3") %></span>
+    </div>
+  <% end %>
+</div>

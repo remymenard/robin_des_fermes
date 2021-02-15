@@ -113,6 +113,9 @@
     flex-wrap: wrap;
     margin-top: 33px;
     margin-bottom: 30px;
+    a {
+      text-decoration: none !important;
+    }
   }
 
   .card-product {

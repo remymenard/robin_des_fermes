@@ -21,5 +21,9 @@ module Payments
     def canceled?
       create?
     end
+
+    def with_error?
+      create?
+    end
   end
 end

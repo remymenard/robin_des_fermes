@@ -1,7 +1,7 @@
 import { startLoadingAnimation, stopLoadingAnimation } from "./loadingAnimation";
 import { updateNavbarInfos } from "./updateNavbarInfos";
 
-export function sendAjaxRequest(e, requestType) {
+export function sendAjaxRequest(e, requestType, reloadPage = false) {
   e.preventDefault();
   const hrefPath = $(e.target).data("path");
   const token = $(e.target).data("token");
@@ -13,9 +13,13 @@ export function sendAjaxRequest(e, requestType) {
     url: hrefPath,
     type: requestType,
     success: (answer) => {
-      $("#basket").html(answer)
-      stopLoadingAnimation();
-      updateNavbarInfos();
+      if(reloadPage) {
+        location.reload();
+      } else {
+        $("#basket").html(answer)
+        stopLoadingAnimation();
+        updateNavbarInfos();
+      }
     }
   })
 };
