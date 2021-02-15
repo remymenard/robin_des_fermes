@@ -48,9 +48,9 @@
     </div>
     <div class="recap-line"></div>
     <div class="d-flex justify-content-between pt-3 px-3">
-      <p class="total-style"><%= t(".total") %></p>
+      <p class="total-style"><%= t("orders.review.total") %></p>
       <div><p class="price"><%= order.price %></p><p class="currency"><%= order.price_currency %></p></div>
     </div>
-    <%= link_to t(".confirm"), delivery_order_path(current_order), class: "btn btn-primary btn-lg btn-block confirm-button" %>
+    <%= link_to t("orders.review.confirm"), delivery_order_path(current_order), class: "btn btn-primary btn-lg btn-block confirm-button" %>
   </div>
 <% end %>
