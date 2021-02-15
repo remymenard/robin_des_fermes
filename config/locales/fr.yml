@@ -233,7 +233,7 @@ fr:
       products: "produits"
       withdrawal: "en retrait uniquement"
     show:
-      order_products: "COMMANDER LES PRODUITS"
+      order_products: "Commander les produits"
       preorder_date: "DÈS LE "
       delivery_products_mobile: "Livraison"
       withdrawal_products_mobile: "retrait"
