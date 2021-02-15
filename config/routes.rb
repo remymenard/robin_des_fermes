@@ -32,8 +32,10 @@ Rails.application.routes.draw do
   resources :orders, only: [:show] do
     member do
       get :review
-      get :confirmation
+      get :delivery
+      patch :update_delivery_methods
     end
+
     resources :payments, only: [:new], controller: 'orders/payments'
   end
 

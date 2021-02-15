@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_08_133502) do
+ActiveRecord::Schema.define(version: 2021_02_09_141020) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,26 @@ ActiveRecord::Schema.define(version: 2021_02_08_133502) do
     t.index ["farm_id"], name: "index_farm_categories_on_farm_id"
   end
 
+  create_table "farm_orders", force: :cascade do |t|
+    t.boolean "takeaway_at_farm"
+    t.boolean "standard_shipping"
+    t.boolean "express_shipping"
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "CHF", null: false
+    t.datetime "waiting_for_shipping_at"
+    t.datetime "shipped_at"
+    t.datetime "issue_raised_at"
+    t.string "status"
+    t.bigint "order_id", null: false
+    t.bigint "farm_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "shipping_price_cents", default: 0, null: false
+    t.string "shipping_price_currency", default: "CHF", null: false
+    t.index ["farm_id"], name: "index_farm_orders_on_farm_id"
+    t.index ["order_id"], name: "index_farm_orders_on_order_id"
+  end
+
   create_table "farms", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id", null: false
@@ -94,10 +114,10 @@ ActiveRecord::Schema.define(version: 2021_02_08_133502) do
     t.integer "farmer_number"
     t.string "iban"
     t.text "long_description"
-    t.boolean "accept_delivery", default: false
+    t.boolean "accepts_delivery", default: false
     t.integer "delivery_delay"
-    t.text "labels", array: true
     t.boolean "active", default: false
+    t.text "labels", array: true
     t.index ["user_id"], name: "index_farms_on_user_id"
   end
 
@@ -121,6 +141,8 @@ ActiveRecord::Schema.define(version: 2021_02_08_133502) do
     t.datetime "updated_at", null: false
     t.integer "total_price_cents", default: 0, null: false
     t.string "total_price_currency", default: "CHF", null: false
+    t.bigint "farm_order_id"
+    t.index ["farm_order_id"], name: "index_order_line_items_on_farm_order_id"
     t.index ["order_id"], name: "index_order_line_items_on_order_id"
     t.index ["product_id"], name: "index_order_line_items_on_product_id"
   end
@@ -196,8 +218,11 @@ ActiveRecord::Schema.define(version: 2021_02_08_133502) do
   add_foreign_key "delivery_choices", "orders"
   add_foreign_key "farm_categories", "categories"
   add_foreign_key "farm_categories", "farms"
+  add_foreign_key "farm_orders", "farms"
+  add_foreign_key "farm_orders", "orders"
   add_foreign_key "farms", "users"
   add_foreign_key "opening_hours", "farms"
+  add_foreign_key "order_line_items", "farm_orders"
   add_foreign_key "order_line_items", "orders"
   add_foreign_key "order_line_items", "products"
   add_foreign_key "orders", "users", column: "buyer_id"

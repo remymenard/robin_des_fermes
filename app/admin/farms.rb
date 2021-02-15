@@ -97,7 +97,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
             end
           end
           inputs 'Expéditions' do
-            input :accept_delivery, label: "Accepte les expéditions"
+            input :accepts_delivery, label: "Accepte les expéditions"
           end
           inputs 'Délais de livraison' do
             input :delivery_delay, label: false

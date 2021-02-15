@@ -1,0 +1,44 @@
+<% if params[:payment_canceled] %>
+  ⚠️ Vous avez annulé votre commande, elle n'est donc pas finalisée
+<% end %>
+
+<% if params[:payment_with_errors] %>
+  ⚠️ Votre paiement a rencontré un problème, blabla
+<% end %>
+
+<%= form_tag update_delivery_methods_order_path, method: :patch, id: "delivery-choices", 'data-type' => :json do %>
+  <div id="confirmation">
+    <%= render 'orders/delivery/user_progress', order: @order, active_step: :delivery_choices %>
+
+    <div class="review">
+      <div class="row w-100 reverse-on-mobile">
+        <div class="col-lg-8 col-12 p-0">
+          <div class="row">
+            <h2 class="info-name ml-2 ml-lg-0"><%= t('.delivery_infos') %></h2>
+            <%= render 'orders/delivery/recap_user', user: current_user %>
+          </div>
+
+          <h2 class="info-name ml-2 ml-lg-0"><%= t('.delivery_modes') %></h2>
+
+          <div class="d-flex">
+            <div class="row w-100 justify-content-between">
+              <% @order.farm_orders.order("created_at desc").each_with_index do |farm_order, index| %>
+                <%= render 'orders/delivery/farm_order_shipping_choice',
+                  farm_order:        farm_order,
+                  accepts_take_away: farm_order.farm.accepts_take_away,
+                  accepts_delivery:  farm_order.farm.accepts_delivery %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-12 align-items-end p-0 position-relative">
+          <%= render 'orders/delivery/recap_price', order: @order, active_step: :delivery_choices %>
+        </div>
+      </div>
+      <%= submit_tag t("orders.review.confirm"), class: "btn btn-primary btn-lg btn-block confirm-button mobile-confirm-button", disabled: !@order.all_shipping_choices_made? %>
+    </div>
+  </div>
+<% end %>
+
+<script src="https://pay.sandbox.datatrans.com/upp/payment/js/datatrans-2.0.0.js"></script>
+<%= javascript_pack_tag 'delivery' %>
