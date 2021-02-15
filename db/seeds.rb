@@ -15,10 +15,11 @@ OrderLineItem.destroy_all
 Product.destroy_all
 Category.destroy_all
 OpeningHour.destroy_all
+FarmOrder.destroy_all
+OrderLineItem.destroy_all
 Farm.destroy_all # they belong to a user, so let's destroy them first
 Order.destroy_all
 User.destroy_all
-
 
 puts "Create categories"
 pain = Category.create!(name: "Boulangerie")
@@ -536,9 +537,12 @@ mercredi = OpeningHour.create!(farm: cave, day: 2, opens: DateTime.new(2012, 8, 
 jeudi = OpeningHour.create!(farm: cave, day: 3, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
 vendredi = OpeningHour.create!(farm: cave, day: 4, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
 
-first_order = Order.create(price_cents: 900, price_currency: "CHF", status: "waiting", buyer: user1)
+# first_order = Order.create(price_cents: 900, price_currency: "CHF", status: "waiting", buyer: user1)
 
-apple_order = OrderLineItem.create!(order: first_order, product: apple3, quantity: 1, total_price_cents: 300, total_price_currency: "CHF")
-chips_order = OrderLineItem.create!(order: first_order, product: chips, quantity: 1, total_price_cents: 300, total_price_currency: "CHF")
-egg_order = OrderLineItem.create!(order: first_order, product: egg, quantity: 1, total_price_cents: 300, total_price_currency: "CHF")
+# first_farm_order = FarmOrder.create!(order: first_order, farm: henry, price_cents: 900, status: "waiting", express_shipping: true  )
+
+# apple_order = OrderLineItem.create!(farm_order: first_farm_order, order: first_order, product: apple3, quantity: 1, total_price_cents: 300, total_price_currency: "CHF")
+# chips_order = OrderLineItem.create!(farm_order: first_farm_order,order: first_order, product: chips, quantity: 1, total_price_cents: 300, total_price_currency: "CHF")
+# egg_order = OrderLineItem.create!(farm_order: first_farm_order, order: first_order, product: egg, quantity: 1, total_price_cents: 300, total_price_currency: "CHF")
 #AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
