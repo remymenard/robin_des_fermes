@@ -42,7 +42,7 @@
     <div id="content">
       <%= yield %>
     </div>
-    <%= render 'shared/reinsurances' if @reinsurances %>
+    <%= render 'shared/reassurance' if @reassurance %>
     <%= render 'shared/footer' %>
 
     <%= yield(:after_template) %>
