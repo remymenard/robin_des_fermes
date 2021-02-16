@@ -378,7 +378,9 @@ fr:
         connection: "S'INSCRIRE"
         already_account: "Vous avez déjà un compte ?"
       edit:
+        logout: "Déconnexion"
         password_title: "Mot de passe"
+        address_title: "Adresse de livraison"
         password: "Modifier mon mot de passe"
         delivery_adress: "Mon adresse de livraison"
         contact_information: "Mes coordonnées"

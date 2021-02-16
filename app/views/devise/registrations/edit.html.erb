@@ -3,6 +3,7 @@
   <div class="container">
 
     <h2><%= t(".title") %></h2>
+    <%= link_to t(".logout"), destroy_user_session_path, method: :delete %>
 
     <ul class="nav nav-tabs justify-content-between tabs-products">
       <li class="  nav-item" > <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
@@ -16,47 +17,59 @@
       </a></li>
     </ul>
 
-    <div class="tab-content">
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= f.error_notification %>
+        <div class="tab-content">
 
-      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-      </div>
-
-      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-      </div>
-
-      <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="profile-tab">
-        <h4><%= t(".password_title") %></h4>
-        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-          <%= f.error_notification %>
-
-          <div class="form-inputs">
-
-            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-              <p><%= t(".currently_waiting_confirmation_for_email", email: resource.unconfirmed_email) %></p>
-            <% end %>
-
-            <%= f.input :current_password,
-                        required: true,
-                        input_html: { autocomplete: "current-password" },
-                        label: false,
-                        placeholder: "Ancien mot de passe" %>
-            <%= f.input :password,
-                        required: false,
-                        input_html: { autocomplete: "new-password" },
-                        label: false,
-                        placeholder: "Nouveau mot de passe"  %>
-            <%= f.input :password_confirmation,
-                        required: false,
-                        input_html: { autocomplete: "new-password" },
-                        label: false,
-                        placeholder: "Confirmer nouveau mot de passe" %>
+          <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
           </div>
-          <div class="form-actions">
-            <%= f.button :submit, t(".update"), class: "btn"%>
-          </div>
-         <% end %>
-      </div>
 
-    </div>
+          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+            <h4><%= t(".address_title") %></h4>
+            <div class="form-inputs">
+              <%= f.input :address_line_1,
+                          label: false,
+                          placeholder: "Rue et numéro" %>
+              <%= f.input :zip_code,
+                          label: false,
+                          placeholder: "Code postal" %>
+              <%= f.input :city,
+                          label: false,
+                          placeholder: "Localité" %>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="password" role="tabpanel" aria-labelledby="profile-tab">
+            <h4><%= t(".password_title") %></h4>
+
+            <div class="form-inputs">
+
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <p><%= t(".currently_waiting_confirmation_for_email", email: resource.unconfirmed_email) %></p>
+              <% end %>
+
+              <%= f.input :current_password,
+                          required: true,
+                          input_html: { autocomplete: "current-password" },
+                          label: false,
+                          placeholder: "Ancien mot de passe" %>
+              <%= f.input :password,
+                          required: false,
+                          input_html: { autocomplete: "new-password" },
+                          label: false,
+                          placeholder: "Nouveau mot de passe"  %>
+              <%= f.input :password_confirmation,
+                          required: false,
+                          input_html: { autocomplete: "new-password" },
+                          label: false,
+                          placeholder: "Confirmer nouveau mot de passe" %>
+            </div>
+          </div>
+
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, t(".update"), class: "btn"%>
+        </div>
+     <% end %>
   </div>
 </div>
