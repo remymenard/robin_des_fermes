@@ -24,7 +24,7 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
           preorder_array << order_line_item.product.preorder
         end
       end
-      preorder_array
+      preorder_array.max
     end
 
     column "Expédition", :farm_id do |farm|
