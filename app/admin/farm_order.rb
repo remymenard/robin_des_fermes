@@ -40,26 +40,22 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
     panel 'Commentaire' do
       order.input :comment, label: false
     end
+    panel 'Status' do
+      if order.object.takeaway_at_farm?
+        order.input :status, label: false, collection: ["En préparation", "Prête à être retirée", "Retirée", "Payée", "Annulée"]
+      else
+        order.input :status, label: false, collection: ["En préparation", "Expédiée", "Reçue", "Payée", "Annulée"]
+      end
+    end
 
     order.actions do
       if resource.persisted?
         order.action :submit, label: "Modifier la commande"
-      else
-        order.action :submit, label: "Créer la commande"
       end
     end
   end
 
   controller do
-    def create
-      @farm_order = FarmOrder.new(permitted_params[:farm_order])
-      if @farm_order.save
-        redirect_to admin_commandes_path
-      else
-        @resource = @farm_order
-        render :new
-      end
-    end
 
     def update
       @farm_order = FarmOrder.find(params[:id])

@@ -117,8 +117,8 @@ ActiveRecord::Schema.define(version: 2021_02_15_141307) do
     t.text "long_description"
     t.boolean "accepts_delivery", default: false
     t.integer "delivery_delay"
-    t.text "labels", array: true
     t.boolean "active", default: false
+    t.text "labels", array: true
     t.string "photo_portrait"
     t.text "offices", default: [], array: true
     t.index ["user_id"], name: "index_farms_on_user_id"
