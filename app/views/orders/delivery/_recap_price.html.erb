@@ -18,7 +18,7 @@
           <%= t('orders.delivery.estimated_delivery_price') %>
         </p>
         <div>
-          <p id="delivery-price" class="price">0</p>
+          <p id="delivery-price" class="price"><%= order.total_shipping_price %></p>
           <p class="currency"><%= order.price_currency %></p>
         </div>
       </div>
@@ -27,7 +27,7 @@
     <div class="d-flex justify-content-between pt-3 px-3">
       <p class="total-style"><%= t("orders.review.total") %></p>
       <div>
-        <p id="totalPrice" class="price"><%= order.price %></p>
+        <p id="totalPrice" class="price"><%= order.total_price_with_shipping %></p>
         <p class="currency"><%= order.price_currency %></p>
       </div>
     </div>
