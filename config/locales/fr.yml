@@ -378,6 +378,7 @@ fr:
         connection: "S'INSCRIRE"
         already_account: "Vous avez déjà un compte ?"
       edit:
+        password_title: "Mot de passe"
         password: "Modifier mon mot de passe"
         delivery_adress: "Mon adresse de livraison"
         contact_information: "Mes coordonnées"
