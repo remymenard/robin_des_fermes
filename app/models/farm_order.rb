@@ -14,6 +14,8 @@ class FarmOrder < ApplicationRecord
     greater_than_or_equal_to: 0,
   }
 
+  validates :status, inclusion: { in: ["waiting", "paid", "shipped", "issue"] }
+
   def compute_total_price
     self.price = order_line_items.empty? ? 0 : order_line_items.sum { |order_line_item| order_line_item.total_price }
     self.save
@@ -35,5 +37,15 @@ class FarmOrder < ApplicationRecord
 
   def shipping_choice_made?
     takeaway_at_farm || standard_shipping || express_shipping
+  end
+
+  def shipping_choice_name
+    if takeaway_at_farm
+      'Retrait à la ferme'
+    elsif express_shipping
+      'Distribution régionale'
+    elsif standard_shipping
+      'Expédition nationale'
+    end
   end
 end
