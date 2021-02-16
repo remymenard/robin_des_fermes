@@ -377,6 +377,11 @@ fr:
         city: "Localité"
         connection: "S'INSCRIRE"
         already_account: "Vous avez déjà un compte ?"
+      edit:
+        password: "Modifier mon mot de passe"
+        delivery_adress: "Mon adresse de livraison"
+        contact_information: "Mes coordonnées"
+        title: "Mes informations personelles"
   basket:
     title: "Votre panier"
     empty: "Votre panier est vide"
