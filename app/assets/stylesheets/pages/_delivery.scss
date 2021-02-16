@@ -95,6 +95,11 @@
   a {
     text-decoration: none;
   }
+
+  .user-shipping-choice.hidden {
+    display: none;
+  }
+
   .shipping-option {
     border: 1px solid #F0ECE8;
     box-sizing: border-box;
@@ -137,6 +142,7 @@
         opacity: 0.3;
       }
     }
+
     &.active {
       border: 2px solid #339E72;
       box-sizing: border-box;

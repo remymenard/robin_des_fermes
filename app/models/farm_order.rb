@@ -20,6 +20,10 @@ class FarmOrder < ApplicationRecord
     self.price
   end
 
+  def total_price_with_shipping
+    price + shipping_price
+  end
+
   def farm_in_close_zone?(zip_code)
     farm.regions.include?(zip_code)
   end
@@ -35,5 +39,26 @@ class FarmOrder < ApplicationRecord
 
   def shipping_choice_made?
     takeaway_at_farm || standard_shipping || express_shipping
+  end
+
+  def update_delivery_choice(user_choice)
+    case user_choice
+    when 'takeaway'
+      if farm.accepts_take_away
+        update!(status: 'waiting', takeaway_at_farm: true, standard_shipping: false, express_shipping: false, shipping_price: FarmOrder::ShippingPrice.takeaway.price)
+      end
+    when 'delivery'
+      if farm.accepts_delivery
+        if farm.regions.include?(@zip_code)
+          update!(status: 'waiting', takeaway_at_farm: false, standard_shipping: false, express_shipping: true, shipping_price: FarmOrder::ShippingPrice.express.price)
+        else
+          update!(status: 'waiting', takeaway_at_farm: false, standard_shipping: true, express_shipping: false, shipping_price: FarmOrder::ShippingPrice.standard.price)
+        end
+      end
+    end
+  end
+
+  def ready_for_payment?
+    !status.nil?
   end
 end

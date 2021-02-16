@@ -13,38 +13,16 @@ class OrdersController < ApplicationController
   def update_delivery_methods
     @zip_code = current_user.zip_code
 
-    allow_params.each do |param|
-      order_id      = param[0]
-      delivery_type = param[1]
+    params[:farm_orders].each do |farm_order_id, user_choice|
+      user_delivery_choice = user_choice["user_shipping_choice"]
 
-      farm_order = FarmOrder.find(order_id)
-
-      case delivery_type
-      when 'takeaway'
-        if farm_order.farm.accepts_take_away
-          farm_order.update(status: 'waiting', takeaway_at_farm: true, standard_shipping: false, express_shipping: false, shipping_price: FarmOrder::ShippingPrice.takeaway)
-        else
-          return throw_error
-        end
-      when 'delivery'
-        if farm_order.farm.accepts_delivery
-          if farm_order.farm.regions.include?(@zip_code)
-            farm_order.update(status: 'waiting', takeaway_at_farm: false, standard_shipping: false, express_shipping: true, shipping_price: FarmOrder::ShippingPrice.express)
-          else
-            farm_order.update(status: 'waiting', takeaway_at_farm: false, standard_shipping: true, express_shipping: false, shipping_price: FarmOrder::ShippingPrice.standard)
-          end
-        else
-          return throw_error
-        end
-      end
+      farm_order = current_order.farm_orders.find(farm_order_id)
+      farm_order.update_delivery_choice(user_delivery_choice)
     end
 
-    #not mandatory by avoid users to edit the page and remove input making him able not to pay shipping costs
-
+    # Prevent users from editing the page to remove inputs and not pay shipping costs
     @order.farm_orders.each do |farm_order|
-      if farm_order.status.nil?
-        return throw_error
-      end
+      return throw_error unless farm_order.ready_for_payment?
     end
 
     @order.update(status: 'waiting')
@@ -66,10 +44,6 @@ class OrdersController < ApplicationController
     authorize @order
   end
 
-  def allow_params
-    params.permit(current_order.farm_orders.pluck(:id).map{ |id| id.to_s })
-  end
-
   def payment_redirection_urls
     {
       successUrl: successful_orders_redirect_payments_url,
@@ -79,7 +53,6 @@ class OrdersController < ApplicationController
   end
 
   def throw_error
-    render json: { transaction: 'error' }
-    'error'
+    render json: { transaction: 'error' }, status: 400
   end
 end

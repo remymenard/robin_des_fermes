@@ -26,6 +26,14 @@ class Order < ApplicationRecord
     self.price
   end
 
+  def total_price_with_shipping
+    price + total_shipping_price
+  end
+
+  def total_shipping_price
+    farm_orders.sum(&:shipping_price)
+  end
+
   def all_shipping_choices_made?
     farm_orders.all? {|farm_order| farm_order.shipping_choice_made? }
   end

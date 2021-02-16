@@ -3,25 +3,21 @@ require('jquery-form')
 require("gasparesganga-jquery-loading-overlay")
 
 function initEvents() {
-  $(document).on('click', 'a#deliverySend', (event) => {
-    event.preventDefault();
+  $(document).on('click', '[js-user-delivery-choice-delivery]', (event) => {
     if (!$(event.currentTarget).hasClass("active")) {
-      $(event.currentTarget).parent().children("#deliveryPickup").removeClass('active')
+      $(event.currentTarget).parent().children("[js-user-delivery-choice-takeaway]").removeClass('active')
       $(event.currentTarget).addClass('active')
-      $(event.currentTarget).parent().parent().children('input').val('delivery')
-      activateConfirmButton();
-      updateRecapCard("express");
+      setTimeout(updateRecapCard, 300)
+      setTimeout(activateConfirmButton, 300)
     }
   })
 
-  $(document).on('click', 'a#deliveryPickup', (event) => {
-    event.preventDefault();
+  $(document).on('click', '[js-user-delivery-choice-takeaway]', (event) => {
     if (!$(event.currentTarget).hasClass("active")) {
-      $(event.currentTarget).parent().children("#deliverySend").removeClass('active')
+      $(event.currentTarget).parent().children("[js-user-delivery-choice-delivery]").removeClass('active')
       $(event.currentTarget).addClass('active')
-      $(event.currentTarget).parent().parent().children('input').val('takeaway')
-      activateConfirmButton();
-      updateRecapCard();
+      setTimeout(updateRecapCard, 300)
+      setTimeout(activateConfirmButton, 300)
     }
   })
 
@@ -36,6 +32,11 @@ function initEvents() {
           activateConfirmButton();
         }
       });
+    },
+    error: (response) => {
+      console.log('Sth went wrong, try again!')
+      stopLoadingAnimation()
+      activateConfirmButton()
     }
   });
 }
@@ -50,33 +51,38 @@ function generateTotalPrice() {
 
 function generateShippingPrice() {
   let sum = 0
-  $('.delivery-card input').each((_index, element) => {
-    const deliveryType = $(element).val();
-    const takeawayPrice = parseFloat($(element).data("takeaway"));
-    const deliveryPrice = parseFloat($(element).data("delivery"));
 
-    if (deliveryType === "takeaway") {
-      sum += takeawayPrice;
-    } else if (deliveryType === "delivery") {
-      sum += deliveryPrice;
+  $('.delivery-card input').each((_index, element) => {
+    if (element.checked) {
+      const deliveryType = $(element).val();
+
+      const takeawayPrice = parseFloat($(element).data("takeaway"));
+      const deliveryPrice = parseFloat($(element).data("delivery"));
+
+      if (deliveryType === "takeaway") {
+        sum += takeawayPrice;
+      } else if (deliveryType === "delivery") {
+        sum += deliveryPrice;
+      }
     }
   })
   return sum;
 }
 
 function updateRecapCard() {
-  const currentPrice = generateTotalPrice();
+  const currentPrice  = generateTotalPrice();
   const shippingPrice = generateShippingPrice();
+
   $('#delivery-price').text(shippingPrice)
   $('#totalPrice').text(currentPrice + shippingPrice)
 }
 
 function activateConfirmButton() {
-  let allInputEntered = true;
-  document.querySelectorAll('.delivery-card input').forEach((element) => {
-    if(element.value === "X") allInputEntered = false;
-  })
-  if(allInputEntered) {
+  let farmOrdersCount     = document.querySelectorAll('.delivery-card').length
+  let userShippingChoices = document.querySelectorAll('.delivery-card input:checked').length
+  let allChoicesMade      = farmOrdersCount == userShippingChoices
+
+  if(allChoicesMade) {
     $('.confirm-button').each((_index, element) => {
       $(element).prop('disabled', false)
     })
