@@ -1,5 +1,6 @@
 ActiveAdmin.register Farm, as: "Exploitations" do
   before_action :remove_password_params_if_blank, only: [:update]
+
   permit_params :active, :name, :description, :address, :lagitude, :longitude, :photo_portrait, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accepts_delivery, photos: [], labels: [], offices: [], regions: [],
                 opening_hours_attributes: [:id, :day, :opens, :closes],
                 products_attributes: [:id, :active, :available_for_preorder, :name, :available, :category_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning, :preorder, :total_weight, label:[] ],
