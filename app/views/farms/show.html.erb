@@ -116,11 +116,10 @@
 
               </div>
             </div>
-            <% if product.available_for_preorder? %>
-              <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" ><%= t('.pre_order') %></button>
-            <% else %>
-              <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" ><%= t('.add') %></button>
-            <% end %>
+            <% button_label = product.available_for_preorder? ? t('.pre_order') : t('.add') %>
+            <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" >
+              <%= button_label %>
+            </button>
           </div>
 
         <% end %>
@@ -197,11 +196,10 @@
 
                     </div>
                   </div>
-                  <% if product.available_for_preorder? %>
-                    <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" ><%= t('.pre_order') %></button>
-                  <% else %>
-                    <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" ><%= t('.add') %></button>
-                  <% end %>
+                  <% button_label = product.available_for_preorder? ? t('.pre_order') : t('.add') %>
+                  <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" >
+                    <%= button_label %>
+                  </button>
                 </div>
 
               <% end %>
@@ -262,12 +260,10 @@
 
                       </div>
                     </div>
-                    <% if product.available_for_preorder?  %>
-                      <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" ><%= t('.pre_order') %></button>
-                    <% else %>
-                      <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" ><%= t('.add') %></button>
-                    <% end %>
-                  </div>
+                    <% button_label = product.available_for_preorder? ? t('.pre_order') : t('.add') %>
+                    <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" >
+                      <%= button_label %>
+                    </button>
 
                 <% end %>
               </div>
