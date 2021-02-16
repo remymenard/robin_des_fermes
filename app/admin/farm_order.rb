@@ -24,11 +24,20 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
           preorder_array << order_line_item.product.preorder
         end
       end
-      preorder_array.max
+      preorder = preorder_array.max
     end
 
     column "Expédition", :farm_id do |farm|
-      if farm.farm.accepts_delivery
+      preorder_array = []
+      farm.order_line_items.each do |order_line_item|
+        if order_line_item.product.available_for_preorder?
+          preorder_array << order_line_item.product.preorder
+        end
+      end
+      preorder_array.max
+      if farm.farm.accepts_delivery && preorder_array.size >= 1
+        l((preorder_array.max + farm.farm.delivery_delay.days), format: '%d %B %Y')
+      elsif farm.farm.accepts_delivery
         l((farm.created_at + farm.farm.delivery_delay.days), format: '%d %B %Y')
       end
     end
