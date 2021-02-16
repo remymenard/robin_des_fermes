@@ -1,6 +1,7 @@
 ActiveAdmin.register Farm, as: "Exploitations" do
   before_action :remove_password_params_if_blank, only: [:update]
-  permit_params :active, :name, :description, :address, :lagitude, :longitude, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accepts_delivery, photos: [], labels: [], regions: [],
+
+  permit_params :active, :name, :description, :address, :lagitude, :longitude, :photo_portrait, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accepts_delivery, photos: [], labels: [], offices: [], regions: [],
                 opening_hours_attributes: [:id, :day, :opens, :closes],
                 products_attributes: [:id, :active, :available_for_preorder, :name, :available, :category_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning, :preorder, :total_weight, label:[] ],
                 categories_attributes: [:id, :name],
@@ -82,6 +83,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
           end
           inputs 'Description longue' do
             input :long_description, label: false
+            input :photo_portrait, as: :file, label: "format portrait"
           end
           inputs "Labels de l'exploitation" do
             input :labels, label: false, as: :check_boxes, collection: LABELS
@@ -106,14 +108,14 @@ ActiveAdmin.register Farm, as: "Exploitations" do
             input :opening_time, label: false
           end
           inputs 'Offices de livraison' do
-            input :regions, label: false, as: :check_boxes, collection: OFFICES
+            input :offices, label: false, as: :check_boxes, collection: Farm::OFFICES.keys
           end
           inputs 'Photos' do
-            input :photos, as: :file, input_html: { multiple: true }, label: false
-            input :photos, as: :file, input_html: { multiple: true }, label: false
-            input :photos, as: :file, input_html: { multiple: true }, label: false
-            input :photos, as: :file, input_html: { multiple: true }, label: false
-            input :photos, as: :file, input_html: { multiple: true }, label: false
+            input :photos, as: :file, input_html: { multiple: true }, label: "format paysage"
+            input :photos, as: :file, input_html: { multiple: true }, label: "format paysage"
+            input :photos, as: :file, input_html: { multiple: true }, label: "format paysage"
+            input :photos, as: :file, input_html: { multiple: true }, label: "format paysage"
+            input :photos, as: :file, input_html: { multiple: true }, label: "format paysage"
           end
         end
       end
@@ -177,9 +179,6 @@ ActiveAdmin.register Farm, as: "Exploitations" do
 
       @farm.labels.reject!(&:empty?)
 
-      @farm.regions = @farm.regions.join(" ").split
-      @farm.regions.reject!(&:empty?)
-
       if @farm.save
         redirect_to admin_exploitations_path, notice: "Resource created successfully."
       else
@@ -193,8 +192,6 @@ ActiveAdmin.register Farm, as: "Exploitations" do
 
       @farm.update!(permitted_params[:farm])
       @farm.labels.reject!(&:empty?)
-      @farm.regions = @farm.regions.join(" ").split
-      @farm.regions.reject!(&:empty?)
 
       @farm.products.each do |product|
         product.label.reject!(&:empty?)

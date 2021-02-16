@@ -129,6 +129,10 @@ henry.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
   filename: 'farm4.png'
 )
+henry.photo_portrait.attach(
+  io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
+  filename: 'farm4.png'
+)
 
 
 file2 = File.open(Rails.root.join('db/fixtures/farms/farm.png'))
@@ -153,7 +157,9 @@ meleze.photos.attach(
 meleze.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
   filename: 'farm4.png')
-
+meleze.photo_portrait.attach(
+  io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
+  filename: 'farm4.png')
 
 file3 = File.open(Rails.root.join('db/fixtures/farms/farm3.png'))
 
@@ -176,6 +182,10 @@ jonas.photos.attach(
   filename: 'farm3.png'
 )
 jonas.photos.attach(
+  io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
+  filename: 'farm4.png'
+)
+jonas.photo_portrait.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
   filename: 'farm4.png'
 )
@@ -204,6 +214,10 @@ cave.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
   filename: 'farm4.png'
 )
+cave.photo_portrait.attach(
+  io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
+  filename: 'farm4.png'
+)
 
 file5 = File.open(Rails.root.join('db/fixtures/farms/farm2.png'))
 gallien = Farm.create!(name: "Le Domaine du Gallien", user: user1, labels: ['Bio-Suisse'],
@@ -225,6 +239,10 @@ gallien.photos.attach(
   filename: 'farm3.png'
 )
 gallien.photos.attach(
+  io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
+  filename: 'farm4.png'
+)
+gallien.photo_portrait.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
   filename: 'farm4.png'
 )

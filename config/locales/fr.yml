@@ -127,6 +127,28 @@ fr:
       reponse7: "Lors d’une livraison “Distribution régionale” effectuée par la Poste, tu peux laisser l’emballage dans ta boîte aux lettres. Le facteur s’occupera de le récupérer lors de sa prochaine tournée."
       reponse7_producer: "Si le producteur s’est occupé lui-même de la livraison, il reprend directement les emballages (ou les récupère lors de la prochaine livraison)."
       response7_packaging: "Si un emballage réutilisable est endommagé ou n’est pas retourné, Robin des Fermes se réserve le droit de facturer le montant dû."
+  orders:
+    review:
+      header:
+        step1: "Panier"
+        step2: "Livraison"
+        step3: "Paiement"
+      basket: "Panier"
+      product: "produit"
+      recap: "Recapitulatif"
+      total: "TOTAL"
+      confirm: "FINALISER MON PANIER"
+    delivery:
+      edit_personal_infos: "Modifier mes informations"
+      delivery_infos: "Informations de livraison"
+      delivery_mode: "Mode de livraison"
+      local_delivery: "Distribution régionale"
+      national_delivery: "Expédition nationale"
+      delivery: "Expédition"
+      unavailable: "Indisponible pour votre panier"
+      takeaway: "Retrait à la ferme"
+      free: "Gratuit"
+      estimated_delivery_price: "Frais livraison estimés"
     team:
       team: "La bande de Robin des Fermes"
       team_description: "Pour mener à bien toutes les causes importantes, il faut une bande de compagnons au top ! Robin des Fermes cartonne grâce à eux :"
@@ -213,7 +235,7 @@ fr:
       anick_goumaz: "Anick Goumaz est une rédactrice indépendante. Ses mots sont capables de « convaincre un ours d’hiberner en été pour skier en hiver ». On a notamment eu la chance de le constater grâce à plusieurs textes qu’elle nous a écrit pour notre campagne de crowdfunding ainsi que sur ce site."
       jorat_coworking: "Le Jorat Coworking, c’est l’endroit où plusieurs « Robin » et « Robine » travaillent et se réunissent pour discuter des prochains challenges qui nous attendent. Le café et la vue y sont tout particulièrement appréciés."
       lausanne_region: "Lausanne Région, à travers son guichet entreprise, nous conseille et met en relation avec des entités régionales dans le but de faire évoluer notre projet."
-      sonnay_charpente: "Sonnay Charpente est une société qui réalise des travaux de charpentes, revêtement intérieur et extérieur, menuiseries et divers travaux spéciaux. Particulièrement sensible aux causes paysannes et de consommation local, Daniel Sonnay a souhaité soutenir le projet"
+      sonnay_charpente: "Sonnay Charpente est une société qui réalise des travaux de charpentes, revêtement intérieur et extérieur, menuiseries et divers travaux spéciaux.Particulièrement sensible aux causes paysannes et de consommation local, Daniel Sonnay a souhaité soutenir le projet"
     producer:
       become_producer: "Deviens un producteur Robin des fermes "
       contact: "Ne perds pas de temps et contacte-nous via ce formulaire "
@@ -224,6 +246,7 @@ fr:
       products: "produits"
       withdrawal: "en retrait uniquement"
     index:
+      openning: '%{openning}'
       labels: "Labels : "
       categories: "Catégories : "
       number_sells: "Nombre de ventes : "
@@ -231,9 +254,11 @@ fr:
       adress: "Adresse : "
       open: "Ouvertures : "
       products: "produits"
+      products_number: "produits"
       withdrawal: "en retrait uniquement"
     show:
       preorder_date: "Dès le "
+      order_products: "Commander les produits"
       delivery_products_mobile: "Livraison"
       withdrawal_products_mobile: "retrait"
       delivery_products: "Produits livrables"
@@ -258,6 +283,8 @@ fr:
       and_delivery: "et le"
       address: "ADRESSE"
       description: '%{description}'
+      description_title: "Une histoire de temps"
+      long_description: '%{long_description}'
       category: '%{name}'
       product: '%{name}'
       no_withdrawal: "Aucun produit disponible."
@@ -303,7 +330,7 @@ fr:
   hello: "bonjour"
   zip_code:
     title: "Code postal"
-    description: "Nous utilisons votre code postal afin de vous proposer les producteurs proches de vous."
+    description: "Nous utilisons ton code postal afin de te proposer les producteurs proches de toi."
     login: "Se connecter"
     error: "Veuillez entrer un code postal suisse valide."
   payment:
@@ -357,4 +384,7 @@ fr:
     total: "TOTAL"
     validate: "VALIDER MON PANIER"
     continue: "Continuer mes achats"
-
+  users:
+    delivery_infos:
+      edit:
+        connection: 'Modifier mes informations'

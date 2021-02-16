@@ -27,6 +27,17 @@ class FarmsController < ApplicationController
       @farms     = @farms.where("labels && ARRAY[?]", @label)
     end
 
+    @delivery = params[:farms]
+    if @delivery.present?
+      if @delivery == "retrait à l’exploitation"
+        @far_farms = @far_farms.where(accepts_take_away: true)
+        @farms     = @farms.where(accepts_take_away: true)
+      elsif @delivery == "Distribution régionale" || "Expédition nationale"
+        @far_farms = @far_farms.where(accepts_delivery: true)
+        @farms     = @farms.where(accepts_delivery: true)
+      end
+    end
+
     @farms = policy_scope(@farms).active
     @far_farms = policy_scope(@far_farms).active
 
@@ -35,7 +46,7 @@ class FarmsController < ApplicationController
         lat: farm.latitude,
         lng: farm.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { farm: farm }),
-        image_url: helpers.asset_url('icons/map_marker_green.png')
+        image_url: helpers.asset_url('icons/marker-orange.png')
       }
     end
 
@@ -44,7 +55,7 @@ class FarmsController < ApplicationController
         lat: farm.latitude,
         lng: farm.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { farm: farm }),
-        image_url: helpers.asset_url('icons/map_marker_red.png')
+        image_url: helpers.asset_url('icons/marker-purple.png')
       }
     end
   end
@@ -70,9 +81,9 @@ class FarmsController < ApplicationController
     @near_farm = @farm.regions.include?(@zip_code)
 
     marker_icon_path = if @near_farm
-      'icons/map_marker_green.png'
+      'icons/marker-orange.png'
     else
-      'icons/map_marker_red.png'
+      'icons/marker-purple.png'
     end
 
     if @near_farm
@@ -97,6 +108,6 @@ class FarmsController < ApplicationController
   private
 
   def farm_params
-    params.require(:farm).permit(:name, :description, :address, :lagitude, :longitude, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accept_delivery,  photos: [], labels: [])
+    params.require(:farm).permit(:name, :description, :address, :lagitude, :longitude, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accepts_delivery,  photos: [], labels: [])
   end
 end
