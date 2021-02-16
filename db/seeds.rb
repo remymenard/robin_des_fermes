@@ -107,7 +107,7 @@ puts "creation des fermes"
 henry = Farm.create!(name: "Famille Henry", user: user1, labels: ['Bio-Suisse'],
   address: 'Alte Uitikonerstrasse 1, 8952 Schlieren',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
-  regions: ['8008', '8001', '8005'], accepts_take_away: true,
+  offices: ['Cortaillod'], accepts_take_away: true,
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true)
 henry.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm1.png')),
@@ -139,7 +139,7 @@ file2 = File.open(Rails.root.join('db/fixtures/farms/farm.png'))
 meleze = Farm.create!(name: "La ferme du Mélèze", user: user1, labels: ['Bio-Suisse'],
   address: 'Gerechtigkeitsgasse 10, 3011 Berne',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
-  regions: ['1200', '1240', '1215'], accepts_take_away: false,
+  offices: ['Carouge GE Distribution', 'Cortaillod'], accepts_take_away: false,
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true)
 meleze.photos.attach(io: file2, filename: 'nes.png', content_type: 'image/png')
 meleze.photos.attach(
@@ -166,7 +166,7 @@ file3 = File.open(Rails.root.join('db/fixtures/farms/farm3.png'))
 jonas = Farm.create!(name: "La Ferme de Jonas", user: user1, labels: ['Bio-Suisse'],
   address: 'Bahnhofstrasse 67, 5000 Aarau ',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
-  regions: ['5000', '5004', '5001'], accepts_take_away: false,
+  offices: ['Cheseaux-sur-Lausanne Distribution', 'Carouge GE Distribution'], accepts_take_away: false,
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true)
 jonas.photos.attach(io: file3, filename: 'nes.png', content_type: 'image/png')
 jonas.photos.attach(
@@ -195,7 +195,7 @@ file4 = File.open(Rails.root.join('db/fixtures/farms/farm1.png'))
 cave = Farm.create!(name: "La Cave de l'Abbatiale", user: user1, labels: ['Bio-Suisse'],
   address: 'Rue de Carouge 22, 1205 Genève',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
-  regions: ['1200', '1209', '1205'], accepts_take_away: false,
+  offices: ['Coppet Distribution'], accepts_take_away: false,
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true)
 cave.photos.attach(io: file4, filename: 'nes.png', content_type: 'image/png')
 cave.photos.attach(
@@ -223,7 +223,7 @@ file5 = File.open(Rails.root.join('db/fixtures/farms/farm2.png'))
 gallien = Farm.create!(name: "Le Domaine du Gallien", user: user1, labels: ['Bio-Suisse'],
   address: 'Zollikerstrasse 788, 8008 Zurich',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
-  regions: ['8008', '8001', '8005'], accepts_take_away: false,
+  offices: ['Champéry', 'Aigle Distribution'], accepts_take_away: false,
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true)
 gallien.photos.attach(io: file5, filename: 'nes.png', content_type: 'image/png')
 gallien.photos.attach(
@@ -554,9 +554,9 @@ mercredi = OpeningHour.create!(farm: cave, day: 2, opens: DateTime.new(2012, 8, 
 jeudi = OpeningHour.create!(farm: cave, day: 3, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
 vendredi = OpeningHour.create!(farm: cave, day: 4, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
 
-first_order = Order.create(price_cents: 900, price_currency: "CHF", status: "waiting", buyer: user1)
+# first_order = Order.create(price_cents: 900, price_currency: "CHF", status: "waiting", buyer: user1)
 
-apple_order = OrderLineItem.create!(order: first_order, product: apple3, quantity: 1, total_price_cents: 300, total_price_currency: "CHF")
-chips_order = OrderLineItem.create!(order: first_order, product: chips, quantity: 1, total_price_cents: 300, total_price_currency: "CHF")
-egg_order = OrderLineItem.create!(order: first_order, product: egg, quantity: 1, total_price_cents: 300, total_price_currency: "CHF")
+# apple_order = OrderLineItem.create!(order: first_order, product: apple3, quantity: 1, total_price_cents: 300, total_price_currency: "CHF")
+# chips_order = OrderLineItem.create!(order: first_order, product: chips, quantity: 1, total_price_cents: 300, total_price_currency: "CHF")
+# egg_order = OrderLineItem.create!(order: first_order, product: egg, quantity: 1, total_price_cents: 300, total_price_currency: "CHF")
 #AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
