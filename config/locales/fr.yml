@@ -246,6 +246,7 @@ fr:
       products: "produits"
       withdrawal: "en retrait uniquement"
     index:
+      reset: "Réinitialiser les filtres"
       openning: '%{openning}'
       labels: "Labels : "
       categories: "Catégories : "

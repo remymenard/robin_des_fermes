@@ -4,7 +4,7 @@
 
     <div class="search">
 
-      <div class="d-flex select">
+      <div class="d-flex select justify-content-between">
         <%= form_tag farms_path, method: :get, id: "farm-search-form" do %>
           <%= hidden_field_tag 'zip', get_zip_code_number %>
           <%= select_tag :category,
@@ -20,6 +20,7 @@
             prompt: "Label"
           %>
         <% end %>
+        <%= link_to t('.reset'), farms_path %>
       </div>
       <div class="best-farms">
 

@@ -169,6 +169,17 @@
   .search {
     margin-right: 10%;
 
+    .select {
+      margin-top: 30px;
+
+      a {
+        margin-top: 10px;
+        color: #6C5C5C;
+        font-size: 12px;
+        margin-left: 20px;
+      }
+    }
+
     span {
       font-size: 32px;
       margin-left: 26px;
@@ -177,7 +188,6 @@
     }
 
     select {
-      margin-top: 30px;
       background-size: 8px 8px;
       height: 40px;
       background-color: white;
@@ -199,6 +209,23 @@
 
     .livraison {
       width: 180px;
+    }
+  }
+}
+
+@media screen and (max-width: 612px) {
+  .farms {
+    .search {
+
+      .select {
+        a {
+          margin-top: 20px;
+        }
+      }
+
+      select {
+        margin-top: 20px;
+      }
     }
   }
 }
