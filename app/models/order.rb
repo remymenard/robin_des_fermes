@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+  attr_reader :DATATRANS_TRANSACTION_ORDER_STATUSES_MAPPING
   belongs_to :buyer, class_name: 'User', optional: true
   has_many :order_line_items, dependent: :destroy
 

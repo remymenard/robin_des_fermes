@@ -14,7 +14,7 @@ class FarmOrder < ApplicationRecord
     greater_than_or_equal_to: 0,
   }
 
-  validates :status, inclusion: { in: ["waiting", "paid", "shipped", "issue"] }
+  validates :status, inclusion: { in: ["waiting", "preordered", "waiting_shipping", "shipped", "issue"] }
 
   def compute_total_price
     self.price = order_line_items.empty? ? 0 : order_line_items.sum { |order_line_item| order_line_item.total_price }
@@ -52,7 +52,7 @@ class FarmOrder < ApplicationRecord
       'Expédition nationale'
     end
   end
-  
+
   def update_delivery_choice(user_choice)
     case user_choice
     when 'takeaway'
@@ -72,5 +72,19 @@ class FarmOrder < ApplicationRecord
 
   def ready_for_payment?
     !status.nil?
+  end
+
+  def contains_preorder_product?
+    order_line_items.any? {|order_line_item| order_line_item.product.available_for_preorder?}
+  end
+
+  def compute_preorder_delivery_date
+    available_date = Date.current
+    order_line_items.each do |order_line_item|
+      unless order_line_item.product.preorder.nil?
+        available_date = order_line_item.product.preorder if order_line_item.product.preorder > available_date
+      end
+    end
+    available_date
   end
 end
