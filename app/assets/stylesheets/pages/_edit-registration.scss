@@ -8,6 +8,14 @@
     border-radius: 8px;
   }
 
+  .address {
+    max-width: 369px;
+    justify-content: space-between;
+    .form-group {
+      width: 170px;
+    }
+  }
+
   .btn {
     font-family: 'Mulish', sans-serif;
     background-color: #339E72!important;

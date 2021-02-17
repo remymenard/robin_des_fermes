@@ -30,12 +30,14 @@
               <%= f.input :address_line_1,
                           label: false,
                           placeholder: "Rue et numéro" %>
-              <%= f.input :zip_code,
-                          label: false,
-                          placeholder: "Code postal" %>
-              <%= f.input :city,
-                          label: false,
-                          placeholder: "Localité" %>
+              <div class="d-flex address">
+                <%= f.input :zip_code,
+                            label: false,
+                            placeholder: "Code postal" %>
+                <%= f.input :city,
+                            label: false,
+                            placeholder: "Localité" %>
+              </div>
             </div>
           </div>
 
