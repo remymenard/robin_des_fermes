@@ -22,6 +22,7 @@ module Webhooks
             else
               farm_order.update(price: farm_order.total_price_with_shipping, status: 'waiting_shipping', waiting_for_shipping_at: Date.current)
             end
+            farm_order.regenerate_confirm_shipped_token
           end
           SendOrderConfirmationMailsJob.perform_now(order)
         else

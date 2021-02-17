@@ -16,6 +16,8 @@ class FarmOrder < ApplicationRecord
 
   validates :status, inclusion: { in: ["waiting", "preordered", "waiting_shipping", "shipped", "issue"] }
 
+  has_secure_token :confirm_shipped_token
+
   def compute_total_price
     self.price = order_line_items.empty? ? 0 : order_line_items.sum { |order_line_item| order_line_item.total_price }
     self.save

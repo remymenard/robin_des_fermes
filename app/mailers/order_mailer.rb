@@ -1,4 +1,6 @@
 class OrderMailer < ApplicationMailer
+  include Rails.application.routes.url_helpers
+
   default from: ENV["DEFAULT_EMAIL"]
   layout 'mailer'
 

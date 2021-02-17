@@ -30,7 +30,12 @@
       TOTAL <%= @order.price %><%= @order.price_currency %>
 
       Merci de cliquer sur ce lien quand la commande est prête à être retirée.
-      {Lien}
+
+      <%= form_tag set_as_shipped_orders_mails_confirm_shipped_url, method: :post do %>
+        <%= hidden_field_tag :order_token, @order.confirm_shipped_token %>
+        <%= submit_tag "Confirmer l'envoie" %>
+      <% end %>
+
 
       Encore bravo pour cette commande!
 

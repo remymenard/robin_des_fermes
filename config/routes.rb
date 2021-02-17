@@ -52,6 +52,13 @@ Rails.application.routes.draw do
   end
 
   namespace :orders do
+    namespace :mails do
+      resource :confirm_shipped, :controller => 'confirm_shipped', only: [] do
+          post :set_as_shipped
+          get :successful
+          get :with_error
+      end
+    end
     namespace :redirect do
       resources :payments, only: [] do
         collection do
