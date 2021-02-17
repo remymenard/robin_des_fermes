@@ -354,6 +354,11 @@ fr:
       free: "Gratuit"
       far: "Zone éloignée"
   devise:
+    passwords:
+      new:
+        enter: "Entrez votre email pour recevoir les instructions de modification du mot de passe."
+        mail: "Email"
+        confirmation: "Confirmer"
     sessions:
       new:
         title: "Connectez-vous pour accéder à votre compte"
@@ -378,6 +383,14 @@ fr:
         connection: "S'INSCRIRE"
         already_account: "Vous avez déjà un compte ?"
       edit:
+        first_name: "Prénom"
+        last_name: "Nom"
+        address: "Rue et Numéro"
+        zip_code: "Code postal"
+        city: "Localité"
+        current_password: "Ancien mot de passe"
+        new_password: "Nouveau mot de passe"
+        confirmation_password: "Conformer nouveau mot de pase"
         logout: "Déconnexion"
         password_title: "Mot de passe"
         address_title: "Adresse de livraison"
@@ -385,6 +398,9 @@ fr:
         delivery_adress: "Mon adresse de livraison"
         contact_information: "Mes coordonnées"
         title: "Mes informations personelles"
+    confirmations:
+      new:
+        resend: "Renvoyer"
   basket:
     title: "Votre panier"
     empty: "Votre panier est vide"

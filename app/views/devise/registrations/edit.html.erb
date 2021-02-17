@@ -27,10 +27,10 @@
               <div class="d-flex address">
                 <%= f.input :first_name,
                             label: false,
-                            placeholder: "Prénom" %>
+                            placeholder: t('.first_name') %>
                 <%= f.input :last_name,
                             label: false,
-                            placeholder: "Nom" %>
+                            placeholder: t('.last_name')%>
               </div>
             </div>
           </div>
@@ -40,14 +40,14 @@
             <div class="form-inputs">
               <%= f.input :address_line_1,
                           label: false,
-                          placeholder: "Rue et numéro" %>
+                          placeholder: t('.address') %>
               <div class="d-flex address">
                 <%= f.input :zip_code,
                             label: false,
-                            placeholder: "Code postal" %>
+                            placeholder: t('.zip_code') %>
                 <%= f.input :city,
                             label: false,
-                            placeholder: "Localité" %>
+                            placeholder: t('.city')  %>
               </div>
             </div>
           </div>
@@ -65,17 +65,17 @@
                           required: true,
                           input_html: { autocomplete: "current-password" },
                           label: false,
-                          placeholder: "Ancien mot de passe" %>
+                          placeholder: t('.current_password')  %>
               <%= f.input :password,
                           required: false,
                           input_html: { autocomplete: "new-password" },
                           label: false,
-                          placeholder: "Nouveau mot de passe"  %>
+                          placeholder: t('.new_password')   %>
               <%= f.input :password_confirmation,
                           required: false,
                           input_html: { autocomplete: "new-password" },
                           label: false,
-                          placeholder: "Confirmer nouveau mot de passe" %>
+                          placeholder: t('.confirmation_password')  %>
             </div>
           </div>
 
