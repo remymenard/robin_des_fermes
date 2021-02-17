@@ -21,10 +21,9 @@ module Webhooks
               farm_order.update(price: farm_order.total_price_with_shipping, status: 'preordered', waiting_for_preorder_at: Date.current, waiting_for_shipping_at: farm_order.compute_preorder_delivery_date)
             else
               farm_order.update(price: farm_order.total_price_with_shipping, status: 'waiting_shipping', waiting_for_shipping_at: Date.current)
-              OrderMailer.order_confirmation_owner(order.buyer, farm_order, farm_order.farm.user).deliver
-              OrderMailer.order_confirmation_customer(order.buyer, farm_order).deliver
             end
           end
+          SendOrderConfirmationMailsJob.perform_now(order)
         else
           # TODO LATER: handle non happy paths
         end

@@ -3,11 +3,11 @@
 <% end %>
 
 <% if params[:payment_canceled] %>
-  ⚠️ Vous avez annulé votre commande, elle n'est donc pas finalisée
+  ⚠️ Vous avez annulé votre commande, elle n'est donc pas finalisée.
 <% end %>
 
 <% if params[:payment_with_errors] %>
-  ⚠️ Votre paiement a rencontré un problème, blabla
+  ⚠️ Votre paiement a rencontré un problème.
 <% end %>
 
 <%= form_tag update_delivery_methods_order_path, method: :patch, id: "delivery-choices", 'data-type' => :json do %>

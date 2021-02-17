@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@500;700&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <%= render "shared/mailer/header" %>
+    <p class="content">
+      Salut <%= @owner.first_name %>,
+
+      Félicitations pour la commande n°<%= @order.id %>, cette dernière devra être prête pour le retrait au plus tard le
+      <%= I18n.l((Date.current + @order.farm.delivery_delay.days), format: "%d/%m/%y", locale: :'fr') %>.
+
+      Date de la commande: <%= Date.current.strftime('%d/%m/%y') %>
+      Date de retrait estimée: <%= I18n.l((Date.current + @order.farm.delivery_delay.days), format: "%d/%m/%y", locale: :'fr') %>
+
+      Destinataire:
+      <%= @user.first_name %> <%= @user.last_name %>
+      <%= @user.address_line_1 %>
+      <%= @user.zip_code %> <%= @user.city %>
+
+      Contenu de la commande:
+      <% @order.order_line_items.each do |item| %>
+        <%= item.quantity %> - <%= item.product.name %> - <%= item.product.price %><%= item.product.price_currency %> - <%= item.total_price %><%= item.total_price_currency %>
+      <% end %>
+
+      TOTAL <%= @order.price %><%= @order.price_currency %>
+
+      Merci de cliquer sur ce lien quand la commande est prête à être retirée.
+      {Lien}
+
+      Encore bravo pour cette commande!
+
+      Vaillantes salutations,
+
+      La bande de Robin des Fermes
+
+    </p>
+
+    <%= render "shared/mailer/footer" %>
+  </body>
+</html>
