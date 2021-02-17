@@ -1,6 +1,5 @@
 <%= content_for(:after_template) do %>
   <script src="https://pay.sandbox.datatrans.com/upp/payment/js/datatrans-2.0.0.js"></script>
-  <%= javascript_pack_tag 'delivery' %>
 <% end %>
 
 <% if params[:payment_canceled] %>

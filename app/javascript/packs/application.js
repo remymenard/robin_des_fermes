@@ -34,6 +34,7 @@ import { loadResponsiveNavbar } from './navbar'
 import { initSelect2 } from '../plugins/init_select2'
 import { Carousel } from '../plugins/owl_carousel'
 import { stopRecapOnFooter } from '../packs/stopRecapOnFooter'
+import { initDeliverySelect } from '../packs/delivery'
 
 document.addEventListener('turbolinks:load', () => {
   initAutocomplete();
@@ -44,6 +45,7 @@ document.addEventListener('turbolinks:load', () => {
   initSelect2();
   Carousel();
   stopRecapOnFooter();
+  initDeliverySelect();
 });
 
 $(document).on('turbolinks:before-cache', function() {

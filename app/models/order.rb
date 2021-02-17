@@ -1,5 +1,4 @@
 class Order < ApplicationRecord
-  attr_reader :DATATRANS_TRANSACTION_ORDER_STATUSES_MAPPING
   belongs_to :buyer, class_name: 'User', optional: true
   has_many :order_line_items, dependent: :destroy
 
@@ -10,7 +9,7 @@ class Order < ApplicationRecord
     greater_than_or_equal_to: 0,
   }
 
-  validates :status, inclusion: { in: ["paid", "waiting"] }
+  validates :status, inclusion: { in: ["paid", "failed", "waiting"] }
 
   DATATRANS_TRANSACTION_ORDER_STATUSES_MAPPING = {
     # status datatrans transaction => status order

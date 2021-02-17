@@ -15,6 +15,7 @@ module Webhooks
         order = Order.find_by(transaction_id: params["transactionId"])
 
         if params["status"] == "settled"
+          order.update(status: 'paid')
           order.farm_orders.each do |farm_order|
             if farm_order.contains_preorder_product?
               farm_order.update(price: farm_order.total_price_with_shipping, status: 'preordered', waiting_for_preorder_at: Date.current, waiting_for_shipping_at: farm_order.compute_preorder_delivery_date)
