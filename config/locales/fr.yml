@@ -277,7 +277,7 @@ fr:
       withdrawal: "Retrait à la ferme"
       delivery_regional_description: "Reçois tes produits à la maison, la livraison est assurée par le producteur ou par ton office de poste régional."
       delivery_national_description: "Reçois tes produits à la maison, la livraison est assurée par la poste. Les produits frais ne sont pas disponible avec cette option."
-      withdrawal_description: "Retire ta commande auprès du producteur, tu seras averti lorsque ta commande  sera prête."
+      withdrawal_description: "Retire ta commande auprès du producteur, tu seras averti lorsque ta commande sera prête."
       delivery_options: "Les options suivantes sont possibles pour ta localisation."
       hours: "HORAIRES"
       hours_delivery: "Vous serez livré entre le"
@@ -294,6 +294,7 @@ fr:
       pre_order: "Précommander"
       date:
         day_names: [Dimanche, Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi]
+      location: "Où nous trouver ?"
   shared:
     navbar:
       log_in_href: "Me Connecter"
@@ -319,7 +320,7 @@ fr:
       producers: "Producteurs"
       producer: "Devenir producteur"
       charte: "Charte"
-    reinsurances:
+    reassurance:
       payment_title: "Paiement 100% sécurisé"
       local_title: "100% local"
       help_title: "Besoin d'aide ?"
