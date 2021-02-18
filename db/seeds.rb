@@ -120,7 +120,7 @@ puts "creation des fermes"
 henry = Farm.create!(name: "Famille Henry", user: user_henry, labels: ['Bio-Suisse'],
   address: 'Alte Uitikonerstrasse 1, 8952 Schlieren',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
-  regions: ['8008', '8001', '8005'], accepts_take_away: true,
+  offices: ['Cortaillod'], accepts_take_away: true,
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true)
 henry.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm1.png')),
@@ -142,13 +142,17 @@ henry.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
   filename: 'farm4.png'
 )
+henry.photo_portrait.attach(
+  io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
+  filename: 'farm4.png'
+)
 
 
 file2 = File.open(Rails.root.join('db/fixtures/farms/farm.png'))
 meleze = Farm.create!(name: "La ferme du Mélèze", user: user1, labels: ['Bio-Suisse'],
   address: 'Gerechtigkeitsgasse 10, 3011 Berne',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
-  regions: ['1200', '1240', '1215'], accepts_take_away: false,
+  offices: ['Carouge GE Distribution', 'Cortaillod'], accepts_take_away: false,
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true)
 meleze.photos.attach(io: file2, filename: 'nes.png', content_type: 'image/png')
 meleze.photos.attach(
@@ -166,14 +170,16 @@ meleze.photos.attach(
 meleze.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
   filename: 'farm4.png')
-
+meleze.photo_portrait.attach(
+  io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
+  filename: 'farm4.png')
 
 file3 = File.open(Rails.root.join('db/fixtures/farms/farm3.png'))
 
 jonas = Farm.create!(name: "La Ferme de Jonas", user: user1, labels: ['Bio-Suisse'],
   address: 'Bahnhofstrasse 67, 5000 Aarau ',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
-  regions: ['5000', '5004', '5001'], accepts_take_away: false,
+  offices: ['Cheseaux-sur-Lausanne Distribution', 'Carouge GE Distribution'], accepts_take_away: false,
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true)
 jonas.photos.attach(io: file3, filename: 'nes.png', content_type: 'image/png')
 jonas.photos.attach(
@@ -192,13 +198,17 @@ jonas.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
   filename: 'farm4.png'
 )
+jonas.photo_portrait.attach(
+  io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
+  filename: 'farm4.png'
+)
 
 file4 = File.open(Rails.root.join('db/fixtures/farms/farm1.png'))
 
 cave = Farm.create!(name: "La Cave de l'Abbatiale", user: user1, labels: ['Bio-Suisse'],
   address: 'Rue de Carouge 22, 1205 Genève',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
-  regions: ['1200', '1209', '1205'], accepts_take_away: false,
+  offices: ['Coppet Distribution'], accepts_take_away: false,
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true)
 cave.photos.attach(io: file4, filename: 'nes.png', content_type: 'image/png')
 cave.photos.attach(
@@ -217,12 +227,16 @@ cave.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
   filename: 'farm4.png'
 )
+cave.photo_portrait.attach(
+  io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
+  filename: 'farm4.png'
+)
 
 file5 = File.open(Rails.root.join('db/fixtures/farms/farm2.png'))
 gallien = Farm.create!(name: "Le Domaine du Gallien", user: user1, labels: ['Bio-Suisse'],
   address: 'Zollikerstrasse 788, 8008 Zurich',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
-  regions: ['8008', '8001', '8005'], accepts_take_away: false,
+  offices: ['Champéry', 'Aigle Distribution'], accepts_take_away: false,
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true)
 gallien.photos.attach(io: file5, filename: 'nes.png', content_type: 'image/png')
 gallien.photos.attach(
@@ -238,6 +252,10 @@ gallien.photos.attach(
   filename: 'farm3.png'
 )
 gallien.photos.attach(
+  io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
+  filename: 'farm4.png'
+)
+gallien.photo_portrait.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
   filename: 'farm4.png'
 )
@@ -558,3 +576,6 @@ chips_order = OrderLineItem.create!(farm_order: first_farm_order,order: first_or
 egg_order = OrderLineItem.create!(farm_order: first_farm_order, order: first_order, product: egg, quantity: 1, total_price_cents: 300, total_price_currency: "CHF")
 
 
+
+
+#AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

@@ -246,6 +246,7 @@ fr:
       products: "produits"
       withdrawal: "en retrait uniquement"
     index:
+      reset: "Réinitialiser les filtres"
       openning: '%{openning}'
       labels: "Labels : "
       categories: "Catégories : "
@@ -257,7 +258,8 @@ fr:
       products_number: "produits"
       withdrawal: "en retrait uniquement"
     show:
-      preorder_date: "DÈS LE "
+      preorder_date: "Dès le "
+      order_products: "Commander les produits"
       delivery_products_mobile: "Livraison"
       withdrawal_products_mobile: "retrait"
       delivery_products: "Produits livrables"
@@ -282,12 +284,14 @@ fr:
       and_delivery: "et le"
       address: "ADRESSE"
       description: '%{description}'
+      description_title: "Une histoire de temps"
+      long_description: '%{long_description}'
       category: '%{name}'
       product: '%{name}'
       no_withdrawal: "Aucun produit disponible."
       not_accept_withdrawal: "Le producteur n’a pas activé le retrait à son exploitation"
-      add: "AJOUTER AU PANIER"
-      pre_order: "PRÉCOMMANDER"
+      add: "Ajouter au panier"
+      pre_order: "Précommander"
       date:
         day_names: [Dimanche, Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi]
   shared:

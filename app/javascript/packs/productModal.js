@@ -18,7 +18,7 @@ const modalObject = {
 function initProductModal () {
   $('.card-product').on('click', (event) => {
     event.preventDefault();
-    // if($(event.target).is("button")) return;
+    if($(event.target).is("button")) return;
     const product = event.currentTarget;
     const dataElement = $(product).children('#product-data');
     console.log(product)

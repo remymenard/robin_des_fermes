@@ -4,7 +4,7 @@
 
     <div class="search">
 
-      <div class="d-flex select">
+      <div class="d-flex select justify-content-between">
         <%= form_tag farms_path, method: :get, id: "farm-search-form" do %>
           <%= hidden_field_tag 'zip', get_zip_code_number %>
           <%= select_tag :category,
@@ -20,6 +20,7 @@
             prompt: "Label"
           %>
         <% end %>
+        <%= link_to t('.reset'), farms_path %>
       </div>
       <div class="best-farms">
 
@@ -60,7 +61,7 @@
 
                   <p class="openning"><%= t('.openning', openning: farm.opening_time) %></p>
 
-                  <p class="products-number"><%= farm.products.count  %> <%= t('.products_number') %> </p>
+                  <p class="products-number"><%= farm.products.available.count  %> <%= t('.products_number') %> </p>
 
                   <div class="all-photos d-flex">
                     <% farm.categories.each_with_index do |category, index| %>
@@ -114,7 +115,7 @@
                   <p class="openning"><%= t('.openning', openning: farm.opening_time) %></p>
 
                   <div class="d-flex">
-                    <p class="products-number"><%= farm.products.count  %> <%= t('.products_number') %> </p>
+                    <p class="products-number"><%= farm.products.available.count  %> <%= t('.products_number') %> </p>
 
                     <div class="fresh-products d-flex">
                       <%= image_tag "cards/flake.png", alt: "Flocon" %>

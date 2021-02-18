@@ -4,6 +4,11 @@ Rails.application.routes.draw do
 
   devise_for :admin_users, {class_name: 'User'}.merge(ActiveAdmin::Devise.config)
 
+  require "sidekiq/web"
+  authenticate :user, ->(user) { user.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   scope '(:locale)', locale: /fr/ do
     root to: 'pages#home'
     get 'faq', to: 'pages#faq'
@@ -35,8 +40,6 @@ Rails.application.routes.draw do
       get :delivery
       patch :update_delivery_methods
     end
-
-    resources :payments, only: [:new], controller: 'orders/payments'
   end
 
   namespace :basket do
