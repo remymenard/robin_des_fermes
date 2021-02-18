@@ -15,9 +15,9 @@ ActiveRecord::Schema.define(version: 2021_02_18_154956) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-    t.text "body"
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
+    t.text "body"
     t.string "resource_type"
     t.bigint "resource_id"
     t.string "author_type"
@@ -90,10 +90,10 @@ ActiveRecord::Schema.define(version: 2021_02_18_154956) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "shipping_price_cents", default: 0, null: false
     t.string "shipping_price_currency", default: "CHF", null: false
-    t.string "status", default: "En préparation"
+    t.string "status", default: "waiting"
+    t.text "comment"
     t.datetime "waiting_for_preorder_at"
     t.string "confirm_shipped_token"
-    t.text "comment"
     t.index ["farm_id"], name: "index_farm_orders_on_farm_id"
     t.index ["order_id"], name: "index_farm_orders_on_order_id"
   end
@@ -157,9 +157,9 @@ ActiveRecord::Schema.define(version: 2021_02_18_154956) do
     t.string "price_currency", default: "CHF", null: false
     t.string "status", default: "waiting"
     t.string "transaction_id"
-    t.bigint "buyer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "buyer_id"
     t.index ["buyer_id"], name: "index_orders_on_buyer_id"
   end
 
@@ -174,7 +174,7 @@ ActiveRecord::Schema.define(version: 2021_02_18_154956) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "unit"
     t.text "label", default: [], array: true
-    t.boolean "available", default: false
+    t.boolean "available"
     t.boolean "fresh"
     t.integer "price_per_unit_cents", default: 0, null: false
     t.string "price_per_unit_currency", default: "CHF", null: false
@@ -210,8 +210,8 @@ ActiveRecord::Schema.define(version: 2021_02_18_154956) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.boolean "wants_to_subscribe_mailing_list"
-    t.boolean "admin"
     t.string "address_line_2"
+    t.boolean "admin"
     t.string "number_phone"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

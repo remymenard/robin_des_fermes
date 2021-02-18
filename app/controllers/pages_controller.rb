@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :cgv, :faq]
+  skip_before_action :authenticate_user!, only: [:home, :cgv, :faq, :team, :about, :impressum, :community, :charter, :partners, :producer]
 
   def home
     @farms = Farm.all
