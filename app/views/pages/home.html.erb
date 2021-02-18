@@ -136,7 +136,7 @@
 
               <div class="all-photos d-flex">
                 <% farm.categories.each_with_index do |category, index| %>
-                  <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
+                  <div class='category-photo' data-toggle="tooltip" data-placement="top" title="<%= category.name  %>"><%= cl_image_tag category.photo.key %></div>
                 <% end %>
               </div>
 

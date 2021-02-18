@@ -47,3 +47,7 @@ document.addEventListener('turbolinks:load', () => {
 $(document).on('turbolinks:before-cache', function() {
   $(".owl-carousel").owlCarousel('destroy');
 });
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
