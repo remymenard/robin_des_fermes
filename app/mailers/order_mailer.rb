@@ -30,6 +30,14 @@ class OrderMailer < ApplicationMailer
     mail(to: @owner.email, subject: "Félicitations tu as une nouvelle commande n°#{@order.id}")
   end
 
+  def delivery_preorder_customer
+    mail(to: @user.email, subject: "Ta commande n°#{@order.id} est confirmée")
+  end
+
+  def delivery_preorder_owner
+    mail(to: @owner.email, subject: "Félicitations tu as une nouvelle commande n°#{@order.id}")
+  end
+
   private
   def define_order_and_user
     @order = params[:order]
