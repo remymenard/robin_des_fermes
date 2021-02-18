@@ -19,7 +19,7 @@ class FarmOrder < ApplicationRecord
 
   validates :status, inclusion: { in: ["waiting", "preordered", "waiting_shipping", "shipped", "issue"] }
 
-  has_secure_token :confirm_shipped_token
+  before_create :set_access_token
 
   def compute_total_price
     self.price = order_line_items.empty? ? 0 : order_line_items.sum { |order_line_item| order_line_item.total_price }
@@ -70,7 +70,7 @@ class FarmOrder < ApplicationRecord
   def with_preordered_products?
     preordered_products_max_shipping_starting_at.present?
   end
-  
+
   def shipping_choice_name
     if takeaway_at_farm
       'Retrait à la ferme'
@@ -114,5 +114,16 @@ class FarmOrder < ApplicationRecord
       end
     end
     available_date
+  end
+
+  def set_access_token
+    self.access_token = generate_token
+  end
+
+  def generate_token
+    loop do
+      token = SecureRandom.hex(20)
+      break token unless FarmOrder.where(access_token: token).exists?
+    end
   end
 end

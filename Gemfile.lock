@@ -161,8 +161,6 @@ GEM
     has_scope (0.7.2)
       actionpack (>= 4.1)
       activesupport (>= 4.1)
-    has_secure_token (1.0.0)
-      activerecord (>= 3.0)
     highline (2.0.3)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -430,7 +428,6 @@ DEPENDENCIES
   font-awesome-sass
   geocoder
   gibbon!
-  has_secure_token
   httparty
   i18n-tasks (~> 0.9.31)
   jbuilder (~> 2.7)
