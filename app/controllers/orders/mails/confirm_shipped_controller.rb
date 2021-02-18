@@ -4,6 +4,9 @@ module Orders
       skip_before_action :authenticate_user!
       skip_before_action :verify_authenticity_token
 
+      skip_after_action :verify_authorized
+      skip_after_action :verify_policy_scoped
+
       def set_as_shipped
         skip_authorization
         order = FarmOrder.find_by(confirm_shipped_token: params[:order_token])
