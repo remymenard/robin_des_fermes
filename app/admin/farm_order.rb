@@ -4,16 +4,21 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
   actions :all
   index do
     actions defaults: true
+
     column 'Numéro de commande', :id
+
     column "Nom de l'exploitant", :farm_id do |farm|
       farm.farm.user.first_name + " " + farm.farm.user.last_name
     end
+
     column "Nom du consommateur", :order_id do |farm|
       farm.order.buyer.first_name + " " + farm.order.buyer.last_name
     end
+
     column 'Montant' do |price|
-      "#{price.price_cents} #{price.price_currency}"
+      "#{price.price} #{price.price_currency}"
     end
+
     column 'Date de création de la commande', :created_at
     column 'Status', :status
 
@@ -49,6 +54,7 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
     panel 'Commentaire' do
       order.input :comment, label: false
     end
+
     panel 'Status' do
       if order.object.takeaway_at_farm?
         order.input :status, label: false, collection: ["En préparation", "Prête à être retirée", "Retirée", "Payée", "Annulée"]
