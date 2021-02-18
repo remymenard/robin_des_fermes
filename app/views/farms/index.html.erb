@@ -64,7 +64,7 @@
                   <div class="d-flex information">
                     <p><%= t('.categories') %> </p>
                     <% farm.categories.each do |category| %>
-                      <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
+                      <div class='category-photo' data-toggle="tooltip" data-placement="top" title="<%= category.name  %>"><%= cl_image_tag category.photo.key %></div>
                     <% end %>
                   </div>
 
@@ -122,7 +122,7 @@
                   <div class="d-flex information">
                     <p><%= t('.categories') %></p>
                     <% farm.categories.each do |category| %>
-                      <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
+                      <div class='category-photo' data-toggle="tooltip" data-placement="top" title="<%= category.name  %>"><%= cl_image_tag category.photo.key %></div>
                     <% end %>
                   </div>
 
