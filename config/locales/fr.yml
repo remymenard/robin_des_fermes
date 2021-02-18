@@ -127,28 +127,6 @@ fr:
       reponse7: "Lors d’une livraison “Distribution régionale” effectuée par la Poste, tu peux laisser l’emballage dans ta boîte aux lettres. Le facteur s’occupera de le récupérer lors de sa prochaine tournée."
       reponse7_producer: "Si le producteur s’est occupé lui-même de la livraison, il reprend directement les emballages (ou les récupère lors de la prochaine livraison)."
       response7_packaging: "Si un emballage réutilisable est endommagé ou n’est pas retourné, Robin des Fermes se réserve le droit de facturer le montant dû."
-  orders:
-    review:
-      header:
-        step1: "Panier"
-        step2: "Livraison"
-        step3: "Paiement"
-      basket: "Panier"
-      product: "produit"
-      recap: "Recapitulatif"
-      total: "TOTAL"
-      confirm: "FINALISER MON PANIER"
-    delivery:
-      edit_personal_infos: "Modifier mes informations"
-      delivery_infos: "Informations de livraison"
-      delivery_mode: "Mode de livraison"
-      local_delivery: "Distribution régionale"
-      national_delivery: "Expédition nationale"
-      delivery: "Expédition"
-      unavailable: "Indisponible pour votre panier"
-      takeaway: "Retrait à la ferme"
-      free: "Gratuit"
-      estimated_delivery_price: "Frais livraison estimés"
     team:
       team: "La bande de Robin des Fermes"
       team_description: "Pour mener à bien toutes les causes importantes, il faut une bande de compagnons au top ! Robin des Fermes cartonne grâce à eux :"
@@ -239,7 +217,29 @@ fr:
     producer:
       become_producer: "Deviens un producteur Robin des fermes "
       contact: "Ne perds pas de temps et contacte-nous via ce formulaire "
-      button_contact: "CONTACTE-NOUS"
+      button_contact: CONTACTE-NOUS"
+  orders:
+    review:
+      header:
+        step1: "Panier"
+        step2: "Livraison"
+        step3: "Paiement"
+      basket: "Panier"
+      product: "produit"
+      recap: "Recapitulatif"
+      total: "TOTAL"
+      confirm: "FINALISER MON PANIER"
+    delivery:
+      edit_personal_infos: "Modifier mes informations"
+      delivery_infos: "Informations de livraison"
+      delivery_mode: "Mode de livraison"
+      local_delivery: "Distribution régionale"
+      national_delivery: "Expédition nationale"
+      delivery: "Expédition"
+      unavailable: "Indisponible pour votre panier"
+      takeaway: "Retrait à la ferme"
+      free: "Gratuit"
+      estimated_delivery_price: "Frais livraison estimés"
   farms:
     info_window:
       products_number: "produits"
