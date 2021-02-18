@@ -80,7 +80,7 @@
 
                   <% if product.available_for_preorder? %>
                     <div class='preorder'>
-                      <p> <%= t('.preorder_date') %> <%= product.preorder.strftime("%d.%m.%Y") %></p>
+                      <p> <%= t('.preorder_date') %> <%= product.preorder_shipping_starting_at.strftime("%d.%m.%Y") %></p>
                     </div>
                   <% end %>
 
@@ -232,7 +232,7 @@
 
                         <% if product.available_for_preorder? %>
                           <div class='preorder'>
-                            <p> <%= t('.preorder_date') %> <%= product.preorder.strftime("%d.%m.%Y") %></p>
+                            <p> <%= t('.preorder_date') %> <%= product.preorder_shipping_starting_at.strftime("%d.%m.%Y") %></p>
                           </div>
                         <% end %>
 
@@ -297,7 +297,7 @@
                         <div class="labels d-flex">
                           <% if product.available_for_preorder? %>
                             <div class='preorder'>
-                              <p> <%= t('.preorder_date') %> <%= product.preorder.strftime("%d.%m.%Y") %></p>
+                              <p> <%= t('.preorder_date') %> <%= product.preorder_shipping_starting_at.strftime("%d.%m.%Y") %></p>
                             </div>
                           <% end %>
 

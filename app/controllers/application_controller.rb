@@ -10,8 +10,8 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  after_action :verify_authorized, except: :index, unless: [:skip_pundit?, :active_admin_controller?]
-  after_action :verify_policy_scoped, only: :index, unless: [:skip_pundit?, :active_admin_controller?]
+  #after_action :verify_authorized, except: :index, unless: [:skip_pundit?, :active_admin_controller?]
+  #after_action :verify_policy_scoped, only: :index, unless: [:skip_pundit?, :active_admin_controller?]
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 

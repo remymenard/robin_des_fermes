@@ -15,10 +15,11 @@ OrderLineItem.destroy_all
 Product.destroy_all
 Category.destroy_all
 OpeningHour.destroy_all
+FarmOrder.destroy_all
+OrderLineItem.destroy_all
 Farm.destroy_all # they belong to a user, so let's destroy them first
 Order.destroy_all
 User.destroy_all
-
 
 puts "Create categories"
 pain = Category.create!(name: "Boulangerie")
@@ -81,10 +82,22 @@ divers.photo.attach(
   filename: 'divers.png'
 )
 
+user_henry = User.new(
+  email: "henry@drakkr.com",
+  password: "password",
+  first_name: "Henry",
+  last_name: "Boucher",
+  address_line_1: "6 boulevard adolphe",
+  city: "nantes",
+  zip_code: "1200",
+  title: "M",
+  admin: false,
+)
+
 user1 = User.new(
   email: "admin@drakkr.com",
   password: "password",
-  first_name: "henry",
+  first_name: "Mark",
   last_name: "Boucher",
   address_line_1: "6 boulevard adolphe",
   city: "nantes",
@@ -104,7 +117,7 @@ user1.photo.attach(
 
 puts "creation des fermes"
 
-henry = Farm.create!(name: "Famille Henry", user: user1, labels: ['Bio-Suisse'],
+henry = Farm.create!(name: "Famille Henry", user: user_henry, labels: ['Bio-Suisse'],
   address: 'Alte Uitikonerstrasse 1, 8952 Schlieren',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   offices: ['Cortaillod'], accepts_take_away: true,
@@ -554,11 +567,15 @@ mercredi = OpeningHour.create!(farm: cave, day: 2, opens: DateTime.new(2012, 8, 
 jeudi = OpeningHour.create!(farm: cave, day: 3, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
 vendredi = OpeningHour.create!(farm: cave, day: 4, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
 
+first_order = Order.create(price_cents: 900, price_currency: "CHF", status: "waiting", buyer: user1)
 
-# first_order = Order.create(price_cents: 900, price_currency: "CHF", status: "waiting", buyer: user1)
+first_farm_order = FarmOrder.create!(order: first_order, farm: henry, price_cents: 900, express_shipping: true  )
 
-# apple_order = OrderLineItem.create!(order: first_order, product: apple3, quantity: 1, total_price_cents: 300, total_price_currency: "CHF")
-# chips_order = OrderLineItem.create!(order: first_order, product: chips, quantity: 1, total_price_cents: 300, total_price_currency: "CHF")
-# egg_order = OrderLineItem.create!(order: first_order, product: egg, quantity: 1, total_price_cents: 300, total_price_currency: "CHF")
+apple_order = OrderLineItem.create!(farm_order: first_farm_order, order: first_order, product: apple3, quantity: 1, total_price_cents: 300, total_price_currency: "CHF")
+chips_order = OrderLineItem.create!(farm_order: first_farm_order,order: first_order, product: chips, quantity: 1, total_price_cents: 300, total_price_currency: "CHF")
+egg_order = OrderLineItem.create!(farm_order: first_farm_order, order: first_order, product: egg, quantity: 1, total_price_cents: 300, total_price_currency: "CHF")
+
+
+
 
 #AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

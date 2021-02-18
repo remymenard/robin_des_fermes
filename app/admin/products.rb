@@ -1,5 +1,5 @@
 ActiveAdmin.register Product, as: 'Produits' do
-  permit_params :id, :farm_id, :name, :available, :category_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning, :preorder, :total_weight, :available_for_preorder, label: []
+  permit_params :id, :farm_id, :name, :available, :category_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning, :preorder_shipping_starting_at, :total_weight, :available_for_preorder, label: []
   actions :all
   index do
     actions defaults: true
@@ -28,9 +28,9 @@ ActiveAdmin.register Product, as: 'Produits' do
       product.input :price_per_unit_cents, label: 'Prix au kg'
       product.input :conditioning, label: 'Conditionnement'
       product.input :fresh, label: 'Frais'
-      product.input :label, label: 'Label', as: :check_boxes, collection: LABELS
+      product.input :label, label: 'Label', as: :check_boxes, collection: Farm::LABELS
       product.input :available_for_preorder, label: "Disponible en précommande"
-      product.input :preorder, label: 'Date livraison précommande'
+      product.input :preorder_shipping_starting_at, label: 'Date livraison précommande'
       product.input :description, label: 'Description'
       product.input :ingredients, label: 'Ingrédients'
       product.input :photo, as: :file, label: 'Image du produit'
