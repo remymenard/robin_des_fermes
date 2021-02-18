@@ -2,7 +2,7 @@ require('jquery-form')
 
 require("gasparesganga-jquery-loading-overlay")
 
-function initEvents() {
+export function initDeliverySelect() {
   $(document).on('click', '[js-user-delivery-choice-delivery]', (event) => {
     if (!$(event.currentTarget).hasClass("active")) {
       $(event.currentTarget).parent().children("[js-user-delivery-choice-takeaway]").removeClass('active')
@@ -99,4 +99,3 @@ function stopLoadingAnimation() {
   $("body").LoadingOverlay("hide");
 }
 
-document.addEventListener('turbolinks:load', initEvents);

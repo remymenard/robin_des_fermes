@@ -9,7 +9,7 @@ class Order < ApplicationRecord
     greater_than_or_equal_to: 0,
   }
 
-  validates :status, inclusion: { in: ["paid", "waiting"] }
+  validates :status, inclusion: { in: ["paid", "failed", "waiting"] }
 
   DATATRANS_TRANSACTION_ORDER_STATUSES_MAPPING = {
     # status datatrans transaction => status order
