@@ -15,9 +15,9 @@ ActiveRecord::Schema.define(version: 2021_02_18_092351) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+    t.text "body"
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
-    t.text "body"
     t.string "resource_type"
     t.bigint "resource_id"
     t.string "author_type"
@@ -90,8 +90,6 @@ ActiveRecord::Schema.define(version: 2021_02_18_092351) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "shipping_price_cents", default: 0, null: false
     t.string "shipping_price_currency", default: "CHF", null: false
-    t.datetime "waiting_for_preorder_at"
-    t.string "confirm_shipped_token"
     t.string "status", default: "En préparation"
     t.text "comment"
     t.index ["farm_id"], name: "index_farm_orders_on_farm_id"
@@ -119,8 +117,8 @@ ActiveRecord::Schema.define(version: 2021_02_18_092351) do
     t.text "long_description"
     t.boolean "accepts_delivery", default: false
     t.integer "delivery_delay"
-    t.text "labels", array: true
     t.boolean "active", default: false
+    t.text "labels", array: true
     t.string "photo_portrait"
     t.text "offices", default: [], array: true
     t.index ["user_id"], name: "index_farms_on_user_id"

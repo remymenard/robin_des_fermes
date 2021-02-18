@@ -6,7 +6,7 @@ class PagesController < ApplicationController
     @highlighted_farm = @farms.first
     @other_farms      = Farm.order("id asc").offset(1).all
 
-    @reinsurances = true
+    @reassurance = true
   end
 
   def cgv
