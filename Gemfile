@@ -93,3 +93,8 @@ gem 'activeadmin'
 gem 'activeadmin_addons'
 gem 'ransack'
 gem 'arctic_admin'
+
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
+
+gem 'has_secure_token'

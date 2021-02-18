@@ -1,0 +1,88 @@
+<div class="delivery-card col-12 col-md-5 my-3 py-4 px-3">
+  <p class="shipping-title"><%= farm_order.farm.name %></p>
+
+  <p class="basket-number text-center">
+    <%= farm_order.total_items_count %> <%= t("orders.review.product").pluralize(farm_order.total_items_count) %>
+  </p>
+  <div class="aditional-infos"></div>
+  <div class="d-flex justify-content-center">
+    <% if accepts_delivery %>
+
+      <%= radio_button_tag "farm_orders[#{farm_order.id}][user_shipping_choice]",
+        "delivery",
+        farm_order.standard_shipping || farm_order.express_shipping,
+        id: dom_id(farm_order, :user_shipping_choice_delivery),
+        class: "user-shipping-choice hidden",
+        data: {
+          takeaway: FarmOrder::ShippingPrice.takeaway.price.to_s,
+          delivery: farm_order.delivery_price(get_zip_code_number).price.to_s
+        } %>
+
+      <label for="<%= dom_id(farm_order, :user_shipping_choice_delivery) %>" class="shipping-option <%= farm_order.standard_shipping || farm_order.express_shipping ? 'active' : '' %> mr-1" js-user-delivery-choice-delivery>
+        <div class="shipping-icon mb-2">
+          <%= show_svg('icons/delivery-truck.svg') %>
+        </div>
+        <span class="title">
+          <% if farm_order.farm_in_close_zone?(get_zip_code_number) %>
+            <%= t('orders.delivery.local_delivery') %>
+          <% else %>
+            <%= t('orders.delivery.national_delivery') %>
+          <% end %>
+        </span>
+        <span class="price">
+          <% if farm_order.farm_in_close_zone?(get_zip_code_number) %>
+            <%= FarmOrder::ShippingPrice.express.price %>
+          <% else%>
+            <%= FarmOrder::ShippingPrice.standard.price %>
+          <% end %>
+          CHF
+        </span>
+        <span class="subtitle">
+          <%= t('farms.show.hours_delivery') %>
+          <%= Date.current.strftime('%d')  %>
+          <%= t('farms.show.and_delivery') %>
+          <%= I18n.l((Date.current + farm_order.farm.delivery_delay.days), format: "%d %B", locale: :'fr') %>
+        </span>
+      </label>
+    <% else %>
+      <div class="shipping-option unavailable mr-1">
+        <div class="shipping-icon mb-2">
+          <%= show_svg('icons/delivery-truck.svg') %>
+        </div>
+        <span class="title"><%= t('orders.delivery.delivery') %></span>
+        <span class="subtitle"><%= t('orders.delivery.unavailable') %></span>
+      </div>
+    <% end %>
+
+    <% if accepts_take_away %>
+      <%= radio_button_tag "farm_orders[#{farm_order.id}][user_shipping_choice]",
+        "takeaway",
+        farm_order.takeaway_at_farm,
+        id: dom_id(farm_order, :user_shipping_choice_takeaway),
+        class: "user-shipping-choice hidden",
+        data: {
+          takeaway: FarmOrder::ShippingPrice.takeaway.price.to_s,
+          delivery: farm_order.delivery_price(get_zip_code_number).price.to_s
+        } %>
+
+      <label for="<%= dom_id(farm_order, :user_shipping_choice_takeaway) %>" class="shipping-option <%= farm_order.takeaway_at_farm ? 'active' : '' %> mr-1" js-user-delivery-choice-takeaway>
+        <div class="shipping-icon mb-2">
+          <%= show_svg('icons/delivery-bag.svg') %>
+        </div>
+        <span class="title"><%= t('orders.delivery.takeaway') %></span>
+        <span class="price"><%= t('orders.delivery.free') %></span>
+      </label>
+    <% else %>
+      <div id="deliveryPickup" class="shipping-option unavailable mr-1">
+        <div class="shipping-icon mb-2">
+          <%= show_svg('icons/delivery-bag.svg') %>
+        </div>
+        <span class="title"><%= t('orders.delivery.takeaway') %></span>
+        <span class="price"><%= t('orders.delivery.free') %></span>
+        <span class="subtitle">
+          <%= t('orders.delivery.unavailable') %>
+        </span>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -33,8 +33,8 @@ class FarmsController < ApplicationController
         @far_farms = @far_farms.where(accepts_take_away: true)
         @farms     = @farms.where(accepts_take_away: true)
       elsif @delivery == "Distribution régionale" || "Expédition nationale"
-        @far_farms = @far_farms.where(accept_delivery: true)
-        @farms     = @farms.where(accept_delivery: true)
+        @far_farms = @far_farms.where(accepts_delivery: true)
+        @farms     = @farms.where(accepts_delivery: true)
       end
     end
 
@@ -46,7 +46,7 @@ class FarmsController < ApplicationController
         lat: farm.latitude,
         lng: farm.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { farm: farm }),
-        image_url: helpers.asset_url('icons/map_marker_green.png')
+        image_url: helpers.asset_url('icons/marker-orange.png')
       }
     end
 
@@ -55,13 +55,15 @@ class FarmsController < ApplicationController
         lat: farm.latitude,
         lng: farm.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { farm: farm }),
-        image_url: helpers.asset_url('icons/map_marker_red.png')
+        image_url: helpers.asset_url('icons/marker-purple.png')
       }
     end
   end
 
   def show
+    @reassurance = true
     @farms = Farm.all
+    @far_farms = Farm.none
     @farm = Farm.find(params[:id])
 
     @farm_show = @farms.where("farms.id = ? ", params[:id])
@@ -79,15 +81,16 @@ class FarmsController < ApplicationController
     @near_farm = @farm.regions.include?(@zip_code)
 
     marker_icon_path = if @near_farm
-      'icons/map_marker_green.png'
+      'icons/marker-orange.png'
     else
-      'icons/map_marker_red.png'
+      'icons/marker-purple.png'
     end
 
     if @near_farm
-      @products_by_category = @farm.products.available.group_by(&:category)
+      @products_available = @farm.products.available
     else
-      @products_by_category = @farm.products.available.not_fresh.group_by(&:category)
+      @products_available = @farm.products.available.not_fresh
+      @products_available_fresh = @farm.products.available.fresh
     end
 
     @markers = @farm_show.geocoded.map do |farm|
@@ -105,6 +108,6 @@ class FarmsController < ApplicationController
   private
 
   def farm_params
-    params.require(:farm).permit(:name, :description, :address, :lagitude, :longitude, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accept_delivery,  photos: [], labels: [])
+    params.require(:farm).permit(:name, :description, :address, :lagitude, :longitude, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accepts_delivery,  photos: [], labels: [])
   end
 end

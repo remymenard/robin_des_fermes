@@ -6,6 +6,6 @@ module ZipCodeHelper
 
   def get_zip_code_number
     stored_zip_code = user_signed_in? ? current_user.zip_code : cookies[:zip_code]
-    stored_zip_code ? stored_zip_code : '1200'
+    stored_zip_code ? stored_zip_code : nil
   end
 end

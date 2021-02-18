@@ -1,3 +1,12 @@
+.farm-map {
+  text-align: center;
+  margin-top: 50px;
+
+  #map_show {
+
+  }
+}
+
 .owl-stage {
     left: -190px;
 }
@@ -5,6 +14,51 @@
   img {
     width: 80%;
     height: 70vh;
+  }
+}
+
+.description-farm {
+  justify-content: space-between;
+}
+
+#description-farm {
+  height: 706px;
+  background-image: url("farm/description-background.png");
+  background-size: cover;
+  background-position: center;
+  padding-top: 86px;
+
+  .photo {
+    img {
+      width: 460px;
+      height: 508px;
+    }
+  }
+
+  .long-description {
+    max-width: 544px;
+    padding-top: 55px;
+
+    h6 {
+      color: #6C5C5C;
+      margin-top: 20px;
+      line-height: 32px;
+      margin-bottom: 50px;
+    }
+
+    img {
+      width: 48px;
+      height: 1px;
+      margin-top: 10px;
+      margin-right: 20px;
+    }
+
+    a {
+      line-height: 21px;
+      font-size: 14px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
   }
 }
 
@@ -23,6 +77,7 @@
       transform: translate(-50%, -50%);
       z-index: 1;
       justify-content: space-around;
+      margin-top: 30px;
 
       h6 {
         letter-spacing: 2.5px;
@@ -87,7 +142,7 @@
     position: absolute;
     right: 0;
     margin-right: 150px;
-    margin-top: -500px;
+    margin-top: -480px;
     z-index: 1;
     border-radius: 6px 6px 6px 6px;
     border: 1px solid #F0ECE8;
@@ -151,101 +206,145 @@
   }
 }
 
-// .delivery {
-//   margin-top: 70px;
-
-//   h3 {
-//     font-weight: 400;
-//     font-size: 24px;
-//     margin-bottom: 24px;
-//   }
-//   .cards-delivery {
-//     span {
-//       font-size: 14px;
-//       font-weight: 600;
-//     }
-
-//     p {
-//       font-size: 14px;
-//       font-weight: 400;
-//       margin-bottom: 0px;
-//     }
-
-//     .date {
-//       color: #199D3E;
-//       font-weight: 300;
-//     }
-
-//     .card-delivery {
-//       margin-right: 30px;
-//       width: 370px;
-//       height: 62px;
-//       border: 1px solid #EAEAEA;
-//       border-radius: 8px;
-//       padding-left: 16px;
-//       padding-top: 12px;
-//       padding-right: 16px;
-//       margin-bottom: 24px;
-//       justify-content: space-between;
-//     }
-
-//     .withdrawal {
-//       background-color: #FAF0E1;
-//       opacity: 0.5;
-//       width: 370px;
-//       height: 62px;
-//       margin-right: 30px;
-//       border: 1px solid #BDBDBD;
-//       border-radius: 8px;
-//       padding-left: 16px;
-//       padding-top: 12px;
-//       padding-right: 16px;
-//       margin-bottom: 24px;
-//       justify-content: space-between;
-//     }
-//   }
-
-//   .self-service {
-//     font-weight: 400;
-//     font-size: 24px;
-//     margin-top: 48px;
-
-//     .opening {
-//       margin-top: 30px;
-
-//       .hours{
-//         width: 300px;
-//         justify-content: space-between;
-//       }
-
-//       p {
-//         font-weight: 400;
-//         font-size: 18px;
-//         margin-right: 30px;
-//       }
-//     }
-//   }
-// }
-
 .products {
-  margin-top: 500px;
+  text-align: center;
+  margin-top: 200px;
   h2 {
     font-size: 36px;
     margin-top: 50px;
   }
 }
+
+.farm-delivery {
+  margin-top: 95px;
+  text-align: center;
+
+  h1 {
+    color: #6C5C5C;
+  }
+
+  h6 {
+    margin-top: 20px;
+    color: #6C5C5C;
+  }
+
+  .delivery-options {
+    flex-wrap: wrap !important;
+    margin-top: 34px;
+    justify-content: center;
+    width: 100%;
+
+    .no-withdrawal {
+      p {
+        margin-top: 50px !important;
+        color: black !important;
+      }
+    }
+
+     .no-accept {
+      background-color: #dfe0df;
+
+      .accept {
+        display: none;
+      }
+
+     }
+
+    .yes-accept {
+      .no-withdrawal {
+        display: none;
+      }
+    }
+
+    .delivery_option {
+      width: 357px;
+      margin-left: 20px;
+      margin-right: 20px;
+      height: 305px;
+      border: 1px solid #FAF7F3;
+      box-shadow: 0 1px 20px rgba(0,0,0,0.07);
+      border-radius: 10px;
+      padding-right: 35px;
+      padding-left: 35px;
+      margin-bottom: 50px;
+
+      h6 {
+        color: black !important;
+        font-weight: bold;
+      }
+
+      .hours {
+        p {
+          font-weight: bold;
+          padding-left: 55px;
+          padding-right: 55px;
+        }
+      }
+
+      .price {
+        h6 {
+          color: #339E72 !important;
+          margin-top: 0px !important;
+          font-weight: bold;
+        }
+
+        span {
+          font-size: 12px;
+          color: #339E72;
+          margin-left: 5px;
+        }
+      }
+
+      p {
+        color: #7C7977;
+        margin-bottom: 5px !important;
+      }
+
+      .withdrawal-image {
+        img {
+          margin-top: 40px;
+          height: 48px;
+          width: 46px;
+        }
+      }
+
+      .delivery-image {
+        img {
+          margin-top: 40px;
+          height: 49.97px;
+          width: 79px;
+        }
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 530px) {
-  .informations {
-    flex-direction: column !important;
-    align-items: center !important;
-    height: 450px !important;
-    margin-top: 400px !important;
+  .products {
+    margin-top: 700px !important;
+
+    .all-card-product {
+      justify-content: space-around;
+    }
+  }
+
+  .farm {
+    .informations {
+      flex-direction: column !important;
+      align-items: center !important;
+      height: 450px !important;
+      margin-top: 400px !important;
+    }
   }
 }
 
 @media screen and (max-width: 901px) {
   .products {
-    margin-top: 700px;
+    margin-top: 400px;
+
+    .all-card-product {
+      justify-content: space-around;
+    }
   }
 
   .owl-stage {
@@ -324,6 +423,32 @@
   }
 }
 
+@media screen and (max-width: 990px) {
+  .farm-map {
+    display: none;
+  }
+
+  .description-farm {
+    justify-content: center;
+    flex-direction: column-reverse;
+  }
+
+  #description-farm {
+    height: 1200px;
+    background-image: url("farm/description-background.png");
+    background-size: cover;
+    background-position: center;
+
+    .photo {
+
+      img {
+        width: 230px;
+        height: 254px;
+      }
+    }
+  }
+}
+
 @media screen and (min-width: 1600px) {
   .owl-stage {
     left: -250px;
@@ -336,4 +461,3 @@
     }
   }
 }
-

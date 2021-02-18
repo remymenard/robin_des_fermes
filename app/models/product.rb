@@ -2,6 +2,8 @@ class Product < ApplicationRecord
   belongs_to :farm
   belongs_to :category
 
+  has_many :farm_orders
+
   has_one_attached :photo
 
   validates :name, presence: true
@@ -21,4 +23,5 @@ class Product < ApplicationRecord
   scope :available, -> ()    { where(available: true) }
   scope :not_fresh, -> ()    { where(fresh: false) }
   scope :in_farm,   -> (farm) { where(farm: farm) }
+  scope :fresh, -> ()    { where(fresh: true) }
 end

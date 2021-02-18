@@ -119,7 +119,9 @@ GEM
       aws_cf_signer
       rest-client
     coderay (1.1.3)
+    coffee-script-source (1.8.0)
     concurrent-ruby (1.1.7)
+    connection_pool (2.2.3)
     countries (3.0.1)
       i18n_data (~> 0.10.0)
       sixarm_ruby_unaccent (~> 1.1)
@@ -160,6 +162,8 @@ GEM
     has_scope (0.7.2)
       actionpack (>= 4.1)
       activesupport (>= 4.1)
+    has_secure_token (1.0.0)
+      activerecord (>= 3.0)
     highline (2.0.3)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -341,6 +345,12 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    sidekiq (6.1.3)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.2.0)
+    sidekiq-failures (1.0.0)
+      sidekiq (>= 4.0.0)
     simple_form (5.0.3)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -413,6 +423,7 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   cloudinary (~> 1.16.0)
+  coffee-script-source (= 1.8.0)
   country_select (~> 4.0)
   crisp-api (~> 1.0)
   devise
@@ -421,6 +432,7 @@ DEPENDENCIES
   font-awesome-sass
   geocoder
   gibbon!
+  has_secure_token
   httparty
   i18n-tasks (~> 0.9.31)
   jbuilder (~> 2.7)
@@ -442,6 +454,8 @@ DEPENDENCIES
   redis (~> 4.0)
   sass-rails (>= 6)
   selenium-webdriver
+  sidekiq
+  sidekiq-failures (~> 1.0)
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)

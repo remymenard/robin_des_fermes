@@ -13,7 +13,18 @@ class OrderPolicy < ApplicationPolicy
     record.buyer == user || user.admin?
   end
 
-  def confirmation?
+  def review?
     record.buyer == user || user.admin?
+    record.status == 'waiting' || user.admin?
+    record.status == 'waiting' || record.status == 'failed' || user.admin?
+  end
+
+  def delivery?
+    record.buyer == user || user.admin?
+    record.status == 'waiting' || record.status == 'failed' || user.admin?
+  end
+
+  def update_delivery_methods?
+    true || user.admin?
   end
 end

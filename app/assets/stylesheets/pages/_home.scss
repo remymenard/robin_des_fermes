@@ -1,7 +1,6 @@
 // Specific CSS for your home-page
 
 .home {
-
   .zip-search {
       padding-top: 0px;
       color: #7C7977 !important;
@@ -9,6 +8,9 @@
       border-radius: 10px 0px 0px 10px;
       border-color: #F0ECE8;
       width: 317px;
+      @include media-breakpoint-down(sm) {
+        width: 179px;
+      }
       height: 54px;
       background-color: white;
   }
@@ -26,13 +28,6 @@
       letter-spacing: 2.5px;
       text-transform: uppercase;
       color: #FFFFFF;
-  }
-
-  .low-vector {
-    background-image: image-url('low-vector.png');
-    height: 20px;
-    margin-top: 162px;
-    background-color: #F8F0E7;
   }
 
   .home-category{
@@ -146,6 +141,7 @@
   }
 
   .best-farms {
+    width: 100vw;
     background-color: #EFF2EA;
     text-align: center;
     padding-top: 110px;
@@ -177,7 +173,7 @@
         width: 100px;
       }
 
-      .informations {
+      .testimonials-informations {
         margin-top: -45px;
 
         h6 {
@@ -245,72 +241,6 @@
       line-height: 43px;
     }
   }
-
-  .quadriptic {
-    background-color: #FAF7F3;
-    text-align: center;
-
-    .all-reinsurances {
-      justify-content: space-between;
-      padding-top: 80px;
-      padding-bottom: 50px;
-    }
-
-    h6 {
-      color: #25201D;
-      font-weight: 600;
-      line-height: 32px;
-      max-width: 225px;
-    }
-
-    p {
-      line-height: 21px;
-      max-width: 231px;
-    }
-
-    .payement {
-      border-right:  1px solid rgba(108, 92, 92, 0.2);
-      padding-right: 50px;
-
-      img {
-        margin-top: -15px;
-        width: 67px;
-        height: 60.2px;
-      }
-    }
-
-    .local {
-      border-right:  1px solid rgba(108, 92, 92, 0.2);
-      padding-right: 50px;
-      padding-left: 50px;
-      img {
-        margin-top: -15px;
-        width: 48.26px;
-        height: 62px;
-      }
-    }
-
-    .help {
-      border-right:  1px solid rgba(108, 92, 92, 0.2);
-      padding-right: 50px;
-      padding-left: 50px;
-
-      img {
-        margin-top: -15px;
-        width: 69px;
-        height: 60.12px;
-      }
-    }
-
-    .producers {
-      padding-left: 50px;
-      img {
-        margin-top: -15px;
-        width: 50px;
-        height: 59.26px;
-      }
-    }
-  }
 }
 
 @media screen and (max-width: 990px) {
@@ -321,6 +251,22 @@
 }
 
 @media screen and (max-width: 500px) {
+  .registration {
+    background-image: image-url('home/registration-mobile.png') !important;
+    min-height: 100vh !important;
+
+    h6 {
+      font-size: 18px !important;
+      padding-top: 20px !important;
+    }
+
+    h2 {
+      padding-top: 150px !important;
+      font-size: 28px !important;
+      max-width: 250px !important;
+    }
+  }
+
   .home-category {
 
     h2 {
@@ -333,14 +279,20 @@
 
     .food {
       flex-direction: column-reverse !important;
-      align-items: center !important;
+      align-items: left !important;
+
+      a {
+        p {
+          letter-spacing: 0px !important;
+        }
+      }
 
       .two-products {
-        margin-left: 57px;
+
       }
 
       p {
-        max-width: 350px !important;
+        max-width: 300px !important;
       }
 
       a {
@@ -376,38 +328,6 @@
     .all-testimonials {
       flex-direction: column !important;
       align-items: center !important;
-    }
-  }
-
-  @media screen and (max-width: 770px) {
-    .all-reinsurances {
-      flex-direction: column !important;
-      align-items: center !important;
-
-      .payement {
-        border-right:  1px solid #FAF7F3!important;
-        padding-right: 0px !important;
-        margin-top: 30px;
-      }
-
-      .local {
-        border-right:  1px solid #FAF7F3 !important;
-        padding-right: 0px !important;
-        padding-left: 0px !important;
-        margin-top: 30px;
-      }
-
-      .help {
-        border-right:  1px solid #FAF7F3 !important;
-        padding-right: 0px !important;
-        padding-left: 0px !important;
-        margin-top: 30px;
-      }
-
-      .producers {
-        padding-left: 0px !important;
-        margin-top: 30px;
-      }
     }
   }
 }

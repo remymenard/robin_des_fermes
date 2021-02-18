@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
   include BasketHelper
 
   before_action :store_user_location!, if: :storable_location?
@@ -9,8 +10,8 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  after_action :verify_authorized, except: :index, unless: [:skip_pundit?, :active_admin_controller?]
-  after_action :verify_policy_scoped, only: :index, unless: [:skip_pundit?, :active_admin_controller?]
+  #after_action :verify_authorized, except: :index, unless: [:skip_pundit?, :active_admin_controller?]
+  #after_action :verify_policy_scoped, only: :index, unless: [:skip_pundit?, :active_admin_controller?]
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
@@ -21,7 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options
-    { locale: I18n.locale == I18n.default_locale ? nil : I18n.locale }
+    { locale: I18n.locale == I18n.default_locale ? nil : I18n.locale, host: ENV["DOMAIN"] || "localhost:3000" }
   end
 
   def configure_permitted_parameters
@@ -45,7 +46,7 @@ class ApplicationController < ActionController::Base
   end
 
   def storable_location?
-    request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
+    request.get? && is_navigational_format? && !devise_controller? && !request.xhr? && controller_name != "delivery_infos"
   end
 
   def store_user_location!
