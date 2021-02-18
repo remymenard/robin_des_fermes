@@ -84,7 +84,7 @@ divers.photo.attach(
 )
 
 user_henry = User.new(
-  email: "henry@drakkr.com",
+  email: "remy@drakkr.com",
   password: "password",
   first_name: "Henry",
   last_name: "Boucher",
@@ -96,7 +96,7 @@ user_henry = User.new(
 )
 
 user1 = User.new(
-  email: "admin@drakkr.com",
+  email: "maelie@drakkr.com",
   password: "password",
   first_name: "Mark",
   last_name: "Boucher",
