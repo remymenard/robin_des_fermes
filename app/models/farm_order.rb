@@ -1,4 +1,7 @@
 class FarmOrder < ApplicationRecord
+  STATUSES_TAKEAWAY = ["in_preparation", "ready_for_withdrawal", "withdrawn", "paid_to_farmer", "canceled"]
+  STATUSES_SHIPPING = ["in_preparation", "shipped",              "received",  "paid_to_farmer", "canceled"]
+
   belongs_to :order
   belongs_to :farm
 
@@ -37,6 +40,9 @@ class FarmOrder < ApplicationRecord
     takeaway_at_farm || standard_shipping || express_shipping
   end
 
+  def shipping_status_options
+    takeaway_at_farm? ? STATUSES_TAKEAWAY : STATUSES_SHIPPING
+  end
 
   def preordered_products_max_shipping_starting_at
     # Memoization

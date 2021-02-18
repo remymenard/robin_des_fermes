@@ -40,22 +40,22 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
     column 'Commentaire', :comment
   end
 
-  form title: 'commandes' do |order|
+  form title: 'commandes' do |farm_order_form|
     panel 'Commentaire' do
-      order.input :comment, label: false
+      farm_order_form.input :comment, label: false
     end
 
     panel 'Status' do
-      if order.object.takeaway_at_farm?
-        order.input :status, label: false, collection: ["En préparation", "Prête à être retirée", "Retirée", "Payée", "Annulée"]
-      else
-        order.input :status, label: false, collection: ["En préparation", "Expédiée", "Reçue", "Payée", "Annulée"]
-      end
+      options_with_display = farm_order_form.object.shipping_status_options.map do |option|
+        [t("farm_orders.statuses.#{option}"), option]
+      end.to_h
+
+      farm_order_form.input :status, label: false, collection: options_with_display
     end
 
-    order.actions do
+    farm_order_form.actions do
       if resource.persisted?
-        order.action :submit, label: "Modifier la commande"
+        farm_order_form.action :submit, label: "Modifier la commande"
       end
     end
   end

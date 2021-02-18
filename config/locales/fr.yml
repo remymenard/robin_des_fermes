@@ -350,6 +350,16 @@ fr:
       take_away: "Retrait à la ferme"
       free: "Gratuit"
       far: "Zone éloignée"
+  farm_orders:
+    statuses:
+      waiting: "En cours de traitement"
+      in_preparation: "En cours de préparation"
+      ready_for_withdrawal: "Prête à être retirée"
+      withdrawn: "Retirée"
+      paid_to_farmer: "Payée au fermier"
+      canceled: "Annulée"
+      shipped: "Expédiée"
+      received: "Reçue"
   devise:
     sessions:
       new:
