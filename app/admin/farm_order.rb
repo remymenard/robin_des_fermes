@@ -22,28 +22,18 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
     column 'Date de création de la commande', :created_at
     column 'Status', :status
 
-    column 'Précommande' do |order|
-      preorder_array = []
-      order.order_line_items.each do |order_line_item|
-        if order_line_item.product.available_for_preorder?
-          preorder_array << order_line_item.product.preorder
-        end
-      end
-      preorder = preorder_array.max
+    column 'Précommande' do |farm_order|
+      farm_order.preordered_products_max_shipping_starting_at
     end
 
-    column "Expédition", :farm_id do |farm|
-      preorder_array = []
-      farm.order_line_items.each do |order_line_item|
-        if order_line_item.product.available_for_preorder?
-          preorder_array << order_line_item.product.preorder
-        end
-      end
-      preorder_array.max
-      if farm.farm.accepts_delivery && preorder_array.size >= 1
-        l((preorder_array.max + farm.farm.delivery_delay.days), format: '%d %B %Y')
-      elsif farm.farm.accepts_delivery
-        l((farm.created_at + farm.farm.delivery_delay.days), format: '%d %B %Y')
+    column "Expédition", :farm_id do |farm_order|
+      if farm_order.farm.accepts_delivery && farm_order.with_preordered_products?
+        shipping_date = farm_order.preordered_products_max_shipping_starting_at + farm_order.farm.delivery_delay.days
+        l(shipping_date, format: '%d %B %Y')
+
+      elsif farm_order.farm.accepts_delivery
+        shipping_date = farm_order.created_at + farm_order.farm.delivery_delay.days
+        l(shipping_date, format: '%d %B %Y')
       end
     end
 

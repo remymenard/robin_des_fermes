@@ -36,4 +36,24 @@ class FarmOrder < ApplicationRecord
   def shipping_choice_made?
     takeaway_at_farm || standard_shipping || express_shipping
   end
+
+
+  def preordered_products_max_shipping_starting_at
+    # Memoization
+    @preordered_products_max_shipping_starting_at ||= begin
+      preorder_array = []
+
+      order_line_items.each do |order_line_item|
+        if order_line_item.product.available_for_preorder?
+          preorder_array << order_line_item.product.preorder_shipping_starting_at
+        end
+      end
+
+      preorder_array.max
+    end
+  end
+
+  def with_preordered_products?
+    preordered_products_max_shipping_starting_at.present?
+  end
 end
