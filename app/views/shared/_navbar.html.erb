@@ -29,8 +29,8 @@
       <li class="nav-item">
 
       <% if user_signed_in? %>
-        <%= link_to destroy_user_session_path, method: :delete do %>
-          <i class="fas fa-sign-out-alt profile-icon mt-1 logout"></i>
+        <%= link_to edit_user_registration_path do %>
+          <%= image_tag 'icons/profile.png', class: "profile-icon mt-1" %>
         <% end %>
       <% else %>
         <%= link_to new_user_session_path do %>

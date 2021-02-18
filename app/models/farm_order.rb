@@ -1,4 +1,7 @@
 class FarmOrder < ApplicationRecord
+  STATUSES_TAKEAWAY = ["in_preparation", "ready_for_withdrawal", "withdrawn", "paid_to_farmer", "canceled"]
+  STATUSES_SHIPPING = ["in_preparation", "shipped",              "received",  "paid_to_farmer", "canceled"]
+
   belongs_to :order
   belongs_to :farm
 
@@ -45,6 +48,29 @@ class FarmOrder < ApplicationRecord
     takeaway_at_farm || standard_shipping || express_shipping
   end
 
+  def shipping_status_options
+    takeaway_at_farm? ? STATUSES_TAKEAWAY : STATUSES_SHIPPING
+  end
+
+  def preordered_products_max_shipping_starting_at
+    # Memoization
+    @preordered_products_max_shipping_starting_at ||= begin
+      preorder_array = []
+
+      order_line_items.each do |order_line_item|
+        if order_line_item.product.available_for_preorder?
+          preorder_array << order_line_item.product.preorder_shipping_starting_at
+        end
+      end
+
+      preorder_array.max
+    end
+  end
+
+  def with_preordered_products?
+    preordered_products_max_shipping_starting_at.present?
+  end
+  
   def shipping_choice_name
     if takeaway_at_farm
       'Retrait à la ferme'

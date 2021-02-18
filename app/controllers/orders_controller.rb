@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
       farm_order = current_order.farm_orders.find(farm_order_id)
       farm_order.update_delivery_choice(user_delivery_choice)
     end
-
+    # not mandatory by avoid users to edit the page and remove input making him able not to pay shipping costs
     # Prevent users from editing the page to remove inputs and not pay shipping costs
     @order.farm_orders.each do |farm_order|
       return throw_error unless farm_order.ready_for_payment?
