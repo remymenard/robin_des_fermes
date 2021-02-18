@@ -2,12 +2,10 @@ ActiveAdmin.register Farm, as: "Exploitations" do
   before_action :remove_password_params_if_blank, only: [:update]
   permit_params :active, :name, :description, :address, :lagitude, :longitude, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accepts_delivery, photos: [], labels: [], regions: [],
                 opening_hours_attributes: [:id, :day, :opens, :closes],
-                products_attributes: [:id, :active, :available_for_preorder, :name, :available, :category_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning, :preorder, :total_weight, label:[] ],
+                products_attributes: [:id, :active, :available_for_preorder, :name, :available, :category_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning, :preorder_shipping_starting_at, :total_weight, label:[] ],
                 categories_attributes: [:id, :name],
                 category_ids: [],
                 user_attributes: [:id, :email, :first_name, :last_name, :number_phone, :wants_to_subscribe_mailing_list, :photo, :password, :title, :password_confirmation, :address_line_1, :city, :zip_code, :farm_id]
-
-  LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
 
   actions :all
 
@@ -43,29 +41,29 @@ ActiveAdmin.register Farm, as: "Exploitations" do
           fields: [:first_name, :last_name, :email, :number_phone], display_name: :full_name, minimum_input_length: 3,
           order_by: 'description_asc', label: 'Chercher un propriétaire existant', clearable: false
           inputs "Informations du propriétaire", class: "owner-form", for: [:user, params[:id] ? Farm.find(params[:id]).user : User.new] do |u|
-            u.input :title, collection: User::TITLE, label: "Genre"
-            u.input :first_name, label: false, placeholder: "Prénom"
-            u.input :last_name, label: false, placeholder: "Nom"
-            u.input :email, label: false, placeholder: "Mail"
-            u.input :number_phone, label: false, placeholder: "Téléphone"
-            u.input :address_line_1, label: false, placeholder: "Adresse"
-            u.input :city, label: false, placeholder: "Ville"
-            u.input :zip_code, label: false, placeholder: "Code postal"
-            u.input :password, label: false, placeholder: "Mot de passe"
-            u.input :password_confirmation, label: false, placeholder: "Confirmation du mot de passe"
+            u.input :title,                           label: "Genre",         collection: User::TITLE
+            u.input :first_name,                      label: false,           placeholder: "Prénom"
+            u.input :last_name,                       label: false,           placeholder: "Nom"
+            u.input :email,                           label: false,           placeholder: "Mail"
+            u.input :number_phone,                    label: false,           placeholder: "Téléphone"
+            u.input :address_line_1,                  label: false,           placeholder: "Adresse"
+            u.input :city,                            label: false,           placeholder: "Ville"
+            u.input :zip_code,                        label: false,           placeholder: "Code postal"
+            u.input :password,                        label: false,           placeholder: "Mot de passe"
+            u.input :password_confirmation,           label: false,           placeholder: "Confirmation du mot de passe"
             u.input :wants_to_subscribe_mailing_list, label: "L'inscrire a la newsletter"
-            u.input :photo, as: :file, label: "Mettre une photo de profil"
+            u.input :photo, as: :file,                label: "Mettre une photo de profil"
           end
         end
       end
       tab 'Etape 2' do
         panel "Renseigner les informations de l'exploitation" do
           inputs 'Coordonnées' do
-            input :name, label: false, placeholder: "Dénomination"
-            input :address, label: false, placeholder: "Adresse"
-            input :zip_code, label: false, placeholder: "CP", :wrapper_html => { :class => 'fl' }
-            input :city, label: false, placeholder: "Ville", :wrapper_html => { :class => 'fl' }
-            input :country, label: false, :as => :string, placeholder: "Pays", :wrapper_html => { :class => 'fl' }
+            input :name,     label: false, placeholder: "Dénomination"
+            input :address,  label: false, placeholder: "Adresse"
+            input :zip_code, label: false, placeholder: "CP",                wrapper_html: { :class => 'fl' }
+            input :city,     label: false, placeholder: "Ville",             wrapper_html: { :class => 'fl' }
+            input :country,  label: false, placeholder: "Pays", as: :string, wrapper_html: { :class => 'fl' }
           end
           inputs 'Informations légales' do
             input :farmer_number, label: false, placeholder: "Numéro exploitant"
@@ -84,30 +82,38 @@ ActiveAdmin.register Farm, as: "Exploitations" do
             input :long_description, label: false
           end
           inputs "Labels de l'exploitation" do
-            input :labels, label: false, as: :check_boxes, collection: LABELS
+            input :labels, label: false, as: :check_boxes, collection: Farm::LABELS
           end
           inputs "Retrait a la ferme" do
             input :accepts_take_away, label: "Accepte le retrait à la ferme"
-            f.has_many :opening_hours, heading: "", new_record: 'Ajouter une horaire' do |openning|
-              openning.inputs do
-                openning.input :day, label: "Jour", as: :select, collection: [["Lundi", 1], ["Mardi", 2], ["Mercredi", 3], ["Jeudi", 4], ["Vendredi", 5], ["Samedi", 6], ["Dimanche", 0]]
-                openning.input :opens, label: "Ouverture"
-                openning.input :closes, label: "Fermeture"
+            f.has_many :opening_hours, heading: "", new_record: 'Ajouter une horaire' do |opening|
+
+              opening.inputs do
+                days = [["Lundi", 1], ["Mardi", 2], ["Mercredi", 3], ["Jeudi", 4], ["Vendredi", 5], ["Samedi", 6], ["Dimanche", 0]]
+
+                opening.input :day,    label: "Jour", as: :select, collection: days
+                opening.input :opens,  label: "Ouverture"
+                opening.input :closes, label: "Fermeture"
               end
             end
           end
+
           inputs 'Expéditions' do
             input :accepts_delivery, label: "Accepte les expéditions"
           end
+
           inputs 'Délais de livraison' do
             input :delivery_delay, label: false
           end
+
           inputs "Horaires d'ouverture" do
             input :opening_time, label: false
           end
+
           inputs 'Offices de livraison' do
             input :regions, label: false, as: :check_boxes, collection: OFFICES
           end
+
           inputs 'Photos' do
             input :photos, as: :file, input_html: { multiple: true }, label: false
             input :photos, as: :file, input_html: { multiple: true }, label: false
@@ -145,9 +151,9 @@ ActiveAdmin.register Farm, as: "Exploitations" do
               product.input :price_per_unit_cents, label: "Prix au kg"
               product.input :conditioning, label: "Conditionnement"
               product.input :fresh, label: "Frais"
-              product.input :label, label: false, as: :check_boxes, collection: LABELS, label: "Label"
+              product.input :label, label: false, as: :check_boxes, collection: Farm::LABELS, label: "Label"
               product.input :available_for_preorder, label: "Disponible en précommande"
-              product.input :preorder, label: "Date livraison précommande"
+              product.input :preorder_shipping_starting_at, label: "Date livraison précommande"
               product.input :description, label: "Description"
               product.input :ingredients, label: "Ingrédients"
               product.input :photo, as: :file, label: "Image du produit"
@@ -171,6 +177,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
       @farm = Farm.new(permitted_params[:farm])
       @farm.user.skip_confirmation_notification!
       @farm.validate!
+
       @farm.products.each do |product|
         product.label.reject!(&:empty?)
       end

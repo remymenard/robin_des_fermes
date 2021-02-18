@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
       end
     end
 
-    #not mandatory by avoid users to edit the page and remove input making him able not to pay shipping costs
+    # not mandatory by avoid users to edit the page and remove input making him able not to pay shipping costs
 
     @order.farm_orders.each do |farm_order|
       if farm_order.status.nil?
