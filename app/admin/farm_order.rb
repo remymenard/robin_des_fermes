@@ -27,13 +27,15 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
     end
 
     column "Expédition", :farm_id do |farm_order|
-      if farm_order.farm.accepts_delivery && farm_order.with_preordered_products?
-        shipping_date = farm_order.preordered_products_max_shipping_starting_at + farm_order.farm.delivery_delay.days
-        l(shipping_date, format: '%d %B %Y')
+      if farm_order.express_shipping? || farm_order.standard_shipping
+        if farm_order.farm.accepts_delivery && farm_order.with_preordered_products?
+          shipping_date = farm_order.preordered_products_max_shipping_starting_at + farm_order.farm.delivery_delay.days
+          l(shipping_date, format: '%d %B %Y')
 
-      elsif farm_order.farm.accepts_delivery
-        shipping_date = farm_order.created_at + farm_order.farm.delivery_delay.days
-        l(shipping_date, format: '%d %B %Y')
+        elsif farm_order.farm.accepts_delivery
+          shipping_date = farm_order.created_at + farm_order.farm.delivery_delay.days
+          l(shipping_date, format: '%d %B %Y')
+        end
       end
     end
 
