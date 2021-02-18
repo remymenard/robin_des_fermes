@@ -157,9 +157,9 @@ ActiveRecord::Schema.define(version: 2021_02_18_092351) do
     t.string "price_currency", default: "CHF", null: false
     t.string "status", default: "waiting"
     t.string "transaction_id"
+    t.bigint "buyer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "buyer_id"
     t.index ["buyer_id"], name: "index_orders_on_buyer_id"
   end
 
@@ -174,7 +174,7 @@ ActiveRecord::Schema.define(version: 2021_02_18_092351) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "unit"
     t.text "label", default: [], array: true
-    t.boolean "available"
+    t.boolean "available", default: false
     t.boolean "fresh"
     t.integer "price_per_unit_cents", default: 0, null: false
     t.string "price_per_unit_currency", default: "CHF", null: false
@@ -210,8 +210,8 @@ ActiveRecord::Schema.define(version: 2021_02_18_092351) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.boolean "wants_to_subscribe_mailing_list"
-    t.string "address_line_2"
     t.boolean "admin"
+    t.string "address_line_2"
     t.string "number_phone"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
