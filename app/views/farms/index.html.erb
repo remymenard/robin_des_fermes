@@ -44,7 +44,6 @@
 
                   <%= cl_image_tag(farm.photos.first.key, height: 192, width: 192, crop: :fill, class: "photo") %>
 
-
                 </div>
 
                 <div class="cards-informations">
@@ -64,8 +63,8 @@
                   <p class="products-number"><%= farm.products.available.count  %> <%= t('.products_number') %> </p>
 
                   <div class="all-photos d-flex">
-                    <% farm.categories.each_with_index do |category, index| %>
-                      <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
+                     <% farm.categories.each do |category| %>
+                      <div class='category-photo' data-toggle="tooltip" data-placement="top" title="<%= category.name  %>"><%= cl_image_tag category.photo.key %></div>
                     <% end %>
                   </div>
 
@@ -104,6 +103,7 @@
                   <div class="d-flex address-far-farm">
                     <%= image_tag "icons/marker-orange.png", class: "marker" %>
                     <p><%= farm.address.upcase  %></p>
+
                   </div>
 
                   <div class="name d-flex">
@@ -124,8 +124,8 @@
                   </div>
 
                   <div class="all-photos d-flex">
-                    <% farm.categories.each_with_index do |category, index| %>
-                      <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
+                     <% farm.categories.each do |category| %>
+                      <div class='category-photo' data-toggle="tooltip" data-placement="top" title="<%= category.name  %>"><%= cl_image_tag category.photo.key %></div>
                     <% end %>
                   </div>
 

@@ -27,6 +27,7 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
     end
 
     column "Expédition", :farm_id do |farm_order|
+
     end
 
     column 'Commentaire', :comment
