@@ -84,7 +84,7 @@ divers.photo.attach(
 )
 
 user_henry = User.new(
-  email: "henry@drakkr.com",
+  email: "remy@drakkr.com",
   password: "password",
   first_name: "Henry",
   last_name: "Boucher",
@@ -96,7 +96,7 @@ user_henry = User.new(
 )
 
 user1 = User.new(
-  email: "admin@drakkr.com",
+  email: "maelie@drakkr.com",
   password: "password",
   first_name: "Mark",
   last_name: "Boucher",
@@ -122,7 +122,7 @@ henry = Farm.create!(name: "Famille Henry", user: user_henry, labels: ['Bio-Suis
   address: 'Alte Uitikonerstrasse 1, 8952 Schlieren',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   offices: ['Cortaillod'], accepts_take_away: true,
-  opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true)
+  opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
 henry.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm1.png')),
   filename: 'farm.png'
@@ -154,7 +154,7 @@ meleze = Farm.create!(name: "La ferme du Mélèze", user: user1, labels: ['Bio-S
   address: 'Gerechtigkeitsgasse 10, 3011 Berne',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   offices: ['Carouge GE Distribution', 'Cortaillod'], accepts_take_away: false,
-  opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true)
+  opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
 meleze.photos.attach(io: file2, filename: 'nes.png', content_type: 'image/png')
 meleze.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm1.png')),
@@ -181,7 +181,7 @@ jonas = Farm.create!(name: "La Ferme de Jonas", user: user1, labels: ['Bio-Suiss
   address: 'Bahnhofstrasse 67, 5000 Aarau ',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   offices: ['Cheseaux-sur-Lausanne Distribution', 'Carouge GE Distribution'], accepts_take_away: false,
-  opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true)
+  opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
 jonas.photos.attach(io: file3, filename: 'nes.png', content_type: 'image/png')
 jonas.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
@@ -210,7 +210,7 @@ cave = Farm.create!(name: "La Cave de l'Abbatiale", user: user1, labels: ['Bio-S
   address: 'Rue de Carouge 22, 1205 Genève',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   offices: ['Coppet Distribution'], accepts_take_away: false,
-  opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true)
+  opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole."
 cave.photos.attach(io: file4, filename: 'nes.png', content_type: 'image/png')
 cave.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
@@ -238,7 +238,7 @@ gallien = Farm.create!(name: "Le Domaine du Gallien", user: user1, labels: ['Bio
   address: 'Zollikerstrasse 788, 8008 Zurich',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   offices: ['Champéry', 'Aigle Distribution'], accepts_take_away: false,
-  opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true)
+  opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
 gallien.photos.attach(io: file5, filename: 'nes.png', content_type: 'image/png')
 gallien.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),

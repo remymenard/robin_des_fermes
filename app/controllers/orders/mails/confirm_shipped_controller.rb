@@ -1,11 +1,14 @@
 module Orders
   module Mails
     class ConfirmShippedController < ApplicationController
-      skip_after_action :verify_authorized
       skip_before_action :authenticate_user!
       skip_before_action :verify_authenticity_token
 
+      skip_after_action :verify_authorized
+      skip_after_action :verify_policy_scoped
+
       def set_as_shipped
+        skip_authorization
         order = FarmOrder.find_by(confirm_shipped_token: params[:order_token])
         if order.status == "waiting_shipping"
           order.update(status: "shipped", shipped_at: Date.current)
@@ -16,11 +19,11 @@ module Orders
       end
 
       def successful
-
+        skip_authorization
       end
 
       def with_error
-
+        skip_authorization
       end
 
     end
