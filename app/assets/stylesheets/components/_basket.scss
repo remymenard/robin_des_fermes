@@ -124,6 +124,7 @@
   height: 100%;
   @include media-breakpoint-down(sm) {
     height: 70%;
+    margin-top: 20px;
   }
 
   .col {

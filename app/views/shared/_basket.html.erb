@@ -7,7 +7,7 @@
     <% if current_order.order_line_items.empty? %>
       <p class="empty-basket m-0"><%= t "basket.empty" %></p>
     <% else %>
-      <% current_order.order_line_items.order("updated_at desc").each do |product_basket| %>
+      <% current_order.order_line_items.order("created_at desc").each do |product_basket| %>
         <% product = product_basket.product %>
         <div class="product-basket">
           <%= cl_image_tag product.photo.key, class: "product-image" %>
@@ -69,9 +69,9 @@
     </div>
   </div>
   <% if current_order.price > 0 %>
-  <%= link_to t("basket.validate"), review_order_path(current_order), class: "btn btn-primary btn-lg btn-block" %>
+    <%= link_to t("basket.validate"), review_order_path(current_order), class: "btn btn-primary btn-lg btn-block" %>
   <% else %>
-  <button type="button" class="btn btn-primary btn-lg btn-block"><%= t "basket.validate" %></button>
+    <button type="button" class="btn btn-primary btn-lg btn-block" disabled><%= t "basket.validate" %></button>
   <% end %>
   <a class="continue-button" href=""><%= t "basket.continue" %></a>
   <div id="items-count" data-count="<%= current_order_items_count %>"></div>

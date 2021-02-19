@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options
-    { locale: I18n.locale == I18n.default_locale ? nil : I18n.locale }
+    { locale: I18n.locale == I18n.default_locale ? nil : I18n.locale, host: ENV["DOMAIN"] || "localhost:3000" }
   end
 
   def configure_permitted_parameters
@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
   end
 
   def storable_location?
-    request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
+    request.get? && is_navigational_format? && !devise_controller? && !request.xhr? && controller_name != "delivery_infos"
   end
 
   def store_user_location!

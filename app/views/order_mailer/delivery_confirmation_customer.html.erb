@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@500;700&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    <%= render "shared/mailer/header" %>
+    <p class="content">
+      Salut compagnon <%= @user.first_name %>,
+
+      Nous te remercions pour ta commande n° <%= @order.id %>. Tu trouveras ci-dessous un récapitulatif de celle-ci.
+
+      Ta commande chez <%= @order.farm.name %>.
+
+      Date de la commande: <%= Date.current.strftime('%d/%m/%y') %>
+      Mode de livraison: <%= @order.shipping_choice_name %>
+      Date de livraison estimée: <%= I18n.l((Date.current + @order.farm.delivery_delay.days), format: "%d/%m/%y", locale: :'fr') %>
+
+      Adresse de livraison :
+      <%= @user.first_name %> <%= @user.last_name %>
+      <%= @user.address_line_1 %>
+      <%= @user.zip_code %> <%= @user.city %>
+
+      Contenu de la commande:
+      <% @order.order_line_items.each do |item| %>
+        <%= item.quantity %> - <%= item.product.name %> - <%= item.product.price %><%= item.product.price_currency %> - <%= item.total_price %><%= item.total_price_currency %>
+      <% end %>
+
+      TOTAL <%= @order.price %><%= @order.price_currency %>
+
+      Nous te remercions d’avoir passé commande sur Robin des Fermes.
+
+      Vaillantes salutations,
+
+      La bande de Robin des Fermes
+
+    </p>
+
+    <%= render "shared/mailer/footer" %>
+  </body>
+</html>

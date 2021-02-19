@@ -4,6 +4,11 @@ Rails.application.routes.draw do
 
   devise_for :admin_users, {class_name: 'User'}.merge(ActiveAdmin::Devise.config)
 
+  require "sidekiq/web"
+  authenticate :user, ->(user) { user.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   scope '(:locale)', locale: /fr/ do
     root to: 'pages#home'
     get 'faq', to: 'pages#faq'
@@ -21,6 +26,7 @@ Rails.application.routes.draw do
 
   namespace :users do
     resource :zip_code, only: [:update]
+    resource :delivery_infos, only: [:edit, :update]
     resource :admin, only: [] do
       get :search
     end
@@ -31,9 +37,9 @@ Rails.application.routes.draw do
   resources :orders, only: [:show] do
     member do
       get :review
-      get :confirmation
+      get :delivery
+      patch :update_delivery_methods
     end
-    resources :payments, only: [:new], controller: 'orders/payments'
   end
 
   namespace :basket do
@@ -46,6 +52,13 @@ Rails.application.routes.draw do
   end
 
   namespace :orders do
+    namespace :mails do
+      resource :confirm_shipped, :controller => 'confirm_shipped', only: [] do
+          post :set_as_shipped
+          get :successful
+          get :with_error
+      end
+    end
     namespace :redirect do
       resources :payments, only: [] do
         collection do

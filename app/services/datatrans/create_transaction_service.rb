@@ -15,24 +15,29 @@ module Datatrans
         headers:    headers,
         body:       request_body
       )
-
       update_order_with_transaction_id
     end
 
     private
 
     def update_order_with_transaction_id
-      order.update(transaction_id: response["transactionId"])
+      @order.update(transaction_id: response["transactionId"])
     end
 
     def request_body
       {
-        refno:    order.id,
-        currency: order.price_currency.downcase,
-        amount:   order.price_cents,
+        refno:    @order.id,
+        currency: @order.price_currency.downcase,
+        amount:   calculate_price,
         theme:    theme,
-        redirect: redirection_urls
+        redirect: @redirection_urls
       }.to_json
+    end
+
+    def calculate_price
+      @total_price = @order.price_cents
+      @total_price += @order.farm_orders.sum {|farm_order| farm_order.shipping_price_cents}
+      @total_price
     end
 
     def headers

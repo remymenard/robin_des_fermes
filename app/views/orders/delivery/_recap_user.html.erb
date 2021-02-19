@@ -1,0 +1,10 @@
+<div class="informations-frame size-876">
+  <div class="row p-3  h-100 align-items-center">
+    <h4 class="col m-0"><%= user.full_name %></h4>
+    <p class="col m-0"><%= user.address_line_1 %><br/>
+      <%= user.address_line_2 %></p>
+    <p class="col m-0"><%= user.email %><br/>
+      <%= user.number_phone %></p>
+    <p class="col m-0 text-right"><%= link_to t('orders.delivery.edit_personal_infos'), edit_users_delivery_infos_path, class: "edit-infos" %></p>
+  </div>
+</div>

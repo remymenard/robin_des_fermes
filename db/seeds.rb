@@ -12,13 +12,15 @@ require 'date'
 puts "Clean DB"
 FarmCategory.destroy_all # they belong to a category, so let's destroy them first
 OrderLineItem.destroy_all
+FarmOrder.destroy_all
 Product.destroy_all
 Category.destroy_all
 OpeningHour.destroy_all
+FarmOrder.destroy_all
+OrderLineItem.destroy_all
 Farm.destroy_all # they belong to a user, so let's destroy them first
 Order.destroy_all
 User.destroy_all
-
 
 puts "Create categories"
 pain = Category.create!(name: "Boulangerie")
@@ -81,10 +83,22 @@ divers.photo.attach(
   filename: 'divers.png'
 )
 
-user1 = User.new(
-  email: "admin@drakkr.com",
+user_henry = User.new(
+  email: "remy@drakkr.com",
   password: "password",
-  first_name: "henry",
+  first_name: "Henry",
+  last_name: "Boucher",
+  address_line_1: "6 boulevard adolphe",
+  city: "nantes",
+  zip_code: "1200",
+  title: "M",
+  admin: false,
+)
+
+user1 = User.new(
+  email: "maelie@drakkr.com",
+  password: "password",
+  first_name: "Mark",
   last_name: "Boucher",
   address_line_1: "6 boulevard adolphe",
   city: "nantes",
@@ -104,11 +118,11 @@ user1.photo.attach(
 
 puts "creation des fermes"
 
-henry = Farm.create!(name: "Famille Henry", user: user1, labels: ['Bio-Suisse'],
+henry = Farm.create!(name: "Famille Henry", user: user_henry, labels: ['Bio-Suisse'],
   address: 'Alte Uitikonerstrasse 1, 8952 Schlieren',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
-  regions: ['8008', '8001', '8005'], accepts_take_away: true,
-  opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true)
+  offices: ['Cortaillod'], accepts_take_away: true,
+  opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
 henry.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm1.png')),
   filename: 'farm.png'
@@ -129,14 +143,18 @@ henry.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
   filename: 'farm4.png'
 )
+henry.photo_portrait.attach(
+  io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
+  filename: 'farm4.png'
+)
 
 
 file2 = File.open(Rails.root.join('db/fixtures/farms/farm.png'))
 meleze = Farm.create!(name: "La ferme du Mélèze", user: user1, labels: ['Bio-Suisse'],
   address: 'Gerechtigkeitsgasse 10, 3011 Berne',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
-  regions: ['1200', '1240', '1215'], accepts_take_away: false,
-  opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true)
+  offices: ['Carouge GE Distribution', 'Cortaillod'], accepts_take_away: false,
+  opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
 meleze.photos.attach(io: file2, filename: 'nes.png', content_type: 'image/png')
 meleze.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm1.png')),
@@ -152,16 +170,18 @@ meleze.photos.attach(
 )
 meleze.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
-  filename: 'farm4.png'
-)
+  filename: 'farm4.png')
+meleze.photo_portrait.attach(
+  io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
+  filename: 'farm4.png')
 
 file3 = File.open(Rails.root.join('db/fixtures/farms/farm3.png'))
 
 jonas = Farm.create!(name: "La Ferme de Jonas", user: user1, labels: ['Bio-Suisse'],
   address: 'Bahnhofstrasse 67, 5000 Aarau ',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
-  regions: ['5000', '5004', '5001'], accepts_take_away: false,
-  opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true)
+  offices: ['Cheseaux-sur-Lausanne Distribution', 'Carouge GE Distribution'], accepts_take_away: false,
+  opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
 jonas.photos.attach(io: file3, filename: 'nes.png', content_type: 'image/png')
 jonas.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
@@ -179,14 +199,18 @@ jonas.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
   filename: 'farm4.png'
 )
+jonas.photo_portrait.attach(
+  io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
+  filename: 'farm4.png'
+)
 
 file4 = File.open(Rails.root.join('db/fixtures/farms/farm1.png'))
 
 cave = Farm.create!(name: "La Cave de l'Abbatiale", user: user1, labels: ['Bio-Suisse'],
   address: 'Rue de Carouge 22, 1205 Genève',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
-  regions: ['1200', '1209', '1205'], accepts_take_away: false,
-  opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true)
+  offices: ['Coppet Distribution'], accepts_take_away: false,
+  opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole."
 cave.photos.attach(io: file4, filename: 'nes.png', content_type: 'image/png')
 cave.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
@@ -204,13 +228,17 @@ cave.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
   filename: 'farm4.png'
 )
+cave.photo_portrait.attach(
+  io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
+  filename: 'farm4.png'
+)
 
 file5 = File.open(Rails.root.join('db/fixtures/farms/farm2.png'))
 gallien = Farm.create!(name: "Le Domaine du Gallien", user: user1, labels: ['Bio-Suisse'],
   address: 'Zollikerstrasse 788, 8008 Zurich',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
-  regions: ['8008', '8001', '8005'], accepts_take_away: false,
-  opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true)
+  offices: ['Champéry', 'Aigle Distribution'], accepts_take_away: false,
+  opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
 gallien.photos.attach(io: file5, filename: 'nes.png', content_type: 'image/png')
 gallien.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
@@ -225,6 +253,10 @@ gallien.photos.attach(
   filename: 'farm3.png'
 )
 gallien.photos.attach(
+  io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
+  filename: 'farm4.png'
+)
+gallien.photo_portrait.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
   filename: 'farm4.png'
 )
@@ -535,5 +567,16 @@ mardi = OpeningHour.create!(farm: cave, day: 1, opens: DateTime.new(2012, 8, 29,
 mercredi = OpeningHour.create!(farm: cave, day: 2, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
 jeudi = OpeningHour.create!(farm: cave, day: 3, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
 vendredi = OpeningHour.create!(farm: cave, day: 4, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
+
+first_order = Order.create(price_cents: 900, price_currency: "CHF", status: "waiting", buyer: user1)
+
+first_farm_order = FarmOrder.create!(order: first_order, farm: henry, price_cents: 900, express_shipping: true  )
+
+apple_order = OrderLineItem.create!(farm_order: first_farm_order, order: first_order, product: apple3, quantity: 1, total_price_cents: 300, total_price_currency: "CHF")
+chips_order = OrderLineItem.create!(farm_order: first_farm_order,order: first_order, product: chips, quantity: 1, total_price_cents: 300, total_price_currency: "CHF")
+egg_order = OrderLineItem.create!(farm_order: first_farm_order, order: first_order, product: egg, quantity: 1, total_price_cents: 300, total_price_currency: "CHF")
+
+
+
 
 #AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

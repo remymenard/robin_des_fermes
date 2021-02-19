@@ -37,8 +37,8 @@ fr:
       products_number: "produits"
       openning: '%{openning}'
       testimony_title: "Ils en parlent pour nous !"
-      testimony1: "Au bureau ou dans le métro, je peux commander mes produits en un clic et soutenir ma région. Grâce à Robin des Fermes, manger local n'a jamais été si simple."
-      testimony2: Enfin une plateforme e-commerce équitable pour tous les acteurs ! En plus d’avoir des valeurs humaines aux goût du jour, Robin des Fermes est une solution fiable et efficace"
+      testimony2: "Au bureau ou dans le métro, je peux commander mes produits en un clic et soutenir ma région. Grâce à Robin des Fermes, manger local n'a jamais été si simple."
+      testimony1: "Enfin une plateforme e-commerce équitable pour tous les acteurs ! En plus d’avoir des valeurs humaines aux goût du jour, Robin des Fermes est une solution fiable et efficace"
       testimony3: "Robin des fermes m’offre un choix de produits variés et locaux que je peux me faire livrer par la poste ou aller chercher directement à la ferme. Le tout au juste prix pour tous les acteurs concernés !"
       testimony_text3: "ENSEIGNANT"
       testimony_text2: "ENSEIGNANTE"
@@ -46,14 +46,6 @@ fr:
       registration: "Oyez, oyez, producteurs, rejoignez-nous !"
       registration_text: "Vendez vos produits en ligne, présentez votre exploitation et élargissez votre communauté"
       registration_btn: "JE M'INSCRIS"
-      payment_title: "Paiement 100% sécurisé"
-      local_title: "100% local"
-      help_title: "Besoin d'aide ?"
-      producers_title: "producteurs certifiés"
-      payement: "Vous achetez ici en sécurité"
-      local: "Des produits de producteurs qui vous entourent"
-      help: "Nous répondons à vos questions dans les 2h"
-      producers: "Les producteurs respectent la charte de Robin des fermes"
       second_zip_code_input_title: "En manque de victuailles ?"
       second_zip_code_input_description: "Indique ta bourgade et découvre tous les producteurs locaux."
       second_zip_code_input_button: "C'EST PARTI"
@@ -221,38 +213,92 @@ fr:
       anick_goumaz: "Anick Goumaz est une rédactrice indépendante. Ses mots sont capables de « convaincre un ours d’hiberner en été pour skier en hiver ». On a notamment eu la chance de le constater grâce à plusieurs textes qu’elle nous a écrit pour notre campagne de crowdfunding ainsi que sur ce site."
       jorat_coworking: "Le Jorat Coworking, c’est l’endroit où plusieurs « Robin » et « Robine » travaillent et se réunissent pour discuter des prochains challenges qui nous attendent. Le café et la vue y sont tout particulièrement appréciés."
       lausanne_region: "Lausanne Région, à travers son guichet entreprise, nous conseille et met en relation avec des entités régionales dans le but de faire évoluer notre projet."
-      sonnay_charpente: "Sonnay Charpente est une société qui réalise des travaux de charpentes, revêtement intérieur et extérieur, menuiseries et divers travaux spéciaux. Particulièrement sensible aux causes paysannes et de consommation local, Daniel Sonnay a souhaité soutenir le projet"
+      sonnay_charpente: "Sonnay Charpente est une société qui réalise des travaux de charpentes, revêtement intérieur et extérieur, menuiseries et divers travaux spéciaux.Particulièrement sensible aux causes paysannes et de consommation local, Daniel Sonnay a souhaité soutenir le projet"
     producer:
-      become: "Deviens un producteur  Robin des fermes "
+      become_producer: "Deviens un producteur Robin des fermes "
       contact: "Ne perds pas de temps et contacte-nous via ce formulaire "
-      button_contact: "CONTACTE-NOUS"
+      button_contact: CONTACTE-NOUS"
+  orders:
+    review:
+      header:
+        step1: "Panier"
+        step2: "Livraison"
+        step3: "Paiement"
+      basket: "Panier"
+      product: "produit"
+      recap: "Recapitulatif"
+      total: "TOTAL"
+      confirm: "FINALISER MON PANIER"
+    delivery:
+      edit_personal_infos: "Modifier mes informations"
+      delivery_infos: "Informations de livraison"
+      delivery_mode: "Mode de livraison"
+      local_delivery: "Distribution régionale"
+      national_delivery: "Expédition nationale"
+      delivery: "Expédition"
+      unavailable: "Indisponible pour votre panier"
+      takeaway: "Retrait à la ferme"
+      free: "Gratuit"
+      estimated_delivery_price: "Frais livraison estimés"
   farms:
+    info_window:
+      products_number: "produits"
+      products: "produits"
+      withdrawal: "en retrait uniquement"
     index:
+      reset: "Réinitialiser les filtres"
+      openning: '%{openning}'
       labels: "Labels : "
       categories: "Catégories : "
       number_sells: "Nombre de ventes : "
       date: "Adhérents RDF depuis : "
       adress: "Adresse : "
       open: "Ouvertures : "
+      products: "produits"
+      products_number: "produits"
+      withdrawal: "en retrait uniquement"
+      regional_delivery_name: "Distribution régionale"
+      regional_delivery_description: "Reçois tes produits à la maison, la livraison est assurée par le producteur ou par ton office de poste régional."
+      national_delivery_name: "Expédition nationale"
+      national_delivery_description: "Reçois tes produits à la maison, la livraison est assurée par la poste. Les produits frais ne sont pas disponibles avec cette option."
     show:
-      show_products: "VOIR LES PRODUITS"
+      preorder_date: "Dès le "
+      order_products: "Commander les produits"
+      delivery_products_mobile: "Livraison"
+      withdrawal_products_mobile: "retrait"
+      delivery_products: "Produits livrables"
+      withdrawal_products: "A retirer uniquement à la ferme"
+      not_delivery: "Certains produits (frais / réfrigérés) ne sont pas livrables pour ta localisation"
+      show_products: "Tous les produits"
+      conditioning: "%{conditioning}"
       more_description: "Lire la suite"
       more_delivery: "En savoir plus"
       delivery: "LIVRAISON"
+      expected_delivery: "Livraison prévue entre le"
+      delivery_title: "Livraison"
+      delivery_regional: "Distribution régionale"
+      delivery_national: "Distribution nationale"
+      withdrawal: "Retrait à la ferme"
+      delivery_regional_description: "Reçois tes produits à la maison, la livraison est assurée par le producteur ou par ton office de poste régional."
+      delivery_national_description: "Reçois tes produits à la maison, la livraison est assurée par la poste. Les produits frais ne sont pas disponible avec cette option."
+      withdrawal_description: "Retire ta commande auprès du producteur, tu seras averti lorsque ta commande sera prête."
+      delivery_options: "Les options suivantes sont possibles pour ta localisation."
       hours: "HORAIRES"
       hours_delivery: "Vous serez livré entre le"
       and_delivery: "et le"
       address: "ADRESSE"
       description: '%{description}'
+      description_title: "Une histoire de temps"
+      long_description: '%{long_description}'
       category: '%{name}'
       product: '%{name}'
-      take_away: "Retrait à la ferme"
-      free: "Gratuit"
-      far: "Zone éloignée"
-      self_service: 'Self-service'
-      location: "Emplacement"
+      no_withdrawal: "Aucun produit disponible."
+      not_accept_withdrawal: "Le producteur n’a pas activé le retrait à son exploitation"
+      add: "Ajouter au panier"
+      pre_order: "Précommander"
       date:
         day_names: [Dimanche, Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi]
+      location: "Où nous trouver ?"
   shared:
     navbar:
       log_in_href: "Me Connecter"
@@ -278,10 +324,19 @@ fr:
       producers: "Producteurs"
       producer: "Devenir producteur"
       charte: "Charte"
+    reassurance:
+      payment_title: "Paiement 100% sécurisé"
+      local_title: "100% local"
+      help_title: "Besoin d'aide ?"
+      producers_title: "producteurs certifiés"
+      payement: "Vous achetez ici en sécurité"
+      local: "Des produits de producteurs qui vous entourent"
+      help: "Nous répondons à vos questions dans les 2h"
+      producers: "Les producteurs respectent la charte de Robin des fermes"
   hello: "bonjour"
   zip_code:
     title: "Code postal"
-    description: "Nous utilisons votre code postal afin de vous proposer les producteurs proches de vous."
+    description: "Nous utilisons ton code postal afin de te proposer les producteurs proches de toi."
     login: "Se connecter"
     error: "Veuillez entrer un code postal suisse valide."
   payment:
@@ -304,7 +359,22 @@ fr:
       take_away: "Retrait à la ferme"
       free: "Gratuit"
       far: "Zone éloignée"
+  farm_orders:
+    statuses:
+      waiting: "En cours de traitement"
+      in_preparation: "En cours de préparation"
+      ready_for_withdrawal: "Prête à être retirée"
+      withdrawn: "Retirée"
+      paid_to_farmer: "Payée au fermier"
+      canceled: "Annulée"
+      shipped: "Expédiée"
+      received: "Reçue"
   devise:
+    passwords:
+      new:
+        enter: "Entrez votre email pour recevoir les instructions de modification du mot de passe."
+        mail: "Email"
+        confirmation: "Confirmer"
     sessions:
       new:
         title: "Connectez-vous pour accéder à votre compte"
@@ -328,6 +398,25 @@ fr:
         city: "Localité"
         connection: "S'INSCRIRE"
         already_account: "Vous avez déjà un compte ?"
+      edit:
+        first_name: "Prénom"
+        last_name: "Nom"
+        address: "Rue et Numéro"
+        zip_code: "Code postal"
+        city: "Localité"
+        current_password: "Ancien mot de passe"
+        new_password: "Nouveau mot de passe"
+        confirmation_password: "Conformer nouveau mot de pase"
+        logout: "Déconnexion"
+        password_title: "Mot de passe"
+        address_title: "Adresse de livraison"
+        password: "Modifier mon mot de passe"
+        delivery_adress: "Mon adresse de livraison"
+        contact_information: "Mes coordonnées"
+        title: "Mes informations personelles"
+    confirmations:
+      new:
+        resend: "Renvoyer"
   basket:
     title: "Votre panier"
     empty: "Votre panier est vide"
@@ -335,4 +424,7 @@ fr:
     total: "TOTAL"
     validate: "VALIDER MON PANIER"
     continue: "Continuer mes achats"
-
+  users:
+    delivery_infos:
+      edit:
+        connection: 'Modifier mes informations'

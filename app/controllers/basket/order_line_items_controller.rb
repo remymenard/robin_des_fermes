@@ -10,15 +10,17 @@ module Basket
 
       if @product && @order
 
+        @farm_order = FarmOrder.find_or_create_by(status: 'waiting', order: @order, farm: @product.farm)
         if @item_in_basket
           @item_in_basket.increment_quantity
           @item_in_basket.save
         else
-          @item_in_basket = OrderLineItem.create(product: @product, order: @order)
+          @item_in_basket = OrderLineItem.create(product: @product, order: @order, farm_order: @farm_order)
         end
 
         @order.compute_total_price
-        @order.save
+
+        @farm_order.compute_total_price
 
         authorize @item_in_basket
         render partial: 'shared/basket'
@@ -40,6 +42,9 @@ module Basket
         @item_in_basket.save
         @order.compute_total_price
 
+        @farm_order = @item_in_basket.farm_order
+        @farm_order.compute_total_price
+
         render partial: 'shared/basket'
       else
         head(:bad_request)
@@ -53,8 +58,15 @@ module Basket
       if @item_in_basket.order == @order
         authorize @item_in_basket
 
+        @farm_order = @item_in_basket.farm_order
         @item_in_basket.destroy
+
         @order.compute_total_price
+        @farm_order.compute_total_price
+
+        @farm_order.destroy if @farm_order.order_line_items.empty?
+
+
 
         render partial: 'shared/basket'
       end

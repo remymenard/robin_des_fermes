@@ -15,7 +15,15 @@ module Webhooks
         order = Order.find_by(transaction_id: params["transactionId"])
 
         if params["status"] == "settled"
-          order.update(status: DATATRANS_TRANSACTION_ORDER_STATUSES_MAPPING[params["status"]])
+          order.update(status: 'paid')
+          order.farm_orders.each do |farm_order|
+            if farm_order.contains_preorder_product?
+              farm_order.update(price: farm_order.total_price_with_shipping, status: 'preordered', waiting_for_preorder_at: Date.current, waiting_for_shipping_at: farm_order.compute_preorder_delivery_date)
+            else
+              farm_order.update(price: farm_order.total_price_with_shipping, status: 'waiting_shipping', waiting_for_shipping_at: Date.current)
+            end
+          end
+          SendOrderConfirmationMailsJob.perform_now(order)
         else
           # TODO LATER: handle non happy paths
         end

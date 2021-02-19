@@ -1,195 +1,196 @@
-.farms {
-  .cards {
-    margin-top: 23px;
-    margin-left: 26px;
-
-    a:link {
-      text-decoration:none;
-    }
-
-
-    .card-farm {
-      width: 570px;
-      border-top: 1px solid #bbbfca;
-      height: 256px;
-      padding-top: 25px;
-
-      .information {
-
-        p{
-          margin-bottom: 0px;
-        }
-      }
-
-      .category-photo {
-        margin-top: -8px;
-        padding-left: 5px;
-        img {
-          height: 24px;
-          width: 24px;
-        }
-      }
-
-      p {
-        font-size: 14px;
-        color: black
-      }
-
-      h6 {
-        font-size: 18px;
-        font-weight: bold;
-        margin-left: 5px;
-      }
-
-      .photo-farm {
-        margin-right: 20px;
-      }
-
-      .user {
-        margin-left: 5px;
-      }
-    }
-
-    .label {
-      img {
-        height: 18px;
-        width: 22px;
-      }
-    }
-  }
+* {
+  text-decoration: none !important;
 }
-
 .best-farms {
+  margin-bottom: 50px;
+  margin-right: 10%;
+
   .cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 26px;
+  }
 
+  p {
+    padding-left: 0px !important;
+  }
+
+  .cards-index {
     .card-product {
-      height: 192px;
-      width: 568px;
-      background-color: white;
-      border-radius: 10px;
-      text-align: left;
-      border: 1px solid #FAF7F3;
-      box-shadow: 0 1px 20px rgba(0,0,0,0.07);
+      margin-top: 30px;
+    }
+  }
+  .card-product {
+    position: relative;
+    height: 192px;
+    width: 568px;
+    background-color: white;
+    border-radius: 10px;
+    text-align: left;
+    border: 1px solid #FAF7F3;
+    box-shadow: 0 1px 20px rgba(0,0,0,0.07);
 
-      .icards-nformations {
-        position: relative;
+    .fresh-products {
+      img {
+        width: 12px;
+        height: 12px;
+        margin-top: 5px;
+        margin-right: 5px;
       }
 
-      .photo-farm {
+      p {
+        color: #4488EE;
+        margin-bottom: 0px !important;
+        font-size: 14px !important;
+      }
+
+      span {
+        color: #4488EE;
+        margin-bottom: 0px !important;
+        font-size: 14px !important;
+        margin-right: 0px;
+        margin-left: 0px;
+      }
+
+      margin-left: 10px;
+    }
+
+    .icards-nformations {
+      position: relative;
+    }
+
+    .photo-farm {
+      border-radius: 10px 0 0 10px;
+      position: relative;
+
+      img {
         border-radius: 10px 0 0 10px;
-        position: relative;
-
-        img {
-          border-radius: 10px 0 0 10px;
-        }
-
-        .labels {
-          margin-bottom: -24px;
-          margin-left: 10px;
-          z-index: 1;
-          position: absolute;
-        }
-        .label {
-          display: inline-block;
-          margin-top: 10px;
-          background-color: #339E72;
-          height: 19px;
-          border-radius: 2px;
-          padding-left: 5px;
-          padding-right: 5px;
-
-          p {
-            color: white !important;
-            font-weight: 400 !important;
-            font-size: 11px !important;
-            line-height: 21px !important;
-          }
-        }
       }
 
-
-
-      .marker {
-        height: 18px;
-        width: 16px;
+      .labels {
+        margin-bottom: -24px;
+        margin-left: 10px;
+        z-index: 1;
+        position: absolute;
       }
-
-      .address {
-        margin-top: 19px;
-        margin-left: 20px;
-
-        img {
-          margin-right: 10px;
-        }
+      .label {
+        display: inline-block;
+        margin-top: 10px;
+        background-color: #339E72;
+        height: 19px;
+        border-radius: 2px;
+        padding-left: 5px;
+        padding-right: 5px;
 
         p {
-          font-size: 11px;
-          color: #A633B0;
-          font-weight: 600;
-          letter-spacing: 2px;
-          line-height: 21px;
-          margin-bottom: 4px;
+          color: white !important;
+          font-weight: 400 !important;
+          font-size: 11px !important;
+          line-height: 21px !important;
         }
       }
-      .name {
-        flex-wrap: wrap;
-        h6 {
-          font-family: 'BioRhyme', serif;
-          font-size: 24px;
-          color: #25201D;
-          margin-right: 7px;
-          margin-left: 20px;
-          margin-bottom: 4px;
-        }
+    }
+
+
+
+    .marker {
+      height: 18px;
+      width: 16px;
+    }
+
+    .address {
+      margin-top: 19px;
+      margin-left: 10px;
+
+      img {
+        margin-right: 10px;
+      }
+
+      p {
+        font-size: 11px;
+        color: #A633B0;
+        font-weight: 600;
+        letter-spacing: 2px;
+        line-height: 21px;
+        margin-bottom: 4px;
+      }
+    }
+
+    .address-far-farm {
+      margin-top: 19px;
+      margin-left: 10px;
+
+      img {
+        margin-right: 10px;
+      }
+
+      p {
+        font-size: 11px;
+        color: #FD7830;
+        font-weight: 600;
+        letter-spacing: 2px;
+        line-height: 21px;
+        margin-bottom: 4px;
+      }
+    }
+    .name {
+      flex-wrap: wrap;
+      h6 {
+        font-family: 'BioRhyme', serif;
+        font-size: 24px;
+        color: #25201D;
+        margin-right: 7px;
+        margin-left: 10px;
+        margin-bottom: 4px;
+      }
+
+      img {
+        margin-top: 5px;
+      }
+    }
+
+    .openning {
+      line-height: 21px;
+      color: #25201D;
+      margin-left: 10px;
+      margin-bottom: 4px;
+      font-size: 14px !important;
+    }
+
+    .products-number {
+      margin-left: 10px;
+      color: #25201D;
+      opacity: 0.6;
+      margin-bottom: 4px;
+      font-size: 14px !important;
+    }
+
+    .all-photos {
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+      padding-left: 20px;
+
+      .category-photo {
+        margin-bottom: -25px;
+        z-index: 1;
 
         img {
-          margin-top: 5px;
+          width: 50px;
+          height: 50px;
+          margin-right: -15px;
         }
       }
+    }
 
-      .openning {
-        line-height: 21px;
-        color: #25201D;
-        margin-left: 20px;
-        margin-bottom: 4px;
-      }
+    .categories {
+      background-color: #F0ECE8;
+      opacity: 0.4;
+      height: 40px;
+      width: 376px;
+      position: absolute;
+      bottom: 0px;
+      border-radius: 0 0px 10px 0;
 
-      .products-number {
-        margin-left: 20px;
-        color: #25201D;
-        opacity: 0.6;
-        margin-bottom: 4px;
-      }
-
-      .all-photos {
-        flex-direction: row-reverse;
-        justify-content: flex-end;
-        padding-left: 20px;
-
-        .category-photo {
-          margin-bottom: -17px;
-          z-index: 1;
-
-          img {
-            width: 50px;
-            height: 50px;
-            margin-right: -15px;
-          }
-        }
-      }
-
-      .categories {
-        background-color: #F0ECE8;
-        opacity: 0.4;
-        height: 48px;
-        width: 376px;
-        bottom: 0px;
-        border-radius: 0 0px 10px 0;
-
-      }
     }
   }
 
@@ -205,85 +206,79 @@
     }
   }
   @media screen and (max-width: 650px) {
-    .cards {
-      margin-left: 0px !important;
+    .card-product {
+      height: 438px;
+      width: 320px;
+      flex-direction: column;
 
-      .card-product {
-        height: 292px;
-        width: 350px;
+      img {
+        width: 320px;
+        height: 252px;
+        border-radius: 10px 10px 0px 0px !important;
+      }
+
+      .marker {
+        height: 9px;
+        width: 8px;
+      }
+
+      .address {
+        margin-left: 10px !important;
 
         img {
-          width: 180px;
-          height: 180px;
+          margin-right: 10px;
         }
 
-        .photo-farm {
-          border-radius: 10px 0 0 10px;
-        }
-
-        .marker {
-          height: 9px;
-          width: 8px;
-        }
-
-        .address {
-
-          img {
-            margin-right: 10px;
-          }
-
-          p {
-            font-weight: 600;
-            letter-spacing: 0px;
-            line-height: 21px;
-            max-width: 100px;
-            margin-bottom: 15px;
-          }
-        }
-        .name {
-          h6 {
-            font-size: 18px;
-            margin-right: 0px;
-            margin-bottom: 5px;
-          }
-
-          img {
-            margin-right: 3px;
-          }
-        }
-
-        .products-number {
-          margin-top: 0px;
-          margin-left: -150px;
-        }
-
-        .all-photos {
-          flex-direction: row-reverse;
-          justify-content: flex-end;
-          padding-left: 20px;
-          margin-left: -170px;
-
-          .category-photo {
-            margin-bottom: -17px;
-            z-index: 1;
-
-            img {
-              width: 50px;
-              height: 50px;
-              margin-right: -15px;
-            }
-
-          }
-        }
-        .categories {
-          width: 350px;
-          position: absolute;
-          bottom: 0px;
-          left: -180px !important;
-          border-radius: 0 0px 10px 0;
-
+        p {
+          font-weight: 600;
+          letter-spacing: 0px;
+          line-height: 21px;
         }
       }
+
+      .address-far-farm {
+        margin-left: 0px;
+
+        img {
+          margin-right: 10px;
+        }
+
+        p {
+          letter-spacing: 0px;
+        }
+      }
+
+      .name {
+        h6 {
+          font-size: 18px;
+          margin-right: 0px;
+          margin-bottom: 5px;
+          margin-left: 10px !important;
+        }
+
+        img {
+          margin-right: 3px;
+        }
+      }
+
+      .openning {
+        margin-left: 10px !important;
+      }
+
+      .products-number {
+        margin-top: 0px;
+        margin-left: 10px !important;
+      }
+
+      .all-photos {
+        padding-left: 10px;
+      }
+
+      .categories {
+        width: 320px;
+        border-radius: 0 0px 10px 10px;
+      }
     }
+
   }
 }
