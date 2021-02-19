@@ -65,10 +65,6 @@ class FarmOrder < ApplicationRecord
     end
   end
 
-  def with_preordered_products?
-    preordered_products_max_shipping_starting_at.present?
-  end
-  
   def shipping_choice_name
     if takeaway_at_farm
       'Retrait à la ferme'
@@ -78,7 +74,7 @@ class FarmOrder < ApplicationRecord
       'Expédition nationale'
     end
   end
-  
+
   def update_delivery_choice(user_choice)
     case user_choice
     when 'takeaway'
