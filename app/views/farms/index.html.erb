@@ -152,33 +152,33 @@
         <div class="d-flex h-100 w-100 flex-column justify-content-center ml-4">
           <div class="row align-items-center">
             <div class="col-7 p-0 m-0">
-              <%= image_tag "icons/marker-orange.png", class: "marker" %>
-              <span class="shipping-name">Distribution régionale</span>
+              <%= image_tag "icons/marker-purple.png", class: "marker" %>
+              <span class="shipping-name"><%= t('.regional_delivery_name') %></span>
             </div>
             <div class="col-5 m-0 p-0">
-              <span class="price">15</span>
+              <span class="price"><%= FarmOrder::ShippingPrice.express.price.to_i %></span>
               <span class="currency">CHF</span>
               <div class="question-mark">?</div>
               <div class="popup-question-mark">
                 <%= image_tag "icons/bubble.png", class: "bubble"%>
-                <p class="shipping-description">Reçois tes produits à la maison, la livraison est assurée par le producteur ou par ton office de poste régional.</p>
+                <p class="shipping-description"><%= t('.regional_delivery_description') %></p>
               </div>
 
           </div>
           </div>
           <div class="row align-items-center">
           <div class="col-7 p-0 m-0">
-            <%= image_tag "icons/marker-purple.png", class: "marker" %>
-            <span class="shipping-name">Expédition nationale</span>
+            <%= image_tag "icons/marker-orange.png", class: "marker" %>
+            <span class="shipping-name"><%= t('.national_delivery_name') %></span>
 
           </div>
           <div class="col-5 m-0 p-0">
-            <span class="price">15</span>
+            <span class="price"><%= FarmOrder::ShippingPrice.standard.price.to_i %></span>
             <span class="currency">CHF</span>
             <div class="question-mark">?</div>
             <div class="popup-question-mark">
               <%= image_tag "icons/bubble.png", class: "bubble"%>
-              <p class="shipping-description">Reçois tes produits à la maison, la livraison est assurée par la poste. Les produits frais ne sont pas disponibles avec cette option.</p>
+              <p class="shipping-description"><%= t('.national_delivery_description') %></p>
             </div>
           </div>
       </div>

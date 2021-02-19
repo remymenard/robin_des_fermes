@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_18_092351) do
+ActiveRecord::Schema.define(version: 2021_02_18_154956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,8 +90,10 @@ ActiveRecord::Schema.define(version: 2021_02_18_092351) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "shipping_price_cents", default: 0, null: false
     t.string "shipping_price_currency", default: "CHF", null: false
-    t.string "status", default: "En préparation"
+    t.string "status", default: "waiting"
     t.text "comment"
+    t.datetime "waiting_for_preorder_at"
+    t.string "confirm_shipped_token"
     t.index ["farm_id"], name: "index_farm_orders_on_farm_id"
     t.index ["order_id"], name: "index_farm_orders_on_order_id"
   end

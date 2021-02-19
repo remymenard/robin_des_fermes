@@ -1,7 +1,10 @@
+* {
+  text-decoration: none !important;
+}
 .best-farms {
   margin-bottom: 50px;
   margin-right: 10%;
-  
+
   .cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -17,7 +20,6 @@
       margin-top: 30px;
     }
   }
-
   .card-product {
     position: relative;
     height: 192px;

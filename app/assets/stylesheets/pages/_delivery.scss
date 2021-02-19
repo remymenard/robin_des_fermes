@@ -105,7 +105,7 @@
     box-sizing: border-box;
     border-radius: 10px;
     background: white;
-
+    cursor: pointer;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -125,6 +125,7 @@
       box-sizing: border-box;
       border-radius: 10px;
       background: #f8f6f4;
+      cursor: default;
 
       .title {
         color: black;
@@ -147,6 +148,7 @@
       border: 2px solid #339E72;
       box-sizing: border-box;
       border-radius: 10px;
+      cursor: default;
       background: white;
       .title {
         color: #339E72;

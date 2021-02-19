@@ -1,6 +1,5 @@
 Rails.application.configure do
-  # Uncomment this line when you want to use ngrok in development
-  # config.hosts.clear
+  config.hosts << /[a-z0-9]+\.ngrok\.io/
 
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -34,7 +33,7 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :cloudinary
 
-  config.action_mailer.default_url_options = { host: "localhost:3000" }
+  # config.action_mailer.default_url_options = { host: "localhost:3000/" }
   config.action_mailer.delivery_method = :letter_opener
 
   # Don't care if the mailer can't send.
@@ -59,6 +58,7 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
 

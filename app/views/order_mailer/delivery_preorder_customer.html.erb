@@ -9,16 +9,17 @@
   <body>
     <%= render "shared/mailer/header" %>
     <p class="content">
-      Salut <%= @owner.first_name %>,
+      Salut compagnon <%= @user.first_name %>,
 
-      Félicitations pour la commande n°<%= @order.id %>, cette dernière devra être livrée
-      <%= I18n.l((Date.current + @order.farm.delivery_delay.days), format: "%d/%m/%y", locale: :'fr') %> par <%= @order.shipping_choice_name %>.
+      Nous te remercions pour ta commande n° <%= @order.id %>. Tu trouveras ci-dessous un récapitulatif de celle-ci.
 
-      Date de la commande: {dateCommande}
-      Mode de livraison: {modeLivraison}
-      Date de livraison estimée:: {dateLivraison}
+      Ta commande chez <%= @order.farm.name %>.
 
-      Destinataire:
+      Date de la commande: <%= Date.current.strftime('%d/%m/%y') %>
+      Mode de livraison: <%= @order.shipping_choice_name %>
+      Date de livraison estimée: <%= I18n.l((@order.waiting_for_shipping_at), format: "%d/%m/%y", locale: :'fr') %>
+
+      Adresse de livraison :
       <%= @user.first_name %> <%= @user.last_name %>
       <%= @user.address_line_1 %>
       <%= @user.zip_code %> <%= @user.city %>
@@ -30,11 +31,7 @@
 
       TOTAL <%= @order.price %><%= @order.price_currency %>
 
-      Merci de cliquer sur le bouton ci-dessous quand la commande a été envoyée.
-
-      {Lien}
-
-      Encore bravo pour cette commande!
+      Nous te remercions d’avoir passé commande sur Robin des Fermes.
 
       Vaillantes salutations,
 
