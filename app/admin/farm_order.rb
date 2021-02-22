@@ -20,6 +20,7 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
     end
 
     column 'Date de création de la commande', :created_at
+
     column 'Status', :status
 
     column 'Précommande' do |farm_order|

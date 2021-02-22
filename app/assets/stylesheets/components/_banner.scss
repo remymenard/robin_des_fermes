@@ -2,7 +2,7 @@
   background-image: image-url('home/Background.png');
   background-size: cover;
   background-position: center;
-  min-height: 125vh;
+  min-height: 100vh;
   text-align: center;
 
   h2 {
@@ -79,10 +79,6 @@
       padding-top: 200px;
       font-size: 32px;
       line-height: 36px;
-    }
-
-    .search {
-      display: none;
     }
   }
 }
