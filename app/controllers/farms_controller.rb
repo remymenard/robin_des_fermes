@@ -90,7 +90,7 @@ class FarmsController < ApplicationController
       @products_available = @farm.products.available
     else
       @products_available = @farm.products.available.not_fresh
-      @products_available_fresh = @farm.products.available.fresh
+      @products_available_all = @farm.products.available
     end
 
     @markers = @farm_show.geocoded.map do |farm|

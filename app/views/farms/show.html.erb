@@ -159,7 +159,7 @@
                 <% @products_available.each do |product| %>
 
                   <div class="card-product">
-                  <div id="product-data" data-image-url="<%= cl_image_path(product.photo.key) %>" data-name="<%= product.name %>" data-price="<%= product.price %>" data-currency="<%= product.price_currency %>" data-unit="<%= product.unit %>" data-ingredients="<%= product.ingredients %>" data-description="<%= product.description %>" ></div>
+                    <div id="product-data" data-image-url="<%= cl_image_path(product.photo.key) %>" data-name="<%= product.name %>" data-price="<%= product.price %>" data-currency="<%= product.price_currency %>" data-unit="<%= product.unit %>" data-ingredients="<%= product.ingredients %>" data-description="<%= product.description %>" ></div>
                     <div class="photo-farm">
 
                      <div class="labels d-flex">
@@ -217,13 +217,11 @@
           </div>
           <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
             <div class="d-flex all-card-product">
-              <% if @products_available_fresh.none?%>
+              <% if @products_available.none?%>
                 <h6><%= t('.no_withdrawal') %></h6>
               <% else %>
-                <div class="d-flex all-card-product">
-                  <% @products_available_fresh.each.each do |product| %>
+                  <% @products_available_all.each do |product| %>
 
-                  <%= link_to product_path(product) do  %>
                     <div class="card-product">
                       <div id="product-data" data-image-url="<%= cl_image_path(product.photo.key) %>" data-name="<%= product.name %>" data-price="<%= product.price %>" data-currency="<%= product.price_currency %>" data-unit="<%= product.unit %>" data-ingredients="<%= product.ingredients %>" data-description="<%= product.description %>" ></div>
 
@@ -244,8 +242,9 @@
                           <%end%>
                         </div>
 
-                        <%= cl_image_tag product.photo.key, height: 64, width: 64, crop: :fill %>
-
+                        <%= link_to product_path(product) do  %>
+                          <%= cl_image_tag product.photo.key, height: 64, width: 64, crop: :fill %>
+                        <% end %>
                       </div>
 
                       <div class="informations d-flex">
@@ -274,83 +273,15 @@
                       <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" >
                         <%= button_label %>
                       </button>
-
+                    </div>
                   <% end %>
                 <% end %>
-              <% end %>
+              </div>
             </div>
           </div>
-          <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-            <div class="d-flex all-card-product">
-              <% if @farm.regions.include?(@zip_code) || @products_available_fresh == []%>
-                <h6><%= t('.no_withdrawal') %></h6>
-              <% else %>
-                <div class="d-flex all-card-product">
-                  <% @products_available_fresh.each.each do |product| %>
-                    <%= link_to product_path(product) do  %>
+        <% end %>
 
-                      <div class="card-product">
-                        <div id="product-data" data-image-url="<%= cl_image_path(product.photo.key) %>" data-name="<%= product.name %>" data-price="<%= product.price %>" data-currency="<%= product.price_currency %>" data-unit="<%= product.unit %>" data-ingredients="<%= product.ingredients %>" data-description="<%= product.description %>" ></div>
-
-                        <div class="photo-farm">
-
-
-                          <div class="labels d-flex">
-                            <% if product.available_for_preorder? %>
-                              <div class='preorder'>
-                                <p> <%= t('.preorder_date') %> <%= product.preorder_shipping_starting_at.strftime("%d.%m.%Y") %></p>
-                              </div>
-                            <% end %>
-
-                            <% product.label.each do |label| %>
-                              <div class='label'>
-                                <p> <%= label.upcase  %></p>
-                              </div>
-                            <%end%>
-                          </div>
-
-                          <%= cl_image_tag product.photo.key, height: 64, width: 64, crop: :fill %>
-
-                        </div>
-
-                        <div class="informations d-flex">
-
-                          <div class = "name">
-                            <h6><%= t('.product', name: product.name) %></h6>
-                            <p><%= t('.conditioning', conditioning: product.conditioning) %></p>
-                          </div>
-
-                          <div class="price">
-
-                            <div>
-                              <div class = "unit-price d-flex">
-                                <h4><%= product.price.to_f %></h4><p>CHF </p>
-                              </div>
-
-                              <div class = "kg-price">
-                                <p>(<%= product.price_per_unit_cents.to_f%> CHF/<%= product.unit %>)</p>
-                              </div>
-
-                            </div>
-
-                          </div>
-                        </div>
-                        <% if product.available_for_preorder?  %>
-                          <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" ><%= t('.pre_order') %></button>
-                        <% else %>
-                          <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" ><%= t('.add') %></button>
-                        <% end %>
-                      </div>
-
-                    <% end %>
-                  <% end %>
-                </div>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-
+      </div>
     </div>
 
     <div class="farm-delivery" id="farm-delivery">
@@ -365,7 +296,7 @@
             <h6><%= t('.delivery_regional') %></h6>
 
             <div class="d-flex price justify-content-center">
-              <h6>6</h6>
+              <h6>2.9</h6>
               <span>CHF</span>
             </div>
 
@@ -374,7 +305,7 @@
             <h6><%= t('.delivery_national') %></h6>
 
             <div class="d-flex justify-content-center price">
-              <h6>15</h6>
+              <h6>9.9</h6>
               <span>CHF</span>
             </div>
 
