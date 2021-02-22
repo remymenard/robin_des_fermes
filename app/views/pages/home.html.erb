@@ -86,7 +86,7 @@
         </div>
       </div>
 
-      <%= link_to t(".know_more"), about_path, class: "btn"%>
+      <%= link_to t(".know_more"), root_path, class: "btn"%>
     </div>
 
   </div>
@@ -135,17 +135,11 @@
 
                 <div class="all-photos d-flex">
                   <% farm.categories.each_with_index do |category, index| %>
-                    <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
+                    <div class='category-photo' data-toggle="tooltip" data-placement="top" title="<%= category.name  %>"><%= cl_image_tag category.photo.key %></div>
                   <% end %>
                 </div>
 
-              <div class="all-photos d-flex">
-                <% farm.categories.each_with_index do |category, index| %>
-                  <div class='category-photo' data-toggle="tooltip" data-placement="top" title="<%= category.name  %>"><%= cl_image_tag category.photo.key %></div>
-                <% end %>
-
                 <div class="categories"></div>
-                
               </div>
 
             </div>
