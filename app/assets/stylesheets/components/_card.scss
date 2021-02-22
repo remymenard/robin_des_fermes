@@ -4,7 +4,6 @@
 
 .best-farms {
   margin-bottom: 50px;
-  margin-right: 10%;
 
   .cards {
     display: grid;
@@ -207,6 +206,12 @@
     }
   }
   @media screen and (max-width: 650px) {
+
+    .best-farms {
+      margin-right: 0px !important;
+      width: 100%;
+    }
+
     .card-product {
       height: 438px;
       width: 320px;
