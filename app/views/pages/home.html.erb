@@ -131,7 +131,13 @@
 
                 <p class="openning"><%= t('.openning', openning: farm.opening_time) %></p>
 
-                <p class="products-number"><%= farm.products.count  %> <%= t('.products_number') %> </p>
+                <p class="products-number"><%= farm.products.count  %>
+                  <% if farm.products.count == 1 %>
+                    <%= t('.one_product') %>
+                  <% else %>
+                    <%= t('.products_number') %>
+                  <% end %>
+                </p>
 
                 <div class="all-photos d-flex">
                   <% farm.categories.each_with_index do |category, index| %>
