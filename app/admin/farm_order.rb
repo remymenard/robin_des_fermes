@@ -21,7 +21,9 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
 
     column 'Date de création de la commande', :created_at
 
-    column 'Status', :status
+    column 'Status', :status do |farm_order|
+      t("farm_orders.statuses.#{farm_order.status}")
+    end
 
     column 'Précommande' do |farm_order|
       farm_order.preordered_products_max_shipping_starting_at
@@ -44,7 +46,7 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
         [t("farm_orders.statuses.#{option}"), option]
       end.to_h
 
-      farm_order_form.input :status, label: false, collection: options_with_display
+      farm_order_form.input :status, as: :select, label: false, collection: options_with_display
     end
 
     farm_order_form.actions do
