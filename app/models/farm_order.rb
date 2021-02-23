@@ -17,7 +17,7 @@ class FarmOrder < ApplicationRecord
     greater_than_or_equal_to: 0,
   }
 
-  validates :status, inclusion: { in: ["waiting", "preordered", "waiting_shipping", "shipped", "issue"] }
+  #validates :status, inclusion: { in: ["waiting", "preordered", "waiting_shipping", "shipped", "issue"] }
 
   before_create :set_confirm_shipped_token
 

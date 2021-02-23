@@ -95,6 +95,11 @@ user_henry = User.new(
   admin: false,
 )
 
+user_henry.photo.attach(
+  io: File.open(Rails.root.join('db/fixtures/users/user1.png')),
+  filename: 'seed-henry.png'
+)
+
 user1 = User.new(
   email: "maelie@drakkr.com",
   password: "password",
