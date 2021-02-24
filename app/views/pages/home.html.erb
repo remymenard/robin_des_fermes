@@ -53,7 +53,7 @@
           <h2><%= t '.second_zip_code_input_title' %></h2>
           <p><%= t '.second_zip_code_input_description' %></p>
           <%= form_tag farms_path, method: :get, class: 'form-inline search' do %>
-            <%= text_field_tag :zip, get_zip_code_number, readonly: true, class: 'form-control zip-search zip_code_input', placeholder: t('search_placeholder') %>
+            <%= text_field_tag :zip, get_zip_code_number, readonly: true, class: 'form-control zip-search zip_code_input', placeholder: t('pages.home.search_placeholder') %>
             <%= submit_tag t(".second_zip_code_input_button"), class: "btn zip-button", name: nil %>
           <% end %>
         </div>
