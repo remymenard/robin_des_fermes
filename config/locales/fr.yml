@@ -364,6 +364,7 @@ fr:
   farm_orders:
     statuses:
       waiting: "En cours de traitement"
+      preordered: "Précommandé"
       in_preparation: "En cours de préparation"
       ready_for_withdrawal: "Prête à être retirée"
       withdrawn: "Retirée"
