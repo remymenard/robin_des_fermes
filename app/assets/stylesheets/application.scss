@@ -17,6 +17,13 @@
 @import "components/index";
 @import "pages/index";
 
+// navbar sidebar
+$sidebarbreakpoint: 768px;
+@import "css3sidebar/src/sass/base.scss";
+@import "css3sidebar/src/sass/base.show-desktop.scss";
+@import "css3sidebar/src/sass/base.popin.scss";
+
+
 
 body, h6, p {
   font-family: 'Mulish', sans-serif;

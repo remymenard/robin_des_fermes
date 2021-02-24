@@ -2926,6 +2926,13 @@ css-what@^3.2.1:
   resolved "https://registry.yarnpkg.com/css-what/-/css-what-3.4.2.tgz"
   integrity sha512-ACUm3L0/jiZTqfzRM3Hi9Q8eZqd6IK37mMWPLz9PJxkLWllYeRf+EHUSHYEtFop2Eqytaq1FizFVh7XfBnXCDQ==
 
+css3sidebar@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/css3sidebar/-/css3sidebar-2.0.1.tgz#0d9f1618613d8f112a1637b437b45c1c76045a4f"
+  integrity sha1-DZ8WGGE9jxEqFje0N7RcHHYEWk8=
+  dependencies:
+    jquery ">= 1.5.1"
+
 csscolorparser@~1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/csscolorparser/-/csscolorparser-1.0.3.tgz"
@@ -4914,7 +4921,7 @@ jquery-ujs@^1.2.2:
   dependencies:
     jquery ">=1.8.0"
 
-"jquery@>= 1.7.2", jquery@>=1.7.0, jquery@>=1.7.2, jquery@>=1.8.0, jquery@>=1.8.3, jquery@^3.4.1, jquery@^3.5.1:
+"jquery@>= 1.5.1", "jquery@>= 1.7.2", jquery@>=1.7.0, jquery@>=1.7.2, jquery@>=1.8.0, jquery@>=1.8.3, jquery@^3.4.1, jquery@^3.5.1:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.5.1.tgz"
   integrity sha512-XwIBPqcMn57FxfT+Go5pzySnm4KWkT1Tv7gjrpT1srtf8Weynl6R273VJ5GjkRb51IzMp5nbaPjJXMWeju2MKg==
