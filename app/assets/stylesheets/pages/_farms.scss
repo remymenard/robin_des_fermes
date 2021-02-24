@@ -112,18 +112,21 @@
       &:hover + div {
         display: block;
       }
+      &:active + div {
+        display: block;
+      }
     }
     .bubble {
       position: absolute;
       top: -16px;
-      left: 51px;
+      left: 65px;
       width: 300px;
       height: 78px;
       @include media-breakpoint-down(sm) {
         z-index: 1000;
         position: absolute;
         top: -26px;
-        left: -176px;
+        left: -163px;
         width: 236px;
         height: 78px;
         transform: rotate(180deg);
@@ -132,7 +135,7 @@
     .shipping-description {
       position: absolute;
       top: -0.5px;
-      left: 74px;
+      left: 88px;
       width: 251px;
       font-family: Mulish;
       font-size: 9px;
@@ -143,7 +146,7 @@
       @include media-breakpoint-down(sm) {
         position: absolute;
         top: -4.5px;
-        left: -159px;
+        left: -146px;
         width: 192px;
         font-family: Mulish;
         font-size: 9px;
@@ -157,6 +160,9 @@
     .popup-question-mark {
       display: none;
       &:hover {
+        display: block;
+      }
+      &:active {
         display: block;
       }
     }

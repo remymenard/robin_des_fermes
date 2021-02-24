@@ -46,7 +46,7 @@ class FarmsController < ApplicationController
         lat: farm.latitude,
         lng: farm.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { farm: farm }),
-        image_url: helpers.asset_url('icons/marker-orange.png')
+        image_url: helpers.asset_url('icons/marker-purple.png')
       }
     end
 
@@ -55,7 +55,7 @@ class FarmsController < ApplicationController
         lat: farm.latitude,
         lng: farm.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { farm: farm }),
-        image_url: helpers.asset_url('icons/marker-purple.png')
+        image_url: helpers.asset_url('icons/marker-orange.png')
       }
     end
   end
@@ -81,9 +81,9 @@ class FarmsController < ApplicationController
     @near_farm = @farm.regions.include?(@zip_code)
 
     marker_icon_path = if @near_farm
-      'icons/marker-orange.png'
-    else
       'icons/marker-purple.png'
+    else
+      'icons/marker-orange.png'
     end
 
     if @near_farm
