@@ -1,6 +1,17 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   def after_inactive_sign_up_path_for(resource)
+    skip_authorization
     stored_location_for(:user) || super
+  end
+
+  def create
+    skip_authorization
+    if cookies[:user_id]
+      super do
+        Order.find_by(id: cookies[:order_id]).update buyer: resource
+        cookies.permanent[:user_id] = resource.id
+      end
+    end
   end
 
   def edit

@@ -3,6 +3,7 @@ fr:
     user_not_authorized: "Vous n'êtes pas authorisé à effectuer cette action."
   pages:
     home:
+      one_product: "produit"
       search_placeholder: "Où habitez-vous ?"
       search_btn: "RECHERCHER"
       title: "La vente directe, droit dans le mille !"
@@ -217,7 +218,7 @@ fr:
     producer:
       become_producer: "Deviens un producteur Robin des fermes "
       contact: "Ne perds pas de temps et contacte-nous via ce formulaire "
-      button_contact: CONTACTE-NOUS"
+      button_contact: "CONTACTE-NOUS"
   orders:
     review:
       header:
@@ -246,6 +247,7 @@ fr:
       products: "produits"
       withdrawal: "en retrait uniquement"
     index:
+      one_product: "produit"
       reset: "Réinitialiser les filtres"
       openning: '%{openning}'
       labels: "Labels : "
@@ -362,6 +364,7 @@ fr:
   farm_orders:
     statuses:
       waiting: "En cours de traitement"
+      preordered: "Précommandé"
       in_preparation: "En cours de préparation"
       ready_for_withdrawal: "Prête à être retirée"
       withdrawn: "Retirée"

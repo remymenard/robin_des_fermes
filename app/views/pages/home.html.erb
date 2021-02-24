@@ -68,19 +68,19 @@
       <div class="d-flex cards-rdf">
 
         <div class="card-rdf">
-          <%= image_tag "home/rdf-presentation.png", alt: "rdf" %>
+          <%= image_tag "home/find.png", alt: "rdf" %>
           <h6><%= t('.find') %></h6>
           <p><%= t('.find_paragraph') %></p>
         </div>
 
         <div class="card-rdf">
-          <%= image_tag "home/rdf-presentation.png", alt: "rdf" %>
+          <%= image_tag "home/ordered.png", alt: "rdf" %>
           <h6><%= t('.ordered') %></h6>
           <p><%= t('.ordered_paragraph') %></p>
         </div>
 
         <div class="card-rdf">
-          <%= image_tag "home/rdf-presentation.png", alt: "rdf" %>
+          <%= image_tag "home/victory.png", alt: "rdf" %>
           <h6><%= t('.taste') %></h6>
           <p><%= t('.taste_paragraph') %></p>
         </div>
@@ -131,11 +131,17 @@
 
                 <p class="openning"><%= t('.openning', openning: farm.opening_time) %></p>
 
-                <p class="products-number"><%= farm.products.count  %> <%= t('.products_number') %> </p>
+                <p class="products-number"><%= farm.products.count  %>
+                  <% if farm.products.count == 1 %>
+                    <%= t('.one_product') %>
+                  <% else %>
+                    <%= t('.products_number') %>
+                  <% end %>
+                </p>
 
                 <div class="all-photos d-flex">
                   <% farm.categories.each_with_index do |category, index| %>
-                    <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
+                    <div class='category-photo' data-toggle="tooltip" data-placement="top" title="<%= category.name  %>"><%= cl_image_tag category.photo.key %></div>
                   <% end %>
                 </div>
 

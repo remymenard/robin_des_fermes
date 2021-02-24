@@ -44,7 +44,6 @@
 
                   <%= cl_image_tag(farm.photos.first.key, height: 192, width: 192, crop: :fill, class: "photo") %>
 
-
                 </div>
 
                 <div class="cards-informations">
@@ -61,11 +60,17 @@
 
                   <p class="openning"><%= t('.openning', openning: farm.opening_time) %></p>
 
-                  <p class="products-number"><%= farm.products.available.count  %> <%= t('.products_number') %> </p>
+                  <p class="products-number"><%= farm.products.count  %>
+                    <% if farm.products.count == 1 %>
+                      <%= t('.one_product') %>
+                    <% else %>
+                      <%= t('.products_number') %>
+                    <% end %>
+                  </p>
 
                   <div class="all-photos d-flex">
-                    <% farm.categories.each_with_index do |category, index| %>
-                      <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
+                     <% farm.categories.each do |category| %>
+                      <div class='category-photo' data-toggle="tooltip" data-placement="top" title="<%= category.name  %>"><%= cl_image_tag category.photo.key %></div>
                     <% end %>
                   </div>
 
@@ -104,6 +109,7 @@
                   <div class="d-flex address-far-farm">
                     <%= image_tag "icons/marker-orange.png", class: "marker" %>
                     <p><%= farm.address.upcase  %></p>
+
                   </div>
 
                   <div class="name d-flex">
@@ -115,7 +121,13 @@
                   <p class="openning"><%= t('.openning', openning: farm.opening_time) %></p>
 
                   <div class="d-flex">
-                    <p class="products-number"><%= farm.products.available.count  %> <%= t('.products_number') %> </p>
+                    <p class="products-number"><%= farm.products.count  %>
+                      <% if farm.products.count == 1 %>
+                        <%= t('.one_product') %>
+                      <% else %>
+                        <%= t('.products_number') %>
+                      <% end %>
+                    </p>
 
                     <div class="fresh-products d-flex">
                       <%= image_tag "cards/flake.png", alt: "Flocon" %>
@@ -124,8 +136,8 @@
                   </div>
 
                   <div class="all-photos d-flex">
-                    <% farm.categories.each_with_index do |category, index| %>
-                      <div class='category-photo'><%= cl_image_tag category.photo.key %></div>
+                     <% farm.categories.each do |category| %>
+                      <div class='category-photo' data-toggle="tooltip" data-placement="top" title="<%= category.name  %>"><%= cl_image_tag category.photo.key %></div>
                     <% end %>
                   </div>
 
@@ -156,7 +168,7 @@
               <span class="shipping-name"><%= t('.regional_delivery_name') %></span>
             </div>
             <div class="col-5 m-0 p-0">
-              <span class="price"><%= FarmOrder::ShippingPrice.express.price.to_i %></span>
+              <span class="price"><%= FarmOrder::ShippingPrice.express.price %></span>
               <span class="currency">CHF</span>
               <div class="question-mark">?</div>
               <div class="popup-question-mark">
@@ -173,7 +185,7 @@
 
           </div>
           <div class="col-5 m-0 p-0">
-            <span class="price"><%= FarmOrder::ShippingPrice.standard.price.to_i %></span>
+            <span class="price"><%= FarmOrder::ShippingPrice.standard.price %></span>
             <span class="currency">CHF</span>
             <div class="question-mark">?</div>
             <div class="popup-question-mark">

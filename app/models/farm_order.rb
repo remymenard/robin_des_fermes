@@ -1,6 +1,6 @@
 class FarmOrder < ApplicationRecord
-  STATUSES_TAKEAWAY = ["in_preparation", "ready_for_withdrawal", "withdrawn", "paid_to_farmer", "canceled"]
-  STATUSES_SHIPPING = ["in_preparation", "shipped",              "received",  "paid_to_farmer", "canceled"]
+  STATUSES_TAKEAWAY = ["peordered", "in_preparation", "ready_for_withdrawal", "withdrawn", "paid_to_farmer", "canceled"]
+  STATUSES_SHIPPING = ["peordered", "in_preparation", "shipped",              "received",  "paid_to_farmer", "canceled"]
 
   belongs_to :order
   belongs_to :farm
@@ -17,7 +17,7 @@ class FarmOrder < ApplicationRecord
     greater_than_or_equal_to: 0,
   }
 
-  validates :status, inclusion: { in: ["waiting", "preordered", "waiting_shipping", "shipped", "issue"] }
+  #validates :status, inclusion: { in: ["waiting", "preordered", "in_preparation", "shipped", "issue"] }
 
   before_create :set_confirm_shipped_token
 
@@ -65,10 +65,6 @@ class FarmOrder < ApplicationRecord
 
       preorder_array.max
     end
-  end
-
-  def with_preordered_products?
-    preordered_products_max_shipping_starting_at.present?
   end
 
   def shipping_choice_name

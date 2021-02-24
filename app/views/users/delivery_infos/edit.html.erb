@@ -1,31 +1,33 @@
-<div class = "sign">
-  <div class="container d-flex">
-    <div class="sign-in d-flex justify-content-center align-items-center flex-column">
-      <%= image_tag "logos/rdf_green.png", alt: "alttext", style: "margin: 0 0 79px 0;" %>
+<div class="edit-delivery-infos">
+  <div class = "sign">
+    <div class="container d-flex">
+      <div class="sign-in d-flex justify-content-center align-items-center flex-column">
+        <%= image_tag "logos/rdf_green_hd.png", alt: "alttext", style: "margin: 0 0 79px 0;" %>
 
-      <%= simple_form_for(@user, as: :user, method: :patch, url: users_delivery_infos_path) do |f| %>
+        <%= simple_form_for(@user, as: :user, method: :patch, url: users_delivery_infos_path) do |f| %>
 
-        <div class="form-inputs">
+          <div class="form-inputs">
 
-          <%= f.input :address_line_1,
-                      label: false,
-                        placeholder: t('devise.registrations.new.address')%>
-
-          <div class="d-flex name">
-            <%= f.input :zip_code,
+            <%= f.input :address_line_1,
                         label: false,
-                        placeholder: t('devise.registrations.new.zip_code')%>
-            <%= f.input :city,
-                        label: false,
-                        placeholder: t('devise.registrations.new.city')%>
+                          placeholder: t('devise.registrations.new.address')%>
+
+            <div class="d-flex name">
+              <%= f.input :zip_code,
+                          label: false,
+                          placeholder: t('devise.registrations.new.zip_code')%>
+              <%= f.input :city,
+                          label: false,
+                          placeholder: t('devise.registrations.new.city')%>
+            </div>
           </div>
-        </div>
 
-        <div class="form-actions">
-          <%= f.button :submit, t('.connection') %>
-        </div>
-      <% end %>
+          <div class="form-actions">
+            <%= f.button :submit, t('.connection') %>
+          </div>
+        <% end %>
 
+      </div>
     </div>
   </div>
 </div>

@@ -20,23 +20,17 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
     end
 
     column 'Date de création de la commande', :created_at
-    column 'Status', :status
+
+    column 'Status', :status do |farm_order|
+      t("farm_orders.statuses.#{farm_order.status}")
+    end
 
     column 'Précommande' do |farm_order|
       farm_order.preordered_products_max_shipping_starting_at
     end
 
     column "Expédition", :farm_id do |farm_order|
-      if farm_order.express_shipping? || farm_order.standard_shipping
-        if farm_order.farm.accepts_delivery && farm_order.with_preordered_products?
-          shipping_date = farm_order.preordered_products_max_shipping_starting_at + farm_order.farm.delivery_delay.days
-          l(shipping_date, format: '%d %B %Y')
 
-        elsif farm_order.farm.accepts_delivery
-          shipping_date = farm_order.created_at + farm_order.farm.delivery_delay.days
-          l(shipping_date, format: '%d %B %Y')
-        end
-      end
     end
 
     column 'Commentaire', :comment
@@ -52,7 +46,7 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
         [t("farm_orders.statuses.#{option}"), option]
       end.to_h
 
-      farm_order_form.input :status, label: false, collection: options_with_display
+      farm_order_form.input :status, as: :select, label: false, collection: options_with_display
     end
 
     farm_order_form.actions do

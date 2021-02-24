@@ -4,7 +4,7 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-require("turbolinks").start()
+require("css3sidebar/dist/jquery.css3sidebar.js")
 require("@rails/activestorage").start()
 require("channels")
 
@@ -30,18 +30,16 @@ import { initMapbox } from '../plugins/init_mapbox';;
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { initAxeptio } from '../plugins/init_axeptio';
 import { initBasket } from './basket/utils/initBasket'
-import { loadResponsiveNavbar } from './navbar'
 import { initSelect2 } from '../plugins/init_select2'
 import { Carousel } from '../plugins/owl_carousel'
 import { stopRecapOnFooter } from '../packs/stopRecapOnFooter'
 import { initDeliverySelect } from '../packs/delivery'
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   initAutocomplete();
   initMapbox();
   initAxeptio();
   initBasket();
-  loadResponsiveNavbar();
   initSelect2();
   Carousel();
   stopRecapOnFooter();
@@ -51,3 +49,7 @@ document.addEventListener('turbolinks:load', () => {
 $(document).on('turbolinks:before-cache', function() {
   $(".owl-carousel").owlCarousel('destroy');
 });
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})

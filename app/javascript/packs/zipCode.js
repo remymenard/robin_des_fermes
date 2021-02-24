@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2'
 
-document.addEventListener('turbolinks:load', async () => {
+document.addEventListener('DOMContentLoaded', async () => {
   // variables
   const zipCodeButtons = $('.zip-code-infos')
   const zipCodeText = $('.zip_code_number')
