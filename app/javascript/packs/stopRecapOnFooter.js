@@ -1,6 +1,6 @@
 export function stopRecapOnFooter() {
   $(window).scroll(() => {
-    if($(window).height() < 992) return;
+    if($(window).width() < 992) return;
     const footerToTop = $('.footer').position().top;
     const scrollTop = $(document).scrollTop() + $(window).height();
     const difference = scrollTop - footerToTop;
