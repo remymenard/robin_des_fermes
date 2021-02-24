@@ -3,6 +3,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
     stored_location_for(:user) || super
   end
 
+  def create
+    if cookies[:user_id]
+      super do
+        Order.find_by(id: cookies[:order_id]).update buyer: resource
+        cookies.permanent[:user_id] = resource.id
+      end
+    end
+  end
+
   def edit
     skip_authorization
     @user = current_user
