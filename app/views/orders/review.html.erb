@@ -6,6 +6,9 @@
   <div class="row w-100 reverse-on-mobile">
     <div class="col-lg-8 col-12 p-0">
       <% @order = current_order %>
+      <% if @order.order_line_items.empty? %>
+        <div style="height: 40vh;" class="text-center text-lg-left"><%= t("basket.empty") %></div>
+      <% end %>
       <% @order.farm_orders.order("created_at desc").each_with_index do |farm_order, index| %>
       <div class="mx-4 mx-lg-0 mb-4 text-center text-lg-left">
         <p class="basket-number"><%= t(".basket") %> <%= index + 1 %>/<%= @order.farm_orders.count %></p>
@@ -67,5 +70,5 @@
       <%= render 'orders/delivery/recap_price', order: @order, active_step: :cart_review %>
     </div>
   </div>
-  <%= link_to t(".confirm"), delivery_order_path(current_order), class: "btn btn-primary btn-lg btn-block confirm-button mobile-confirm-button"%>
+  <%= button_to t(".confirm"), delivery_order_path(current_order), class: "btn btn-primary btn-lg btn-block confirm-button mobile-confirm-button", disabled: @order.order_line_items.empty?%>
 </div>

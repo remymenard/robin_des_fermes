@@ -51,6 +51,6 @@
       <p class="total-style"><%= t("orders.review.total") %></p>
       <div><p class="price"><%= order.price %></p><p class="currency"><%= order.price_currency %></p></div>
     </div>
-    <%= link_to t("orders.review.confirm"), delivery_order_path(current_order), class: "btn btn-primary btn-lg btn-block confirm-button" %>
+    <%= button_to t("orders.review.confirm"), delivery_order_path(current_order), class: "btn btn-primary btn-lg btn-block confirm-button", disabled: @order.order_line_items.empty? %>
   </div>
 <% end %>
