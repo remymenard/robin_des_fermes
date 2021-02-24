@@ -24,8 +24,12 @@
           </a>
         </li>
       <% end %>
-      <li class="nav-item"> <a class="nav-link hidden-on-mobile text-light" href="#"><%= t 'shared.navbar.who_are_we' %></a> </li>
-      <li class="nav-item"> <a class="nav-link hidden-on-mobile text-light" href="#"><%= t 'shared.navbar.our_farmers' %></a> </li>
+      <li class="nav-item">
+        <%= link_to t('shared.navbar.who_are_we'), team_path, class: "nav-link hidden-on-mobile text-light" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t('shared.navbar.our_farmers'), farms_path, class: "nav-link hidden-on-mobile text-light" %>
+      </li>
       <li class="nav-item d-flex align-items-center">
         <% if user_signed_in? %>
           <%= link_to edit_user_registration_path do %>
@@ -65,8 +69,8 @@
         <p class="text"><i class="fas fa-map-marker-alt marker"></i><%= render 'shared/zip_code_div' %></p></div>
       </div>
     <% end %>
-    <a class="nav-link text-secondary" href="#"><%= t 'shared.navbar.who_are_we' %></a>
-    <a class="nav-link text-secondary" href="#"><%= t 'shared.navbar.our_farmers' %></a>
+    <%= link_to t('shared.navbar.who_are_we'), team_path, class: "nav-link text-secondary" %>
+    <%= link_to t('shared.navbar.our_farmers'), farms_path, class: "nav-link text-secondary" %>
   </div>
   </div>
 </div>
