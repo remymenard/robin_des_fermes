@@ -58,15 +58,15 @@
 <div class="css3sidebar sidebar-left" id="primary-sidebar">
   <div class="menu-wrapper">
   <div style="width: 100%; height: 100%; background-color: white;">
-    <% if !current_page?(root_path) && controller_name != "orders" %>
+    <% if controller_name != "orders" %>
       <div class="py-2 zip-code" id="sidebar-zip-code" >
         <p class="nav-link pb-0 text-secondary"><%= t 'shared.navbar.your_zip_code' %></p>
         <div class="background zip-code-infos" href="#">
         <p class="text"><i class="fas fa-map-marker-alt marker"></i><%= render 'shared/zip_code_div' %></p></div>
       </div>
     <% end %>
-    <a class="nav-link secondary-link" href="#"><%= t 'shared.navbar.who_are_we' %></a>
-    <a class="nav-link secondary-link" href="#"><%= t 'shared.navbar.our_farmers' %></a>
+    <a class="nav-link text-secondary" href="#"><%= t 'shared.navbar.who_are_we' %></a>
+    <a class="nav-link text-secondary" href="#"><%= t 'shared.navbar.our_farmers' %></a>
   </div>
   </div>
 </div>
