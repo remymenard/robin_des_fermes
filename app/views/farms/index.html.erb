@@ -168,7 +168,7 @@
               <span class="shipping-name"><%= t('.regional_delivery_name') %></span>
             </div>
             <div class="col-5 m-0 p-0">
-              <span class="price"><%= FarmOrder::ShippingPrice.express.price.to_i %></span>
+              <span class="price"><%= FarmOrder::ShippingPrice.express.price %></span>
               <span class="currency">CHF</span>
               <div class="question-mark">?</div>
               <div class="popup-question-mark">
@@ -185,7 +185,7 @@
 
           </div>
           <div class="col-5 m-0 p-0">
-            <span class="price"><%= FarmOrder::ShippingPrice.standard.price.to_i %></span>
+            <span class="price"><%= FarmOrder::ShippingPrice.standard.price %></span>
             <span class="currency">CHF</span>
             <div class="question-mark">?</div>
             <div class="popup-question-mark">
