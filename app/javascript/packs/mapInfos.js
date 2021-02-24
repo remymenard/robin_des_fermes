@@ -1,4 +1,4 @@
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   $('.mobile-big-question-mark').on('click', () => {
     $('.map-infos').css('display', 'block')
   })
