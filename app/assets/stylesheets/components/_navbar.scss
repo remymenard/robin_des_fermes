@@ -18,6 +18,9 @@
   .navbar-nav {
     display: flex;
     flex-direction: row;
+    @include media-breakpoint-down(md) {
+      width: 95px;
+    }
   }
   .basket-icon {
     height: 30px;
