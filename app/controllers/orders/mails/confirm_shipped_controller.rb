@@ -10,7 +10,7 @@ module Orders
       def set_as_shipped
         skip_authorization
         order = FarmOrder.find_by(confirm_shipped_token: params[:order_token])
-        if order.status == "waiting_shipping"
+        if order.status == "in_preparation"
           order.update(status: "shipped", shipped_at: Date.current)
           redirect_to successful_orders_mails_confirm_shipped_path
         else
