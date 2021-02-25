@@ -8,4 +8,8 @@ class UserPolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def search?
+    user.admin?
+  end
 end
