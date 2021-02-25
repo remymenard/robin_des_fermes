@@ -6,8 +6,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     skip_authorization
-    if cookies[:user_id]
-      super do
+    super do
+      if cookies[:user_id]
         Order.find_by(id: cookies[:order_id]).update buyer: resource
         cookies.permanent[:user_id] = resource.id
       end
@@ -19,6 +19,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = current_user
 
   end
+
   def update
     skip_authorization
     @user = current_user
@@ -27,9 +28,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       render 'edit'
     end
-
   end
+
   private
+
   def user_params
     params.require(:user).permit(:address_line_1, :zip_code, :city, :first_name, :last_name)
   end

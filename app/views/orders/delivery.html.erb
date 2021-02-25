@@ -10,7 +10,7 @@
   ⚠️ Votre paiement a rencontré un problème.
 <% end %>
 
-<%= form_tag update_delivery_methods_order_path, method: :patch, id: "delivery-choices", 'data-type' => :json do %>
+<%= form_tag update_delivery_methods_order_path, method: :patch, id: "delivery-choices", 'data-type' => :json, class: "pb-5" do %>
   <div id="confirmation">
     <%= render 'orders/delivery/user_progress', order: @order, active_step: :delivery_choices %>
 
