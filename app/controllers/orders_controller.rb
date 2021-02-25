@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
     params[:farm_orders].each do |farm_order_id, user_choice|
       user_delivery_choice = user_choice["user_shipping_choice"]
 
-      farm_order = current_order.farm_orders.find(farm_order_id)
+      farm_order = FarmOrder.find(farm_order_id) if FarmOrder.find(farm_order_id).order.buyer == current_user
       farm_order.update_delivery_choice(user_delivery_choice)
     end
     # not mandatory by avoid users to edit the page and remove input making him able not to pay shipping costs
