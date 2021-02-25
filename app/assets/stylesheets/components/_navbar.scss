@@ -12,7 +12,7 @@
   }
   .hidden-on-mobile {
     @include media-breakpoint-down(md) {
-      display: none;
+      display: none !important;
     }
   }
   .navbar-nav {
@@ -48,6 +48,12 @@
     font-size: 14px;
   }
   .zip-code {
+    p {
+      font-size: 14px;
+      @include media-breakpoint-down(lg) {
+        font-size: 12px;
+      }
+    }
     @include media-breakpoint-up(sm) {
       display: flex;
       flex-direction: row;
