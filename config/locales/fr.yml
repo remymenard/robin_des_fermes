@@ -269,7 +269,7 @@ fr:
       delivery_products_mobile: "Livraison"
       withdrawal_products_mobile: "retrait"
       delivery_products: "Produits livrables"
-      withdrawal_products: "A retirer uniquement à la ferme"
+      withdrawal_products: "A retirer à la ferme"
       not_delivery: "Certains produits (frais / réfrigérés) ne sont pas livrables pour ta localisation"
       show_products: "Tous les produits"
       conditioning: "%{conditioning}"

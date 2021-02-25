@@ -70,5 +70,5 @@
       <%= render 'orders/delivery/recap_price', order: @order, active_step: :cart_review %>
     </div>
   </div>
-  <%= button_to t(".confirm"), delivery_order_path(current_order), class: "btn btn-primary btn-lg btn-block confirm-button mobile-confirm-button", disabled: @order.order_line_items.empty?%>
+  <%= button_to t(".confirm"), delivery_order_path(current_order), method: :get, class: "btn btn-primary btn-lg btn-block confirm-button mobile-confirm-button", disabled: @order.order_line_items.empty?%>
 </div>
