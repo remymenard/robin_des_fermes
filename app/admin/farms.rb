@@ -127,7 +127,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
       end
       tab 'Etape 4' do
         panel 'Ajouter les catégorie' do
-          f.input :category_ids, as: :check_boxes, collection: Category.all, label: false
+          f.input :category_ids, as: :check_boxes, collection: Category::CATEGORIES, label: false
         end
         panel "Produit(s) existant(s)" do
           table_for resource.products do
@@ -145,7 +145,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
             product.inputs do
               product.input :available, label: "Disponible ?"
               product.input :name, label: "Nom"
-              product.input :category_id, as: :select, collection: Category.all, label: "Catégorie"
+              product.input :category_id, as: :select, collection: Category::CATEGORIES, label: "Catégorie"
               product.input :price_cents, label: "Prix CHF"
               product.input :display_minimum_weight, label: "Afficher poids Minimum ?"
               product.input :minimum_weight, label: "Poids ou volume"
