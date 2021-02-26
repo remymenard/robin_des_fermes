@@ -20,7 +20,7 @@ ActiveAdmin.register Product, as: 'Produits' do
       product.input :farm, label: 'Ferme'
       product.input :available, label: 'En stock ?'
       product.input :name, label: 'Nom'
-      product.input :category_id, as: :select, collection: Category.all, label: 'Catégorie'
+      product.input :category_id, as: :select, collection: Category::CATEGORIES, label: 'Catégorie'
       product.input :price_cents, label: 'Prix CHF'
       product.input :display_minimum_weight, label: 'Afficher poids Minimum ?'
       product.input :minimum_weight, label: 'Poids ou volume'
