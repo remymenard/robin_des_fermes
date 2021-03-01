@@ -21,10 +21,9 @@
     <div class="header-description d-flex">
       <%= cl_image_tag @farm.user.photo.key, height: 48, width: 48, crop: :fill %>
       <p> <%=@farm.user.first_name.capitalize  %> <%=@farm.user.last_name.capitalize  %> </p>
-      <h1> <%= @farm.name.capitalize  %></h1>
     </div>
 
-    <h1> <%= @farm.name.capitalize  %></h1>
+    <h1> <%= @farm.name  %></h1>
 
     <div class="d-flex">
       <p> <%= t('.description', description: @farm.description) %> <%= link_to t('.more_description'), "#description-farm" %> </p>
@@ -58,6 +57,7 @@
     <div class="address">
       <h6><%= t('.address') %> </h6>
       <p><%= @farm.address  %></p>
+      <p><%= @farm.zip_code  %> <%= @farm.city  %></p>
     </div>
   </div>
 

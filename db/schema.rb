@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_18_154956) do
+ActiveRecord::Schema.define(version: 2021_03_01_113515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,7 +114,6 @@ ActiveRecord::Schema.define(version: 2021_02_18_154956) do
     t.string "zip_code"
     t.string "city"
     t.string "country"
-    t.integer "farmer_number"
     t.string "iban"
     t.text "long_description"
     t.boolean "accepts_delivery", default: false
@@ -123,7 +122,21 @@ ActiveRecord::Schema.define(version: 2021_02_18_154956) do
     t.text "labels", array: true
     t.string "photo_portrait"
     t.text "offices", default: [], array: true
+    t.string "slug"
+    t.string "farmer_number"
+    t.index ["slug"], name: "index_farms_on_slug", unique: true
     t.index ["user_id"], name: "index_farms_on_user_id"
+  end
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
   create_table "opening_hours", force: :cascade do |t|
@@ -157,9 +170,9 @@ ActiveRecord::Schema.define(version: 2021_02_18_154956) do
     t.string "price_currency", default: "CHF", null: false
     t.string "status", default: "waiting"
     t.string "transaction_id"
+    t.bigint "buyer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "buyer_id"
     t.index ["buyer_id"], name: "index_orders_on_buyer_id"
   end
 
@@ -174,7 +187,7 @@ ActiveRecord::Schema.define(version: 2021_02_18_154956) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "unit"
     t.text "label", default: [], array: true
-    t.boolean "available"
+    t.boolean "available", default: false
     t.boolean "fresh"
     t.integer "price_per_unit_cents", default: 0, null: false
     t.string "price_per_unit_currency", default: "CHF", null: false
@@ -210,8 +223,8 @@ ActiveRecord::Schema.define(version: 2021_02_18_154956) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.boolean "wants_to_subscribe_mailing_list"
-    t.string "address_line_2"
     t.boolean "admin"
+    t.string "address_line_2"
     t.string "number_phone"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
