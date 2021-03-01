@@ -89,7 +89,8 @@ class FarmsController < ApplicationController
     if @near_farm
       @products_available = @farm.products.available
     else
-      @products_available = @farm.products.available.not_fresh
+      @products_available_not_fresh = @farm.products.available.not_fresh
+      @products_available = @farm.products.available
       @products_available_all = @farm.products.available
     end
 
