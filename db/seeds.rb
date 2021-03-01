@@ -109,6 +109,7 @@ user1 = User.new(
   title: "M",
   admin: true,
 )
+
 user1.skip_confirmation!
 user1.save!
 
