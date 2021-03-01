@@ -22,11 +22,8 @@
 }
 
 #description-farm {
-  height: 706px;
-  background-image: asset-url("farm/description-background.png");
-  background-size: cover;
-  background-position: center;
   padding-top: 86px;
+  background-color: #FAF7F3;
 
   .photo {
     img {
@@ -132,6 +129,7 @@
         p {
           color: #25201D;
           opacity: 0.6;
+          margin-bottom: 0 !important;
         }
       }
     }
@@ -151,6 +149,7 @@
       padding-left: 40px;
       line-height: 64px;
       margin-top: 10px;
+      font-size: 38px;
     }
 
     p {

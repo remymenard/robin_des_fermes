@@ -50,7 +50,7 @@
 
                   <div class="d-flex address">
                     <%= image_tag "icons/marker_cards_farms.png", class: "marker" %>
-                    <p><%= farm.address.upcase  %></p>
+                    <p><%= farm.zip_code.upcase  %><%= farm.city.upcase  %></p>
                   </div>
 
                   <div class="name d-flex">
@@ -108,7 +108,7 @@
 
                   <div class="d-flex address-far-farm">
                     <%= image_tag "icons/marker-orange.png", class: "marker" %>
-                    <p><%= farm.address.upcase  %></p>
+                    <p><%= farm.zip_code.upcase  %> <%= farm.city.upcase  %></p>
 
                   </div>
 
