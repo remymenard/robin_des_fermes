@@ -153,10 +153,10 @@
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="d-flex all-card-product">
 
-              <% if @products_available.none? %>
+              <% if @products_available_not_fresh.none? %>
                 <h6><%= t('.no_withdrawal') %></h6>
               <% else %>
-                <% @products_available.each do |product| %>
+                <% @products_available_not_fresh.each do |product| %>
 
                   <div class="card-product">
                     <div id="product-data" data-image-url="<%= cl_image_path(product.photo.key) %>" data-name="<%= product.name %>" data-price="<%= product.price %>" data-currency="<%= product.price_currency %>" data-unit="<%= product.unit %>" data-ingredients="<%= product.ingredients %>" data-description="<%= product.description %>" ></div>
