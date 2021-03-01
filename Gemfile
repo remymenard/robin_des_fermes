@@ -26,6 +26,8 @@ gem 'redis', '~> 4.0'
 
 gem 'pundit'
 
+gem 'whenever', require: false
+
 gem 'owlcarousel-rails'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
