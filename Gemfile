@@ -27,6 +27,7 @@ gem 'redis', '~> 4.0'
 gem 'pundit'
 
 gem 'whenever', require: false
+gem 'sitemap_generator'
 
 gem 'owlcarousel-rails'
 # Use Active Storage variant
