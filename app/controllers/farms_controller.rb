@@ -61,12 +61,13 @@ class FarmsController < ApplicationController
   end
 
   def show
+
+    @farm = Farm.friendly.find(params[:id])
     @reassurance = true
     @farms = Farm.all
     @far_farms = Farm.none
-    @farm = Farm.find(params[:id])
-
     @farm_show = @farms.where("farms.id = ? ", params[:id])
+
 
     @highlighted_photo = @farm.photos.first
     @second_photo      = @farm.photos[1]

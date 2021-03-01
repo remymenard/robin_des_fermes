@@ -1,9 +1,12 @@
 class Farm < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
   has_many :farm_orders
-  
+
   belongs_to :user
   accepts_nested_attributes_for :user, allow_destroy: true
 
