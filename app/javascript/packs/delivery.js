@@ -34,7 +34,7 @@ export function initDeliverySelect() {
       });
     },
     error: (response) => {
-      console.log('Sth went wrong, try again!')
+      console.log('Something went wrong, try again!')
       stopLoadingAnimation()
       activateConfirmButton()
     }
@@ -56,8 +56,8 @@ function generateShippingPrice() {
     if (element.checked) {
       const deliveryType = $(element).val();
 
-      const takeawayPrice = parseFloat($(element).data("takeaway"));
-      const deliveryPrice = parseFloat($(element).data("delivery"));
+      const takeawayPrice = parseFloat($(element).data("takeaway").replace(",", "."));
+      const deliveryPrice = parseFloat($(element).data("delivery").replace(",", "."));
 
       if (deliveryType === "takeaway") {
         sum += takeawayPrice;
