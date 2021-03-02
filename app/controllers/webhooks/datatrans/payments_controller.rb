@@ -22,8 +22,10 @@ module Webhooks
             else
               farm_order.update(price: farm_order.total_price_with_shipping, status: 'in_preparation', waiting_for_shipping_at: Date.current)
             end
+            SendOrderReminderMailsJob.set(wait_until: FarmOrder.last.waiting_for_shipping_at + FarmOrder.last.farm.delivery_delay.days - 1.day).perform_later(farm_order)
           end
           SendOrderConfirmationMailsJob.perform_now(order)
+
         else
           # TODO LATER: handle non happy paths
         end
