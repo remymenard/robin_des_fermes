@@ -390,6 +390,7 @@ fr:
         new_account: "Créer un compte"
     registrations:
       new:
+        number_phone: "Numéro de téléphone"
         title: "Inscrivez-vous pour accéder aux produits"
         first_name: "Prénom"
         last_name: "Nom"
