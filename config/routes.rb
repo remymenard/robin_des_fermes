@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     get 'charter', to: 'pages#charter'
     get 'partners', to: 'pages#partners'
     get 'producer', to: 'pages#producer'
+    get 'newsletter', to: 'pages#newsletter'
   end
 
   namespace :users do
