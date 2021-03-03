@@ -1,6 +1,8 @@
-<div style="display: flex;
-  flex-direction: column;
-  height: 50vh;">
-  <h1>Yay, order paid</h1>
-<%= render 'orders/recap_card', order: @order %>
+<div class="successful_payment">
+  <h1>Hourra !</h1>
+  <h1>Ton butin est en préparation !</h1>
+  <span class="font-weight-bold mt-3">Ta commande a bien été prise en compte, <br/> tu vas recevoir un email de confirmation.</span>
+  <span class="my-4">Merci pour ta confiance, <br/> La bande de Robin des Fermes</span>
+  <%= link_to "RETOUR A L'ACCEUIL", root_path, class: "btn btn-primary btn-lg btn-block" %>
+  <%= image_tag "bag_confirmation.png", class: "bag" %>
 </div>

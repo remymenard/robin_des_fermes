@@ -4,6 +4,7 @@ module Orders
       before_action :set_order
 
       def successful
+        @reassurance = true
       end
 
       def canceled

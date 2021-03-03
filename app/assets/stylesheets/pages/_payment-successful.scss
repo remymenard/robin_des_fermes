@@ -1,0 +1,29 @@
+.successful_payment {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+  h1 {
+    font-size: 54px;
+    line-height: 64px;
+  }
+  span {
+    font-size: 18px;
+  }
+  .btn-block {
+    width: 246px;
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 50px;
+    }
+  }
+  .bag {
+    width: 60vw;
+    margin-top: -100px;
+    z-index: -1;
+    @include media-breakpoint-down(sm) {
+      display: none;
+    }
+  }
+}
