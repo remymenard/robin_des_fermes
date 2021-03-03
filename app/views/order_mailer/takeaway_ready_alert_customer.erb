@@ -11,7 +11,10 @@
     <p class="content">
       Salut <%= @user.first_name %>,
 
-      Ta commande n°<%= @order.id %> a été expédiéé.
+      Ta commande n°<%= @order.id %> est prête et peut être retirée auprès de <%= @order.farm.name %>.
+
+      Tu peux la retirer à cette adresse:
+      <%= @order.farm.address %>
 
       La bande de Robin des Fermes
 

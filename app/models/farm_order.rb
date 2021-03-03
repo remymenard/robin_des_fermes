@@ -105,8 +105,8 @@ class FarmOrder < ApplicationRecord
   def compute_preorder_delivery_date
     available_date = Date.current
     order_line_items.each do |order_line_item|
-      unless order_line_item.product.preorder.nil?
-        available_date = order_line_item.product.preorder if order_line_item.product.preorder > available_date
+      unless order_line_item.product.preorder_shipping_starting_at.nil?
+        available_date = order_line_item.product.preorder_shipping_starting_at if order_line_item.product.preorder_shipping_starting_at > available_date
       end
     end
     available_date
