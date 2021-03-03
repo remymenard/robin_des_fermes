@@ -43,13 +43,14 @@
     </div>
 
 
-    <div class="delivery d-flex">
+    <div class="delivery">
 
-      <div>
         <h6><%= t('.delivery') %> </h6>
-        <p class = "date"> <%= t('.hours_delivery') %> <%= @date.strftime('%d')  %> <%= t('.and_delivery') %> <%= I18n.l((@date + @farm.delivery_delay.days), format: "%d %B", locale: :'fr') %>.</p>
-        <%= link_to t('.more_delivery'), "#farm-delivery"  %>
-      </div>
+        <% if @farm.accepts_delivery %>
+          <p class = "date"> <%= t('.hours_delivery') %> <%= @date.strftime('%d')  %> <%= t('.and_delivery') %> <%= I18n.l((@date + @farm.delivery_delay.days), format: "%d %B", locale: :'fr') %>.</p>
+        <% end %>
+        <span> <%= link_to t('.more_delivery'), "#farm-delivery" %></span>
+
 
     </div>
 
