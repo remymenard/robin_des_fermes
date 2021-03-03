@@ -8,7 +8,6 @@ class User < ApplicationRecord
   validates_format_of :zip_code, with: /\A[1-9]\d{3}\z/, allow_blank: true
 
   has_one_attached :photo
-  validates_presence_of :photo
 
   has_many :farms, dependent: :destroy
   has_many :orders, source: :buyer, foreign_key: :buyer_id

@@ -9,7 +9,9 @@
 <div class="farm">
   <div class="description">
     <div class="header-description d-flex">
-      <%= cl_image_tag @farm.user.photo.key, height: 48, width: 48, crop: :fill %>
+      <% if @farm.user.photo.key.present? %>
+        <%= cl_image_tag @farm.user.photo.key, height: 48, width: 48, crop: :fill %>
+      <% end %>
       <p> <%=@farm.user.first_name.capitalize  %> <%=@farm.user.last_name.capitalize  %> </p>
     </div>
 
