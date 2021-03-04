@@ -178,7 +178,6 @@ ActiveAdmin.register Farm, as: "Exploitations" do
     def create
       @farm = Farm.new(permitted_params[:farm])
       @farm.user.skip_confirmation_notification!
-      @farm.validate!
 
       @farm.products.each do |product|
         product.label.reject!(&:empty?)
@@ -189,6 +188,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
       if @farm.save
         redirect_to admin_exploitations_path, notice: "Resource created successfully."
       else
+        @resource = @farm
         render :new
       end
     end
@@ -207,6 +207,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
       if @farm.save
         redirect_to admin_exploitations_path
       else
+        @resource = @farm
         render :edit
       end
 
