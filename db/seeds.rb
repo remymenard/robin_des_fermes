@@ -151,7 +151,7 @@ henry.photos.attach(
   filename: 'farm4.png'
 )
 henry.photo_portrait.attach(
-  io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
+  io: File.open(Rails.root.join('db/fixtures/farms/farm.png')),
   filename: 'farm4.png'
 )
 
