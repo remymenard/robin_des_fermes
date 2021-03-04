@@ -55,13 +55,13 @@ fruit.photo.attach(
 
 huile = Category.create!(name: "Huile & Vinaigre")
 huile.photo.attach(
-  io: File.open(Rails.root.join('db/fixtures/categories/viande.png')),
+  io: File.open(Rails.root.join('db/fixtures/categories/huile.png')),
   filename: 'huile.png'
 )
 
 vin = Category.create!(name: "Vins")
 vin.photo.attach(
-  io: File.open(Rails.root.join('db/fixtures/categories/boulangerie.png')),
+  io: File.open(Rails.root.join('db/fixtures/categories/vins.png')),
   filename: 'vins.png'
 )
 
@@ -271,8 +271,8 @@ gallien.photo_portrait.attach(
 Farm.update(delivery_delay: 3)
 
 puts "Create farm categories"
-FarmCategory.create!(category_id: boucherie.id,  farm: henry)
-FarmCategory.create!(category_id: divers.id,  farm: henry)
+FarmCategory.create!(category_id: vin.id,  farm: henry)
+FarmCategory.create!(category_id: huile.id,  farm: henry)
 FarmCategory.create!(category_id: divers.id,  farm: gallien)
 FarmCategory.create!(category_id: divers.id,  farm: jonas)
 FarmCategory.create!(category_id: oeuf.id,  farm: jonas)
@@ -326,6 +326,24 @@ meat1.photo.attach(
 )
 
 steack = Product.create!(farm: meleze, category: boucherie, name: "Steack",
+  price_cents: 700, price_per_unit_cents: 1000, unit: "La pièce",
+  description: "Dégustez ce savoureux steak de boeuf.",
+  ingredients: "boeuf",
+  label: ['Bio-Suisse'],
+  available: true,
+  fresh: false
+)
+
+steack = Product.create!(farm: meleze, category: vin, name: "Steack",
+  price_cents: 700, price_per_unit_cents: 1000, unit: "La pièce",
+  description: "Dégustez ce savoureux steak de boeuf.",
+  ingredients: "boeuf",
+  label: ['Bio-Suisse'],
+  available: true,
+  fresh: false
+)
+
+steack = Product.create!(farm: meleze, category: huile, name: "Steack",
   price_cents: 700, price_per_unit_cents: 1000, unit: "La pièce",
   description: "Dégustez ce savoureux steak de boeuf.",
   ingredients: "boeuf",
