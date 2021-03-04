@@ -61,12 +61,11 @@ class FarmsController < ApplicationController
   end
 
   def show
+    @farm = Farm.friendly.find(params[:id])
     @reassurance = true
     @farms = Farm.all
     @far_farms = Farm.none
-    @farm = Farm.find(params[:id])
-
-    @farm_show = @farms.where("farms.id = ? ", params[:id])
+    @farm_show = @farms.where("farms.slug = ? ", params[:id])
 
     @date = Date.current
 

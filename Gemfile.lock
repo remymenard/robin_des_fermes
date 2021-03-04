@@ -115,6 +115,7 @@ GEM
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
     childprocess (3.0.0)
+    chronic (0.10.2)
     cloudinary (1.16.1)
       aws_cf_signer
       rest-client
@@ -155,6 +156,8 @@ GEM
     formtastic (3.1.5)
       actionpack (>= 3.2.13)
     formtastic_i18n (0.6.0)
+    friendly_id (5.4.2)
+      activerecord (>= 4.0.0)
     geocoder (1.6.4)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -351,6 +354,8 @@ GEM
     simple_form (5.0.3)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
+    sitemap_generator (6.1.2)
+      builder (~> 3.0)
     sixarm_ruby_unaccent (1.2.0)
     sort_alphabetical (1.1.0)
       unicode_utils (>= 1.2.2)
@@ -399,6 +404,8 @@ GEM
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    whenever (1.0.0)
+      chronic (>= 0.6.3)
     xdan-datetimepicker-rails (2.5.4)
       jquery-rails
       rails (>= 3.2.16)
@@ -426,6 +433,7 @@ DEPENDENCIES
   devise-i18n (~> 1.2)
   dotenv-rails
   font-awesome-sass
+  friendly_id (~> 5.4.0)
   geocoder
   gibbon!
   httparty
@@ -452,6 +460,7 @@ DEPENDENCIES
   sidekiq
   sidekiq-failures (~> 1.0)
   simple_form
+  sitemap_generator
   spring
   spring-watcher-listen (~> 2.0.0)
   tod
@@ -460,6 +469,7 @@ DEPENDENCIES
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
+  whenever
 
 RUBY VERSION
    ruby 2.6.6p146
