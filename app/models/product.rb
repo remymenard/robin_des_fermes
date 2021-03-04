@@ -5,7 +5,7 @@ class Product < ApplicationRecord
   has_many :farm_orders
 
   has_one_attached :photo
-  validates_presence_of :photo
+  #validates_presence_of :photo
 
   validates :name, presence: true
 
