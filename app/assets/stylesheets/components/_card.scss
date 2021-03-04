@@ -234,6 +234,7 @@
         margin-left: 10px !important;
 
         img {
+          margin-top: 5px;
           margin-right: 10px;
         }
 
@@ -245,10 +246,11 @@
       }
 
       .address-far-farm {
-        margin-left: 0px;
+        margin-left: 10px;
 
         img {
           margin-right: 10px;
+          margin-top: 5px;
         }
 
         p {
@@ -276,6 +278,22 @@
       .products-number {
         margin-top: 0px;
         margin-left: 10px !important;
+        font-size: 13px !important;
+      }
+
+      .fresh-products {
+        img {
+          margin-top: 2px;
+        }
+
+        p {
+          font-size: 13px !important;
+          margin-left: 5px !important;
+        }
+
+        span {
+          font-size: 12px !important;
+        }
       }
 
       .all-photos {
