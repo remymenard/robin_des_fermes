@@ -3,7 +3,10 @@
 }
 
 .navbar {
-  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index:10000;
   background-color: $primary;
   .add-gap {
     li {

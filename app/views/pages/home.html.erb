@@ -18,22 +18,34 @@
 
         <div class="two-products">
           <div>
-            <%= image_tag "categories/meat.png", alt: "Viande" %>
-            <h6><%= t('.viandes') %></h6>
-            <p><%= t('.paragraph_meat') %> </p>
-            <%= link_to farms_path(category: "Viande & Volaille"), class: "navbar-brand d-flex" do %>
-              <%= image_tag "categories/line.png", alt: "line" %>
-              <p><%= t('.discover_meat') %> </p>
+            <%= link_to farms_path(category: "Viande & Volaille"), class: "navbar-brand" do %>
+              <div class="image-categorie">
+                <%= image_tag "categories/meat.png", alt: "Viande" %>
+              </div>
+
+              <h6><%= t('.viandes') %></h6>
+              <p><%= t('.paragraph_meat') %> </p>
+
+              <div class="line d-flex">
+                <%= image_tag "categories/line.png", alt: "line" %>
+                <p><%= t('.discover_meat') %> </p>
+              </div>
             <% end %>
           </div>
 
           <div>
-            <%= image_tag "categories/vegetables.png", alt: "Lait" %>
-            <h6><%= t('.vegetables') %></h6>
-            <p><%= t('.paragraph_vegetables') %> </p>
-            <%= link_to farms_path(category: "Fruits & Légumes"), class: "navbar-brand d-flex" do %>
-              <%= image_tag "categories/line.png", alt: "line" %>
-              <p><%= t('.discover_vegetables') %> </p>
+            <%= link_to farms_path(category: "Fruits & Légumes"), class: "navbar-brand" do %>
+              <div class="image-categorie">
+                <%= image_tag "categories/vegetables.png", alt: "Lait" %>
+              </div>
+
+              <h6><%= t('.vegetables') %></h6>
+              <p><%= t('.paragraph_vegetables') %> </p>
+
+              <div class="line d-flex">
+                <%= image_tag "categories/line.png", alt: "line" %>
+                <p><%= t('.discover_vegetables') %> </p>
+              </div>
             <% end %>
           </div>
         </div>
@@ -42,12 +54,18 @@
           <h2><%= t('.products') %></h2>
 
           <div>
-            <%= image_tag "categories/wine.png", alt: "Vin" %>
-            <h6><%= t('.vins') %></h6>
-            <p><%= t('.paragraph_wine') %> </p>
-            <%= link_to farms_path(category: "Vin"), class: "navbar-brand d-flex" do %>
-              <%= image_tag "categories/line.png", alt: "line" %>
-              <p><%= t('.discover_wine') %> </p>
+            <%= link_to farms_path(category: "Vin"), class: "navbar-brand" do %>
+              <div class="image-categorie">
+                <%= image_tag "categories/wine.png", alt: "Vin" %>
+              </div>
+
+              <h6><%= t('.vins') %></h6>
+              <p><%= t('.paragraph_wine') %> </p>
+
+              <div class="line d-flex">
+                <%= image_tag "categories/line.png", alt: "line" %>
+                <p><%= t('.discover_wine') %> </p>
+              </div>
             <% end %>
           </div>
           <h2><%= t '.second_zip_code_input_title' %></h2>
