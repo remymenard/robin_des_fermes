@@ -416,14 +416,6 @@
           line-height: 24px;
           padding-left: 0px;
         }
-
-        img{
-          display: none;
-        }
-
-        p {
-          display: none;
-        }
       }
     }
   }
@@ -440,11 +432,6 @@
   }
 
   #description-farm {
-    height: 1200px;
-    background-image: url("farm/description-background.png");
-    background-size: cover;
-    background-position: center;
-
     .photo {
 
       img {
