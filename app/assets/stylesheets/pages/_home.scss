@@ -255,6 +255,10 @@
 }
 
 @media screen and (max-width: 500px) {
+  .testimony {
+    margin-bottom: 80px;
+  }
+
   .registration {
     background-image: image-url('home/registration-mobile.png') !important;
     min-height: 100vh !important;
