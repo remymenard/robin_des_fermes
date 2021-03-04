@@ -14,6 +14,7 @@
   img {
     width: 80%;
     height: 70vh;
+    object-fit: cover;
   }
 }
 
@@ -29,6 +30,7 @@
     img {
       width: 460px;
       height: 508px;
+      object-fit: cover;
     }
   }
 
@@ -194,13 +196,17 @@
       padding-left: 40px;
       align-items: center;
 
+      img {
+        border-radius: 30px;
+      }
+
       h1 {
         display: none;
       }
 
       p {
-        margin-left: 10px;
         font-size: 14px !important;
+        padding-left: 20px !important;
       }
     }
   }
@@ -347,6 +353,13 @@
     }
   }
 
+  .farm-delivery {
+    .delivery_option {
+      margin-left: 10px !important;
+      margin-right: 10px !important;
+    }
+  }
+
   .owl-stage {
     left: 0px;
   }
@@ -410,14 +423,6 @@
           line-height: 24px;
           padding-left: 0px;
         }
-
-        img{
-          display: none;
-        }
-
-        p {
-          display: none;
-        }
       }
     }
   }
@@ -434,11 +439,6 @@
   }
 
   #description-farm {
-    height: 1200px;
-    background-image: url("farm/description-background.png");
-    background-size: cover;
-    background-position: center;
-
     .photo {
 
       img {

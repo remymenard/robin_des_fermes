@@ -255,6 +255,10 @@
 }
 
 @media screen and (max-width: 500px) {
+  .testimony {
+    margin-bottom: 80px;
+  }
+
   .registration {
     background-image: image-url('home/registration-mobile.png') !important;
     min-height: 100vh !important;
@@ -286,7 +290,9 @@
       align-items: left !important;
 
       a {
+        margin-right: 0px !important;
         p {
+          white-space: normal !important;
           letter-spacing: 0px !important;
         }
       }
@@ -307,11 +313,12 @@
 
         }
 
-
-        img {
-          width: 30px !important;
-          height: 1px !important;
-          padding-top: 0px;
+        .line {
+          img {
+            width: 30px !important;
+            height: 1px !important;
+            padding-top: 0px;
+          }
         }
       }
     }

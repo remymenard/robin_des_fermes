@@ -19,13 +19,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def edit
     skip_authorization
     @user = current_user
-
   end
 
   def update
     skip_authorization
     @user = current_user
-    if @user.update(user_params)
+    if @user.update(configure_permitted_parameters)
       redirect_to stored_location_for(:user)
     else
       render 'edit'

@@ -3,6 +3,7 @@
     <h1><%= t('.impressum') %></h1>
     <h2><%= t('.address_title') %></h2>
     <h6><%= t('.rdf') %></h6>
+    <h6><%= t('.place') %></h6>
     <h6><%= t('.address') %></h6>
     <h6><%= t('.zip_code') %></h6>
 
@@ -14,7 +15,7 @@
 
     <div class="d-flex">
       <h6><%= t('.writing') %></h6>
-      <h6 class="name"><%= t('.annick') %></h6>
+      <h6 class="name"><%= link_to t('.annick'), "https://anickgoumaz.com/", target: :blank  %></h6>
     </div>
   </div>
 </div>

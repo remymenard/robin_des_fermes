@@ -5,7 +5,8 @@
       <p><%= t('.sub_title1') %> <strong><%= t('.sub_title_bold1') %></strong><%= t('.sub_title2') %><strong><%= t('.sub_title_bold2') %></strong><%= t('.sub_title3') %><strong><%= t('.sub_title_bold3') %></strong><%= t('.sub_title4') %><strong><%= t('.sub_title_bold4') %></strong><%= t('.sub_title5') %></p>
       <%= form_tag farms_path, method: :get, class: 'form-inline search' do %>
         <%= text_field_tag :zip, get_zip_code_number, readonly: true, class: 'form-control search zip_code_input', id: 'zip1', placeholder: "Où habitez-vous ?" %>
-        <%= submit_tag "DECOUVRIR LES PRODUCTEURS", class: "btn", name: nil %>
+        <%= submit_tag "DECOUVRIR LES PRODUCTEURS", class: "btn btn-computer", name: nil %>
+        <%= submit_tag "DECOUVRIR", class: "btn btn-mobile", name: nil %>
       <% end %>
 
     </div>
