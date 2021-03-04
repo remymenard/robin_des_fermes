@@ -273,7 +273,7 @@ fr:
       preorder_date: "Dès le "
       order_products: "Commander les produits"
       delivery_products_mobile: "Livraison"
-      withdrawal_products_mobile: "retrait"
+      withdrawal_products_mobile: "Retrait"
       delivery_products: "Produits livrables"
       withdrawal_products: "A retirer à la ferme"
       not_delivery: "Certains produits (frais / réfrigérés) ne sont pas livrables pour ta localisation"
