@@ -14,6 +14,7 @@
   img {
     width: 80%;
     height: 70vh;
+    object-fit: cover;
   }
 }
 
@@ -194,13 +195,17 @@
       padding-left: 40px;
       align-items: center;
 
+      img {
+        border-radius: 30px;
+      }
+
       h1 {
         display: none;
       }
 
       p {
-        margin-left: 10px;
         font-size: 14px !important;
+        padding-left: 20px !important;
       }
     }
   }
