@@ -269,6 +269,7 @@ fr:
       national_delivery_name: "Expédition nationale"
       national_delivery_description: "Reçois tes produits à la maison, la livraison est assurée par la poste. Les produits frais ne sont pas disponibles avec cette option."
     show:
+      no_withdrawal_fresh: "Aucun produit disponible à la livraison pour ta localité"
       preorder_date: "Dès le "
       order_products: "Commander les produits"
       delivery_products_mobile: "Livraison"

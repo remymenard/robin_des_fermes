@@ -98,7 +98,7 @@
 
                     <div>
                       <div class = "unit-price d-flex">
-                        <h4><%= product.price.to_f %></h4><p>CHF </p>
+                        <h4><%= product.price %></h4><p>CHF </p>
                       </div>
 
                       <div class = "kg-price">
@@ -147,7 +147,7 @@
             <div class="d-flex all-card-product">
 
               <% if @products_available_not_fresh.none? %>
-                <h6><%= t('.no_withdrawal') %></h6>
+                <h6><%= t('.no_withdrawal_fresh') %></h6>
               <% else %>
                 <% @products_available_not_fresh.each do |product| %>
 
@@ -187,7 +187,7 @@
 
                         <div>
                           <div class = "unit-price d-flex">
-                            <h4><%= product.price.to_f %></h4><p>CHF </p>
+                            <h4><%= product.price %></h4><p>CHF </p>
                           </div>
 
                           <div class = "kg-price">
@@ -251,7 +251,7 @@
 
                           <div>
                             <div class = "unit-price d-flex">
-                              <h4><%= product.price.to_f %></h4><p>CHF </p>
+                              <h4><%= product.price %></h4><p>CHF </p>
                             </div>
 
                             <div class = "kg-price">
