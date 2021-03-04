@@ -12,7 +12,9 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
     end
 
     column "Nom du consommateur", :order_id do |farm|
-      farm.order.buyer.first_name + " " + farm.order.buyer.last_name
+      if farm.order.buyer.present?
+        farm.order.buyer.first_name + " " + farm.order.buyer.last_name
+      end
     end
 
     column 'Montant' do |price|

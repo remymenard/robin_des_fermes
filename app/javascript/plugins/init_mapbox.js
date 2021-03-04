@@ -3,9 +3,15 @@ import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 const fitMapToMarkers = (map, markers) => {
-  const bounds = new mapboxgl.LngLatBounds();
-  markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-  map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
+  if (markers.length === 0) {
+    const bounds = new mapboxgl.LngLatBounds();
+    bounds.extend([ 8.227512, 46.818188 ]);
+    map.fitBounds(bounds, { padding: 150, maxZoom: 8, duration: 0 });
+  }else{
+    const bounds = new mapboxgl.LngLatBounds();
+    markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
+    map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
+  }
 };
 
 const addMarkersToMap = (map, markers) => {

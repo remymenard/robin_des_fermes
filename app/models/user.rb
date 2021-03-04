@@ -22,6 +22,7 @@ class User < ApplicationRecord
   validates :address_line_1, presence: true
   validates :city, presence: true
   validates :title, presence: true
+  validates :number_phone, presence: true
 
   before_create :subscribe_user_to_mailing_list
 

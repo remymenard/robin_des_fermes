@@ -67,12 +67,6 @@ class FarmsController < ApplicationController
     @far_farms = Farm.none
     @farm_show = @farms.where("farms.slug = ? ", params[:id])
 
-    @highlighted_photo = @farm.photos.first
-    @second_photo      = @farm.photos[1]
-    @third_photo       = @farm.photos[2]
-    @fourth_photo      = @farm.photos[3]
-    @conquest_photo    = @farm.photos[4]
-
     @date = Date.current
 
     @zip_code = get_zip_code_number
@@ -88,7 +82,8 @@ class FarmsController < ApplicationController
     if @near_farm
       @products_available = @farm.products.available
     else
-      @products_available = @farm.products.available.not_fresh
+      @products_available_not_fresh = @farm.products.available.not_fresh
+      @products_available = @farm.products.available
       @products_available_all = @farm.products.available
     end
 

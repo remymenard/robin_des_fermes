@@ -23,16 +23,21 @@ class Farm < ApplicationRecord
   accepts_nested_attributes_for :opening_hours, allow_destroy: true
 
   has_many_attached :photos
+  #validates_presence_of :photos
 
   has_one_attached :photo_portrait
+  #validates_presence_of :photo_portrait
 
-  # validates :labels, inclusion: { in: LABELS }
 
   validates :name, presence: true
-  # validates :labels, presence: true
   validates :address, presence: true
-  # validates :opening_time, presence: true
-  # validates :regions, presence: true
+  validates :zip_code, presence: true
+  validates :city, presence: true
+  validates :opening_time, presence: true
+  validates :country, presence: true
+  validates :description, presence: true
+  validates :long_description, presence: true
+
 
   scope :active, -> () { where(active: true) }
 

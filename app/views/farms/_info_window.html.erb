@@ -1,5 +1,5 @@
 
-<%= link_to farm_path(farm) do  %>
+<%= link_to farm_path(farm), target: :_blank do  %>
   <h2><%= farm.name  %></h2>
 
   <p class="products-number"><%= farm.products.count  %> <%= t('.products_number') %> </p>

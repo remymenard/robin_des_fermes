@@ -15,9 +15,10 @@ module Users
       end
 
     end
+
     private
     def user_params
-      params.require(:user).permit(:address_line_1, :zip_code, :city)
+      params.require(:user).permit(:address_line_1, :zip_code, :city, :number_phone)
     end
   end
 end

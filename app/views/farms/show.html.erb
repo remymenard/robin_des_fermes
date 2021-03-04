@@ -1,30 +1,21 @@
 <div class="owl-carousel owl-theme">
-  <div class="item">
-    <%= cl_image_tag @highlighted_photo.key%>
-  </div>
-  <div class="item">
-    <%= cl_image_tag @second_photo&.key, class: "second-photo"  %>
-  </div>
-  <div class="item">
-    <%= cl_image_tag @third_photo&.key, class: "third-photo"  %>
-  </div>
-  <div class="item">
-    <%= cl_image_tag @fourth_photo&.key, class: "fourth-photo"  %>
-  </div>
-  <div class="item">
-    <%= cl_image_tag @conquest_photo&.key, class: "conquest-photo"  %>
-  </div>
+  <% @farm.photos.each do |photo| %>
+    <div class="item">
+      <%= cl_image_tag photo.key%>
+    </div>
+  <% end %>
 </div>
 
 <div class="farm">
   <div class="description">
     <div class="header-description d-flex">
-      <%= cl_image_tag @farm.user.photo.key, height: 48, width: 48, crop: :fill %>
+      <% if @farm.user.photo.key.present? %>
+        <%= cl_image_tag @farm.user.photo.key, height: 48, width: 48, crop: :fill %>
+      <% end %>
       <p> <%=@farm.user.first_name.capitalize  %> <%=@farm.user.last_name.capitalize  %> </p>
-      <h1> <%= @farm.name.capitalize  %></h1>
     </div>
 
-    <h1> <%= @farm.name.capitalize  %></h1>
+    <h1> <%= @farm.name  %></h1>
 
     <div class="d-flex">
       <p> <%= t('.description', description: @farm.description) %> <%= link_to t('.more_description'), "#description-farm" %> </p>
@@ -44,13 +35,14 @@
     </div>
 
 
-    <div class="delivery d-flex">
+    <div class="delivery">
 
-      <div>
         <h6><%= t('.delivery') %> </h6>
-        <p class = "date"> <%= t('.hours_delivery') %> <%= @date.strftime('%d')  %> <%= t('.and_delivery') %> <%= I18n.l((@date + @farm.delivery_delay.days), format: "%d %B", locale: :'fr') %>.</p>
-        <%= link_to t('.more_delivery'), "#farm-delivery"  %>
-      </div>
+        <% if @farm.accepts_delivery %>
+          <p class = "date"> <%= t('.hours_delivery') %> <%= @date.strftime('%d')  %> <%= t('.and_delivery') %> <%= I18n.l((@date + @farm.delivery_delay.days), format: "%d %B", locale: :'fr') %>.</p>
+        <% end %>
+        <span> <%= link_to t('.more_delivery'), "#farm-delivery" %></span>
+
 
     </div>
 
@@ -58,6 +50,7 @@
     <div class="address">
       <h6><%= t('.address') %> </h6>
       <p><%= @farm.address  %></p>
+      <p><%= @farm.zip_code  %> <%= @farm.city  %></p>
     </div>
   </div>
 
@@ -73,10 +66,10 @@
             <%= link_to product_path(product) do  %>
               <div class="card-product">
                 <div id="product-data" data-image-url="<%= cl_image_path(product.photo.key) %>" data-name="<%= product.name %>" data-price="<%= product.price %>" data-currency="<%= product.price_currency %>" data-unit="<%= product.unit %>" data-ingredients="<%= product.ingredients %>" data-description="<%= product.description %>" ></div>
-                <%= cl_image_tag product.photo.key, height: 64, width: 64, crop: :fill %>
+                <%= cl_image_tag product.photo.key %>
                 <div class="photo-farm">
 
-                 <div class="labels d-flex">
+                  <div class="labels d-flex">
 
                     <% if product.available_for_preorder? %>
                       <div class='preorder'>
@@ -105,33 +98,31 @@
 
                     <div>
                       <div class = "unit-price d-flex">
-                        <h4><%= product.price.to_f %></h4><p>CHF </p>
+                        <h4><%= product.price %></h4><p>CHF </p>
                       </div>
 
                       <div class = "kg-price">
                         <p>(<%= product.price_per_unit_cents.to_f%> CHF/<%= product.unit %>)</p>
                       </div>
-
                     </div>
 
                   </div>
                 </div>
-                <% if product.available_for_preorder? %>
-                  <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" ><%= t('.pre_order') %></button>
-                <% else %>
-                  <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" ><%= t('.add') %></button>
-                <% end %>
+
+                <% button_label = product.available_for_preorder? ? t('.pre_order') : t('.add') %>
+
+                <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" >
+                  <%= button_label %>
+                </button>
+
               </div>
-              <% button_label = product.available_for_preorder? ? t('.pre_order') : t('.add') %>
-              <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" >
-                <%= button_label %>
-              </button>
-            </div>
 
             <% end %>
           <% end %>
         </div>
+
       <% else %>
+
         <h6><%= t('.not_delivery') %></h6>
         <ul class="nav nav-tabs justify-content-between tabs-products">
           <li class=" delivery nav-item" > <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
@@ -153,10 +144,10 @@
           <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
             <div class="d-flex all-card-product">
 
-              <% if @products_available.none? %>
-                <h6><%= t('.no_withdrawal') %></h6>
+              <% if @products_available_not_fresh.none? %>
+                <h6><%= t('.no_withdrawal_fresh') %></h6>
               <% else %>
-                <% @products_available.each do |product| %>
+                <% @products_available_not_fresh.each do |product| %>
 
                   <div class="card-product">
                     <div id="product-data" data-image-url="<%= cl_image_path(product.photo.key) %>" data-name="<%= product.name %>" data-price="<%= product.price %>" data-currency="<%= product.price_currency %>" data-unit="<%= product.unit %>" data-ingredients="<%= product.ingredients %>" data-description="<%= product.description %>" ></div>
@@ -178,7 +169,7 @@
                       </div>
 
                       <%= link_to product_path(product) do  %>
-                        <%= cl_image_tag product.photo.key, height: 64, width: 64, crop: :fill %>
+                        <%= cl_image_tag product.photo.key %>
                       <% end %>
 
                     </div>
@@ -194,7 +185,7 @@
 
                         <div>
                           <div class = "unit-price d-flex">
-                            <h4><%= product.price.to_f %></h4><p>CHF </p>
+                            <h4><%= product.price %></h4><p>CHF </p>
                           </div>
 
                           <div class = "kg-price">
@@ -243,7 +234,7 @@
                         </div>
 
                         <%= link_to product_path(product) do  %>
-                          <%= cl_image_tag product.photo.key, height: 64, width: 64, crop: :fill %>
+                          <%= cl_image_tag product.photo.key %>
                         <% end %>
                       </div>
 
@@ -258,7 +249,7 @@
 
                           <div>
                             <div class = "unit-price d-flex">
-                              <h4><%= product.price.to_f %></h4><p>CHF </p>
+                              <h4><%= product.price %></h4><p>CHF </p>
                             </div>
 
                             <div class = "kg-price">

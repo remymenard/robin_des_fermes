@@ -51,13 +51,13 @@ fruit.photo.attach(
 
 huile = Category.create!(name: "Huile & Vinaigre")
 huile.photo.attach(
-  io: File.open(Rails.root.join('db/fixtures/categories/viande.png')),
+  io: File.open(Rails.root.join('db/fixtures/categories/huile.png')),
   filename: 'huile.png'
 )
 
 vin = Category.create!(name: "Vins")
 vin.photo.attach(
-  io: File.open(Rails.root.join('db/fixtures/categories/boulangerie.png')),
+  io: File.open(Rails.root.join('db/fixtures/categories/vins.png')),
   filename: 'vins.png'
 )
 
@@ -89,6 +89,7 @@ user_henry = User.new(
   zip_code: "1200",
   title: "M",
   admin: false,
+  number_phone: "06 44 63 71 11",
 )
 
 user_henry.photo.attach(
@@ -108,6 +109,7 @@ user1 = User.new(
   zip_code: "1200",
   title: "M",
   admin: true,
+  number_phone: "06 44 63 71 11",
 )
 
 user1.skip_confirmation!
@@ -123,9 +125,9 @@ user1.photo.attach(
 puts "creation des fermes"
 
 henry = Farm.create!(name: "Famille Henry", user: user_henry, labels: ['Bio-Suisse'],
-  address: 'Alte Uitikonerstrasse 1, 8952 Schlieren',
+  address: 'Route du Village 62',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
-  offices: ['Cortaillod'], accepts_take_away: true,
+  offices: ['Cortaillod'], accepts_take_away: true, city: "Vulliens", zip_code: "1085", country: "france",
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
 henry.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm1.png')),
@@ -148,16 +150,16 @@ henry.photos.attach(
   filename: 'farm4.png'
 )
 henry.photo_portrait.attach(
-  io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
+  io: File.open(Rails.root.join('db/fixtures/farms/farm.png')),
   filename: 'farm4.png'
 )
 
 
 file2 = File.open(Rails.root.join('db/fixtures/farms/farm.png'))
 meleze = Farm.create!(name: "La ferme du Mélèze", user: user1, labels: ['Bio-Suisse'],
-  address: 'Gerechtigkeitsgasse 10, 3011 Berne',
+  address: 'Rte des Granges 4', city: "Ropraz", zip_code: "1088",
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
-  offices: ['Carouge GE Distribution', 'Cortaillod'], accepts_take_away: false,
+  offices: ['Carouge GE Distribution', 'Cortaillod'], accepts_take_away: false, country: "france",
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
 meleze.photos.attach(io: file2, filename: 'nes.png', content_type: 'image/png')
 meleze.photos.attach(
@@ -182,7 +184,7 @@ meleze.photo_portrait.attach(
 file3 = File.open(Rails.root.join('db/fixtures/farms/farm3.png'))
 
 jonas = Farm.create!(name: "La Ferme de Jonas", user: user1, labels: ['Bio-Suisse'],
-  address: 'Bahnhofstrasse 67, 5000 Aarau ',
+  address: 'Chemin de la Chapelle 3',  city: "Carrouge", zip_code: "1084", country: "france",
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   offices: ['Cheseaux-sur-Lausanne Distribution', 'Carouge GE Distribution'], accepts_take_away: false,
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
@@ -211,9 +213,9 @@ jonas.photo_portrait.attach(
 file4 = File.open(Rails.root.join('db/fixtures/farms/farm1.png'))
 
 cave = Farm.create!(name: "La Cave de l'Abbatiale", user: user1, labels: ['Bio-Suisse'],
-  address: 'Rue de Carouge 22, 1205 Genève',
+  address: 'Chemin de Montagny', city: "Aran", zip_code: "1091",
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
-  offices: ['Coppet Distribution'], accepts_take_away: false,
+  offices: ['Coppet Distribution'], accepts_take_away: false, country: "france",
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
 cave.photos.attach(io: file4, filename: 'nes.png', content_type: 'image/png')
 cave.photos.attach(
@@ -239,9 +241,9 @@ cave.photo_portrait.attach(
 
 file5 = File.open(Rails.root.join('db/fixtures/farms/farm2.png'))
 gallien = Farm.create!(name: "Le Domaine du Gallien", user: user1, labels: ['Bio-Suisse'],
-  address: 'Zollikerstrasse 788, 8008 Zurich',
+  address: 'Rte du village 15', city: "Carrouge", zip_code: "1084",
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
-  offices: ['Champéry', 'Aigle Distribution'], accepts_take_away: false,
+  offices: ['Champéry', 'Aigle Distribution'], accepts_take_away: false, country: "france",
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
 gallien.photos.attach(io: file5, filename: 'nes.png', content_type: 'image/png')
 gallien.photos.attach(
@@ -268,8 +270,8 @@ gallien.photo_portrait.attach(
 Farm.update(delivery_delay: 3)
 
 puts "Create farm categories"
-FarmCategory.create!(category_id: boucherie.id,  farm: henry)
-FarmCategory.create!(category_id: divers.id,  farm: henry)
+FarmCategory.create!(category_id: vin.id,  farm: henry)
+FarmCategory.create!(category_id: huile.id,  farm: henry)
 FarmCategory.create!(category_id: divers.id,  farm: gallien)
 FarmCategory.create!(category_id: divers.id,  farm: jonas)
 FarmCategory.create!(category_id: oeuf.id,  farm: jonas)
@@ -323,6 +325,24 @@ meat1.photo.attach(
 )
 
 steack = Product.create!(farm: meleze, category: boucherie, name: "Steack",
+  price_cents: 700, price_per_unit_cents: 1000, unit: "La pièce",
+  description: "Dégustez ce savoureux steak de boeuf.",
+  ingredients: "boeuf",
+  label: ['Bio-Suisse'],
+  available: true,
+  fresh: false
+)
+
+steack = Product.create!(farm: meleze, category: vin, name: "Steack",
+  price_cents: 700, price_per_unit_cents: 1000, unit: "La pièce",
+  description: "Dégustez ce savoureux steak de boeuf.",
+  ingredients: "boeuf",
+  label: ['Bio-Suisse'],
+  available: true,
+  fresh: false
+)
+
+steack = Product.create!(farm: meleze, category: huile, name: "Steack",
   price_cents: 700, price_per_unit_cents: 1000, unit: "La pièce",
   description: "Dégustez ce savoureux steak de boeuf.",
   ingredients: "boeuf",

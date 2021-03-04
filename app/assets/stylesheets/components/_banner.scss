@@ -28,7 +28,7 @@
     padding-top: 34px;
     justify-content: center;
 
-    .btn {
+    .btn-computer {
       background-color: #33B084 !important;
       color: white;
       font-weight: 600;
@@ -39,6 +39,11 @@
       width: 350px;
       letter-spacing: 2.5px;
       line-height: 24px;
+      text-transform: uppercase;
+    }
+
+    .btn-mobile {
+      display: none;
     }
 
     .form-control {
@@ -55,13 +60,13 @@
 
   @media(max-width: 770px) {
     .btn {
-      width: 200px !important;
+      width: 150px !important;
       letter-spacing: 0px !important;
       font-size: 10px !important;
     }
 
     .form-control {
-      width: 130px !important;
+      width: 180px !important;
     }
   }
 }
@@ -74,6 +79,25 @@
     height: 677px;
     width: 100%;
     margin-top: -100px;
+
+    .btn-computer {
+      display: none;
+    }
+
+    .btn-mobile {
+      display: initial !important;
+      background-color: #33B084 !important;
+      color: white;
+      font-weight: 600;
+      font-family: 'Mulish', sans-serif;
+      font-size: 14px;
+      height: 53px;
+      border-radius: 0px 10px 10px 0px;
+      width: 120px !important;
+      letter-spacing: 2.5px;
+      line-height: 24px;
+      text-transform: uppercase;
+    }
 
     h2 {
       padding-top: 200px;

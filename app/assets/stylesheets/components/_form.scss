@@ -1,5 +1,6 @@
 .sign {
   background-color: #FAF0E1;
+  width: 100%;
   height: 100vh;
 
   .container {
@@ -7,7 +8,6 @@
 
     .log-in {
       width: 570px;
-      height: 452px;
       background-color: white;
       margin-top: 134px;
       border-radius: 10px;
@@ -158,6 +158,42 @@
         text-decoration: underline;
         color: black;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .sign {
+    height: 120vh;
+
+    .sign-in {
+      width: 300px !important;
+    }
+
+    .name {
+    width: 90% !important;
+      input {
+        width: 95% !important;
+      }
+    }
+
+    .form-control {
+      width: 90% !important;
+    }
+
+    fieldset {
+      padding-left: 10px !important;
+    }
+
+    .form-actions {
+      input {
+        width: 90% !important;
+      }
+    }
+
+    .form-group.row.radio_buttons {
+      margin-left: 20px !important;
+      width: 90% !important;
     }
   }
 }
