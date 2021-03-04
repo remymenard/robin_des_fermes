@@ -286,7 +286,9 @@
       align-items: left !important;
 
       a {
+        margin-right: 0px !important;
         p {
+          white-space: normal !important;
           letter-spacing: 0px !important;
         }
       }
@@ -307,11 +309,12 @@
 
         }
 
-
-        img {
-          width: 30px !important;
-          height: 1px !important;
-          padding-top: 0px;
+        .line {
+          img {
+            width: 30px !important;
+            height: 1px !important;
+            padding-top: 0px;
+          }
         }
       }
     }

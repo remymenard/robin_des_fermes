@@ -28,7 +28,7 @@
     padding-top: 34px;
     justify-content: center;
 
-    .btn {
+    .btn-computer {
       background-color: #33B084 !important;
       color: white;
       font-weight: 600;
@@ -39,6 +39,7 @@
       width: 350px;
       letter-spacing: 2.5px;
       line-height: 24px;
+      text-transform: uppercase;
     }
 
     .form-control {
