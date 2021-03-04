@@ -220,9 +220,10 @@ fr:
       contact: "Ne perds pas de temps et contacte-nous via ce formulaire "
       button_contact: "CONTACTE-NOUS"
     newsletter:
-      inscription: "Inscription à la newslettert"
+      inscription: "Inscriptions à la newsletter"
       name: "Ton prénom"
       email: "Ton adresse email"
+      join: "Rejoins notre combat !"
   orders:
     review:
       header:
