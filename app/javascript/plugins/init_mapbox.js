@@ -30,8 +30,8 @@ const addMarkersToMap = (map, markers) => {
     const markerElement = mapMarker.getElement();
     markerElement.id = 'marker'
 
-    markerElement.addEventListener('mouseenter', () => popup.addTo(map));
-    markerElement.addEventListener('mouseleave', () => popup.remove());
+    // markerElement.addEventListener('mouseeout', () => popup.addTo(map));
+    // markerElement.addEventListener('mouseleave', () => popup.remove());
 
     mapMarker.setPopup(popup);
 
