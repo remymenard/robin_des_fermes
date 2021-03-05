@@ -1,4 +1,4 @@
-class SendOrderReceivedQuesionMailsJob < ApplicationJob
+class SendOrderReceivedQuestionMailsJob < ApplicationJob
   queue_as :default
 
   def perform(farm_order)

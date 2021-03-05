@@ -8,7 +8,7 @@
   </head>
   <body>
     <%= render "shared/mailer/header" %>
-    <p class="content">
+    <div class="content">
       Salut <%= @owner.first_name %>,
 
       Félicitations pour la commande n°<%= @order.id %>, cette dernière devra être livrée
@@ -34,8 +34,8 @@
 
       <%= form_tag set_as_shipped_orders_mails_confirm_shipped_url, method: :post do %>
         <%= hidden_field_tag :order_token, @order.confirm_shipped_token %>
-        <%= submit_tag "Confirmer l'envoie" %>
-      <% end %>q
+        <%= submit_tag "Confirmer l'envoie", :formtarget => "_blank" %>
+      <% end %>
 
       Encore bravo pour cette commande!
 
@@ -43,7 +43,7 @@
 
       La bande de Robin des Fermes
 
-    </p>
+    </div>
 
     <%= render "shared/mailer/footer" %>
   </body>
