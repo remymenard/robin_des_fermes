@@ -118,7 +118,7 @@
 
     .address-far-farm {
       margin-top: 19px;
-      margin-left: 10px;
+      margin-left: 15px;
 
       img {
         margin-right: 10px;
@@ -137,10 +137,11 @@
       flex-wrap: wrap;
       h6 {
         font-family: 'BioRhyme', serif;
-        font-size: 24px;
+        font-size: 20px;
+        letter-spacing: 0px;
         color: #25201D;
         margin-right: 7px;
-        margin-left: 10px;
+        margin-left: 15px;
         margin-bottom: 4px;
       }
 
@@ -152,13 +153,13 @@
     .openning {
       line-height: 21px;
       color: #25201D;
-      margin-left: 10px;
+      margin-left: 15px;
       margin-bottom: 4px;
       font-size: 14px !important;
     }
 
     .products-number {
-      margin-left: 10px;
+      margin-left: 15px;
       color: #25201D;
       opacity: 0.6;
       margin-bottom: 4px;
@@ -168,7 +169,7 @@
     .all-photos {
       flex-direction: row-reverse;
       justify-content: flex-end;
-      padding-left: 20px;
+      padding-left: 10px;
 
       .category-photo {
         margin-bottom: -25px;
@@ -233,6 +234,7 @@
         margin-left: 10px !important;
 
         img {
+          margin-top: 5px;
           margin-right: 10px;
         }
 
@@ -244,10 +246,11 @@
       }
 
       .address-far-farm {
-        margin-left: 0px;
+        margin-left: 10px;
 
         img {
           margin-right: 10px;
+          margin-top: 5px;
         }
 
         p {
@@ -275,6 +278,22 @@
       .products-number {
         margin-top: 0px;
         margin-left: 10px !important;
+        font-size: 13px !important;
+      }
+
+      .fresh-products {
+        img {
+          margin-top: 2px;
+        }
+
+        p {
+          font-size: 13px !important;
+          margin-left: 5px !important;
+        }
+
+        span {
+          font-size: 12px !important;
+        }
       }
 
       .all-photos {

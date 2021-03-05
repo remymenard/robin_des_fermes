@@ -5,7 +5,8 @@
       <p><%= t('.sub_title1') %> <strong><%= t('.sub_title_bold1') %></strong><%= t('.sub_title2') %><strong><%= t('.sub_title_bold2') %></strong><%= t('.sub_title3') %><strong><%= t('.sub_title_bold3') %></strong><%= t('.sub_title4') %><strong><%= t('.sub_title_bold4') %></strong><%= t('.sub_title5') %></p>
       <%= form_tag farms_path, method: :get, class: 'form-inline search' do %>
         <%= text_field_tag :zip, get_zip_code_number, readonly: true, class: 'form-control search zip_code_input', id: 'zip1', placeholder: "Où habitez-vous ?" %>
-        <%= submit_tag "DECOUVRIR LES PRODUCTEURS", class: "btn", name: nil %>
+        <%= submit_tag "DECOUVRIR LES PRODUCTEURS", class: "btn btn-computer", name: nil %>
+        <%= submit_tag "DECOUVRIR", class: "btn btn-mobile", name: nil %>
       <% end %>
 
     </div>
@@ -18,22 +19,34 @@
 
         <div class="two-products">
           <div>
-            <%= image_tag "categories/meat.png", alt: "Viande" %>
-            <h6><%= t('.viandes') %></h6>
-            <p><%= t('.paragraph_meat') %> </p>
-            <%= link_to farms_path(category: "Viande & Volaille"), class: "navbar-brand d-flex" do %>
-              <%= image_tag "categories/line.png", alt: "line" %>
-              <p><%= t('.discover_meat') %> </p>
+            <%= link_to farms_path(category: "Viande & Volaille"), class: "navbar-brand" do %>
+              <div class="image-categorie">
+                <%= image_tag "categories/meat.png", alt: "Viande" %>
+              </div>
+
+              <h6><%= t('.viandes') %></h6>
+              <p><%= t('.paragraph_meat') %> </p>
+
+              <div class="line d-flex">
+                <%= image_tag "categories/line.png", alt: "line" %>
+                <p><%= t('.discover_meat') %> </p>
+              </div>
             <% end %>
           </div>
 
           <div>
-            <%= image_tag "categories/vegetables.png", alt: "Lait" %>
-            <h6><%= t('.vegetables') %></h6>
-            <p><%= t('.paragraph_vegetables') %> </p>
-            <%= link_to farms_path(category: "Fruits & Légumes"), class: "navbar-brand d-flex" do %>
-              <%= image_tag "categories/line.png", alt: "line" %>
-              <p><%= t('.discover_vegetables') %> </p>
+            <%= link_to farms_path(category: "Fruits & Légumes"), class: "navbar-brand" do %>
+              <div class="image-categorie">
+                <%= image_tag "categories/vegetables.png", alt: "Lait" %>
+              </div>
+
+              <h6><%= t('.vegetables') %></h6>
+              <p><%= t('.paragraph_vegetables') %> </p>
+
+              <div class="line d-flex">
+                <%= image_tag "categories/line.png", alt: "line" %>
+                <p><%= t('.discover_vegetables') %> </p>
+              </div>
             <% end %>
           </div>
         </div>
@@ -42,12 +55,18 @@
           <h2><%= t('.products') %></h2>
 
           <div>
-            <%= image_tag "categories/wine.png", alt: "Vin" %>
-            <h6><%= t('.vins') %></h6>
-            <p><%= t('.paragraph_wine') %> </p>
-            <%= link_to farms_path(category: "Vin"), class: "navbar-brand d-flex" do %>
-              <%= image_tag "categories/line.png", alt: "line" %>
-              <p><%= t('.discover_wine') %> </p>
+            <%= link_to farms_path(category: "Vin"), class: "navbar-brand" do %>
+              <div class="image-categorie">
+                <%= image_tag "categories/wine.png", alt: "Vin" %>
+              </div>
+
+              <h6><%= t('.vins') %></h6>
+              <p><%= t('.paragraph_wine') %> </p>
+
+              <div class="line d-flex">
+                <%= image_tag "categories/line.png", alt: "line" %>
+                <p><%= t('.discover_wine') %> </p>
+              </div>
             <% end %>
           </div>
           <h2><%= t '.second_zip_code_input_title' %></h2>
@@ -121,7 +140,7 @@
 
                 <div class="d-flex address">
                   <%= image_tag "icons/marker_cards_farms.png", class: "marker" %>
-                  <p><%= farm.address.upcase  %></p>
+                  <p><%= farm.zip_code.upcase  %> <%= farm.city.upcase  %></p>
                 </div>
 
                 <div class="name d-flex">

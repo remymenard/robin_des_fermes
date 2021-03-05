@@ -2,6 +2,7 @@ class User < ApplicationRecord
   #has_many :farms, dependent: :destroy
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable, :trackable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
 
@@ -21,6 +22,7 @@ class User < ApplicationRecord
   validates :address_line_1, presence: true
   validates :city, presence: true
   validates :title, presence: true
+  validates :number_phone, presence: true
 
   before_create :subscribe_user_to_mailing_list
 

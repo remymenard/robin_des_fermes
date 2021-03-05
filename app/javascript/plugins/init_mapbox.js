@@ -3,14 +3,20 @@ import mapboxgl from 'mapbox-gl';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 const fitMapToMarkers = (map, markers) => {
-  const bounds = new mapboxgl.LngLatBounds();
-  markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-  map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
+  if (markers.length === 0) {
+    const bounds = new mapboxgl.LngLatBounds();
+    bounds.extend([ 8.227512, 46.818188 ]);
+    map.fitBounds(bounds, { padding: 150, maxZoom: 8, duration: 0 });
+  }else{
+    const bounds = new mapboxgl.LngLatBounds();
+    markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
+    map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
+  }
 };
 
 const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
-    const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // add this
+    const popup = new mapboxgl.Popup().setHTML(marker.infoWindow)
 
     const element = document.createElement('div');
     element.className = 'marker';
@@ -19,10 +25,17 @@ const addMarkersToMap = (map, markers) => {
     element.style.width = '27px';
     element.style.height = '30px';
 
-    new mapboxgl.Marker(element)
-      .setLngLat([ marker.lng, marker.lat ])
-        .setPopup(popup)
-        .addTo(map);
+    let mapMarker = new mapboxgl.Marker(element).setLngLat([ marker.lng, marker.lat ])
+
+    const markerElement = mapMarker.getElement();
+    markerElement.id = 'marker'
+
+    markerElement.addEventListener('mouseenter', () => popup.addTo(map));
+    markerElement.addEventListener('click', () => popup.remove());
+
+    mapMarker.setPopup(popup);
+
+    mapMarker.addTo(map);
   });
 }
 

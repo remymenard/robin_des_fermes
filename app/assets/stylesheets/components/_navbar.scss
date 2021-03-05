@@ -2,8 +2,18 @@
   padding-right: 40px !important;
 }
 
+#content {
+  padding-top: 57px;
+}
+.swal2-container {
+  z-index: 999999 !important;
+}
+
 .navbar {
-  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index:100;
   background-color: $primary;
   .add-gap {
     li {
@@ -51,7 +61,7 @@
     p {
       font-size: 14px;
       @include media-breakpoint-down(lg) {
-        font-size: 12px;
+        font-size: 17px;
       }
     }
     @include media-breakpoint-up(sm) {

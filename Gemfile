@@ -26,6 +26,10 @@ gem 'redis', '~> 4.0'
 
 gem 'pundit'
 
+gem 'whenever', require: false
+gem 'sitemap_generator'
+gem 'friendly_id', '~> 5.4.0'
+
 gem 'owlcarousel-rails'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

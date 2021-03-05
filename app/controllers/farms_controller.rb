@@ -61,18 +61,11 @@ class FarmsController < ApplicationController
   end
 
   def show
+    @farm = Farm.friendly.find(params[:id])
     @reassurance = true
     @farms = Farm.all
     @far_farms = Farm.none
-    @farm = Farm.find(params[:id])
-
-    @farm_show = @farms.where("farms.id = ? ", params[:id])
-
-    @highlighted_photo = @farm.photos.first
-    @second_photo      = @farm.photos[1]
-    @third_photo       = @farm.photos[2]
-    @fourth_photo      = @farm.photos[3]
-    @conquest_photo    = @farm.photos[4]
+    @farm_show = @farms.where("farms.slug = ? ", params[:id])
 
     @date = Date.current
 
@@ -89,7 +82,8 @@ class FarmsController < ApplicationController
     if @near_farm
       @products_available = @farm.products.available
     else
-      @products_available = @farm.products.available.not_fresh
+      @products_available_not_fresh = @farm.products.available.not_fresh
+      @products_available = @farm.products.available
       @products_available_all = @farm.products.available
     end
 
