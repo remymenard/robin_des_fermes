@@ -1,15 +1,20 @@
 <div class="footer">
-  <div class="all-informations">
+  <div class="all-informations d-flex justify-content-around">
+    <div class="image">
+      <%= image_tag "logos/rdf_light_pink.png" %>
 
-    <%= image_tag "logos/rdf_light_pink.png" %>
+    </div>
 
     <div class="information">
-      <p class= "title"><%= t('.information') %></p>
-      <p><%= link_to t('.about'), about_path %></p>
-      <p><%= link_to t('.gang'), team_path %></p>
-      <p><%= link_to t(".faq"), faq_path  %></p>
-      <p><%= link_to t(".cgv"), cgv_path  %></p>
-      <p><%= link_to t('.impressum'), impressum_path %></p>
+      <div>
+        <p class= "title"><%= t('.information') %></p>
+        <p><%= link_to t('.about'), about_path %></p>
+        <p><%= link_to t('.gang'), team_path %></p>
+        <p><%= link_to t(".faq"), faq_path  %></p>
+        <p><%= link_to t(".cgv"), cgv_path  %></p>
+        <p><%= link_to t('.impressum'), impressum_path %></p>
+
+      </div>
     </div>
 
     <div class="community">
