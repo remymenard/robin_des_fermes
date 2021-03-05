@@ -1,44 +1,52 @@
 <div class="footer">
-  <%= image_tag "logos/rdf_light_pink.png" %>
-
-  <div class="information">
-    <p class= "title"><%= t('.information') %></p>
-    <p><%= link_to t('.about'), about_path %></p>
-    <p><%= link_to t('.gang'), team_path %></p>
-    <p><%= link_to t(".faq"), faq_path  %></p>
-    <p><%= link_to t(".cgv"), cgv_path  %></p>
-    <p><%= link_to t('.impressum'), impressum_path %></p>
-  </div>
-
-  <div class="community">
-    <p class= "title"><%= t('.community') %></p>
-    <p><%= link_to t('.companion'), community_path %></p>
-    <p><%= link_to t('.partners'), partners_path %></p>
-    <p><%= link_to t('.newsletter'), newsletter_path %></p>
-  </div>
-
-  <div class="producers">
-    <p class= "title"><%= t('.producers') %></p>
-    <p><%= link_to t('.producer'), producer_path %></p>
-    <p><%= link_to t('.charte'), charter_path %></p>
-  </div>
-
-  <div class="link">
-    <p class= "title"><%= t('.find_us') %></p>
-
-    <div class="footer-links">
-      <a href="https://www.facebook.com/robindesfermes.ch/" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.instagram.com/robin_des_fermes/" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.linkedin.com/company/robin-des-fermes/" target="_blank"><i class="fab fa-linkedin"></i></a>
-    </div>
-
-    <div class="contact">
-      <p class= "contact-title"><%= t('.contact_us') %></p>
-      <p>info@robindesfermes.ch</p>
-      <p>021 000 00 00</p>
+  <div class="all-informations d-flex justify-content-around">
+    <div class="image">
+      <%= image_tag "logos/rdf_light_pink.png" %>
 
     </div>
 
+    <div class="information">
+      <div>
+        <p class= "title"><%= t('.information') %></p>
+        <p><%= link_to t('.about'), about_path %></p>
+        <p><%= link_to t('.gang'), team_path %></p>
+        <p><%= link_to t(".faq"), faq_path  %></p>
+        <p><%= link_to t(".cgv"), cgv_path  %></p>
+        <p><%= link_to t('.impressum'), impressum_path %></p>
+
+      </div>
+    </div>
+
+    <div class="community">
+      <p class= "title"><%= t('.community') %></p>
+      <p><%= link_to t('.companion'), community_path %></p>
+      <p><%= link_to t('.partners'), partners_path %></p>
+      <p><%= link_to t('.newsletter'), newsletter_path %></p>
+    </div>
+
+    <div class="producers">
+      <p class= "title"><%= t('.producers') %></p>
+      <p><%= link_to t('.producer'), producer_path %></p>
+      <p><%= link_to t('.charte'), charter_path %></p>
+    </div>
+
+    <div class="link">
+      <p class= "title"><%= t('.find_us') %></p>
+
+      <div class="footer-links">
+        <a href="https://www.facebook.com/robindesfermes.ch/" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/robin_des_fermes/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/company/robin-des-fermes/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      </div>
+
+      <div class="contact">
+        <p class= "contact-title"><%= t('.contact_us') %></p>
+        <p>info@robindesfermes.ch</p>
+        <p>079 674 63 69</p>
+
+      </div>
+
+    </div>
   </div>
 
 </div>

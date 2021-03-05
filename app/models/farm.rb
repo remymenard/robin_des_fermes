@@ -2,7 +2,7 @@ class Farm < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  geocoded_by :address
+  geocoded_by :full_address
   after_validation :geocode, if: :will_save_change_to_address?
 
   has_many :farm_orders
@@ -170,5 +170,9 @@ class Farm < ApplicationRecord
 
     # Remove empty values
     self.regions.reject!(&:empty?)
+  end
+
+  def full_address
+    [address, zip_code, city, country].compact.join(', ')
   end
 end

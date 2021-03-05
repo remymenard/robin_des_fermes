@@ -16,7 +16,7 @@ const fitMapToMarkers = (map, markers) => {
 
 const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
-    const popup = new mapboxgl.Popup().setHTML(marker.infoWindow); // add this
+    const popup = new mapboxgl.Popup().setHTML(marker.infoWindow)
 
     const element = document.createElement('div');
     element.className = 'marker';
@@ -25,10 +25,17 @@ const addMarkersToMap = (map, markers) => {
     element.style.width = '27px';
     element.style.height = '30px';
 
-    new mapboxgl.Marker(element)
-      .setLngLat([ marker.lng, marker.lat ])
-        .setPopup(popup)
-        .addTo(map);
+    let mapMarker = new mapboxgl.Marker(element).setLngLat([ marker.lng, marker.lat ])
+
+    const markerElement = mapMarker.getElement();
+    markerElement.id = 'marker'
+
+    markerElement.addEventListener('mouseenter', () => popup.addTo(map));
+    markerElement.addEventListener('mouseleave', () => popup.remove());
+
+    mapMarker.setPopup(popup);
+
+    mapMarker.addTo(map);
   });
 }
 
