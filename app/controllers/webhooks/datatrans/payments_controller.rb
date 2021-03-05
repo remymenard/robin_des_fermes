@@ -9,7 +9,7 @@ module Webhooks
       ]
 
       def create
-        # return permission_denied unless datatrans_valid_ip?
+        return permission_denied unless datatrans_valid_ip?
 
         # @datatrans = DatatransService.new
         # order = Order.find_by(transaction_id: params["transactionId"])
