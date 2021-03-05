@@ -1,4 +1,5 @@
 ActiveAdmin.register Farm, as: "Exploitations" do
+
   before_action :remove_password_params_if_blank, only: [:update]
 
   permit_params :active, :name, :description, :address, :lagitude, :longitude, :photo_portrait, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accepts_delivery, photos: [], labels: [], offices: [], regions: [],
@@ -41,7 +42,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
           f.input :user_id, as: :search_select, id: "select-user", url: search_users_admin_path,
           fields: [:first_name, :last_name, :email, :number_phone], display_name: :full_name, minimum_input_length: 3,
           order_by: 'description_asc', label: 'Chercher un propriétaire existant', clearable: false
-          inputs "Informations du propriétaire", class: "owner-form", for: [:user, params[:id] ? Farm.find(params[:id]).user : User.new] do |u|
+          inputs "Informations du propriétaire", class: "owner-form", for: [:user, params[:id] ? Farm.friendly.find(params[:id]).user : User.new] do |u|
             u.input :title,                           label: "Genre",         collection: User::TITLE
             u.input :first_name,                      label: false,           placeholder: "Prénom"
             u.input :last_name,                       label: false,           placeholder: "Nom"
@@ -166,15 +167,12 @@ ActiveAdmin.register Farm, as: "Exploitations" do
       end
     end
     f.actions do
-      if resource.persisted?
-        f.action :submit, label: "Modifier l'exploitation"
-      else
-        f.action :submit, label: "Créer l'exploitation"
-      end
+      f.action :submit, label: "Valider l'exploitation"
     end
   end
 
   controller do
+    defaults :finder => :find_by_slug
     def create
       @farm = Farm.new(permitted_params[:farm])
       @farm.user.skip_confirmation_notification!
@@ -194,7 +192,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
     end
 
     def update
-      @farm = Farm.find(params[:id])
+      @farm = Farm.friendly.find(params[:id])
       params[:farm].delete(:user_id) if params[:farm][:user_id] == ""
 
       @farm.update!(permitted_params[:farm])
@@ -212,6 +210,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
       end
 
     end
+
 
     def remove_password_params_if_blank
       unless params[:farm][:user_attributes].nil?
