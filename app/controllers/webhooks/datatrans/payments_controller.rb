@@ -27,9 +27,9 @@ module Webhooks
         #   end
         #   SendOrderConfirmationMailsJob.perform_now(order)
 
-        else
+        # else
           # TODO LATER: handle non happy paths
-        end
+        # end
       end
 
       private
