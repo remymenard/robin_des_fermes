@@ -241,7 +241,7 @@ fr:
     delivery:
       edit_personal_infos: "Modifier mes informations"
       delivery_infos: "Informations de livraison"
-      delivery_mode: "Mode de livraison"
+      delivery_modes: "Mode de livraison"
       local_delivery: "Distribution régionale"
       national_delivery: "Expédition nationale"
       delivery: "Expédition"
