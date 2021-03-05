@@ -1,1 +1,8 @@
-<h1>Error</h1>
+<div class="successful">
+  <h1><%= t("orders.mails.confirm_shipped_with_error.title_line_1") %></h1>
+  <h1><%= t("orders.mails.confirm_shipped_with_error.title_line_2") %></h1>
+  <span class="font-weight-bold mt-3"><%= t("orders.mails.confirm_shipped_with_error.subtitle_line_1") %></span>
+  <span class="my-4"><%= t("orders.mails.confirm_shipped_with_error.thanks") %></span>
+  <%= link_to t("orders.redirect.payments.back_button"), root_path, class: "btn btn-primary btn-lg btn-block" %>
+  <%= image_tag "bag_confirmation.png", class: "bag" %>
+</div>

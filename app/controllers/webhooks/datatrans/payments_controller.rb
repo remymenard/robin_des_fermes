@@ -19,11 +19,14 @@ module Webhooks
           order.farm_orders.each do |farm_order|
             if farm_order.contains_preorder_product?
               farm_order.update(price: farm_order.total_price_with_shipping, status: 'preordered', waiting_for_preorder_at: Date.current, waiting_for_shipping_at: farm_order.compute_preorder_delivery_date)
+              SendOrderReminderMailsJob.set(wait_until: farm_order.preorder_shipping_starting_at - 7.days).perform_later(farm_order)
             else
               farm_order.update(price: farm_order.total_price_with_shipping, status: 'in_preparation', waiting_for_shipping_at: Date.current)
+              SendOrderReminderMailsJob.set(wait_until: farm_order.waiting_for_shipping_at + farm_order.farm.delivery_delay.days - 1.day).perform_later(farm_order)
             end
           end
           SendOrderConfirmationMailsJob.perform_now(order)
+
         else
           # TODO LATER: handle non happy paths
         end

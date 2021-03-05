@@ -228,6 +228,29 @@ fr:
       email: "Ton adresse email"
       join: "Rejoins notre combat !"
   orders:
+    mails:
+      confirm_shipped:
+        title_line_1: "La commande"
+        title_line_2: "a changé de statut !"
+        subtitle_line_1: "Tu as bien cliqué sur le lien pour modifier le statut de livraison."
+        subtitle_line_2: "Un mail a été envoyé au client."
+        thanks: "La bande de Robin des Fermes"
+        back_button: "RETOUR A L'ACCEUIL"
+      confirm_shipped_with_error:
+        title_line_1: "La commande"
+        title_line_2: "a déjà été livrée !"
+        subtitle_line_1: "Tu as déjà cliqué sur le lien pour modifier le statut de livraison."
+        thanks: "La bande de Robin des Fermes"
+        back_button: "RETOUR A L'ACCEUIL"
+    redirect:
+      payments:
+        title_line_1: "Hourra !"
+        title_line_2: "Ton butin est en préparation !"
+        subtitle_line_1: "Ta commande a bien été prise en compte,"
+        subtitle_line_2: "tu vas recevoir un email de confirmation."
+        thanks_line_1: "Merci pour ta confiance,"
+        thanks_line_2: "La bande de Robin des Fermes"
+        back_button: "RETOUR A L'ACCEUIL"
     review:
       header:
         step1: "Panier"
