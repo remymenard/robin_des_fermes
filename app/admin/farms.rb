@@ -168,7 +168,6 @@ ActiveAdmin.register Farm, as: "Exploitations" do
     end
     f.actions do
       f.action :submit, label: "Valider l'exploitation"
-
     end
   end
 

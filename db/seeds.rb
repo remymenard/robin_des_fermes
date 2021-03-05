@@ -124,7 +124,7 @@ user1.photo.attach(
 
 puts "creation des fermes"
 
-henry = Farm.create!(name: "Famille Henry", user: user_henry, labels: ['Bio-Suisse'],
+henry = Farm.new(name: "Famille Henry", user: user_henry, labels: ['Bio-Suisse'],
   address: 'Route du Village 62',
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   offices: ['Cortaillod'], accepts_take_away: true, city: "Vulliens", zip_code: "1085", country: "france",
@@ -154,9 +154,10 @@ henry.photo_portrait.attach(
   filename: 'farm4.png'
 )
 
+henry.save
 
 file2 = File.open(Rails.root.join('db/fixtures/farms/farm.png'))
-meleze = Farm.create!(name: "La ferme du Mélèze", user: user1, labels: ['Bio-Suisse'],
+meleze = Farm.new(name: "La ferme du Mélèze", user: user1, labels: ['Bio-Suisse'],
   address: 'Rte des Granges 4', city: "Ropraz", zip_code: "1088",
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   offices: ['Carouge GE Distribution', 'Cortaillod'], accepts_take_away: false, country: "france",
@@ -181,9 +182,12 @@ meleze.photo_portrait.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
   filename: 'farm4.png')
 
+meleze.save!
+
 file3 = File.open(Rails.root.join('db/fixtures/farms/farm3.png'))
 
-jonas = Farm.create!(name: "La Ferme de Jonas", user: user1, labels: ['Bio-Suisse'],
+
+jonas = Farm.new(name: "La Ferme de Jonas", user: user1, labels: ['Bio-Suisse'],
   address: 'Chemin de la Chapelle 3',  city: "Carrouge", zip_code: "1084", country: "france",
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   offices: ['Cheseaux-sur-Lausanne Distribution', 'Carouge GE Distribution'], accepts_take_away: false,
@@ -210,9 +214,11 @@ jonas.photo_portrait.attach(
   filename: 'farm4.png'
 )
 
+jonas.save!
+
 file4 = File.open(Rails.root.join('db/fixtures/farms/farm1.png'))
 
-cave = Farm.create!(name: "La Cave de l'Abbatiale", user: user1, labels: ['Bio-Suisse'],
+cave = Farm.new(name: "La Cave de l'Abbatiale", user: user1, labels: ['Bio-Suisse'],
   address: 'Chemin de Montagny', city: "Aran", zip_code: "1091",
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   offices: ['Coppet Distribution'], accepts_take_away: false, country: "france",
@@ -239,8 +245,10 @@ cave.photo_portrait.attach(
   filename: 'farm4.png'
 )
 
+cave.save!
+
 file5 = File.open(Rails.root.join('db/fixtures/farms/farm2.png'))
-gallien = Farm.create!(name: "Le Domaine du Gallien", user: user1, labels: ['Bio-Suisse'],
+gallien = Farm.new(name: "Le Domaine du Gallien", user: user1, labels: ['Bio-Suisse'],
   address: 'Rte du village 15', city: "Carrouge", zip_code: "1084",
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   offices: ['Champéry', 'Aigle Distribution'], accepts_take_away: false, country: "france",
@@ -267,6 +275,8 @@ gallien.photo_portrait.attach(
   filename: 'farm4.png'
 )
 
+gallien.save!
+
 Farm.update(delivery_delay: 3)
 
 puts "Create farm categories"
@@ -282,7 +292,7 @@ FarmCategory.create!(category_id: divers.id,  farm: meleze)
 
 
 puts "Create products"
-meat = Product.create!(farm: henry, category: boucherie, name: "Meat",
+meat = Product.new(farm: henry, category: boucherie, name: "Meat",
   price_cents: 5, price_per_unit_cents: 10, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -296,7 +306,9 @@ meat.photo.attach(
   filename: 'meat.png'
 )
 
-oeuf = Product.create!(farm: jonas, category: oeuf, name: "Oeuf",
+meat.save!
+
+oeuf = Product.new(farm: jonas, category: oeuf, name: "Oeuf",
   price_cents: 500, price_per_unit_cents: 1000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -310,7 +322,9 @@ oeuf.photo.attach(
   filename: 'egg.png'
 )
 
-meat1 = Product.create!(farm: henry, category: boucherie, name: "steack",
+oeuf.save!
+
+meat1 = Product.new(farm: henry, category: boucherie, name: "steack",
   price_cents: 5200, price_per_unit_cents: 10000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -324,25 +338,9 @@ meat1.photo.attach(
   filename: 'meat1.png'
 )
 
-steack = Product.create!(farm: meleze, category: boucherie, name: "Steack",
-  price_cents: 700, price_per_unit_cents: 1000, unit: "La pièce",
-  description: "Dégustez ce savoureux steak de boeuf.",
-  ingredients: "boeuf",
-  label: ['Bio-Suisse'],
-  available: true,
-  fresh: false
-)
+meat1.save!
 
-steack = Product.create!(farm: meleze, category: vin, name: "Steack",
-  price_cents: 700, price_per_unit_cents: 1000, unit: "La pièce",
-  description: "Dégustez ce savoureux steak de boeuf.",
-  ingredients: "boeuf",
-  label: ['Bio-Suisse'],
-  available: true,
-  fresh: false
-)
-
-steack = Product.create!(farm: meleze, category: huile, name: "Steack",
+steack = Product.new(farm: meleze, category: boucherie, name: "Steack",
   price_cents: 700, price_per_unit_cents: 1000, unit: "La pièce",
   description: "Dégustez ce savoureux steak de boeuf.",
   ingredients: "boeuf",
@@ -356,7 +354,9 @@ steack.photo.attach(
   filename: 'meat1.png'
 )
 
-chicken = Product.create!(farm: henry, category: boucherie, name: "Poulet",
+steack.save!
+
+chicken = Product.new(farm: henry, category: boucherie, name: "Poulet",
   price_cents: 2500, price_per_unit_cents: 12000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -370,7 +370,9 @@ chicken.photo.attach(
   filename: 'chicken.png'
 )
 
-chicken2 = Product.create!(farm: gallien, category: boucherie, name: "Poulet",
+chicken.save!
+
+chicken2 = Product.new(farm: gallien, category: boucherie, name: "Poulet",
   price_cents: 2500, price_per_unit_cents: 12000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -382,7 +384,9 @@ chicken2.photo.attach(
   filename: 'chicken.png'
 )
 
-juice = Product.create!(farm: henry, category: divers, name: "Jus de pomme",
+chicken2.save!
+
+juice = Product.new(farm: henry, category: divers, name: "Jus de pomme",
   price_cents: 500, price_per_unit_cents: 1000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -394,8 +398,9 @@ juice.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/apple-juice.png')),
   filename: 'apple-juice.png'
 )
+juice.save!
 
-apple_juice = Product.create!(farm: cave, category: divers, name: "Jus de pomme",
+apple_juice = Product.new(farm: cave, category: divers, name: "Jus de pomme",
   price_cents: 500, price_per_unit_cents: 1000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -408,7 +413,9 @@ apple_juice.photo.attach(
   filename: 'apple-juice.png'
 )
 
-honey = Product.create!(farm: henry, category: divers, name: "Miel",
+apple_juice.save!
+
+honey = Product.new(farm: henry, category: divers, name: "Miel",
   price_cents: 3500, price_per_unit_cents: 13200, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -422,7 +429,9 @@ honey.photo.attach(
   filename: 'honey.png'
 )
 
-jam = Product.create!(farm: jonas, category: divers, name: "confiture",
+honey.save!
+
+jam = Product.new(farm: jonas, category: divers, name: "confiture",
   price_cents: 3500, price_per_unit_cents: 13200, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -436,7 +445,9 @@ jam.photo.attach(
   filename: 'honey.png'
 )
 
-oil = Product.create!(farm: henry, category: divers, name: "Oil",
+jam.save!
+
+oil = Product.new(farm: henry, category: divers, name: "Oil",
   price_cents: 500, price_per_unit_cents: 1000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -450,7 +461,9 @@ oil.photo.attach(
   filename: 'oil.png'
 )
 
-vinegar = Product.create!(farm: meleze, category: divers, name: "Vinaigre",
+oil.save!
+
+vinegar = Product.new(farm: meleze, category: divers, name: "Vinaigre",
   price_cents: 500, price_per_unit_cents: 1000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -464,7 +477,9 @@ vinegar.photo.attach(
   filename: 'oil.png'
 )
 
-potato = Product.create!(farm: henry, category: divers, name: "Patate",
+vinegar.save!
+
+potato = Product.new(farm: henry, category: divers, name: "Patate",
   price_cents: 500, price_per_unit_cents: 1000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -477,7 +492,9 @@ potato.photo.attach(
   filename: 'potato.png'
 )
 
-chips = Product.create!(farm: cave, category: divers, name: "Potato",
+potato.save!
+
+chips = Product.new(farm: cave, category: divers, name: "Potato",
   price_cents: 500, price_per_unit_cents: 1000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -491,7 +508,9 @@ chips.photo.attach(
   filename: 'potato.png'
 )
 
-egg = Product.create!(
+chips.save!
+
+egg = Product.new(
   farm: henry, category: divers, name: "Oeuf", price_cents: 500, price_per_unit_cents: 1000,
   unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -505,7 +524,9 @@ egg.photo.attach(
   filename: 'egg.png'
 )
 
-egg2 = Product.create!(
+egg.save!
+
+egg2 = Product.new(
   farm: jonas, category: divers, name: "Oeuf", price_cents: 500, price_per_unit_cents: 1000,
   unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
@@ -520,7 +541,9 @@ egg2.photo.attach(
   filename: 'egg.png'
 )
 
-apple = Product.create!(farm: henry, category: divers, name:"Pomme",
+egg2.save!
+
+apple = Product.new(farm: henry, category: divers, name:"Pomme",
   price_cents: 500, price_per_unit_cents: 1000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -534,8 +557,10 @@ apple.photo.attach(
   filename: 'apple.png'
 )
 
+apple.save!
 
-apple2 = Product.create!(farm: jonas, category: divers, name:"Pomme",
+
+apple2 = Product.new(farm: jonas, category: divers, name:"Pomme",
   price_cents: 500, price_per_unit_cents: 1000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -549,7 +574,9 @@ apple2.photo.attach(
   filename: 'apple.png'
 )
 
-apple3 = Product.create!(farm: jonas, category: divers, name:"Apple bio",
+apple2.save!
+
+apple3 = Product.new(farm: jonas, category: divers, name:"Apple bio",
   price_cents: 500, price_per_unit_cents: 1000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
@@ -561,6 +588,8 @@ apple3.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/apple.png')),
   filename: 'apple.png'
 )
+
+apple3.save!
 
 lundi = OpeningHour.create!(farm: henry, day: 0, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
 mardi = OpeningHour.create!(farm: henry, day: 1, opens: DateTime.new(2012, 8, 29, 8, 35, 0), closes: DateTime.new(2012, 8, 29, 22, 35, 0))
