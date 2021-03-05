@@ -167,11 +167,8 @@ ActiveAdmin.register Farm, as: "Exploitations" do
       end
     end
     f.actions do
-      if resource.persisted?
-        f.action :submit, label: "Modifier l'exploitation"
-      else
-        f.action :submit, label: "Créer l'exploitation"
-      end
+      f.action :submit, label: "Valider l'exploitation"
+
     end
   end
 
