@@ -23,16 +23,12 @@
   }
   .content {
     white-space: pre-line;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     width: 70vw;
     margin: auto;
     min-height: 340px;
+    margin-left: 7vw;
   }
   .form {
-    display: flex;
-    justify-content: center;
     margin-left: 40px;
   }
     input {
@@ -46,25 +42,27 @@
       margin-top: -48px !important;
     }
   .header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 22px 0 22px 0;
     border-bottom: 2px solid #33B084;
     margin-bottom: 24px;
   }
+    .header > img {
+      margin: auto;
+      display: block;
+    }
   .footer {
     background: #FAF7F3;
     height: 150px;
     width: 100%;
     border-top: 1px solid #33B084;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     text-align: center;
     margin-top: 24px;
   }
 
+  .footer > p {
+    margin: auto;
+    margin-top: 47px;
+  }
   * {
     font-family: Mulish;
   }
