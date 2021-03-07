@@ -1,6 +1,8 @@
 class OrderMailer < ApplicationMailer
   include Rails.application.routes.url_helpers
 
+  rescue_from Postmark::InactiveRecipientError, with: :reactivate_and_retry
+
   before_action :define_order_and_user
 
   default from: ENV["DEFAULT_EMAIL"]
@@ -63,5 +65,19 @@ class OrderMailer < ApplicationMailer
     @order = params[:order]
     @user = params[:user]
     @owner = @order.farm.user
+  end
+
+  def reactivate_and_retry(error)
+    Rails.logger.info("Error when sending #{message} to #{error.recipients.join(', ')}")
+    Rails.logger.info(error)
+
+    error.recipients.each do |recipient|
+      bounce = postmark_client.bounces(emailFilter: recipient).first
+      next unless bounce
+      postmark_client.activate_bounce(bounce[:id])
+    end
+
+    # Try again immediately
+    message.deliver
   end
 end
