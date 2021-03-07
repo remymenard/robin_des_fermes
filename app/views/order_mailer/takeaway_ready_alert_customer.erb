@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <%= render "shared/mailer/styling" %>
+  </head>
+  <body>
+    <%= render "shared/mailer/header" %>
+    <p class="content">
+      Salut <%= @user.first_name %>,
+
+      Ta commande n°<%= @order.id %> est prête et peut être retirée auprès de <%= @order.farm.name %>.
+
+      Tu peux la retirer à cette adresse:
+      <%= @order.farm.address %>
+
+      La bande de Robin des Fermes
+
+    </p>
+
+    <%= render "shared/mailer/footer" %>
+  </body>
+</html>

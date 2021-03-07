@@ -6,17 +6,11 @@
   <body>
     <%= render "shared/mailer/header" %>
     <p class="content">
-      Salut compagnon <%= @user.first_name %>,
+      Bonjour <%= @user.first_name %>,
 
-      Nous te remercions pour ta commande n° <%= @order.id %>. Tu trouveras ci-dessous un récapitulatif de celle-ci.
+      Avez-vous bien reçu la commande n°<%= @order.id %>. du <%= I18n.l((@order.waiting_for_shipping_at), format: "%d/%m/%y", locale: :'fr') %>
 
-      Ta commande chez <%= @order.farm.name %>.
-
-      Date de la commande: <%= Date.current.strftime('%d/%m/%y') %>
-      Mode de livraison: Retrait chez le producteur
-      Date de retrait estimée: <%= I18n.l((@order.waiting_for_shipping_at), format: "%d/%m/%y", locale: :'fr') %>
-
-      Tu recevras un mail qui t’avertira lorsque tu pourras retirer ta commande auprès de <%= @order.farm.name %>.
+      Mode de livraison: <%= @order.shipping_choice_name %>
 
       Contenu de la commande:
       <% @order.order_line_items.each do |item| %>
@@ -25,7 +19,7 @@
 
       TOTAL <%= @order.price %><%= @order.price_currency %>
 
-      Nous te remercions d’avoir passé commande sur Robin des Fermes.
+      Si vous n’avez pas reçu votre commande, merci de contacter Robin des Fermes à ce numéro 079 674 63 69.
 
       Vaillantes salutations,
 

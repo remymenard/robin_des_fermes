@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <%= render "shared/mailer/styling" %>
+  </head>
+  <body>
+    <%= render "shared/mailer/header" %>
+    <p class="content">
+      Salut <%= @user.first_name %>,
+
+      Ta commande n°<%= @order.id %> a été expédiée, tu la recevras par <%= @order.shipping_choice_name %>.
+
+      La bande de Robin des Fermes
+
+    </p>
+
+    <%= render "shared/mailer/footer" %>
+  </body>
+</html>

@@ -8,11 +8,12 @@
     <div class="content">
       Salut <%= @owner.first_name %>,
 
-      Félicitations pour la commande n°<%= @order.id %>, cette dernière devra être prête pour le retrait au plus tard le
-      <%= I18n.l((Date.current + @order.farm.delivery_delay.days), format: "%d/%m/%y", locale: :'fr') %>.
+      Nous te rappelons que le délai de la commande  n°<%= @order.id %> arrive le
+      <%= I18n.l((@order.waiting_for_shipping_at + @order.farm.delivery_delay.days), format: "%d/%m/%y", locale: :'fr') %>. Voici un récapitulatif de la commande.
 
-      Date de la commande: <%= Date.current.strftime('%d/%m/%y') %>
-      Date de retrait estimée: <%= I18n.l((Date.current + @order.farm.delivery_delay.days), format: "%d/%m/%y", locale: :'fr') %>
+      Date de la commande: <%= @order.waiting_for_shipping_at.strftime('%d/%m/%y') %>
+      Mode de livraison: <%= @order.shipping_choice_name %>
+      Date de livraison estimée: <%= I18n.l((@order.waiting_for_shipping_at + @order.farm.delivery_delay.days), format: "%d/%m/%y", locale: :'fr') %>
 
       Destinataire:
       <%= @user.first_name %> <%= @user.last_name %>
@@ -26,15 +27,12 @@
 
       TOTAL <%= @order.price %><%= @order.price_currency %>
 
-      Merci de cliquer sur ce boutton quand la commande est prête à être retirée.
+      Merci de cliquer sur le bouton ci-dessous quand la commande a été retirée.
 
       <%= form_tag set_as_shipped_orders_mails_confirm_shipped_url, method: :get do %>
         <%= hidden_field_tag :order_token, @order.confirm_shipped_token %>
-        <%= submit_tag "Confirmer l'envoie", :formtarget => "_blank" %>
+        <%= submit_tag "La commande est prête", :formtarget => "_blank" %>
       <% end %>
-
-
-      Encore bravo pour cette commande!
 
       Vaillantes salutations,
 

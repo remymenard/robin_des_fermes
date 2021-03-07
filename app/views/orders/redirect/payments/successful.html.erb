@@ -1,6 +1,8 @@
-<div style="display: flex;
-  flex-direction: column;
-  height: 50vh;">
-  <h1>Yay, order paid</h1>
-<%= render 'orders/recap_card', order: @order %>
+<div class="successful">
+  <h1><%= t("orders.redirect.payments.title_line_1") %></h1>
+  <h1><%= t("orders.redirect.payments.title_line_2") %></h1>
+  <span class="font-weight-bold mt-3"><%= t("orders.redirect.payments.subtitle_line_1") %><br/><%= t("orders.redirect.payments.subtitle_line_2") %></span>
+  <span class="my-4"><%= t("orders.redirect.payments.thanks_line_1") %><br/><%= t("orders.redirect.payments.thanks_line_2") %></span>
+  <%= link_to t("orders.redirect.payments.back_button"), root_path, class: "btn btn-primary btn-lg btn-block" %>
+  <%= image_tag "bag_confirmation.png", class: "bag" %>
 </div>
