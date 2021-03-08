@@ -21,6 +21,14 @@ class FarmOrder < ApplicationRecord
 
   before_create :set_confirm_shipped_token
 
+  def contains_fresh_product?
+    fresh_product = false
+    order_line_items.each do |order_line_item|
+      fresh_product = true if order_line_item.product.fresh
+    end
+    fresh_product
+  end
+
   def compute_total_price
     self.price = order_line_items.empty? ? 0 : order_line_items.sum { |order_line_item| order_line_item.total_price }
     self.save

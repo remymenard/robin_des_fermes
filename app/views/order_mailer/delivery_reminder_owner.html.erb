@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@500;700&display=swap" rel="stylesheet">
-
+    <%= render "shared/mailer/styling" %>
   </head>
   <body>
     <%= render "shared/mailer/header" %>
@@ -32,7 +29,7 @@
 
       Merci de cliquer sur le bouton ci-dessous quand la commande a été expédiée.
 
-      <%= form_tag set_as_shipped_orders_mails_confirm_shipped_url, method: :post do %>
+      <%= form_tag set_as_shipped_orders_mails_confirm_shipped_url, method: :get do %>
         <%= hidden_field_tag :order_token, @order.confirm_shipped_token %>
         <%= submit_tag "Confirmer l'envoie", :formtarget => "_blank" %>
       <% end %>
