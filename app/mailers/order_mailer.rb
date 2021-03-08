@@ -67,6 +67,11 @@ class OrderMailer < ApplicationMailer
     @owner = @order.farm.user
   end
 
+  def postmark_client
+    ::Postmark::ApiClient.new(ActionMailer::Base.postmark_settings[:api_token],
+                              ActionMailer::Base.postmark_settings.except(:api_token))
+  end
+
   def reactivate_and_retry(error)
     Rails.logger.info("Error when sending #{message} to #{error.recipients.join(', ')}")
     Rails.logger.info(error)

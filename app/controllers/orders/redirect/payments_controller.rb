@@ -18,9 +18,9 @@ module Orders
                 SendOrderReminderMailsJob.set(wait_until: farm_order.waiting_for_shipping_at + farm_order.farm.delivery_delay.days - 1.day).perform_later(farm_order)
               end
             end
+            SendOrderConfirmationMailsJob.perform_now(order)
           end
         end
-        SendOrderConfirmationMailsJob.perform_now(order)
         @reassurance = true
       end
 
