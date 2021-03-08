@@ -30,7 +30,7 @@
                 <%= render 'orders/delivery/farm_order_shipping_choice',
                   farm_order:        farm_order,
                   accepts_take_away: farm_order.farm.accepts_take_away,
-                  accepts_delivery:  farm_order.farm.accepts_delivery %>
+                  accepts_delivery:  farm_order.farm.accepts_delivery && !farm_order.contains_fresh_product? %>
               <% end %>
             </div>
           </div>
