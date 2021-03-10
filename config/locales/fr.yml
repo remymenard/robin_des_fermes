@@ -391,18 +391,18 @@ fr:
         confirmation: "Confirmer"
     sessions:
       new:
-        title: "Connectez-vous pour accéder à votre compte"
-        email: "Adresse email"
+        title: "Connecte-toi"
+        email: "Email"
         password: "Mot de passe"
-        stay_connected: "Rester connecté"
+        stay_connected: "Se souvenir de moi"
         connection: "Se connecter"
         forget: "Mot de passe oublié ?"
-        join: "Envie de nous rejoindre ?"
-        new_account: "Créer un compte"
+        join: "Pas encore de compte ?"
+        new_account: "Créer mon compte"
     registrations:
       new:
         number_phone: "Numéro de téléphone"
-        title: "Inscrivez-vous pour accéder aux produits"
+        title: "Rejoindre Robin des Fermes"
         first_name: "Prénom"
         last_name: "Nom"
         email: "Adresse email"
@@ -413,6 +413,7 @@ fr:
         city: "Localité"
         connection: "S'INSCRIRE"
         already_account: "Vous avez déjà un compte ?"
+        my_account: "Se connecter"
       edit:
         first_name: "Prénom"
         last_name: "Nom"
