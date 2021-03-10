@@ -1,5 +1,4 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_inactive_sign_up_path_for(resource)
     skip_authorization
@@ -24,8 +23,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def update
     skip_authorization
     @user = current_user
-    @user.update(configure_permitted_parameters)
-    if @user.update(configure_permitted_parameters)
+    @user.update(user_params)
+    if @user.update(user_params)
       redirect_to stored_location_for(:user)
     else
       render 'edit'
@@ -35,6 +34,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def user_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:number_phone, :address_line_1, :zip_code, :city, :first_name, :last_name, :title])
+    params.require(:user).permit(:number_phone, :address_line_1, :zip_code, :city, :first_name, :last_name, :title)
   end
 end
