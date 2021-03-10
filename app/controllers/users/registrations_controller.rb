@@ -24,6 +24,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def update
     skip_authorization
     @user = current_user
+    @user.update(configure_permitted_parameters)
     if @user.update(configure_permitted_parameters)
       redirect_to stored_location_for(:user)
     else
@@ -33,7 +34,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
 
-  def configure_permitted_parameters
+  def user_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:number_phone, :address_line_1, :zip_code, :city, :first_name, :last_name, :title])
   end
 end
