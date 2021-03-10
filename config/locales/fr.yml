@@ -421,7 +421,7 @@ fr:
         city: "Localité"
         current_password: "Ancien mot de passe"
         new_password: "Nouveau mot de passe"
-        confirmation_password: "Conformer nouveau mot de pase"
+        confirmation_password: "Confirmer nouveau mot de pase"
         logout: "Déconnexion"
         password_title: "Mot de passe"
         address_title: "Adresse de livraison"
