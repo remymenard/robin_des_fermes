@@ -104,7 +104,9 @@
                       </div>
 
                       <div class = "kg-price">
-                        <p>(<%= product.price_per_unit_cents.to_f%> CHF/<%= product.unit %>)</p>
+                        <% if product.price_per_unit_cents != 0 %>
+                          <p>(<%= product.price_per_unit_cents.to_f%> CHF/<%= product.unit %>)</p>
+                        <% end %>
                       </div>
                     </div>
 
@@ -191,7 +193,9 @@
                           </div>
 
                           <div class = "kg-price">
-                            <p>(<%= product.price_per_unit_cents.to_f%> CHF/<%= product.unit %>)</p>
+                            <% if product.price_per_unit_cents != 0 %>
+                              <p>(<%= product.price_per_unit_cents.to_f%> CHF/<%= product.unit %>)</p>
+                            <% end %>
                           </div>
 
                         </div>
@@ -255,7 +259,9 @@
                             </div>
 
                             <div class = "kg-price">
-                              <p>(<%= product.price_per_unit_cents.to_f%> CHF/<%= product.unit %>)</p>
+                              <% if product.price_per_unit_cents != 0 %>
+                                <p>(<%= product.price_per_unit_cents.to_f%> CHF/<%= product.unit %>)</p>
+                              <% end %>
                             </div>
 
                           </div>
@@ -305,7 +311,7 @@
             <p><%= t('.delivery_national_description') %></p>
           <% end %>
 
-          <div class="hours"><p class = "date"><%= t('.expected_delivery') %> <%= (@date + 1.days).strftime('%d')  %> <%= t('.and_delivery') %> <%= I18n.l((@date + @farm.delivery_delay.days + 1.days), format: "%d %B", locale: :'fr') %>.</p></div>
+          <div class="hours"><p class = "date"><%= t('.expected_delivery') %> <%= @date.strftime('%d')  %> <%= t('.and_delivery') %> <%= I18n.l((@date + @farm.delivery_delay.days), format: "%d %B", locale: :'fr') %>.</p></div>
 
         </div>
 

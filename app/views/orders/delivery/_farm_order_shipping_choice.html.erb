@@ -39,9 +39,9 @@
         </span>
         <span class="subtitle">
           <%= t('farms.show.hours_delivery') %>
-          <%= (@date + 1.days).strftime('%d')  %>
+          <%= Date.current.strftime('%d')  %>
           <%= t('farms.show.and_delivery') %>
-          <%= I18n.l((@date + @farm.delivery_delay.days + 1.days), format: "%d %B", locale: :'fr') %>
+          <%= I18n.l((Date.current + farm_order.farm.delivery_delay.days), format: "%d %B", locale: :'fr') %>
         </span>
       </label>
     <% else %>
