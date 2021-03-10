@@ -1,4 +1,7 @@
 .edit-delivery-infos {
+  label {
+    margin-left: 11%;
+  }
   .sign-in {
     width: 90% !important;
     min-height: 0px !important;
@@ -7,15 +10,11 @@
     width: 78% !important;
   }
   .form-control {
-    width: 70% !important;
+    width: 76% !important;
   }
-  .name {
-    width: 91% !important;
-    .form-control {
-      width: 100% important;
+  .form-actions {
+    .input {
+      font-size: 13px;
     }
-  }
-  .btn {
-    width: 77% !important;
   }
 }
