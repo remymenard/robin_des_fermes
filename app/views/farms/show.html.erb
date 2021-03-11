@@ -338,7 +338,7 @@
     <div class="description-farm d-flex">
 
       <div class="long-description">
-        <h2><%= t('.description_title') %></h2>
+        <h2><%= @farm.description_title %></h2>
         <h6> <%= t('.long_description', long_description: @farm.long_description) %></h6>
         <%= link_to "#all-products", class: "navbar-brand d-flex" do %>
           <%= image_tag "farm/link-order-products.png", alt: "line" %>
