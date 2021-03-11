@@ -2,27 +2,29 @@
   <div class = "sign">
     <div class="container d-flex">
       <div class="sign-in d-flex justify-content-center align-items-center flex-column">
-        <%= image_tag "logos/rdf_green_hd.png", alt: "alttext", style: "margin: 0 0 79px 0;" %>
 
         <%= simple_form_for(@user, as: :user, method: :patch, url: users_delivery_infos_path) do |f| %>
 
           <div class="d-flex flex-column">
             <%= f.input :address_line_1,
+                        required: true,
                         class: "row w-100",
                         label: t('devise.registrations.new.address'),
-                          placeholder: t('devise.registrations.new.address')%>
+                        placeholder: t('devise.registrations.new.address')%>
 
               <%= f.input :zip_code,
+                          required: true,
                           class: "row w-100",
                           label: t('devise.registrations.new.zip_code'),
                           placeholder: t('devise.registrations.new.zip_code')%>
               <%= f.input :city,
+                          required: true,
                           label: t('devise.registrations.new.city'),
                           placeholder: t('devise.registrations.new.city')%>
           </div>
 
           <div class="form-actions">
-            <%= f.button :submit, t('.connection') %>
+            <%= f.button :submit, t('.connection'), id: "submit-edit" %>
           </div>
         <% end %>
 

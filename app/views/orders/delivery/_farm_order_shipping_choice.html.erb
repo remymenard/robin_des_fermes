@@ -4,7 +4,17 @@
   <p class="basket-number text-center">
     <%= farm_order.total_items_count %> <%= t("orders.review.product").pluralize(farm_order.total_items_count) %>
   </p>
-  <div class="aditional-infos"></div>
+  <div class="aditional-infos">
+    <% if number_of_fresh_product > 0 %>
+      <%= show_svg("icons/fresh_product.svg") %>
+      <span class="ml-1 underline">
+        <%= number_of_fresh_product.to_s + " " + t("orders.review.fresh_product") %>
+      </span>
+      <span class="ml-1">
+        <%= t("orders.review.cannot_deliver") %>
+      </span>
+    <% end %>
+  </div>
   <div class="d-flex justify-content-center">
     <% if accepts_delivery %>
 

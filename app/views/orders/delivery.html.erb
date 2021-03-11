@@ -22,13 +22,14 @@
             <%= render 'orders/delivery/recap_user', user: current_user %>
           </div>
 
-          <h2 class="info-name ml-2 ml-lg-0"><%= t('.delivery_modes') %></h2>
+          <h2 class="info-name ml-2 ml-lg-0 w-100"><%= t('.delivery_modes') %></h2>
 
           <div class="d-flex">
             <div class="row w-100 justify-content-between">
               <% @order.farm_orders.order("created_at desc").each_with_index do |farm_order, index| %>
                 <%= render 'orders/delivery/farm_order_shipping_choice',
                   farm_order:        farm_order,
+                  number_of_fresh_product: farm_order.number_of_fresh_product,
                   accepts_take_away: farm_order.farm.accepts_take_away,
                   accepts_delivery:  farm_order.farm.accepts_delivery && !farm_order.contains_fresh_product? %>
               <% end %>
