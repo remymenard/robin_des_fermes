@@ -1,4 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :remove_password_params_if_blank, only: [:update]
 
   def after_inactive_sign_up_path_for(resource)
     skip_authorization
@@ -34,6 +35,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def user_params
-    params.require(:user).permit(:number_phone, :address_line_1, :zip_code, :city, :first_name, :last_name, :title)
+    params.require(:user).permit(:number_phone, :address_line_1, :zip_code, :city, :first_name, :last_name, :title, :password, :password_confirmation)
+  end
+
+  def remove_password_params_if_blank
+    if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
   end
 end
