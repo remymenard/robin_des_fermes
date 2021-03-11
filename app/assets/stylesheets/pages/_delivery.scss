@@ -94,7 +94,19 @@
   }
 
   .aditional-infos {
+    padding-bottom: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 47px;
+    font-family: Mulish;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    color: #4488EE;
+    .underline {
+      text-decoration: underline !important;
+    }
   }
 
   a {

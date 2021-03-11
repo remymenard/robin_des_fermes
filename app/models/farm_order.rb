@@ -21,6 +21,14 @@ class FarmOrder < ApplicationRecord
 
   before_create :set_confirm_shipped_token
 
+  def number_of_fresh_product
+    fresh_product = 0
+    order_line_items.each do |order_line_item|
+      fresh_product += 1 if order_line_item.product.fresh
+    end
+    fresh_product
+  end
+
   def contains_fresh_product?
     fresh_product = false
     order_line_items.each do |order_line_item|
