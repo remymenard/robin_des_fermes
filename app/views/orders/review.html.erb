@@ -52,7 +52,9 @@
                   <p class="currency mb-0"><%= product.price_currency %></p>
                 </div>
                 <p class="infos">
-                  (<%= t "basket.price_per_unit_first_word" %> <%= product.price_per_unit %> <%= product.price_per_unit_currency %>/<%= product.unit %>)
+                  <% if product.price_per_unit_cents != 0 %>
+                    (<%= t "basket.price_per_unit_first_word" %> <%= product.price_per_unit %> <%= product.price_per_unit_currency %>/<%= product.unit %>)
+                  <% end %>
                 </p>
               </div>
               <p class="m-0">

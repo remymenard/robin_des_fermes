@@ -38,6 +38,42 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
     column 'Commentaire', :comment
   end
 
+  show do
+    attributes_table do
+      row "A retirer à l'exploitation", &:takeaway_at_farm
+      row "Livraison standard", &:standard_shipping
+      row "Livraison express", &:express_shipping
+      row "Prix en centimes", &:price_cents
+      row "Unité", &:price_currency
+      row "En attente d'expédition chez", &:waiting_for_shipping_at
+      row "Expédié à", &:shipped_at
+      row "Problème soulevé à", &:issue_raised_at
+      row "Numéro de commande", &:order
+
+
+      row "Exploitation", :farm_id do |order|
+        order.farm.name
+      end
+
+      row "Nom du client", :order_id do |order|
+        order.order.buyer.first_name + " " + order.order.buyer.last_name
+      end
+
+      row "Adresse du client", :buyer_id do |order|
+        order.order.buyer.address_line_1 + " " + order.order.buyer.zip_code + " " + order.order.buyer.city
+      end
+
+      row "Crée", &:created_at
+      row "Modifié", &:updated_at
+      row "Prix de livraison en centimes", &:shipping_price_cents
+      row "Unité", &:shipping_price_currency
+      row "status", &:status
+      row "Commentaire", &:comment
+      row "En attente de précommande sur", &:waiting_for_preorder_at
+      row "Confirmation de l'expédition", &:confirm_shipped_token
+    end
+  end
+
   form title: 'commandes' do |farm_order_form|
     panel 'Commentaire' do
       farm_order_form.input :comment, label: false

@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_01_113515) do
-
+ActiveRecord::Schema.define(version: 2021_03_10_124428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -124,10 +123,8 @@ ActiveRecord::Schema.define(version: 2021_03_01_113515) do
     t.string "photo_portrait"
     t.text "offices", default: [], array: true
     t.string "slug"
-<<<<<<< HEAD
-=======
     t.string "farmer_number"
->>>>>>> develop
+    t.string "farm_profil_picture"
     t.index ["slug"], name: "index_farms_on_slug", unique: true
     t.index ["user_id"], name: "index_farms_on_user_id"
   end

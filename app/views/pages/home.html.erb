@@ -105,7 +105,7 @@
         </div>
       </div>
 
-      <%= link_to t(".know_more"), root_path, class: "btn"%>
+      <%= link_to t(".know_more"), about_path, class: "btn"%>
     </div>
 
   </div>
@@ -130,9 +130,11 @@
                     </div>
                   <%end%>
                 </div>
-
-                <%= cl_image_tag(farm.photos.first.key, height: 192, width: 192, crop: :fill, class: "photo") %>
-
+                <% if farm.farm_profil_picture.key? %>
+                  <%= cl_image_tag(farm.farm_profil_picture.key, height: 192, width: 192, crop: :fill, class: "photo") %>
+                <% else %>
+                  <%= cl_image_tag(farm.photos.first.key, height: 192, width: 192, crop: :fill, class: "photo") %>
+                <% end %>
 
               </div>
 

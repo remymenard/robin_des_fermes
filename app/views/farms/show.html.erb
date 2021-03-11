@@ -104,7 +104,9 @@
                       </div>
 
                       <div class = "kg-price">
-                        <p>(<%= product.price_per_unit_cents.to_f%> CHF/<%= product.unit %>)</p>
+                        <% if product.price_per_unit_cents != 0 %>
+                          <p>(<%= (product.price_per_unit_cents/100.00)%> CHF/<%= product.unit %>)</p>
+                        <% end %>
                       </div>
                     </div>
 
@@ -191,7 +193,9 @@
                           </div>
 
                           <div class = "kg-price">
-                            <p>(<%= product.price_per_unit_cents.to_f%> CHF/<%= product.unit %>)</p>
+                            <% if product.price_per_unit_cents != 0 %>
+                              <p>(<%= product.price_per_unit_cents/100.00%> CHF/<%= product.unit %>)</p>
+                            <% end %>
                           </div>
 
                         </div>
@@ -255,7 +259,9 @@
                             </div>
 
                             <div class = "kg-price">
-                              <p>(<%= product.price_per_unit_cents.to_f%> CHF/<%= product.unit %>)</p>
+                              <% if product.price_per_unit_cents != 0 %>
+                                <p>(<%= product.price_per_unit_cents/100.00%> CHF/<%= product.unit %>)</p>
+                              <% end %>
                             </div>
 
                           </div>

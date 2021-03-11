@@ -28,6 +28,8 @@ class Farm < ApplicationRecord
   has_one_attached :photo_portrait
   validates_presence_of :photo_portrait
 
+  has_one_attached :farm_profil_picture
+  validates_presence_of :farm_profil_picture
 
   validates :name, presence: true
   validates :address, presence: true
@@ -37,7 +39,7 @@ class Farm < ApplicationRecord
   validates :country, presence: true
   validates :description, presence: true
   validates :long_description, presence: true
-
+  validates :delivery_delay, presence: true
 
   scope :active, -> () { where(active: true) }
 
