@@ -29,10 +29,7 @@
       <br>
       Merci de cliquer sur ce boutton quand la commande est prête à être retirée.<br>
       <br>
-      <%= form_tag set_as_shipped_orders_mails_confirm_shipped_url, method: :get do %>
-        <%= hidden_field_tag :order_token, @order.confirm_shipped_token %>
-        <%= submit_tag "Confirmer l'envoie", :formtarget => "_blank" %><br>
-      <% end %>
+      <br><%= link_to "Confirmer l'envoie", set_as_shipped_orders_mails_confirm_shipped_url(order_token: @order.confirm_shipped_token), id: "confirm-sent", target: :_blank %><br><br>
       <br>
       Encore bravo pour cette commande!<br>
       <br>
