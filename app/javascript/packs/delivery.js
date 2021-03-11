@@ -46,11 +46,14 @@ function generateTotalPrice() {
   $('.farm-order-price').each((_index, element) => {
     sum += parseFloat($(element).text())
   })
-  return sum;
+  const totalPrice = sum + shippingPrice
+  return totalPrice.toFixed(2);
 }
 
+let shippingPrice;
+
 function generateShippingPrice() {
-  let sum = 0
+  shippingPrice = 0;
 
   $('.delivery-card input').each((_index, element) => {
     if (element.checked) {
@@ -60,21 +63,21 @@ function generateShippingPrice() {
       const deliveryPrice = parseFloat($(element).data("delivery").replace(",", "."));
 
       if (deliveryType === "takeaway") {
-        sum += takeawayPrice;
+        shippingPrice += takeawayPrice;
       } else if (deliveryType === "delivery") {
-        sum += deliveryPrice;
+        shippingPrice += deliveryPrice;
       }
     }
   })
-  return sum;
+  return shippingPrice.toFixed(2);
 }
 
 function updateRecapCard() {
-  const currentPrice  = generateTotalPrice();
   const shippingPrice = generateShippingPrice();
+  const totalPrice  = generateTotalPrice();
 
   $('#delivery-price').text(shippingPrice)
-  $('#totalPrice').text(currentPrice + shippingPrice)
+  $('#totalPrice').text(totalPrice)
 }
 
 function activateConfirmButton() {
