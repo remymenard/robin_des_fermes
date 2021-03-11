@@ -130,7 +130,7 @@
                     </div>
                   <%end%>
                 </div>
-                <% if farm.farm_profil_picture.key %>
+                <% if farm.farm_profil_picture.key? %>
                   <%= cl_image_tag(farm.farm_profil_picture.key, height: 192, width: 192, crop: :fill, class: "photo") %>
                 <% else %>
                   <%= cl_image_tag(farm.photos.first.key, height: 192, width: 192, crop: :fill, class: "photo") %>
