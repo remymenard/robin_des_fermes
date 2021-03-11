@@ -30,7 +30,8 @@ module Datatrans
         currency: @order.price_currency.downcase,
         amount:   calculate_price,
         theme:    theme,
-        redirect: @redirection_urls
+        redirect: @redirection_urls,
+        language: "fr"
       }.to_json
     end
 
