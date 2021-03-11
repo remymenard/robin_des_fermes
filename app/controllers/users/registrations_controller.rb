@@ -26,7 +26,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = current_user
     @user.update(user_params)
     if @user.update(user_params)
-      redirect_to stored_location_for(:user)
+      sign_in(current_user, :bypass => true)
+      redirect_to user_session_path
     else
       render 'edit'
     end
