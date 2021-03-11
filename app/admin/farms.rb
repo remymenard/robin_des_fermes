@@ -2,7 +2,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
 
   before_action :remove_password_params_if_blank, only: [:update]
 
-  permit_params :active, :name, :description, :address, :lagitude, :longitude, :photo_portrait, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accepts_delivery, photos: [], labels: [], offices: [], regions: [],
+  permit_params :active, :name, :description, :address, :lagitude, :longitude, :photo_portrait, :farm_profil_picture, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accepts_delivery, photos: [], labels: [], offices: [], regions: [],
                 opening_hours_attributes: [:id, :day, :opens, :closes],
                 products_attributes: [:id, :active, :available_for_preorder, :name, :available, :category_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning, :preorder_shipping_starting_at, :total_weight, label:[] ],
                 categories_attributes: [:id, :name],
@@ -115,6 +115,10 @@ ActiveAdmin.register Farm, as: "Exploitations" do
 
           inputs 'Offices de livraison' do
             input :offices, label: false, as: :check_boxes, collection: Farm::OFFICES.keys
+          end
+
+          inputs 'Photo profil' do
+            input :farm_profil_picture, as: :file, label: false
           end
 
           inputs 'Photos' do

@@ -28,6 +28,8 @@ class Farm < ApplicationRecord
   has_one_attached :photo_portrait
   validates_presence_of :photo_portrait
 
+  has_one_attached :farm_profil_picture
+  validates_presence_of :farm_profil_picture
 
   validates :name, presence: true
   validates :address, presence: true

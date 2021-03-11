@@ -153,6 +153,10 @@ henry.photo_portrait.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm.png')),
   filename: 'farm4.png'
 )
+henry.farm_profil_picture.attach(
+  io: File.open(Rails.root.join('db/fixtures/farms/farm.png')),
+  filename: 'farm4.png'
+)
 
 henry.save
 
@@ -181,6 +185,10 @@ meleze.photos.attach(
 meleze.photo_portrait.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
   filename: 'farm4.png')
+meleze.farm_profil_picture.attach(
+  io: File.open(Rails.root.join('db/fixtures/farms/farm.png')),
+  filename: 'farm4.png'
+)
 
 meleze.save!
 
@@ -211,6 +219,10 @@ jonas.photos.attach(
 )
 jonas.photo_portrait.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
+  filename: 'farm4.png'
+)
+jonas.farm_profil_picture.attach(
+  io: File.open(Rails.root.join('db/fixtures/farms/farm.png')),
   filename: 'farm4.png'
 )
 
@@ -244,6 +256,10 @@ cave.photo_portrait.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
   filename: 'farm4.png'
 )
+cave.farm_profil_picture.attach(
+  io: File.open(Rails.root.join('db/fixtures/farms/farm.png')),
+  filename: 'farm4.png'
+)
 
 cave.save!
 
@@ -272,6 +288,10 @@ gallien.photos.attach(
 )
 gallien.photo_portrait.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm2.png')),
+  filename: 'farm4.png'
+)
+gallien.farm_profil_picture.attach(
+  io: File.open(Rails.root.join('db/fixtures/farms/farm.png')),
   filename: 'farm4.png'
 )
 

@@ -1,65 +1,53 @@
 <div class = "sign">
   <div class="container d-flex">
     <div class="sign-in">
-      <%= image_tag "logos/rdf_green.png", alt: "alttext", center: "mx-auto d-block" %>
-      <p><%= t('.title') %></p>
+      <p class="title-connexion"><%= t('.title') %></p>
 
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= f.error_notification %>
 
-        <div class="form-inputs">
+        <div class="form-inputs d-flex justify-content-center align-items-center">
           <%= f.input :title, as: :radio_buttons, collection: User::TITLE, wrapper: :horizontal_collection_inline, label: false %>
 
           <div class="d-flex name">
             <%= f.input :first_name,
-                        label: false,
-                        placeholder: t('.first_name')%>
+                        label: t('.first_name')%>
             <%= f.input :last_name,
-                        label: false,
-                        placeholder: t('.last_name')%>
+                        label: t('.last_name')%>
           </div>
           <%= f.input :number_phone,
-                        label: false,
-                        placeholder: t('.number_phone')%>
+                       label: t('.number_phone')%>
           <%= f.input :email,
-                      label: false,
-                      placeholder: t('.email'),
+                      label: t('.email'),
                       required: true,
                       autofocus: true,
                       input_html: { autocomplete: "email" }%>
           <%= f.input :password,
-                      label: false,
-                      placeholder: t('.password'),
+                      label: t('.password'),
                       required: true,
                       input_html: { autocomplete: "new-password" } %>
           <%= f.input :password_confirmation,
-                      label: false,
-                      placeholder: t('.confirmation'),
+                      label: t('.confirmation'),
                       required: true,
                       input_html: { autocomplete: "new-password" } %>
           <%= f.input :address_line_1,
-                      label: false,
-                      placeholder: t('.address')%>
+                      label: t('.address')%>
 
           <div class="d-flex name">
             <%= f.input :zip_code,
-                        label: false,
-                        placeholder: t('.zip_code')%>
+                        label: t('.zip_code')%>
             <%= f.input :city,
-                        label: false,
-                        placeholder: t('.city')%>
+                        label: t('.city')%>
           </div>
           <%= f.input :wants_to_subscribe_mailing_list, label: "Inscrivez vous à la newsletter", as: :boolean, input_html: {checked: true} %>
         </div>
 
         <div class="form-actions">
           <%= f.button :submit, t('.connection') %>
+          <p class = "sign-in-link "><%= t('.already_account') %></p>
+          <%= link_to t('.my_account'), new_session_path(resource_name), class: "new-account-btn" %>
         </div>
       <% end %>
 
     </div>
-  </div>
-  <div class="container d-flex">
-    <p class = "already-account"><%= link_to t('.already_account'), new_session_path(resource_name) %></p>
-  </div>
-</div>
+  </div></div>
