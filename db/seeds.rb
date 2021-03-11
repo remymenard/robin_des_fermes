@@ -125,7 +125,7 @@ user1.photo.attach(
 puts "creation des fermes"
 
 henry = Farm.new(name: "Famille Henry", user: user_henry, labels: ['Bio-Suisse'],
-  address: 'Route du Village 62',
+  address: 'Route du Village 62', delivery_delay: 2,
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   offices: ['Cortaillod'], accepts_take_away: true, city: "Vulliens", zip_code: "1085", country: "france",
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
@@ -162,7 +162,7 @@ henry.save
 
 file2 = File.open(Rails.root.join('db/fixtures/farms/farm.png'))
 meleze = Farm.new(name: "La ferme du Mélèze", user: user1, labels: ['Bio-Suisse'],
-  address: 'Rte des Granges 4', city: "Ropraz", zip_code: "1088",
+  address: 'Rte des Granges 4', city: "Ropraz", zip_code: "1088", delivery_delay: 2,
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   offices: ['Carouge GE Distribution', 'Cortaillod'], accepts_take_away: false, country: "france",
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
@@ -196,7 +196,7 @@ file3 = File.open(Rails.root.join('db/fixtures/farms/farm3.png'))
 
 
 jonas = Farm.new(name: "La Ferme de Jonas", user: user1, labels: ['Bio-Suisse'],
-  address: 'Chemin de la Chapelle 3',  city: "Carrouge", zip_code: "1084", country: "france",
+  address: 'Chemin de la Chapelle 3',  city: "Carrouge", zip_code: "1084", country: "france", delivery_delay: 2,
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   offices: ['Cheseaux-sur-Lausanne Distribution', 'Carouge GE Distribution'], accepts_take_away: false,
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
@@ -231,7 +231,7 @@ jonas.save!
 file4 = File.open(Rails.root.join('db/fixtures/farms/farm1.png'))
 
 cave = Farm.new(name: "La Cave de l'Abbatiale", user: user1, labels: ['Bio-Suisse'],
-  address: 'Chemin de Montagny', city: "Aran", zip_code: "1091",
+  address: 'Chemin de Montagny', city: "Aran", zip_code: "1091", delivery_delay: 2,
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   offices: ['Coppet Distribution'], accepts_take_away: false, country: "france",
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
@@ -265,7 +265,7 @@ cave.save!
 
 file5 = File.open(Rails.root.join('db/fixtures/farms/farm2.png'))
 gallien = Farm.new(name: "Le Domaine du Gallien", user: user1, labels: ['Bio-Suisse'],
-  address: 'Rte du village 15', city: "Carrouge", zip_code: "1084",
+  address: 'Rte du village 15', city: "Carrouge", zip_code: "1084", delivery_delay: 2,
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   offices: ['Champéry', 'Aigle Distribution'], accepts_take_away: false, country: "france",
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
