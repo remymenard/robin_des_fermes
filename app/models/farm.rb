@@ -39,7 +39,7 @@ class Farm < ApplicationRecord
   validates :country, presence: true
   validates :description, presence: true
   validates :long_description, presence: true
-
+  validates :delivery_delay, presence: true
 
   scope :active, -> () { where(active: true) }
 
