@@ -33,7 +33,11 @@ ActiveAdmin.register Product, as: 'Produits' do
       product.input :preorder_shipping_starting_at, label: 'Date livraison précommande'
       product.input :description, label: 'Description'
       product.input :ingredients, label: 'Ingrédients'
-      product.input :photo, as: :file, label: 'Image du produit'
+      if product.object.photo.attached?
+        product.input :photo, as: :file, label: "Changer l'image du produit", hint: image_tag(cl_image_path(product.object.photo.key), height: 256)
+      else
+        product.input :photo, as: :file, label: 'Image du produit'
+      end
       product.input :total_weight, label: 'Poids total'
       product.inputs '', class: 'save-product' do
         product.action :submit, label: 'Sauvegarder', data: { id: 'submit-products' } do
