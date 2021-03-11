@@ -54,7 +54,11 @@ ActiveAdmin.register Farm, as: "Exploitations" do
             u.input :password,                        label: false,           placeholder: "Mot de passe"
             u.input :password_confirmation,           label: false,           placeholder: "Confirmation du mot de passe"
             u.input :wants_to_subscribe_mailing_list, label: "L'inscrire a la newsletter"
-            u.input :photo, as: :file,                label: "Mettre une photo de profil"
+            if u.object.photo.attached?
+              u.input :photo, as: :file,                label: "Changer la photo de profil", hint: image_tag(cl_image_path(u.object.photo.key), height: 256)
+            else
+              u.input :photo, as: :file,                label: "Mettre une photo de profil"
+            end
           end
         end
       end
@@ -82,7 +86,11 @@ ActiveAdmin.register Farm, as: "Exploitations" do
           end
           inputs 'Description longue' do
             input :long_description, label: false
-            input :photo_portrait, as: :file, label: "format portrait"
+            if f.object.photo_portrait.attached?
+              input :photo_portrait, as: :file, label: "Changer la photo au format portrait", hint: image_tag(cl_image_path(f.object.photo_portrait.key), height: 256)
+            else
+              input :photo_portrait, as: :file, label: "format portrait"
+            end
           end
           inputs "Labels de l'exploitation" do
             input :labels, label: false, as: :check_boxes, collection: Farm::LABELS
@@ -118,15 +126,21 @@ ActiveAdmin.register Farm, as: "Exploitations" do
           end
 
           inputs 'Photo profil' do
-            input :farm_profil_picture, as: :file, label: false
+            if f.object.farm_profil_picture.attached?
+              input :farm_profil_picture, as: :file, label: false, hint: image_tag(cl_image_path(f.object.farm_profil_picture.key), height: 256)
+            else
+              input :farm_profil_picture, as: :file, label: false
+            end
           end
 
           inputs 'Photos' do
-            input :photos, as: :file, input_html: { multiple: true }, label: "format paysage"
-            input :photos, as: :file, input_html: { multiple: true }, label: "format paysage"
-            input :photos, as: :file, input_html: { multiple: true }, label: "format paysage"
-            input :photos, as: :file, input_html: { multiple: true }, label: "format paysage"
-            input :photos, as: :file, input_html: { multiple: true }, label: "format paysage"
+            5.times do |index|
+              if !f.object.photos[index].nil?
+                input :photos, as: :file, input_html: { multiple: true }, label: "changer la photo au format paysage", hint: image_tag(cl_image_path(f.object.photos[index].key), height: 256)
+              else
+                input :photos, as: :file, input_html: { multiple: true }, label: "format paysage"
+              end
+            end
           end
         end
       end
@@ -163,7 +177,11 @@ ActiveAdmin.register Farm, as: "Exploitations" do
               product.input :preorder_shipping_starting_at, label: "Date livraison précommande"
               product.input :description, label: "Description"
               product.input :ingredients, label: "Ingrédients"
-              product.input :photo, as: :file, label: "Image du produit"
+              if product.object.photo.attached?
+                product.input :photo, as: :file, label: "Changer l'image du produit", hint: image_tag(cl_image_path(product.object.photo.key), height: 256)
+              else
+                product.input :photo, as: :file, label: "Image du produit"
+              end
               product.input :total_weight, label: "Poids total"
             end
           end
