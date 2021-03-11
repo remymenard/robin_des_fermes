@@ -16,14 +16,19 @@
     }
   }
   .edit-infos {
-    color: #898989 !important;
+    color: #7C7977 !important;
+    opacity: 0.4;
     @include media-breakpoint-down(md) {
+      opacity: 1;
       background: $primary;
       padding: 10px 30px 10px 30px;
       color: white !important;
       border-radius: 8px;
 
     }
+  }
+  p {
+    color: #7C7977;
   }
 }
 

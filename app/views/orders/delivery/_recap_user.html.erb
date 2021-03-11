@@ -2,7 +2,7 @@
   <div class="row p-3  h-100 align-items-center">
     <h4 class="col-12 col-lg-3 m-0"><%= user.full_name %></h4>
     <p class="col-12 col-lg-3 m-0"><%= user.address_line_1 %><br/>
-      <%= user.address_line_2 %></p>
+      <%= user.zip_code %> <%= user.city %></p>
     <p class="col-12 col-lg-3 m-0"><%= user.email %><br/>
       <%= user.number_phone %></p>
     <p class="col-12 col-lg-3 m-0 text-center p-0 pt-3 pt-lg-0"><%= link_to t('orders.delivery.edit_personal_infos'), edit_users_delivery_infos_path, class: "edit-infos" %></p>
