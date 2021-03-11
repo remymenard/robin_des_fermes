@@ -8,42 +8,43 @@
   <body>
     <%= render "shared/mailer/header" %>
     <div class="content">
-      Salut <%= @owner.first_name %>,
-
-      Félicitations pour la commande n°<%= @order.id %>, cette dernière devra être livrée
-      <%= I18n.l((Date.current + @order.farm.delivery_delay.days), format: "%d/%m/%y", locale: :'fr') %> par <%= @order.shipping_choice_name %>.
-
-      Date de la commande: <%= Date.current.strftime('%d/%m/%y') %>
-      Mode de livraison: <%= @order.shipping_choice_name %>
-      Date de livraison estimée: <%= I18n.l((@order.waiting_for_shipping_at), format: "%d/%m/%y", locale: :'fr') %>
-
-      Destinataire:
-      <%= @user.first_name %> <%= @user.last_name %>
-      <%= @user.address_line_1 %>
-      <%= @user.zip_code %> <%= @user.city %>
-
-      Contenu de la commande:
+      Salut <%= @owner.first_name %>,<br>
+      <br>
+      Félicitations pour la commande n°<%= @order.id %>, cette dernière devra être livrée<br>
+      <%= I18n.l((Date.current + @order.farm.delivery_delay.days), format: "%d/%m/%y", locale: :'fr') %> par <%= @order.shipping_choice_name %>.<br>
+      <br>
+      Date de la commande: <%= Date.current.strftime('%d/%m/%y') %><br>
+      Mode de livraison: <%= @order.shipping_choice_name %><br>
+      Date de livraison estimée: <%= I18n.l((@order.waiting_for_shipping_at), format: "%d/%m/%y", locale: :'fr') %><br>
+      <br>
+      Destinataire:<br>
+      <%= @user.first_name %> <%= @user.last_name %><br>
+      <%= @user.address_line_1 %><br>
+      <%= @user.zip_code %> <%= @user.city %><br>
+      <br>
+      Contenu de la commande:<br>
       <% @order.order_line_items.each do |item| %>
         <%= item.quantity %> - <%= item.product.name %> - <%= item.product.price %><%= item.product.price_currency %> - <%= item.total_price %><%= item.total_price_currency %>
+        <br>
       <% end %>
-
-      TOTAL <%= @order.price %><%= @order.price_currency %>
-
-      Merci de cliquer sur le bouton ci-dessous quand la commande a été envoyée.
-
+      <br>
+      TOTAL <%= @order.price %><%= @order.price_currency %><br>
+      <br>
+      Merci de cliquer sur le bouton ci-dessous quand la commande a été envoyée.<br>
+      <br>
       <%= form_tag set_as_shipped_orders_mails_confirm_shipped_url, method: :get do %>
         <%= hidden_field_tag :order_token, @order.confirm_shipped_token %>
-        <%= submit_tag "Confirmer l'envoie", :formtarget => "_blank" %>
+        <%= submit_tag "Confirmer l'envoie", :formtarget => "_blank" %><br>
       <% end %>
-
-      Encore bravo pour cette commande!
-
-      Vaillantes salutations,
-
-      La bande de Robin des Fermes
-
+      <br>
+      Encore bravo pour cette commande!<br>
+      <br>
+      Vaillantes salutations,<br>
+      <br>
+      La bande de Robin des Fermes<br>
+      <br>
     </div>
-
+    <br>
     <%= render "shared/mailer/footer" %>
   </body>
 </html>
