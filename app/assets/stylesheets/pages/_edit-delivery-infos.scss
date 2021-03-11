@@ -1,16 +1,17 @@
 .edit-delivery-infos {
-  label {
-    margin-left: 11%;
+  .invalid-feedback {
+    text-align: center;
   }
   .sign-in {
+    padding-top: 30px;
     width: 90% !important;
     min-height: 0px !important;
   }
-  #user_address_line_1 {
-    width: 78% !important;
-  }
   .form-control {
-    width: 76% !important;
+    width: 100% !important;
+  }
+  svg {
+    margin-right: 18px;
   }
   .form-actions {
     .input {

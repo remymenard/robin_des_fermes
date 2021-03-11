@@ -263,6 +263,8 @@ fr:
       recap: "Recapitulatif"
       total: "TOTAL"
       confirm: "FINALISER MON PANIER"
+      fresh_product: "produit frais"
+      cannot_deliver: "empêche la livraison."
     delivery:
       edit_personal_infos: "Modifier mes informations"
       delivery_infos: "Informations de livraison"
