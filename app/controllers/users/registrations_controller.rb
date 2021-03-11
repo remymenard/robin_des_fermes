@@ -8,6 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     skip_authorization
+
     super do
       if cookies[:user_id]
         Order.find_by(id: cookies[:order_id]).update buyer: resource
@@ -36,7 +37,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def user_params
-    params.require(:user).permit(:number_phone, :address_line_1, :zip_code, :city, :first_name, :last_name, :title, :password, :password_confirmation)
+    params.require(:user).permit(:number_phone, :address_line_1, :zip_code, :city, :first_name, :last_name, :title, :password, :password_confirmation, :email, :wants_to_subscribe_mailing_list)
   end
 
   def remove_password_params_if_blank

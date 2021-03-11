@@ -437,7 +437,7 @@ fr:
         zip_code: "Code postal"
         city: "Localité"
         connection: "S'INSCRIRE"
-        already_account: "Vous avez déjà un compte ?"
+        already_account: "Tu as déjà un compte ?"
         my_account: "Se connecter"
       edit:
         first_name: "Prénom"
