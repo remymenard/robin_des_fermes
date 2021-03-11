@@ -6,27 +6,28 @@
   <body>
     <%= render "shared/mailer/header" %>
     <p class="content">
-      Bonjour <%= @user.first_name %>,
-
-      Avez-vous bien reçu la commande n°<%= @order.id %>. du <%= I18n.l((@order.waiting_for_shipping_at), format: "%d/%m/%y", locale: :'fr') %>
-
-      Mode de livraison: <%= @order.shipping_choice_name %>
-
-      Contenu de la commande:
+      Bonjour <%= @user.first_name %>,<br>
+      <br>
+      Avez-vous bien reçu la commande n°<%= @order.id %>. du <%= I18n.l((@order.waiting_for_shipping_at), format: "%d/%m/%y", locale: :'fr') %><br>
+      <br>
+      Mode de livraison: <%= @order.shipping_choice_name %><br>
+      <br>
+      Contenu de la commande:<br>
       <% @order.order_line_items.each do |item| %>
         <%= item.quantity %> - <%= item.product.name %> - <%= item.product.price %><%= item.product.price_currency %> - <%= item.total_price %><%= item.total_price_currency %>
+        <br>
       <% end %>
-
-      TOTAL <%= @order.price %><%= @order.price_currency %>
-
-      Si vous n’avez pas reçu votre commande, merci de contacter Robin des Fermes à ce numéro 079 674 63 69.
-
-      Vaillantes salutations,
-
-      La bande de Robin des Fermes
-
+      <br>
+      TOTAL <%= @order.price %><%= @order.price_currency %><br>
+      <br>
+      Si vous n’avez pas reçu votre commande, merci de contacter Robin des Fermes à ce numéro 079 674 63 69.<br>
+      <br>
+      Vaillantes salutations,<br>
+      <br>
+      La bande de Robin des Fermes<br>
+      <br>
     </p>
-
+    <br>
     <%= render "shared/mailer/footer" %>
   </body>
 </html>
