@@ -7,21 +7,24 @@
 
           <div class="d-flex flex-column">
             <%= f.input :address_line_1,
+                        required: true,
                         class: "row w-100",
                         label: t('devise.registrations.new.address'),
-                          placeholder: t('devise.registrations.new.address')%>
+                        placeholder: t('devise.registrations.new.address')%>
 
               <%= f.input :zip_code,
+                          required: true,
                           class: "row w-100",
                           label: t('devise.registrations.new.zip_code'),
                           placeholder: t('devise.registrations.new.zip_code')%>
               <%= f.input :city,
+                          required: true,
                           label: t('devise.registrations.new.city'),
                           placeholder: t('devise.registrations.new.city')%>
           </div>
 
           <div class="form-actions">
-            <%= f.button :submit, t('.connection') %>
+            <%= f.button :submit, t('.connection'), id: "submit-edit" %>
           </div>
         <% end %>
 
