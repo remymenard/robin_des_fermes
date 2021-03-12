@@ -11,10 +11,10 @@ module Orders
         order = FarmOrder.find_by(confirm_shipped_token: params[:order_token])
         if order.status == "in_preparation" || order.status == "peordered"
           if order.takeaway_at_farm
-            order.update(status: "ready_for_withdrawal", shipped_at: Date.current)
+            order.update(status: "ready_for_withdrawal", shipped_at: Time.now)
             OrderMailer.with({user: order.order.buyer, order: order}).takeaway_ready_alert_customer.deliver_now
           else
-            order.update(status: "shipped", shipped_at: Date.current)
+            order.update(status: "shipped", shipped_at: Time.now)
             OrderMailer.with({user: order.order.buyer, order: order}).delivery_sent_alert_customer.deliver_now
           end
           SendOrderReceivedQuestionMailsJob.set(wait: 5.days).perform_later(order)
