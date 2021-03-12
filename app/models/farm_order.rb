@@ -6,6 +6,8 @@ class FarmOrder < ApplicationRecord
   belongs_to :farm
 
   has_many :order_line_items
+  has_many :products, through: :order_line_items
+  has_one :buyer, through: :order
 
   monetize :price_cents, allow_nil: false,
   numericality: {

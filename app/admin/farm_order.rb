@@ -7,13 +7,19 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
 
     column 'Numéro de commande', :id
 
-    column "Nom de l'exploitant", :farm_id do |farm|
-      farm.farm.user.first_name + " " + farm.farm.user.last_name
+    column "Exploitation" do |order|
+      order.farm
     end
 
-    column "Nom du consommateur", :order_id do |farm|
-      if farm.order.buyer.present?
-        farm.order.buyer.first_name + " " + farm.order.buyer.last_name
+    column "Exploitant" do |order|
+      if order.farm.user.present?
+        link_to "#{order.farm.user.first_name} #{order.farm.user.last_name}", edit_admin_utilisateur_path(order.farm.user)
+      end
+    end
+
+    column "Consommateur" do |order|
+      if order.buyer.present?
+        link_to "#{order.buyer.first_name} #{order.buyer.last_name}", edit_admin_utilisateur_path(order.buyer)
       end
     end
 
@@ -32,7 +38,7 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
     end
 
     column "Expédition", :farm_id do |farm_order|
-
+      farm_order.shipped_at
     end
 
     column 'Commentaire', :comment
@@ -40,6 +46,27 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
 
   show do
     attributes_table do
+      row "Produits" do
+        table_for resource.order_line_items do
+          column "Nom", :product
+          column "Prix à l'unité" do |item|
+            item.product.price.to_s + item.product.price_currency
+          end
+          column "Quantité", :quantity
+          column "Prix total" do |item|
+            item.total_price.to_s + item.total_price_currency
+          end
+        end
+      end
+      row "Exploitation" do |order|
+        order.farm
+      end
+      row "Exploitant" do |order|
+        link_to "#{order.farm.user.first_name} #{order.farm.user.last_name}", edit_admin_utilisateur_path(order.farm.user)
+      end
+      row "Client" do |order|
+        link_to "#{order.buyer.first_name} #{order.buyer.last_name}", edit_admin_utilisateur_path(order.buyer)
+      end
       row "A retirer à l'exploitation", &:takeaway_at_farm
       row "Livraison standard", &:standard_shipping
       row "Livraison express", &:express_shipping
@@ -48,16 +75,8 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
       row "En attente d'expédition chez", &:waiting_for_shipping_at
       row "Expédié à", &:shipped_at
       row "Problème soulevé à", &:issue_raised_at
-      row "Numéro de commande", &:order
+      row "Numéro de commande", &:id
 
-
-      row "Exploitation", :farm_id do |order|
-        order.farm.name
-      end
-
-      row "Nom du client", :order_id do |order|
-        order.order.buyer.first_name + " " + order.order.buyer.last_name
-      end
 
       row "Adresse du client", :buyer_id do |order|
         order.order.buyer.address_line_1 + " " + order.order.buyer.zip_code + " " + order.order.buyer.city
