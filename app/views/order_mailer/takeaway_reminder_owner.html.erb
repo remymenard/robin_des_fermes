@@ -6,40 +6,38 @@
   <body>
     <%= render "shared/mailer/header" %>
     <div class="content">
-      Salut <%= @owner.first_name %>,
-
-      Nous te rappelons que le délai de la commande  n°<%= @order.id %> arrive le
-      <%= I18n.l((@order.waiting_for_shipping_at + @order.farm.delivery_delay.days), format: "%d/%m/%y", locale: :'fr') %>. Voici un récapitulatif de la commande.
-
-      Date de la commande: <%= @order.waiting_for_shipping_at.strftime('%d/%m/%y') %>
-      Mode de livraison: <%= @order.shipping_choice_name %>
-      Date de livraison estimée: <%= I18n.l((@order.waiting_for_shipping_at + @order.farm.delivery_delay.days), format: "%d/%m/%y", locale: :'fr') %>
-
-      Destinataire:
-      <%= @user.first_name %> <%= @user.last_name %>
-      <%= @user.address_line_1 %>
-      <%= @user.zip_code %> <%= @user.city %>
-
-      Contenu de la commande:
+      Salut <%= @owner.first_name %>,<br>
+      <br>
+      Nous te rappelons que le délai de la commande  n°<%= @order.id %> arrive le<br>
+      <%= I18n.l((@order.waiting_for_shipping_at + @order.farm.delivery_delay.days), format: "%d/%m/%y", locale: :'fr') %>. Voici un récapitulatif de la commande.<br>
+      <br>
+      Date de la commande: <%= @order.waiting_for_shipping_at.strftime('%d/%m/%y') %><br>
+      Mode de livraison: <%= @order.shipping_choice_name %><br>
+      Date de livraison estimée: <%= I18n.l((@order.waiting_for_shipping_at + @order.farm.delivery_delay.days), format: "%d/%m/%y", locale: :'fr') %><br>
+      <br>
+      Destinataire:<br>
+      <%= @user.first_name %> <%= @user.last_name %><br>
+      <%= @user.address_line_1 %><br>
+      <%= @user.zip_code %> <%= @user.city %><br>
+      <br>
+      Contenu de la commande:<br>
       <% @order.order_line_items.each do |item| %>
         <%= item.quantity %> - <%= item.product.name %> - <%= item.product.price %><%= item.product.price_currency %> - <%= item.total_price %><%= item.total_price_currency %>
+        <br>
       <% end %>
-
-      TOTAL <%= @order.price %><%= @order.price_currency %>
-
-      Merci de cliquer sur le bouton ci-dessous quand la commande a été retirée.
-
-      <%= form_tag set_as_shipped_orders_mails_confirm_shipped_url, method: :get do %>
-        <%= hidden_field_tag :order_token, @order.confirm_shipped_token %>
-        <%= submit_tag "La commande est prête", :formtarget => "_blank" %>
-      <% end %>
-
-      Vaillantes salutations,
-
-      La bande de Robin des Fermes
-
+      <br>
+      TOTAL <%= @order.price %><%= @order.price_currency %><br>
+      <br>
+      Merci de cliquer sur le bouton ci-dessous quand la commande a été retirée.<br>
+      <br>
+      <br><%= link_to "Confirmer l'envoie", set_as_shipped_orders_mails_confirm_shipped_url(order_token: @order.confirm_shipped_token), id: "confirm-sent", target: :_blank %><br><br>
+      <br>
+      Vaillantes salutations,<br>
+      <br>
+      La bande de Robin des Fermes<br>
+      <br>
     </div>
-
+    <br>
     <%= render "shared/mailer/footer" %>
   </body>
 </html>
