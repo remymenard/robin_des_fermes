@@ -47,7 +47,7 @@ function generateTotalPrice() {
     sum += parseFloat($(element).text())
   })
   const totalPrice = sum + shippingPrice
-  return totalPrice.toFixed(2);
+  return totalPrice.toFixed(2).replace(".", ",");
 }
 
 let shippingPrice;
@@ -69,7 +69,7 @@ function generateShippingPrice() {
       }
     }
   })
-  return shippingPrice.toFixed(2);
+  return shippingPrice.toFixed(2).replace(".", ",");
 }
 
 function updateRecapCard() {
