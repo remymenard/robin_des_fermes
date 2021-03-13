@@ -12,6 +12,7 @@
       <%= I18n.l((Date.current + @order.farm.delivery_delay.days), format: "%d/%m/%y", locale: :'fr') %>.<br>
       <br>
       Date de la commande: <%= Date.current.strftime('%d/%m/%y') %><br>
+      Mode de livraison: <%= @order.shipping_choice_name %><br>
       Date de retrait estimée: <%= I18n.l((Date.current + @order.farm.delivery_delay.days), format: "%d/%m/%y", locale: :'fr') %><br>
       <br>
       Destinataire:<br>
