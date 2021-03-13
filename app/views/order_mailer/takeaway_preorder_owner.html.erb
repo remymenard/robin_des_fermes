@@ -12,6 +12,7 @@
       <%= I18n.l((Date.current + @order.farm.delivery_delay.days), format: "%d/%m/%y", locale: :'fr') %>.<br>
       <br>
       Date de la commande: <%= Date.current.strftime('%d/%m/%y') %><br>
+      Mode de livraison: <%= @order.shipping_choice_name %><br>
       Date de retrait estimée: <%= I18n.l((@order.waiting_for_shipping_at), format: "%d/%m/%y", locale: :'fr') %><br>
       <br>
       Destinataire:<br>
@@ -29,7 +30,7 @@
       <br>
       Merci de cliquer sur ce boutton quand la commande est prête à être retirée.<br>
       <br>
-      <br><%= link_to "Confirmer l'envoie", set_as_shipped_orders_mails_confirm_shipped_url(order_token: @order.confirm_shipped_token), id: "confirm-sent", target: :_blank %><br><br>
+      <br><%= link_to "Prête à être retirée", set_as_shipped_orders_mails_confirm_shipped_url(order_token: @order.confirm_shipped_token), id: "confirm-sent", target: :_blank %><br><br>
       <br>
       Encore bravo pour cette commande!<br>
       <br>
