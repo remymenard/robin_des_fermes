@@ -131,7 +131,7 @@
                   <%end%>
                 </div>
 
-                <%#= cl_image_tag(farm.farm_profil_picture&.key, height: 192, width: 192, crop: :fill, class: "photo") if farm.farm_profil_picture %>
+                <%= cl_image_tag(farm.farm_profil_picture&.key, height: 192, width: 192, crop: :fill, class: "photo") if farm.farm_profil_picture %>
               </div>
 
               <div class="cards-informations">

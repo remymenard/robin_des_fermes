@@ -6,17 +6,17 @@
   <body>
     <%= render "shared/mailer/header" %>
     <p class="content">
-      Salut <%= @user.first_name %>,
-
-      Ta commande n°<%= @order.id %> est prête et peut être retirée auprès de <%= @order.farm.name %>.
-
-      Tu peux la retirer à cette adresse:
-      <%= @order.farm.address %>
-
-      La bande de Robin des Fermes
-
+      Salut <%= @user.first_name %>,<br>
+      <br>
+      Ta commande n°<%= @order.id %> est prête et peut être retirée auprès de <%= @order.farm.name %>.<br>
+      <br>
+      Tu peux la retirer à cette adresse:<br>
+      <%= @order.farm.address %> <%= @order.farm.city %> <%= @order.farm.zip_code %><br>
+      <br>
+      La bande de Robin des Fermes<br>
+      <br>
     </p>
-
+    <br>
     <%= render "shared/mailer/footer" %>
   </body>
 </html>

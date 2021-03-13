@@ -6,36 +6,37 @@
   <body>
     <%= render "shared/mailer/header" %>
     <p class="content">
-      Salut compagnon <%= @user.first_name %>,
-
-      Nous te remercions pour ta commande n° <%= @order.id %>. Tu trouveras ci-dessous un récapitulatif de celle-ci.
-
-      Ta commande chez <%= @order.farm.name %>.
-
-      Date de la commande: <%= Date.current.strftime('%d/%m/%y') %>
-      Mode de livraison: <%= @order.shipping_choice_name %>
-      Date de livraison estimée: <%= I18n.l((@order.waiting_for_shipping_at), format: "%d/%m/%y", locale: :'fr') %>
-
-      Adresse de livraison :
-      <%= @user.first_name %> <%= @user.last_name %>
-      <%= @user.address_line_1 %>
-      <%= @user.zip_code %> <%= @user.city %>
-
-      Contenu de la commande:
+      Salut compagnon <%= @user.first_name %>,<br>
+      <br>
+      Nous te remercions pour ta commande n° <%= @order.id %>. Tu trouveras ci-dessous un récapitulatif de celle-ci.<br>
+      <br>
+      Ta commande chez <%= @order.farm.name %>.<br>
+      <br>
+      Date de la commande: <%= Date.current.strftime('%d/%m/%y') %><br>
+      Mode de livraison: <%= @order.shipping_choice_name %><br>
+      Date de livraison estimée: <%= I18n.l((@order.waiting_for_shipping_at), format: "%d/%m/%y", locale: :'fr') %><br>
+      <br>
+      Adresse de livraison :<br>
+      <%= @user.first_name %> <%= @user.last_name %><br>
+      <%= @user.address_line_1 %><br>
+      <%= @user.zip_code %> <%= @user.city %><br>
+      <br>
+      Contenu de la commande:<br>
       <% @order.order_line_items.each do |item| %>
         <%= item.quantity %> - <%= item.product.name %> - <%= item.product.price %><%= item.product.price_currency %> - <%= item.total_price %><%= item.total_price_currency %>
+        <br>
       <% end %>
-
-      TOTAL <%= @order.price %><%= @order.price_currency %>
-
-      Nous te remercions d’avoir passé commande sur Robin des Fermes.
-
-      Vaillantes salutations,
-
-      La bande de Robin des Fermes
-
+      <br>
+      TOTAL <%= @order.price %><%= @order.price_currency %><br>
+      <br>
+      Nous te remercions d’avoir passé commande sur Robin des Fermes.<br>
+      <br>
+      Vaillantes salutations,<br>
+      <br>
+      La bande de Robin des Fermes<br>
+      <br>
     </p>
-
+    <br>
     <%= render "shared/mailer/footer" %>
   </body>
 </html>

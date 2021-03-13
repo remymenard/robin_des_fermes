@@ -295,7 +295,7 @@
             <h6><%= t('.delivery_regional') %></h6>
 
             <div class="d-flex price justify-content-center">
-              <h6>2.9</h6>
+              <h6>2.90</h6>
               <span>CHF</span>
             </div>
 
@@ -304,7 +304,7 @@
             <h6><%= t('.delivery_national') %></h6>
 
             <div class="d-flex justify-content-center price">
-              <h6>9.9</h6>
+              <h6>9.90</h6>
               <span>CHF</span>
             </div>
 
@@ -338,7 +338,7 @@
     <div class="description-farm d-flex">
 
       <div class="long-description">
-        <h2><%= t('.description_title') %></h2>
+        <h2><%= @farm.description_title %></h2>
         <h6> <%= t('.long_description', long_description: @farm.long_description) %></h6>
         <%= link_to "#all-products", class: "navbar-brand d-flex" do %>
           <%= image_tag "farm/link-order-products.png", alt: "line" %>
