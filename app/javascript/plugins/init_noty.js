@@ -16,7 +16,7 @@ function startAlert(type, text) {
     type: type,
     text: text,
     theme: 'metroui',
-    layout: 'bottomLeft',
+    layout: 'bottomRight',
     timeout: 3000
   }).show();
 }
