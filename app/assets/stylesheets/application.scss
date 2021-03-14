@@ -12,6 +12,10 @@
 @import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder';
 @import url(https://cdnjs.cloudflare.com/ajax/libs/custombox/4.0.3/custombox.min.css);
 @import url(https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css);
+@import 'noty/lib/noty.css';
+@import 'noty/lib/themes/metroui';
+.noty_theme__metroui.noty_type__error { background-color: #FF4136; }
+.noty_theme__metroui.noty_type__success { background-color: $primary; }
 
 // Your CSS partials
 @import "components/index";
@@ -69,4 +73,9 @@ body {
   background-color: white;
   width: 100%;
   margin-right: -100px
+}
+
+// they are managed by the js and must not appear on screen before the js loads
+.simpleFormAlert, .railsAlert {
+  display: none;
 }
