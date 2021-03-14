@@ -34,7 +34,7 @@ SimpleForm.setup do |config|
   config.include_default_input_wrapper_class = false
 
   # CSS class to add for error notification helper.
-  config.error_notification_class = 'alert alert-danger'
+  config.error_notification_class = 'simpleFormAlert'
 
   # Method used to tidy up errors. Specify any Rails Array method.
   # :first lists the first message for each field.
@@ -42,8 +42,8 @@ SimpleForm.setup do |config|
   config.error_method = :to_sentence
 
   # add validation classes to `input_field`
-  config.input_field_error_class = 'is-invalid'
-  config.input_field_valid_class = 'is-valid'
+  config.input_field_error_class = 'error'
+  config.input_field_valid_class = 'valid'
 
 
   # vertical forms
