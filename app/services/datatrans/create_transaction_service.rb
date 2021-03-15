@@ -1,6 +1,6 @@
 module Datatrans
   class CreateTransactionService
-    BASE_URL = "https://api.sandbox.datatrans.com/v1/transactions"
+    BASE_URL = ENV["RAILS_ENV"] == "production" ? "https://api.datatrans.com/v1/transactions" : "https://api.sandbox.datatrans.com/v1/transactions"
 
     attr_reader :order, :redirection_urls, :response
 
