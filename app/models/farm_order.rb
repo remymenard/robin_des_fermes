@@ -31,12 +31,16 @@ class FarmOrder < ApplicationRecord
     fresh_product
   end
 
-  def contains_fresh_product?
-    fresh_product = false
-    order_line_items.each do |order_line_item|
-      fresh_product = true if order_line_item.product.fresh
+  def can_be_delivered?(zip_code)
+    if !farm_in_close_zone?(zip_code)
+      fresh_product = false
+      order_line_items.each do |order_line_item|
+        fresh_product = true if order_line_item.product.fresh
+      end
+      fresh_product.!
+    else
+      true
     end
-    fresh_product
   end
 
   def compute_total_price
