@@ -10,8 +10,8 @@
 @import "font-awesome";
 @import 'mapbox-gl/dist/mapbox-gl';
 @import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder';
-@import url(https://cdnjs.cloudflare.com/ajax/libs/custombox/4.0.3/custombox.min.css);
-@import url(https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css);
+@import 'custombox/src/custombox.scss';
+@import 'owl.carousel2/src/scss/owl.carousel.scss';
 @import 'noty/src/noty.scss';
 @import 'noty/lib/themes/metroui';
 .noty_theme__metroui.noty_type__error { background-color: #FF4136; }
