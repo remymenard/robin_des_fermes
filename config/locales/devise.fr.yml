@@ -1,7 +1,7 @@
 fr:
   devise:
     confirmations:
-      confirmed: "Votre adresse email a été confirmé"
+      confirmed: "Votre adresse email a été confirmée"
       send_instructions: "Vous recevrez un e-mail avec des instructions pour confirmer votre adresse e-mail dans quelques minutes."
       send_paranoid_instructions: "Si votre adresse e-mail existe dans notre base de données, vous recevrez un e-mail avec des instructions pour confirmer votre adresse e-mail dans quelques minutes."
     failure:
