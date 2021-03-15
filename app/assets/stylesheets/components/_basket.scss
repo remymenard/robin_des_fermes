@@ -112,6 +112,7 @@
     height: 102px;
     width: 102px;
     border-radius: 10px;
+    margin: auto;
   }
 
   .product-infos {
@@ -142,13 +143,13 @@
     min-height: 100px;
     margin-left: 20px;
     width: 66%;
-    padding: 5px;
+    padding: 15px 0 15px 0;
 
     .product-title {
       color: #25201D;
       font-family: BioRhyme;
-      font-size: 17px;
-      max-width: 117px;
+      font-size: 15px;
+      max-width: 200px;
       flex-basis: 10%;
     }
 
@@ -208,6 +209,10 @@
       color: #7C7977;
       opacity: 0.6;
       flex-basis: 51%;
+      width: 149px;
+      @include media-breakpoint-down(sm) {
+        width: 113px;
+      }
     }
 
     .counter {
