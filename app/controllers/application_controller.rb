@@ -56,4 +56,12 @@ class ApplicationController < ActionController::Base
   def active_admin_controller?
     is_a?(ActiveAdmin::BaseController)
   end
+
+  def authenticate_admin_user
+    raise SecurityError unless current_user.try(:admin?)
+  end
+  rescue_from SecurityError do |exception|
+    redirect_to root_path
+  end
+
 end
