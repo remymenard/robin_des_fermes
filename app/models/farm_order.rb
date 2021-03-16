@@ -100,7 +100,6 @@ class FarmOrder < ApplicationRecord
   end
 
   def update_delivery_choice(user_choice, zip_code)
-    binding.pry
     case user_choice
     when 'takeaway'
       if farm.accepts_take_away
