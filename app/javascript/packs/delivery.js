@@ -44,7 +44,7 @@ export function initDeliverySelect() {
 function generateTotalPrice() {
   let sum = 0
   $('.farm-order-price').each((_index, element) => {
-    sum += parseFloat($(element).text())
+    sum += parseFloat($(element).text().replace(",", "."))
   })
   const totalPrice = sum + shippingPrice
   return totalPrice.toFixed(2).replace(".", ",");

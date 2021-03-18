@@ -85,7 +85,7 @@ class FarmOrder < ApplicationRecord
         end
       end
 
-      preorder_array.max.beginning_of_day
+      preorder_array.max
     end
   end
 
