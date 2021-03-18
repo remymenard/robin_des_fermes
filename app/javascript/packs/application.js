@@ -32,6 +32,7 @@ import { imageColorDelivery } from '../plugins/image_color_delivery';
 import { initAxeptio } from '../plugins/init_axeptio';
 import { initBasket } from './basket/utils/initBasket'
 import { initSelect2 } from '../plugins/init_select2'
+import { initNoty } from '../plugins/init_noty'
 import { Carousel } from '../plugins/owl_carousel'
 import { stopRecapOnFooter } from '../packs/stopRecapOnFooter'
 import { initDeliverySelect } from '../packs/delivery'
@@ -42,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAxeptio();
   initBasket();
   initSelect2();
+  initNoty();
   Carousel();
   stopRecapOnFooter();
   initDeliverySelect();

@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
       user_delivery_choice = user_choice["user_shipping_choice"]
 
       farm_order = FarmOrder.find(farm_order_id) if FarmOrder.find(farm_order_id).order.buyer == current_user
-      farm_order.update_delivery_choice(user_delivery_choice)
+      farm_order.update_delivery_choice(user_delivery_choice, @zip_code)
     end
     # not mandatory by avoid users to edit the page and remove input making him able not to pay shipping costs
     # Prevent users from editing the page to remove inputs and not pay shipping costs

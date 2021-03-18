@@ -31,12 +31,16 @@ class FarmOrder < ApplicationRecord
     fresh_product
   end
 
-  def contains_fresh_product?
-    fresh_product = false
-    order_line_items.each do |order_line_item|
-      fresh_product = true if order_line_item.product.fresh
+  def can_be_delivered?(zip_code)
+    if !farm_in_close_zone?(zip_code)
+      fresh_product = false
+      order_line_items.each do |order_line_item|
+        fresh_product = true if order_line_item.product.fresh
+      end
+      fresh_product.!
+    else
+      true
     end
-    fresh_product
   end
 
   def compute_total_price
@@ -95,7 +99,7 @@ class FarmOrder < ApplicationRecord
     end
   end
 
-  def update_delivery_choice(user_choice)
+  def update_delivery_choice(user_choice, zip_code)
     case user_choice
     when 'takeaway'
       if farm.accepts_take_away
@@ -103,7 +107,7 @@ class FarmOrder < ApplicationRecord
       end
     when 'delivery'
       if farm.accepts_delivery
-        if farm.regions.include?(@zip_code)
+        if farm.regions.include?(zip_code)
           update!(status: 'waiting', takeaway_at_farm: false, standard_shipping: false, express_shipping: true, shipping_price: FarmOrder::ShippingPrice.express.price)
         else
           update!(status: 'waiting', takeaway_at_farm: false, standard_shipping: true, express_shipping: false, shipping_price: FarmOrder::ShippingPrice.standard.price)

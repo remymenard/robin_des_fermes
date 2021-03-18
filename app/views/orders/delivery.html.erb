@@ -1,5 +1,9 @@
 <%= content_for(:after_template) do %>
-  <script src="https://pay.sandbox.datatrans.com/upp/payment/js/datatrans-2.0.0.js"></script>
+  <% if ENV["DATATRANS_ENV"] == "production" %>
+    <script src="https://pay.datatrans.com/upp/payment/js/datatrans-2.0.0.js"></script>
+  <% else %>
+    <script src="https://pay.sandbox.datatrans.com/upp/payment/js/datatrans-2.0.0.js"></script>
+  <% end %>
 <% end %>
 
 <% if params[:payment_canceled] %>
@@ -19,6 +23,8 @@
         <div class="col-lg-8 col-12 p-0">
           <div class="row">
             <h2 class="info-name ml-2 ml-lg-0"><%= t('.delivery_infos') %></h2>
+          </div>
+          <div class="row">
             <%= render 'orders/delivery/recap_user', user: current_user %>
           </div>
 
@@ -31,7 +37,7 @@
                   farm_order:        farm_order,
                   number_of_fresh_product: farm_order.number_of_fresh_product,
                   accepts_take_away: farm_order.farm.accepts_take_away,
-                  accepts_delivery:  farm_order.farm.accepts_delivery && !farm_order.contains_fresh_product? %>
+                  accepts_delivery:  farm_order.farm.accepts_delivery && farm_order.can_be_delivered?(get_zip_code_number) %>
               <% end %>
             </div>
           </div>
