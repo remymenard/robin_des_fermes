@@ -3,7 +3,7 @@ class OrderMailer < ApplicationMailer
 
   before_action :define_order_and_user
 
-  default from: ENV["DEFAULT_EMAIL"]
+  default from: "Robin des Fermes <#{ENV["DEFAULT_EMAIL"]}>"
   layout 'mailer'
 
   def takeaway_confirmation_customer
