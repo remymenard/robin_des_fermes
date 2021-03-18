@@ -28,6 +28,7 @@ import "bootstrap";
 
 import { initMapbox } from '../plugins/init_mapbox';;
 import { initAutocomplete } from '../plugins/init_autocomplete';
+import { imageColorDelivery } from '../plugins/image_color_delivery';
 import { initAxeptio } from '../plugins/init_axeptio';
 import { initBasket } from './basket/utils/initBasket'
 import { initSelect2 } from '../plugins/init_select2'
@@ -46,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
   Carousel();
   stopRecapOnFooter();
   initDeliverySelect();
+  imageColorDelivery();
 });
 
 $(document).on('turbolinks:before-cache', function() {
