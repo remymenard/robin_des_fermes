@@ -9,7 +9,7 @@ module Orders
 
       def set_as_shipped
         order = FarmOrder.find_by(confirm_shipped_token: params[:order_token])
-        if order.status == "in_preparation" || order.status == "peordered"
+        if order.status == "in_preparation" || order.status == "preordered"
           if order.takeaway_at_farm
             order.update(status: "ready_for_withdrawal", shipped_at: Time.now)
             OrderMailer.with({user: order.order.buyer, order: order}).takeaway_ready_alert_customer.deliver_now
