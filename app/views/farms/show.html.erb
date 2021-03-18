@@ -129,17 +129,17 @@
 
         <h6><%= t('.not_delivery') %></h6>
         <ul class="nav nav-tabs justify-content-between tabs-products">
-          <li class=" delivery nav-item" > <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
+          <li class=" delivery nav-item" id="delivery" > <a class="nav-link active delivery-image" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">
             <div class="d-flex delivery-content">
-              <div class="image"><%= image_tag "products/delivery.png", alt: "alttext" %> </div>
-              <div class="image-active"><%= image_tag "products/delivery-active.png", alt: "alttext" %> </div>
+              <div class="image-tabs-delivery"><%= image_tag "products/delivery.png", alt: "alttext" %> </div>
+              <div class="image-active-delivery"><%= image_tag "products/delivery-active.png", alt: "alttext" %> </div>
               <p class="delivery-computer"> <%= t('.delivery_products') %></p>
               <p class="delivery-mobile"> <%= t('.delivery_products_mobile') %></p>
             </div></a></li>
-          <li class="withdrawal nav-item"><a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">
+          <li class="withdrawal nav-item" id="withdrawal"><a class="nav-link withdrawal-image" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">
             <div class="d-flex withdrawal-content">
-              <div class="image"> <%= image_tag "products/withdrawal.png", alt: "alttext" %></div>
-              <div class="image-active"> <%= image_tag "products/withdrawal-active.png", alt: "alttext" %></div>
+              <div class="image-tabs-withdrawal"> <%= image_tag "products/withdrawal.png", alt: "alttext" %></div>
+              <div class="image-active-withdrawal"> <%= image_tag "products/withdrawal-active.png", alt: "alttext" %></div>
               <p class="delivery-computer"> <%= t('.withdrawal_products') %></p>
               <p class="delivery-mobile"> <%= t('.withdrawal_products_mobile') %></p>
             </div></a></li>

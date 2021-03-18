@@ -99,7 +99,7 @@ class FarmOrder < ApplicationRecord
     end
   end
 
-  def update_delivery_choice(user_choice)
+  def update_delivery_choice(user_choice, zip_code)
     case user_choice
     when 'takeaway'
       if farm.accepts_take_away
@@ -107,7 +107,7 @@ class FarmOrder < ApplicationRecord
       end
     when 'delivery'
       if farm.accepts_delivery
-        if farm.regions.include?(@zip_code)
+        if farm.regions.include?(zip_code)
           update!(status: 'waiting', takeaway_at_farm: false, standard_shipping: false, express_shipping: true, shipping_price: FarmOrder::ShippingPrice.express.price)
         else
           update!(status: 'waiting', takeaway_at_farm: false, standard_shipping: true, express_shipping: false, shipping_price: FarmOrder::ShippingPrice.standard.price)
