@@ -5,7 +5,7 @@ class FarmOrder < ApplicationRecord
   belongs_to :order
   belongs_to :farm
 
-  has_many :order_line_items
+  has_many :order_line_items, dependent: :destroy
   has_many :products, through: :order_line_items
   has_one :buyer, through: :order
 
