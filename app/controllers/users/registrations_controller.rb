@@ -10,7 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     skip_authorization
 
     super do
-      if cookies[:user_id]
+      if cookies[:order_id]
         Order.find_by(id: cookies[:order_id]).update buyer: resource
         cookies.permanent[:user_id] = resource.id
       end
