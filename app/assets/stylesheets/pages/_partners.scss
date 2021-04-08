@@ -8,13 +8,19 @@
     flex-wrap: wrap;
     justify-content: space-between;
 
-    .partner {
-      margin-bottom: 60px;
-
+    .partner-eve-senn {
       img {
         height: 200px;
         width: 200px;
         margin-bottom: 60px;
+      }
+    }
+
+    .partner {
+      margin-bottom: 60px;
+
+      img {
+        width: 212.89px !important;
       }
 
       h5 {
