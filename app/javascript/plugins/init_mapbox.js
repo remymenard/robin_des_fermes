@@ -33,12 +33,16 @@ const addMarkersToMap = (map, markers) => {
     markerElement.addEventListener('mouseenter', () => popup.addTo(map));
 
     markerElement.addEventListener('mouseleave', () => {
-      $('.mapboxgl-popup').mouseleave(function(){
+      $('.marker').mouseleave(function(){
+        $('.mapboxgl-popup').mouseenter(function(){
+          popup.addTo(map);
+          $('.mapboxgl-popup').mouseleave(function(){
+            $('.mapboxgl-popup').fadeOut();
+          })
+        })
         $('.mapboxgl-popup').fadeOut();
       })
     });
-
-    //popup.addEventListener('mouseleave', () => popup.remove());
 
     mapMarker.setPopup(popup);
 
