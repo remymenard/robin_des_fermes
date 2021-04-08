@@ -31,7 +31,14 @@ const addMarkersToMap = (map, markers) => {
     markerElement.id = 'marker'
 
     markerElement.addEventListener('mouseenter', () => popup.addTo(map));
-    markerElement.addEventListener('click', () => popup.remove());
+
+    markerElement.addEventListener('mouseleave', () => {
+      $('.mapboxgl-popup').mouseleave(function(){
+        $('.mapboxgl-popup').fadeOut();
+      })
+    });
+
+    //popup.addEventListener('mouseleave', () => popup.remove());
 
     mapMarker.setPopup(popup);
 
@@ -41,7 +48,6 @@ const addMarkersToMap = (map, markers) => {
 
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
-
 
   if (mapElement) { // only build a map if there's a div#map to inject into
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
