@@ -5,16 +5,10 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
   index do
     actions defaults: true
 
-    column 'Numéro de commande', :id
+    column 'N° cmd', :id
 
     column "Exploitation" do |order|
       order.farm
-    end
-
-    column "Exploitant" do |order|
-      if order.farm.user.present?
-        link_to "#{order.farm.user.first_name} #{order.farm.user.last_name}", edit_admin_utilisateur_path(order.farm.user)
-      end
     end
 
     column "Consommateur" do |order|
@@ -27,7 +21,9 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
       "#{price.price} #{price.price_currency}"
     end
 
-    column 'Date de création de la commande', :created_at
+    column 'Création commande' do |farm_order|
+      I18n.l((farm_order.created_at), format: "%d %B %Y %Hh%M ", locale: :'fr')
+    end
 
     column 'Status', :status do |farm_order|
       t("farm_orders.statuses.#{farm_order.status}")
@@ -37,8 +33,14 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
       farm_order.preordered_products_max_shipping_starting_at
     end
 
+    column 'Livraison Prévue' do |farm_order|
+      I18n.l((farm_order.created_at + 1.days + farm_order.farm.delivery_delay.days), format: "%d %B %Y", locale: :'fr')
+    end
+
     column "Expédition", :farm_id do |farm_order|
-      farm_order.shipped_at
+      if farm_order.shipped_at
+        I18n.l((farm_order.shipped_at), format: "%d %B %Y %Hh%M ", locale: :'fr')
+      end
     end
 
     column 'Commentaire', :comment
