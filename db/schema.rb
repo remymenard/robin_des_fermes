@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_11_155748) do
+ActiveRecord::Schema.define(version: 2021_04_08_071754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,18 @@ ActiveRecord::Schema.define(version: 2021_03_11_155748) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_farm_categories_on_category_id"
     t.index ["farm_id"], name: "index_farm_categories_on_farm_id"
+  end
+
+  create_table "farm_offices", force: :cascade do |t|
+    t.bigint "office_id", null: false
+    t.bigint "farm_id", null: false
+    t.integer "delivery_day"
+    t.integer "delivery_deadline_day"
+    t.time "delivery_deadline_hour"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["farm_id"], name: "index_farm_offices_on_farm_id"
+    t.index ["office_id"], name: "index_farm_offices_on_office_id"
   end
 
   create_table "farm_orders", force: :cascade do |t|
@@ -139,6 +151,13 @@ ActiveRecord::Schema.define(version: 2021_03_11_155748) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "offices", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "regions", default: [], array: true
   end
 
   create_table "opening_hours", force: :cascade do |t|
@@ -238,6 +257,8 @@ ActiveRecord::Schema.define(version: 2021_03_11_155748) do
   add_foreign_key "delivery_choices", "orders"
   add_foreign_key "farm_categories", "categories"
   add_foreign_key "farm_categories", "farms"
+  add_foreign_key "farm_offices", "farms"
+  add_foreign_key "farm_offices", "offices"
   add_foreign_key "farm_orders", "farms"
   add_foreign_key "farm_orders", "orders"
   add_foreign_key "farms", "users"
