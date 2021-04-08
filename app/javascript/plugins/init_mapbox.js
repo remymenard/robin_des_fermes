@@ -30,22 +30,33 @@ const addMarkersToMap = (map, markers) => {
     const markerElement = mapMarker.getElement();
     markerElement.id = 'marker'
 
+    // Open popup when cursor goes on marker
     markerElement.addEventListener('mouseenter', () => popup.addTo(map));
 
+    // When mouse leaves opened marker
     markerElement.addEventListener('mouseleave', () => {
-      $('.marker').mouseleave(function(){
-        $('.mapboxgl-popup').mouseenter(function(){
-          popup.addTo(map);
-          $('.mapboxgl-popup').mouseleave(function(){
-            $('.mapboxgl-popup').fadeOut();
-          })
+
+      // When mouse enters the opened popup
+      $('.mapboxgl-popup').mouseenter(function(){
+
+        // Keep the popup opened
+        popup.addTo(map);
+
+        // When mouse leaves the opend popup
+        $('.mapboxgl-popup').mouseleave(function(){
+
+          // Close the popup
+          $('.mapboxgl-popup').fadeOut();
         })
-        $('.mapboxgl-popup').fadeOut();
       })
+
+      $('.mapboxgl-popup').fadeOut();
     });
 
+    // Build all popups
     mapMarker.setPopup(popup);
 
+    // Set all markers
     mapMarker.addTo(map);
   });
 }
