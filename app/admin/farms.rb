@@ -24,7 +24,11 @@ ActiveAdmin.register Farm, as: "Exploitations" do
     column "Mail", :user do |col|
       col.user.email
     end
-    column "Communes", :regions
+
+    column "Offices", :office do |col|
+      col.offices.each do |office|
+      end
+    end
     column "Délais préparation", :delivery_delay
   end
 

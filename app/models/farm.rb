@@ -49,24 +49,11 @@ class Farm < ApplicationRecord
 
   scope :active, -> () { where(active: true) }
 
-  # before_save :add_office_values_to_regions
-
   LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
 
   DAYS = [["Lundi", 1], ["Mardi", 2], ["Mercredi", 3], ["Jeudi", 4], ["Vendredi", 5], ["Samedi", 6], ["Dimanche", 0]]
 
   private
-
-  # def add_office_values_to_regions
-    # self.regions = []
-    # offices.each { |office_name| regions << OFFICES[office_name] }
-
-    # Build one single array (not an array of arrays)
-    # self.regions = regions.join(" ").split
-
-    # Remove empty values
-    # self.regions.reject!(&:empty?)
-  # end
 
   def full_address
     [address, zip_code, city, country].compact.join(', ')
