@@ -104,9 +104,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
             f.has_many :opening_hours, heading: "", new_record: 'Ajouter une horaire' do |opening|
 
               opening.inputs do
-                days = [["Lundi", 1], ["Mardi", 2], ["Mercredi", 3], ["Jeudi", 4], ["Vendredi", 5], ["Samedi", 6], ["Dimanche", 0]]
-
-                opening.input :day,    label: "Jour", as: :select, collection: days
+                opening.input :day,    label: "Jour", as: :select, collection: Farm::DAYS
                 opening.input :opens,  label: "Ouverture"
                 opening.input :closes, label: "Fermeture"
               end
@@ -128,10 +126,9 @@ ActiveAdmin.register Farm, as: "Exploitations" do
           panel 'Offices de livraison' do
             f.has_many :farm_offices, heading: "", new_record: 'Ajouter un office' do |farm_office|
               farm_office.inputs do
-                days = [["Lundi", 1], ["Mardi", 2], ["Mercredi", 3], ["Jeudi", 4], ["Vendredi", 5], ["Samedi", 6], ["Dimanche", 0]]
                 farm_office.input :office_id, as: :select, collection: Office.all
-                farm_office.input :delivery_day, label: "Jour de distribution", as: :select, collection: days
-                farm_office.input :delivery_deadline_day, label: "Délai commande J", as: :select, collection: days
+                farm_office.input :delivery_day, label: "Jour de distribution", as: :select, collection: Farm::DAYS
+                farm_office.input :delivery_deadline_day, label: "Délai commande J", as: :select, collection: Farm::DAYS
                 farm_office.input :delivery_deadline_hour, label: "Délai commande H"
               end
             end
