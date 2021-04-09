@@ -17,6 +17,7 @@ OrderLineItem.destroy_all
 Farm.destroy_all # they belong to a user, so let's destroy them first
 Order.destroy_all
 User.destroy_all
+Office.destroy_all
 
 puts "Create categories"
 pain = Category.create!(name: "Boulangerie")
@@ -127,7 +128,7 @@ puts "creation des fermes"
 henry = Farm.new(name: "Famille Henry", user: user_henry, labels: ['Bio-Suisse'],
   address: 'Route du Village 62', delivery_delay: 2,
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
-  offices: ['Cortaillod'], accepts_take_away: true, city: "Vulliens", zip_code: "1085", country: "france",
+  accepts_take_away: true, city: "Vulliens", zip_code: "1085", country: "france",
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
 henry.photos.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm1.png')),
@@ -164,7 +165,7 @@ file2 = File.open(Rails.root.join('db/fixtures/farms/farm.png'))
 meleze = Farm.new(name: "La ferme du Mélèze", user: user1, labels: ['Bio-Suisse'],
   address: 'Rte des Granges 4', city: "Ropraz", zip_code: "1088", delivery_delay: 2,
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
-  offices: ['Carouge GE Distribution', 'Cortaillod'], accepts_take_away: false, country: "france",
+  accepts_take_away: false, country: "france",
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
 meleze.photos.attach(io: file2, filename: 'nes.png', content_type: 'image/png')
 meleze.photos.attach(
@@ -198,7 +199,7 @@ file3 = File.open(Rails.root.join('db/fixtures/farms/farm3.png'))
 jonas = Farm.new(name: "La Ferme de Jonas", user: user1, labels: ['Bio-Suisse'],
   address: 'Chemin de la Chapelle 3',  city: "Carrouge", zip_code: "1084", country: "france", delivery_delay: 2,
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
-  offices: ['Cheseaux-sur-Lausanne Distribution', 'Carouge GE Distribution'], accepts_take_away: false,
+  accepts_take_away: false,
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
 jonas.photos.attach(io: file3, filename: 'nes.png', content_type: 'image/png')
 jonas.photos.attach(
@@ -233,7 +234,7 @@ file4 = File.open(Rails.root.join('db/fixtures/farms/farm1.png'))
 cave = Farm.new(name: "La Cave de l'Abbatiale", user: user1, labels: ['Bio-Suisse'],
   address: 'Chemin de Montagny', city: "Aran", zip_code: "1091", delivery_delay: 2,
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
-  offices: ['Coppet Distribution'], accepts_take_away: false, country: "france",
+  accepts_take_away: false, country: "france",
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
 cave.photos.attach(io: file4, filename: 'nes.png', content_type: 'image/png')
 cave.photos.attach(
@@ -267,7 +268,7 @@ file5 = File.open(Rails.root.join('db/fixtures/farms/farm2.png'))
 gallien = Farm.new(name: "Le Domaine du Gallien", user: user1, labels: ['Bio-Suisse'],
   address: 'Rte du village 15', city: "Carrouge", zip_code: "1084", delivery_delay: 2,
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
-  offices: ['Champéry', 'Aigle Distribution'], accepts_take_away: false, country: "france",
+  accepts_take_away: false, country: "france",
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
 gallien.photos.attach(io: file5, filename: 'nes.png', content_type: 'image/png')
 gallien.photos.attach(
@@ -649,7 +650,51 @@ apple_order = OrderLineItem.create!(farm_order: first_farm_order, order: first_o
 chips_order = OrderLineItem.create!(farm_order: first_farm_order,order: first_order, product: chips, quantity: 1, total_price_cents: 300, total_price_currency: "CHF")
 egg_order = OrderLineItem.create!(farm_order: first_farm_order, order: first_order, product: egg, quantity: 1, total_price_cents: 300, total_price_currency: "CHF")
 
+office1 = Office.create!(name: "Aigle Distribution", regions: [1852, 1853, 1856, 1860, 1867, 1867, 1867])
+office2 = Office.create!(name: "Apples", regions: [1113, 1114, 1115, 1116, 1117, 1126, 1127, 1128, 1135, 1136, 1141, 1142, 1143, 1144, 1145, 1146, 1147, 1148, 1148, 1148, 1148, 1148, 1148, 1148, 1148, 1148, 1149])
+office3 = Office.create!(name: "Aubonne", regions: [1165, 1170, 1174, 1174, 1175, 1176])
+office4 = Office.create!(name: "Avenches Distribution", regions: [1564, 1580, 1580, 1580, 1583, 1584, 1585, 1585, 1585, 1586, 1587, 1587, 1588, 1589, 1595, 1595])
+office5 = Office.create!(name: "Bercher", regions: [1038, 1044, 1045, 1046, 1047])
 
+office6 = Office.create!(name: "Bernex Distribution", regions: [1232, 1233])
+office7 = Office.create!(name: "Bevaix", regions: [2022, 2023, 2024, 2025, 2027, 2027, 2028])
+office8 = Office.create!(name: "Bex Distribution", regions: [1880, 1880, 1880, 1880, 1880, 1882, 1884, 1884, 1884, 18857])
+office8 = Office.create!(name: "Biel/Bienne Zustellung", regions: [2502, 2502, 2503, 2503, 2504, 2504, 2505, 2505, 2512, 2532, 2532, 2533, 2533, 2534, 2534, 2535, 2536, 2537, 2538, 2552, 2555, 2556, 2556, 2557, 2558, 2560, 2562, 2563, 2564, 2565, 2572, 2572])
+office10 = Office.create!(name: "Blignou (Ayent", regions: [1966, 1966, 1966, 1966, 1966, 1966, 1966, 1966, 1966, 1966, 1971, 1971, 1972, 1974, 1977, 1978])
 
+office11 = Office.create!(name: "Bulle 1 Distribution", regions: [1625, 1625, 1626, 1626, 1626, 1627, 1628, 1630, 1632, 1633, 1633, 1638, 1642, 1643, 1644, 1645, 1646])
+office12 = Office.create!(name: "Bussigny Distribution", regions: [1029, 1030, 1031, 1034, 1035, 1036, 1302])
+office13 = Office.create!(name: "Carouge GE Distribution", regions: [1227, 1227, 1234, 1255, 1256])
+office14 = Office.create!(name: "Chailly-Montreux Distribution", regions: [1816, 1817, 1822, 1832, 1832, 1833, 1845, 1846])
+office15 = Office.create!(name: "Champéry", regions: [1872, 1873, 1873, 1873, 1874, 1875])
 
+office16 = Office.create!(name: "Château-d'Oex", regions: [1658, 1658, 1659, 1659, 1660, 1660, 1660, 1660])
+office17 = Office.create!(name: "Châtel-St-Denis Distribution", regions: [1611, 1614, 1615, 1616, 1617, 1617, 1618, 1619, 1623, 1624, 1624, 1624])
+office18 = Office.create!(name: "Chêne-Bourg Distribution", regions: [1224, 1225, 1226, 1231, 1241, 1243, 1251, 1252, 1254])
+office19 = Office.create!(name: "Cheseaux-sur-Lausanne Distribution", regions: [1032, 1033, 1037, 1054])
+office20 = Office.create!(name: "Chexbres Distribution", regions: [1070, 1071, 1071, 1071])
+
+office21 = Office.create!(name: "Collombey", regions: [1868, 1893, 1895, 1896, 1896, 1897, 1897, 1898, 1899])
+office22 = Office.create!(name: "Cologny Distribution", regions: [1223, 1253])
+office23 = Office.create!(name: "Colombier NE Distribution", regions: [2012, 2013, 2014, 2019, 2019])
+office24 = Office.create!(name: "Conthey Distribution", regions: [1955, 1955, 1955, 1955, 1955, 1955, 1957, 1962, 1963, 1964, 1975, 1976, 1976, 1976, 1994])
+office25 = Office.create!(name: "Coppet Distribution", regions: [1291, 1295, 1295, 1296])
+
+office26 = Office.create!(name: "Corcelles NE Distribution", regions: [2035, 2036, 2037, 2037])
+office27 = Office.create!(name: "Corgémont", regions: [2603, 2604, 2605, 2606, 2607, 2608, 2608, 2612])
+office28 = Office.create!(name: "Cortaillod", regions: [2015, 2016, 2017])
+office29 = Office.create!(name: "Courgenay", regions: [2882, 2883, 2884, 2885, 2886, 2887, 2888, 2889, 2946, 2947, 2950, 2950, 2952, 2953, 2953, 2954])
+office30 = Office.create!(name: "Courtepin", regions: [1721, 1721, 1721, 1721, 1783, 1783, 1783, 1783, 1784, 1784, 1784, 1785, 1791, 1791])
+
+office31 = Office.create!(name: "Couvet", regions: [2103, 2105, 2108, 2112, 2113, 2114, 2115, 2116, 2117, 2123, 2124, 2126, 2127, 2149, 2149, 2149])
+office32 = Office.create!(name: "Crissier 1 Distribution", regions: [1023, 1024])
+office33 = Office.create!(name: "Delémont 1 Distribution", regions: [2800, 2802, 2803, 2805, 2806, 2807, 2807, 2812, 2813, 2814, 2822, 2823, 2824, 2825, 2826, 2827, 2827, 2828, 2829, 2830, 2830, 2832, 2842, 2843, 2852, 2853, 2854, 2855, 2856, 2857, 2863, 2864, 2873])
+office34 = Office.create!(name: "Echallens Distribution", regions: [1040, 1040, 1040, 1041, 1041, 1041, 1041, 1041, 1041, 1042, 1042, 1042, 1043, 1375, 1376, 1376, 1376, 1377])
+office35 = Office.create!(name: "Evolène", regions: [1968, 1969, 1969, 1969, 1969, 1969, 1982, 1983, 1983, 1984, 1984, 1985, 1985, 1985])
+
+office36 = Office.create!(name: "Farvagny-le-Grand", regions: [1695, 1695, 1695, 1695, 1696, 1725, 1726, 1726, 1726, 1726, 1727, 1727, 1728, 1730, 1733])
+office37 = Office.create!(name: "Fétigny", regions: [1468, 1470, 1470, 1470, 1470, 1473, 1473, 1474, 1475, 1475, 1475, 1482, 1483, 1483, 1483, 1484, 1484, 1485, 1486, 1489, 1523, 1524, 1525, 1525, 1527, 1528, 1528, 1529, 1530, 1532, 1533, 1534, 1534, 1535, 1536, 1537, 1538, 1541, 1541, 1541, 1542, 1543, 1544, 1545, 1551, 1552, 1553, 1554, 1554, 1555, 1562, 1563, 1565, 1565, 1566, 1566, 1567, 1568])
+office38 = Office.create!(name: "Fontainemelon", regions: [2042, 2043, 2046, 2052, 2052, 2053, 2054, 2054, 2056, 2057, 2058, 2063, 2063, 2063, 2063, 2065, 2206, 2207, 2208])
+office39 = Office.create!(name: "Forel (Lavaux", regions: [1072, 1073, 1073])
+office40 = Office.create!(name: "Founex", regions: [1279, 1279, 1297, 1298, 1299])
 #AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
