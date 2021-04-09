@@ -3,13 +3,13 @@ ActiveAdmin.register Farm, as: "Exploitations" do
   before_action :remove_password_params_if_blank, only: [:update]
 
   permit_params :active, :description_title, :name, :description, :address, :lagitude, :longitude, :photo_portrait, :farm_profil_picture, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accepts_delivery, photos: [], labels: [], offices: [], regions: [],
-                opening_hours_attributes: [:id, :day, :opens, :closes],
+                opening_hours_attributes: [:id, :_destroy, :day, :opens, :closes],
                 products_attributes: [:id, :active, :available_for_preorder, :name, :available, :category_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning, :preorder_shipping_starting_at, :total_weight, label:[] ],
                 categories_attributes: [:id, :name],
                 category_ids: [],
                 office_ids: [],
                 offices_attributes: [:id, :name, regions: []],
-                farm_offices_attributes: [:id, :office_id, :delivery_day, :delivery_deadline_day, :delivery_deadline_hour],
+                farm_offices_attributes: [:id, :_destroy, :office_id, :delivery_day, :delivery_deadline_day, :delivery_deadline_hour],
                 user_attributes: [:id, :email, :first_name, :last_name, :number_phone, :wants_to_subscribe_mailing_list, :photo, :password, :title, :password_confirmation, :address_line_1, :city, :zip_code, :farm_id]
 
   actions :all
@@ -105,7 +105,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
           end
           inputs "Retrait a la ferme" do
             input :accepts_take_away, label: "Accepte le retrait à la ferme"
-            f.has_many :opening_hours, heading: "", new_record: 'Ajouter une horaire' do |opening|
+            f.has_many :opening_hours, heading: "", allow_destroy: true, new_record: 'Ajouter une horaire' do |opening|
 
               opening.inputs do
                 opening.input :day,    label: "Jour", as: :select, collection: Farm::DAYS
@@ -128,7 +128,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
           end
 
           panel 'Offices de livraison' do
-            f.has_many :farm_offices, heading: "", new_record: 'Ajouter un office' do |farm_office|
+            f.has_many :farm_offices, heading: "", allow_destroy: true, new_record: 'Ajouter un office' do |farm_office|
               farm_office.inputs do
                 farm_office.input :office_id, as: :select, collection: Office.all
                 farm_office.input :delivery_day, label: "Jour de distribution", as: :select, collection: Farm::DAYS
