@@ -49,7 +49,7 @@ class Farm < ApplicationRecord
 
   scope :active, -> () { where(active: true) }
 
-  after_save :add_office_values_to_regions
+ after_save :add_office_values_to_regions
 
   LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
 
