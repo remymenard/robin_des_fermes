@@ -58,14 +58,14 @@ class Farm < ApplicationRecord
   private
 
    def add_office_values_to_regions
-    self.all_regions = []
-    self.offices.each { |office| all_regions << office.regions }
+    self.regions = []
+    self.offices.each { |office| regions << office.regions }
 
     # Build one single array (not an array of arrays)
-    self.all_regions = self.all_regions.join(" ").split
+    self.regions = self.regions.join(" ").split
 
     # Remove empty values
-    self.all_regions.reject!(&:empty?)
+    self.regions.reject!(&:empty?)
   end
 
 

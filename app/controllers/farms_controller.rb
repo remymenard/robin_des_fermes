@@ -11,8 +11,8 @@ class FarmsController < ApplicationController
     @zip_code = get_zip_code_number
 
     if @zip_code.present?
-      @far_farms = @farms.where.not("all_regions && ARRAY[?] ", @zip_code)
-      @farms     = @farms.where("all_regions && ARRAY[?] ", @zip_code)
+      @far_farms = @farms.where.not("regions && ARRAY[?] ", @zip_code)
+      @farms     = @farms.where("regions && ARRAY[?] ", @zip_code)
     end
 
     @category = Category.find_by(name: params[:category])
@@ -71,7 +71,7 @@ class FarmsController < ApplicationController
 
     @zip_code = get_zip_code_number
 
-    @near_farm = @farm.all_regions.include?(@zip_code)
+    @near_farm = @farm.regions.include?(@zip_code)
 
     marker_icon_path = if @near_farm
       'icons/marker-purple.png'

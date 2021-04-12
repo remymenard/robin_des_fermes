@@ -60,7 +60,7 @@
 
   <div class="products" id="all-products">
     <h2><%= t('.show_products') %></h2>
-    <% if @farm.all_regions.include?(@zip_code)%>
+    <% if @farm.regions.include?(@zip_code)%>
       <div class="d-flex all-card-product">
         <% @products_available.each do |product| %>
           <div class="card-product">
@@ -284,7 +284,7 @@
 
           <div class="delivery-image"><%= image_tag "products/delivery.png", alt: "alttext" %></div>
 
-          <% if @farm.all_regions.include?(@zip_code) %>
+          <% if @farm.regions.include?(@zip_code) %>
             <h6><%= t('.delivery_regional') %></h6>
 
             <div class="d-flex price justify-content-center">
