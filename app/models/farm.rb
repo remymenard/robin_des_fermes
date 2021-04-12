@@ -55,20 +55,19 @@ class Farm < ApplicationRecord
 
   DAYS = [["Lundi", 1], ["Mardi", 2], ["Mercredi", 3], ["Jeudi", 4], ["Vendredi", 5], ["Samedi", 6], ["Dimanche", 0]]
 
+  NOW = Time.now
+
+  DAYS_DELIVERY = [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]
+
   def delivery_date(zip_code)
-    if self.regions.include?(zip_code)
-      farm_office = farm_offices.select do |farm_office|
-        farm_office.office.regions.include? zip_code
-      end
-      days = [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]
-      now = Time.now
-      if now.wday == farm_office.first.delivery_deadline_day && now.to_formatted_s(:time) < farm_office.first.delivery_deadline_hour
-        Date.today + farm_office.first.delivery_day
-      else
-        Date.today.next_occurring(days[farm_office.first.delivery_deadline_day]) + farm_office.first.delivery_day
-      end
+    farm_office = farm_offices.select do |farm_office|
+      farm_office.office.regions.include? zip_code
+    end
+
+    if NOW.wday == farm_office.first.delivery_deadline_day && NOW.to_formatted_s(:time) < farm_office.first.delivery_deadline_hour
+      Date.today + farm_office.first.delivery_day
     else
-      Date.current + 1 + self.delivery_delay
+      Date.today.next_occurring(DAYS_DELIVERY[farm_office.first.delivery_deadline_day]) + farm_office.first.delivery_day
     end
   end
 
@@ -85,9 +84,8 @@ class Farm < ApplicationRecord
       farm_office = farm_offices.select do |farm_office|
         farm_office.office.regions.include? zip_code
       end
-      days = [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]
-      now = Time.now
-      Date.today.next_occurring(days[farm_office.first.delivery_deadline_day])
+
+      Date.today.next_occurring(DAYS_DELIVERY[farm_office.first.delivery_deadline_day])
     end
   end
 
@@ -96,8 +94,7 @@ class Farm < ApplicationRecord
       farm_office = farm_offices.select do |farm_office|
         farm_office.office.regions.include? zip_code
       end
-      days = [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]
-      now = Time.now
+
       farm_office.first.delivery_deadline_hour
     end
   end
