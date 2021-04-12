@@ -7,6 +7,9 @@ ActiveAdmin.register Farm, as: "Exploitations" do
                 products_attributes: [:id, :active, :available_for_preorder, :name, :available, :category_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning, :preorder_shipping_starting_at, :total_weight, label:[] ],
                 categories_attributes: [:id, :name],
                 category_ids: [],
+                office_ids: [],
+                offices_attributes: [:id, :name, regions: []],
+                farm_offices_attributes: [:id, :office_id, :delivery_day, :delivery_deadline_day, :delivery_deadline_hour],
                 user_attributes: [:id, :email, :first_name, :last_name, :number_phone, :wants_to_subscribe_mailing_list, :photo, :password, :title, :password_confirmation, :address_line_1, :city, :zip_code, :farm_id]
 
   actions :all
@@ -21,7 +24,10 @@ ActiveAdmin.register Farm, as: "Exploitations" do
     column "Mail", :user do |col|
       col.user.email
     end
-    column "Communes", :regions
+
+    column "Offices", :office do |col|
+      col.offices
+    end
     column "Délais préparation", :delivery_delay
   end
 
@@ -101,9 +107,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
             f.has_many :opening_hours, heading: "", new_record: 'Ajouter une horaire' do |opening|
 
               opening.inputs do
-                days = [["Lundi", 1], ["Mardi", 2], ["Mercredi", 3], ["Jeudi", 4], ["Vendredi", 5], ["Samedi", 6], ["Dimanche", 0]]
-
-                opening.input :day,    label: "Jour", as: :select, collection: days
+                opening.input :day,    label: "Jour", as: :select, collection: Farm::DAYS
                 opening.input :opens,  label: "Ouverture"
                 opening.input :closes, label: "Fermeture"
               end
@@ -122,8 +126,15 @@ ActiveAdmin.register Farm, as: "Exploitations" do
             input :opening_time, label: false
           end
 
-          inputs 'Offices de livraison' do
-            input :offices, label: false, as: :check_boxes, collection: Farm::OFFICES.keys
+          panel 'Offices de livraison' do
+            f.has_many :farm_offices, heading: "", new_record: 'Ajouter un office' do |farm_office|
+              farm_office.inputs do
+                farm_office.input :office_id, as: :select, collection: Office.all
+                farm_office.input :delivery_day, label: "Jour de distribution", as: :select, collection: Farm::DAYS
+                farm_office.input :delivery_deadline_day, label: "Délai commande J", as: :select, collection: Farm::DAYS
+                farm_office.input :delivery_deadline_hour, label: "Délai commande H"
+              end
+            end
           end
 
           inputs 'Photo profil' do
@@ -146,7 +157,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
         end
       end
       tab 'Etape 4' do
-        panel 'Ajouter les catégorie' do
+        panel 'Ajouter les catégories' do
           f.input :category_ids, as: :check_boxes, collection: Category.all, label: false
         end
         panel "Produit(s) existant(s)" do
