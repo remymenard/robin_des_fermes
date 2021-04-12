@@ -9,11 +9,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
                 category_ids: [],
                 office_ids: [],
                 offices_attributes: [:id, :name, regions: []],
-<<<<<<< HEAD
                 farm_offices_attributes: [:id, :_destroy, :office_id, :delivery_day, :delivery_deadline_day, :delivery_deadline_hour],
-=======
-                farm_offices_attributes: [:id, :office_id, :delivery_day, :delivery_deadline_day, :delivery_deadline_hour],
->>>>>>> develop
                 user_attributes: [:id, :email, :first_name, :last_name, :number_phone, :wants_to_subscribe_mailing_list, :photo, :password, :title, :password_confirmation, :address_line_1, :city, :zip_code, :farm_id]
 
   actions :all
@@ -30,12 +26,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
     end
 
     column "Offices", :office do |col|
-<<<<<<< HEAD
-      col.offices.each do |office|
-      end
-=======
       col.offices
->>>>>>> develop
     end
     column "Délais préparation", :delivery_delay
   end
@@ -136,11 +127,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
           end
 
           panel 'Offices de livraison' do
-<<<<<<< HEAD
-            f.has_many :farm_offices, heading: "", allow_destroy: true, new_record: 'Ajouter un office' do |farm_office|
-=======
             f.has_many :farm_offices, heading: "", new_record: 'Ajouter un office' do |farm_office|
->>>>>>> develop
               farm_office.inputs do
                 farm_office.input :office_id, as: :select, collection: Office.all
                 farm_office.input :delivery_day, label: "Jour de distribution", as: :select, collection: Farm::DAYS
