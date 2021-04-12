@@ -211,13 +211,13 @@ ActiveAdmin.register Farm, as: "Exploitations" do
       @farm = Farm.new(permitted_params[:farm])
       @farm.user.skip_confirmation_notification!
 
+      @farm.labels.reject!(&:empty?)
+
       @farm.products.each do |product|
         product.label.reject!(&:empty?)
       end
 
-      @farm.labels.reject!(&:empty?)
-
-      if @farm.save
+      if @farm.save!
         redirect_to admin_exploitations_path, notice: "Resource created successfully."
       else
         @resource = @farm

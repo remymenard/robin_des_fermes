@@ -80,6 +80,28 @@ class Farm < ApplicationRecord
     is_in_close_zone
   end
 
+  def delay_date(zip_code)
+    if self.regions.include?(zip_code)
+      farm_office = farm_offices.select do |farm_office|
+        farm_office.office.regions.include? zip_code
+      end
+      days = [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]
+      now = Time.now
+      Date.today.next_occurring(days[farm_office.first.delivery_deadline_day])
+    end
+  end
+
+  def delay_hour(zip_code)
+    if self.regions.include?(zip_code)
+      farm_office = farm_offices.select do |farm_office|
+        farm_office.office.regions.include? zip_code
+      end
+      days = [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]
+      now = Time.now
+      farm_office.first.delivery_deadline_hour
+    end
+  end
+
   private
 
   def add_office_values_to_regions
