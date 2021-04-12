@@ -102,6 +102,7 @@ class FarmOrder < ApplicationRecord
   def delivery_date
     if takeaway_at_farm || standard_shipping
       Date.current + farm.delivery_delay
+      raise
     elsif express_shipping
       farm_office = farm_offices.select do |farm_office|
         farm_office.office.regions.include? get_zip_code_number

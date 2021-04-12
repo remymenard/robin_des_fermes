@@ -1,4 +1,5 @@
 class Farm < ApplicationRecord
+
   extend FriendlyId
   friendly_id :name, use: :slugged
 
@@ -37,6 +38,7 @@ class Farm < ApplicationRecord
   has_one_attached :farm_profil_picture
   validates_presence_of :farm_profil_picture
 
+
   validates :name, presence: true
   validates :address, presence: true
   validates :zip_code, presence: true
@@ -47,9 +49,10 @@ class Farm < ApplicationRecord
   validates :long_description, presence: true
   validates :delivery_delay, presence: true
 
+
   scope :active, -> () { where(active: true) }
 
- after_save :add_office_values_to_regions
+  after_save :add_office_values_to_regions
 
   LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
 
