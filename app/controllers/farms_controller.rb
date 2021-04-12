@@ -67,7 +67,7 @@ class FarmsController < ApplicationController
     @far_farms = Farm.none
     @farm_show = @farms.where("farms.slug = ? ", params[:id])
 
-    @date = Date.current
+    @date = Date.current + 1
 
     @zip_code = get_zip_code_number
 

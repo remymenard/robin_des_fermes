@@ -39,7 +39,7 @@
 
         <h6><%= t('.delivery') %> </h6>
         <% if @farm.accepts_delivery %>
-          <p class = "date"> <%= t('.hours_delivery') %> <%= (@date + 1).strftime('%d')  %> <%= t('.and_delivery') %> <%= I18n.l((@date + 1 + @farm.delivery_delay.days), format: "%d %B", locale: :'fr') %>.</p>
+          <p class = "date"> <%= t('.hours_delivery') %> <%= @date.strftime('%d')  %> <%= t('.and_delivery') %> <%= I18n.l((@date + 1 + @farm.delivery_delay.days), format: "%d %B", locale: :'fr') %>.</p>
         <% end %>
         <span> <%= link_to t('.more_delivery'), "#farm-delivery" %></span>
 
@@ -304,7 +304,7 @@
             <p><%= t('.delivery_national_description') %></p>
           <% end %>
 
-          <div class="hours"><p class = "date"><%= t('.expected_delivery') %> <%= (@date + 1).strftime('%d')  %> <%= t('.and_delivery') %> <%= I18n.l((@date + 1 + @farm.delivery_delay.days), format: "%d %B", locale: :'fr') %>.</p></div>
+          <div class="hours"><p class = "date"><%= t('.expected_delivery') %> <%= @date.strftime('%d')  %> <%= t('.and_delivery') %> <%= I18n.l((@date + 1 + @farm.delivery_delay.days), format: "%d %B", locale: :'fr') %>.</p></div>
 
         </div>
 
