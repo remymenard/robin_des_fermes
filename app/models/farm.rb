@@ -55,6 +55,31 @@ class Farm < ApplicationRecord
 
   DAYS = [["Lundi", 1], ["Mardi", 2], ["Mercredi", 3], ["Jeudi", 4], ["Vendredi", 5], ["Samedi", 6], ["Dimanche", 0]]
 
+  def delivery_date(zip_code)
+    if takeaway_at_farm || standard_shipping
+      Date.current + farm.delivery_delay
+    elsif express_shipping
+      farm_office = farm_offices.select do |farm_office|
+        farm_office.office.regions.include? zip_code
+      end
+      days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+      now = Time.now
+      if now.wday == farm_office.delivery_deadline_day && now.to_formatted_s(:time) < farm_office.delivery_deadline_hour
+        Date.today + farm_office.delivery_day
+      else
+        Date.today.next_occurring(days[farm_office.delivery_deadline_day]) + farm_office.delivery_day
+      end
+    end
+  end
+
+  def is_in_close_zone?(zip_code)
+    is_in_close_zone = false
+    farm_offices.each do |farm_office|
+      is_in_close_zone = true if farm_office.office.regions.include?(zip_code)
+    end
+    is_in_close_zone
+  end
+
   private
 
    def add_office_values_to_regions

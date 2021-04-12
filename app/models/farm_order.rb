@@ -32,7 +32,7 @@ class FarmOrder < ApplicationRecord
   end
 
   def can_be_delivered?(zip_code)
-    if !farm_in_close_zone?(zip_code)
+    if !farm.is_in_close_zone?(zip_code)
       fresh_product = false
       order_line_items.each do |order_line_item|
         fresh_product = true if order_line_item.product.fresh
@@ -53,12 +53,8 @@ class FarmOrder < ApplicationRecord
     price + shipping_price
   end
 
-  def farm_in_close_zone?(zip_code)
-    farm.regions.include?(zip_code)
-  end
-
   def delivery_price(zip_code)
-    farm_in_close_zone?(zip_code) ? ShippingPrice.express : ShippingPrice.standard
+    farm.is_in_close_zone?(zip_code) ? ShippingPrice.express : ShippingPrice.standard
   end
 
   def total_items_count
@@ -96,23 +92,6 @@ class FarmOrder < ApplicationRecord
       'Distribution régionale'
     elsif standard_shipping
       'Expédition nationale'
-    end
-  end
-
-  def delivery_date
-    if takeaway_at_farm || standard_shipping
-      Date.current + farm.delivery_delay
-    elsif express_shipping
-      farm_office = farm_offices.select do |farm_office|
-        farm_office.office.regions.include? get_zip_code_number
-      end
-      days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
-      now = Time.now
-      if now.wday == farm_office.delivery_deadline_day && now.to_formatted_s(:time) < farm_office.delivery_deadline_hour
-        Date.today + farm_office.delivery_day
-      else
-        Date.today.next_occurring(days[farm_office.delivery_deadline_day]) + farm_office.delivery_day
-      end
     end
   end
 
