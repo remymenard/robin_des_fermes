@@ -38,7 +38,9 @@
     <div class="delivery">
 
         <h6><%= t('.delivery') %> </h6>
-        <% if @farm.accepts_delivery %>
+        <% if @near_farm %>
+          <%= @farm.delivery_date(get_zip_code_number) %>
+        <% else %>
           <p class = "date"> <%= t('.hours_delivery') %> <%= @date.strftime('%d')  %> <%= t('.and_delivery') %> <%= I18n.l((@date + 1 + @farm.delivery_delay.days), format: "%d %B", locale: :'fr') %>.</p>
         <% end %>
         <span> <%= link_to t('.more_delivery'), "#farm-delivery" %></span>

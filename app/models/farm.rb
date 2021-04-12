@@ -49,26 +49,26 @@ class Farm < ApplicationRecord
 
   scope :active, -> () { where(active: true) }
 
- after_save :add_office_values_to_regions
+  after_save :add_office_values_to_regions
 
   LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
 
   DAYS = [["Lundi", 1], ["Mardi", 2], ["Mercredi", 3], ["Jeudi", 4], ["Vendredi", 5], ["Samedi", 6], ["Dimanche", 0]]
 
   def delivery_date(zip_code)
-    if takeaway_at_farm || standard_shipping
-      Date.current + farm.delivery_delay
-    elsif express_shipping
+    if self.regions.include?(zip_code)
       farm_office = farm_offices.select do |farm_office|
         farm_office.office.regions.include? zip_code
       end
-      days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+      days = [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]
       now = Time.now
-      if now.wday == farm_office.delivery_deadline_day && now.to_formatted_s(:time) < farm_office.delivery_deadline_hour
-        Date.today + farm_office.delivery_day
+      if now.wday == farm_office.first.delivery_deadline_day && now.to_formatted_s(:time) < farm_office.first.delivery_deadline_hour
+        Date.today + farm_office.first.delivery_day
       else
-        Date.today.next_occurring(days[farm_office.delivery_deadline_day]) + farm_office.delivery_day
+        Date.today.next_occurring(days[farm_office.first.delivery_deadline_day]) + farm_office.first.delivery_day
       end
+    else
+      Date.current + 1 + self.delivery_delay
     end
   end
 
@@ -82,7 +82,7 @@ class Farm < ApplicationRecord
 
   private
 
-   def add_office_values_to_regions
+  def add_office_values_to_regions
     self.regions = []
     self.offices.each { |office| regions << office.regions }
 
