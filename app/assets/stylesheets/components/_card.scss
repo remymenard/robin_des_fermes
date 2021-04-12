@@ -206,6 +206,17 @@
       justify-self: center !important;
     }
   }
+
+  @media screen and (min-width: 650px) {
+    .photo-farm {
+
+      img {
+        width: 192px;
+        height: 192px;
+      }
+    }
+  }
+
   @media screen and (max-width: 650px) {
 
     .best-farms {
@@ -220,7 +231,7 @@
       margin: auto;
 
       img {
-        width: 320px;
+        width: 319px;
         height: 252px;
         border-radius: 10px 10px 0px 0px !important;
       }
