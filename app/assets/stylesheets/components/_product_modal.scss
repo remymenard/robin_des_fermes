@@ -24,6 +24,21 @@
     height: 241px;
     margin-bottom: 12px;
   }
+  .close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #339E72;
+    background: white;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    padding-left: 1.2px;
+    cursor: pointer;
+  }
   h1 {
     font-size: 20px;
     color: #25201D;
