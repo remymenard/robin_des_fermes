@@ -5,7 +5,7 @@
     <%= farm_order.total_items_count %> <%= t("orders.review.product").pluralize(farm_order.total_items_count) %>
   </p>
   <div class="aditional-infos">
-    <% if number_of_fresh_product > 0 && !farm_order.farm_in_close_zone?(get_zip_code_number) %>
+    <% if number_of_fresh_product > 0 && !farm_order.farm.is_in_close_zone?(get_zip_code_number) %>
       <%= show_svg("icons/fresh_product.svg") %>
       <span class="ml-1 underline">
         <%= number_of_fresh_product.to_s + " " + t("orders.review.fresh_product") %>
@@ -33,14 +33,14 @@
           <%= show_svg('icons/delivery-truck.svg') %>
         </div>
         <span class="title">
-          <% if farm_order.farm_in_close_zone?(get_zip_code_number) %>
+          <% if farm_order.farm.is_in_close_zone?(get_zip_code_number) %>
             <%= t('orders.delivery.local_delivery') %>
           <% else %>
             <%= t('orders.delivery.national_delivery') %>
           <% end %>
         </span>
         <span class="price">
-          <% if farm_order.farm_in_close_zone?(get_zip_code_number) %>
+          <% if farm_order.farm.is_in_close_zone?(get_zip_code_number) %>
             <%= FarmOrder::ShippingPrice.express.price %>
           <% else%>
             <%= FarmOrder::ShippingPrice.standard.price %>
@@ -49,9 +49,9 @@
         </span>
         <span class="subtitle">
           <%= t('farms.show.hours_delivery') %>
-          <%= Date.current.strftime('%d')  %>
+          <%= (Date.current + 1).strftime('%d')  %>
           <%= t('farms.show.and_delivery') %>
-          <%= I18n.l((Date.current + farm_order.farm.delivery_delay.days), format: "%d %B", locale: :'fr') %>
+          <%= I18n.l((@date + farm_order.farm.delivery_delay.days), format: "%d %B", locale: :'fr') %>
         </span>
       </label>
     <% else %>

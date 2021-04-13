@@ -6,7 +6,7 @@ const fitMapToMarkers = (map, markers) => {
   if (markers.length === 0) {
     const bounds = new mapboxgl.LngLatBounds();
     bounds.extend([ 8.227512, 46.818188 ]);
-    map.fitBounds(bounds, { padding: 150, maxZoom: 8, duration: 0 });
+    map.fitBounds(bounds, { maxZoom: 8 });
   }else{
     const bounds = new mapboxgl.LngLatBounds();
     markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
@@ -30,18 +30,39 @@ const addMarkersToMap = (map, markers) => {
     const markerElement = mapMarker.getElement();
     markerElement.id = 'marker'
 
+    // Open popup when cursor goes on marker
     markerElement.addEventListener('mouseenter', () => popup.addTo(map));
-    markerElement.addEventListener('click', () => popup.remove());
 
+    // When mouse leaves opened marker
+    markerElement.addEventListener('mouseleave', () => {
+
+      // When mouse enters the opened popup
+      $('.mapboxgl-popup').mouseenter(function(){
+
+        // Keep the popup opened
+        popup.addTo(map);
+
+        // When mouse leaves the opend popup
+        $('.mapboxgl-popup').mouseleave(function(){
+
+          // Close the popup
+          $('.mapboxgl-popup').fadeOut();
+        })
+      })
+
+      $('.mapboxgl-popup').fadeOut();
+    });
+
+    // Build all popups
     mapMarker.setPopup(popup);
 
+    // Set all markers
     mapMarker.addTo(map);
   });
 }
 
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
-
 
   if (mapElement) { // only build a map if there's a div#map to inject into
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;

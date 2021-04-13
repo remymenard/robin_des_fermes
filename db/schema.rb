@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_11_155748) do
+ActiveRecord::Schema.define(version: 2021_04_12_114119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,18 @@ ActiveRecord::Schema.define(version: 2021_03_11_155748) do
     t.index ["farm_id"], name: "index_farm_categories_on_farm_id"
   end
 
+  create_table "farm_offices", force: :cascade do |t|
+    t.bigint "office_id", null: false
+    t.bigint "farm_id", null: false
+    t.integer "delivery_day"
+    t.integer "delivery_deadline_day"
+    t.time "delivery_deadline_hour"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["farm_id"], name: "index_farm_offices_on_farm_id"
+    t.index ["office_id"], name: "index_farm_offices_on_office_id"
+  end
+
   create_table "farm_orders", force: :cascade do |t|
     t.boolean "takeaway_at_farm"
     t.boolean "standard_shipping"
@@ -90,10 +102,10 @@ ActiveRecord::Schema.define(version: 2021_03_11_155748) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "shipping_price_cents", default: 0, null: false
     t.string "shipping_price_currency", default: "CHF", null: false
-    t.string "status", default: "waiting"
-    t.text "comment"
     t.datetime "waiting_for_preorder_at"
     t.string "confirm_shipped_token"
+    t.string "status", default: "waiting"
+    t.text "comment"
     t.index ["farm_id"], name: "index_farm_orders_on_farm_id"
     t.index ["order_id"], name: "index_farm_orders_on_order_id"
   end
@@ -118,8 +130,8 @@ ActiveRecord::Schema.define(version: 2021_03_11_155748) do
     t.text "long_description"
     t.boolean "accepts_delivery", default: false
     t.integer "delivery_delay"
-    t.boolean "active", default: false
     t.text "labels", array: true
+    t.boolean "active", default: false
     t.string "photo_portrait"
     t.text "offices", default: [], array: true
     t.string "slug"
@@ -139,6 +151,13 @@ ActiveRecord::Schema.define(version: 2021_03_11_155748) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "offices", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "regions", default: [], array: true
   end
 
   create_table "opening_hours", force: :cascade do |t|
@@ -238,6 +257,8 @@ ActiveRecord::Schema.define(version: 2021_03_11_155748) do
   add_foreign_key "delivery_choices", "orders"
   add_foreign_key "farm_categories", "categories"
   add_foreign_key "farm_categories", "farms"
+  add_foreign_key "farm_offices", "farms"
+  add_foreign_key "farm_offices", "offices"
   add_foreign_key "farm_orders", "farms"
   add_foreign_key "farm_orders", "orders"
   add_foreign_key "farms", "users"
