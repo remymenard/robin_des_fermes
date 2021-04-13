@@ -23,6 +23,23 @@ class FarmOrder < ApplicationRecord
 
   before_create :set_confirm_shipped_token
 
+  def delivery_date(zip_code)
+    if takeaway_at_farm || standard_shipping
+      Date.current + farm.delivery_delay
+    elsif express_shipping
+      farm_office = farm_offices.select do |farm_office|
+        farm_office.office.regions.include? zip_code
+      end
+      days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+      now = Time.now
+      if now.wday == farm_office.delivery_deadline_day && now.to_formatted_s(:time) < farm_office.delivery_deadline_hour
+        Date.today + farm_office.delivery_day
+      else
+        Date.today.next_occurring(days[farm_office.delivery_deadline_day]) + farm_office.delivery_day
+      end
+    end
+  end
+
   def number_of_fresh_product
     fresh_product = 0
     order_line_items.each do |order_line_item|
