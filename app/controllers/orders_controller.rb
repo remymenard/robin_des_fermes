@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
   end
 
   def delivery
+    @date = Date.current + 1
   end
 
   def update_delivery_methods

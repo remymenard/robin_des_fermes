@@ -32,7 +32,7 @@ class FarmOrder < ApplicationRecord
   end
 
   def can_be_delivered?(zip_code)
-    if !farm_in_close_zone?(zip_code)
+    if !farm.is_in_close_zone?(zip_code)
       fresh_product = false
       order_line_items.each do |order_line_item|
         fresh_product = true if order_line_item.product.fresh
@@ -53,12 +53,8 @@ class FarmOrder < ApplicationRecord
     price + shipping_price
   end
 
-  def farm_in_close_zone?(zip_code)
-    farm.regions.include?(zip_code)
-  end
-
   def delivery_price(zip_code)
-    farm_in_close_zone?(zip_code) ? ShippingPrice.express : ShippingPrice.standard
+    farm.is_in_close_zone?(zip_code) ? ShippingPrice.express : ShippingPrice.standard
   end
 
   def total_items_count
