@@ -49,7 +49,7 @@ class Farm < ApplicationRecord
 
   scope :active, -> () { where(active: true) }
 
-  after_save :add_office_values_to_regions
+  after_save :set_regions
 
   LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
 
@@ -101,15 +101,18 @@ class Farm < ApplicationRecord
 
   private
 
-  def add_office_values_to_regions
-    self.regions = []
-    self.offices.each { |office| regions << office.regions }
+  def set_regions
+    all_regions = []
+
+    self.offices.each { |office| all_regions << office.regions }
 
     # Build one single array (not an array of arrays)
-    self.regions = self.regions.join(" ").split
+    all_regions = all_regions.join(" ").split
 
     # Remove empty values
-    self.regions.reject!(&:empty?)
+    all_regions.reject!(&:empty?)
+
+    self.update_column(:regions, all_regions)
   end
 
 

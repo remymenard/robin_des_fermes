@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_12_114119) do
+ActiveRecord::Schema.define(version: 2021_04_13_075006) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -133,7 +133,7 @@ ActiveRecord::Schema.define(version: 2021_04_12_114119) do
     t.boolean "active", default: false
     t.text "labels", array: true
     t.string "photo_portrait"
-    t.text "offices", default: [], array: true
+    t.text "old_offices", default: [], array: true
     t.string "slug"
     t.string "farmer_number"
     t.string "farm_profil_picture"

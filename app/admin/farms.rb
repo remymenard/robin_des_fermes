@@ -2,13 +2,13 @@ ActiveAdmin.register Farm, as: "Exploitations" do
 
   before_action :remove_password_params_if_blank, only: [:update]
 
-  permit_params :active, :description_title, :name, :description, :address, :lagitude, :longitude, :photo_portrait, :farm_profil_picture, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accepts_delivery, photos: [], labels: [], offices: [], regions: [],
+  permit_params :active, :description_title, :name, :description, :address, :lagitude, :longitude, :photo_portrait, :farm_profil_picture, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accepts_delivery, photos: [], labels: [], offices: [],
                 opening_hours_attributes: [:id, :_destroy, :day, :opens, :closes],
                 products_attributes: [:id, :active, :available_for_preorder, :name, :available, :category_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning, :preorder_shipping_starting_at, :total_weight, label:[] ],
                 categories_attributes: [:id, :name],
                 category_ids: [],
                 office_ids: [],
-                offices_attributes: [:id, :name, regions: []],
+                offices_attributes: [:id],
                 farm_offices_attributes: [:id, :_destroy, :office_id, :delivery_day, :delivery_deadline_day, :delivery_deadline_hour],
                 user_attributes: [:id, :email, :first_name, :last_name, :number_phone, :wants_to_subscribe_mailing_list, :photo, :password, :title, :password_confirmation, :address_line_1, :city, :zip_code, :farm_id]
 
@@ -206,18 +206,21 @@ ActiveAdmin.register Farm, as: "Exploitations" do
   end
 
   controller do
-    defaults :finder => :find_by_slug
+    defaults finder: :find_by_slug
+
     def create
       @farm = Farm.new(permitted_params[:farm])
       @farm.user.skip_confirmation_notification!
 
+      # @farm.update!(permitted_params[:farm])
       @farm.labels.reject!(&:empty?)
 
       @farm.products.each do |product|
         product.label.reject!(&:empty?)
       end
 
-      if @farm.save!
+      if @farm.save
+
         redirect_to admin_exploitations_path, notice: "Resource created successfully."
       else
         @resource = @farm
@@ -229,7 +232,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
       @farm = Farm.friendly.find(params[:id])
       params[:farm].delete(:user_id) if params[:farm][:user_id] == ""
 
-      @farm.update!(permitted_params[:farm])
+      # @farm.update!(permitted_params[:farm])
       @farm.labels.reject!(&:empty?)
 
       @farm.products.each do |product|
