@@ -4,6 +4,7 @@ class FarmOrder < ApplicationRecord
 
   belongs_to :order
   belongs_to :farm
+  belongs_to :farm_office, optional: true
 
   has_many :order_line_items, dependent: :destroy
   has_many :products, through: :order_line_items
@@ -24,19 +25,30 @@ class FarmOrder < ApplicationRecord
   before_create :set_confirm_shipped_token
 
   def delivery_date(zip_code)
+    date = contains_preorder_product? ? waiting_for_shipping_at : Date.today
     if takeaway_at_farm || standard_shipping
-      Date.current + farm.delivery_delay
+      date + farm.delivery_delay
     elsif express_shipping
-      farm_office = farm_offices.select do |farm_office|
+      correct_farm_office = get_correct_farm_office(zip_code)
+      days = [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]
+      if date.wday == correct_farm_office.delivery_deadline_day && date.to_formatted_s(:time) < correct_farm_office.delivery_deadline_hour
+        date + correct_farm_office.delivery_day + farm.delivery_delay
+      else
+        date.next_occurring(days[correct_farm_office.delivery_deadline_day]) + correct_farm_office.delivery_day + farm.delivery_delay
+      end
+    end
+  end
+
+  def get_correct_farm_office(zip_code)
+    if farm_office.nil?
+      correct_farm_office = farm.farm_offices.select do |farm_office|
         farm_office.office.regions.include? zip_code
       end
-      days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
-      now = Time.now
-      if now.wday == farm_office.delivery_deadline_day && now.to_formatted_s(:time) < farm_office.delivery_deadline_hour
-        Date.today + farm_office.delivery_day
-      else
-        Date.today.next_occurring(days[farm_office.delivery_deadline_day]) + farm_office.delivery_day
-      end
+      self.farm_office = correct_farm_office.first
+      self.save
+      correct_farm_office.first
+    else
+      farm_office
     end
   end
 
@@ -120,7 +132,7 @@ class FarmOrder < ApplicationRecord
       end
     when 'delivery'
       if farm.accepts_delivery
-        if farm.regions.include?(zip_code)
+        if farm.is_in_close_zone?(zip_code)
           update!(status: 'waiting', takeaway_at_farm: false, standard_shipping: false, express_shipping: true, shipping_price: FarmOrder::ShippingPrice.express.price)
         else
           update!(status: 'waiting', takeaway_at_farm: false, standard_shipping: true, express_shipping: false, shipping_price: FarmOrder::ShippingPrice.standard.price)
