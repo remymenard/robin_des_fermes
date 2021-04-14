@@ -24,6 +24,8 @@
       <%= @user.first_name %> <%= @user.last_name %><br>
       <%= @user.address_line_1 %><br>
       <%= @user.zip_code %> <%= @user.city %><br>
+      <%= @user.number_phone %><br>
+      <%= @user.email %><br>
       <br>
       Contenu de la commande:<br>
       <% @order.order_line_items.each do |item| %>
