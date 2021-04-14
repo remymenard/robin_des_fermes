@@ -18,6 +18,9 @@ Farm.destroy_all # they belong to a user, so let's destroy them first
 Order.destroy_all
 User.destroy_all
 Office.destroy_all
+FarmOffice.destroy_all
+Order.destroy_all
+FarmOrder.destroy_all
 
 puts "Create categories"
 pain = Category.create!(name: "Boulangerie")
@@ -107,7 +110,7 @@ user1 = User.new(
   last_name: "Boucher",
   address_line_1: "6 boulevard adolphe",
   city: "nantes",
-  zip_code: "1200",
+  zip_code: "1852",
   title: "M",
   admin: true,
   number_phone: "06 44 63 71 11",
@@ -761,4 +764,10 @@ office108 = Office.create!(name: "Vésenaz Distribution", regions: [1222, 1244, 
 office109 = Office.create!(name: "Vevey 1 Distribution", regions: [1800, 1801, 1802, 1803, 1804, 1805, 1808, 1809, 1814])
 office110 = Office.create!(name: "Vuiteboeuf", regions: [1416, 1417, 1417, 1418, 1420, 1421, 1421, 1423, 1423, 1423, 1423, 1424, 1425, 1426, 1426, 1427, 1428, 1428, 1429, 1430, 1431, 1431, 1432, 1432, 1433, 1434, 1435, 1436, 1436, 1437, 1438, 1439, 1441, 1442, 1443, 1443, 1443, 1445, 1446, 1450, 1450, 1450, 1452, 1453, 1453, 1454, 1454])
 office111 = Office.create!(name: "Yverdon Distribution", regions: [1400, 1400, 1404, 1404, 1405, 1406, 1407, 1407, 1407, 1407, 1408, 1409, 1412, 1412, 1413, 1415, 1415, 1422, 1462, 1463, 1464, 1464])
+
+farm_office = FarmOffice.create!(office: office1, farm: henry, delivery_day: 1, delivery_deadline_day: 3)
+
+order = Order.create!(buyer: user1, price_cents: 100, price_currency: 4)
+
+farm_order = FarmOrder.create!(order: order, farm: henry, express_shipping: true, price_cents: 100, shipping_price: 9)
 #AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

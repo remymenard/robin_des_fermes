@@ -14,7 +14,7 @@
       <br>
       Date de la commande: <%= Date.current.strftime('%d/%m/%y') %><br>
       Mode de livraison: <%= @order.shipping_choice_name %><br>
-      Date de livraison estimée: <%= I18n.l((@order.waiting_for_shipping_at), format: "%d/%m/%y", locale: :'fr') %><br>
+      Date de livraison estimée: <%= I18n.l(@order.delivery_date(@user.zip_code), format: "%d/%m/%y", locale: :'fr') %><br>
       <br>
       Adresse de livraison :<br>
       <%= @user.first_name %> <%= @user.last_name %><br>
