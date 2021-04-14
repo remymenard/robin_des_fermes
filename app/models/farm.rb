@@ -57,7 +57,7 @@ class Farm < ApplicationRecord
 
   NOW = Time.now
 
-  DAYS_DELIVERY = [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]
+  DAYS_DELIVERY = %i[monday tuesday wednesday thursday friday saturday sunday]
 
   def delivery_date(zip_code)
     farm_office = farm_offices.select do |farm_office|
@@ -66,10 +66,8 @@ class Farm < ApplicationRecord
 
     if NOW.wday == farm_office.first.delivery_deadline_day && NOW.to_formatted_s(:time) < farm_office.first.delivery_deadline_hour
       Date.today + farm_office.first.delivery_day
-    else
-      if farm_office.first.delivery_day
+    elsif farm_office.first.delivery_day
         Date.today.next_occurring(DAYS_DELIVERY[farm_office.first.delivery_deadline_day]) + farm_office.first.delivery_day
-      end
     end
   end
 
@@ -86,7 +84,6 @@ class Farm < ApplicationRecord
       farm_office = farm_offices.select do |farm_office|
         farm_office.office.regions.include? zip_code
       end
-
       Date.today.next_occurring(DAYS_DELIVERY[farm_office.first.delivery_deadline_day])
     end
   end
@@ -116,7 +113,6 @@ class Farm < ApplicationRecord
 
     self.update_column(:regions, all_regions)
   end
-
 
   def full_address
     [address, zip_code, city, country].compact.join(', ')

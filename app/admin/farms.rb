@@ -220,7 +220,6 @@ ActiveAdmin.register Farm, as: "Exploitations" do
       end
 
       if @farm.save
-
         redirect_to admin_exploitations_path, notice: "Resource created successfully."
       else
         @resource = @farm
