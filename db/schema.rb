@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2021_04_13_110249) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -102,10 +103,10 @@ ActiveRecord::Schema.define(version: 2021_04_13_110249) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "shipping_price_cents", default: 0, null: false
     t.string "shipping_price_currency", default: "CHF", null: false
-    t.datetime "waiting_for_preorder_at"
-    t.string "confirm_shipped_token"
     t.string "status", default: "waiting"
     t.text "comment"
+    t.datetime "waiting_for_preorder_at"
+    t.string "confirm_shipped_token"
     t.bigint "farm_office_id"
     t.index ["farm_id"], name: "index_farm_orders_on_farm_id"
     t.index ["farm_office_id"], name: "index_farm_orders_on_farm_office_id"
@@ -132,10 +133,10 @@ ActiveRecord::Schema.define(version: 2021_04_13_110249) do
     t.text "long_description"
     t.boolean "accepts_delivery", default: false
     t.integer "delivery_delay"
-    t.text "labels", array: true
     t.boolean "active", default: false
+    t.text "labels", array: true
     t.string "photo_portrait"
-    t.text "offices", default: [], array: true
+    t.text "old_offices", default: [], array: true
     t.string "slug"
     t.string "farmer_number"
     t.string "farm_profil_picture"
