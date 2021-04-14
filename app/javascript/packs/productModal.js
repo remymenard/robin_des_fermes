@@ -44,7 +44,7 @@ function initProductModal () {
     customBoxModal.open();
   })
 
-  $('.product-modal #cross').on('click', (event) => {
+  $('.product-modal .close-button').on('click', (event) => {
     event.preventDefault();
     box.modal.close('productModal');
   })
