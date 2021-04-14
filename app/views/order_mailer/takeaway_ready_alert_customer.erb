@@ -11,7 +11,11 @@
       Ta commande n°<%= @order.id %> est prête et peut être retirée auprès de <%= @order.farm.name %>.<br>
       <br>
       Tu peux la retirer à cette adresse:<br>
-      <%= @order.farm.address %> <%= @order.farm.city %> <%= @order.farm.zip_code %><br>
+      <%= @order.farm.address %><br>
+      <%= @order.farm.zip_code %> <%= @order.farm.city %><br>
+      <br>
+      Aux horaires suivant:<br>
+      <%= @order.farm.opening_time %><br>
       <br>
       La bande de Robin des Fermes<br>
       <br>
