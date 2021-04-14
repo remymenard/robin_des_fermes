@@ -128,6 +128,27 @@ class FarmOrder < ApplicationRecord
     end
   end
 
+<<<<<<< HEAD
+  def delivery_date
+    if takeaway_at_farm || standard_shipping
+      Date.current + farm.delivery_delay
+      raise
+    elsif express_shipping
+      farm_office = farm_offices.select do |farm_office|
+        farm_office.office.regions.include? get_zip_code_number
+      end
+      days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+      now = Time.now
+      if now.wday == farm_office.delivery_deadline_day && now.to_formatted_s(:time) < farm_office.delivery_deadline_hour
+        Date.today + farm_office.delivery_day
+      else
+        Date.today.next_occurring(days[farm_office.delivery_deadline_day]) + farm_office.delivery_day
+      end
+    end
+  end
+
+=======
+>>>>>>> develop
   def update_delivery_choice(user_choice, zip_code)
     case user_choice
     when 'takeaway'
