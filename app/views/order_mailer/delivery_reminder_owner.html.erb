@@ -13,6 +13,9 @@
       <br>
       Date de la commande: <%= @order.waiting_for_shipping_at.strftime('%d/%m/%y') %><br>
       Mode de livraison: <%= @order.shipping_choice_name %><br>
+      <% if @order.express_shipping %>
+        Office de distribution: <%= @order.get_correct_farm_office(current_user.zip_code).office.name %><br>
+      <% end %>
       Date de livraison estimée: <%= I18n.l(@order.delivery_date(@user.zip_code), format: "%d/%m/%y", locale: :'fr') %><br>
       <br>
       Destinataire:<br>
