@@ -5,7 +5,7 @@
     <%= farm_order.total_items_count %> <%= t("orders.review.product").pluralize(farm_order.total_items_count) %>
   </p>
   <div class="aditional-infos">
-    <% if number_of_fresh_product > 0 && !farm_order.farm.is_in_close_zone?(get_zip_code_number) %>
+    <% if number_of_fresh_product > 0 && !farm_order.farm.is_in_close_zone?(current_user.zip_code) %>
       <%= show_svg("icons/fresh_product.svg") %>
       <span class="ml-1 underline">
         <%= number_of_fresh_product.to_s + " " + t("orders.review.fresh_product") %>
@@ -25,7 +25,7 @@
         class: "user-shipping-choice hidden",
         data: {
           takeaway: FarmOrder::ShippingPrice.takeaway.price.to_s,
-          delivery: farm_order.delivery_price(get_zip_code_number).price.to_s
+          delivery: farm_order.delivery_price(current_user.zip_code).price.to_s
         } %>
 
       <label for="<%= dom_id(farm_order, :user_shipping_choice_delivery) %>" class="shipping-option <%= farm_order.standard_shipping || farm_order.express_shipping ? 'active' : '' %> mr-1" js-user-delivery-choice-delivery>
@@ -33,14 +33,14 @@
           <%= show_svg('icons/delivery-truck.svg') %>
         </div>
         <span class="title">
-          <% if farm_order.farm.is_in_close_zone?(get_zip_code_number) %>
+          <% if farm_order.farm.is_in_close_zone?(current_user.zip_code) %>
             <%= t('orders.delivery.local_delivery') %>
           <% else %>
             <%= t('orders.delivery.national_delivery') %>
           <% end %>
         </span>
         <span class="price">
-          <% if farm_order.farm.is_in_close_zone?(get_zip_code_number) %>
+          <% if farm_order.farm.is_in_close_zone?(current_user.zip_code) %>
             <%= FarmOrder::ShippingPrice.express.price %>
           <% else%>
             <%= FarmOrder::ShippingPrice.standard.price %>
@@ -51,7 +51,7 @@
           <%= t('farms.show.hours_delivery') %>
           <%= (Date.current + 1).strftime('%d')  %>
           <%= t('farms.show.and_delivery') %>
-          <%= I18n.l((@date + farm_order.farm.delivery_delay.days), format: "%d %B", locale: :'fr') %>
+          <%= I18n.l((farm_order.delivery_date(current_user.zip_code)), format: "%d %B", locale: :'fr') %>
         </span>
       </label>
     <% else %>
@@ -72,7 +72,7 @@
         class: "user-shipping-choice hidden",
         data: {
           takeaway: FarmOrder::ShippingPrice.takeaway.price.to_s,
-          delivery: farm_order.delivery_price(get_zip_code_number).price.to_s
+          delivery: farm_order.delivery_price(current_user.zip_code).price.to_s
         } %>
 
       <label for="<%= dom_id(farm_order, :user_shipping_choice_takeaway) %>" class="shipping-option <%= farm_order.takeaway_at_farm ? 'active' : '' %> mr-1" js-user-delivery-choice-takeaway>

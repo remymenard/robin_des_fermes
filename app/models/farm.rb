@@ -1,4 +1,5 @@
 class Farm < ApplicationRecord
+
   extend FriendlyId
   friendly_id :name, use: :slugged
 
@@ -37,6 +38,7 @@ class Farm < ApplicationRecord
   has_one_attached :farm_profil_picture
   validates_presence_of :farm_profil_picture
 
+
   validates :name, presence: true
   validates :address, presence: true
   validates :zip_code, presence: true
@@ -47,28 +49,28 @@ class Farm < ApplicationRecord
   validates :long_description, presence: true
   validates :delivery_delay, presence: true
 
+
   scope :active, -> () { where(active: true) }
 
- after_save :add_office_values_to_regions
+  after_save :set_regions
 
   LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
 
   DAYS = [["Lundi", 1], ["Mardi", 2], ["Mercredi", 3], ["Jeudi", 4], ["Vendredi", 5], ["Samedi", 6], ["Dimanche", 0]]
 
+  NOW = Time.now
+
+  DAYS_DELIVERY = %i[monday tuesday wednesday thursday friday saturday sunday]
+
   def delivery_date(zip_code)
-    if takeaway_at_farm || standard_shipping
-      Date.current + farm.delivery_delay
-    elsif express_shipping
-      farm_office = farm_offices.select do |farm_office|
-        farm_office.office.regions.include? zip_code
-      end
-      days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
-      now = Time.now
-      if now.wday == farm_office.delivery_deadline_day && now.to_formatted_s(:time) < farm_office.delivery_deadline_hour
-        Date.today + farm_office.delivery_day
-      else
-        Date.today.next_occurring(days[farm_office.delivery_deadline_day]) + farm_office.delivery_day
-      end
+    farm_office = farm_offices.select do |farm_office|
+      farm_office.office.regions.include? zip_code
+    end
+
+    if NOW.wday == farm_office.first.delivery_deadline_day && NOW.to_formatted_s(:time) < farm_office.first.delivery_deadline_hour
+      Date.today + farm_office.first.delivery_day
+    elsif farm_office.first.delivery_day
+        Date.today.next_occurring(DAYS_DELIVERY[farm_office.first.delivery_deadline_day]) + farm_office.first.delivery_day
     end
   end
 
@@ -80,19 +82,40 @@ class Farm < ApplicationRecord
     is_in_close_zone
   end
 
-  private
-
-   def add_office_values_to_regions
-    self.regions = []
-    self.offices.each { |office| regions << office.regions }
-
-    # Build one single array (not an array of arrays)
-    self.regions = self.regions.join(" ").split
-
-    # Remove empty values
-    self.regions.reject!(&:empty?)
+  def delay_date(zip_code)
+    if self.regions.include?(zip_code)
+      farm_office = farm_offices.select do |farm_office|
+        farm_office.office.regions.include? zip_code
+      end
+      Date.today.next_occurring(DAYS_DELIVERY[farm_office.first.delivery_deadline_day])
+    end
   end
 
+  def delay_hour(zip_code)
+    if self.regions.include?(zip_code)
+      farm_office = farm_offices.select do |farm_office|
+        farm_office.office.regions.include? zip_code
+      end
+
+      farm_office.first.delivery_deadline_hour
+    end
+  end
+
+  private
+
+  def set_regions
+    all_regions = []
+
+    self.offices.each { |office| all_regions << office.regions }
+
+    # Build one single array (not an array of arrays)
+    all_regions = all_regions.join(" ").split
+
+    # Remove empty values
+    all_regions.reject!(&:empty?)
+
+    self.update_column(:regions, all_regions)
+  end
 
   def full_address
     [address, zip_code, city, country].compact.join(', ')
