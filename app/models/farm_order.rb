@@ -32,14 +32,14 @@ class FarmOrder < ApplicationRecord
       days = %i[monday tuesday wednesday thursday friday saturday sunday]
       if date.wday == correct_farm_office.delivery_deadline_day && date.to_formatted_s(:time) < correct_farm_office.delivery_deadline_hour
         # if we are the day of the deadline and earlier than the hour => delivery_date = today + delays
-        date + correct_farm_office.delivery_day
+        date + correct_farm_office.delivery_day.days
       else
         # if we are not the day of the deadline => delivery_date = next time that the days of the deadline occurs + delays
-        date.next_occurring(days[correct_farm_office.delivery_deadline_day]) + correct_farm_office.delivery_day
+        date.next_occurring(days[correct_farm_office.delivery_deadline_day]) + correct_farm_office.delivery_day.days
       end
     elsif takeaway_at_farm || standard_shipping
       # if it's not a regional delivery
-      date + farm.delivery_delay
+      date + farm.delivery_delay.days
     end
   end
 

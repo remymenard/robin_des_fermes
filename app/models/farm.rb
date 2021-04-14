@@ -70,13 +70,13 @@ class Farm < ApplicationRecord
       end
 
       if NOW.wday == farm_office.delivery_deadline_day && NOW.to_formatted_s(:time) < farm_office.delivery_deadline_hour
-        Date.today + farm_office.delivery_day
+        Date.today + farm_office.delivery_day.days
       elsif farm_office.delivery_day
-          Date.today.next_occurring(DAYS_DELIVERY[farm_office.delivery_deadline_day]) + farm_office.delivery_day
+          Date.today.next_occurring(DAYS_DELIVERY[farm_office.delivery_deadline_day]) + farm_office.delivery_day.days
       end
     else
       # if national delivery
-      NOW + delivery_delay
+      NOW + delivery_delay.days
     end
   end
 
