@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_13_075006) do
+ActiveRecord::Schema.define(version: 2021_04_13_110249) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,7 +107,9 @@ ActiveRecord::Schema.define(version: 2021_04_13_075006) do
     t.text "comment"
     t.datetime "waiting_for_preorder_at"
     t.string "confirm_shipped_token"
+    t.bigint "farm_office_id"
     t.index ["farm_id"], name: "index_farm_orders_on_farm_id"
+    t.index ["farm_office_id"], name: "index_farm_orders_on_farm_office_id"
     t.index ["order_id"], name: "index_farm_orders_on_order_id"
   end
 
@@ -259,6 +262,7 @@ ActiveRecord::Schema.define(version: 2021_04_13_075006) do
   add_foreign_key "farm_categories", "farms"
   add_foreign_key "farm_offices", "farms"
   add_foreign_key "farm_offices", "offices"
+  add_foreign_key "farm_orders", "farm_offices"
   add_foreign_key "farm_orders", "farms"
   add_foreign_key "farm_orders", "orders"
   add_foreign_key "farms", "users"
