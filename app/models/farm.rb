@@ -1,4 +1,5 @@
 class Farm < ApplicationRecord
+
   extend FriendlyId
   friendly_id :name, use: :slugged
 
@@ -37,6 +38,7 @@ class Farm < ApplicationRecord
   has_one_attached :farm_profil_picture
   validates_presence_of :farm_profil_picture
 
+
   validates :name, presence: true
   validates :address, presence: true
   validates :zip_code, presence: true
@@ -46,6 +48,7 @@ class Farm < ApplicationRecord
   validates :description, presence: true
   validates :long_description, presence: true
   validates :delivery_delay, presence: true
+
 
   scope :active, -> () { where(active: true) }
 
@@ -60,14 +63,20 @@ class Farm < ApplicationRecord
   DAYS_DELIVERY = %i[monday tuesday wednesday thursday friday saturday sunday]
 
   def delivery_date(zip_code)
-    farm_office = farm_offices.select do |farm_office|
-      farm_office.office.regions.include? zip_code
-    end
+    if is_in_close_zone?(zip_code)
+      # if regional delivery
+      farm_office = farm_offices.find do |farm_office|
+        farm_office.office.regions.include? zip_code
+      end
 
-    if NOW.wday == farm_office.first.delivery_deadline_day && NOW.to_formatted_s(:time) < farm_office.first.delivery_deadline_hour
-      Date.today + farm_office.first.delivery_day
-    elsif farm_office.first.delivery_day
-        Date.today.next_occurring(DAYS_DELIVERY[farm_office.first.delivery_deadline_day]) + farm_office.first.delivery_day
+      if NOW.wday == farm_office.delivery_deadline_day && NOW.to_formatted_s(:time) < farm_office.delivery_deadline_hour
+        Date.today + farm_office.delivery_day.days
+      elsif farm_office.delivery_day
+          Date.today.next_occurring(DAYS_DELIVERY[farm_office.delivery_deadline_day]) + farm_office.delivery_day.days
+      end
+    else
+      # if national delivery
+      NOW + delivery_delay.days
     end
   end
 
