@@ -53,7 +53,9 @@
   }
 
   .mapboxgl-ctrl-group {
-    margin-top: 55px;
+    @include media-breakpoint-up(md) {
+      margin-top: 55px;
+    }
   }
 
   .map-infos {
@@ -73,7 +75,7 @@
       position: absolute;
       right: 7px;
       top: 0;
-      @include media-breakpoint-up(lg) {
+      @include media-breakpoint-up(md) {
         display: none;
       }
     }
