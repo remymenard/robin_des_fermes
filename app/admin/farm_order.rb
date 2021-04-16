@@ -34,19 +34,11 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
     end
 
     column 'Livraison Prévue' do |farm_order|
-      if farm_order.farm.regions.include?(farm_order.buyer.zip_code)
-        farm_office = farm_order.farm.farm_offices.select do |farm_office|
-          farm_office.office.regions.include? get_zip_code_number
-        end
-        days = [:monday, :tuesday, :wednesday, :thursday, :friday, :saturday, :sunday]
-        now = Time.now
-        if now.wday == farm_office.first.delivery_deadline_day && now.to_formatted_s(:time) < farm_office.first.delivery_deadline_hour
-          Date.today + farm_office.delivery_day
-        else
-          Date.today.next_occurring(days[farm_office.first.delivery_deadline_day]) + farm_office.first.delivery_day
-        end
+
+      if farm_order.express_shipping.nil? && farm_order.standard_shipping.nil? && farm_order.takeaway_at_farm.nil?
+        "Indisponible (mode de livraison non choisi)"
       else
-        I18n.l((farm_order.created_at + 1.days + farm_order.farm.delivery_delay.days), format: "%d %B %Y", locale: :'fr')
+        I18n.l((farm_order.delivery_date(farm_order.order.buyer.zip_code)), format: "%d %B %Y", locale: :'fr')
       end
     end
 
