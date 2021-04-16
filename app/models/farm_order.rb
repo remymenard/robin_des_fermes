@@ -26,12 +26,12 @@ class FarmOrder < ApplicationRecord
 
   def delivery_date(zip_code)
     # if the order contains preorder products => calculates the delivery_date when the products will be available and not from today
-    available_products_date = contains_preorder_product? ? waiting_for_shipping_at : Date.today
+    available_products_date = contains_preorder_product? ? compute_preorder_delivery_date : Time.now
     if express_shipping || standard_shipping
-      @farm.delivery_date(zip_code, available_products_date)
+      farm.delivery_date(zip_code, available_products_date)
     elsif takeaway_at_farm
       # if it's not a regional delivery
-      date + 1.day + farm.delivery_delay.days
+      available_products_date + 1.day + farm.delivery_delay.days
     end
   end
 
@@ -116,7 +116,7 @@ class FarmOrder < ApplicationRecord
     when 'delivery'
       if farm.accepts_delivery
         if farm.is_in_close_zone?(zip_code)
-          update!(status: 'waiting', takeaway_at_farm: false, standard_shipping: false, express_shipping: true, shipping_price: FarmOrder::ShippingPrice.express.price, office: farm.get_correct_farm_office(zip_code))
+          update!(status: 'waiting', takeaway_at_farm: false, standard_shipping: false, express_shipping: true, shipping_price: FarmOrder::ShippingPrice.express.price, farm_office: farm.get_correct_farm_office(zip_code))
         else
           update!(status: 'waiting', takeaway_at_farm: false, standard_shipping: true, express_shipping: false, shipping_price: FarmOrder::ShippingPrice.standard.price)
         end
@@ -133,13 +133,17 @@ class FarmOrder < ApplicationRecord
   end
 
   def compute_preorder_delivery_date
-    available_date = Date.current
-    order_line_items.each do |order_line_item|
-      unless order_line_item.product.preorder_shipping_starting_at.nil?
-        available_date = order_line_item.product.preorder_shipping_starting_at if order_line_item.product.preorder_shipping_starting_at > available_date
+    if contains_preorder_product?
+      available_date = Date.current
+      order_line_items.each do |order_line_item|
+        unless order_line_item.product.preorder_shipping_starting_at.nil?
+          available_date = order_line_item.product.preorder_shipping_starting_at if order_line_item.product.preorder_shipping_starting_at > available_date
+        end
       end
+      available_date
+    else
+      Date.current
     end
-    available_date
   end
 
   def set_confirm_shipped_token

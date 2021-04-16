@@ -86,9 +86,9 @@ class Farm < ApplicationRecord
     is_in_close_zone
   end
 
-  def delay_date(zip_code)
+  def delay_date(zip_code, starting_date=NOW)
     farm_office = get_correct_farm_office(zip_code)
-    Date.today.next_occurring(DAYS_DELIVERY[farm_office.delivery_deadline_day])
+    starting_date.next_occurring(DAYS_DELIVERY[farm_office.delivery_deadline_day])
   end
 
   def delay_hour(zip_code)
@@ -96,13 +96,13 @@ class Farm < ApplicationRecord
     farm_office.delivery_deadline_hour
   end
 
-  private
-
   def get_correct_farm_office(zip_code)
     farm_offices.find do |farm_office|
       farm_office.office.regions.include? zip_code
     end
   end
+
+  private
 
   def set_regions
     all_regions = []
