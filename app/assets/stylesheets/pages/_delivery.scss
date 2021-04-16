@@ -197,7 +197,6 @@
       font-family: Mulish;
       font-weight: bold;
       font-size: 18px;
-      margin-bottom: 5px;
       color: #339E72;
       opacity: 1;
     }
@@ -211,14 +210,16 @@
       line-height: 13px;
       margin-bottom: 5px;
     }
-    .subtitle {
+    .subtitle > p {
       font-family: Mulish;
-      font-size: 11px;
+      font-size: 10px;
       text-align: center;
       color: #7C7977;
       opacity: 0.6;
       line-height: 9px;
       height: 15px;
+      margin: 0px;
+      width: 90%;
     }
   }
 

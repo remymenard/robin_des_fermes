@@ -48,10 +48,12 @@
           CHF
         </span>
         <span class="subtitle">
-          <%= t('farms.show.hours_delivery') %>
-          <%= (Date.current + 1).strftime('%d')  %>
-          <%= t('farms.show.and_delivery') %>
-          <%= I18n.l((farm_order.farm.delivery_date(current_user.zip_code)), format: "%d %B", locale: :'fr') %>
+          <% if farm_order.farm.is_in_close_zone?(get_zip_code_number) %>
+            <p class="mb-1"><%= t('farms.show.delivery_date_near_farm') %>  <%= I18n.l((farm_order.farm.delivery_date(get_zip_code_number)), format: "%A %d %B", locale: :'fr') %> </p>
+            <p><%= t('farms.show.delay') %> <%= I18n.l((farm_order.farm.delay_date(get_zip_code_number)), format: "%d %B", locale: :'fr') %> <%= farm_order.farm.delay_hour(get_zip_code_number).strftime("%Ih%M")  %></p>
+          <% else %>
+            <p class = "date"> <%= t('farms.show.hours_delivery') %> <%= @date.strftime('%d')  %> <%= t('farms.show.and_delivery') %> <%= I18n.l((farm_order.farm.delivery_date(get_zip_code_number)), format: "%d %B", locale: :'fr') %>.</p>
+          <% end %>
         </span>
       </label>
     <% else %>
