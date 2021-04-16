@@ -38,11 +38,11 @@
     <div class="delivery">
 
         <h6><%= t('.delivery') %> </h6>
-        <% if @near_farm && @farm.delivery_date(get_zip_code_number) != nil%>
+        <% if @farm.is_in_close_zone?(get_zip_code_number) %>
           <p><%= t('.delivery_date_near_farm') %>  <%= I18n.l((@farm.delivery_date(get_zip_code_number)), format: "%A %d %B", locale: :'fr') %> </p>
           <p><%= t('.delay') %> <%= I18n.l((@farm.delay_date(get_zip_code_number)), format: "%d %B", locale: :'fr') %> <%= @farm.delay_hour(get_zip_code_number).strftime("%Ih%M")  %></p>
         <% else %>
-          <p class = "date"> <%= t('.hours_delivery') %> <%= @date.strftime('%d')  %> <%= t('.and_delivery') %> <%= I18n.l((@date + 1 + @farm.delivery_delay.days), format: "%d %B", locale: :'fr') %>.</p>
+          <p class = "date"> <%= t('.hours_delivery') %> <%= @date.strftime('%d')  %> <%= t('.and_delivery') %> <%= I18n.l((@farm.delivery_date(get_zip_code_number)), format: "%d %B", locale: :'fr') %>.</p>
         <% end %>
         <span> <%= link_to t('.more_delivery'), "#farm-delivery" %></span>
 

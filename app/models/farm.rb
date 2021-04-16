@@ -65,18 +65,17 @@ class Farm < ApplicationRecord
   def delivery_date(zip_code)
     if is_in_close_zone?(zip_code)
       # if regional delivery
-      farm_office = farm_offices.find do |farm_office|
-        farm_office.office.regions.include? zip_code
-      end
-
+      farm_office = get_correct_farm_office(zip_code)
+      date = Date.new
       if NOW.wday == farm_office.delivery_deadline_day && NOW.to_formatted_s(:time) < farm_office.delivery_deadline_hour
-        Date.today + farm_office.delivery_day.days
-      elsif farm_office.delivery_day
-          Date.today.next_occurring(DAYS_DELIVERY[farm_office.delivery_deadline_day]) + farm_office.delivery_day.days
+        date = NOW
+      else
+        date = NOW.next_occurring(DAYS_DELIVERY[farm_office.delivery_deadline_day])
       end
+      date.next_occurring(DAYS_DELIVERY[farm_office.delivery_day])
     else
       # if national delivery
-      NOW + delivery_delay.days
+      NOW + 1.day + delivery_delay.days
     end
   end
 
@@ -89,25 +88,22 @@ class Farm < ApplicationRecord
   end
 
   def delay_date(zip_code)
-    if self.regions.include?(zip_code)
-      farm_office = farm_offices.select do |farm_office|
-        farm_office.office.regions.include? zip_code
-      end
-      Date.today.next_occurring(DAYS_DELIVERY[farm_office.first.delivery_deadline_day])
-    end
+    farm_office = get_correct_farm_office(zip_code)
+    Date.today.next_occurring(DAYS_DELIVERY[farm_office.delivery_deadline_day])
   end
 
   def delay_hour(zip_code)
-    if self.regions.include?(zip_code)
-      farm_office = farm_offices.select do |farm_office|
-        farm_office.office.regions.include? zip_code
-      end
-
-      farm_office.first.delivery_deadline_hour
-    end
+    farm_office = get_correct_farm_office(zip_code)
+    farm_office.delivery_deadline_hour
   end
 
   private
+
+  def get_correct_farm_office(zip_code)
+    farm_offices.find do |farm_office|
+      farm_office.office.regions.include? zip_code
+    end
+  end
 
   def set_regions
     all_regions = []
