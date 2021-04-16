@@ -16,7 +16,7 @@
     <% end %>
   </div>
   <div class="d-flex justify-content-center">
-    <% if accepts_delivery %>
+    <% if accepts_delivery && farm_order.can_be_delivered?(current_user.zip_code) %>
 
       <%= radio_button_tag "farm_orders[#{farm_order.id}][user_shipping_choice]",
         "delivery",
@@ -47,12 +47,14 @@
           <% end %>
           CHF
         </span>
-        <span class="subtitle">
-          <%= t('farms.show.hours_delivery') %>
-          <%= (Date.current + 1).strftime('%d')  %>
-          <%= t('farms.show.and_delivery') %>
-          <%= I18n.l((farm_order.farm.delivery_date(current_user.zip_code)), format: "%d %B", locale: :'fr') %>
-        </span>
+        <div>
+          <% if farm_order.farm.is_in_close_zone?(get_zip_code_number) %>
+            <p class="subtitle mb-1"><%= t('farms.show.delivery_date_near_farm') %>  <%= I18n.l((farm_order.farm.delivery_date(get_zip_code_number, farm_order.compute_preorder_delivery_date)), format: "%A %d %B", locale: :'fr') %> </p>
+            <p class="subtitle"><%= t('farms.show.delay') %> <%= I18n.l((farm_order.farm.delay_date(get_zip_code_number, farm_order.compute_preorder_delivery_date)), format: "%d %B", locale: :'fr') %> <%= farm_order.farm.delay_hour(get_zip_code_number).strftime("%Ih%M")  %></p>
+          <% else %>
+            <p class = "date subtitle"> <%= t('farms.show.hours_delivery') %> <%= @date.strftime('%d')  %> <%= t('farms.show.and_delivery') %> <%= I18n.l((farm_order.farm.delivery_date(get_zip_code_number)), format: "%d %B", locale: :'fr') %>.</p>
+          <% end %>
+        </div>
       </label>
     <% else %>
       <div class="shipping-option unavailable mr-1">

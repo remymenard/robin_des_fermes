@@ -26,33 +26,12 @@ class FarmOrder < ApplicationRecord
 
   def delivery_date(zip_code)
     # if the order contains preorder products => calculates the delivery_date when the products will be available and not from today
-    date = contains_preorder_product? ? waiting_for_shipping_at : Date.today
-    if express_shipping
-      correct_farm_office = get_correct_farm_office(zip_code)
-      days = %i[monday tuesday wednesday thursday friday saturday sunday]
-      if date.wday == correct_farm_office.delivery_deadline_day && date.to_formatted_s(:time) < correct_farm_office.delivery_deadline_hour
-        # if we are the day of the deadline and earlier than the hour => delivery_date = today + delays
-        date + correct_farm_office.delivery_day.days
-      else
-        # if we are not the day of the deadline => delivery_date = next time that the days of the deadline occurs + delays
-        date.next_occurring(days[correct_farm_office.delivery_deadline_day]) + correct_farm_office.delivery_day.days
-      end
-    elsif takeaway_at_farm || standard_shipping
+    available_products_date = contains_preorder_product? ? compute_preorder_delivery_date : Time.now
+    if express_shipping || standard_shipping
+      farm.delivery_date(zip_code, available_products_date)
+    elsif takeaway_at_farm
       # if it's not a regional delivery
-      date + farm.delivery_delay.days
-    end
-  end
-
-  def get_correct_farm_office(zip_code)
-    if farm_office.nil?
-      correct_farm_office = farm.farm_offices.find do |farm_office|
-        farm_office.office.regions.include? zip_code
-      end
-      self.farm_office = correct_farm_office
-      self.save
-      correct_farm_office
-    else
-      farm_office
+      available_products_date + 1.day + farm.delivery_delay.days
     end
   end
 
@@ -137,7 +116,7 @@ class FarmOrder < ApplicationRecord
     when 'delivery'
       if farm.accepts_delivery
         if farm.is_in_close_zone?(zip_code)
-          update!(status: 'waiting', takeaway_at_farm: false, standard_shipping: false, express_shipping: true, shipping_price: FarmOrder::ShippingPrice.express.price)
+          update!(status: 'waiting', takeaway_at_farm: false, standard_shipping: false, express_shipping: true, shipping_price: FarmOrder::ShippingPrice.express.price, farm_office: farm.get_correct_farm_office(zip_code))
         else
           update!(status: 'waiting', takeaway_at_farm: false, standard_shipping: true, express_shipping: false, shipping_price: FarmOrder::ShippingPrice.standard.price)
         end
@@ -154,13 +133,17 @@ class FarmOrder < ApplicationRecord
   end
 
   def compute_preorder_delivery_date
-    available_date = Date.current
-    order_line_items.each do |order_line_item|
-      unless order_line_item.product.preorder_shipping_starting_at.nil?
-        available_date = order_line_item.product.preorder_shipping_starting_at if order_line_item.product.preorder_shipping_starting_at > available_date
+    if contains_preorder_product?
+      available_date = Date.current
+      order_line_items.each do |order_line_item|
+        unless order_line_item.product.preorder_shipping_starting_at.nil?
+          available_date = order_line_item.product.preorder_shipping_starting_at if order_line_item.product.preorder_shipping_starting_at > available_date
+        end
       end
+      available_date
+    else
+      Date.current
     end
-    available_date
   end
 
   def set_confirm_shipped_token
