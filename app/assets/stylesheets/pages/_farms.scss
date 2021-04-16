@@ -52,6 +52,10 @@
     font-size: 16px;
   }
 
+  .mapboxgl-ctrl-group {
+    margin-top: 55px;
+  }
+
   .map-infos {
     @include media-breakpoint-down(sm) {
       display: none;
@@ -61,8 +65,8 @@
     height: 85px;
     background-color:white;
     position: absolute;
-    z-index: 999;
-    margin-top: 14px;
+    z-index: 1;
+    margin-top: 50px;
     margin-left: 16px;
     border-radius: 5px;
     .close-infos {
