@@ -52,8 +52,11 @@
   }
   .navbar-logo {
     width: 200px;
+    @include media-breakpoint-down(lg) {
+      width: 135px;
+    }
     @include media-breakpoint-down(sm) {
-      width: 34vw;
+      width: 32vw;
       margin-right: 20px;
     }
   }
