@@ -38,3 +38,9 @@ li {
 form fieldset > ol > li.boolean label {
   padding-left: 5px !important;
 }
+
+.fragment {
+  & > label {
+    display: -webkit-box;
+  }
+}
