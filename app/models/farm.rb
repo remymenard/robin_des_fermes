@@ -56,7 +56,7 @@ class Farm < ApplicationRecord
 
   LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
 
-  DAYS = [["Lundi", 1], ["Mardi", 2], ["Mercredi", 3], ["Jeudi", 4], ["Vendredi", 5], ["Samedi", 6], ["Dimanche", 0]]
+  DAYS = [["Lundi", 0], ["Mardi", 1], ["Mercredi", 2], ["Jeudi", 3], ["Vendredi", 4], ["Samedi", 5], ["Dimanche", 6]]
 
   NOW = Time.now
 
@@ -66,7 +66,7 @@ class Farm < ApplicationRecord
     if is_in_close_zone?(zip_code)
       # if regional delivery
       farm_office = get_correct_farm_office(zip_code)
-      if starting_date.wday == farm_office.delivery_deadline_day && starting_date.to_formatted_s(:time) < farm_office.delivery_deadline_hour
+      if (starting_date.wday + 6) % 7 == farm_office.delivery_deadline_day && starting_date.to_formatted_s(:time) < farm_office.delivery_deadline_hour.to_formatted_s(:time)
         date = starting_date
       else
         date = starting_date.next_occurring(DAYS_DELIVERY[farm_office.delivery_deadline_day])
@@ -88,7 +88,11 @@ class Farm < ApplicationRecord
 
   def delay_date(zip_code, starting_date=NOW)
     farm_office = get_correct_farm_office(zip_code)
-    starting_date.next_occurring(DAYS_DELIVERY[farm_office.delivery_deadline_day])
+    if (starting_date.wday + 6) % 7 == farm_office.delivery_deadline_day && starting_date.to_formatted_s(:time) < farm_office.delivery_deadline_hour.to_formatted_s(:time)
+      starting_date
+    else
+      starting_date.next_occurring(DAYS_DELIVERY[farm_office.delivery_deadline_day])
+    end
   end
 
   def delay_hour(zip_code)
