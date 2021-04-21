@@ -30,8 +30,8 @@ class FarmOrder < ApplicationRecord
     if express_shipping || standard_shipping
       farm.delivery_date(zip_code, available_products_date)
     elsif takeaway_at_farm
-      # if it's not a regional delivery
-      available_products_date + 1.day + farm.delivery_delay.days
+      # if its a takeaway at farm
+      available_products_date + farm.delivery_delay.days
     end
   end
 
