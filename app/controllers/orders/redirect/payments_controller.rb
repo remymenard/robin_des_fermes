@@ -12,10 +12,10 @@ module Orders
             order.farm_orders.each do |farm_order|
               if farm_order.contains_preorder_product?
                 farm_order.update(price: farm_order.total_price_with_shipping, status: 'preordered', waiting_for_preorder_at: Time.now, waiting_for_shipping_at: farm_order.compute_preorder_delivery_date)
-                SendOrderReminderMailsJob.set(wait_until: farm_order.preordered_products_max_shipping_starting_at.beginning_of_day - 7.days).perform_later(farm_order)
+                schedule_reminder_mail(farm_order.delivery_date(current_user.zip_code) - 7.days, farm_order)
               else
                 farm_order.update(price: farm_order.total_price_with_shipping, status: 'in_preparation', waiting_for_shipping_at: Time.now)
-                SendOrderReminderMailsJob.set(wait_until: farm_order.waiting_for_shipping_at + farm_order.farm.delivery_delay.days - 1.day).perform_later(farm_order)
+                schedule_reminder_mail(farm_order.delivery_date(current_user.zip_code) - 1.day, farm_order)
               end
             end
             SendOrderConfirmationMailsJob.perform_now(order)
@@ -38,6 +38,11 @@ module Orders
       def set_order
         @order = Order.find_by(transaction_id: params["datatransTrxId"])
         authorize [:payments, @order]
+      end
+
+      def schedule_reminder_mail(date, farm_order)
+        date += 1.day if date.beginning_of_day == Time.now.beginning_of_day
+        SendOrderReminderMailsJob.set(wait_until: date.beginning_of_day).perform_later(farm_order)
       end
     end
   end
