@@ -72,7 +72,7 @@ class Farm < ApplicationRecord
       date.next_occurring(DAYS_DELIVERY[farm_office.delivery_day])
     else
       # if national delivery
-      starting_date + 1.day + delivery_delay.days
+      starting_date + delivery_delay.days
     end
   end
 
