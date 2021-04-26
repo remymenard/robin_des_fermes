@@ -9,11 +9,11 @@
       Salut <%= @owner.first_name %>,<br>
       <br>
       Félicitations pour la commande n°<%= @order.id %>, cette dernière devra être prête pour le retrait au plus tard le<br>
-      <%= I18n.l(@order.delivery_date(@user.zip_code), format: "%d/%m/%y", locale: :'fr') %>.<br>
+      <%= I18n.l(@order.estimated_delivery_date, format: "%d/%m/%y", locale: :'fr') %>.<br>
       <br>
       Date de la commande: <%= Date.current.strftime('%d/%m/%y') %><br>
       Mode de livraison: <%= @order.shipping_choice_name %><br>
-      Délai de préparation: <%= I18n.l(@order.delivery_date(@user.zip_code), format: "%d/%m/%y", locale: :'fr') %><br>
+      Délai de préparation: <%= I18n.l(@order.estimated_delivery_date, format: "%d/%m/%y", locale: :'fr') %><br>
       <br>
       Destinataire:<br>
       <%= @user.first_name %> <%= @user.last_name %><br>
