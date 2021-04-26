@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_13_110249) do
-
+ActiveRecord::Schema.define(version: 2021_04_26_172811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,11 +102,12 @@ ActiveRecord::Schema.define(version: 2021_04_13_110249) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "shipping_price_cents", default: 0, null: false
     t.string "shipping_price_currency", default: "CHF", null: false
-    t.string "status", default: "waiting"
-    t.text "comment"
     t.datetime "waiting_for_preorder_at"
     t.string "confirm_shipped_token"
+    t.string "status", default: "waiting"
+    t.text "comment"
     t.bigint "farm_office_id"
+    t.datetime "estimated_delivery_date"
     t.index ["farm_id"], name: "index_farm_orders_on_farm_id"
     t.index ["farm_office_id"], name: "index_farm_orders_on_farm_office_id"
     t.index ["order_id"], name: "index_farm_orders_on_order_id"
@@ -133,8 +133,8 @@ ActiveRecord::Schema.define(version: 2021_04_13_110249) do
     t.text "long_description"
     t.boolean "accepts_delivery", default: false
     t.integer "delivery_delay"
-    t.boolean "active", default: false
     t.text "labels", array: true
+    t.boolean "active", default: false
     t.string "photo_portrait"
     t.text "old_offices", default: [], array: true
     t.string "slug"
