@@ -38,7 +38,11 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
       if farm_order.express_shipping.nil? && farm_order.standard_shipping.nil? && farm_order.takeaway_at_farm.nil?
         "Indisponible (mode de livraison non choisi)"
       else
-        I18n.l((farm_order.estimated_delivery_date), format: "%d %B %Y", locale: :'fr')
+        if farm_order.estimated_delivery_date.nil?
+        "Indisponible (commande non validée)"
+        else
+          I18n.l((farm_order.estimated_delivery_date), format: "%d %B %Y", locale: :'fr')
+        end
       end
     end
 
