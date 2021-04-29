@@ -176,6 +176,14 @@ class FarmOrder < ApplicationRecord
           self.waiting_for_shipping_at = Time.now
           SendOrderConfirmationMailsJob.perform_now(self)
           SendOrderReminderMailsJob.set(wait_until: date.beginning_of_day).perform_later(self)
+        when 'ready_for_withdrawal'
+          self.shipped_at = Time.now
+          OrderMailer.with({user: order.buyer, order: self}).takeaway_ready_alert_customer.deliver_now
+          SendOrderReceivedQuestionMailsJob.set(wait: 5.days).perform_later(self)
+        when 'shipped'
+          self.shipped_at = Time.now
+          OrderMailer.with({user: order.buyer, order: self}).delivery_sent_alert_customer.deliver_now
+          SendOrderReceivedQuestionMailsJob.set(wait: 5.days).perform_later(self)
       end
     end
   end
