@@ -9,10 +9,9 @@ module Webhooks
       ]
 
       def create
-        if ENV['RAILS_ENV'] == 'production'
+        if ENV['DATATRANS_ENV'] == 'production'
           return permission_denied unless datatrans_valid_ip?
 
-          @datatrans = DatatransService.new
           order = Order.find_by(transaction_id: params["transactionId"])
 
           if params["status"] == "settled"

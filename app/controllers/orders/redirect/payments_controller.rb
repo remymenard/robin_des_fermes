@@ -4,7 +4,7 @@ module Orders
       before_action :set_order
 
       def successful
-        unless ENV['RAILS_ENV'] == 'production'
+        unless ENV['DATATRANS_ENV'] == 'production'
           order = Order.find_by(transaction_id: params["datatransTrxId"])
 
           unless order.nil?
