@@ -20,6 +20,8 @@ class FarmOrder < ApplicationRecord
     greater_than_or_equal_to: 0,
   }
 
+  before_save :send_order_emails
+
   #validates :status, inclusion: { in: ["waiting", "preordered", "in_preparation", "shipped", "issue"] }
 
   before_create :set_confirm_shipped_token
@@ -154,6 +156,27 @@ class FarmOrder < ApplicationRecord
     loop do
       token = SecureRandom.hex(20)
       break token unless FarmOrder.where(confirm_shipped_token: token).exists?
+    end
+  end
+
+  def send_order_emails
+    if status_changed?
+      case status
+        when 'preordered'
+          date = delivery_date(order.buyer.zip_code) - 7.days
+          date += 1.day if date.beginning_of_day == Time.now.beginning_of_day
+          self.estimated_delivery_date = delivery_date(order.buyer.zip_code)
+          self.waiting_for_preorder_at = Time.now
+          self.waiting_for_shipping_at = compute_preorder_delivery_date
+          SendOrderConfirmationMailsJob.perform_now(self)
+          SendOrderReminderMailsJob.set(wait_until: date.beginning_of_day).perform_later(self)
+        when 'in_preparation'
+          date = delivery_date(order.buyer.zip_code) - 1.day
+          self.estimated_delivery_date = delivery_date(order.buyer.zip_code)
+          self.waiting_for_shipping_at = Time.now
+          SendOrderConfirmationMailsJob.perform_now(self)
+          SendOrderReminderMailsJob.set(wait_until: date.beginning_of_day).perform_later(self)
+      end
     end
   end
 end
