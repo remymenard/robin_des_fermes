@@ -67,7 +67,7 @@
       <div class="d-flex all-card-product">
         <% @products_available.each do |product| %>
           <div class="card-product">
-            <div class="product-data" data-image-url="<%= cl_image_path(product.photo.key) %>" data-name="<%= product.name %>" data-price="<%= product.price %>" data-currency="<%= product.price_currency %>" data-unit="<%= product.unit %>" data-ingredients="<%= product.ingredients %>" data-description="<%= product.description %>" ></div>
+            <div class="product-data" data-image-url="<%= cl_image_path(product.photo.key) %>" data-name="<%= product.name %>" data-price="<%= product.price %>" data-currency="<%= product.price_currency %>" data-unit="<%= product.conditioning %>" data-ingredients="<%= product.ingredients %>" data-description="<%= product.description %>" ></div>
             <div class="photo-farm">
               <div class="labels d-flex">
                 <% if product.available_for_preorder? %>

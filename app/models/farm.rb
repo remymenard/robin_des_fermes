@@ -58,11 +58,9 @@ class Farm < ApplicationRecord
 
   DAYS = [["Lundi", 0], ["Mardi", 1], ["Mercredi", 2], ["Jeudi", 3], ["Vendredi", 4], ["Samedi", 5], ["Dimanche", 6]]
 
-  NOW = Time.now
-
   DAYS_DELIVERY = %i[monday tuesday wednesday thursday friday saturday sunday]
 
-  def delivery_date(zip_code, starting_date=NOW)
+  def delivery_date(zip_code, starting_date=Time.now)
     if is_in_close_zone?(zip_code)
       # if regional delivery
       farm_office = get_correct_farm_office(zip_code)
@@ -74,7 +72,7 @@ class Farm < ApplicationRecord
       date.next_occurring(DAYS_DELIVERY[farm_office.delivery_day])
     else
       # if national delivery
-      starting_date + 1.day + delivery_delay.days
+      starting_date + delivery_delay.days
     end
   end
 
@@ -86,7 +84,7 @@ class Farm < ApplicationRecord
     is_in_close_zone
   end
 
-  def delay_date(zip_code, starting_date=NOW)
+  def delay_date(zip_code, starting_date=Time.now)
     farm_office = get_correct_farm_office(zip_code)
     if (starting_date.wday + 6) % 7 == farm_office.delivery_deadline_day && starting_date.to_formatted_s(:time) < farm_office.delivery_deadline_hour.to_formatted_s(:time)
       starting_date
