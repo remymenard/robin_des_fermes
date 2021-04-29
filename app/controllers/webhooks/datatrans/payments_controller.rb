@@ -10,7 +10,7 @@ module Webhooks
 
       def create
         if ENV['DATATRANS_ENV'] == 'production'
-          return permission_denied unless datatrans_valid_ip?
+          # return permission_denied unless datatrans_valid_ip?
 
           order = Order.find_by(transaction_id: params["transactionId"])
 
