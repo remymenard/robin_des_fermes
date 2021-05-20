@@ -14,7 +14,7 @@ module Webhooks
 
           order = Order.find_by(transaction_id: params["transactionId"])
 
-          if params["status"] == "settled"
+          if params["status"] == "settled" || params["status"] == "transmitted"
             unless order.nil?
               if order.status == "waiting"
                 order.update(status: 'paid')
@@ -26,6 +26,8 @@ module Webhooks
                   end
                 end
               end
+            else
+              puts "order not found"
             end
 
           # else
