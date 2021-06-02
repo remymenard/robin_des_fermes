@@ -1,6 +1,25 @@
 ActiveAdmin.register FarmOrder, as: "Commandes"  do
   permit_params :id, :takeaway_at_farm, :comment, :standard_shipping, :express_shipping, :price_cents, :price_currency, :waiting_for_shipping_at, :shipped_at, :issue_raised_at, :status, :order_id, :farm_id, :shipping_price_cents, :shipping_price_currency
 
+  remove_filter :confirm_shipped_token
+  remove_filter :order_line_items
+  remove_filter :farm_offices
+  remove_filter :price_cents
+  remove_filter :price_currency
+  remove_filter :waiting_for_shipping_at
+  remove_filter :shipped_at
+  remove_filter :issue_raised_at
+  remove_filter :created_at
+  remove_filter :updated_at
+  remove_filter :shipping_price_cents
+  remove_filter :shipping_price_currency
+  remove_filter :products
+  remove_filter :estimated_delivery_date
+  remove_filter :comment
+  # index pagination_total: false
+
+  config.per_page = 10
+
   actions :all
   index do
     actions defaults: true
