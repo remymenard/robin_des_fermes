@@ -5,6 +5,11 @@ class OrdersController < ApplicationController
   end
 
   def review
+    $tracker.track(session[:mixpanel_id], 'Review Order', {
+      'Order Price' => @order.price.to_s + @order.price_currency,
+      'Order Product Quantity' =>  @order.order_line_items.count,
+      'Order Farmer Quantity' => @order.farm_orders.count
+    })
   end
 
   def delivery
