@@ -14,8 +14,24 @@ module Basket
         if @item_in_basket
           @item_in_basket.increment_quantity
           @item_in_basket.save
+          $tracker.track(session[:mixpanel_id], 'Change Product Quantity In Basket', {
+            'Product Name' => @product.name,
+            'Product Quantity' => @item_in_basket.quantity,
+            'Product Category' => @product.category.name,
+            'Product Labels' => @product.label,
+            'Product Weight' => @product.total_weight + @product.unit,
+            'Product Fresh' => @product.fresh
+          })
         else
           @item_in_basket = OrderLineItem.create(product: @product, order: @order, farm_order: @farm_order)
+          $tracker.track(session[:mixpanel_id], 'Add Product In Basket', {
+            'Product Name' => @product.name,
+            'Product Quantity' => 1,
+            'Product Category' => @product.category.name,
+            'Product Labels' => @product.label,
+            'Product Weight' => @product.total_weight + @product.unit,
+            'Product Fresh' => @product.fresh
+          })
         end
 
         @order.compute_total_price
