@@ -30,6 +30,7 @@ function initProductModal () {
     const ingredients = dataElement.data('ingredients')
     const addUrl = $(product).find('.add-to-basket').data('path')
     const token = $(product).find('.add-to-basket').data('token')
+    const mixpanelUrl = dataElement.data('mixpanelUrl')
     $('.product-modal .product-image').attr('src', imageUrl);
     $('.product-modal .unit').text(unit);
     $('.product-modal h1').text(name)
@@ -42,6 +43,15 @@ function initProductModal () {
 
     const customBoxModal = new box.modal(modalObject);
     customBoxModal.open();
+
+    const zipCodeButtons = $('.zip-code-infos')
+    const authenticityToken = zipCodeButtons.data("token")
+    $.ajax({
+      data: {
+        authenticity_token: authenticityToken,
+      },
+      url: mixpanelUrl
+    })
   })
 
   $('.product-modal .close-button').on('click', (event) => {

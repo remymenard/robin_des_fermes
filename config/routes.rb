@@ -13,7 +13,11 @@ Rails.application.routes.draw do
     root to: 'pages#home'
     get 'faq', to: 'pages#faq'
     resources :farms, only: [:index, :show]
-    resources :products, only: [:show]
+    resources :products, only: [:show] do
+      member do
+        get :open_modal
+      end
+    end
     get 'cgv', to: 'pages#cgv'
     get 'team', to: 'pages#team'
     get 'about', to: 'pages#about'
