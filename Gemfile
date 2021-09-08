@@ -100,3 +100,6 @@ gem 'arctic_admin'
 
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
+
+gem 'mixpanel-ruby', git: "https://github.com/drakkr-team/mixpanel-ruby.git"
+gem 'browser'

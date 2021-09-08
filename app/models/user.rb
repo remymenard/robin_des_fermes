@@ -25,6 +25,8 @@ class User < ApplicationRecord
 
   before_create :subscribe_user_to_mailing_list
 
+  after_validation :update_mixpanel
+
   def full_name
     [first_name.capitalize, last_name.capitalize].compact.join(' ')
   end
@@ -34,5 +36,18 @@ class User < ApplicationRecord
     if @wants_to_subscribe_mailing_list
       Mailchimp::SubscribeToNewsletterService.new(self).call
     end
+  end
+
+  def update_mixpanel
+    puts "WORKS"
+    $tracker.people.set(id,
+      {
+        '$first_name' => first_name,
+        '$last_name' => last_name,
+        '$email' => email,
+        '$phone' => number_phone,
+        'Zip Code' => zip_code,
+      }
+    )
   end
 end
