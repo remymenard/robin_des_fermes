@@ -10,6 +10,10 @@ module Orders
           unless order.nil?
             if order.status == "waiting"
               order.update(status: 'paid')
+              $tracker.track(session[:mixpanel_id], 'Payment Made', {
+                'Order Price' => order.price.to_s + order.price_currency,
+                'Farm Names' => order.farms.pluck(:name),
+              })
               order.farm_orders.each do |farm_order|
                 if farm_order.contains_preorder_product?
                   farm_order.update(price: farm_order.total_price_with_shipping, status: 'preordered')
@@ -30,6 +34,10 @@ module Orders
 
       def with_error
         @order.update(status: 'failed')
+        $tracker.track(session[:mixpanel_id], 'Payment Error', {
+          'Order Price' => @order.price.to_s + @order.price_currency,
+          'Farm Names' => @order.farms.pluck(:name),
+        })
         redirect_to delivery_order_path(@order, payment_with_errors: true)
       end
 

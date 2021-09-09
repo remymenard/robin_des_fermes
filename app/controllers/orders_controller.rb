@@ -14,6 +14,11 @@ class OrdersController < ApplicationController
 
   def delivery
     @date = Date.current + 1
+    $tracker.track(session[:mixpanel_id], 'Finalize Order', {
+      'Product Names' => @order.products.pluck(:name),
+      'Farm Names' => @order.farms.pluck(:name),
+
+    })
   end
 
   def update_delivery_methods
