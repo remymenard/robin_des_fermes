@@ -55,7 +55,7 @@ class User < ApplicationRecord
         '$last_name' => last_name,
         '$email' => email,
         '$phone' => number_phone,
-        'Zip Code' => zip_code,
+        'Delivery Zip Code' => zip_code,
         'Delivery Address' => address_line_1,
         'Delivery City' => city,
         'Admin' => admin

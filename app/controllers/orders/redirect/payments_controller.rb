@@ -12,7 +12,7 @@ module Orders
               order.update(status: 'paid')
               $tracker.track(session[:mixpanel_id], 'Payment Made', {
                 'Order Price' => order.price.to_s + order.price_currency,
-                'Farm Names' => order.farms.pluck(:name),
+                'Order Farms Name' => order.farms.pluck(:name),
               })
               $tracker.people.increment(session[:mixpanel_id], {
                 'Orders Count' => 1,
@@ -39,7 +39,7 @@ module Orders
         @order.update(status: 'failed')
         $tracker.track(session[:mixpanel_id], 'Payment Error', {
           'Order Price' => @order.price.to_s + @order.price_currency,
-          'Farm Names' => @order.farms.pluck(:name),
+          'Order Farms Name' => @order.farms.pluck(:name),
         })
         redirect_to delivery_order_path(@order, payment_with_errors: true)
       end

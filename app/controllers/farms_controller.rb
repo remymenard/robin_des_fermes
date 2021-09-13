@@ -61,15 +61,15 @@ class FarmsController < ApplicationController
     if params["category"].nil? && params["labels"].nil?
       $tracker.track(session[:mixpanel_id], 'Search Farms', {
         'Zip Code' => get_zip_code_number,
-        'Result Count' => @farms.count + @far_farms.count
+        'Results Count' => @farms.count + @far_farms.count
       })
     else
       mixpanel_params = {
         'Zip Code' => get_zip_code_number,
-        'Result Count' => @farms.count + @far_farms.count
+        'Results Count' => @farms.count + @far_farms.count
       }
-      mixpanel_params["Label Name"] = params["labels"] unless params["labels"].empty?
-      mixpanel_params["Category Name"] = params["category"] unless params["category"].empty?
+      mixpanel_params["Labels Name"] = params["labels"] unless params["labels"].empty?
+      mixpanel_params["Categories Name"] = params["category"] unless params["category"].empty?
       $tracker.track(session[:mixpanel_id], 'Refine Search Farms', mixpanel_params)
     end
   end
@@ -114,20 +114,20 @@ class FarmsController < ApplicationController
     mixpanel_params = {
       'Farm Name' => @farm.name,
       'Farm Labels' => @farm.labels,
-      'Fam Categories' => @farm.categories.pluck(:name),
-      'Retrait A La Ferme' => @farm.accepts_take_away
+      'Farm Categories' => @farm.categories.pluck(:name),
+      'Retrait A La Ferme?' => @farm.accepts_take_away
     }
     if @farm.accepts_delivery
       if @farm.is_in_close_zone?(get_zip_code_number)
-        mixpanel_params["Distrubution Régionale"] = true
-        mixpanel_params["Expédition Nationale"] = false
+        mixpanel_params["Distrubution Régionale?"] = true
+        mixpanel_params["Expédition Nationale?"] = false
       else
-        mixpanel_params["Distrubution Régionale"] = false
-        mixpanel_params["Expédition Nationale"] = true
+        mixpanel_params["Distrubution Régionale?"] = false
+        mixpanel_params["Expédition Nationale?"] = true
       end
     else
-      mixpanel_params["Distrubution Régionale"] = false
-      mixpanel_params["Expédition Nationale"] = false
+      mixpanel_params["Distrubution Régionale?"] = false
+      mixpanel_params["Expédition Nationale?"] = false
     end
     $tracker.track(session[:mixpanel_id], 'Show Farm', mixpanel_params)
   end

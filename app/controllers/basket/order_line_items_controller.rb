@@ -20,7 +20,8 @@ module Basket
             'Product Category' => @product.category.name,
             'Product Labels' => @product.label,
             'Product Weight' => @product.total_weight + @product.unit,
-            'Product Fresh' => @product.fresh
+            'Product Fresh' => @product.fresh,
+            'Product Farm Name' => @product.farm.name
           })
         else
           @item_in_basket = OrderLineItem.create(product: @product, order: @order, farm_order: @farm_order)
@@ -30,7 +31,8 @@ module Basket
             'Product Category' => @product.category.name,
             'Product Labels' => @product.label,
             'Product Weight' => @product.total_weight + @product.unit,
-            'Product Fresh' => @product.fresh
+            'Product Fresh' => @product.fresh,
+            'Product Farm Name' => @product.farm.name
           })
         end
 
