@@ -6,9 +6,12 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
 
   include Pundit
+  include Mixpanel
 
   before_action :set_locale
   before_action :configure_permitted_parameters, if: :devise_controller?
+
+  before_action :setup_mixpanel
 
   after_action :verify_authorized, except: :index, unless: [:skip_pundit?, :active_admin_controller?]
   after_action :verify_policy_scoped, only: :index, unless: [:skip_pundit?, :active_admin_controller?]
@@ -22,7 +25,7 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options
-    { locale: I18n.locale == I18n.default_locale ? nil : I18n.locale, host: ENV["DOMAIN"] || "localhost:3000" }
+    { locale: I18n.locale == I18n.default_locale ? nil : I18n.locale, host: ENV["DOMAIN"] || "localhost:3000", protocol: "https"}
   end
 
   def configure_permitted_parameters
@@ -64,4 +67,11 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
+  def setup_mixpanel
+    if user_signed_in?
+      session[:mixpanel_id] = current_user.id
+    else
+      session[:mixpanel_id] = SecureRandom.uuid if session[:mixpanel_id].nil?
+    end
+  end
 end

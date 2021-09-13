@@ -5,6 +5,11 @@ class OrdersController < ApplicationController
   end
 
   def review
+    $tracker.track(session[:mixpanel_id], 'Review Order', {
+      'Order Price' => @order.price.to_s + @order.price_currency,
+      'Order Products Count' =>  @order.order_line_items.count,
+      'Order Farms Count' => @order.farm_orders.count
+    })
   end
 
   def delivery
@@ -27,6 +32,13 @@ class OrdersController < ApplicationController
     end
 
     @order.update(status: 'waiting')
+
+    $tracker.track(session[:mixpanel_id], 'Finalize Order', {
+      'Product Names' => @order.products.pluck(:name),
+      'Farm Names' => @order.farms.pluck(:name),
+      'Orders Shipping Method' => @order.farm_orders.map { |farm_order| farm_order.shipping_choice_name },
+      'Orders Preorder?' => @order.farm_orders.map { |farm_order| farm_order.contains_preorder_product? },
+    })
 
     Datatrans::CreateTransactionService.new(
       @order,

@@ -13,7 +13,11 @@ Rails.application.routes.draw do
     root to: 'pages#home'
     get 'faq', to: 'pages#faq'
     resources :farms, only: [:index, :show]
-    resources :products, only: [:show]
+    resources :products, only: [:show] do
+      member do
+        get :open_modal
+      end
+    end
     get 'cgv', to: 'pages#cgv'
     get 'team', to: 'pages#team'
     get 'about', to: 'pages#about'
@@ -44,6 +48,11 @@ Rails.application.routes.draw do
   end
 
   namespace :basket do
+    resources :mixpanel, only: [] do
+      collection do
+        post :open_basket
+      end
+    end
     resources :order_line_items, only: [:destroy] do
       member do
         post :increment
