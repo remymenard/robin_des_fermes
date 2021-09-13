@@ -67,7 +67,7 @@
       <div class="d-flex all-card-product">
         <% @products_available.each do |product| %>
           <div class="card-product">
-            <div class="product-data" data-image-url="<%= cl_image_path(product.photo.key) %>" data-name="<%= product.name %>" data-price="<%= product.price %>" data-currency="<%= product.price_currency %>" data-unit="<%= product.conditioning %>" data-ingredients="<%= product.ingredients %>" data-description="<%= product.description %>" ></div>
+            <div class="product-data" data-mixpanel-url="<%= open_modal_product_url(product.id) %>" data-image-url="<%= cl_image_path(product.photo.key) %>" data-name="<%= product.name %>" data-price="<%= product.price %>" data-currency="<%= product.price_currency %>" data-unit="<%= product.conditioning %>" data-ingredients="<%= product.ingredients %>" data-description="<%= product.description %>" ></div>
             <div class="photo-farm">
               <div class="labels d-flex">
                 <% if product.available_for_preorder? %>
@@ -150,7 +150,7 @@
                 <% @products_available_not_fresh.each do |product| %>
 
                   <div class="card-product">
-                    <div class="product-data" data-image-url="<%= cl_image_path(product.photo.key) %>" data-name="<%= product.name %>" data-price="<%= product.price %>" data-currency="<%= product.price_currency %>" data-unit="<%= product.unit %>" data-ingredients="<%= product.ingredients %>" data-description="<%= product.description %>" ></div>
+                    <div class="product-data" data-mixpanel-url="<%= open_modal_product_url(product.id) %>" data-image-url="<%= cl_image_path(product.photo.key) %>" data-name="<%= product.name %>" data-price="<%= product.price %>" data-currency="<%= product.price_currency %>" data-unit="<%= product.unit %>" data-ingredients="<%= product.ingredients %>" data-description="<%= product.description %>" ></div>
                     <div class="photo-farm">
 
                      <div class="labels d-flex">
@@ -216,7 +216,7 @@
                   <% @products_available_all.each do |product| %>
 
                     <div class="card-product">
-                      <div class="product-data" data-image-url="<%= cl_image_path(product.photo.key) %>" data-name="<%= product.name %>" data-price="<%= product.price %>" data-currency="<%= product.price_currency %>" data-unit="<%= product.unit %>" data-ingredients="<%= product.ingredients %>" data-description="<%= product.description %>" ></div>
+                      <div class="product-data" data-mixpanel-url="<%= open_modal_product_url(product.id) %>" data-image-url="<%= cl_image_path(product.photo.key) %>" data-name="<%= product.name %>" data-price="<%= product.price %>" data-currency="<%= product.price_currency %>" data-unit="<%= product.unit %>" data-ingredients="<%= product.ingredients %>" data-description="<%= product.description %>" ></div>
 
                       <div class="photo-farm">
 
