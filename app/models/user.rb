@@ -25,7 +25,8 @@ class User < ApplicationRecord
 
   before_create :subscribe_user_to_mailing_list
 
-  after_validation :update_mixpanel
+  after_create :create_mixpanel
+  after_update :update_mixpanel
 
   def full_name
     [first_name.capitalize, last_name.capitalize].compact.join(' ')
@@ -38,8 +39,16 @@ class User < ApplicationRecord
     end
   end
 
+  def create_mixpanel
+    $tracker.people.set(id,
+      {
+        'Orders Count' => 0
+      }
+    )
+    update_mixpanel
+  end
+
   def update_mixpanel
-    puts "WORKS"
     $tracker.people.set(id,
       {
         '$first_name' => first_name,
@@ -47,6 +56,9 @@ class User < ApplicationRecord
         '$email' => email,
         '$phone' => number_phone,
         'Zip Code' => zip_code,
+        'Delivery Address' => address_line_1,
+        'Delivery City' => city,
+        'Admin' => admin
       }
     )
   end

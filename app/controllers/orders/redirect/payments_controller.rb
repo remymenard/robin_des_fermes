@@ -14,6 +14,9 @@ module Orders
                 'Order Price' => order.price.to_s + order.price_currency,
                 'Farm Names' => order.farms.pluck(:name),
               })
+              $tracker.people.increment(session[:mixpanel_id], {
+                'Orders Count' => 1,
+              });
               order.farm_orders.each do |farm_order|
                 if farm_order.contains_preorder_product?
                   farm_order.update(price: farm_order.total_price_with_shipping, status: 'preordered')
