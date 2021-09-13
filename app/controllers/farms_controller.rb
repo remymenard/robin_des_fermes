@@ -58,6 +58,20 @@ class FarmsController < ApplicationController
         image_url: helpers.asset_url('icons/marker-orange.png')
       }
     end
+    if params["category"].nil? && params["labels"].nil?
+      $tracker.track(session[:mixpanel_id], 'Search Farms', {
+        'Zip Code' => get_zip_code_number,
+        'Results Count' => @farms.count + @far_farms.count
+      })
+    else
+      mixpanel_params = {
+        'Zip Code' => get_zip_code_number,
+        'Results Count' => @farms.count + @far_farms.count
+      }
+      mixpanel_params["Labels Name"] = params["labels"] unless params["labels"].empty?
+      mixpanel_params["Categories Name"] = params["category"] unless params["category"].empty?
+      $tracker.track(session[:mixpanel_id], 'Refine Search Farms', mixpanel_params)
+    end
   end
 
   def show
@@ -97,6 +111,25 @@ class FarmsController < ApplicationController
     end
 
     authorize @farm
+    mixpanel_params = {
+      'Farm Name' => @farm.name,
+      'Farm Labels' => @farm.labels,
+      'Farm Categories' => @farm.categories.pluck(:name),
+      'Retrait A La Ferme?' => @farm.accepts_take_away
+    }
+    if @farm.accepts_delivery
+      if @farm.is_in_close_zone?(get_zip_code_number)
+        mixpanel_params["Distrubution Régionale?"] = true
+        mixpanel_params["Expédition Nationale?"] = false
+      else
+        mixpanel_params["Distrubution Régionale?"] = false
+        mixpanel_params["Expédition Nationale?"] = true
+      end
+    else
+      mixpanel_params["Distrubution Régionale?"] = false
+      mixpanel_params["Expédition Nationale?"] = false
+    end
+    $tracker.track(session[:mixpanel_id], 'Show Farm', mixpanel_params)
   end
 
   private
