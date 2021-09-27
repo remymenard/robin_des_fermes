@@ -22,6 +22,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
         '$phone' => resource.number_phone,
         'Zip Code' => resource.zip_code,
         })
+      $tracker.people.set(resource.id, {
+        'Utm Source' => session[:utm_source]
+      })
     end
   end
 
