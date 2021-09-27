@@ -74,6 +74,7 @@ class ApplicationController < ActionController::Base
     else
       session[:mixpanel_id] = SecureRandom.uuid if session[:mixpanel_id].nil?
     end
+    session[:utm_source] = params[:utm_source] unless params[:utm_source].nil?
   end
 
   def postmark_client
