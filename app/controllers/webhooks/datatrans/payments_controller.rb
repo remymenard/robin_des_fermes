@@ -18,6 +18,11 @@ module Webhooks
             unless order.nil?
               if order.status == "waiting"
                 order.update(status: 'paid')
+                $tracker.track(order.buyer.id, 'Payment Made', {
+                  'Order Price' => order.price.to_s,
+                  'Order Price Currency' => order.price_currency,
+                  'Order Farms Name' => order.farms.pluck(:name),
+                })
                 order.farm_orders.each do |farm_order|
                   if farm_order.contains_preorder_product?
                     farm_order.update(price: farm_order.total_price_with_shipping, status: 'preordered')
