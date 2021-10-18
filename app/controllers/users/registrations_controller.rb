@@ -23,7 +23,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
         'Zip Code' => resource.zip_code,
         })
       $tracker.people.set(resource.id, {
-        'Utm Source' => session[:utm_source]
+        'Utm Source' => session[:utm_source],
+        'Utm Medium' => session[:utm_medium],
+        'Utm Term' => session[:utm_term],
+        'Utm Content' => session[:utm_content],
+        'Utm Campaign' => session[:utm_campaign]
       })
     end
   end
