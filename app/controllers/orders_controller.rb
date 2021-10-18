@@ -6,7 +6,8 @@ class OrdersController < ApplicationController
 
   def review
     $tracker.track(session[:mixpanel_id], 'Review Order', {
-      'Order Price' => @order.price.to_s + @order.price_currency,
+      'Order Price' => @order.price.to_s,
+      'Order Price Currency' => @order.price_currency,
       'Order Products Count' =>  @order.order_line_items.count,
       'Order Farms Count' => @order.farm_orders.count
     })
