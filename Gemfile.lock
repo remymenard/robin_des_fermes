@@ -8,7 +8,8 @@ GIT
 
 GIT
   remote: https://github.com/drakkr-team/mixpanel-ruby.git
-  revision: d22637f0928727d36ceadab88060d9c05f291831
+  revision: 9037d5ae604159c01f46a297f5ed2a7fbc985c08
+  ref: 9037d5ae604159c01f46a297f5ed2a7fbc985c08
   specs:
     mixpanel-ruby (2.2.2)
       actionpack
