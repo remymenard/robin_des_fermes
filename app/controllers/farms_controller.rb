@@ -68,8 +68,8 @@ class FarmsController < ApplicationController
         'Zip Code' => get_zip_code_number,
         'Results Count' => @farms.count + @far_farms.count
       }
-      mixpanel_params["Labels Name"] = params["labels"] unless params["labels"].empty?
-      mixpanel_params["Categories Name"] = params["category"] unless params["category"].empty?
+      mixpanel_params["Labels Name"] = params["labels"] if params["labels"].present?
+      mixpanel_params["Categories Name"] = params["category"] if params["category"].present?
       $tracker.track(session[:mixpanel_id], 'Refine Search Farms', mixpanel_params)
     end
   end
