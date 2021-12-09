@@ -58,8 +58,6 @@ class FarmsController < ApplicationController
       end
     end
 
-    @far_farms.order(:distance)
-
     @farms = policy_scope(@farms).active
     @far_farms = policy_scope(@far_farms).active
 
