@@ -23,7 +23,6 @@ class FarmsController < ApplicationController
       latitude = @response["results"][0]["Latitude"]
       longitude = @response["results"][0]["Longitude"]
       @farms     = Farm.near([latitude, longitude], 200000, units: :km)
-      # @farms = @farms.reverse
     else
       @farms = Farm.all
     end
@@ -58,6 +57,8 @@ class FarmsController < ApplicationController
         @farms     = @farms.where(accepts_delivery: true)
       end
     end
+
+    @far_farms.order(:distance)
 
     @farms = policy_scope(@farms).active
     @far_farms = policy_scope(@far_farms).active
