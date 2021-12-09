@@ -11,19 +11,18 @@ class FarmsController < ApplicationController
 
     @headers = {
       "X-Parse-Application-Id" => ENV['ZIP_CODE_CONVERTER_APPLICATION_ID'],
-      "X-Parse-Master-Key" => ENV['ZIP_CODE_CONVERTER_MASTER_KEY']
+      "X-Parse-REST-API-Key" => ENV['ZIP_CODE_CONVERTER_API_KEY']
     }
 
     # HTTP CALL TO GET THE LAT LNG FROM A ZIP CODE
-    @response = HTTParty.get("https://parseapi.back4app.com/classes/Switzerland_Zip_Code?limit=1&keys=Postal_Code,Latitude,Longitude&where=#{@url_data}",
+    @response = HTTParty.get("https://parseapi.back4app.com/classes/SwitzerlandZipCodes_Switzerland_Zip_Code?limit=1&keys=Postal_Code,Latitude,Longitude&where=#{@url_data}",
       headers:    @headers
     )
 
-    latitude = @response["results"][0]["Latitude"]
-    longitude = @response["results"][0]["Longitude"]
-
-    if Geocoder::Calculations.coordinates_present?(latitude, longitude)
-      @farms     = Farm.near([latitude, longitude], 200000, :units => :km)
+    unless @response["results"].empty?
+      latitude = @response["results"][0]["Latitude"]
+      longitude = @response["results"][0]["Longitude"]
+      @farms     = Farm.near([latitude, longitude], 200000, units: :km)
       # @farms = @farms.reverse
     else
       @farms = Farm.all
