@@ -3,6 +3,8 @@ class Farm < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: :slugged
 
+  monetize :minimum_order_price_cents, allow_nil: true
+
   geocoded_by :full_address
   after_validation :geocode, if: :will_save_change_to_address?
 
