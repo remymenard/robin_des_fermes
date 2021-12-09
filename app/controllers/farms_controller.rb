@@ -5,10 +5,30 @@ class FarmsController < ApplicationController
   def index
     @categories = Category.all
 
-    @farms     = Farm.all
+    @zip_code = get_zip_code_number
+
+    @url_data = {"Postal_Code" => @zip_code.to_i}.to_json
+
+    @headers = {
+      "X-Parse-Application-Id" => ENV['ZIP_CODE_CONVERTER_APPLICATION_ID'],
+      "X-Parse-REST-API-Key" => ENV['ZIP_CODE_CONVERTER_API_KEY']
+    }
+
+    # HTTP CALL TO GET THE LAT LNG FROM A ZIP CODE
+    @response = HTTParty.get("https://parseapi.back4app.com/classes/SwitzerlandZipCodes_Switzerland_Zip_Code?limit=1&keys=Postal_Code,Latitude,Longitude&where=#{@url_data}",
+      headers:    @headers
+    )
+
+    unless @response["results"].empty?
+      latitude = @response["results"][0]["Latitude"]
+      longitude = @response["results"][0]["Longitude"]
+      @farms     = Farm.near([latitude, longitude], 200000, units: :km)
+    else
+      @farms = Farm.all
+    end
+
     @far_farms = Farm.none
 
-    @zip_code = get_zip_code_number
 
     if @zip_code.present?
       @far_farms = @farms.where.not("regions && ARRAY[?] ", @zip_code)
@@ -61,12 +81,12 @@ class FarmsController < ApplicationController
     if params["category"].nil? && params["labels"].nil?
       $tracker.track(session[:mixpanel_id], 'Search Farms', {
         'Zip Code' => get_zip_code_number,
-        'Results Count' => @farms.count + @far_farms.count
+        'Results Count' => @farms.size + @far_farms.size
       })
     else
       mixpanel_params = {
         'Zip Code' => get_zip_code_number,
-        'Results Count' => @farms.count + @far_farms.count
+        'Results Count' => @farms.size + @far_farms.size
       }
       mixpanel_params["Labels Name"] = params["labels"] if params["labels"].present?
       mixpanel_params["Categories Name"] = params["category"] if params["category"].present?
