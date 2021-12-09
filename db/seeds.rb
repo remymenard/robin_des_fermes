@@ -326,6 +326,7 @@ meat = Product.new(farm: henry, category: boucherie, name: "Meat",
   label: ['Bio-Suisse'],
   available: true,
   fresh: false,
+  total_weight: "20",
 )
 
 meat.photo.attach(
@@ -341,7 +342,8 @@ oeuf = Product.new(farm: jonas, category: oeuf, name: "Oeuf",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
   label: ['Bio-Suisse'],
   available: true,
-  fresh: false
+  fresh: false,
+  total_weight: "20",
 )
 
 oeuf.photo.attach(
@@ -357,7 +359,8 @@ meat1 = Product.new(farm: henry, category: boucherie, name: "steack",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
   label: ['Bio-Suisse'],
   available: true,
-  fresh: false
+  fresh: false,
+  total_weight: "20",
 )
 
 meat1.photo.attach(
@@ -373,7 +376,8 @@ steack = Product.new(farm: meleze, category: boucherie, name: "Steack",
   ingredients: "boeuf",
   label: ['Bio-Suisse'],
   available: true,
-  fresh: false
+  fresh: false,
+  total_weight: "20",
 )
 
 steack.photo.attach(
@@ -389,7 +393,8 @@ chicken = Product.new(farm: henry, category: boucherie, name: "Poulet",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
   label: ['Bio-Suisse'],
   available: true,
-  fresh: false
+  fresh: false,
+  total_weight: "20",
 )
 
 chicken.photo.attach(
@@ -403,7 +408,8 @@ chicken2 = Product.new(farm: gallien, category: boucherie, name: "Poulet",
   price_cents: 2500, price_per_unit_cents: 12000, unit: "La pièce",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
-  label: ['Bio-Suisse']
+  label: ['Bio-Suisse'],
+  total_weight: "20",
 )
 
 chicken2.photo.attach(
@@ -419,7 +425,8 @@ juice = Product.new(farm: henry, category: divers, name: "Jus de pomme",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
   label: ['Bio-Suisse'],
   available: true,
-  fresh: false
+  fresh: false,
+  total_weight: "20",
 )
 juice.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/apple-juice.png')),
@@ -433,7 +440,8 @@ apple_juice = Product.new(farm: cave, category: divers, name: "Jus de pomme",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
   label: ['Bio-Suisse'],
   available: true,
-  fresh: false
+  fresh: false,
+  total_weight: "20",
 )
 apple_juice.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/apple-juice.png')),
@@ -448,7 +456,8 @@ honey = Product.new(farm: henry, category: divers, name: "Miel",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
   label: ['Bio-Suisse'],
   available: true,
-  fresh: false
+  fresh: false,
+  total_weight: "20",
 )
 
 honey.photo.attach(
@@ -464,7 +473,8 @@ jam = Product.new(farm: jonas, category: divers, name: "confiture",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
   label: ['Bio-Suisse'],
   available: true,
-  fresh: false
+  fresh: false,
+  total_weight: "20",
 )
 
 jam.photo.attach(
@@ -480,7 +490,8 @@ oil = Product.new(farm: henry, category: divers, name: "Oil",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
   label: ['Bio-Suisse'],
   available: true,
-  fresh: false
+  fresh: false,
+  total_weight: "20",
 )
 
 oil.photo.attach(
@@ -496,7 +507,8 @@ vinegar = Product.new(farm: meleze, category: divers, name: "Vinaigre",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
   label: ['Bio-Suisse'],
   available: true,
-  fresh: false
+  fresh: false,
+  total_weight: "20",
 )
 
 vinegar.photo.attach(
@@ -511,7 +523,8 @@ potato = Product.new(farm: henry, category: divers, name: "Patate",
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
   label: ['Bio-Suisse'],
-  available: true
+  available: true,
+  total_weight: "20",
 )
 
 potato.photo.attach(
@@ -543,7 +556,8 @@ egg = Product.new(
   description: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
   label: ['Bio-Suisse'],
-  available: true
+  available: true,
+  total_weight: "20",
 )
 
 egg.photo.attach(
@@ -560,7 +574,8 @@ egg2 = Product.new(
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
   label: ['Bio-Suisse'],
   available: true,
-  fresh: false
+  fresh: false,
+  total_weight: "20",
 )
 
 egg2.photo.attach(
@@ -576,7 +591,8 @@ apple = Product.new(farm: henry, category: divers, name:"Pomme",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
   label: ['Bio-Suisse'],
   available: true,
-  fresh: false
+  fresh: false,
+  total_weight: "20",
 )
 
 apple.photo.attach(
@@ -594,6 +610,7 @@ apple2 = Product.new(farm: jonas, category: divers, name:"Pomme",
   label: ['Bio-Suisse'],
   fresh: false,
   available: true,
+  total_weight: "20",
 )
 
 apple2.photo.attach(
@@ -610,6 +627,7 @@ apple3 = Product.new(farm: jonas, category: divers, name:"Apple bio",
   label: ['Bio-Suisse'],
   fresh: true,
   available: true,
+  total_weight: "20",
 )
 apple3.photo.attach(
   io: File.open(Rails.root.join('db/fixtures/products/apple.png')),
