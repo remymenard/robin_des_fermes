@@ -3,8 +3,8 @@
 <h2 class="my-5 your-basket" style="margin-left: 8%;">Ton panier</h2>
 
 <div class="review">
-  <div class="row w-100 reverse-on-mobile">
-    <div class="col-lg-8 col-12 p-0">
+  <div class="review__row">
+    <div class="review__col review__col--first">
       <% @order = current_order %>
       <% if @order.order_line_items.empty? %>
         <div style="height: 40vh;" class="text-center text-lg-left"><%= t("basket.empty") %></div>
@@ -68,7 +68,7 @@
       <div class="farm-spacer"></div>
       <% end %>
     </div>
-    <div class="col-lg-4 col-12 align-items-end p-0 position-relative">
+    <div class="review__col review__col--second">
       <%= render 'orders/delivery/recap_price', order: @order, active_step: :cart_review %>
     </div>
   </div>

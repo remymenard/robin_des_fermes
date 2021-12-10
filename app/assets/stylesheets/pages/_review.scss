@@ -4,15 +4,31 @@
   @include media-breakpoint-up(lg) {
     margin: 0 4% 0 10%;
   }
-  .row {
+  &__row {
     margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse !important;
+    @include media-breakpoint-up(lg) {
+      flex-direction: row !important;
+    }
   }
-}
 
-.reverse-on-mobile {
-  flex-direction: column-reverse !important;
-  @include media-breakpoint-up(lg) {
-    flex-direction: row !important;
+  &__col {
+    padding: 0;
+    width: 100%;
+    &--first {
+      @include media-breakpoint-up(lg) {
+        width: 66%;
+      }
+    }
+    &--second {
+      align-items: flex-end;
+      position: relative;
+      @include media-breakpoint-up(lg) {
+        width: 33%;
+      }
+    }
   }
 }
 
