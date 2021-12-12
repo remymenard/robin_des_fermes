@@ -123,6 +123,12 @@
     width: 80%;
     padding: 0;
   }
+
+  .product-basket {
+    display: flex;
+    align-items: center;
+    margin: 20px 0 40px 0;
+  }
 }
 
 .basket-farm-name {
@@ -132,15 +138,18 @@
   line-height: 25px;
 }
 
+.basket-farm-subtitle {
+  font-family: Mulish;
+  color: #FF4136;
+  opacity: 0.8;
+  font-size: 11px;
+}
+
 .product-basket {
-  margin: 20px 0 40px 0;
   .col {
     min-width: 50%;
     padding: 0;
   }
-
-  display: flex;
-  align-items: center;
 
   .product-infos {
     display: flex;
