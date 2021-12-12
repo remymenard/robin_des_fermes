@@ -8,7 +8,10 @@
       <p class="empty-basket m-0"><%= t "basket.empty" %></p>
     <% else %>
       <% current_order.farm_orders.order("created_at desc").each do |farm_order| %>
-          <h3 class="basket-farm-name"><%= farm_order.farm.name %></h3>
+          <div class="basket-farm-name"><%= farm_order.farm.name %></div>
+          <% unless farm_order.farm.minimum_order_reached?(farm_order) %>
+            <div class="basket-farm-subtitle">Il manque <span class="font-weight-bold"><%= farm_order.farm.minimum_order_missing_price(farm_order) %> CHF</span> pour compléter la commande.</div>
+          <% end %>
         <% farm_order.order_line_items.order("created_at desc").each do |product_basket| %>
           <% product = product_basket.product %>
           <div class="product-basket">

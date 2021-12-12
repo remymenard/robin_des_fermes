@@ -86,6 +86,14 @@ class Farm < ApplicationRecord
     is_in_close_zone
   end
 
+  def minimum_order_reached?(order)
+    order.price_cents >= minimum_order_price_cents
+  end
+
+  def minimum_order_missing_price(order)
+    Money.new(minimum_order_price_cents - order.price_cents)
+  end
+
   def delay_date(zip_code, starting_date=Time.now)
     farm_office = get_correct_farm_office(zip_code)
     if (starting_date.wday + 6) % 7 == farm_office.delivery_deadline_day && starting_date.to_formatted_s(:time) < farm_office.delivery_deadline_hour.to_formatted_s(:time)
