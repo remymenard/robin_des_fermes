@@ -14,6 +14,9 @@
         <p class="basket-number"><%= t(".basket") %> <%= index + 1 %>/<%= @order.farm_orders.count %></p>
         <h4 class="farm-name"><%= farm_order.farm.name %></h4>
         <p class="basket-number"><%= sum = farm_order.order_line_items.sum { |item| item.quantity } %> <%= sum > 1 ? t(".product").pluralize : t(".product") %></p>
+        <% unless farm_order.farm.minimum_order_reached?(farm_order) %>
+          <div class="order-missing-price font-weight-bold">Il manque <%= farm_order.farm.minimum_order_missing_price(farm_order) %> CHF pour atteindre le minimum de commande.</div>
+        <% end %>
       </div>
 
       <% farm_order.order_line_items.order("created_at desc").each do |product_basket| %>

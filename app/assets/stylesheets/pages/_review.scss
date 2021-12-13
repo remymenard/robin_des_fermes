@@ -112,6 +112,9 @@
   @include media-breakpoint-down(md) {
     width: 100% !important;
   }
+  .recap-grey-text {
+    color: rgba(37, 32, 29, 0.4) !important;
+  }
   .recap-line {
     width: 100%;
     border: 1px solid #FAF7F3;

@@ -38,11 +38,22 @@
     <div class="px-3">
       <h2 class="recap-title"><%= t("orders.review.recap") %></h2>
       <% order.farm_orders.order("created_at desc").each_with_index do |farm_order, index| %>
-      <div class="d-flex justify-content-between">
-        <p class="line-style font-weight-light">
-          <%= farm_order.farm.name %>
-        </p>
-        <div><p class="price"><%= farm_order.price %></p><p class="currency"><%= farm_order.price_currency %></p></div>
+      <div class="mb-5">
+        <div class="d-flex justify-content-between">
+        <% unless farm_order.farm.minimum_order_reached?(farm_order) %>
+          <div class="line-style font-weight-light recap-grey-text">
+            <%= farm_order.farm.name %>
+          </div>
+          <div><div class="price recap-grey-text"><%= farm_order.price %></div><div class="currency recap-grey-text"><%= farm_order.price_currency %></div></div>
+        </div>
+        <div class="order-missing-price">Il manque <span class="font-weight-bold"><%= farm_order.farm.minimum_order_missing_price(farm_order) %> CHF</span> pour compléter la commande.</div>
+        <% else %>
+        <div class="line-style font-weight-light">
+            <%= farm_order.farm.name %>
+          </div>
+          <div><div class="price"><%= farm_order.price %></div><div class="currency"><%= farm_order.price_currency %></div></div>
+        </div>
+      <% end %>
       </div>
       <% end %>
     </div>
