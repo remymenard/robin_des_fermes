@@ -38,7 +38,7 @@
     <div class="px-3">
       <h2 class="recap-title"><%= t("orders.review.recap") %></h2>
       <% order.farm_orders.order("created_at desc").each_with_index do |farm_order, index| %>
-      <div class="mb-5">
+      <div class="mb-3">
         <div class="d-flex justify-content-between">
         <% unless farm_order.farm.minimum_order_reached?(farm_order) %>
           <div class="line-style font-weight-light recap-grey-text">
@@ -69,5 +69,5 @@
     <% end %>
   </div>
 <% end %>
-<%= render 'shared/minimum_price_not_reached_modal' %>
+<%= render 'shared/minimum_price_not_reached_modal', order:  current_order %>
 <%= javascript_pack_tag 'minimumPriceNotReachedModal' %>

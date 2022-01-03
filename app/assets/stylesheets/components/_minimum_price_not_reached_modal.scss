@@ -1,5 +1,4 @@
 .minimum_price_not_reached_modal {
-  height: 210px;
   width: 370px;
   background-color: white;
   display: none;
@@ -37,18 +36,16 @@
     margin-bottom: 8px;
     margin-top: 8px;
   }
-  .add-to-basket {
-    border-radius: 0px 0px 10px 10px;
+  .cta-button {
     width: 100%;
     height: 53px;
-    position: absolute;
-    bottom: 0;
-    right: 0;
+    margin-top: 15px;
+    border-radius: 0 0 10px 10px;
     color: white;
     font-family: Mulish;
     font-weight: 600;
     font-size: 14px;
-    line-height: 21px;
+    line-height: 36px;
     text-align: center;
     letter-spacing: 2.5px;
     text-transform: uppercase;

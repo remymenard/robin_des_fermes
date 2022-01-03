@@ -15,7 +15,7 @@ const modalObject = {
   }
 };
 
-function initProductModal () {
+function initProductModal() {
   $('.open-price-too-low-modal').on('click', (event) => {
     event.preventDefault();
 
@@ -23,7 +23,7 @@ function initProductModal () {
     customBoxModal.open();
   })
 
-  $('.product-modal .close-button').on('click', (event) => {
+  $('.close-button').on('click', (event) => {
     event.preventDefault();
     box.modal.close('minimumPriceNotReachedModal');
   })
