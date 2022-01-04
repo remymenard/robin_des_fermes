@@ -39,4 +39,13 @@ class Order < ApplicationRecord
   def all_shipping_choices_made?
     farm_orders.all? {|farm_order| farm_order.shipping_choice_made? }
   end
+
+  def mimum_price_not_reached?
+    farm_orders.any? {|farm_order| !farm_order.farm.minimum_order_reached?(farm_order) }
+  end
+
+  def get_first_farm_with_missing_price
+    farm_order = farm_orders.find {|farm_order| !farm_order.farm.minimum_order_reached?(farm_order) }
+    farm_order.farm
+  end
 end
