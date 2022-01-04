@@ -22,6 +22,7 @@ class OrderPolicy < ApplicationPolicy
   def delivery?
     record.buyer == user || user.admin?
     record.status == 'waiting' || record.status == 'failed' || user.admin?
+    !record.mimum_price_not_reached?
   end
 
   def update_delivery_methods?

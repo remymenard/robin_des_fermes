@@ -141,7 +141,7 @@ fr:
       jennifer_work: "CO-RESPONSABLE DES PRODUCTEURS"
       michael_work: "CONSULTANT"
       ophelie_work: "Assistante projets communication"
-      ophelie_description: "Son dada à elle ? Le digital et le local ! Alors quand une bande de justiciers de l’agriculture monte un projet, elle veut en être. Quand elle n’est pas sur les bancs de la HEIG, notre future ingénieure des médias prépare des projets surprenants pour nos compagnons Robin des Fermes."
+      ophelie_description: "Son dada à elle ? Le digital et le local !Alors quand une bande de justiciers de l’agriculture monte un projet, elle veut en être. Quand elle n’est pas sur les bancs de la HEIG, notre future ingénieure des médias prépare des projets surprenants pour nos compagnons Robin des Fermes."
       tanguy_description: "Travailler avec lui, c’est sursauter à chacun de ses appels téléphoniques… Il a toujours une nouvelle idée à mettre en place et en général, c’est pour hier ! Ce boulimique de l’entrepreneuriat (mais surtout des rencontres fructueuses) a fondé Robin des Fermes avant tout pour améliorer sa propre alimentation."
       jerome_description: "Comme les piments qu’il cultive lui-même, notre geek est piquant, voire même sarcastique. Mais puisqu’il est passionné et qu’il a déjà 10 ans d’expérience en web, on l’écoute quand même. Boule à zéro ou Jackson Five, il change de look au gré des paris lancés avec ses potes."
       francois_description: "Autoproclamé « plus beau de la nichée », notre agriculteur de la Ferme du Mélèze aurait pu enfiler une chemise à carreaux et passer dans une pub mal doublée, tournée dans un champ au coucher du soleil. Mais il a choisi le bon camp en mettant ses connaissances au profit de notre bande de justiciers."
@@ -478,3 +478,9 @@ fr:
   simple_form:
     error_notification:
       default_message: "Merci de corriger les erreurs dans le formulaire."
+  missing_price:
+    title: "Montant minimum de commande non atteint"
+    message_html: "Il manque <b>%{missing_price} CHF</b> pour atteindre le minimum de commande."
+    complete_message_html: "Il manque <b>%{missing_price} CHF</b> pour atteindre le minimum de commande de ce producteur."
+    message_with_farm_html: "Il vous manque <b>%{missing_price} CHF</b> pour atteindre le minimum de commande de %{farm_name}."
+    return_button: "Retourner chez le producteur"

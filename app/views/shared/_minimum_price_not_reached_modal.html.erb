@@ -1,0 +1,13 @@
+<div class="minimum_price_not_reached_modal">
+  <i class="fas fa-times close-button"></i>
+  <div class="texts pt-4">
+    <span class="unit"></span>
+    <h1><%= t("missing_price.title") %></h1>
+    <% order.farm_orders.each do |farm_order| %>
+      <% unless farm_order.farm.minimum_order_reached?(farm_order) %>
+        <p class="description"><%= t("missing_price.message_with_farm_html", missing_price: farm_order.farm.minimum_order_missing_price(farm_order), farm_name: farm_order.farm.name) %></p>
+      <% end %>
+    <% end %>
+    </div>
+    <%= link_to t('missing_price.return_button'), polymorphic_path(order.get_first_farm_with_missing_price()), class: "btn btn-primary btn-lg cta-button" %>
+</div>
