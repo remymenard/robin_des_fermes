@@ -46,7 +46,7 @@
           </div>
           <div><div class="price recap-grey-text"><%= farm_order.price %></div><div class="currency recap-grey-text"><%= farm_order.price_currency %></div></div>
         </div>
-        <div class="order-missing-price">Il manque <span class="font-weight-bold"><%= farm_order.farm.minimum_order_missing_price(farm_order) %> CHF</span> pour compléter la commande.</div>
+        <div class="order-missing-price"><%= t("missing_price.complete_message_html", missing_price: farm_order.farm.minimum_order_missing_price(farm_order)) %></div>
         <% else %>
         <div class="line-style font-weight-light">
             <%= farm_order.farm.name %>
