@@ -19,6 +19,9 @@ class Farm < ApplicationRecord
   has_many :categories, through: :farm_categories
   accepts_nested_attributes_for :categories, allow_destroy: true
 
+  has_many :product_subcategories
+  accepts_nested_attributes_for :product_subcategories, allow_destroy: true
+
   has_many :farm_offices, dependent: :destroy
   accepts_nested_attributes_for :farm_offices, allow_destroy: true
 
