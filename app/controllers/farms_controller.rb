@@ -94,6 +94,12 @@ class FarmsController < ApplicationController
     end
   end
 
+  def products_list
+    @farm = Farm.friendly.find(params[:id])
+    authorize @farm
+    render partial: 'shared/products_list', locals: {products: Product.all}
+  end
+
   def show
     @farm = Farm.friendly.find(params[:id])
     @reassurance = true

@@ -222,6 +222,39 @@
   }
 }
 
+.subcategory-name {
+  font-family: 'Mulish';
+  font-weight: 600;
+  font-size: 18px;
+  color: #A4A6A0;
+  opacity: 0.61;
+  margin-right: 33px;
+  &--active {
+    color: #FF4136;
+    opacity: 0.91;
+    font-weight: bold;
+  }
+}
+
+.subcategories-header {
+  border-bottom: 1px solid #FAF7F3;
+  padding-bottom: 16px;
+  width: 100%;
+}
+
+.order-dropdown {
+  background-size: 8px 8px;
+  height: 40px;
+  width: 200px;
+  background-color: white;
+  border-radius: 6px;
+  border-color: #F0ECE8;
+  color: #7C7977;
+  font-size: 14px;
+  margin-left: 20px;
+  font-family: 'Mulish', sans-serif;
+}
+
 .farm-delivery {
   margin-top: 95px;
   text-align: center;
