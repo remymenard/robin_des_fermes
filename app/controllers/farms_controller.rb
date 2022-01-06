@@ -98,12 +98,19 @@ class FarmsController < ApplicationController
     @farm = Farm.friendly.find(params[:id])
     authorize @farm
     subcategory_id = params[:subcategory_id]
-    if subcategory_id.nil? || subcategory_id.empty?
+    if subcategory_id.blank?
       products_list = @farm.products.available
     else
       subcategory = ProductSubcategory.find(subcategory_id)
       return if subcategory.farm != @farm
       products_list = subcategory.products.available
+    end
+
+    case params[:order]
+    when "name"
+      products_list = products_list.sort_by{ |e| e.name.downcase }
+    when "price"
+      products_list = products_list.reorder(:price_cents)
     end
 
     render partial: 'shared/products_list', locals: {products: products_list}

@@ -60,7 +60,7 @@
           </div>
           <div>
             <%= select_tag :order,
-              options_for_select([ "Ordre alphabétique", "Prix croissant" ]),
+              options_for_select([ ["Ordre alphabétique", "name"], ["Prix croissant", "price"] ]),
               class: "form-control custom-select order-dropdown",
               prompt: "Ordre par défaut"
             %>
