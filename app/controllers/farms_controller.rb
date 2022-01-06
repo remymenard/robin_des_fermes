@@ -97,7 +97,16 @@ class FarmsController < ApplicationController
   def products_list
     @farm = Farm.friendly.find(params[:id])
     authorize @farm
-    render partial: 'shared/products_list', locals: {products: Product.all}
+    subcategory_id = params[:subcategory_id]
+    if subcategory_id.nil? || subcategory_id.empty?
+      products_list = @farm.products.available
+    else
+      subcategory = ProductSubcategory.find(subcategory_id)
+      return if subcategory.farm != @farm
+      products_list = subcategory.products.available
+    end
+
+    render partial: 'shared/products_list', locals: {products: products_list}
   end
 
   def show

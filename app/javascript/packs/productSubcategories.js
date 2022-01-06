@@ -1,27 +1,30 @@
-require('jquery-form')
 require("gasparesganga-jquery-loading-overlay");
 
 function initSubcategories() {
-  $('#subcategories-form').ajaxForm(function () {
-    alert("Thank you for your comment!");
-  });
-
   $('.subcategory-name').on('click', (event) => {
     event.preventDefault();
     $(".all-card-product").LoadingOverlay("show", {
       imageColor: "#339E72"
     });
+    if ($(event.target).hasClass('subcategory-name--default')) {
+      $('#subcategory_id').val(null)
+    } else {
+      $('#subcategory_id').val(event.target.dataset.subcategoryId)
+    }
+    $('.subcategory-name').each((_index, element) => {
+      $(element).removeClass('subcategory-name--active')
+    })
+    $(event.target).addClass('subcategory-name--active')
     $.ajax({
       url: $('#subcategories-form').attr('action'),
       type: 'PATCH',
       data: $('#subcategories-form').serialize(),
       success: function (answer) {
-        $(".all-card-product").html(answer)
         $(".all-card-product").LoadingOverlay("hide");
-        console.log(answer);
+        $(".all-card-product").html(answer)
       },
       error: () => {
-        console.log('error')
+        $(".all-card-product").LoadingOverlay("hide");
       }
     });
     return false;
@@ -33,13 +36,10 @@ function initSubcategories() {
       type: 'PATCH',
       data: $('#subcategories-form').serialize(),
       success: function (answer) {
-        console.log(answer);
         $(".all-card-product").LoadingOverlay("hide");
         $(".all-card-product").html(answer)
       },
-      error: () => {
-        console.log('error')
-      }
+      error: () => {}
     });
   })
 }
