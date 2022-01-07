@@ -44,30 +44,31 @@
     </div>
   </div>
 </div>
-<div class="container">
-  <div class="products" id="all-products">
-    <div class="subcategories-header">
-      <%= form_tag(products_list_farm_path(@farm), method: :patch, remote: true, id: "subcategories-form") do %>
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-        <%= hidden_field_tag :subcategory_id %>
-        <h2 class="text-left">Produits</h2>
-        <div class="d-flex justify-content-between">
-          <div>
-            <a href="" class="subcategory-name subcategory-name--default subcategory-name--active">Tous les produits</a>
-            <% @farm.product_subcategories.each do |subcategory| %>
-              <a href="" class="subcategory-name" data-subcategory-id="<%= subcategory.id %>"><%= subcategory.name %></a>
-            <% end %>
-          </div>
-          <div>
-            <%= select_tag :order,
-              options_for_select([ ["Ordre alphabétique", "name"], ["Prix croissant", "price"] ]),
-              class: "form-control custom-select order-dropdown",
-              prompt: "Ordre par défaut"
-            %>
-          </div>
-        </div>
-      <% end %>
+<div style="height: 200px;"></div>
+<div class="subcategories-header">
+  <%= form_tag(products_list_farm_path(@farm), method: :patch, remote: true, id: "subcategories-form") do %>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <%= hidden_field_tag :subcategory_id %>
+    <h2 class="text-left">Produits</h2>
+    <div class="d-flex justify-content-between">
+      <div class="subcategories-list">
+        <a href="" class="subcategory-name subcategory-name--default subcategory-name--active">Tous les produits</a>
+        <% @farm.product_subcategories.each do |subcategory| %>
+          <a href="" class="subcategory-name" data-subcategory-id="<%= subcategory.id %>"><%= subcategory.name %></a>
+        <% end %>
+      </div>
+      <div>
+        <%= select_tag :order,
+            options_for_select([ ["Ordre alphabétique", "name"], ["Prix croissant", "price"] ]),
+            class: "form-control custom-select order-dropdown",
+            prompt: "Ordre par défaut"
+          %>
+      </div>
     </div>
+  <% end %>
+</div>
+<div class="container products-listing">
+  <div class="products" id="all-products">
     <% if @farm.regions.include?(@zip_code)%>
       <div class="d-flex all-card-product">
         <%= render 'shared/products_list', products: @products_available %>

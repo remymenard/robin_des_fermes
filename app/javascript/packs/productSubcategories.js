@@ -37,3 +37,33 @@ function sendAjaxRequest() {
 }
 
 document.addEventListener('DOMContentLoaded', initSubcategories)
+
+var stickyOffset;
+
+function calculateOffset() {
+  console.log('resize')
+  stickyOffset = $('.subcategories-header').offset().top - 58;
+}
+
+window.addEventListener("load", function (event) {
+  calculateOffset();
+  loadSubcategoriesHeader();
+  window.addEventListener('resize', calculateOffset);
+});
+
+function loadSubcategoriesHeader() {
+  $(window).scroll(function () {
+    var sticky = $('.subcategories-header'),
+      stickyparent = $('.subcategories-header-parent'),
+      productList = $('.all-card-product'),
+      scroll = $(window).scrollTop();
+
+    if (scroll >= stickyOffset) {
+      sticky.addClass('subcategories-header--sticky');
+      productList.addClass('all-card-product--sticky')
+    } else {
+      sticky.removeClass('subcategories-header--sticky');
+      productList.removeClass('all-card-product--sticky')
+    }
+  });
+}
