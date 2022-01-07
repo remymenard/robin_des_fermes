@@ -215,7 +215,6 @@
 
 .products {
   text-align: center;
-  margin-top: 50px;
   h2 {
     font-size: 36px;
     margin-top: 15px;
@@ -252,6 +251,13 @@
 
 .subcategories-header {
   border-bottom: 1px solid #FAF7F3;
+  margin-top: 700px;
+  @media screen and (min-width: 530px) {
+    margin-top: 350px;
+  }
+  @media screen and (min-width: 901px) {
+    margin-top: 170px;
+  }
   padding-bottom: 16px;
   height: 136px;
   display: flex;
@@ -261,25 +267,21 @@
   background-color: white;
   &--sticky {
     position: fixed;
-    margin-top: 56px !important;
+    margin-top: 56px;
     top: 0;
     left: 0;
   }
-  @media screen and (max-width: 901px) {
-    margin-top: 700px;
-  }
 }
 
-.products-listing {
-  @media screen and (max-width: 901px) {
-    margin-top: -700px;
-  }
-}
-
-.all-card-product.all-card-product--sticky {
-  padding-top: 136px;
-  @media screen and (max-width: 901px) {
-    margin-top: 1400px !important;
+.products {
+  .all-card-product.all-card-product--sticky {
+    margin-top: 866px;
+    @media screen and (min-width: 530px) {
+      margin-top: 526px;
+    }
+    @media screen and (min-width: 901px) {
+      margin-top: 346px;
+    }
   }
 }
 
@@ -401,10 +403,6 @@
 }
 
 @media screen and (max-width: 530px) {
-  .products {
-    margin-top: 700px !important;
-  }
-
   .farm {
     .informations {
       flex-direction: column !important;
@@ -416,10 +414,6 @@
 }
 
 @media screen and (max-width: 901px) {
-  .products {
-    margin-top: 400px;
-  }
-
   .farm-delivery {
     .delivery_option {
       margin-left: 10px !important;
