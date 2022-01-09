@@ -48,19 +48,19 @@
   <%= form_tag(products_list_farm_path(@farm), method: :patch, remote: true, id: "subcategories-form") do %>
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <%= hidden_field_tag :subcategory_id %>
-    <h2 class="text-left">Produits</h2>
+    <h2 class="text-left"><%= t '.product_category.title' %></h2>
     <div class="d-flex justify-content-between">
       <div class="subcategories-list">
-        <a href="" class="subcategory-name subcategory-name--default subcategory-name--active">Tous les produits</a>
+        <a href="" class="subcategory-name subcategory-name--default subcategory-name--active"><%= t '.product_category.all_products' %></a>
         <% @farm.product_subcategories.each do |subcategory| %>
           <a href="" class="subcategory-name" data-subcategory-id="<%= subcategory.id %>"><%= subcategory.name %></a>
         <% end %>
       </div>
       <div>
         <%= select_tag :order,
-            options_for_select([ ["Ordre alphabétique", "name"], ["Prix croissant", "price"] ]),
+            options_for_select([ [t('.product_category.by_name'), "name"], [t('.product_category.by_price'), "price"] ]),
             class: "form-control custom-select order-dropdown",
-            prompt: "Ordre par défaut"
+            prompt: t('.product_category.by_default')
           %>
       </div>
     </div>
