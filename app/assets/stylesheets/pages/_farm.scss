@@ -215,11 +215,103 @@
 
 .products {
   text-align: center;
-  margin-top: 200px;
   h2 {
     font-size: 36px;
-    margin-top: 50px;
+    margin-top: 15px;
   }
+}
+
+#subcategories-form {
+  padding-left: 20px;
+  padding-right: 20px;
+  @media screen and (min-width: 901px) {
+    padding-left: 68px;
+    padding-right: 68px;
+  }
+  width: 100%;
+}
+
+.subcategories-list {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.subcategory-name {
+  font-family: 'Mulish';
+  font-weight: 600;
+  color: #A4A6A0;
+  opacity: 0.61;
+  font-size: 14px;
+  margin-right: 12px;
+  @media screen and (min-width: 901px) {
+    font-size: 18px;
+    margin-right: 33px;
+
+  }
+  &--active {
+    color: #FF4136;
+    opacity: 0.91;
+    font-weight: bold;
+  }
+}
+
+.loadingoverlay {
+  z-index: 10 !important;
+}
+
+.subcategories-header {
+  border-bottom: 1px solid #FAF7F3;
+  margin-top: 700px;
+  @media screen and (min-width: 530px) {
+    margin-top: 350px;
+  }
+  @media screen and (min-width: 901px) {
+    margin-top: 170px;
+  }
+  padding-bottom: 16px;
+  height: 136px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  z-index: 11;
+  background-color: white;
+  &--sticky {
+    position: fixed;
+    margin-top: 56px;
+    top: 0;
+    left: 0;
+  }
+}
+
+.products {
+  .all-card-product.all-card-product--sticky {
+    margin-top: 866px;
+    @media screen and (min-width: 530px) {
+      margin-top: 526px;
+    }
+    @media screen and (min-width: 901px) {
+      margin-top: 346px;
+    }
+  }
+}
+
+.order-dropdown {
+  background-size: 8px 8px;
+  height: 40px;
+  width: 160px;
+  @media screen and (min-width: 901px) {
+    width: 200px;
+  }
+  background-color: white;
+  border-radius: 6px;
+  border-color: #F0ECE8;
+  color: #7C7977;
+  font-size: 14px;
+  margin-left: 20px;
+  font-family: 'Mulish', sans-serif;
 }
 
 .farm-delivery {
@@ -327,14 +419,6 @@
 }
 
 @media screen and (max-width: 530px) {
-  .products {
-    margin-top: 700px !important;
-
-    .all-card-product {
-      justify-content: space-around;
-    }
-  }
-
   .farm {
     .informations {
       flex-direction: column !important;
@@ -346,14 +430,6 @@
 }
 
 @media screen and (max-width: 901px) {
-  .products {
-    margin-top: 400px;
-
-    .all-card-product {
-      justify-content: space-around;
-    }
-  }
-
   .farm-delivery {
     .delivery_option {
       margin-left: 10px !important;

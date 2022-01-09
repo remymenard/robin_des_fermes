@@ -343,6 +343,13 @@ fr:
       date:
         day_names: [Dimanche, Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi]
       location: "Où nous trouver ?"
+      product_category:
+        title: "Produits"
+        all_products: "Tous les produits"
+        no_product_available: "Aucun produit"
+        by_name: "Ordre alphabétique"
+        by_price: "Ordre croissant"
+        by_default: "Ordre par défaut"
   shared:
     navbar:
       log_in_href: "Me Connecter"
