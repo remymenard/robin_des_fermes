@@ -19,6 +19,7 @@ module RobinDesFermes
     I18n.config.enforce_available_locales = false
     I18n.config.available_locales = [:fr]
     I18n.default_locale = :fr
+    Rack::Utils.multipart_part_limit = 0
 
     config.active_job.queue_adapter = :sidekiq
     # Settings in config/environments/* take precedence over those specified here.
