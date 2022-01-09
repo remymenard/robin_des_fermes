@@ -222,26 +222,35 @@
 }
 
 #subcategories-form {
-  padding-left: 68px;
-  padding-right: 188px;
+  padding-left: 20px;
+  padding-right: 20px;
+  @media screen and (min-width: 901px) {
+    padding-left: 68px;
+    padding-right: 68px;
+  }
   width: 100%;
 }
 
 .subcategories-list {
-    display: block;
+    display: flex;
+    align-items: center;
     width: 50%;
     overflow: auto;
-    height: 50px;
     white-space: nowrap;
 }
 
 .subcategory-name {
   font-family: 'Mulish';
   font-weight: 600;
-  font-size: 18px;
   color: #A4A6A0;
   opacity: 0.61;
-  margin-right: 33px;
+  font-size: 14px;
+  margin-right: 12px;
+  @media screen and (min-width: 901px) {
+    font-size: 18px;
+    margin-right: 33px;
+
+  }
   &--active {
     color: #FF4136;
     opacity: 0.91;
@@ -288,7 +297,10 @@
 .order-dropdown {
   background-size: 8px 8px;
   height: 40px;
-  width: 200px;
+  width: 160px;
+  @media screen and (min-width: 901px) {
+    width: 200px;
+  }
   background-color: white;
   border-radius: 6px;
   border-color: #F0ECE8;

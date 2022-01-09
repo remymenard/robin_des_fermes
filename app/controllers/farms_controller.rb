@@ -1,5 +1,5 @@
 class FarmsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :index, :show ]
+  skip_before_action :authenticate_user!, only: [ :index, :show, :products_list ]
   include ZipCodeHelper
 
   def index
@@ -95,6 +95,7 @@ class FarmsController < ApplicationController
   end
 
   def products_list
+    puts "called"
     @farm = Farm.friendly.find(params[:id])
     authorize @farm
     subcategory_id = params[:subcategory_id]
