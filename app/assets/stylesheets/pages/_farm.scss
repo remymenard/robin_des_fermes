@@ -258,6 +258,10 @@
   }
 }
 
+.loadingoverlay {
+  z-index: 10 !important;
+}
+
 .subcategories-header {
   border-bottom: 1px solid #FAF7F3;
   margin-top: 700px;
@@ -272,7 +276,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  z-index: 999;
+  z-index: 11;
   background-color: white;
   &--sticky {
     position: fixed;

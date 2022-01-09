@@ -3,6 +3,7 @@ require("gasparesganga-jquery-loading-overlay");
 function initSubcategories() {
   $('.subcategory-name').on('click', (event) => {
     event.preventDefault();
+    if ($(event.target).hasClass('subcategory-name--active')) return;
     if ($(event.target).hasClass('subcategory-name--default')) {
       $('#subcategory_id').val(null)
     } else {
@@ -19,6 +20,9 @@ function initSubcategories() {
 }
 
 function sendAjaxRequest() {
+  $('html, body').animate({
+    scrollTop: parseInt($(".products-listing").offset().top) - 200
+  }, 1000);
   $(".all-card-product").LoadingOverlay("show", {
     imageColor: "#339E72"
   });
@@ -42,7 +46,7 @@ var stickyOffset;
 
 function calculateOffset() {
   console.log('resize')
-  stickyOffset = $('.subcategories-header').offset().top - 58;
+  stickyOffset = $('.subcategories-header').offset().top - 60;
 }
 
 window.addEventListener("load", function (event) {
