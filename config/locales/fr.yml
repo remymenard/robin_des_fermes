@@ -346,6 +346,7 @@ fr:
       product_category:
         title: "Produits"
         all_products: "Tous les produits"
+        no_product_available: "Aucun produit"
         by_name: "Ordre alphabétique"
         by_price: "Ordre croissant"
         by_default: "Ordre par défaut"

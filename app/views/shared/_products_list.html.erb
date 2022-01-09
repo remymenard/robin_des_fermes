@@ -1,45 +1,49 @@
-<% products.each do |product| %>
-  <div class="card-product">
-    <div class="product-data" data-mixpanel-url="<%= open_modal_product_url(product.id) %>" data-image-url="<%= cl_image_path(product.photo.key) %>" data-name="<%= product.name %>" data-price="<%= product.price %>" data-currency="<%= product.price_currency %>" data-unit="<%= product.conditioning %>" data-ingredients="<%= product.ingredients %>" data-description="<%= product.description %>" ></div>
-    <div class="photo-farm">
-      <div class="labels d-flex">
-        <% if product.available_for_preorder? %>
-          <div class='preorder'>
-            <p> <%= t('farms.show.preorder_date') %> <%= product.preorder_shipping_starting_at.strftime("%d.%m.%Y") %></p>
-          </div>
+<% if products.empty? %>
+  <span><%= t('farms.show.product_category.no_product_available') %></span>
+<% else %>
+  <% products.each do |product| %>
+    <div class="card-product">
+      <div class="product-data" data-mixpanel-url="<%= open_modal_product_url(product.id) %>" data-image-url="<%= cl_image_path(product.photo.key) %>" data-name="<%= product.name %>" data-price="<%= product.price %>" data-currency="<%= product.price_currency %>" data-unit="<%= product.conditioning %>" data-ingredients="<%= product.ingredients %>" data-description="<%= product.description %>" ></div>
+      <div class="photo-farm">
+        <div class="labels d-flex">
+          <% if product.available_for_preorder? %>
+            <div class='preorder'>
+              <p> <%= t('farms.show.preorder_date') %> <%= product.preorder_shipping_starting_at.strftime("%d.%m.%Y") %></p>
+            </div>
+          <% end %>
+          <% product.label.each do |label| %>
+            <div class='label'>
+              <p> <%= label.upcase  %></p>
+            </div>
+          <%end%>
+        </div>
+        <%= link_to product_path(product) do  %>
+          <%= cl_image_tag product.photo.key %>
         <% end %>
-        <% product.label.each do |label| %>
-          <div class='label'>
-            <p> <%= label.upcase  %></p>
-          </div>
-        <%end%>
       </div>
-      <%= link_to product_path(product) do  %>
-        <%= cl_image_tag product.photo.key %>
-      <% end %>
-    </div>
-    <div class="informations d-flex">
-      <div class = "name">
-        <h6><%= t('farms.show.product', name: product.name) %></h6>
-        <p><%= t('farms.show.conditioning', conditioning: product.conditioning) %></p>
-      </div>
-      <div class="price">
-        <div>
-          <div class = "unit-price d-flex">
-            <h4><%= product.price %></h4>
-            <p>CHF </p>
-          </div>
-          <div class = "kg-price">
-            <% if product.price_per_unit_cents != 0 %>
-              <p>(<%= (product.price_per_unit_cents/100.00)%> CHF/<%= product.unit %>)</p>
-            <% end %>
+      <div class="informations d-flex">
+        <div class = "name">
+          <h6><%= t('farms.show.product', name: product.name) %></h6>
+          <p><%= t('farms.show.conditioning', conditioning: product.conditioning) %></p>
+        </div>
+        <div class="price">
+          <div>
+            <div class = "unit-price d-flex">
+              <h4><%= product.price %></h4>
+              <p>CHF </p>
+            </div>
+            <div class = "kg-price">
+              <% if product.price_per_unit_cents != 0 %>
+                <p>(<%= (product.price_per_unit_cents/100.00)%> CHF/<%= product.unit %>)</p>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
+      <% button_label = product.available_for_preorder? ? t('farms.show.pre_order') : t('farms.show.add') %>
+      <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" >
+        <%= button_label %>
+      </button>
     </div>
-    <% button_label = product.available_for_preorder? ? t('farms.show.pre_order') : t('farms.show.add') %>
-    <button class="btn btn-number add-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" >
-      <%= button_label %>
-    </button>
-  </div>
+  <% end %>
 <% end %>
