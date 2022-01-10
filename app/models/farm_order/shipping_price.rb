@@ -3,7 +3,7 @@ class FarmOrder
     DATA = {
       'takeaway' => Money.new(0,    'CHF'),
       'express'  => Money.new(290, 'CHF'),
-      'standard' => Money.new(990, 'CHF')
+      'standard' => Money.new(790, 'CHF')
     }
 
     attr_reader :price

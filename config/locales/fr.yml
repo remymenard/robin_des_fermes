@@ -121,7 +121,7 @@ fr:
       distribution_strong: "Distribution régionale (icone de localisation en orange)"
       distribution: "La livraison s’effectue soit par la Poste (sans transiter par un centre de tri), soit directement par le producteur."
       distribution_price: "Les frais de livraisons sont de 2.90 CHF."
-      shipping_price: "Les frais de livraisons sont de 9.90 CHF et les produits frais ne sont pas expédiables.."
+      shipping_price: "Les frais de livraisons sont de 7.90 CHF et les produits frais ne sont pas expédiables.."
       shipping_strong: "Expédition nationale (icone de localisation en violet)"
       shipping: "La livraison s’effectue par la Poste via un colis standard."
       withdrawal_strong: "Retrait"
