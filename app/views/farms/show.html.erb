@@ -208,21 +208,38 @@
   <h6><%= t('.delivery_options') %></h6>
   <div class="delivery-options d-flex">
     <div class="delivery_option">
-      <div class="delivery-image"><%= image_tag "products/delivery.png", alt: "alttext" %></div>
+      <div class="delivery-image">
+        <% if current_user&.is_companion %>
+          <%= image_tag "products/delivery-companion.png", alt: "alttext" %>
+        <% else %>
+          <%= image_tag "products/delivery.png", alt: "alttext" %>
+        <% end %>
+      </div>
       <% if @farm.regions.include?(@zip_code) %>
-        <h6><%= t('.delivery_regional') %></h6>
-        <div class="d-flex price justify-content-center">
-          <h6>2.90</h6>
-          <span>CHF</span>
-        </div>
+        <% if current_user&.is_companion %>
+          <span class="companion-delivery-oye">Oyé compagnons !</span>
+          <span class="companion-delivery-option-name green-text"><%= t('.delivery_regional_companion') %></span>
+        <% else %>
+          <h6 ><%= t('.delivery_regional') %></h6>
+          <div class="d-flex price justify-content-center">
+            <h6>2.90</h6>
+            <span>CHF</span>
+          </div>
+        <% end %>
         <p><%= t('.delivery_regional_description') %></p>
       <% else %>
-        <h6><%= t('.delivery_national') %></h6>
-        <div class="d-flex justify-content-center price">
-          <h6>7.90</h6>
-          <span>CHF</span>
-        </div>
-        <p><%= t('.delivery_national_description') %></p>
+        <% if current_user&.is_companion %>
+          <span class="companion-delivery-oye">Oyé compagnons !</span>
+          <span class="companion-delivery-option-name green-text"><%= t('.delivery_national_companion') %></span>
+          <p><%= t('.delivery_national_description') %></p>
+        <% else %>
+          <h6><%= t('.delivery_national') %></h6>
+          <div class="d-flex justify-content-center price">
+            <h6>7.90</h6>
+            <span>CHF</span>
+          </div>
+          <p><%= t('.delivery_national_description') %></p>
+        <% end %>
       <% end %>
       <% if @near_farm %>
         <div class="hours">
