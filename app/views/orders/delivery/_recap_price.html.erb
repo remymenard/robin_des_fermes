@@ -38,36 +38,47 @@
     <div class="px-3">
       <h2 class="recap-title"><%= t("orders.review.recap") %></h2>
       <% order.farm_orders.order("created_at desc").each_with_index do |farm_order, index| %>
-      <div class="mb-3">
-        <div class="d-flex justify-content-between">
-        <% unless farm_order.farm.minimum_order_reached?(farm_order) %>
-          <div class="line-style font-weight-light recap-grey-text">
-            <%= farm_order.farm.name %>
+        <div class="mb-3">
+          <div class="d-flex justify-content-between">
+            <% unless farm_order.farm.minimum_order_reached?(farm_order) %>
+              <div class="line-style font-weight-light recap-grey-text">
+                <%= farm_order.farm.name %>
+              </div>
+              <div>
+                <div class="price recap-grey-text"><%= farm_order.price %></div>
+                <div class="currency recap-grey-text"><%= farm_order.price_currency %></div>
+              </div>
+            </div>
+            <div class="order-missing-price"><%= t("missing_price.complete_message_html", missing_price: farm_order.farm.minimum_order_missing_price(farm_order)) %></div>
+          <% else %>
+            <div class="line-style font-weight-light">
+              <%= farm_order.farm.name %>
+            </div>
+            <div>
+              <div class="price"><%= farm_order.price %></div>
+              <div class="currency"><%= farm_order.price_currency %></div>
+            </div>
           </div>
-          <div><div class="price recap-grey-text"><%= farm_order.price %></div><div class="currency recap-grey-text"><%= farm_order.price_currency %></div></div>
-        </div>
-        <div class="order-missing-price"><%= t("missing_price.complete_message_html", missing_price: farm_order.farm.minimum_order_missing_price(farm_order)) %></div>
-        <% else %>
-        <div class="line-style font-weight-light">
-            <%= farm_order.farm.name %>
-          </div>
-          <div><div class="price"><%= farm_order.price %></div><div class="currency"><%= farm_order.price_currency %></div></div>
-        </div>
-      <% end %>
+        <% end %>
       </div>
-      <% end %>
-    </div>
-    <div class="recap-line"></div>
-    <div class="d-flex justify-content-between pt-3 px-3">
-      <p class="total-style"><%= t("orders.review.total") %></p>
-      <div><p class="price"><%= order.price %></p><p class="currency"><%= order.price_currency %></p></div>
-    </div>
-    <% unless current_order.mimum_price_not_reached? %>
-      <%= button_to t("orders.review.confirm"), delivery_order_path(current_order), class: "btn btn-primary btn-lg btn-block confirm-button", disabled: @order.order_line_items.empty?, method: :get %>
-    <% else %>
-      <button class="btn btn-primary btn-lg btn-block confirm-button open-price-too-low-modal"> <%= t("orders.review.confirm") %></button>
     <% end %>
   </div>
+  <div class="recap-line"></div>
+  <div class="d-flex justify-content-between pt-3 px-3">
+    <p class="total-style"><%= t("orders.review.total") %></p>
+    <div>
+      <p class="price"><%= order.price %></p>
+      <p class="currency"><%= order.price_currency %></p>
+    </div>
+  </div>
+  <% unless current_order.mimum_price_not_reached? %>
+    <%= button_to t("orders.review.confirm"), delivery_order_path(current_order), class: "btn btn-primary btn-lg btn-block confirm-button", disabled: @order.order_line_items.empty?, method: :get %>
+  <% else %>
+    <button class="btn btn-primary btn-lg btn-block confirm-button open-price-too-low-modal"> <%= t("orders.review.confirm") %></button>
+  <% end %>
+</div>
 <% end %>
-<%= render 'shared/minimum_price_not_reached_modal', order:  current_order %>
+<% if current_order.mimum_price_not_reached? %>
+  <%= render 'shared/minimum_price_not_reached_modal', order:  current_order %>
+<% end %>
 <%= javascript_pack_tag 'minimumPriceNotReachedModal' %>

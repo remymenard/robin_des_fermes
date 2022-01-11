@@ -46,6 +46,6 @@ class Order < ApplicationRecord
 
   def get_first_farm_with_missing_price
     farm_order = farm_orders.find {|farm_order| !farm_order.farm.minimum_order_reached?(farm_order) }
-    farm_order.farm
+    farm_order&.farm
   end
 end
