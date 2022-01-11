@@ -113,37 +113,59 @@
       data-far-farms-markers="<%= @far_markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       <div class="mobile-big-question-mark">?</div>
-      <div class="map-infos">
+      <div class="map-infos <% if current_user&.is_companion %> map-infos--big <%end%>">
         <div class="close-infos"><i class="fas fa-times"></i></div>
-        <div class="d-flex h-100 w-100 flex-column justify-content-center ml-4">
-          <div class="row align-items-center">
-            <div class="col-7 p-0 m-0">
-              <%= image_tag "icons/marker-purple.png", class: "marker" %>
-              <span class="shipping-name"><%= t('.regional_delivery_name') %></span>
-            </div>
-            <div class="col-5 m-0 p-0">
-              <span class="price"><%= FarmOrder::ShippingPrice.express.price %></span>
-              <span class="currency">CHF</span>
-              <div class="question-mark">?</div>
-              <div class="popup-question-mark">
-                <%= image_tag "icons/bubble.png", class: "bubble"%>
-                <p class="shipping-description"><%= t('.regional_delivery_description') %></p>
+        <div class="d-flex h-100 w-100 flex-column justify-content-evenly">
+          <div class="d-flex align-items-center">
+            <% if current_user&.is_companion %>
+              <div class="d-flex ml-2">
+                <%= image_tag "icons/marker-green.png", class: "marker" %>
+                <span class="shipping-name shipping-name--green"><%= t('.regional_delivery_name_companion') %></span>
               </div>
-            </div>
+            <% else %>
+              <div class="d-flex ml-2">
+                <%= image_tag "icons/marker-purple.png", class: "marker" %>
+                <span class="shipping-name"><%= t('.regional_delivery_name') %></span>
+              </div>
+              <div class="line-price">
+                <span class="price"><%= FarmOrder::ShippingPrice.express.price %></span>
+                <span class="currency">CHF</span>
+                <div class="question-mark">?</div>
+                <div class="popup-question-mark">
+                  <%= image_tag "icons/bubble.png", class: "bubble"%>
+                  <p class="shipping-description"><%= t('.regional_delivery_description') %></p>
+                </div>
+              </div>
+            <% end %>
           </div>
-          <div class="row align-items-center">
-            <div class="col-7 p-0 m-0">
+          <div class="d-flex align-items-center">
+            <div class="d-flex ml-2">
               <%= image_tag "icons/marker-orange.png", class: "marker" %>
               <span class="shipping-name"><%= t('.national_delivery_name') %></span>
             </div>
-            <div class="col-5 m-0 p-0">
-              <span class="price"><%= FarmOrder::ShippingPrice.standard.price %></span>
-              <span class="currency">CHF</span>
-              <div class="question-mark">?</div>
-              <div class="popup-question-mark">
-                <%= image_tag "icons/bubble.png", class: "bubble"%>
-                <p class="shipping-description"><%= t('.national_delivery_description') %></p>
-              </div>
+            <div class="line-price">
+              <% if current_user&.is_companion %>
+                <div class="d-inline-block position-relative">
+                  <span class="price price--old"><%= FarmOrder::ShippingPrice.standard.price %></span>
+                  <span class="currency currency--old">CHF</span>
+                  <span class="old-price-bar"></span>
+                </div>
+                <span class="price price--new"><%= FarmOrder::ShippingPrice.standard.price %></span>
+                <span class="currency currency--new">CHF</span>
+                <div class="question-mark">?</div>
+                <div class="popup-question-mark">
+                  <%= image_tag "icons/bubble.png", class: "bubble bubble--big"%>
+                  <p class="shipping-description shipping-description--big"><%= t('.national_delivery_description') %></p>
+                </div>
+              <% else %>
+                <span class="price"><%= FarmOrder::ShippingPrice.standard.price %></span>
+                <span class="currency">CHF</span>
+                <div class="question-mark">?</div>
+                <div class="popup-question-mark">
+                  <%= image_tag "icons/bubble.png", class: "bubble"%>
+                  <p class="shipping-description"><%= t('.national_delivery_description') %></p>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>
