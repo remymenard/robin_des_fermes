@@ -284,6 +284,29 @@
     top: 0;
     left: 0;
   }
+  .takeaway-only {
+    span {
+      font-size: 16px;
+      font-weight: bold;
+      color: #A4A6A0;
+    }
+    svg {
+      path {
+        fill: #A4A6A0;
+      }
+      height: 24px;
+      width: 19px;
+    }
+  }
+
+  input[type="checkbox"]:checked ~ label {
+    span {
+      color: green;
+    }
+    path {
+      fill: green;
+    }
+  }
 }
 
 .products {

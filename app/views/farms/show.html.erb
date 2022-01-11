@@ -56,7 +56,12 @@
           <a href="" class="subcategory-name" data-subcategory-id="<%= subcategory.id %>"><%= subcategory.name %></a>
         <% end %>
       </div>
-      <div>
+      <div class="takeaway-only">
+        <%= check_box_tag :takeaway_only, true, false, disabled: false, class: "d-none" %>
+        <%= label_tag :takeaway_only, nil, class: "m-0" do %>
+          <%= show_svg('icons/delivery-bag.svg') %>
+          <span>A retirer à la ferme uniquement</span>
+        <% end %>
         <%= select_tag :order,
             options_for_select([ [t('.product_category.by_name'), "name"], [t('.product_category.by_price'), "price"] ]),
             class: "form-control custom-select order-dropdown",

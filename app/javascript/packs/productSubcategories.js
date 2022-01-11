@@ -16,6 +16,10 @@ function initSubcategories() {
     sendAjaxRequest();
   });
 
+  $('.takeaway-only').on('click', (event) => {
+    sendAjaxRequest();
+  })
+
   $('.order-dropdown').on('change', sendAjaxRequest)
 }
 
