@@ -1,10 +1,6 @@
 .farm-map {
   text-align: center;
   margin-top: 50px;
-
-  #map_show {
-
-  }
 }
 
 .owl-stage {
@@ -285,7 +281,16 @@
     left: 0;
   }
   .takeaway-only {
+    @media screen and (max-width: 901px) {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: end;
+    }
+    display: block;
     span {
+      @media screen and (max-width: 901px) {
+        font-size: 9px;
+      }
       font-size: 16px;
       font-weight: bold;
       color: #A4A6A0;
