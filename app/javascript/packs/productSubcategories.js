@@ -50,7 +50,7 @@ var stickyOffset;
 
 function calculateOffset() {
   console.log('resize')
-  stickyOffset = $('.subcategories-header').offset().top - 60;
+  stickyOffset = $('.subcategories-header').offset().top - 50;
 }
 
 window.addEventListener("load", function (event) {
