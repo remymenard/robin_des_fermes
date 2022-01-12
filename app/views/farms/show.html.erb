@@ -99,7 +99,7 @@
         <% else %>
           <h6 ><%= t('.delivery_regional') %></h6>
           <div class="d-flex price justify-content-center">
-            <h6>2.90</h6>
+            <h6><%= FarmOrder.ShippingPrice.express_not_companion.price %></h6>
             <span>CHF</span>
           </div>
         <% end %>
@@ -107,12 +107,12 @@
       <% else %>
         <% if current_user&.is_companion %>
           <span class="companion-delivery-oye">Oyé compagnons !</span>
-          <span class="companion-delivery-option-name green-text"><%= t('.delivery_national_companion') %></span>
+          <span class="companion-delivery-option-name green-text"><%= t('.delivery_national_companion', price: FarmOrder::ShippingPrice.standard_companion.price) %></span>
           <p><%= t('.delivery_national_description') %></p>
         <% else %>
           <h6><%= t('.delivery_national') %></h6>
           <div class="d-flex justify-content-center price">
-            <h6>7.90</h6>
+            <h6><%= FarmOrder::ShippingPrice.standard_not_companion.price %></h6>
             <span>CHF</span>
           </div>
           <p><%= t('.delivery_national_description') %></p>

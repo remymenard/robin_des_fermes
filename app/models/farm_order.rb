@@ -68,7 +68,11 @@ class FarmOrder < ApplicationRecord
   end
 
   def delivery_price(zip_code)
-    farm.is_in_close_zone?(zip_code) ? ShippingPrice.express : ShippingPrice.standard
+    if order.buyer&.is_companion
+      farm.is_in_close_zone?(zip_code) ? ShippingPrice.express_companion : ShippingPrice.standard_companion
+    else
+      farm.is_in_close_zone?(zip_code) ? ShippingPrice.express_not_companion : ShippingPrice.standard_not_companion
+    end
   end
 
   def total_items_count
@@ -117,10 +121,11 @@ class FarmOrder < ApplicationRecord
       end
     when 'delivery'
       if farm.accepts_delivery
+        order_delivery_price = delivery_price(zip_code).price
         if farm.is_in_close_zone?(zip_code)
-          update!(status: 'waiting', takeaway_at_farm: false, standard_shipping: false, express_shipping: true, shipping_price: FarmOrder::ShippingPrice.express.price, farm_office: farm.get_correct_farm_office(zip_code))
+          update!(status: 'waiting', takeaway_at_farm: false, standard_shipping: false, express_shipping: true, shipping_price: order_delivery_price, farm_office: farm.get_correct_farm_office(zip_code))
         else
-          update!(status: 'waiting', takeaway_at_farm: false, standard_shipping: true, express_shipping: false, shipping_price: FarmOrder::ShippingPrice.standard.price)
+          update!(status: 'waiting', takeaway_at_farm: false, standard_shipping: true, express_shipping: false, shipping_price: order_delivery_price)
         end
       end
     end
