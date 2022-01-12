@@ -16,9 +16,9 @@ function initSubcategories() {
     sendAjaxRequest();
   });
 
-  $('.takeaway-only').on('click', (event) => {
+  $('.subcategories-header').on('change', 'input[type=checkbox]', function () {
     sendAjaxRequest();
-  })
+  });
 
   $('.order-dropdown').on('change', sendAjaxRequest)
 }
