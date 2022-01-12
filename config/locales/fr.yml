@@ -254,6 +254,8 @@ fr:
         title_line_2: "Ton butin est en préparation !"
         subtitle_line_1: "Ta commande a bien été prise en compte,"
         subtitle_line_2: "tu vas recevoir un email de confirmation."
+        subtitle_line_3: "La prochaine fois économise %{price} CHF de livraison"
+        subtitle_line_4: "grâce à l’offre Compagnon de Robin des Fermes."
         thanks_line_1: "Merci pour ta confiance,"
         thanks_line_2: "La bande de Robin des Fermes"
         back_button: "RETOUR A L'ACCEUIL"
