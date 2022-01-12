@@ -48,4 +48,14 @@ class Order < ApplicationRecord
     farm_order = farm_orders.find {|farm_order| !farm_order.farm.minimum_order_reached?(farm_order) }
     farm_order&.farm
   end
+
+  def estimated_economy_delivery_price
+    shipping_price_without_being_companion = 0
+    farm_orders.each do |farm_order|
+      shipping_price_without_being_companion += FarmOrder::ShippingPrice.standard_not_companion.price if farm_order.standard_shipping
+      shipping_price_without_being_companion += FarmOrder::ShippingPrice.express_not_companion.price if farm_order.express_shipping
+      shipping_price_without_being_companion += FarmOrder::ShippingPrice.takeaway.price if farm_order.takeaway_at_farm
+    end
+    shipping_price_without_being_companion - total_shipping_price
+  end
 end
