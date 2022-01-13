@@ -173,7 +173,10 @@
   </div>
 </div>
 <div class="farm farm-map">
-  <h2><%= t('.location') %></h2>
+  <div class="map-address">
+    <h2>Nous sommes à <%= @farm.city %></h2>
+    <span><%= @farm.full_address %></span>
+  </div>
   <div id="map_show"
     style="width: 100%; height: 544px;"
     data-markers="<%= @markers.to_json %>"
