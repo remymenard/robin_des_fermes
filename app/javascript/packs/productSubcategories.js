@@ -49,7 +49,6 @@ document.addEventListener('DOMContentLoaded', initSubcategories)
 var stickyOffset;
 
 function calculateOffset() {
-  console.log('resize')
   stickyOffset = $('.subcategories-header').offset().top - 50;
 }
 

@@ -13,6 +13,7 @@
       <% end %>
       <p> <%=@farm.user.first_name.capitalize  %> <%=@farm.user.last_name.capitalize  %> </p>
     </div>
+    <p class="full-address"><%= @farm.full_address %></p>
     <h1> <%= @farm.name  %></h1>
     <div class="d-flex">
       <p> <%= t('.description', description: @farm.description) %> <%= link_to t('.more_description'), "#description-farm" %> </p>

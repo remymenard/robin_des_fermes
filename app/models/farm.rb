@@ -117,6 +117,10 @@ class Farm < ApplicationRecord
     end
   end
 
+  def full_address
+    [address, zip_code, city, country].compact.join(', ')
+  end
+
   private
 
   def set_regions
@@ -133,7 +137,4 @@ class Farm < ApplicationRecord
     self.update_column(:regions, all_regions)
   end
 
-  def full_address
-    [address, zip_code, city, country].compact.join(', ')
-  end
 end
