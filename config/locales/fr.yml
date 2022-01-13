@@ -335,7 +335,8 @@ fr:
       hours: "HORAIRES"
       hours_delivery: "Tu seras livré entre le"
       and_delivery: "et le"
-      address: "ADRESSE"
+      minimum_order_title: "COMMANDE MINIMUM"
+      minimum_order_description: "Montant mininum par commande de %{price} CHF pour ce producteur"
       description: '%{description}'
       description_title: "Une histoire de temps"
       long_description: '%{long_description}'
