@@ -113,8 +113,8 @@
                   <h3> <%= farm.name  %></h3>
                 </div>
                 <p class="openning"><%= t('.openning', openning: farm.opening_time) %></p>
-                <p class="products-number"><%= farm.products.count  %>
-                  <% if farm.products.count == 1 %>
+                <p class="products-number"><%= farm.products.available.count  %>
+                  <% if farm.products.available.count == 1 %>
                     <%= t('.one_product') %>
                   <% else %>
                     <%= t('.products_number') %>
