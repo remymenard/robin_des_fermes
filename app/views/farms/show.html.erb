@@ -99,7 +99,7 @@
         <% else %>
           <h6 ><%= t('.delivery_regional') %></h6>
           <div class="d-flex price justify-content-center">
-            <h6><%= FarmOrder.ShippingPrice.express_not_companion.price %></h6>
+            <h6><%= FarmOrder::ShippingPrice.express_not_companion.price %></h6>
             <span>CHF</span>
           </div>
         <% end %>
