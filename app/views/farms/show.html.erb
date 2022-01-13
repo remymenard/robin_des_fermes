@@ -25,15 +25,15 @@
   </div>
   <div class="informations d-flex">
     <div class="hours">
-      <h6><%= t('.hours') %> </h6>
+      <h3><%= t('.hours') %> </h3>
       <p><%= @farm.opening_time  %></p>
     </div>
     <div class="delivery">
-      <h6><%= t('.minimum_order_title') %></h6>
+      <h3><%= t('.minimum_order_title') %></h3>
       <p><%= t('.minimum_order_description', price: @farm.minimum_order_price) %></p>
     </div>
     <div class="address" style="<% if current_user&.is_companion %> background: url(<%= asset_path 'logos/logo_without_text.png' %>); background-repeat: no-repeat; <% end %>">
-      <h6><%= t('.delivery') %> </h6>
+      <h3><%= t('.delivery') %> </h3>
       <% if @farm.is_in_close_zone?(get_zip_code_number) %>
         <% if current_user&.is_companion %>
           <p class="green-text">Vous êtes compagnons, la livraison régionale est offerte.</p>
@@ -100,7 +100,7 @@
           <span class="companion-delivery-oye">Oyé compagnons !</span>
           <span class="companion-delivery-option-name green-text"><%= t('.delivery_regional_companion') %></span>
         <% else %>
-          <h6 ><%= t('.delivery_regional') %></h6>
+          <h3 ><%= t('.delivery_regional') %></h3>
           <div class="d-flex price justify-content-center">
             <h6><%= FarmOrder::ShippingPrice.express_not_companion.price %></h6>
             <span>CHF</span>
@@ -113,7 +113,7 @@
           <span class="companion-delivery-option-name green-text"><%= t('.delivery_national_companion', price: FarmOrder::ShippingPrice.standard_companion.price) %></span>
           <p><%= t('.delivery_national_description') %></p>
         <% else %>
-          <h6><%= t('.delivery_national') %></h6>
+          <h3><%= t('.delivery_national') %></h3>
           <div class="d-flex justify-content-center price">
             <h6><%= FarmOrder::ShippingPrice.standard_not_companion.price %></h6>
             <span>CHF</span>
@@ -137,7 +137,7 @@
     <div class="delivery_option <%= @farm.accepts_take_away ? 'yes-accept' : 'no-accept' %>  ">
       <div class="withdrawal-image"><%= image_tag "products/withdrawal.png", alt: "alttext" %></div>
       <div class="accept">
-        <h6><%= t('.withdrawal') %></h6>
+        <h3><%= t('.withdrawal') %></h3>
         <div class="price">
           <h6>Gratuit</h6>
         </div>

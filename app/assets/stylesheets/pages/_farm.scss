@@ -83,7 +83,9 @@
     justify-content: space-around;
     margin-top: 30px;
 
-    h6 {
+    h3 {
+      color: #25201d;
+      font-size: 18px;
       letter-spacing: 2.5px;
       font-weight: 600;
       margin-bottom: 10px;
@@ -369,6 +371,10 @@
     color: #6c5c5c;
   }
 
+  h2 {
+    font-size: 54px;
+  }
+
   h6 {
     margin-top: 20px;
     color: #6c5c5c;
@@ -413,9 +419,11 @@
       padding-left: 25px;
       margin-bottom: 50px;
 
-      h6 {
+      h3 {
         color: black !important;
         font-weight: bold;
+        margin-top: 20px;
+        font-size: 18px;
       }
 
       .hours {
