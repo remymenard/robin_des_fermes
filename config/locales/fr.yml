@@ -474,7 +474,7 @@ fr:
         password: 'Modifier mon mot de passe'
         delivery_adress: 'Mon adresse de livraison'
         contact_information: 'Mes coordonnées'
-        title: 'Mes informations personelles'
+        title: 'Mes informations personnelles'
     confirmations:
       new:
         resend: 'Renvoyer'
