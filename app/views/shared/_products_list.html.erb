@@ -17,13 +17,13 @@
             </div>
           <%end%>
         </div>
-        <%= link_to product_path(product) do  %>
+        <%= link_to  do  %>
           <%= cl_image_tag product.photo.key %>
         <% end %>
       </div>
       <div class="informations d-flex">
         <div class = "name">
-          <h6><%= t('farms.show.product', name: product.name) %></h6>
+          <h4><%= t('farms.show.product', name: product.name) %></h4>
           <p><%= t('farms.show.conditioning', conditioning: product.conditioning) %></p>
         </div>
         <div class="price">

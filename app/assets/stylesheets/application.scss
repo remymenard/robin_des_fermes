@@ -1,52 +1,56 @@
 // Graphical variables
-@import "config/fonts";
-@import "config/colors";
-@import "config/bootstrap_variables";
-@import "config/mixins";
+@import 'config/fonts';
+@import 'config/colors';
+@import 'config/bootstrap_variables';
+@import 'config/mixins';
 
 // External libraries
-@import "bootstrap/scss/bootstrap";
-@import "font-awesome-sprockets";
-@import "font-awesome";
+@import 'bootstrap/scss/bootstrap';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 @import 'mapbox-gl/dist/mapbox-gl';
 @import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder';
 @import 'custombox/src/custombox.scss';
 @import 'owl.carousel2/src/scss/owl.carousel.scss';
 @import 'noty/src/noty.scss';
 @import 'noty/lib/themes/metroui';
-.noty_theme__metroui.noty_type__error { background-color: #FF4136; }
-.noty_theme__metroui.noty_type__success { background-color: $primary; }
+.noty_theme__metroui.noty_type__error {
+  background-color: #ff4136;
+}
+.noty_theme__metroui.noty_type__success {
+  background-color: $primary;
+}
 
 // Your CSS partials
-@import "components/index";
-@import "pages/index";
+@import 'components/index';
+@import 'pages/index';
 
 // navbar sidebar
 $sidebarbreakpoint: 768px;
-@import "css3sidebar/src/sass/base.scss";
-@import "css3sidebar/src/sass/base.show-desktop.scss";
-@import "css3sidebar/src/sass/base.popin.scss";
+@import 'css3sidebar/src/sass/base.scss';
+@import 'css3sidebar/src/sass/base.show-desktop.scss';
+@import 'css3sidebar/src/sass/base.popin.scss';
 
-
-
-body, h6, p {
+body,
+h6,
+p {
   font-family: 'Mulish', sans-serif;
 }
 
 h1 {
-  color: #25201D;
+  color: #25201d;
   font-size: 54px;
   font-family: 'BioRhyme', serif;
 }
 
 h6 {
-  color: #25201D;
+  color: #25201d;
   font-size: 18px;
 }
 
 h2 {
   font-family: 'BioRhyme', serif;
-  color: #6C5C5C;
+  color: #6c5c5c;
   font-size: 36px;
   line-height: 135%;
 }
@@ -56,14 +60,17 @@ h4 {
   letter-spacing: 2.5px;
   font-family: 'Mulish', sans-serif;
   font-weight: 600;
-  color: #6C5C5C;
+  color: #6c5c5c;
 }
 
 p {
-  color: #6C5C5C;
+  color: #6c5c5c;
   font-size: 14px;
 }
 
+u {
+  text-decoration: underline !important;
+}
 
 html {
   height: 100%;
@@ -72,11 +79,12 @@ html {
 body {
   background-color: white;
   width: 100%;
-  margin-right: -100px
+  margin-right: -100px;
 }
 
 // they are managed by the js and must not appear on screen before the js loads
-.simpleFormAlert, .railsAlert {
+.simpleFormAlert,
+.railsAlert {
   display: none;
 }
 

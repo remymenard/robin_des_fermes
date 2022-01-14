@@ -17,7 +17,7 @@ Rails.application.routes.draw do
         patch :products_list
       end
     end
-    resources :products, only: [:show] do
+    resources :products, only: [] do
       member do
         get :open_modal
       end

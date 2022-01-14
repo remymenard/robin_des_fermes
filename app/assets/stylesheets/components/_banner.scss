@@ -5,10 +5,10 @@
   min-height: 100vh;
   text-align: center;
 
-  h2 {
+  h1 {
     margin: 0 auto;
     line-height: 64px;
-    color: #25201D;
+    color: #25201d;
     font-size: 54px;
     max-width: 582px;
     padding-top: 15vh;
@@ -18,10 +18,9 @@
     padding-top: 24px;
     margin: 0 auto;
     font-size: 18px;
-    color: #25201D;
+    color: #25201d;
     max-width: 470px;
     line-height: 32px;
-
   }
 
   .search {
@@ -29,7 +28,7 @@
     justify-content: center;
 
     .btn-computer {
-      background-color: #33B084 !important;
+      background-color: #33b084 !important;
       color: white;
       font-weight: 600;
       font-family: 'Mulish', sans-serif;
@@ -48,17 +47,17 @@
 
     .form-control {
       padding-top: 0px;
-      color: #7C7977 !important;
+      color: #7c7977 !important;
       text-align: center;
       height: 53px;
       border-radius: 10px 0px 0px 10px;
-      border-color: #F0ECE8;
+      border-color: #f0ece8;
       width: 270px;
       background-color: white;
     }
   }
 
-  @media(max-width: 770px) {
+  @media (max-width: 770px) {
     .btn {
       width: 150px !important;
       letter-spacing: 0px !important;
@@ -71,7 +70,7 @@
   }
 }
 
-@media(max-width: 500px) {
+@media (max-width: 500px) {
   .banner {
     background-image: image-url('home/background-mobile.png') !important;
     background-size: cover;
@@ -86,7 +85,7 @@
 
     .btn-mobile {
       display: initial !important;
-      background-color: #33B084 !important;
+      background-color: #33b084 !important;
       color: white;
       font-weight: 600;
       font-family: 'Mulish', sans-serif;
@@ -99,7 +98,7 @@
       text-transform: uppercase;
     }
 
-    h2 {
+    h1 {
       padding-top: 200px;
       font-size: 32px;
       line-height: 36px;

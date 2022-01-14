@@ -114,6 +114,10 @@ class FarmsController < ApplicationController
       products_list = products_list.reorder(:price_cents)
     end
 
+    unless params[:takeaway_only].blank?
+      products_list = products_list.fresh
+    end
+
     render partial: 'shared/products_list', locals: {products: products_list}
   end
 

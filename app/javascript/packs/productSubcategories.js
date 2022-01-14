@@ -16,6 +16,10 @@ function initSubcategories() {
     sendAjaxRequest();
   });
 
+  $('.subcategories-header').on('change', 'input[type=checkbox]', function () {
+    sendAjaxRequest();
+  });
+
   $('.order-dropdown').on('change', sendAjaxRequest)
 }
 
@@ -45,8 +49,7 @@ document.addEventListener('DOMContentLoaded', initSubcategories)
 var stickyOffset;
 
 function calculateOffset() {
-  console.log('resize')
-  stickyOffset = $('.subcategories-header').offset().top - 60;
+  stickyOffset = $('.subcategories-header').offset().top - 50;
 }
 
 window.addEventListener("load", function (event) {

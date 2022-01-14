@@ -59,7 +59,7 @@ class Farm < ApplicationRecord
 
   after_save :set_regions
 
-  LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion"]
+  LABELS = ["Bio-Suisse", "IP-Suisse", "Suisse Garantie", "AOP", "IPG", "Naturabeef", "Demeter", "Bio-Suisse Reconversion", "Vaud+", "Terravin"]
 
   DAYS = [["Lundi", 0], ["Mardi", 1], ["Mercredi", 2], ["Jeudi", 3], ["Vendredi", 4], ["Samedi", 5], ["Dimanche", 6]]
 
@@ -117,6 +117,10 @@ class Farm < ApplicationRecord
     end
   end
 
+  def full_address
+    [address, zip_code, city, country].compact.join(', ')
+  end
+
   private
 
   def set_regions
@@ -133,7 +137,4 @@ class Farm < ApplicationRecord
     self.update_column(:regions, all_regions)
   end
 
-  def full_address
-    [address, zip_code, city, country].compact.join(', ')
-  end
 end
