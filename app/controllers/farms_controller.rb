@@ -1,5 +1,5 @@
 class FarmsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :index, :show ]
+  skip_before_action :authenticate_user!, only: [ :index, :show, :products_list ]
   include ZipCodeHelper
 
   def index
@@ -92,6 +92,33 @@ class FarmsController < ApplicationController
       mixpanel_params["Categories Name"] = params["category"] if params["category"].present?
       $tracker.track(session[:mixpanel_id], 'Refine Search Farms', mixpanel_params)
     end
+  end
+
+  def products_list
+    puts "called"
+    @farm = Farm.friendly.find(params[:id])
+    authorize @farm
+    subcategory_id = params[:subcategory_id]
+    if subcategory_id.blank?
+      products_list = @farm.products.available
+    else
+      subcategory = ProductSubcategory.find(subcategory_id)
+      return if subcategory.farm != @farm
+      products_list = subcategory.products.available
+    end
+
+    case params[:order]
+    when "name"
+      products_list = products_list.sort_by{ |e| e.name.downcase }
+    when "price"
+      products_list = products_list.reorder(:price_cents)
+    end
+
+    unless params[:takeaway_only].blank?
+      products_list = products_list.fresh
+    end
+
+    render partial: 'shared/products_list', locals: {products: products_list}
   end
 
   def show

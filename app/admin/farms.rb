@@ -10,6 +10,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
                 office_ids: [],
                 offices_attributes: [:id],
                 farm_offices_attributes: [:id, :_destroy, :office_id, :delivery_day, :delivery_deadline_day, :delivery_deadline_hour],
+                product_subcategories_attributes: [:id, :_destroy, :name],
                 user_attributes: [:id, :email, :first_name, :last_name, :number_phone, :wants_to_subscribe_mailing_list, :photo, :password, :title, :password_confirmation, :address_line_1, :city, :zip_code, :farm_id]
 
   actions :all
@@ -165,13 +166,20 @@ ActiveAdmin.register Farm, as: "Exploitations" do
           f.input :category_ids, as: :check_boxes, collection: Category.all, label: false
         end
         panel "Produit(s) existant(s)" do
-          table_for resource.products do
+          table_for resource.products.order('name ASC') do
             column "Nom du produit", :name
             column "Catégorie du produit", :category, sortable: true
             column "Prix (CHF)", :price, sortable: true
             column "Actif", :active
             column do |produit|
               link_to 'Modifier', edit_admin_produit_path(produit), data: {confirm: 'Les modifications effectuées non sauvegardées seront perdues. Etes vous sûr de continuer ?'}
+            end
+          end
+        end
+        panel 'Sous-Catégorie' do
+          f.has_many :product_subcategories, heading: "", new_record: 'Ajouter une sous-catégorie', allow_destroy: true do |subcategory|
+            subcategory.inputs do
+              subcategory.input :name, label: "Nom"
             end
           end
         end

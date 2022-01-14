@@ -1,5 +1,5 @@
 ActiveAdmin.register Product, as: 'Produits' do
-  permit_params :id, :farm_id, :name, :available, :category_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning, :preorder_shipping_starting_at, :total_weight, :available_for_preorder, label: []
+  permit_params :id, :farm_id, :name, :available, :category_id, :product_subcategory_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning, :preorder_shipping_starting_at, :total_weight, :available_for_preorder, label: []
   actions :all
   index do
     actions defaults: true
@@ -21,6 +21,7 @@ ActiveAdmin.register Product, as: 'Produits' do
       product.input :available, label: 'En stock ?'
       product.input :name, label: 'Nom'
       product.input :category_id, as: :select, collection: Category.all, label: 'Catégorie'
+      product.input :product_subcategory_id, as: :select, collection: ProductSubcategory.where(farm: resource.farm), label: "Sous-catégorie"
       product.input :price_cents, label: 'Prix CHF'
       product.input :display_minimum_weight, label: 'Afficher poids Minimum ?'
       product.input :minimum_weight, label: 'Poids ou volume'

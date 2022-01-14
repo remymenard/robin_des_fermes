@@ -22,6 +22,7 @@ module Orders
       end
 
       def successful
+        @order = FarmOrder.find_by(confirm_shipped_token: params[:order_token])
       end
 
       def with_error

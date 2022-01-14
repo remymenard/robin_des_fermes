@@ -35,7 +35,7 @@
   }
 
   img {
-    margin-top: 100px;
+    margin-top: 75px;
     height: 218px;
     width: 176px;
   }
@@ -60,7 +60,12 @@
       padding: 0px 10px;
     }
   }
+  .information, .community, .producers, .link {
+    margin-top: 65px;
+  }
 }
+
+
 @media screen and (max-width: 700px) {
   .footer {
 

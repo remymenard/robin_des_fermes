@@ -1,15 +1,20 @@
 <%= content_for(:after_template) do %>
   <%= javascript_pack_tag 'zipCode' %>
 <% end %>
-
-<nav class="navbar d-flex justify-content-between navbar-light shadow-sm px-5 py-2">
+<nav id="mainNavbar">
+  <div id="companion-infos-navbar">
+    <a href="">
+      <%= show_svg('icons/fast-delivery-truck.svg') %>
+      <b>Expédition régionale offerte</b> pour tous les compagnons Robin des Fermes</a>
+  </div>
+  <div class="navbar d-flex justify-content-between navbar-light shadow-sm px-5 py-2">
     <button class="navbar-toggler navbar-toggler-right border-0 mobile-dropdown-position fixed-top" type="button" data-toggle="css3sidebar" data-target="#primary-sidebar">
       <span class="navbar-toggler-icon"></span>
     </button>
-  <div class="navbar-brand">
-    <%= link_to root_path do %>
-      <%= image_tag "logos/rdf_white_line.png", class: 'navbar-logo' %>
-    <% end %>
+    <div class="navbar-brand">
+      <%= link_to root_path do %>
+        <%= image_tag "logos/rdf_white_line.png", class: 'navbar-logo' %>
+      <% end %>
     </a>
   </div>
   <div class="d-flex justify-content-between add-gap">
@@ -25,7 +30,7 @@
         </li>
       <% end %>
       <li class="nav-item">
-        <%= link_to t('shared.navbar.who_are_we'), team_path, class: "nav-link hidden-on-mobile text-light" %>
+        <%= link_to t('shared.navbar.about'), about_path, class: "nav-link hidden-on-mobile text-light" %>
       </li>
       <li class="nav-item">
         <%= link_to t('shared.navbar.our_farmers'), farms_path, class: "nav-link hidden-on-mobile text-light" %>
@@ -41,37 +46,39 @@
           <% end %>
         <% end %>
       </li>
-        <% if controller_name != "orders" %>
-          <li class="nav-item basket-div d-flex align-items-center">
-            <a href="#" class="p-0 position-relative">
-              <%= image_tag 'icons/basket.png', class: "basket-icon" %>
-              <div class="items-number d-none">/</div>
-              <span class="price-text hidden-on-mobile">
-                <% if current_order_available? %>
-                  <%= current_order.price %>
-                <% else %>
-                  0.00
-                <% end %>
-              </span>
-              <span class="price-currency hidden-on-mobile">CHF</span>
-            </a>
-          </li>
-        <% end %>
+      <% if controller_name != "orders" %>
+        <li class="nav-item basket-div d-flex align-items-center">
+          <a href="#" class="p-0 position-relative">
+            <%= image_tag 'icons/basket.png', class: "basket-icon" %>
+            <div class="items-number d-none">/</div>
+            <span class="price-text hidden-on-mobile">
+              <% if current_order_available? %>
+                <%= current_order.price %>
+              <% else %>
+                0.00
+              <% end %>
+            </span>
+            <span class="price-currency hidden-on-mobile">CHF</span>
+          </a>
+        </li>
+      <% end %>
     </ul>
   </div>
-<div class="css3sidebar sidebar-left" id="primary-sidebar">
-  <div class="menu-wrapper">
-  <div style="width: 100%; height: 100%; background-color: white;">
-    <% if controller_name != "orders" %>
-      <div class="py-2 zip-code" id="sidebar-zip-code" >
-        <p class="nav-link pb-0 text-secondary"><%= t 'shared.navbar.your_zip_code' %></p>
-        <div class="background zip-code-infos" href="#">
-        <p class="text"><i class="fas fa-map-marker-alt marker"></i><%= render 'shared/zip_code_div' %></p></div>
+  <div class="css3sidebar sidebar-left" id="primary-sidebar">
+    <div class="menu-wrapper">
+      <div style="width: 100%; height: 100%; background-color: white;">
+        <% if controller_name != "orders" %>
+          <div class="py-2 zip-code" id="sidebar-zip-code" >
+            <p class="nav-link pb-0 text-secondary"><%= t 'shared.navbar.your_zip_code' %></p>
+            <div class="background zip-code-infos" href="#">
+              <p class="text"><i class="fas fa-map-marker-alt marker"></i><%= render 'shared/zip_code_div' %></p>
+            </div>
+          </div>
+        <% end %>
+        <%= link_to t('shared.navbar.about'), about_path, class: "nav-link text-secondary" %>
+        <%= link_to t('shared.navbar.our_farmers'), farms_path, class: "nav-link text-secondary" %>
       </div>
-    <% end %>
-    <%= link_to t('shared.navbar.who_are_we'), team_path, class: "nav-link text-secondary" %>
-    <%= link_to t('shared.navbar.our_farmers'), farms_path, class: "nav-link text-secondary" %>
-  </div>
+    </div>
   </div>
 </div>
 </nav>

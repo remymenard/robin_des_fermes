@@ -11,17 +11,22 @@
 }
 
 #content {
-  padding-top: 57px;
+  padding-top: 105px;
 }
 .swal2-container {
   z-index: 999999 !important;
 }
 
-.navbar {
+#mainNavbar {
   position: fixed;
   top: 0;
-  width: 100%;
   z-index:100;
+  width: 100%;
+}
+
+.navbar {
+  width: 100%;
+  height: 64px;
   background-color: $primary;
   .add-gap {
     li {
@@ -166,5 +171,30 @@
   .zip-code-infos {
     background-color: $primary !important;
     opacity: 1;
+  }
+}
+
+#companion-infos-navbar {
+  height: 41px;
+  width: 100%;
+  background: #254638;
+  z-index:100;
+  display: flex;
+  a {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 41px;
+    &:hover {
+      path {
+        fill: white;
+        opacity: 0.85;
+      }
+      color: white;
+      opacity: 0.85;
+    }
+  }
+  svg {
+    margin-bottom: 3px;
   }
 }

@@ -12,8 +12,12 @@ Rails.application.routes.draw do
   scope '(:locale)', locale: /fr/ do
     root to: 'pages#home'
     get 'faq', to: 'pages#faq'
-    resources :farms, only: [:index, :show]
-    resources :products, only: [:show] do
+    resources :farms, only: [:index, :show] do
+      member do
+        patch :products_list
+      end
+    end
+    resources :products, only: [] do
       member do
         get :open_modal
       end
