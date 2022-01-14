@@ -166,7 +166,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
           f.input :category_ids, as: :check_boxes, collection: Category.all, label: false
         end
         panel "Produit(s) existant(s)" do
-          table_for resource.products do
+          table_for resource.products.order('name ASC') do
             column "Nom du produit", :name
             column "Catégorie du produit", :category, sortable: true
             column "Prix (CHF)", :price, sortable: true
