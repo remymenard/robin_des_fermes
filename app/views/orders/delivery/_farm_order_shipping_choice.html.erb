@@ -41,10 +41,27 @@
             <%= t('orders.delivery.national_delivery') %>
           <% end %>
         </span>
-        <span class="price">
-          <%= farm_order.delivery_price(current_user.zip_code).price %>
-          CHF
-        </span>
+        <% if current_user&.is_companion %>
+          <% if farm_order.farm.is_in_close_zone?(current_user.zip_code) %>
+            <span class="price free-delivery">
+              Livraison offerte
+            </span>
+          <% else %>
+            <div class="d-flex">
+              <div class="old-price-div">
+                <span class="price price--old"><%= FarmOrder::ShippingPrice.standard_not_companion.price %>CHF</span>
+                <span class="old-price-bar"></span>
+              </div>
+              <span class="price price--new"><%= FarmOrder::ShippingPrice.standard_companion.price %></span>
+              <span class="currency currency--new">CHF</span>
+            </div>
+          <% end %>
+        <% else %>
+          <span class="price">
+            <%= farm_order.delivery_price(current_user.zip_code).price %>
+            CHF
+          </span>
+        <% end %>
         <div>
           <% if farm_order.farm.is_in_close_zone?(get_zip_code_number) %>
             <p class="subtitle mb-1"><%= t('farms.show.delivery_date_near_farm') %>  <br>
