@@ -28,7 +28,11 @@
         } %>
       <label for="<%= dom_id(farm_order, :user_shipping_choice_delivery) %>" class="shipping-option <%= farm_order.standard_shipping || farm_order.express_shipping ? 'active' : '' %> mr-1" js-user-delivery-choice-delivery>
         <div class="shipping-icon mb-2">
-          <%= show_svg('icons/delivery-truck.svg') %>
+          <% if current_user&.is_companion %>
+            <%= show_svg('icons/delivery-truck-companion.svg') %>
+          <% else %>
+            <%= show_svg('icons/delivery-truck.svg') %>
+          <% end %>
         </div>
         <span class="title">
           <% if farm_order.farm.is_in_close_zone?(current_user.zip_code) %>
