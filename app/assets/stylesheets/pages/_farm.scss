@@ -83,6 +83,10 @@
     justify-content: space-around;
     margin-top: 30px;
 
+    p {
+      font-size: 11px;
+    }
+
     h3 {
       color: #25201d;
       font-size: 18px;
@@ -138,7 +142,7 @@
       text-align: center;
       margin-top: 20px;
       width: 30%;
-      height: 100px;
+      min-height: 100px;
 
       p {
         color: #7d7977;
