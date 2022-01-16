@@ -26,6 +26,16 @@
       <br>
       TOTAL <%= @order.price %><%= @order.price_currency %><br>
       <br>
+      <% unless @user.is_companion %>
+        <span class="green-text">
+          Tu n’es pas encore compagnon·ne? Bénéficie de la livraison régionale offerte, reste informé sur nos producteurs et participe aux événements Robin des Fermes.
+          <br>
+          <br>
+        </span>
+        <%= link_to "Je deviens compagnon", "", id: "companion-button", target: :_blank %>
+        <br>
+        <br>
+      <% end %>
       Nous te remercions d’avoir passé commande sur Robin des Fermes.<br>
       <br>
       Vaillantes salutations,<br>

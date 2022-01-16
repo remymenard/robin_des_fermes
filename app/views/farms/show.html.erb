@@ -1,3 +1,6 @@
+<% content_for :meta_title, "#{@farm.name} à #{@farm.city} - Vente directe sur Robin des Fermes" %>
+<% content_for :meta_description, @farm.description %>
+<% content_for :meta_image, url_for(@farm.farm_profil_picture) %>
 <div class="owl-carousel owl-theme">
   <% @farm.photos.each do |photo| %>
     <div class="item">
@@ -30,7 +33,7 @@
     </div>
     <div class="delivery">
       <h3><%= t('.minimum_order_title') %></h3>
-      <p><%= t('.minimum_order_description', price: @farm.minimum_order_price) %></p>
+      <p><%= t('.minimum_order_description_html', price: @farm.minimum_order_price) %></p>
     </div>
     <div class="address" style="<% if current_user&.is_companion %> background: url(<%= asset_path 'logos/logo_without_text.png' %>); background-repeat: no-repeat; <% end %>">
       <h3><%= t('.delivery') %> </h3>

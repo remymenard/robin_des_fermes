@@ -4,8 +4,15 @@
 <nav id="mainNavbar">
   <div id="companion-infos-navbar">
     <a href="">
-      <%= show_svg('icons/fast-delivery-truck.svg') %>
-      <b>Expédition régionale offerte</b> pour tous les compagnons Robin des Fermes</a>
+      <% if current_user&.is_companion %>
+        <%= show_svg('logos/logo_without_text.svg') %>
+        <b class="mx-2">Oyé compagnon·ne ! Expédition régionale offerte</b>
+        <%= show_svg('logos/logo_without_text_reversed.svg') %>
+      <% else %>
+        <%= show_svg('icons/fast-delivery-truck.svg') %>
+        <b>Expédition régionale offerte</b> pour tous les compagnons Robin des Fermes
+      <% end %>
+    </a>
   </div>
   <div class="navbar d-flex justify-content-between navbar-light shadow-sm px-5 py-2">
     <button class="navbar-toggler navbar-toggler-right border-0 mobile-dropdown-position fixed-top" type="button" data-toggle="css3sidebar" data-target="#primary-sidebar">

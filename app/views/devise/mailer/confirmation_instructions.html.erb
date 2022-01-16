@@ -1,5 +1,35 @@
-<p><%= t('.greeting', recipient: @email) %></p>
-
-<p><%= t('.instruction') %></p>
-
-<p><%= link_to t('.action'), user_confirmation_url(confirmation_token: @token) %></p>
+<% user = User.find_by(email: @email) %>
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <%= render "shared/mailer/styling" %>
+  </head>
+  <body>
+    <%= render "shared/mailer/header" %>
+    <p class="content">
+      Bonjour <%= user.first_name %>,
+      <br>
+      <br>
+      Bienvenue dans la bande de Robin des Fermes !
+      <br>
+      <br>
+      Tu es au bon endroit pour soutenir nos producteurs et déguster leurs excellents produits.
+      <br>
+      <br>
+      Tu peux confirmer ton courriel grâce au lien ci-dessous : <br>
+      <br>
+      <%= link_to "Confirmer mon courriel", user_confirmation_url(confirmation_token: @token), id: "companion-button", target: :_blank %>
+      <br>
+      <br>
+      Tu peux également devenir compagnon afin de bénéficier de livraisons offertes, rester informé sur nos producteurs et participer aux événements Robin des Fermes.
+      <br>
+      <br>
+      A bientôt <%= user.first_name %>
+      <br>
+      <br>
+      La bande de Robin des Fermes.
+    </p>
+    <br>
+    <%= render "shared/mailer/footer" %>
+  </body>
+</html>
