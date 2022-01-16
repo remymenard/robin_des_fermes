@@ -20,7 +20,7 @@
 #mainNavbar {
   position: fixed;
   top: 0;
-  z-index:100;
+  z-index: 10002;
   width: 100%;
 }
 
@@ -51,7 +51,7 @@
   .profile-icon {
     height: 24px;
     padding: 0 0;
-      @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(md) {
       margin-top: 10px;
     }
   }
@@ -66,11 +66,13 @@
     }
   }
   /* Font Awesome Icons have variable width. Added fixed width to fix that.*/
-  .icon-width { width: 2rem;}
+  .icon-width {
+    width: 2rem;
+  }
 
   p {
     margin-bottom: 0px;
-    color:white;
+    color: white;
     font-size: 14px;
   }
   .zip-code {
@@ -97,7 +99,6 @@
     .marker {
       margin-right: 8px;
     }
-
   }
   .text {
     font-weight: bold;
@@ -110,13 +111,13 @@
     font-size: 25px;
     line-height: 25px;
     vertical-align: bottom;
-    color: #B2D7C5;
+    color: #b2d7c5;
   }
   .price-currency {
     font-family: 'Mulish', sans-serif;
     font-weight: bold;
     font-size: 11px;
-    color: #B2D7C5;
+    color: #b2d7c5;
   }
   .basket-div {
     display: flex;
@@ -132,7 +133,7 @@
     left: 10px;
     padding: 0px 6px;
     bottom: 25px;
-    background: #FF4136;
+    background: #ff4136;
     font-weight: bold;
     font-size: 11px;
     color: white;
@@ -154,7 +155,7 @@
 
   .logout {
     font-size: 26px;
-    color: #B2D7C5;
+    color: #b2d7c5;
   }
 }
 .css3sidebar {
@@ -163,7 +164,7 @@
 .menu-wrapper {
   width: 57% !important;
   a {
-    color: #7C7977;
+    color: #7c7977;
   }
   .secondary-link {
     font-size: 11px;
@@ -178,7 +179,7 @@
   height: 41px;
   width: 100%;
   background: #254638;
-  z-index:100;
+  z-index: 100;
   display: flex;
   a {
     width: 100%;
