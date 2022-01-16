@@ -36,8 +36,8 @@
                 </div>
                 <div class="cards-informations">
                   <div class="d-flex address">
-                    <%= image_tag "icons/marker_cards_farms.png", class: "marker" %>
-                    <p><%= farm.zip_code.upcase  %> <%= farm.city.upcase  %></p>
+                    <%= image_tag @near_farm_icon_url, class: "marker" %>
+                    <p class="<%= "green-text" if current_user&.is_companion %>"><%= farm.zip_code.upcase  %> <%= farm.city.upcase  %></p>
                   </div>
                   <div class="name d-flex">
                     <h6> <%= farm.name  %></h6>
