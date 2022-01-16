@@ -1,3 +1,6 @@
+<% content_for :meta_title, "#{@farm.name} à #{@farm.city} - Vente directe sur Robin des Fermes" %>
+<% content_for :meta_description, @farm.description %>
+<% content_for :meta_image, url_for(@farm.farm_profil_picture) %>
 <div class="owl-carousel owl-theme">
   <% @farm.photos.each do |photo| %>
     <div class="item">
