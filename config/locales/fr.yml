@@ -496,5 +496,5 @@ fr:
     title: 'Montant minimum de commande non atteint'
     message_html: 'Il manque <b>%{missing_price} CHF</b> pour atteindre le minimum de commande.'
     complete_message_html: 'Il manque <b>%{missing_price} CHF</b> pour atteindre le minimum de commande de ce producteur.'
-    message_with_farm_html: 'Il vous manque <b>%{missing_price} CHF</b> pour atteindre le minimum de commande de %{farm_name}.'
+    message_with_farm_html: 'Il vous manque <b>%{missing_price} CHF</b> pour atteindre le minimum de commande de <b>%{farm_name}</b>.'
     return_button: 'Retourner chez le producteur'

@@ -88,8 +88,14 @@ body {
   display: none;
 }
 
-.custombox-open {
-  z-index: 9999999;
+.custombox-lock {
+  #mainNavbar, .subcategories-header {
+    z-index: 1;
+  }
+}
+
+.loadingoverlay {
+  z-index: 10000 !important;
 }
 
 .custombox-content > * {
