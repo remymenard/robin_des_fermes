@@ -25,7 +25,7 @@ function initSubcategories() {
 
 function sendAjaxRequest() {
   $('html, body').animate({
-    scrollTop: parseInt($(".products-listing").offset().top) - 200
+    scrollTop: parseInt($(".products-listing").offset().top) - 250
   }, 1000);
   $(".all-card-product").LoadingOverlay("show", {
     imageColor: "#339E72"
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', initSubcategories)
 var stickyOffset;
 
 function calculateOffset() {
-  stickyOffset = $('.subcategories-header').offset().top - 50;
+  stickyOffset = $('.subcategories-header').offset().top - 105;
 }
 
 window.addEventListener("load", function (event) {

@@ -88,6 +88,10 @@ body {
   display: none;
 }
 
+.custombox-open {
+  z-index: 9999999;
+}
+
 .custombox-content > * {
   max-width: 100% !important;
   max-height: 100% !important;

@@ -255,8 +255,11 @@
 
 .subcategories-list {
   display: flex;
+  width: 100%;
   align-items: center;
-  width: 50%;
+  @media screen and (min-width: 901px) {
+    width: 50%;
+  }
   overflow: auto;
   white-space: nowrap;
 }
@@ -283,6 +286,15 @@
   z-index: 10000 !important;
 }
 
+.subcategories-container {
+  @media screen and (max-width: 901px) {
+    margin-top: -52px;
+    flex-direction: column-reverse;
+  }
+  display: flex;
+  justify-content: space-between;
+}
+
 .subcategories-header {
   border-bottom: 1px solid #faf7f3;
   margin-top: 700px;
@@ -301,7 +313,7 @@
   background-color: white;
   &--sticky {
     position: fixed;
-    margin-top: 56px;
+    margin-top: 105px;
     top: 0;
     left: 0;
   }
