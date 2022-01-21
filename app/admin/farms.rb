@@ -4,7 +4,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
 
   permit_params :active, :minimum_order_price, :minimum_order_price_cents, :description_title, :name, :description, :address, :lagitude, :longitude, :photo_portrait, :farm_profil_picture, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accepts_delivery, photos: [], labels: [], offices: [],
                 opening_hours_attributes: [:id, :_destroy, :day, :opens, :closes],
-                products_attributes: [:id, :active, :available_for_preorder, :name, :available, :category_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning, :preorder_shipping_starting_at, :total_weight, label:[] ],
+                products_attributes: [:id, :active, :available_for_preorder, :name, :available, :category_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning,:product_subcategory_id, :preorder_shipping_starting_at, :total_weight, label:[] ],
                 categories_attributes: [:id, :name],
                 category_ids: [],
                 office_ids: [],
@@ -169,6 +169,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
           table_for resource.products.order('name ASC') do
             column "Nom du produit", :name
             column "Catégorie du produit", :category, sortable: true
+            column "Sous-catégorie du produit", :product_subcategory, sortable: true
             column "Prix (CHF)", :price, sortable: true
             column "Actif", :active
             column do |produit|
@@ -189,6 +190,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
               product.input :available, label: "Disponible ?"
               product.input :name, label: "Nom"
               product.input :category_id, as: :select, collection: Category.all, label: "Catégorie"
+              product.input :product_subcategory_id, as: :select, collection: resource.product_subcategories, label: "Sous-Catégorie"
               product.input :price_cents, label: "Prix CHF"
               product.input :display_minimum_weight, label: "Afficher poids Minimum ?"
               product.input :minimum_weight, label: "Poids ou volume"
