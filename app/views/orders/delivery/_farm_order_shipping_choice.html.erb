@@ -24,7 +24,7 @@
         data: {
           takeaway: FarmOrder::ShippingPrice.takeaway.price.to_s,
           delivery: farm_order.delivery_price(current_user.zip_code).price.to_s,
-          delivery_not_companion: farm_order.farm.is_in_close_zone?(current_user.zip_code) ? FarmOrder::ShippingPrice.express_not_companion.price.to_s : FarmOrder::ShippingPrice.standard_not_companion.price.to_s
+          delivery_not_companion: farm_order.farm.is_in_close_zone?(current_user.zip_code) ? (FarmOrder::ShippingPrice.express_not_companion.price - FarmOrder::ShippingPrice.express_companion.price).to_s : (FarmOrder::ShippingPrice.standard_not_companion.price - FarmOrder::ShippingPrice.standard_companion.price).to_s
         } %>
       <label for="<%= dom_id(farm_order, :user_shipping_choice_delivery) %>" class="shipping-option <%= farm_order.standard_shipping || farm_order.express_shipping ? 'active' : '' %> mr-1" js-user-delivery-choice-delivery>
         <div class="shipping-icon mb-2">
@@ -90,7 +90,7 @@
         data: {
           takeaway: FarmOrder::ShippingPrice.takeaway.price.to_s,
           delivery: farm_order.delivery_price(current_user.zip_code).price.to_s,
-          delivery_not_companion: farm_order.farm.is_in_close_zone?(current_user.zip_code) ? FarmOrder::ShippingPrice.express_not_companion.price.to_s : FarmOrder::ShippingPrice.standard_not_companion.price.to_s
+          delivery_not_companion: farm_order.farm.is_in_close_zone?(current_user.zip_code) ? (FarmOrder::ShippingPrice.express_not_companion.price - FarmOrder::ShippingPrice.express_companion.price).to_s : (FarmOrder::ShippingPrice.standard_not_companion.price - FarmOrder::ShippingPrice.standard_companion.price).to_s
         } %>
       <label for="<%= dom_id(farm_order, :user_shipping_choice_takeaway) %>" class="shipping-option <%= farm_order.takeaway_at_farm ? 'active' : '' %> mr-1" js-user-delivery-choice-takeaway>
         <div class="shipping-icon mb-2">
