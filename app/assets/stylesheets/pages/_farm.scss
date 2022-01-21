@@ -288,7 +288,7 @@
 
 .subcategories-container {
   @media screen and (max-width: 901px) {
-    margin-top: -52px;
+    margin-top: -44px;
     flex-direction: column-reverse;
   }
   display: flex;
@@ -361,6 +361,28 @@
       margin-top: 346px;
     }
   }
+}
+
+.select2-dropdown {
+  z-index: 999999 !important;
+}
+
+.select2 {
+  span {
+    font-weight: normal !important;
+  }
+}
+
+.select2-selection {
+  border-color: #f0ece8 !important;
+  span{
+    color: #7c7977 !important;
+    font-size: 14px !important;
+  }
+}
+
+.select2-results__option--highlighted {
+  background-color: $primary !important;
 }
 
 .order-dropdown {

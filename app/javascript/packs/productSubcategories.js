@@ -1,6 +1,12 @@
 require("gasparesganga-jquery-loading-overlay");
+import 'select2';
 
 function initSubcategories() {
+  $('.order-dropdown').select2({
+    minimumResultsForSearch: -1
+  }).on('select2:select', function (event) {
+    sendAjaxRequest();
+  })
   $('.subcategory-name').on('click', (event) => {
     event.preventDefault();
     if ($(event.target).hasClass('subcategory-name--active')) return;
@@ -20,7 +26,6 @@ function initSubcategories() {
     sendAjaxRequest();
   });
 
-  $('.order-dropdown').on('change', sendAjaxRequest)
 }
 
 function sendAjaxRequest() {
