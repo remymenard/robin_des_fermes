@@ -55,7 +55,7 @@
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <%= hidden_field_tag :subcategory_id %>
     <h2 class="text-left"><%= t '.product_category.title' %></h2>
-    <div class="d-flex justify-content-between">
+    <div class="subcategories-container">
       <div class="subcategories-list">
         <a href="" class="subcategory-name subcategory-name--default subcategory-name--active"><%= t '.product_category.all_products' %></a>
         <% @farm.product_subcategories.each do |subcategory| %>
@@ -65,14 +65,14 @@
       <div class="takeaway-only">
         <%= check_box_tag :takeaway_only, true, false, disabled: false, class: "d-none" %>
         <% if @farm.accepts_take_away %>
-          <%= label_tag :takeaway_only, nil, class: "m-0" do %>
+          <%= label_tag :takeaway_only, nil, class: "m-0 mr-2" do %>
             <%= show_svg('icons/delivery-bag.svg') %>
             <span>A retirer à la ferme uniquement</span>
           <% end %>
         <% end %>
         <%= select_tag :order,
             options_for_select([ [t('.product_category.by_name'), "name"], [t('.product_category.by_price'), "price"] ]),
-            class: "form-control custom-select order-dropdown",
+            class: "form-control custom-select order-dropdown select2",
             prompt: t('.product_category.by_default')
           %>
       </div>
