@@ -26,7 +26,6 @@ require("channels")
 // External imports
 import "bootstrap";
 import 'select2'
-import 'select2/dist/css/select2.css'
 
 import { initMapbox } from '../plugins/init_mapbox';;
 import { initAutocomplete } from '../plugins/init_autocomplete';
