@@ -14,7 +14,7 @@
       <br>
       Date de la commande: <%= Date.current.strftime('%d/%m/%y') %><br>
       Mode de livraison: <%= @order.shipping_choice_name %><br>
-      Date de livraison estimée: <%= I18n.l((Date.current + @order.farm.delivery_delay.days), format: "%d/%m/%y", locale: :'fr') %><br>
+      Date de livraison estimée: <%= I18n.l(@order.estimated_delivery_date, format: "%d/%m/%y", locale: :'fr') %><br>
       <br>
       Adresse de livraison :<br>
       <%= @user.first_name %> <%= @user.last_name %><br>
@@ -28,6 +28,16 @@
       <br>
       TOTAL <%= @order.price %><%= @order.price_currency %><br>
       <br>
+      <% unless @user.is_companion %>
+        <span class="green-text">
+          Tu n’es pas encore compagnon·ne? Bénéficie de la livraison régionale offerte, reste informé sur nos producteurs et participe aux événements Robin des Fermes.
+          <br>
+          <br>
+        </span>
+        <%= link_to "Je deviens compagnon", "", id: "companion-button", target: :_blank %>
+        <br>
+        <br>
+      <% end %>
       Nous te remercions d’avoir passé commande sur Robin des Fermes.<br>
       <br>
       Vaillantes salutations,<br>

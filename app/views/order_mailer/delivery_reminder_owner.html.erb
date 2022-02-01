@@ -9,16 +9,21 @@
       Salut <%= @owner.first_name %>,<br>
       <br>
       Nous te rappelons que le délai de la commande  n°<%= @order.id %> arrive le<br>
-      <%= I18n.l((@order.waiting_for_shipping_at + @order.farm.delivery_delay.days), format: "%d/%m/%y", locale: :'fr') %>. Voici un récapitulatif de la commande.<br>
+      <%= I18n.l(@order.estimated_delivery_date, format: "%d/%m/%y", locale: :'fr') %>. Voici un récapitulatif de la commande.<br>
       <br>
       Date de la commande: <%= @order.waiting_for_shipping_at.strftime('%d/%m/%y') %><br>
       Mode de livraison: <%= @order.shipping_choice_name %><br>
-      Date de livraison estimée: <%= I18n.l((@order.waiting_for_shipping_at + @order.farm.delivery_delay.days), format: "%d/%m/%y", locale: :'fr') %><br>
+      <% if @order.express_shipping %>
+        Office de distribution: <%= @order.farm_office.office.name %><br>
+      <% end %>
+      Date de livraison estimée: <%= I18n.l(@order.estimated_delivery_date, format: "%d/%m/%y", locale: :'fr') %><br>
       <br>
       Destinataire:<br>
       <%= @user.first_name %> <%= @user.last_name %><br>
       <%= @user.address_line_1 %><br>
       <%= @user.zip_code %> <%= @user.city %><br>
+      <%= @user.number_phone %><br>
+      <%= @user.email %><br>
       <br>
       Contenu de la commande:<br>
       <% @order.order_line_items.each do |item| %>

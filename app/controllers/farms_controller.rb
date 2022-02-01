@@ -1,14 +1,34 @@
 class FarmsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :index, :show ]
+  skip_before_action :authenticate_user!, only: [ :index, :show, :products_list ]
   include ZipCodeHelper
 
   def index
     @categories = Category.all
 
-    @farms     = Farm.all
+    @zip_code = get_zip_code_number
+
+    @url_data = {"Postal_Code" => @zip_code.to_i}.to_json
+
+    @headers = {
+      "X-Parse-Application-Id" => ENV['ZIP_CODE_CONVERTER_APPLICATION_ID'],
+      "X-Parse-REST-API-Key" => ENV['ZIP_CODE_CONVERTER_API_KEY']
+    }
+
+    # HTTP CALL TO GET THE LAT LNG FROM A ZIP CODE
+    @response = HTTParty.get("https://parseapi.back4app.com/classes/SwitzerlandZipCodes_Switzerland_Zip_Code?limit=1&keys=Postal_Code,Latitude,Longitude&where=#{@url_data}",
+      headers:    @headers
+    )
+
+    unless @response["results"].empty?
+      latitude = @response["results"][0]["Latitude"]
+      longitude = @response["results"][0]["Longitude"]
+      @farms     = Farm.near([latitude, longitude], 200000, units: :km)
+    else
+      @farms = Farm.all
+    end
+
     @far_farms = Farm.none
 
-    @zip_code = get_zip_code_number
 
     if @zip_code.present?
       @far_farms = @farms.where.not("regions && ARRAY[?] ", @zip_code)
@@ -41,12 +61,14 @@ class FarmsController < ApplicationController
     @farms = policy_scope(@farms).active
     @far_farms = policy_scope(@far_farms).active
 
+    @near_farm_icon_url = current_user&.is_companion ? 'icons/marker-green.png' : 'icons/marker-purple.png'
+
     @nearby_markers = @farms.geocoded.map do |farm|
       {
         lat: farm.latitude,
         lng: farm.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { farm: farm }),
-        image_url: helpers.asset_url('icons/marker-purple.png')
+        image_url: helpers.asset_url(@near_farm_icon_url)
       }
     end
 
@@ -58,6 +80,47 @@ class FarmsController < ApplicationController
         image_url: helpers.asset_url('icons/marker-orange.png')
       }
     end
+    if params["category"].nil? && params["labels"].nil?
+      $tracker.track(session[:mixpanel_id], 'Search Farms', {
+        'Zip Code' => get_zip_code_number,
+        'Results Count' => @farms.size + @far_farms.size
+      })
+    else
+      mixpanel_params = {
+        'Zip Code' => get_zip_code_number,
+        'Results Count' => @farms.size + @far_farms.size
+      }
+      mixpanel_params["Labels Name"] = params["labels"] if params["labels"].present?
+      mixpanel_params["Categories Name"] = params["category"] if params["category"].present?
+      $tracker.track(session[:mixpanel_id], 'Refine Search Farms', mixpanel_params)
+    end
+  end
+
+  def products_list
+    puts "called"
+    @farm = Farm.friendly.find(params[:id])
+    authorize @farm
+    subcategory_id = params[:subcategory_id]
+    if subcategory_id.blank?
+      products_list = @farm.products.available
+    else
+      subcategory = ProductSubcategory.find(subcategory_id)
+      return if subcategory.farm != @farm
+      products_list = subcategory.products.available
+    end
+
+    case params[:order]
+    when "name"
+      products_list = products_list.sort_by{ |e| e.name.downcase }
+    when "price"
+      products_list = products_list.reorder(:price_cents)
+    end
+
+    unless params[:takeaway_only].blank?
+      products_list = products_list.fresh
+    end
+
+    render partial: 'shared/products_list', locals: {products: products_list}
   end
 
   def show
@@ -67,14 +130,16 @@ class FarmsController < ApplicationController
     @far_farms = Farm.none
     @farm_show = @farms.where("farms.slug = ? ", params[:id])
 
-    @date = Date.current
+    @date = Date.current + 1
 
     @zip_code = get_zip_code_number
 
     @near_farm = @farm.regions.include?(@zip_code)
 
+    near_farm_icon = current_user&.is_companion ? 'icons/marker-green.png' : 'icons/marker-purple.png'
+
     marker_icon_path = if @near_farm
-      'icons/marker-purple.png'
+      near_farm_icon
     else
       'icons/marker-orange.png'
     end
@@ -97,6 +162,25 @@ class FarmsController < ApplicationController
     end
 
     authorize @farm
+    mixpanel_params = {
+      'Farm Name' => @farm.name,
+      'Farm Labels' => @farm.labels,
+      'Farm Categories' => @farm.categories.pluck(:name),
+      'Retrait A La Ferme?' => @farm.accepts_take_away
+    }
+    if @farm.accepts_delivery
+      if @farm.is_in_close_zone?(get_zip_code_number)
+        mixpanel_params["Distrubution Régionale?"] = true
+        mixpanel_params["Expédition Nationale?"] = false
+      else
+        mixpanel_params["Distrubution Régionale?"] = false
+        mixpanel_params["Expédition Nationale?"] = true
+      end
+    else
+      mixpanel_params["Distrubution Régionale?"] = false
+      mixpanel_params["Expédition Nationale?"] = false
+    end
+    $tracker.track(session[:mixpanel_id], 'Show Farm', mixpanel_params)
   end
 
   private

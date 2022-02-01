@@ -5,7 +5,7 @@
 
     <div class="d-flex all-partners">
 
-      <div class="partner">
+      <div class="partner blanc">
         <%= link_to "https://blanc-sa.ch/", target: :_blank do %>
           <%= image_tag "partners/blanc.png", alt: "Blanc & Cie SA" %>
           <h5>Blanc & Cie SA</h5>
@@ -75,6 +75,22 @@
           <h5>Romande Energie</h5>
         <% end %>
         <h6><%= t('.romande-energie') %></h6>
+      </div>
+
+      <div class="partner partner-eve-senn">
+        <%= link_to "https://www.evesenn.ch/", target: :_blank do %>
+          <%= image_tag "partners/eve-senn.png", alt: "Eve Senn" %>
+          <h5>Eve Senn</h5>
+        <% end %>
+        <h6><%= t('.eve-senn') %></h6>
+      </div>
+
+      <div class="partner">
+        <%= link_to "http://www.danielruch.ch/", target: :_blank do %>
+          <%= image_tag "partners/ruch-sa.png", alt: "Ruch SA" %>
+          <h5>Entreprise forestière Daniel Ruch SA</h5>
+        <% end %>
+        <h6><%= t('.ruch-sa') %></h6>
       </div>
 
     </div>

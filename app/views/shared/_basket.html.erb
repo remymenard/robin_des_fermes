@@ -7,50 +7,56 @@
     <% if current_order.order_line_items.empty? %>
       <p class="empty-basket m-0"><%= t "basket.empty" %></p>
     <% else %>
-      <% current_order.order_line_items.order("created_at desc").each do |product_basket| %>
-        <% product = product_basket.product %>
-        <div class="product-basket">
-          <%= cl_image_tag product.photo.key, class: "product-image" %>
-          <div class="product-infos">
-            <div class="left-column">
-              <div class="product-title">
-                <%= product.name %>
-              </div>
-              <p class="infos">
-                <%= product.subtitle %>
-              </p>
-              <div>
-                <div class="counter">
-                <% if product_basket.quantity <= 1 %>
-                  <%= image_tag 'icons/remove_item.png', class: "icons decrement-button disabled-button" %>
-                <% else %>
-                  <%= link_to image_tag 'icons/remove_item.png', class: "icons decrement-button", data: {path: decrement_basket_order_line_item_path(product), token: form_authenticity_token} %>
-                <% end %>
-                  <p class="item-count">
-                    <%= product_basket.quantity %>
-                  </p>
-                  <%= link_to image_tag 'icons/add_item.png', class: "icons increment-button", data: {path: increment_basket_order_line_item_path(product), token: form_authenticity_token} %>
+      <% current_order.farm_orders.order("created_at desc").each do |farm_order| %>
+        <div class="basket-farm-name"><%= farm_order.farm.name %></div>
+        <% unless farm_order.farm.minimum_order_reached?(farm_order) %>
+          <div class="order-missing-price"><%= t("missing_price.message_html", missing_price: farm_order.farm.minimum_order_missing_price(farm_order)) %></div>
+        <% end %>
+        <% farm_order.order_line_items.order("created_at desc").each do |product_basket| %>
+          <% product = product_basket.product %>
+          <div class="product-basket">
+            <%= cl_image_tag product.photo.key, class: "product-image" %>
+            <div class="product-infos">
+              <div class="left-column">
+                <div class="product-title">
+                  <%= product.name %>
+                </div>
+                <p class="infos">
+                  <%= product.subtitle %>
+                </p>
+                <div>
+                  <div class="counter">
+                    <% if product_basket.quantity <= 1 %>
+                      <%= image_tag 'icons/remove_item.png', class: "icons decrement-button disabled-button" %>
+                    <% else %>
+                      <%= link_to image_tag 'icons/remove_item.png', class: "icons decrement-button", data: {path: decrement_basket_order_line_item_path(product), token: form_authenticity_token} %>
+                    <% end %>
+                    <p class="item-count">
+                      <%= product_basket.quantity %>
+                    </p>
+                    <%= link_to image_tag 'icons/add_item.png', class: "icons increment-button", data: {path: increment_basket_order_line_item_path(product), token: form_authenticity_token} %>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="right-column">
-            <div>
-              <div class="d-flex text-right justify-content-end">
-                <p class="price mb-0"><%= product.price %></p>
-                <p class="currency mb-0"><%= product.price_currency %></p>
+              <div class="right-column">
+                <div>
+                  <div class="d-flex text-right justify-content-end">
+                    <p class="price mb-0"><%= product.price * product_basket.quantity %></p>
+                    <p class="currency mb-0"><%= product.price_currency %></p>
+                  </div>
+                  <p class="infos">
+                    <% if product.price_per_unit_cents != 0 %>
+                      (<%= t "basket.price_per_unit_first_word" %> <%= product.price_per_unit %> <%= product.price_per_unit_currency %>/<%= product.unit %>)
+                    <% end %>
+                  </p>
+                </div>
+                <p class="m-0">
+                  <%= link_to "Supprimer", "/", class: "remove-item-button", data: {path: basket_order_line_item_path(product_basket), token: form_authenticity_token} %>
+                </p>
               </div>
-              <p class="infos">
-                <% if product.price_per_unit_cents != 0 %>
-                  (<%= t "basket.price_per_unit_first_word" %> <%= product.price_per_unit %> <%= product.price_per_unit_currency %>/<%= product.unit %>)
-                <% end %>
-              </p>
-            </div>
-            <p class="m-0">
-              <%= link_to "Supprimer", "/", class: "remove-item-button", data: {path: basket_order_line_item_path(product_basket), token: form_authenticity_token} %>
-            </p>
             </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
     <% end %>
   <% else %>

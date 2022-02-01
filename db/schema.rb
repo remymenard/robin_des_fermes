@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_11_155748) do
+ActiveRecord::Schema.define(version: 2022_01_09_155455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,18 @@ ActiveRecord::Schema.define(version: 2021_03_11_155748) do
     t.index ["farm_id"], name: "index_farm_categories_on_farm_id"
   end
 
+  create_table "farm_offices", force: :cascade do |t|
+    t.bigint "office_id", null: false
+    t.bigint "farm_id", null: false
+    t.integer "delivery_day"
+    t.integer "delivery_deadline_day"
+    t.time "delivery_deadline_hour"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["farm_id"], name: "index_farm_offices_on_farm_id"
+    t.index ["office_id"], name: "index_farm_offices_on_office_id"
+  end
+
   create_table "farm_orders", force: :cascade do |t|
     t.boolean "takeaway_at_farm"
     t.boolean "standard_shipping"
@@ -90,11 +102,14 @@ ActiveRecord::Schema.define(version: 2021_03_11_155748) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "shipping_price_cents", default: 0, null: false
     t.string "shipping_price_currency", default: "CHF", null: false
-    t.string "status", default: "waiting"
-    t.text "comment"
     t.datetime "waiting_for_preorder_at"
     t.string "confirm_shipped_token"
+    t.string "status", default: "waiting"
+    t.text "comment"
+    t.bigint "farm_office_id"
+    t.datetime "estimated_delivery_date"
     t.index ["farm_id"], name: "index_farm_orders_on_farm_id"
+    t.index ["farm_office_id"], name: "index_farm_orders_on_farm_office_id"
     t.index ["order_id"], name: "index_farm_orders_on_order_id"
   end
 
@@ -118,14 +133,16 @@ ActiveRecord::Schema.define(version: 2021_03_11_155748) do
     t.text "long_description"
     t.boolean "accepts_delivery", default: false
     t.integer "delivery_delay"
-    t.boolean "active", default: false
     t.text "labels", array: true
+    t.boolean "active", default: false
     t.string "photo_portrait"
-    t.text "offices", default: [], array: true
+    t.text "old_offices", default: [], array: true
     t.string "slug"
     t.string "farmer_number"
     t.string "farm_profil_picture"
     t.string "description_title"
+    t.integer "minimum_order_price_cents", default: 0
+    t.string "minimum_order_price_currency", default: "CHF", null: false
     t.index ["slug"], name: "index_farms_on_slug", unique: true
     t.index ["user_id"], name: "index_farms_on_user_id"
   end
@@ -139,6 +156,13 @@ ActiveRecord::Schema.define(version: 2021_03_11_155748) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "offices", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.text "regions", default: [], array: true
   end
 
   create_table "opening_hours", force: :cascade do |t|
@@ -178,6 +202,14 @@ ActiveRecord::Schema.define(version: 2021_03_11_155748) do
     t.index ["buyer_id"], name: "index_orders_on_buyer_id"
   end
 
+  create_table "product_subcategories", force: :cascade do |t|
+    t.string "name"
+    t.bigint "farm_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["farm_id"], name: "index_product_subcategories_on_farm_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.bigint "farm_id", null: false
     t.string "name"
@@ -202,8 +234,10 @@ ActiveRecord::Schema.define(version: 2021_03_11_155748) do
     t.string "total_weight"
     t.date "preorder_shipping_starting_at"
     t.boolean "available_for_preorder", default: false
+    t.bigint "product_subcategory_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["farm_id"], name: "index_products_on_farm_id"
+    t.index ["product_subcategory_id"], name: "index_products_on_product_subcategory_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -228,6 +262,8 @@ ActiveRecord::Schema.define(version: 2021_03_11_155748) do
     t.boolean "admin"
     t.string "address_line_2"
     t.string "number_phone"
+    t.date "companion_starting_date"
+    t.date "companion_ending_date"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -238,6 +274,9 @@ ActiveRecord::Schema.define(version: 2021_03_11_155748) do
   add_foreign_key "delivery_choices", "orders"
   add_foreign_key "farm_categories", "categories"
   add_foreign_key "farm_categories", "farms"
+  add_foreign_key "farm_offices", "farms"
+  add_foreign_key "farm_offices", "offices"
+  add_foreign_key "farm_orders", "farm_offices"
   add_foreign_key "farm_orders", "farms"
   add_foreign_key "farm_orders", "orders"
   add_foreign_key "farms", "users"
@@ -248,4 +287,5 @@ ActiveRecord::Schema.define(version: 2021_03_11_155748) do
   add_foreign_key "orders", "users", column: "buyer_id"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "farms"
+  add_foreign_key "products", "product_subcategories"
 end

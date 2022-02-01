@@ -2,11 +2,15 @@ ActiveAdmin.register Farm, as: "Exploitations" do
 
   before_action :remove_password_params_if_blank, only: [:update]
 
-  permit_params :active, :description_title, :name, :description, :address, :lagitude, :longitude, :photo_portrait, :farm_profil_picture, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accepts_delivery, photos: [], labels: [], offices: [], regions: [],
-                opening_hours_attributes: [:id, :day, :opens, :closes],
-                products_attributes: [:id, :active, :available_for_preorder, :name, :available, :category_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning, :preorder_shipping_starting_at, :total_weight, label:[] ],
+  permit_params :active, :minimum_order_price, :minimum_order_price_cents, :description_title, :name, :description, :address, :lagitude, :longitude, :photo_portrait, :farm_profil_picture, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accepts_delivery, photos: [], labels: [], offices: [],
+                opening_hours_attributes: [:id, :_destroy, :day, :opens, :closes],
+                products_attributes: [:id, :active, :available_for_preorder, :name, :available, :category_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning,:product_subcategory_id, :preorder_shipping_starting_at, :total_weight, label:[] ],
                 categories_attributes: [:id, :name],
                 category_ids: [],
+                office_ids: [],
+                offices_attributes: [:id],
+                farm_offices_attributes: [:id, :_destroy, :office_id, :delivery_day, :delivery_deadline_day, :delivery_deadline_hour],
+                product_subcategories_attributes: [:id, :_destroy, :name],
                 user_attributes: [:id, :email, :first_name, :last_name, :number_phone, :wants_to_subscribe_mailing_list, :photo, :password, :title, :password_confirmation, :address_line_1, :city, :zip_code, :farm_id]
 
   actions :all
@@ -21,7 +25,10 @@ ActiveAdmin.register Farm, as: "Exploitations" do
     column "Mail", :user do |col|
       col.user.email
     end
-    column "Communes", :regions
+
+    column "Offices", :office do |col|
+      col.offices
+    end
     column "Délais préparation", :delivery_delay
   end
 
@@ -98,12 +105,10 @@ ActiveAdmin.register Farm, as: "Exploitations" do
           end
           inputs "Retrait a la ferme" do
             input :accepts_take_away, label: "Accepte le retrait à la ferme"
-            f.has_many :opening_hours, heading: "", new_record: 'Ajouter une horaire' do |opening|
+            f.has_many :opening_hours, heading: "", allow_destroy: true, new_record: 'Ajouter une horaire' do |opening|
 
               opening.inputs do
-                days = [["Lundi", 1], ["Mardi", 2], ["Mercredi", 3], ["Jeudi", 4], ["Vendredi", 5], ["Samedi", 6], ["Dimanche", 0]]
-
-                opening.input :day,    label: "Jour", as: :select, collection: days
+                opening.input :day,    label: "Jour", as: :select, collection: Farm::DAYS
                 opening.input :opens,  label: "Ouverture"
                 opening.input :closes, label: "Fermeture"
               end
@@ -122,8 +127,19 @@ ActiveAdmin.register Farm, as: "Exploitations" do
             input :opening_time, label: false
           end
 
-          inputs 'Offices de livraison' do
-            input :offices, label: false, as: :check_boxes, collection: Farm::OFFICES.keys
+          inputs "Commande minimum (laisser vide si la ferme n'en a pas)" do
+            input :minimum_order_price, label: false
+          end
+
+          panel 'Offices de livraison' do
+            f.has_many :farm_offices, heading: false, new_record: 'Ajouter un office', allow_destroy: true do |farm_office|
+              farm_office.inputs do
+                farm_office.input :office_id, as: :select, collection: Office.all
+                farm_office.input :delivery_day, label: "Jour de distribution", as: :select, collection: Farm::DAYS
+                farm_office.input :delivery_deadline_day, label: "Délai commande J", as: :select, collection: Farm::DAYS
+                farm_office.input :delivery_deadline_hour, label: "Délai commande H"
+              end
+            end
           end
 
           inputs 'Photo profil' do
@@ -146,17 +162,25 @@ ActiveAdmin.register Farm, as: "Exploitations" do
         end
       end
       tab 'Etape 4' do
-        panel 'Ajouter les catégorie' do
+        panel 'Ajouter les catégories' do
           f.input :category_ids, as: :check_boxes, collection: Category.all, label: false
         end
         panel "Produit(s) existant(s)" do
-          table_for resource.products do
+          table_for resource.products.order('name ASC') do
             column "Nom du produit", :name
             column "Catégorie du produit", :category, sortable: true
+            column "Sous-catégorie du produit", :product_subcategory, sortable: true
             column "Prix (CHF)", :price, sortable: true
             column "Actif", :active
             column do |produit|
               link_to 'Modifier', edit_admin_produit_path(produit), data: {confirm: 'Les modifications effectuées non sauvegardées seront perdues. Etes vous sûr de continuer ?'}
+            end
+          end
+        end
+        panel 'Sous-Catégorie' do
+          f.has_many :product_subcategories, heading: "", new_record: 'Ajouter une sous-catégorie', allow_destroy: true do |subcategory|
+            subcategory.inputs do
+              subcategory.input :name, label: "Nom"
             end
           end
         end
@@ -166,6 +190,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
               product.input :available, label: "Disponible ?"
               product.input :name, label: "Nom"
               product.input :category_id, as: :select, collection: Category.all, label: "Catégorie"
+              product.input :product_subcategory_id, as: :select, collection: resource.product_subcategories, label: "Sous-Catégorie"
               product.input :price_cents, label: "Prix CHF"
               product.input :display_minimum_weight, label: "Afficher poids Minimum ?"
               product.input :minimum_weight, label: "Poids ou volume"
@@ -195,16 +220,18 @@ ActiveAdmin.register Farm, as: "Exploitations" do
   end
 
   controller do
-    defaults :finder => :find_by_slug
+    defaults finder: :find_by_slug
+
     def create
       @farm = Farm.new(permitted_params[:farm])
       @farm.user.skip_confirmation_notification!
 
+      # @farm.update!(permitted_params[:farm])
+      @farm.labels.reject!(&:empty?)
+
       @farm.products.each do |product|
         product.label.reject!(&:empty?)
       end
-
-      @farm.labels.reject!(&:empty?)
 
       if @farm.save
         redirect_to admin_exploitations_path, notice: "Resource created successfully."

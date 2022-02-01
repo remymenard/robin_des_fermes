@@ -14,9 +14,9 @@ SitemapGenerator::Sitemap.create do
         add farms_path(farm, locale: locale), :changefreq => 'weekly', :lastmod => farm.updated_at
       end
 
-      Product.find_each do |product|
-        add product_path(product, locale: locale), :changefreq => 'weekly', :lastmod => product.updated_at
-      end
+      # Product.find_each do |product|
+      #   add product_path(product, locale: locale), :changefreq => 'weekly', :lastmod => product.updated_at
+      # end
     end
   end
 end

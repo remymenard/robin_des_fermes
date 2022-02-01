@@ -1,9 +1,6 @@
 <div class="farms">
-
   <div class="d-flex cards_maps">
-
     <div class="search">
-
       <div class="d-flex select justify-content-between">
         <%= form_tag farms_path, method: :get, id: "farm-search-form" do %>
           <%= hidden_field_tag 'zip', get_zip_code_number %>
@@ -23,181 +20,156 @@
         <%= link_to t('.reset'), farms_path %>
       </div>
       <div class="best-farms">
-
         <div class="cards-index col col-lg-6 ">
-
           <% @farms.active.each do |farm| %>
-
-            <%= link_to farm_path(farm), target: :_blank do  %>
+            <%= link_to farm_path(farm) do  %>
               <div class="card-product d-flex">
-
                 <div class="photo-farm">
-
                   <div class="labels">
-
                     <% farm.labels.each do |label| %>
                       <div class='label'>
                         <p> <%= label.upcase  %></p>
                       </div>
                     <%end%>
                   </div>
-                  <%= cl_image_tag(farm.farm_profil_picture&.key, height: 192, width: 192, crop: :fill, class: "photo") if farm.farm_profil_picture %>
-
-
+                  <%= cl_image_tag(farm.farm_profil_picture&.key, crop: :fill, class: "photo") if farm.farm_profil_picture %>
                 </div>
-
                 <div class="cards-informations">
-
                   <div class="d-flex address">
-                    <%= image_tag "icons/marker_cards_farms.png", class: "marker" %>
-                    <p><%= farm.zip_code.upcase  %> <%= farm.city.upcase  %></p>
+                    <%= image_tag @near_farm_icon_url, class: "marker" %>
+                    <p class="<%= "green-text" if current_user&.is_companion %>"><%= farm.zip_code.upcase  %> <%= farm.city.upcase  %></p>
                   </div>
-
                   <div class="name d-flex">
                     <h6> <%= farm.name  %></h6>
-
                   </div>
-
                   <p class="openning"><%= t('.openning', openning: farm.opening_time) %></p>
-
-                  <p class="products-number"><%= farm.products.count  %>
-                    <% if farm.products.count == 1 %>
+                  <p class="products-number"><%= farm.products.available.count  %>
+                    <% if farm.products.available.count == 1 %>
                       <%= t('.one_product') %>
                     <% else %>
                       <%= t('.products_number') %>
                     <% end %>
                   </p>
-
                   <div class="all-photos d-flex">
-                     <% farm.categories.each do |category| %>
+                    <% farm.categories.each do |category| %>
                       <div class='category-photo' data-toggle="tooltip" data-placement="top" title="<%= category.name  %>"><%= cl_image_tag category.photo.key %></div>
                     <% end %>
                   </div>
-
                   <div class="categories"></div>
                 </div>
-
               </div>
-
             <% end %>
-
           <% end  %>
-
           <% @far_farms.active.each do |farm| %>
-
-            <%= link_to farm_path(farm), target: :_blank do  %>
+            <%= link_to farm_path(farm) do  %>
               <div class="card-product d-flex">
-
                 <div class="photo-farm">
-
                   <div class="labels">
-
                     <% farm.labels.each do |label| %>
                       <div class='label'>
                         <p> <%= label.upcase  %></p>
                       </div>
                     <%end%>
                   </div>
-
-                  <%= cl_image_tag(farm.farm_profil_picture&.key, height: 192, width: 192, crop: :fill, class: "photo") if farm.farm_profil_picture %>
-
-
-
+                  <%= cl_image_tag(farm.farm_profil_picture&.key, crop: :fill, class: "photo") if farm.farm_profil_picture %>
                 </div>
-
                 <div class="cards-informations">
-
                   <div class="d-flex address-far-farm">
                     <%= image_tag "icons/marker-orange.png", class: "marker" %>
                     <p><%= farm.zip_code.upcase  %> <%= farm.city.upcase  %></p>
-
                   </div>
-
                   <div class="name d-flex">
                     <h6> <%= farm.name  %></h6>
-
                   </div>
-
-
                   <p class="openning"><%= t('.openning', openning: farm.opening_time) %></p>
-
                   <div class="d-flex">
-                    <p class="products-number"><%= farm.products.count  %>
-                      <% if farm.products.count == 1 %>
+                    <p class="products-number"><%= farm.products.available.count  %>
+                      <% if farm.products.available.count == 1 %>
                         <%= t('.one_product') %>
                       <% else %>
                         <%= t('.products_number') %>
                       <% end %>
                     </p>
-
                     <div class="fresh-products d-flex">
                       <%= image_tag "cards/flake.png", alt: "Flocon" %>
-                      <p> <span> <%= farm.products.fresh.count %> <%= t('.products') %> </span><%= t('.withdrawal') %> </p>
+                      <p> <span> <%= farm.products.available.fresh.count %> <%= t('.products') %> </span><%= t('.withdrawal') %> </p>
                     </div>
                   </div>
-
                   <div class="all-photos d-flex">
-                     <% farm.categories.each do |category| %>
+                    <% farm.categories.each do |category| %>
                       <div class='category-photo' data-toggle="tooltip" data-placement="top" title="<%= category.name  %>"><%= cl_image_tag category.photo.key %></div>
                     <% end %>
                   </div>
-
                   <div class="categories"></div>
                 </div>
-
               </div>
-
             <% end %>
-
           <% end  %>
-
         </div>
+      </div>
     </div>
-    </div>
-
     <div id="map"
       data-nearby-farms-markers="<%= @nearby_markers.to_json %>"
       data-far-farms-markers="<%= @far_markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-        <div class="mobile-big-question-mark">?</div>
-      <div class="map-infos">
+      <div class="mobile-big-question-mark">?</div>
+      <div class="map-infos <% if current_user&.is_companion %> map-infos--big <%end%>">
         <div class="close-infos"><i class="fas fa-times"></i></div>
-        <div class="d-flex h-100 w-100 flex-column justify-content-center ml-4">
-          <div class="row align-items-center">
-            <div class="col-7 p-0 m-0">
-              <%= image_tag "icons/marker-purple.png", class: "marker" %>
-              <span class="shipping-name"><%= t('.regional_delivery_name') %></span>
-            </div>
-            <div class="col-5 m-0 p-0">
-              <span class="price"><%= FarmOrder::ShippingPrice.express.price %></span>
-              <span class="currency">CHF</span>
-              <div class="question-mark">?</div>
-              <div class="popup-question-mark">
-                <%= image_tag "icons/bubble.png", class: "bubble"%>
-                <p class="shipping-description"><%= t('.regional_delivery_description') %></p>
+        <div class="d-flex h-100 w-100 flex-column justify-content-evenly">
+          <div class="d-flex align-items-center">
+            <% if current_user&.is_companion %>
+              <div class="d-flex ml-2">
+                <%= image_tag "icons/marker-green.png", class: "marker" %>
+                <span class="shipping-name shipping-name--green"><%= t('.regional_delivery_name_companion') %></span>
               </div>
-
+            <% else %>
+              <div class="d-flex ml-2">
+                <%= image_tag "icons/marker-purple.png", class: "marker" %>
+                <span class="shipping-name"><%= t('.regional_delivery_name') %></span>
+              </div>
+              <div class="line-price">
+                <span class="price"><%= FarmOrder::ShippingPrice.express_not_companion.price %></span>
+                <span class="currency">CHF</span>
+                <div class="question-mark">?</div>
+                <div class="popup-question-mark">
+                  <%= image_tag "icons/bubble.png", class: "bubble"%>
+                  <p class="shipping-description"><%= t('.regional_delivery_description') %></p>
+                </div>
+              </div>
+            <% end %>
           </div>
-          </div>
-          <div class="row align-items-center">
-          <div class="col-7 p-0 m-0">
-            <%= image_tag "icons/marker-orange.png", class: "marker" %>
-            <span class="shipping-name"><%= t('.national_delivery_name') %></span>
-
-          </div>
-          <div class="col-5 m-0 p-0">
-            <span class="price"><%= FarmOrder::ShippingPrice.standard.price %></span>
-            <span class="currency">CHF</span>
-            <div class="question-mark">?</div>
-            <div class="popup-question-mark">
-              <%= image_tag "icons/bubble.png", class: "bubble"%>
-              <p class="shipping-description"><%= t('.national_delivery_description') %></p>
+          <div class="d-flex align-items-center">
+            <div class="d-flex ml-2">
+              <%= image_tag "icons/marker-orange.png", class: "marker" %>
+              <span class="shipping-name"><%= t('.national_delivery_name') %></span>
+            </div>
+            <div class="line-price">
+              <% if current_user&.is_companion %>
+                <div class="d-inline-block position-relative">
+                  <span class="price price--old"><%= FarmOrder::ShippingPrice.standard_not_companion.price %></span>
+                  <span class="currency currency--old">CHF</span>
+                  <span class="old-price-bar"></span>
+                </div>
+                <span class="price price--new"><%= FarmOrder::ShippingPrice.standard_companion.price %></span>
+                <span class="currency currency--new">CHF</span>
+                <div class="question-mark">?</div>
+                <div class="popup-question-mark">
+                  <%= image_tag "icons/bubble.png", class: "bubble bubble--big"%>
+                  <p class="shipping-description shipping-description--big"><%= t('.national_delivery_description') %></p>
+                </div>
+              <% else %>
+                <span class="price"><%= FarmOrder::ShippingPrice.standard_not_companion.price %></span>
+                <span class="currency">CHF</span>
+                <div class="question-mark">?</div>
+                <div class="popup-question-mark">
+                  <%= image_tag "icons/bubble.png", class: "bubble"%>
+                  <p class="shipping-description"><%= t('.national_delivery_description') %></p>
+                </div>
+              <% end %>
             </div>
           </div>
+        </div>
       </div>
     </div>
-  </div>
-
-</div>
-<div id="pageInfos" data-zip-code-defined=<%= zip_code_set? %> data-submit-form="true"></div>
-<%= javascript_pack_tag 'mapInfos' %>
+    <div id="pageInfos" data-zip-code-defined=<%= zip_code_set? %> data-submit-form="true"></div>
+    <%= javascript_pack_tag 'mapInfos' %>

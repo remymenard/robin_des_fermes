@@ -1,5 +1,10 @@
-import { startLoadingAnimation, stopLoadingAnimation } from "./loadingAnimation";
-import { updateNavbarInfos } from "./updateNavbarInfos";
+import {
+  startLoadingAnimation,
+  stopLoadingAnimation
+} from "./loadingAnimation";
+import {
+  updateNavbarInfos
+} from "./updateNavbarInfos";
 
 export function sendAjaxRequest(e, requestType, reloadPage = false) {
   e.preventDefault();
@@ -13,7 +18,7 @@ export function sendAjaxRequest(e, requestType, reloadPage = false) {
     url: hrefPath,
     type: requestType,
     success: (answer) => {
-      if(reloadPage) {
+      if (reloadPage) {
         location.reload();
       } else {
         $("#basket").html(answer)

@@ -1,20 +1,33 @@
 ActiveAdmin.register FarmOrder, as: "Commandes"  do
   permit_params :id, :takeaway_at_farm, :comment, :standard_shipping, :express_shipping, :price_cents, :price_currency, :waiting_for_shipping_at, :shipped_at, :issue_raised_at, :status, :order_id, :farm_id, :shipping_price_cents, :shipping_price_currency
 
+  remove_filter :confirm_shipped_token
+  remove_filter :order_line_items
+  remove_filter :farm_offices
+  remove_filter :price_cents
+  remove_filter :price_currency
+  remove_filter :waiting_for_shipping_at
+  remove_filter :shipped_at
+  remove_filter :issue_raised_at
+  remove_filter :created_at
+  remove_filter :updated_at
+  remove_filter :shipping_price_cents
+  remove_filter :shipping_price_currency
+  remove_filter :products
+  remove_filter :estimated_delivery_date
+  remove_filter :comment
+  # index pagination_total: false
+
+  config.per_page = 10
+
   actions :all
   index do
     actions defaults: true
 
-    column 'Numéro de commande', :id
+    column 'N° cmd', :id
 
     column "Exploitation" do |order|
       order.farm
-    end
-
-    column "Exploitant" do |order|
-      if order.farm.user.present?
-        link_to "#{order.farm.user.first_name} #{order.farm.user.last_name}", edit_admin_utilisateur_path(order.farm.user)
-      end
     end
 
     column "Consommateur" do |order|
@@ -27,7 +40,9 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
       "#{price.price} #{price.price_currency}"
     end
 
-    column 'Date de création de la commande', :created_at
+    column 'Création commande' do |farm_order|
+      I18n.l((farm_order.created_at), format: "%d %B %Y %Hh%M ", locale: :'fr')
+    end
 
     column 'Status', :status do |farm_order|
       t("farm_orders.statuses.#{farm_order.status}")
@@ -37,8 +52,23 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
       farm_order.preordered_products_max_shipping_starting_at
     end
 
+    column 'Livraison Prévue' do |farm_order|
+
+      if farm_order.express_shipping.nil? && farm_order.standard_shipping.nil? && farm_order.takeaway_at_farm.nil?
+        "Indisponible (mode de livraison non choisi)"
+      else
+        if farm_order.estimated_delivery_date.nil?
+        "Indisponible (commande non validée)"
+        else
+          I18n.l((farm_order.estimated_delivery_date), format: "%d %B %Y", locale: :'fr')
+        end
+      end
+    end
+
     column "Expédition", :farm_id do |farm_order|
-      farm_order.shipped_at
+      if farm_order.shipped_at
+        I18n.l((farm_order.shipped_at), format: "%d %B %Y %Hh%M ", locale: :'fr')
+      end
     end
 
     column 'Commentaire', :comment

@@ -3,472 +3,498 @@ fr:
     user_not_authorized: "Vous n'êtes pas authorisé à effectuer cette action."
   pages:
     home:
-      one_product: "produit"
-      search_placeholder: "Où habitez-vous ?"
-      search_btn: "RECHERCHER"
-      title: "La vente directe, droit dans le mille !"
-      sub_title1: "Trouve le "
-      sub_title_bold1: "produit "
-      sub_title2: "ou "
+      one_product: 'produit'
+      search_placeholder: 'Où habitez-vous ?'
+      search_btn: 'RECHERCHER'
+      title: 'La vente directe, droit dans le mille !'
+      sub_title1: 'Trouve le '
+      sub_title_bold1: 'produit '
+      sub_title2: 'ou '
       sub_title_bold2: "l'exploitation "
-      sub_title3: "de ton choix, "
-      sub_title_bold3: "commande en quelques clics, paie en ligne "
-      sub_title4: "et déguste ta victoire : quand "
+      sub_title3: 'de ton choix, '
+      sub_title_bold3: 'commande en quelques clics, paie en ligne '
+      sub_title4: 'et déguste ta victoire : quand '
       sub_title_bold4: "c'est juste, "
       sub_title5: "c'est encore meilleur!"
-      viandes: "Viandes"
-      vins: "Vins"
-      vegetables: "Légumes"
-      products: "Du blé, des radis, de l’oseille : les bons produits de saison au juste prix !"
-      title_rdf: "Robin des fermes, quésaco ?"
-      discover_meat: "Découvrez les producteurs"
-      paragraph_meat: "Boeuf, porc, cerf… Fini la disette, mets de la bidoche dans ton assiette!"
-      discover_vegetables: "Découvrez les producteurs"
-      paragraph_vegetables: "Un esprit sain dans un corps sain, grâce à nos cultivateurs de verdure."
-      discover_wine: "Découvrez les vignerons"
-      paragraph_wine: "Tu aimes la bonne vinaille ? Déniche les précieux breuvages de nos vignerons."
-      find: "Trouve des produits"
-      ordered: "Commande en quelques clics"
-      taste: "Déguste ta victoire"
-      find_paragraph: "Découvre les moult producteurs près de chez toi !"
-      ordered_paragraph: "Remplis ton panier, dis-nous si tu veux recevoir ou aller chercher ta pitance, et le tour est joué !"
-      taste_paragraph: "Ton blé dans la bonne bourse et du bon blé dans ton assiette, l’heure est à la fête !"
-      know_more: "EN SAVOIR PLUS"
-      best_farms: "Coup d’oeil sur nos producteurs"
-      products_number: "produits"
+      viandes: 'Viandes'
+      vins: 'Vins'
+      vegetables: 'Légumes'
+      products: 'Du blé, des radis, de l’oseille : les bons produits de saison au juste prix !'
+      title_rdf: 'Robin des fermes, quésaco ?'
+      discover_meat: 'Découvrez les producteurs'
+      paragraph_meat: 'Boeuf, porc, cerf… Fini la disette, mets de la bidoche dans ton assiette!'
+      discover_vegetables: 'Découvrez les producteurs'
+      paragraph_vegetables: 'Un esprit sain dans un corps sain, grâce à nos cultivateurs de verdure.'
+      discover_wine: 'Découvrez les vignerons'
+      paragraph_wine: 'Tu aimes la bonne vinaille ? Déniche les précieux breuvages de nos vignerons.'
+      find: 'Trouve des produits'
+      ordered: 'Commande en quelques clics'
+      taste: 'Déguste ta victoire'
+      find_paragraph: 'Découvre les moult producteurs près de chez toi !'
+      ordered_paragraph: 'Remplis ton panier, dis-nous si tu veux recevoir ou aller chercher ta pitance, et le tour est joué !'
+      taste_paragraph: 'Ton blé dans la bonne bourse et du bon blé dans ton assiette, l’heure est à la fête !'
+      know_more: 'EN SAVOIR PLUS'
+      best_farms: 'Coup d’oeil sur nos producteurs'
+      products_number: 'produits'
       openning: '%{openning}'
-      testimony_title: "Ils en parlent pour nous !"
+      testimony_title: 'Ils en parlent pour nous !'
       testimony2: "Au bureau ou dans le métro, je peux commander mes produits en un clic et soutenir ma région. Grâce à Robin des Fermes, manger local n'a jamais été si simple."
-      testimony1: "Enfin une plateforme e-commerce équitable pour tous les acteurs ! En plus d’avoir des valeurs humaines aux goût du jour, Robin des Fermes est une solution fiable et efficace"
-      testimony3: "Robin des fermes m’offre un choix de produits variés et locaux que je peux me faire livrer par la poste ou aller chercher directement à la ferme. Le tout au juste prix pour tous les acteurs concernés !"
-      testimony_text3: "ENSEIGNANT"
-      testimony_text2: "ENSEIGNANTE"
-      testimony_text1: "COORDINATEUR ÉVÉNEMENTIEL"
-      registration: "Oyez, oyez, producteurs, rejoignez-nous !"
-      registration_text: "Vendez vos produits en ligne, présentez votre exploitation et élargissez votre communauté"
+      testimony1: 'Enfin une plateforme e-commerce équitable pour tous les acteurs ! En plus d’avoir des valeurs humaines aux goût du jour, Robin des Fermes est une solution fiable et efficace'
+      testimony3: 'Robin des fermes m’offre un choix de produits variés et locaux que je peux me faire livrer par la poste ou aller chercher directement à la ferme. Le tout au juste prix pour tous les acteurs concernés !'
+      testimony_text3: 'ENSEIGNANT'
+      testimony_text2: 'ENSEIGNANTE'
+      testimony_text1: 'COORDINATEUR ÉVÉNEMENTIEL'
+      registration: 'Oyez, oyez, producteurs, rejoignez-nous !'
+      registration_text: 'Vendez vos produits en ligne, présentez votre exploitation et élargissez votre communauté'
       registration_btn: "JE M'INSCRIS"
-      second_zip_code_input_title: "En manque de victuailles ?"
-      second_zip_code_input_description: "Indique ta bourgade et découvre tous les producteurs locaux."
+      second_zip_code_input_title: 'En manque de victuailles ?'
+      second_zip_code_input_description: 'Indique ta bourgade et découvre tous les producteurs locaux.'
       second_zip_code_input_button: "C'EST PARTI"
     cgv:
-      title: "CONDITIONS GENERALES DE VENTES"
-      article1: "Article 1 : Traitement des données personnelles"
-      first_paragraph1: "Robin des Fermes Sàrl offre, au travers de son site robindesfermes.ch, la possibilité de commander des produits directement auprès des producteurs Robin des Fermes. Notre travail consiste à accompagner les producteurs dans le développement de leur concept de vente directe afin de garantir aux consommateurs le circuit le plus court et transparent possible."
-      second_paragraph1: "1.1. La possibilité d’effectuer ses achats sur Robin des Fermes requiert la création d’un compte sur le site robindesfermes.ch. Le membre détermine un nom d’utilisateur et un mot de passe personnel. De ce fait, il est le seul à pouvoir accéder à ses informations, qu’il pourra modifier à tout moment en se rendant sur son compte."
-      third_paragraph1: "1.2. L’adresse de livraison du membre doit nécessairement se trouver en Suisse. Robin des Fermes demeure libre de ne pas accepter une inscription selon son emplacement."
-      fourth_paragraph1: "1.3. Le membre répond de l’exactitude des données transmises à Robin des Fermes, qui ne pourra pas être tenu responsable en cas d’erreurs ou d’imprécisions, notamment dans le libellé de l’adresse de livraison."
-      fifth_paragraph1: "1.4. Par son inscription auprès de Robin des Fermes, le membre consent tacitement à recevoir des informations de la part de Robin des Fermes, via différents canaux de communication (e-mail, courrier, SMS, téléphone). Le membre peut y renoncer en tout temps, facilement et gratuitement, en contactant Robin des Fermes par email à info@robindesfermes.ch."
-      sixth_paragraphe1: "1.5. Robin des Fermes ne transmet les données personnelles à des tiers que dans la mesure où elles sont indispensables à la bonne exécution de la commande ou du paiement (par ex. transmission des données aux producteurs concernés par la commande, à PostFinance, etc.). Les informations de ses membres sont traitées avec confidentialité."
-      article2: "Article 2 : Commandes"
-      first_paragraph2: "2.1. La limite de commande par producteur est de CHF 30.00 (hors frais de transport)."
-      second_paragraph2: "2.2. Tous les prix donnés incluent la TVA selon les taux en vigueur. A savoir que la majorité des produits étant issue de la vente directe ne sont pas soumis à la TVA."
-      third_paragraph2: "2.3 Chaque producteur fixe son propre délai maximal durant lequel il s’engage à préparer et à expédier/livrer la commande. S’il s’agit d’un article en précommande, le délai maximal ne s’applique pas."
-      fourth_paragraph2: "2.4. Les commandes sont livrées dans des contenants réutilisables qui sont échangés ou récupérés à la livraison suivante. Robin des Fermes se réserve le droit de facturer jusqu’à CHF 7.00 par contenant resté chez le membre. Ce montant sera reversé au producteur."
-      fifth_paragraph2: "2.5. Si un produit n’est pas disponible au moment de la livraison, le producteur essaiera de proposer un article de remplacement. Si cela n’est pas possible, il sera remboursé."
-      sixth_paragraphe2: "2.6 En cas d’anomalie dans la commande (différence de quantité, de produit ou de qualité entre la facturation et la livraison), le membre est prié de le faire savoir à Robin des Fermes dans un délai maximum de 36 heures pour rectification en conséquence."
-      seventh_paragraphe2: "Les produits commandés par erreur ne sont ni repris ni remboursés par Robin des Fermes."
-      eighth_paragraphe2: "2.7. En Suisse, l’achat de boissons alcoolisées de type fermentées (bière, vin, cidre) est interdit par la loi aux personnes âgées de moins de 16 ans et l’achat de boissons alcoolisées de type distillées aux personnes âgées de moins de 18 ans. En achetant de tels articles, le membre s’engage à être âgé de 16, respectivement 18 ans ou plus."
-      ninth_paragraphe2: "2.8. Les producteurs se réservent le droit de limiter les quantités d’achats de certains produits."
-      article3: "Article 3 : Paiements"
-      first_paragraph3: "3.1 La paiement s’effectue à la validation du panier."
-      second_paragraph3: "3.2 Les méthodes de paiements sont les suivantes : Visa, Mastercard, American Express, PostFinance Card, Dinners Club, Direct debit, TWINT."
-      article4: "Article 4 : Livraisons"
-      first_paragraph4: "4.1. Chaque producteur choisit ses possibilités de livraison (propre logistique, service de distribution régionale de la Poste, expédition de colis via la Poste, retrait à l’exploitation)."
-      second_paragraph4: "4.2. Pour les commandes « retrait à l’exploitation », les horaires sont indiqués sur la page du producteur ainsi que dans le mail de confirmation (dès la validation de la préparation de commande)."
-      third_paragraph4: "4.3. Les producteurs s’engagent à respecter les délais maximaux de livraison. Si ce n’est pas le cas, vous pouvez contacter Robin des Fermes par mail ou par téléphone.."
-      fourth_paragraph4: "4.4. En cas d’absence lors de la livraison, les producteurs ou la Poste laisse la commande devant la porte sauf contre-indication de la part du membre. Ils doivent pouvoir laisser la commande à l’ombre et à l’abri du gel, selon la saison. Il en ressort de la responsabilité du membre."
-      fifth_paragraph4: "4.5. Les producteurs s’engagent à livrer les achats facturés et à respecter la chaîne du froid jusqu’à la livraison de la commande à l’adresse du membre. A partir de ce moment, la responsabilité de la marchandise livrée incombe au seul membre, indépendamment de sa présence, ou de son absence, lors de la livraison."
-      article5: "Article 5 : Droit de rétractation"
-      first_paragraph5: "5.1 Le consommateur dispose d’un délai de 7 jours ouvrables pour retourner les denrées non périssables au producteur à ses frais si les produits ne lui conviennent pas. Ce délai court à compter du jour de la livraison de la commande du consommateur. Seuls seront repris les produits renvoyés dans leur ensemble, dans leur emballage d’origine complet et intact, et en parfait état de revente. Tout produit périssable qui aura été abîmé, ou dont l’emballage d’origine aura été détérioré, ne sera ni remboursé ni échangé. Ce droit de rétractation s’exerce sans pénalité, à l’exception des frais de retour. Dans l’hypothèse de l’exercice du droit de rétractation, le consommateur a le choix de demander soit le remboursement des sommes versées, soit l’échange du produit. Dans le cas d’un échange, la réexpédition se fera aux frais du consommateur."
-      article6: "Article 6 : Informations juridiques"
-      first_paragraph6: "7.1. Robin des Fermes ne peut garantir l’exactitude, la précision ou l’exhaustivité des informations mises à disposition sur ce site; les photos ne sont pas contractuelles."
-      second_paragraph6: "7.2. En cas de désaccord ou de litige, le membre s’engage à collaborer à une médiation avant d’enclencher quelque procédure juridique."
-      third_paragraph6: "7.3. Le for juridique de Robin des Fermes Sàrl est sis à Lausanne et, sous réserve de recours au tribunal fédéral, seuls les tribunaux vaudois sont compétents à régler les litiges résultant de l’interprétation et/ou de l’inexécution des présentes conditions."
+      title: 'CONDITIONS GENERALES DE VENTES'
+      article1: 'Article 1 : Traitement des données personnelles'
+      first_paragraph1: 'Robin des Fermes Sàrl offre, au travers de son site robindesfermes.ch, la possibilité de commander des produits directement auprès des producteurs Robin des Fermes. Notre travail consiste à accompagner les producteurs dans le développement de leur concept de vente directe afin de garantir aux consommateurs le circuit le plus court et transparent possible.'
+      second_paragraph1: '1.1. La possibilité d’effectuer ses achats sur Robin des Fermes requiert la création d’un compte sur le site robindesfermes.ch. Le membre détermine un nom d’utilisateur et un mot de passe personnel. De ce fait, il est le seul à pouvoir accéder à ses informations, qu’il pourra modifier à tout moment en se rendant sur son compte.'
+      third_paragraph1: '1.2. L’adresse de livraison du membre doit nécessairement se trouver en Suisse. Robin des Fermes demeure libre de ne pas accepter une inscription selon son emplacement.'
+      fourth_paragraph1: '1.3. Le membre répond de l’exactitude des données transmises à Robin des Fermes, qui ne pourra pas être tenu responsable en cas d’erreurs ou d’imprécisions, notamment dans le libellé de l’adresse de livraison.'
+      fifth_paragraph1: '1.4. Par son inscription auprès de Robin des Fermes, le membre consent tacitement à recevoir des informations de la part de Robin des Fermes, via différents canaux de communication (e-mail, courrier, SMS, téléphone). Le membre peut y renoncer en tout temps, facilement et gratuitement, en contactant Robin des Fermes par email à info@robindesfermes.ch.'
+      sixth_paragraphe1: '1.5. Robin des Fermes ne transmet les données personnelles à des tiers que dans la mesure où elles sont indispensables à la bonne exécution de la commande ou du paiement (par ex. transmission des données aux producteurs concernés par la commande, à PostFinance, etc.). Les informations de ses membres sont traitées avec confidentialité.'
+      article2: 'Article 2 : Commandes'
+      first_paragraph2: '2.1. La limite de commande par producteur est de CHF 30.00 (hors frais de transport).'
+      second_paragraph2: '2.2. Tous les prix donnés incluent la TVA selon les taux en vigueur. A savoir que la majorité des produits étant issue de la vente directe ne sont pas soumis à la TVA.'
+      third_paragraph2: '2.3 Chaque producteur fixe son propre délai maximal durant lequel il s’engage à préparer et à expédier/livrer la commande. S’il s’agit d’un article en précommande, le délai maximal ne s’applique pas.'
+      fourth_paragraph2: '2.4. Les commandes sont livrées dans des contenants réutilisables qui sont échangés ou récupérés à la livraison suivante. Robin des Fermes se réserve le droit de facturer jusqu’à CHF 7.00 par contenant resté chez le membre. Ce montant sera reversé au producteur.'
+      fifth_paragraph2: '2.5. Si un produit n’est pas disponible au moment de la livraison, le producteur essaiera de proposer un article de remplacement. Si cela n’est pas possible, il sera remboursé.'
+      sixth_paragraphe2: '2.6 En cas d’anomalie dans la commande (différence de quantité, de produit ou de qualité entre la facturation et la livraison), le membre est prié de le faire savoir à Robin des Fermes dans un délai maximum de 36 heures pour rectification en conséquence.'
+      seventh_paragraphe2: 'Les produits commandés par erreur ne sont ni repris ni remboursés par Robin des Fermes.'
+      eighth_paragraphe2: '2.7. En Suisse, l’achat de boissons alcoolisées de type fermentées (bière, vin, cidre) est interdit par la loi aux personnes âgées de moins de 16 ans et l’achat de boissons alcoolisées de type distillées aux personnes âgées de moins de 18 ans. En achetant de tels articles, le membre s’engage à être âgé de 16, respectivement 18 ans ou plus.'
+      ninth_paragraphe2: '2.8. Les producteurs se réservent le droit de limiter les quantités d’achats de certains produits.'
+      article3: 'Article 3 : Paiements'
+      first_paragraph3: '3.1 La paiement s’effectue à la validation du panier.'
+      second_paragraph3: '3.2 Les méthodes de paiements sont les suivantes : Visa, Mastercard, American Express, PostFinance Card, Dinners Club, Direct debit, TWINT.'
+      article4: 'Article 4 : Livraisons'
+      first_paragraph4: '4.1. Chaque producteur choisit ses possibilités de livraison (propre logistique, service de distribution régionale de la Poste, expédition de colis via la Poste, retrait à l’exploitation).'
+      second_paragraph4: '4.2. Pour les commandes « retrait à l’exploitation », les horaires sont indiqués sur la page du producteur ainsi que dans le mail de confirmation (dès la validation de la préparation de commande).'
+      third_paragraph4: '4.3. Les producteurs s’engagent à respecter les délais maximaux de livraison. Si ce n’est pas le cas, vous pouvez contacter Robin des Fermes par mail ou par téléphone..'
+      fourth_paragraph4: '4.4. En cas d’absence lors de la livraison, les producteurs ou la Poste laisse la commande devant la porte sauf contre-indication de la part du membre. Ils doivent pouvoir laisser la commande à l’ombre et à l’abri du gel, selon la saison. Il en ressort de la responsabilité du membre.'
+      fifth_paragraph4: '4.5. Les producteurs s’engagent à livrer les achats facturés et à respecter la chaîne du froid jusqu’à la livraison de la commande à l’adresse du membre. A partir de ce moment, la responsabilité de la marchandise livrée incombe au seul membre, indépendamment de sa présence, ou de son absence, lors de la livraison.'
+      article5: 'Article 5 : Droit de rétractation'
+      first_paragraph5: '5.1 Le consommateur dispose d’un délai de 7 jours ouvrables pour retourner les denrées non périssables au producteur à ses frais si les produits ne lui conviennent pas. Ce délai court à compter du jour de la livraison de la commande du consommateur. Seuls seront repris les produits renvoyés dans leur ensemble, dans leur emballage d’origine complet et intact, et en parfait état de revente. Tout produit périssable qui aura été abîmé, ou dont l’emballage d’origine aura été détérioré, ne sera ni remboursé ni échangé. Ce droit de rétractation s’exerce sans pénalité, à l’exception des frais de retour. Dans l’hypothèse de l’exercice du droit de rétractation, le consommateur a le choix de demander soit le remboursement des sommes versées, soit l’échange du produit. Dans le cas d’un échange, la réexpédition se fera aux frais du consommateur.'
+      article6: 'Article 6 : Informations juridiques'
+      first_paragraph6: '7.1. Robin des Fermes ne peut garantir l’exactitude, la précision ou l’exhaustivité des informations mises à disposition sur ce site; les photos ne sont pas contractuelles.'
+      second_paragraph6: '7.2. En cas de désaccord ou de litige, le membre s’engage à collaborer à une médiation avant d’enclencher quelque procédure juridique.'
+      third_paragraph6: '7.3. Le for juridique de Robin des Fermes Sàrl est sis à Lausanne et, sous réserve de recours au tribunal fédéral, seuls les tribunaux vaudois sont compétents à régler les litiges résultant de l’interprétation et/ou de l’inexécution des présentes conditions.'
     faq:
-      faq: "FAQ"
-      question1: "1. Pourquoi commander chez Robin des Fermes ?"
-      reponse1: "Plus de justice pour ceux qui nous nourrissent ! Ici, nous avons fait le choix de soutenir nos producteurs en leur apportant des outils pour développer leur chiffre d’affaires, tout en leur laissant un maximum d’indépendance."
-      reponse1_subtitle: "En commandant sur Robin des Fermes:"
-      reponse1_support: "Tu soutiens directement les producteurs (l’argent va dans les bonnes poches)."
-      reponse1_discover: "Tu découvres de nouveaux produits et producteurs en quelques clics."
-      reponse1_think: "Tu penses à la planète grâce à des achats ultra-locaux."
-      question2: "2. Comment soutenez-vous les producteurs chez Robin des Fermes ?"
-      reponse2: "La vente directe est fantastique, mais pas toujours facile à mettre en place pour les producteurs (aaaah la logistique! Aïe la communication...)"
-      reponse2_subtitle: "Voici comment nous aidons les producteurs:"
-      e-commerce_strong: "Une plateforme e-commerce:"
-      e-commerce: "La mise en place d’un e-commerce intuitif et performant est onéreux. Nous mettons notre solution à leur disposition."
-      visibility_strong: "Une visibilité forte:"
-      visibility: " Les producteurs augmentent leurs ventes grâce à leur visibilité sur notre plateforme. Pour ceux qui le souhaitent, nous les accompagnons également dans leur communication (gestion de leur réseaux sociaux, vidéos, flyers, etc…)."
-      logistics_strong: "Une logistique performante:"
-      logistics: " Grâce à notre partenariat avec la Poste, nous leur offrons une solution logistique performante. Nous leur proposons également différents contenants pour la distribution des produits secs et frais."
-      community_strong: "Une communauté:"
-      community: "Nous organisons différents événements pour valoriser leur exploitation et leurs produits. A terme, nous souhaitons organiser des formations et des ateliers sur le thème de la vente directe."
-      question3: "3. Comment sélectionnez-vous les producteurs ?"
-      reponse3: "Nous ne les sélectionnons pas, tout comme nous n’intervenons pas sur leurs prix de vente. Chaque producteur doit toutefois respecter la"
-      link: "Charte producteur"
-      reponse3-2: "dont voici un extrait:"
-      reponse3_producer: "Le producteur possède un N° d’exploitation qui atteste qu’il est producteur ou produit de la matière première pour l’élaboration de ces produits (apiculteur, pêcheur, etc.…)"
-      reponse3_products: "Les produits proposés sont issus de sa propre production ou de sa propre fabrication."
-      reponse3_products_composition: "La composition des produits doit être majoritairement de matières régionales ou suisses"
+      faq: 'FAQ'
+      question1: '1. Pourquoi commander chez Robin des Fermes ?'
+      reponse1: 'Plus de justice pour ceux qui nous nourrissent ! Ici, nous avons fait le choix de soutenir nos producteurs en leur apportant des outils pour développer leur chiffre d’affaires, tout en leur laissant un maximum d’indépendance.'
+      reponse1_subtitle: 'En commandant sur Robin des Fermes:'
+      reponse1_support: 'Tu soutiens directement les producteurs (l’argent va dans les bonnes poches).'
+      reponse1_discover: 'Tu découvres de nouveaux produits et producteurs en quelques clics.'
+      reponse1_think: 'Tu penses à la planète grâce à des achats ultra-locaux.'
+      question2: '2. Comment soutenez-vous les producteurs chez Robin des Fermes ?'
+      reponse2: 'La vente directe est fantastique, mais pas toujours facile à mettre en place pour les producteurs (aaaah la logistique! Aïe la communication...)'
+      reponse2_subtitle: 'Voici comment nous aidons les producteurs:'
+      e-commerce_strong: 'Une plateforme e-commerce:'
+      e-commerce: 'La mise en place d’un e-commerce intuitif et performant est onéreux. Nous mettons notre solution à leur disposition.'
+      visibility_strong: 'Une visibilité forte:'
+      visibility: ' Les producteurs augmentent leurs ventes grâce à leur visibilité sur notre plateforme. Pour ceux qui le souhaitent, nous les accompagnons également dans leur communication (gestion de leur réseaux sociaux, vidéos, flyers, etc…).'
+      logistics_strong: 'Une logistique performante:'
+      logistics: ' Grâce à notre partenariat avec la Poste, nous leur offrons une solution logistique performante. Nous leur proposons également différents contenants pour la distribution des produits secs et frais.'
+      community_strong: 'Une communauté:'
+      community: 'Nous organisons différents événements pour valoriser leur exploitation et leurs produits. A terme, nous souhaitons organiser des formations et des ateliers sur le thème de la vente directe.'
+      question3: '3. Comment sélectionnez-vous les producteurs ?'
+      reponse3: 'Nous ne les sélectionnons pas, tout comme nous n’intervenons pas sur leurs prix de vente. Chaque producteur doit toutefois respecter la'
+      link: 'Charte producteur'
+      reponse3-2: 'dont voici un extrait:'
+      reponse3_producer: 'Le producteur possède un N° d’exploitation qui atteste qu’il est producteur ou produit de la matière première pour l’élaboration de ces produits (apiculteur, pêcheur, etc.…)'
+      reponse3_products: 'Les produits proposés sont issus de sa propre production ou de sa propre fabrication.'
+      reponse3_products_composition: 'La composition des produits doit être majoritairement de matières régionales ou suisses'
       reponse3_hygiene: "Les normes d'hygiène et environnementales sont en tout-temps respectées"
-      question4: "4. Comment puis-je payer ma commande ?"
-      reponse4: "Les méthodes de paiements sont les suivantes : Visa, Mastercard, American Express, PostFinance Card, Dinners Club, Direct debit, TWINT."
-      question5: "5. Quel est le délai de livraison de ma commande ?"
-      reponse5: "Chaque producteur choisit un délai maximal (5, 10 ou 15 jours par exemple) durant lequel il s’engage à préparer et à expédier/livrer la commande (sauf pour les précommandes, dans ce cas une autre date est spécifiée)"
-      reponse5_delivery: "Le délai de livraison est donc propre à chaque producteur et est visible lors de la commande du produit.."
-      reponse5_order: "Dès que la commande est expédiée ou prête à être retirée, tu reçois un mail d’information."
-      question6: "6. Quelles sont les possibilités de livraisons ?"
-      distribution_strong: "Distribution régionale (icone de localisation en orange)"
-      distribution: "La livraison s’effectue soit par la Poste (sans transiter par un centre de tri), soit directement par le producteur."
-      distribution_price: "Les frais de livraisons sont de 2.90 CHF."
-      shipping_price: "Les frais de livraisons sont de 9.90 CHF et les produits frais ne sont pas expédiables.."
-      shipping_strong: "Expédition nationale (icone de localisation en violet)"
-      shipping: "La livraison s’effectue par la Poste via un colis standard."
-      withdrawal_strong: "Retrait"
+      question4: '4. Comment puis-je payer ma commande ?'
+      reponse4: 'Les méthodes de paiements sont les suivantes : Visa, Mastercard, American Express, PostFinance Card, Dinners Club, Direct debit, TWINT.'
+      question5: '5. Quel est le délai de livraison de ma commande ?'
+      reponse5: 'Chaque producteur choisit un délai maximal (5, 10 ou 15 jours par exemple) durant lequel il s’engage à préparer et à expédier/livrer la commande (sauf pour les précommandes, dans ce cas une autre date est spécifiée)'
+      reponse5_delivery: 'Le délai de livraison est donc propre à chaque producteur et est visible lors de la commande du produit..'
+      reponse5_order: 'Dès que la commande est expédiée ou prête à être retirée, tu reçois un mail d’information.'
+      question6: '6. Quelles sont les possibilités de livraisons ?'
+      distribution_strong: 'Distribution régionale (icone de localisation en orange)'
+      distribution: 'La livraison s’effectue soit par la Poste (sans transiter par un centre de tri), soit directement par le producteur.'
+      distribution_price: 'Les frais de livraisons sont de %{price} CHF.'
+      shipping_price: 'Les frais de livraisons sont de %{price} CHF et les produits frais ne sont pas expédiables..'
+      shipping_strong: 'Expédition nationale (icone de localisation en violet)'
+      shipping: 'La livraison s’effectue par la Poste via un colis standard.'
+      withdrawal_strong: 'Retrait'
       withdrawal: Pour la plupart des producteurs, tu as également la possibilité d’aller chercher ta commande directement chez eux (pas de frais supplémentaire).
-      question7: "7. Dois-je retourner mes emballages ?"
-      reponse7: "Lors d’une livraison “Distribution régionale” effectuée par la Poste, tu peux laisser l’emballage dans ta boîte aux lettres. Le facteur s’occupera de le récupérer lors de sa prochaine tournée."
-      reponse7_producer: "Si le producteur s’est occupé lui-même de la livraison, il reprend directement les emballages (ou les récupère lors de la prochaine livraison)."
-      response7_packaging: "Si un emballage réutilisable est endommagé ou n’est pas retourné, Robin des Fermes se réserve le droit de facturer le montant dû."
+      question7: '7. Dois-je retourner mes emballages ?'
+      reponse7: 'Lors d’une livraison “Distribution régionale” effectuée par la Poste, tu peux laisser l’emballage dans ta boîte aux lettres. Le facteur s’occupera de le récupérer lors de sa prochaine tournée.'
+      reponse7_producer: 'Si le producteur s’est occupé lui-même de la livraison, il reprend directement les emballages (ou les récupère lors de la prochaine livraison).'
+      response7_packaging: 'Si un emballage réutilisable est endommagé ou n’est pas retourné, Robin des Fermes se réserve le droit de facturer le montant dû.'
     team:
-      team: "La bande de Robin des Fermes"
-      team_description: "Pour mener à bien toutes les causes importantes, il faut une bande de compagnons au top ! Robin des Fermes cartonne grâce à eux :"
-      tanguy_work: "RESPONSABLE PROJET"
-      jerome_work: "REPONSABLE PROJET DIGITAl"
-      francois_work: "CO-RESPONSABLE DES PRODUCTEURS"
-      lisette_work: "RESPONSABLE COMMUNICATION"
-      sonia_work: "CO-RESPONSABLE DES PRODUCTEURS"
-      jennifer_work: "CO-RESPONSABLE DES PRODUCTEURS"
-      michael_work: "CONSULTANT"
-      tanguy_description: "Travailler avec lui, c’est sursauter à chacun de ses appels téléphoniques… Il a toujours une nouvelle idée à mettre en place et en général, c’est pour hier ! Ce boulimique de l’entrepreneuriat (mais surtout des rencontres fructueuses) a fondé Robin des Fermes avant tout pour améliorer sa propre alimentation."
-      jerome_description: "Comme les piments qu’il cultive lui-même, notre geek est piquant, voire même sarcastique. Mais puisqu’il est passionné et qu’il a déjà 10 ans d’expérience en web, on l’écoute quand même. Boule à zéro ou Jackson Five, il change de look au gré des paris lancés avec ses potes."
-      francois_description: "Autoproclamé « plus beau de la nichée », notre agriculteur de la Ferme du Mélèze aurait pu enfiler une chemise à carreaux et passer dans une pub mal doublée, tournée dans un champ au coucher du soleil. Mais il a choisi le bon camp en mettant ses connaissances au profit de notre bande de justiciers."
-      lisette_description: "Si vous pensez que les créatifs sont un peu tête en l’air, laissez-nous vous présenter : Lisette Nicod. S’il y a une coquille dans ce texte… Attendez, non, il n’y en a pas, car elle l’a vue avant vous. Merci Lisette de nous remettre sur le bon chemin lorsqu’on dévie du sujet (ce qui arrive… souvent)."
-      sonia_description: "Issue d’une famille paysanne, diplômée en agriculture et agrocommerce, Sonia n’a pas froid aux yeux quand il s’agit de nouvelles expériences professionnelles. Notre couteau suisse met tout le monde d’accord avec son franc-parler, pour autant qu’on ne la retienne pas trop longtemps entre quatre murs."
-      jennifer_description: "Dernière arrivée dans la bande, notre ingénieure en gestion de la nature nous fait déjà profiter de son état d’esprit toujours serein. Notre reine du shopping local à toutes les astuces pour trouver les meilleurs produits régionaux, qu’ils soient alimentaires, cosmétiques, décoratifs et bien d’autres !"
-      michael_description: "Avec son projet Label Bleu, il a trouvé le nom dont tous les amateurs de jeux de mots rêvaient. Mais notre « non-filtré » de service (on dit ça parce qu’il est Neuchâtelois et que nous aussi on aime les gags) s’illustre surtout par son parcours incroyable et son combat pour une consommation plus juste."
+      team: 'La bande de Robin des Fermes'
+      team_description: 'Pour mener à bien toutes les causes importantes, il faut une bande de compagnons au top ! Robin des Fermes cartonne grâce à eux :'
+      tanguy_work: 'RESPONSABLE PROJET'
+      jerome_work: 'REPONSABLE PROJET DIGITAl'
+      francois_work: 'CO-RESPONSABLE DES PRODUCTEURS'
+      lisette_work: 'RESPONSABLE COMMUNICATION'
+      sonia_work: 'CO-RESPONSABLE DES PRODUCTEURS'
+      jennifer_work: 'CO-RESPONSABLE DES PRODUCTEURS'
+      michael_work: 'CONSULTANT'
+      ophelie_work: 'Assistante projets communication'
+      ophelie_description: 'Son dada à elle ? Le digital et le local !Alors quand une bande de justiciers de l’agriculture monte un projet, elle veut en être. Quand elle n’est pas sur les bancs de la HEIG, notre future ingénieure des médias prépare des projets surprenants pour nos compagnons Robin des Fermes.'
+      tanguy_description: 'Travailler avec lui, c’est sursauter à chacun de ses appels téléphoniques… Il a toujours une nouvelle idée à mettre en place et en général, c’est pour hier ! Ce boulimique de l’entrepreneuriat (mais surtout des rencontres fructueuses) a fondé Robin des Fermes avant tout pour améliorer sa propre alimentation.'
+      jerome_description: 'Comme les piments qu’il cultive lui-même, notre geek est piquant, voire même sarcastique. Mais puisqu’il est passionné et qu’il a déjà 10 ans d’expérience en web, on l’écoute quand même. Boule à zéro ou Jackson Five, il change de look au gré des paris lancés avec ses potes.'
+      francois_description: 'Autoproclamé « plus beau de la nichée », notre agriculteur de la Ferme du Mélèze aurait pu enfiler une chemise à carreaux et passer dans une pub mal doublée, tournée dans un champ au coucher du soleil. Mais il a choisi le bon camp en mettant ses connaissances au profit de notre bande de justiciers.'
+      lisette_description: 'Si vous pensez que les créatifs sont un peu tête en l’air, laissez-nous vous présenter : Lisette Nicod. S’il y a une coquille dans ce texte… Attendez, non, il n’y en a pas, car elle l’a vue avant vous. Merci Lisette de nous remettre sur le bon chemin lorsqu’on dévie du sujet (ce qui arrive… souvent).'
+      sonia_description: 'Issue d’une famille paysanne, diplômée en agriculture et agrocommerce, Sonia n’a pas froid aux yeux quand il s’agit de nouvelles expériences professionnelles. Notre couteau suisse met tout le monde d’accord avec son franc-parler, pour autant qu’on ne la retienne pas trop longtemps entre quatre murs.'
+      jennifer_description: 'Dernière arrivée dans la bande, notre ingénieure en gestion de la nature nous fait déjà profiter de son état d’esprit toujours serein. Notre reine du shopping local à toutes les astuces pour trouver les meilleurs produits régionaux, qu’ils soient alimentaires, cosmétiques, décoratifs et bien d’autres !'
+      michael_description: 'Avec son projet Label Bleu, il a trouvé le nom dont tous les amateurs de jeux de mots rêvaient. Mais notre « non-filtré » de service (on dit ça parce qu’il est Neuchâtelois et que nous aussi on aime les gags) s’illustre surtout par son parcours incroyable et son combat pour une consommation plus juste.'
     about:
-      about: "À propos"
-      mission: "Notre mission"
+      about: 'À propos'
+      mission: 'Notre mission'
       mission_description: "En Suisse, l'alimentation représente une part toujours plus petite des dépenses des ménages. Nous sommes dans le bas du classement européen ! A côté de ça, nos grands distributeurs pratiquent les marges les plus importantes d'Europe. Comment les producteurs peuvent-ils s'y retrouver dans cette situation ? Ils nous nourrissent et vivent dans l'insécurité, il est temps que ça change !"
-      solution_title: "Nous apportons une solution « clé-en-main » :"
-      first_solution: "Une plateforme e-commerce où chaque producteur gère sa propre boutique"
-      second_solution: "Une visibilité accrue des exploitations grâce à nos actions marketing "
-      third_solution: "Une solution logistique complète avec La Poste"
-      fourth_solution: "Un lien social fort entre producteurs et consommateurs"
-      project: "Notre projet se différencie par notre approche « producteur » "
-      proposition: "Nous proposons une solution où chaque producteur est 100% indépendant et maître de son activité."
-      values: "Le coeur de Robin des Fermes : des valeurs fortes !"
-      values_paragraph: "Nous luttons contre les injustices auxquelles font face nos producteurs en leur apportant des outils pour développer leur chiffre d’affaires, tout en leur laissant un maximum d’indépendance."
-      first_value: "Nous soutenons et encourageons une consommation responsable, de proximité."
-      second_value: "Nous favorisons les échanges entre producteurs et consommateurs et un rapport plus sain à notre alimentation."
-      third_value: "Nous intégrons des solutions écologiques et encourageons les producteurs dans ce sens."
-      concept: "Notre concept"
-      sub_title_concept: "De ta bourse à la leur, sus aux intermédiaires !"
-      supports: "Soutiens les producteurs"
-      supports_paragraph: "Avec  la vente directe, ton argent va instantanément dans les bonnes poches."
-      healthy: "Mange sainement"
-      healthy_paragraph: "Achète des produits préparés avec amour. Découvre de nouveaux légumes, céréales, fromages, viandes…"
-      planet: "Pense à la planète"
-      planet_paragraph: "Achète local, de saison, avec moins d’emballages en plastique, pour réduire ton empreinte carbone."
-      who: "Comment ça marche ?"
-      first_who: "Avec  la vente directe, ton argent va instantanément dans les bonnes poches."
-      second_who: "Commande les produits de ton choix."
-      third_who: "Sélectionne le retrait sur place ou la livraison par La Poste."
-      fourth_who: " Paie ta commande en ligne, au prix juste pour le producteur !"
-      fifth_who: "Remercie le producteur."
-      sixth_who: "Déguste ta victoire : quand c’est juste, c’est encore meilleur !"
+      solution_title: 'Nous apportons une solution « clé-en-main » :'
+      first_solution: 'Une plateforme e-commerce où chaque producteur gère sa propre boutique'
+      second_solution: 'Une visibilité accrue des exploitations grâce à nos actions marketing '
+      third_solution: 'Une solution logistique complète avec La Poste'
+      fourth_solution: 'Un lien social fort entre producteurs et consommateurs'
+      project: 'Notre projet se différencie par notre approche « producteur » '
+      proposition: 'Nous proposons une solution où chaque producteur est 100% indépendant et maître de son activité.'
+      values: 'Le coeur de Robin des Fermes : des valeurs fortes !'
+      values_paragraph: 'Nous luttons contre les injustices auxquelles font face nos producteurs en leur apportant des outils pour développer leur chiffre d’affaires, tout en leur laissant un maximum d’indépendance.'
+      first_value: 'Nous soutenons et encourageons une consommation responsable, de proximité.'
+      second_value: 'Nous favorisons les échanges entre producteurs et consommateurs et un rapport plus sain à notre alimentation.'
+      third_value: 'Nous intégrons des solutions écologiques et encourageons les producteurs dans ce sens.'
+      concept: 'Notre concept'
+      sub_title_concept: 'De ta bourse à la leur, sus aux intermédiaires !'
+      supports: 'Soutiens les producteurs'
+      supports_paragraph: 'Avec  la vente directe, ton argent va instantanément dans les bonnes poches.'
+      healthy: 'Mange sainement'
+      healthy_paragraph: 'Achète des produits préparés avec amour. Découvre de nouveaux légumes, céréales, fromages, viandes…'
+      planet: 'Pense à la planète'
+      planet_paragraph: 'Achète local, de saison, avec moins d’emballages en plastique, pour réduire ton empreinte carbone.'
+      who: 'Comment ça marche ?'
+      first_who: 'Avec  la vente directe, ton argent va instantanément dans les bonnes poches.'
+      second_who: 'Commande les produits de ton choix.'
+      third_who: 'Sélectionne le retrait sur place ou la livraison par La Poste.'
+      fourth_who: ' Paie ta commande en ligne, au prix juste pour le producteur !'
+      fifth_who: 'Remercie le producteur.'
+      sixth_who: 'Déguste ta victoire : quand c’est juste, c’est encore meilleur !'
     impressum:
-      impressum: "Impressum"
-      address_title: "Adresse"
-      rdf: "Robin des Fermes Sàrl"
-      place: "C/O Jorat Coworking"
-      address: "Chemin de Dronchire 3"
-      zip_code: "1077 Servion"
-      contact: "Contact"
-      mail: "info@robindesfermes.ch"
-      phone: "079 674 63 69"
-      credit: "Crédits"
-      writing: "Rédaction des textes par : "
-      annick: " Annick Goumaz"
+      impressum: 'Impressum'
+      address_title: 'Adresse'
+      rdf: 'Robin des Fermes Sàrl'
+      place: 'C/O Jorat Coworking'
+      address: 'Chemin de Dronchire 3'
+      zip_code: '1077 Servion'
+      contact: 'Contact'
+      mail: 'info@robindesfermes.ch'
+      phone: '079 674 63 69'
+      credit: 'Crédits'
+      writing: 'Rédaction des textes par : '
+      annick: ' Annick Goumaz'
     community:
-      community: "Communauté"
-      companion: "Devenir compagnon"
-      distribute_wealth: "Robin des Fermes répartit les richesses ici et maintenant."
-      combat: "Nous luttons contre les injustices auxquelles font face nos producteurs, mais nous n’y arriverons pas seuls: nous avons besoin de nombreux compagnons !"
-      local: "Tu es un fervent défenseur d’une consommation locale et équitable pour tous ? Tu souhaites profiter d’expériences et de moments enrichissants directement auprès des producteurs ?"
-      become: "Deviens compagnon Robin des Fermes, reçois ta carte membre, et soutiens les producteurs Robin des Fermes grâce aux nombreux avantages de ta carte."
-      offers: "Nous travaillons sur une série d’offres dont tu pourras bénéficier auprès des producteurs, mais tu peux déjà précommander ta carte par e-mail à"
-      mail: "info@robindesfermes.ch"
-      informations: "(en indiquant ton nom, prénom et adresse)."
+      community: 'Communauté'
+      companion: 'Devenir compagnon'
+      distribute_wealth: 'Robin des Fermes répartit les richesses ici et maintenant.'
+      combat: 'Nous luttons contre les injustices auxquelles font face nos producteurs, mais nous n’y arriverons pas seuls: nous avons besoin de nombreux compagnons !'
+      local: 'Tu es un fervent défenseur d’une consommation locale et équitable pour tous ? Tu souhaites profiter d’expériences et de moments enrichissants directement auprès des producteurs ?'
+      become: 'Deviens compagnon Robin des Fermes, reçois ta carte membre, et soutiens les producteurs Robin des Fermes grâce aux nombreux avantages de ta carte.'
+      offers: 'Nous travaillons sur une série d’offres dont tu pourras bénéficier auprès des producteurs, mais tu peux déjà précommander ta carte par e-mail à'
+      mail: 'info@robindesfermes.ch'
+      informations: '(en indiquant ton nom, prénom et adresse).'
     charter:
-      charter: "Charte Robin des Fermes"
-      accompany: "Notre travail consiste à accompagner les producteurs dans le développement de leur concept de vente directe."
-      guarantee: "Dans ce sens et afin de garantir aux consommateurs le circuit le plus court et transparent possible, nous demandons à chaque producteur de respecter la charte suivante :"
-      first_guarantee: "Le producteur possède un N° d’exploitation qui atteste qu’il est producteur ou produit de la matière première pour l’élaboration de ces produits (apiculteur, pêcheur, etc.…)."
-      second_guarantee: "Les produits proposés sont issus de sa propre production ou de sa propre fabrication. Le producteur peut également proposer des produits de producteurs partenaires ou artisans en lien avec un producteur, pour autant qu’ils soient de la même région et que l’information soit expressément inscrite sur son profil et/ou dans la description du produit."
-      third_guarantee: "La composition des produits doit être majoritairement de matières régionales ou suisses."
-      fourth_guarantee: "Les normes d’hygiènes et environnementales sont en tout-temps respectées."
+      charter: 'Charte Robin des Fermes'
+      accompany: 'Notre travail consiste à accompagner les producteurs dans le développement de leur concept de vente directe.'
+      guarantee: 'Dans ce sens et afin de garantir aux consommateurs le circuit le plus court et transparent possible, nous demandons à chaque producteur de respecter la charte suivante :'
+      first_guarantee: 'Le producteur possède un N° d’exploitation qui atteste qu’il est producteur ou produit de la matière première pour l’élaboration de ces produits (apiculteur, pêcheur, etc.…).'
+      second_guarantee: 'Les produits proposés sont issus de sa propre production ou de sa propre fabrication. Le producteur peut également proposer des produits de producteurs partenaires ou artisans en lien avec un producteur, pour autant qu’ils soient de la même région et que l’information soit expressément inscrite sur son profil et/ou dans la description du produit.'
+      third_guarantee: 'La composition des produits doit être majoritairement de matières régionales ou suisses.'
+      fourth_guarantee: 'Les normes d’hygiènes et environnementales sont en tout-temps respectées.'
     partners:
-      partners: "Nos partenaires"
-      blanc: "L’entreprise Blanc & Cie SA est une société familiale active dans l’entretien et la maintenance, les parquets et revêtements de sols, ainsi que le nettoyage et l’assainissement. Ils se reconnaissent dans les valeurs éthiques et écologiques du projet Robin des Fermes et ont donc décidé de soutenir le projet, notamment en commandant des produits pour leurs événements d’entreprises."
-      yes_we_farm: "Yes We Farm est une plateforme de financement participatif (crowdfunding) dédiée à l’agriculture et à l’alimentation. Nous partageons le même combat, à savoir la promotion des producteurs et productrices, et sommes heureux de les compter parmi nos partenaires."
-      liaudet_pial: "Liaudet Pial est une société d’assainissement basée à Renens. L’entreprise a une forte responsabilité sociétale et s’engage activement en faveur du développement durable. En témoigne leur certification EcoEntreprise, obtenue avec la classification « Excellence », ainsi que leur soutien à notre initiative."
-      anick_goumaz: "Anick Goumaz est une rédactrice indépendante. Ses mots sont capables de « convaincre un ours d’hiberner en été pour skier en hiver ». On a notamment eu la chance de le constater grâce à plusieurs textes qu’elle nous a écrit pour notre campagne de crowdfunding ainsi que sur ce site."
-      jorat_coworking: "Le Jorat Coworking, c’est l’endroit où plusieurs « Robin » et « Robine » travaillent et se réunissent pour discuter des prochains challenges qui nous attendent. Le café et la vue y sont tout particulièrement appréciés."
-      lausanne_region: "Lausanne Région, à travers son guichet entreprise, nous conseille et met en relation avec des entités régionales dans le but de faire évoluer notre projet."
-      sonnay_charpente: "Sonnay Charpente est une société qui réalise des travaux de charpentes, revêtement intérieur et extérieur, menuiseries et divers travaux spéciaux.Particulièrement sensible aux causes paysannes et de consommation local, Daniel Sonnay a souhaité soutenir le projet"
-      romande-energie: "La Romande Energie est attachée à sa région et s’implique dans le tissu socio-économique régional en soutenant des événements ou initiatives qui font battre le coeur de la Suisse romande, à l’image du projet Robin des Fermes"
-      mobiliere: "L’ancrage coopératif et la culture d’entreprise de la Mobilière les engagent à une action responsable et durable dans toute la Suisse. Particulièrement touché par la cause, Loïc Saugy a souhaité soutenir l’initiative à travers l’agence générale La Broye"
+      ruch-sa: 'Très sensible à la cause agricole et au soutien des initiatives locales, l’entreprise forestière Daniel Ruch SA a décidé d’apporter un soutien au projet Robin des Fermes'
+      partners: 'Nos partenaires'
+      blanc: 'L’entreprise Blanc & Cie SA est une société familiale active dans l’entretien et la maintenance, les parquets et revêtements de sols, ainsi que le nettoyage et l’assainissement. Ils se reconnaissent dans les valeurs éthiques et écologiques du projet Robin des Fermes et ont donc décidé de soutenir le projet, notamment en commandant des produits pour leurs événements d’entreprises.'
+      yes_we_farm: 'Yes We Farm est une plateforme de financement participatif (crowdfunding) dédiée à l’agriculture et à l’alimentation. Nous partageons le même combat, à savoir la promotion des producteurs et productrices, et sommes heureux de les compter parmi nos partenaires.'
+      liaudet_pial: 'Liaudet Pial est une société d’assainissement basée à Renens. L’entreprise a une forte responsabilité sociétale et s’engage activement en faveur du développement durable. En témoigne leur certification EcoEntreprise, obtenue avec la classification « Excellence », ainsi que leur soutien à notre initiative.'
+      anick_goumaz: 'Anick Goumaz est une rédactrice indépendante. Ses mots sont capables de « convaincre un ours d’hiberner en été pour skier en hiver ». On a notamment eu la chance de le constater grâce à plusieurs textes qu’elle nous a écrit pour notre campagne de crowdfunding ainsi que sur ce site.'
+      jorat_coworking: 'Le Jorat Coworking, c’est l’endroit où plusieurs « Robin » et « Robine » travaillent et se réunissent pour discuter des prochains challenges qui nous attendent. Le café et la vue y sont tout particulièrement appréciés.'
+      lausanne_region: 'Lausanne Région, à travers son guichet entreprise, nous conseille et met en relation avec des entités régionales dans le but de faire évoluer notre projet.'
+      sonnay_charpente: 'Sonnay Charpente est une société qui réalise des travaux de charpentes, revêtement intérieur et extérieur, menuiseries et divers travaux spéciaux.Particulièrement sensible aux causes paysannes et de consommation local, Daniel Sonnay a souhaité soutenir le projet'
+      romande-energie: 'La Romande Energie est attachée à sa région et s’implique dans le tissu socio-économique régional en soutenant des événements ou initiatives qui font battre le coeur de la Suisse romande, à l’image du projet Robin des Fermes'
+      mobiliere: 'L’ancrage coopératif et la culture d’entreprise de la Mobilière les engagent à une action responsable et durable dans toute la Suisse. Particulièrement touché par la cause, Loïc Saugy a souhaité soutenir l’initiative à travers l’agence générale La Broye'
+      eve-senn: 'Eve, c’est la magicienne qui réalise les vidéos pour Robin des Fermes et ses producteurs. Créative et attachée aux régions campagnardes, Eve collabore activement avec la bande de Robin des Fermes'
     producer:
-      become_producer: "Deviens un producteur Robin des fermes "
-      contact: "Ne perds pas de temps et contacte-nous via ce formulaire "
-      button_contact: "CONTACTE-NOUS"
+      become_producer: 'Deviens un producteur Robin des fermes '
+      contact: 'Ne perds pas de temps et contacte-nous via ce formulaire '
+      button_contact: 'CONTACTE-NOUS'
     newsletter:
-      inscription: "Inscriptions à la newsletter"
-      name: "Ton prénom"
-      email: "Ton adresse email"
-      join: "Rejoins notre combat !"
+      inscription: 'Inscriptions à la newsletter'
+      name: 'Ton prénom'
+      email: 'Ton adresse email'
+      join: 'Rejoins notre combat !'
   orders:
     mails:
       confirm_shipped:
-        title_line_1: "La commande"
-        title_line_2: "a changé de statut !"
-        subtitle_line_1: "Tu as bien cliqué sur le lien pour modifier le statut de livraison."
-        subtitle_line_2: "Un mail a été envoyé au client."
-        thanks: "La bande de Robin des Fermes"
-        back_button: "RETOUR A L'ACCEUIL"
+        title_line_1: 'La commande'
+        title_line_2: 'a changé de statut !'
+        subtitle_line_1: 'Tu as bien cliqué sur le lien pour modifier le statut de livraison.'
+        subtitle_line_2: 'Un mail a été envoyé au client.'
+        thanks: 'La bande de Robin des Fermes'
+        back_button: "RETOUR A L'ACCUEIL"
       confirm_shipped_with_error:
-        title_line_1: "La commande"
-        title_line_2: "a déjà été livrée !"
-        subtitle_line_1: "Tu as déjà cliqué sur le lien pour modifier le statut de livraison."
-        thanks: "La bande de Robin des Fermes"
-        back_button: "RETOUR A L'ACCEUIL"
+        title_line_1: 'La commande'
+        title_line_2: 'a déjà été livrée !'
+        subtitle_line_1: 'Tu as déjà cliqué sur le lien pour modifier le statut de livraison.'
+        thanks: 'La bande de Robin des Fermes'
+        back_button: "RETOUR A L'ACCUEIL"
     redirect:
       payments:
-        title_line_1: "Hourra !"
-        title_line_2: "Ton butin est en préparation !"
-        subtitle_line_1: "Ta commande a bien été prise en compte,"
-        subtitle_line_2: "tu vas recevoir un email de confirmation."
-        thanks_line_1: "Merci pour ta confiance,"
-        thanks_line_2: "La bande de Robin des Fermes"
-        back_button: "RETOUR A L'ACCEUIL"
+        title_line_1: 'Hourra !'
+        title_line_2: 'Ton butin est en préparation !'
+        subtitle_line_1: 'Ta commande a bien été prise en compte,'
+        subtitle_line_2: 'tu vas recevoir un email de confirmation.'
+        subtitle_line_3: 'La prochaine fois économise %{price} CHF de livraison'
+        subtitle_line_4: 'grâce à l’offre Compagnon de Robin des Fermes.'
+        thanks_line_1: 'Merci pour ta confiance,'
+        thanks_line_2: 'La bande de Robin des Fermes'
+        back_button: "RETOUR A L'ACCUEIL"
     review:
       header:
-        step1: "Panier"
-        step2: "Livraison"
-        step3: "Paiement"
-      basket: "Panier"
-      product: "produit"
-      recap: "Recapitulatif"
-      total: "TOTAL"
-      confirm: "FINALISER MON PANIER"
-      fresh_product: "produit frais"
-      cannot_deliver: "empêche la livraison."
+        step1: 'Panier'
+        step2: 'Livraison'
+        step3: 'Paiement'
+      basket: 'Panier'
+      product: 'produit'
+      recap: 'Recapitulatif'
+      total: 'TOTAL'
+      confirm: 'FINALISER MON PANIER'
+      fresh_product: 'produit frais'
+      cannot_deliver: 'empêche la livraison.'
     delivery:
-      edit_personal_infos: "Modifier mes informations"
-      delivery_infos: "Informations de livraison"
-      delivery_modes: "Mode de livraison"
-      local_delivery: "Distribution régionale"
-      national_delivery: "Expédition nationale"
-      delivery: "Expédition"
-      unavailable: "Indisponible pour votre panier"
-      takeaway: "Retrait à la ferme"
-      free: "Gratuit"
-      estimated_delivery_price: "Frais livraison estimés"
+      edit_personal_infos: 'Modifier mes informations'
+      delivery_infos: 'Informations de livraison'
+      delivery_modes: 'Mode de livraison'
+      local_delivery: 'Distribution régionale'
+      national_delivery: 'Expédition nationale'
+      delivery: 'Expédition'
+      unavailable: 'Indisponible pour votre panier'
+      takeaway: 'Retrait à la ferme'
+      free: 'Gratuit'
+      estimated_delivery_price: 'Frais livraison estimés'
   farms:
     info_window:
-      products_number: "produits"
-      products: "produits"
-      withdrawal: "en retrait uniquement"
+      products_number: 'produits'
+      products: 'produits'
+      withdrawal: 'en retrait uniquement'
     index:
-      one_product: "produit"
-      reset: "Réinitialiser les filtres"
+      one_product: 'produit'
+      reset: 'Réinitialiser les filtres'
       openning: '%{openning}'
-      labels: "Labels : "
-      categories: "Catégories : "
-      number_sells: "Nombre de ventes : "
-      date: "Adhérents RDF depuis : "
-      adress: "Adresse : "
-      open: "Ouvertures : "
-      products: "produits"
-      products_number: "produits"
-      withdrawal: "en retrait uniquement"
-      regional_delivery_name: "Distribution régionale"
-      regional_delivery_description: "Reçois tes produits à la maison, la livraison est assurée par le producteur ou par ton office de poste régional."
-      national_delivery_name: "Expédition nationale"
-      national_delivery_description: "Reçois tes produits à la maison, la livraison est assurée par la poste. Les produits frais ne sont pas disponibles avec cette option."
+      labels: 'Labels : '
+      categories: 'Catégories : '
+      number_sells: 'Nombre de ventes : '
+      date: 'Adhérents RDF depuis : '
+      adress: 'Adresse : '
+      open: 'Ouvertures : '
+      products: 'produits'
+      products_number: 'produits'
+      withdrawal: 'en retrait uniquement'
+      regional_delivery_name: 'Distribution régionale'
+      regional_delivery_name_companion: 'Distribution régionale offerte'
+      regional_delivery_description: 'Reçois tes produits à la maison, la livraison est assurée par le producteur ou par ton office de poste régional.'
+      national_delivery_name: 'Expédition nationale'
+      national_delivery_description: 'Reçois tes produits à la maison, la livraison est assurée par la poste. Les produits frais ne sont pas disponibles avec cette option.'
     show:
-      no_withdrawal_fresh: "Aucun produit disponible à la livraison pour ta localité"
-      preorder_date: "Dès le "
-      order_products: "Commander les produits"
-      delivery_products_mobile: "Livraison"
-      withdrawal_products_mobile: "Retrait"
-      delivery_products: "Produits livrables"
-      withdrawal_products: "A retirer à la ferme"
-      not_delivery: "Certains produits (frais / réfrigérés) ne sont pas livrables pour ta localisation"
-      show_products: "Tous les produits"
-      conditioning: "%{conditioning}"
-      more_description: "Lire la suite"
-      more_delivery: "En savoir plus"
-      delivery: "LIVRAISON"
-      expected_delivery: "Livraison prévue entre le"
-      delivery_title: "Livraison"
-      delivery_regional: "Distribution régionale"
-      delivery_national: "Distribution nationale"
-      withdrawal: "Retrait à la ferme"
-      delivery_regional_description: "Reçois tes produits à la maison, la livraison est assurée par le producteur ou par ton office de poste régional."
-      delivery_national_description: "Reçois tes produits à la maison, la livraison est assurée par la poste. Les produits frais ne sont pas disponible avec cette option."
-      withdrawal_description: "Retire ta commande auprès du producteur, tu seras averti lorsque ta commande sera prête."
-      delivery_options: "Les options suivantes sont possibles pour ta localisation."
-      hours: "HORAIRES"
-      hours_delivery: "Vous serez livré entre le"
-      and_delivery: "et le"
-      address: "ADRESSE"
+      delay: 'Délai de commande:'
+      delivery_date_near_farm: 'Tu seras livré le '
+      no_withdrawal_fresh: 'Aucun produit disponible à la livraison pour ta localité'
+      preorder_date: 'Dès le '
+      order_products: 'Commander les produits'
+      delivery_products_mobile: 'Livraison'
+      withdrawal_products_mobile: 'Retrait'
+      delivery_products: 'Produits livrables'
+      withdrawal_products: 'A retirer à la ferme'
+      not_delivery: 'Certains produits (frais / réfrigérés) ne sont pas livrables pour ta localisation'
+      show_products: 'Tous les produits'
+      conditioning: '%{conditioning}'
+      more_description: 'Lire la suite'
+      more_delivery: 'En savoir plus'
+      delivery: 'LIVRAISON'
+      expected_delivery: 'Livraison prévue entre le'
+      delivery_title: 'Livraison'
+      delivery_regional: 'Distribution régionale'
+      delivery_regional_companion: 'Distribution régionale offerte'
+      delivery_national: 'Distribution nationale'
+      delivery_national_companion: 'Distribution nationale à %{price} CHF'
+      withdrawal: 'Retrait à la ferme'
+      delivery_regional_description: 'Reçois tes produits à la maison, la livraison est assurée par le producteur ou par ton office de poste régional.'
+      delivery_national_description: 'Reçois tes produits à la maison, la livraison est assurée par la poste. Les produits frais ne sont pas disponible avec cette option.'
+      withdrawal_description: 'Retire ta commande auprès du producteur, tu seras averti lorsque ta commande sera prête.'
+      delivery_options: 'Les options suivantes sont possibles pour ta localisation.'
+      hours: 'RETRAIT'
+      hours_delivery: 'Tu seras livré entre le'
+      and_delivery: 'et le'
+      minimum_order_title: 'LIVRAISON MINIMUM'
+      minimum_order_description_html: 'Montant mininum par commande de <b>%{price} CHF</b> pour ce producteur'
       description: '%{description}'
-      description_title: "Une histoire de temps"
+      description_title: 'Une histoire de temps'
       long_description: '%{long_description}'
       category: '%{name}'
       product: '%{name}'
-      no_withdrawal: "Aucun produit disponible."
-      not_accept_withdrawal: "Le producteur n’a pas activé le retrait à son exploitation"
-      add: "Ajouter au panier"
-      pre_order: "Précommander"
+      no_withdrawal: 'Aucun produit disponible.'
+      not_accept_withdrawal: 'Le producteur n’a pas activé le retrait à son exploitation'
+      add: 'Ajouter au panier'
+      pre_order: 'Précommander'
       date:
         day_names: [Dimanche, Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi]
-      location: "Où nous trouver ?"
+      location: 'Où nous trouver ?'
+      product_category:
+        title: 'Produits'
+        all_products: 'Tous'
+        no_product_available: 'Aucun produit'
+        by_name: 'Ordre alphabétique'
+        by_price: 'Ordre croissant'
+        by_default: 'Ordre par défaut'
   shared:
     navbar:
-      log_in_href: "Me Connecter"
-      log_out_href: "Me Déconnecter"
-      who_are_we: "Qui sommes-nous ?"
-      your_zip_code: "Ton code postal"
-      our_farmers: "Nos producteurs"
+      log_in_href: 'Me Connecter'
+      log_out_href: 'Me Déconnecter'
+      who_are_we: 'Qui sommes-nous ?'
+      your_zip_code: 'Ton code postal'
+      about: 'À propos'
+      our_farmers: 'Nos producteurs'
     footer:
-      gang: "Notre bande"
-      faq: "FAQ"
-      cgv: "CGV"
-      information: "Informations"
-      impressum: "Impressum"
-      about: "À propos"
-      contact: "Contact"
-      list: "Liste des producteurs"
-      contact_us: "Contactez-nous"
-      find_us: "Retrouvez-nous"
-      community: "Communauté"
-      companion: "Devenir Compagnon"
-      newsletter: "Inscription Newsletter"
-      partners: "Nos partenaires"
-      producers: "Producteurs"
-      producer: "Devenir producteur"
-      charte: "Charte"
+      gang: 'Notre bande'
+      faq: 'FAQ'
+      cgv: 'CGV'
+      information: 'Informations'
+      impressum: 'Impressum'
+      about: 'À propos'
+      contact: 'Contact'
+      list: 'Liste des producteurs'
+      contact_us: 'Contactez-nous'
+      find_us: 'Retrouvez-nous'
+      community: 'Communauté'
+      companion: 'Devenir Compagnon'
+      newsletter: 'Inscription Newsletter'
+      partners: 'Nos partenaires'
+      producers: 'Producteurs'
+      producer: 'Devenir producteur'
+      charte: 'Charte'
     reassurance:
-      payment_title: "Paiement 100% sécurisé"
-      local_title: "100% local"
+      payment_title: 'Paiement 100% sécurisé'
+      local_title: '100% local'
       help_title: "Besoin d'aide ?"
-      producers_title: "Producteurs certifiés"
-      payement: "Vous achetez ici en sécurité"
-      local: "Des produits de producteurs qui vous entourent"
-      help: "Nous répondons à vos questions dans les 2h"
-      producers: "Les producteurs respectent la charte de Robin des fermes"
-  hello: "bonjour"
+      producers_title: 'Producteurs certifiés'
+      payement: 'Vous achetez ici en sécurité'
+      local: 'Des produits de producteurs qui vous entourent'
+      help: 'Nous répondons à vos questions dans les 2h'
+      producers: 'Les producteurs respectent la charte de Robin des fermes'
+  hello: 'bonjour'
   zip_code:
-    title: "Code postal"
-    description: "Nous utilisons ton code postal afin de te proposer les producteurs proches de toi."
-    login: "Se connecter"
-    error: "Veuillez entrer un code postal suisse valide."
+    title: 'Code postal'
+    description: 'Nous utilisons ton code postal afin de te proposer les producteurs proches de toi.'
+    login: 'Se connecter'
+    error: 'Veuillez entrer un code postal suisse valide.'
   payment:
-    error: "Il y a eu une erreur avec votre paiement."
-    cancel: "Votre paiement a été annulé."
-    success: "Votre paiement a été effectué avec succès."
+    error: 'Il y a eu une erreur avec votre paiement.'
+    cancel: 'Votre paiement a été annulé.'
+    success: 'Votre paiement a été effectué avec succès.'
   products:
     show:
       name: '%{name}'
-      description: "Description : "
+      description: 'Description : '
       product: '%{description}'
       product_ingredient: '%{ingredients}'
-      ingredients: "Ingrédients : "
-      category: "Catégorie : "
-      label: "Label : "
+      ingredients: 'Ingrédients : '
+      category: 'Catégorie : '
+      label: 'Label : '
       price: "Prix a l'unité"
-      producer: "Producteur : "
-      exploitation: "Exploitation : "
-      near: "Zone proche"
-      take_away: "Retrait à la ferme"
-      free: "Gratuit"
-      far: "Zone éloignée"
+      producer: 'Producteur : '
+      exploitation: 'Exploitation : '
+      near: 'Zone proche'
+      take_away: 'Retrait à la ferme'
+      free: 'Gratuit'
+      far: 'Zone éloignée'
   farm_orders:
     statuses:
-      waiting: "En cours de traitement"
-      preordered: "Précommandé"
-      in_preparation: "En cours de préparation"
-      ready_for_withdrawal: "Prête à être retirée"
-      withdrawn: "Retirée"
-      paid_to_farmer: "Payée au fermier"
-      canceled: "Annulée"
-      shipped: "Expédiée"
-      received: "Reçue"
+      waiting: 'En cours de traitement'
+      preordered: 'Précommandé'
+      in_preparation: 'En cours de préparation'
+      ready_for_withdrawal: 'Prête à être retirée'
+      withdrawn: 'Retirée'
+      paid_to_farmer: 'Payée au fermier'
+      canceled: 'Annulée'
+      shipped: 'Expédiée'
+      received: 'Reçue'
   devise:
     passwords:
       new:
-        enter: "Entrez votre email pour recevoir les instructions de modification du mot de passe."
-        mail: "Email"
-        confirmation: "Confirmer"
+        enter: 'Entrez votre email pour recevoir les instructions de modification du mot de passe.'
+        mail: 'Email'
+        confirmation: 'Confirmer'
     sessions:
       new:
-        title: "Connecte-toi"
-        email: "Email"
-        password: "Mot de passe"
-        stay_connected: "Se souvenir de moi"
-        connection: "Se connecter"
-        forget: "Mot de passe oublié ?"
-        join: "Pas encore de compte ?"
-        new_account: "Créer mon compte"
+        title: 'Connecte-toi'
+        email: 'Email'
+        password: 'Mot de passe'
+        stay_connected: 'Se souvenir de moi'
+        connection: 'Se connecter'
+        forget: 'Mot de passe oublié ?'
+        join: 'Pas encore de compte ?'
+        new_account: 'Créer mon compte'
     registrations:
       new:
-        number_phone: "Numéro de téléphone"
-        title: "Rejoindre Robin des Fermes"
-        first_name: "Prénom"
-        last_name: "Nom"
-        email: "Adresse email"
-        password: "Mot de passe"
-        confirmation: "Confirmer le mot de passe"
-        address: "Rue et numéro"
-        zip_code: "Code postal"
-        city: "Localité"
+        number_phone: 'Numéro de téléphone'
+        title: 'Rejoindre Robin des Fermes'
+        first_name: 'Prénom'
+        last_name: 'Nom'
+        email: 'Adresse email'
+        password: 'Mot de passe'
+        confirmation: 'Confirmer le mot de passe'
+        address: 'Rue et numéro'
+        zip_code: 'Code postal'
+        city: 'Localité'
         connection: "S'INSCRIRE"
-        already_account: "Tu as déjà un compte ?"
-        my_account: "Se connecter"
+        already_account: 'Tu as déjà un compte ?'
+        my_account: 'Se connecter'
       edit:
-        first_name: "Prénom"
-        last_name: "Nom"
-        address: "Rue et Numéro"
-        zip_code: "Code postal"
-        city: "Localité"
-        current_password: "Ancien mot de passe"
-        new_password: "Nouveau mot de passe"
-        confirmation_password: "Confirmer nouveau mot de pase"
-        logout: "Déconnexion"
-        password_title: "Mot de passe"
-        address_title: "Adresse de livraison"
-        password: "Modifier mon mot de passe"
-        delivery_adress: "Mon adresse de livraison"
-        contact_information: "Mes coordonnées"
-        title: "Mes informations personelles"
+        first_name: 'Prénom'
+        last_name: 'Nom'
+        address: 'Rue et Numéro'
+        zip_code: 'Code postal'
+        city: 'Localité'
+        current_password: 'Ancien mot de passe'
+        new_password: 'Nouveau mot de passe'
+        confirmation_password: 'Confirmer nouveau mot de pase'
+        logout: 'Déconnexion'
+        password_title: 'Mot de passe'
+        address_title: 'Adresse de livraison'
+        password: 'Modifier mon mot de passe'
+        delivery_adress: 'Mon adresse de livraison'
+        contact_information: 'Mes coordonnées'
+        title: 'Mes informations personnelles'
     confirmations:
       new:
-        resend: "Renvoyer"
+        resend: 'Renvoyer'
   basket:
-    title: "Votre panier"
-    empty: "Votre panier est vide"
-    price_per_unit_first_word: "soit"
-    total: "TOTAL"
-    validate: "VALIDER MON PANIER"
-    continue: "Continuer mes achats"
+    title: 'Votre panier'
+    empty: 'Votre panier est vide'
+    price_per_unit_first_word: 'soit'
+    total: 'TOTAL'
+    validate: 'VALIDER MON PANIER'
+    continue: 'Continuer mes achats'
   users:
     delivery_infos:
       edit:
         connection: 'Modifier mes informations'
   simple_form:
     error_notification:
-      default_message: "Merci de corriger les erreurs dans le formulaire."
+      default_message: 'Merci de corriger les erreurs dans le formulaire.'
+  missing_price:
+    title: 'Montant minimum de commande non atteint'
+    message_html: 'Il manque <b>%{missing_price} CHF</b> pour atteindre le minimum de commande.'
+    complete_message_html: 'Il manque <b>%{missing_price} CHF</b> pour atteindre le minimum de commande de ce producteur.'
+    message_with_farm_html: 'Il vous manque <b>%{missing_price} CHF</b> pour atteindre le minimum de commande de <b>%{farm_name}</b>.'
+    return_button: 'Retourner chez le producteur'
