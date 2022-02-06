@@ -68,16 +68,26 @@
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
           <div class="card-body">
             <%= t('.reponse3') %>
-            <%= link_to  t('.link'),  "https://drakkr.atlassian.net/charte", target: :blank%>
+            <%= link_to  t('.link'),  "https://www.robindesfermes.ch/charter", target: :blank%>
             <%= t('.reponse3-2') %>
             <br>
-            <br>
-            <ul>
-              <li><%= t('.reponse3_producer') %></li>
-              <li><%= t('.reponse3_products') %></li>
-              <li><%= t('.reponse3_products_composition') %></li>
-              <li><%= t('.reponse3_hygiene') %></li>
-            </ul>
+              <h2><%= t('pages.charter.origine_title1') %> :</h2>
+              <p><u><%= t('pages.charter.origine_para1_html') %><br>
+              <br>
+              <u><%= t('pages.charter.origine_para2_html') %><br>
+              <br>
+              <u><%= t('pages.charter.origine_para3_html') %></p>
+              <h2><%= t('pages.charter.producteurs_title2') %> :</h2>
+              <p><%= t('pages.charter.producteurs_para1') %><br>
+              <%= t('pages.charter.producteurs_para2') %><br>
+              <br>
+              <%= t('pages.charter.producteurs_para3_html') %><br>
+              <br>
+              <%= t('pages.charter.producteurs_para4') %><br>
+              <br>
+              <%= t('pages.charter.producteurs_para5_html') %></p>
+              <h2><%= t('pages.charter.hygiene_title3') %></h2>
+              <p><%= t('pages.charter.hygiene_para1') %></p>
           </div>
         </div>
       </div>
