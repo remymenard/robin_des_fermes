@@ -84,6 +84,9 @@
     a {
       text-decoration: none !important;
     }
+    @media screen and (max-width: 771px) {
+      justify-content: center;
+    }
   }
 
   .card-product {
@@ -93,7 +96,8 @@
     height: 417px;
     width: 252px;
     @media screen and (max-width: 771px) {
-      width: 100%;
+      max-width: 300px;
+      margin-right: 0;
     }
     background-color: white;
     border-radius: 8px 8px 0px 0px;
