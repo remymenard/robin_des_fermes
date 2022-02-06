@@ -35,18 +35,17 @@
       <h3><%= t('.minimum_order_title') %></h3>
       <p><%= t('.minimum_order_description_html', price: @farm.minimum_order_price) %></p>
     </div>
-    <div class="address" style="<% if current_user&.is_companion %> background: url(<%= asset_path 'logos/logo_without_text.png' %>); background-repeat: no-repeat; <% end %>">
+    <div class="address" style="<% if current_user&.is_companion %> background: url(<%= asset_path 'logos/logo_without_text.png' %>); background-repeat: no-repeat; background-size: contain; background-position: center;<% end %>">
       <h3><%= t('.delivery') %> </h3>
-      <% if @farm.is_in_close_zone?(get_zip_code_number) %>
         <% if current_user&.is_companion %>
-          <p class="green-text">Vous êtes compagnons, la livraison régionale est offerte.</p>
+          <p class="green-text px-3 banner-companion-text">Vous êtes compagnons,<br>la distribution régionale est offerte.</p>
         <% end %>
+      <% if @farm.is_in_close_zone?(get_zip_code_number) %>
         <p class="<%= "p-small" if current_user&.is_companion %>"><%= t('.delivery_date_near_farm') %>  <%= I18n.l((@farm.delivery_date(get_zip_code_number)), format: "%A %d %B", locale: :'fr') %> </p>
         <p class="<%= "p-small" if current_user&.is_companion %>"><%= t('.delay') %> <%= I18n.l((@farm.delay_date(get_zip_code_number)), format: "%d %B", locale: :'fr') %> <%= I18n.l((@farm.delay_hour(get_zip_code_number)), format: "%Hh%M", locale: :'fr') %></p>
       <% else %>
         <p class = "date"> <%= t('.hours_delivery') %> <%= @date.strftime('%d')  %> <%= t('.and_delivery') %> <%= I18n.l((@farm.delivery_date(get_zip_code_number)), format: "%d %B", locale: :'fr') %>.</p>
       <% end %>
-      <span> <%= link_to t('.more_delivery'), "#farm-delivery" %></span>
     </div>
   </div>
 </div>

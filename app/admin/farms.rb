@@ -166,14 +166,17 @@ ActiveAdmin.register Farm, as: "Exploitations" do
           f.input :category_ids, as: :check_boxes, collection: Category.all, label: false
         end
         panel "Produit(s) existant(s)" do
-          table_for resource.products.order('name ASC') do
-            column "Nom du produit", :name
-            column "Catégorie du produit", :category, sortable: true
-            column "Sous-catégorie du produit", :product_subcategory, sortable: true
-            column "Prix (CHF)", :price, sortable: true
-            column "Actif", :active
-            column do |produit|
-              link_to 'Modifier', edit_admin_produit_path(produit), data: {confirm: 'Les modifications effectuées non sauvegardées seront perdues. Etes vous sûr de continuer ?'}
+          resource.product_subcategories.each do |subcategory|
+            h3 subcategory.name
+            table_for subcategory.products.order('name ASC') do
+              column "Nom du produit", :name
+              column "Catégorie du produit", :category, sortable: true
+              column "Sous-catégorie du produit", :product_subcategory, sortable: true
+              column "Prix (CHF)", :price, sortable: true
+              column "Actif", :active
+              column do |produit|
+                link_to 'Modifier', edit_admin_produit_path(produit), data: {confirm: 'Les modifications effectuées non sauvegardées seront perdues. Etes vous sûr de continuer ?'}
+              end
             end
           end
         end

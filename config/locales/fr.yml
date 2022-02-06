@@ -355,8 +355,8 @@ fr:
       hours: 'RETRAIT'
       hours_delivery: 'Tu seras livré entre le'
       and_delivery: 'et le'
-      minimum_order_title: 'LIVRAISON MINIMUM'
-      minimum_order_description_html: 'Montant mininum par commande de <b>%{price} CHF</b> pour ce producteur'
+      minimum_order_title: 'MONTANT MINIMUM'
+      minimum_order_description_html: 'Un montant minimum de <b>CHF %{price}.-</b> est exigé pour passer commande chez ce producteur.'
       description: '%{description}'
       description_title: 'Une histoire de temps'
       long_description: '%{long_description}'
@@ -374,7 +374,7 @@ fr:
         all_products: 'Tous'
         no_product_available: 'Aucun produit'
         by_name: 'Ordre alphabétique'
-        by_price: 'Ordre croissant'
+        by_price: 'Prix croissant'
         by_default: 'Ordre par défaut'
   shared:
     navbar:
@@ -514,7 +514,6 @@ fr:
       default_message: 'Merci de corriger les erreurs dans le formulaire.'
   missing_price:
     title: 'Montant minimum de commande non atteint'
-    message_html: 'Il manque <b>%{missing_price} CHF</b> pour atteindre le minimum de commande.'
-    complete_message_html: 'Il manque <b>%{missing_price} CHF</b> pour atteindre le minimum de commande de ce producteur.'
-    message_with_farm_html: 'Il vous manque <b>%{missing_price} CHF</b> pour atteindre le minimum de commande de <b>%{farm_name}</b>.'
+    complete_message_html: 'Il manque <b>%{missing_price} CHF</b> pour atteindre le minimum de commande chez ce producteur.'
+    message_with_farm_html: 'Il manque <b>%{missing_price} CHF</b> pour atteindre le minimum de commande chez <b>%{farm_name}</b>.'
     return_button: 'Retourner chez le producteur'

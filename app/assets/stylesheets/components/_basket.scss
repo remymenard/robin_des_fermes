@@ -14,7 +14,10 @@
 
   #products {
     background-color: white;
-    padding: 20px 40px 0 40px;
+    padding: 10px 8px 0 8px;
+    @include small {
+      padding: 20px 40px 0 40px;
+    }
     margin: 91px 0 230px 0;
     height: calc(100% - (91px + 200px));;
     overflow: scroll;

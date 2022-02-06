@@ -23,7 +23,7 @@
   .title {
     font-weight: bold;
     font-size: 16px;
-    margin-top: 50px;
+    line-height: 6px;
     margin-bottom: 30px;
   }
 
@@ -34,8 +34,11 @@
     margin-bottom: 30px;
   }
 
+  .image {
+    margin-top: 65px;
+  }
+
   img {
-    margin-top: 75px;
     height: 218px;
     width: 176px;
   }

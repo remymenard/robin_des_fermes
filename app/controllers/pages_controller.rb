@@ -8,7 +8,7 @@ class PagesController < ApplicationController
 
     @reassurance = true
 
-    $tracker.track(session[:mixpanel_id], 'Access HomePage')
+    $tracker.track(session[:mixpanel_id], 'Access HomePage') unless browser.platform.name == "Unknown" || browser.name == "Unknown Browser"
   end
 
   def cgv

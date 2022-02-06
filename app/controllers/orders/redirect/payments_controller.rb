@@ -11,7 +11,7 @@ module Orders
             if order.status == "waiting"
               order.update(status: 'paid')
               $tracker.track(session[:mixpanel_id], 'Payment Made', {
-                'Order Price' => order.price.to_s,
+                'Order Price' => order.price_cents / 100,
                 'Order Price Currency' => order.price_currency,
                 'Order Farms Name' => order.farms.pluck(:name),
               })
@@ -39,7 +39,7 @@ module Orders
       def with_error
         @order.update(status: 'failed')
         $tracker.track(session[:mixpanel_id], 'Payment Error', {
-          'Order Price' => @order.price.to_s,
+          'Order Price' => @order.price_cents / 100,
           'Order Price Currency' => @order.price_currency,
           'Order Farms Name' => @order.farms.pluck(:name),
         })
