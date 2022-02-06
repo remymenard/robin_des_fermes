@@ -354,7 +354,7 @@ fr:
         all_products: 'Tous'
         no_product_available: 'Aucun produit'
         by_name: 'Ordre alphabétique'
-        by_price: 'Ordre croissant'
+        by_price: 'Prix croissant'
         by_default: 'Ordre par défaut'
   shared:
     navbar:

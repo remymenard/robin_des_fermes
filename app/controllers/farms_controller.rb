@@ -97,12 +97,11 @@ class FarmsController < ApplicationController
   end
 
   def products_list
-    puts "called"
     @farm = Farm.friendly.find(params[:id])
     authorize @farm
     subcategory_id = params[:subcategory_id]
     if subcategory_id.blank?
-      products_list = @farm.products.available
+      products_list = @farm.products.available.includes(:product_subcategory).order(:name).reorder('product_subcategories.created_at ASC')
     else
       subcategory = ProductSubcategory.find(subcategory_id)
       return if subcategory.farm != @farm
