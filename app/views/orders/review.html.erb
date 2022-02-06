@@ -13,7 +13,7 @@
           <h4 class="farm-name"><%= farm_order.farm.name %></h4>
           <p class="basket-number"><%= sum = farm_order.order_line_items.sum { |item| item.quantity } %> <%= sum > 1 ? t(".product").pluralize : t(".product") %></p>
           <% unless farm_order.farm.minimum_order_reached?(farm_order) %>
-            <div class="order-missing-price font-weight-bold"><%= t("missing_price.message_html", missing_price: farm_order.farm.minimum_order_missing_price(farm_order)) %></div>
+            <div class="order-missing-price font-weight-bold"><%= t("missing_price.complete_message_html", missing_price: farm_order.farm.minimum_order_missing_price(farm_order)) %></div>
           <% end %>
         </div>
         <% farm_order.order_line_items.order("created_at desc").each do |product_basket| %>
