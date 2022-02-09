@@ -275,7 +275,8 @@
   @media screen and (min-width: 901px) {
     width: 50%;
   }
-  overflow: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
   white-space: nowrap;
 }
 
@@ -329,10 +330,11 @@
     left: 0;
   }
   .takeaway-only {
-    @media screen and (max-width: 901px) {
+    @media screen and (max-width: 1300px) {
       display: flex;
       flex-direction: column-reverse;
       align-items: end;
+
     }
     display: block;
     span {
@@ -349,6 +351,13 @@
       }
       height: 24px;
       width: 19px;
+    }
+    label {
+      margin: 0;
+      margin-right: 10px;
+      @media screen and (max-width: 1300px) {
+        margin-right: 0;
+      }
     }
   }
 
