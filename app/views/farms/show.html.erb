@@ -64,7 +64,7 @@
       <div class="takeaway-only">
         <%= check_box_tag :takeaway_only, true, false, disabled: false, class: "d-none" %>
         <% if @farm.accepts_take_away %>
-          <%= label_tag :takeaway_only, nil, class: "m-0 mr-2" do %>
+          <%= label_tag :takeaway_only, nil do %>
             <%= show_svg('icons/delivery-bag.svg') %>
             <span>A retirer à la ferme uniquement</span>
           <% end %>
