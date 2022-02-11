@@ -1,48 +1,39 @@
 <div class="home">
   <div class="banner" >
     <div class="container ">
-      <h2><%= t('.title') %></h2>
+      <h1><%= t('.title') %></h1>
       <p><%= t('.sub_title1') %> <strong><%= t('.sub_title_bold1') %></strong><%= t('.sub_title2') %><strong><%= t('.sub_title_bold2') %></strong><%= t('.sub_title3') %><strong><%= t('.sub_title_bold3') %></strong><%= t('.sub_title4') %><strong><%= t('.sub_title_bold4') %></strong><%= t('.sub_title5') %></p>
       <%= form_tag farms_path, method: :get, class: 'form-inline search' do %>
         <%= text_field_tag :zip, get_zip_code_number, readonly: true, class: 'form-control search zip_code_input', id: 'zip1', placeholder: "Où habitez-vous ?" %>
         <%= submit_tag "DECOUVRIR LES PRODUCTEURS", class: "btn btn-computer", name: nil %>
         <%= submit_tag "DECOUVRIR", class: "btn btn-mobile", name: nil %>
       <% end %>
-
     </div>
   </div>
-
   <div class="container">
     <div class="home-category">
-
       <div class="food d-flex">
-
         <div class="two-products">
           <div>
             <%= link_to farms_path(category: "Viande & Volaille"), class: "navbar-brand" do %>
               <div class="image-categorie">
                 <%= image_tag "categories/meat.jpg", alt: "Viande" %>
               </div>
-
-              <h6><%= t('.viandes') %></h6>
+              <h3><%= t('.viandes') %></h3>
               <p><%= t('.paragraph_meat') %> </p>
-
               <div class="line d-flex">
                 <%= image_tag "categories/line.png", alt: "line" %>
                 <p><%= t('.discover_meat') %> </p>
               </div>
             <% end %>
           </div>
-
           <div>
             <%= link_to farms_path(category: "Fruits & Légumes"), class: "navbar-brand" do %>
               <div class="image-categorie">
                 <%= image_tag "categories/vegetables.jpg", alt: "Lait" %>
               </div>
-
-              <h6><%= t('.vegetables') %></h6>
+              <h3><%= t('.vegetables') %></h3>
               <p><%= t('.paragraph_vegetables') %> </p>
-
               <div class="line d-flex">
                 <%= image_tag "categories/line.png", alt: "line" %>
                 <p><%= t('.discover_vegetables') %> </p>
@@ -50,19 +41,15 @@
             <% end %>
           </div>
         </div>
-
         <div>
           <h2><%= t('.products') %></h2>
-
           <div>
             <%= link_to farms_path(category: "Vins"), class: "navbar-brand" do %>
               <div class="image-categorie">
                 <%= image_tag "categories/wine.jpg", alt: "Vin" %>
               </div>
-
-              <h6><%= t('.vins') %></h6>
+              <h3><%= t('.vins') %></h3>
               <p><%= t('.paragraph_wine') %> </p>
-
               <div class="line d-flex">
                 <%= image_tag "categories/line.png", alt: "line" %>
                 <p><%= t('.discover_wine') %> </p>
@@ -76,125 +63,98 @@
             <%= submit_tag t(".second_zip_code_input_button"), class: "btn zip-button", name: nil %>
           <% end %>
         </div>
-
       </div>
-
     </div>
-
     <div class="rdf-presentation">
       <h2><%= t('.title_rdf') %></h2>
-
       <div class="d-flex cards-rdf">
-
         <div class="card-rdf">
           <%= image_tag "home/find.png", alt: "rdf" %>
-          <h6><%= t('.find') %></h6>
+          <h3><%= t('.find') %></h3>
           <p><%= t('.find_paragraph') %></p>
         </div>
-
         <div class="card-rdf">
           <%= image_tag "home/ordered.png", alt: "rdf" %>
-          <h6><%= t('.ordered') %></h6>
+          <h3><%= t('.ordered') %></h3>
           <p><%= t('.ordered_paragraph') %></p>
         </div>
-
         <div class="card-rdf">
           <%= image_tag "home/victory.png", alt: "rdf" %>
-          <h6><%= t('.taste') %></h6>
+          <h3><%= t('.taste') %></h3>
           <p><%= t('.taste_paragraph') %></p>
         </div>
       </div>
-
       <%= link_to t(".know_more"), about_path, class: "btn"%>
     </div>
-
   </div>
-
+  <div class="container justify-content-center">
+    <div class="companion-block">
+      <span>Profite de réductions sur la distribution régionale,<br>
+deviens compagnon·e Robin des Fermes</span>
+    <a class="btn btn-white btn-light" href="https://info.robindesfermes.ch/compagnon/" target="_blank">EN SAVOIR PLUS</a>
+    </div>
+  </div>
   <div class="best-farms">
     <div class="container">
       <h2><%= t('.best_farms') %></h2>
-
       <div class="cards ">
         <% @farms.active.take(4).each do |farm| %>
-
           <%= link_to farm_path(farm) do  %>
             <div class="card-product d-flex">
-
               <div class="photo-farm">
-
                 <div class="labels">
-
                   <% farm.labels.each do |label| %>
                     <div class='label'>
                       <p> <%= label.upcase  %></p>
                     </div>
                   <%end%>
                 </div>
-
                 <%= cl_image_tag(farm.farm_profil_picture&.key, crop: :fill, class: "photo") if farm.farm_profil_picture %>
               </div>
-
               <div class="cards-informations">
-
                 <div class="d-flex address">
                   <%= image_tag "icons/marker_cards_farms.png", class: "marker" %>
                   <p><%= farm.zip_code.upcase  %> <%= farm.city.upcase  %></p>
                 </div>
-
                 <div class="name d-flex">
-                  <h6> <%= farm.name  %></h6>
-
+                  <h3> <%= farm.name  %></h3>
                 </div>
-
                 <p class="openning"><%= t('.openning', openning: farm.opening_time) %></p>
-
-                <p class="products-number"><%= farm.products.count  %>
-                  <% if farm.products.count == 1 %>
+                <p class="products-number"><%= farm.products.available.count  %>
+                  <% if farm.products.available.count == 1 %>
                     <%= t('.one_product') %>
                   <% else %>
                     <%= t('.products_number') %>
                   <% end %>
                 </p>
-
                 <div class="all-photos d-flex">
                   <% farm.categories.each_with_index do |category, index| %>
                     <div class='category-photo' data-toggle="tooltip" data-placement="top" title="<%= category.name  %>"><%= cl_image_tag category.photo.key %></div>
                   <% end %>
                 </div>
-
                 <div class="categories"></div>
               </div>
-
             </div>
-
           <% end %>
         <% end %>
       </div>
-
     </div>
   </div>
-
   <div class="container">
-
     <div class="testimonials">
       <h2><%= t('.testimony_title') %></h2>
-
       <div class="all-testimonials d-flex">
-
         <div class="testimony">
           <%= image_tag "home/slice.png", alt: "alttext" %>
-
           <div class="testimonials-informations">
             <h6> <%= t('.testimony1') %></h6>
-            <%= image_tag "testimony/testimony.jpg", alt: "alttext" %>
-            <p class="name">Alex Fracheboud</p>
+            <%= image_tag "testimony/pierre-carroz.png", alt: "alttext" %>
+            <p class="name">Pierre Carroz</p>
             <p class="text"><%= t('.testimony_text1') %></p>
           </div>
         </div>
-
         <div class="testimony">
           <%= image_tag "home/slice.png", alt: "alttext" %>
-
           <div class="testimonials-informations">
             <h6> <%= t('.testimony2') %></h6>
             <%= image_tag "testimony/testimony2.jpg", alt: "alttext" %>
@@ -202,10 +162,8 @@
             <p class="text"><%= t('.testimony_text2') %></p>
           </div>
         </div>
-
         <div class="testimony">
           <%= image_tag "home/slice.png", alt: "alttext" %>
-
           <div class="testimonials-informations">
             <h6> <%= t('.testimony3') %></h6>
             <%= image_tag "testimony/testimony3.jpg", alt: "alttext" %>
@@ -217,17 +175,13 @@
     </div>
   </div>
   <div class="registration">
-
     <div class="container">
-
       <div class="text">
         <h2><%= t('.registration') %></h2>
         <h6><%= t('.registration_text') %></h6>
-
-        <%= link_to t('.registration_btn') , "https://aghasnzeh7f.typeform.com/to/Y2rBljOl", class: "btn" %>
+        <%= link_to t('.registration_btn') , "https://form.typeform.com/to/Y2rBljOl", class: "btn" %>
       </div>
     </div>
   </div>
 </div>
 <div id="pageInfos" data-submit-form="true"></div>
-

@@ -2,14 +2,15 @@ ActiveAdmin.register Farm, as: "Exploitations" do
 
   before_action :remove_password_params_if_blank, only: [:update]
 
-  permit_params :active, :description_title, :name, :description, :address, :lagitude, :longitude, :photo_portrait, :farm_profil_picture, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accepts_delivery, photos: [], labels: [], offices: [],
+  permit_params :active, :minimum_order_price, :minimum_order_price_cents, :description_title, :name, :description, :address, :lagitude, :longitude, :photo_portrait, :farm_profil_picture, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accepts_delivery, photos: [], labels: [], offices: [],
                 opening_hours_attributes: [:id, :_destroy, :day, :opens, :closes],
-                products_attributes: [:id, :active, :available_for_preorder, :name, :available, :category_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning, :preorder_shipping_starting_at, :total_weight, label:[] ],
+                products_attributes: [:id, :active, :available_for_preorder, :name, :available, :category_id, :photo, :description, :ingredients, :unit, :fresh, :price_per_unit_cents, :price_per_unit_currency, :price_cents, :price_currency, :subtitle, :minimum_weight, :display_minimum_weight, :conditioning,:product_subcategory_id, :preorder_shipping_starting_at, :total_weight, label:[] ],
                 categories_attributes: [:id, :name],
                 category_ids: [],
                 office_ids: [],
                 offices_attributes: [:id],
                 farm_offices_attributes: [:id, :_destroy, :office_id, :delivery_day, :delivery_deadline_day, :delivery_deadline_hour],
+                product_subcategories_attributes: [:id, :_destroy, :name],
                 user_attributes: [:id, :email, :first_name, :last_name, :number_phone, :wants_to_subscribe_mailing_list, :photo, :password, :title, :password_confirmation, :address_line_1, :city, :zip_code, :farm_id]
 
   actions :all
@@ -126,6 +127,10 @@ ActiveAdmin.register Farm, as: "Exploitations" do
             input :opening_time, label: false
           end
 
+          inputs "Commande minimum (laisser vide si la ferme n'en a pas)" do
+            input :minimum_order_price, label: false
+          end
+
           panel 'Offices de livraison' do
             f.has_many :farm_offices, heading: false, new_record: 'Ajouter un office', allow_destroy: true do |farm_office|
               farm_office.inputs do
@@ -161,13 +166,24 @@ ActiveAdmin.register Farm, as: "Exploitations" do
           f.input :category_ids, as: :check_boxes, collection: Category.all, label: false
         end
         panel "Produit(s) existant(s)" do
-          table_for resource.products do
-            column "Nom du produit", :name
-            column "Catégorie du produit", :category, sortable: true
-            column "Prix (CHF)", :price, sortable: true
-            column "Actif", :active
-            column do |produit|
-              link_to 'Modifier', edit_admin_produit_path(produit), data: {confirm: 'Les modifications effectuées non sauvegardées seront perdues. Etes vous sûr de continuer ?'}
+          resource.product_subcategories.each do |subcategory|
+            h3 subcategory.name
+            table_for subcategory.products.order('name ASC') do
+              column "Nom du produit", :name
+              column "Catégorie du produit", :category, sortable: true
+              column "Sous-catégorie du produit", :product_subcategory, sortable: true
+              column "Prix (CHF)", :price, sortable: true
+              column "Actif", :active
+              column do |produit|
+                link_to 'Modifier', edit_admin_produit_path(produit), data: {confirm: 'Les modifications effectuées non sauvegardées seront perdues. Etes vous sûr de continuer ?'}
+              end
+            end
+          end
+        end
+        panel 'Sous-Catégorie' do
+          f.has_many :product_subcategories, heading: "", new_record: 'Ajouter une sous-catégorie', allow_destroy: true do |subcategory|
+            subcategory.inputs do
+              subcategory.input :name, label: "Nom"
             end
           end
         end
@@ -177,6 +193,7 @@ ActiveAdmin.register Farm, as: "Exploitations" do
               product.input :available, label: "Disponible ?"
               product.input :name, label: "Nom"
               product.input :category_id, as: :select, collection: Category.all, label: "Catégorie"
+              product.input :product_subcategory_id, as: :select, collection: resource.product_subcategories, label: "Sous-Catégorie"
               product.input :price_cents, label: "Prix CHF"
               product.input :display_minimum_weight, label: "Afficher poids Minimum ?"
               product.input :minimum_weight, label: "Poids ou volume"

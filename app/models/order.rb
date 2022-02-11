@@ -39,4 +39,29 @@ class Order < ApplicationRecord
   def all_shipping_choices_made?
     farm_orders.all? {|farm_order| farm_order.shipping_choice_made? }
   end
+
+  def mimum_price_not_reached?
+    farm_orders.any? {|farm_order| !farm_order.farm.minimum_order_reached?(farm_order) }
+  end
+
+  def get_first_farm_with_missing_price
+    farm_order = farm_orders.find {|farm_order| !farm_order.farm.minimum_order_reached?(farm_order) }
+    farm_order&.farm
+  end
+
+  def estimated_economy_delivery_price
+    shipping_price_without_being_companion = 0
+    farm_orders.each do |farm_order|
+      shipping_price_without_being_companion += FarmOrder::ShippingPrice.standard_not_companion.price if farm_order.standard_shipping
+      shipping_price_without_being_companion += FarmOrder::ShippingPrice.express_not_companion.price if farm_order.express_shipping
+      shipping_price_without_being_companion += FarmOrder::ShippingPrice.takeaway.price if farm_order.takeaway_at_farm
+    end
+    shipping_price_being_companion = 0
+    farm_orders.each do |farm_order|
+      shipping_price_being_companion += FarmOrder::ShippingPrice.standard_companion.price if farm_order.standard_shipping
+      shipping_price_being_companion += FarmOrder::ShippingPrice.express_companion.price if farm_order.express_shipping
+      shipping_price_being_companion += FarmOrder::ShippingPrice.takeaway.price if farm_order.takeaway_at_farm
+    end
+    shipping_price_without_being_companion - shipping_price_being_companion
+  end
 end

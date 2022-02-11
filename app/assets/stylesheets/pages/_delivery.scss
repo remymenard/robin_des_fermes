@@ -11,12 +11,13 @@
   @include media-breakpoint-down(md) {
     height: 254px;
     width: 100%;
-    p, h4 {
+    p,
+    h4 {
       text-align: center;
     }
   }
   .edit-infos {
-    color: #7C7977 !important;
+    color: #7c7977 !important;
     opacity: 0.4;
     @include media-breakpoint-down(md) {
       opacity: 1;
@@ -24,11 +25,10 @@
       padding: 10px 30px 10px 30px;
       color: white !important;
       border-radius: 8px;
-
     }
   }
   p {
-    color: #7C7977;
+    color: #7c7977;
   }
 }
 
@@ -48,14 +48,14 @@
     box-sizing: border-box;
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.06);
     border-radius: 8px;
-    background: #FFFFFF;
+    background: #ffffff;
     display: inline-block;
   }
 
   .info-name {
     font-family: BioRhyme;
     font-size: 24px;
-    color: #25201D;
+    color: #25201d;
   }
 
   .delivery-option {
@@ -75,8 +75,8 @@
 
   @media (min-width: 768px) {
     .col-md-5 {
-        flex: 0 0 41.6666666667%;
-        max-width: 47.666667%;
+      flex: 0 0 41.6666666667%;
+      max-width: 47.666667%;
     }
   }
 
@@ -117,7 +117,7 @@
     font-weight: bold;
     font-size: 12px;
     line-height: 16px;
-    color: #4488EE;
+    color: #4488ee;
     .underline {
       text-decoration: underline !important;
     }
@@ -132,7 +132,7 @@
   }
 
   .shipping-option {
-    border: 1px solid #F0ECE8;
+    border: 1px solid #f0ece8;
     box-sizing: border-box;
     border-radius: 10px;
     background: white;
@@ -143,16 +143,16 @@
     justify-content: center;
     align-items: center;
     width: 155px;
-    height: 160px;
+    min-height: 160px;
     margin-bottom: 11px;
-    padding: 20px;
+    padding: 14px 10px;
 
     path {
       fill: black !important;
     }
 
     &.unavailable {
-      border: 1px solid #F0ECE8;
+      border: 1px solid #f0ece8;
       box-sizing: border-box;
       border-radius: 10px;
       background: #f8f6f4;
@@ -163,7 +163,7 @@
         opacity: 0.3;
       }
       path {
-        fill: #B9B6B4 !important;
+        fill: #b9b6b4 !important;
         // fill: black !important;
       }
       .price {
@@ -176,29 +176,64 @@
     }
 
     &.active {
-      border: 2px solid #339E72;
+      border: 2px solid #339e72;
       box-sizing: border-box;
       border-radius: 10px;
       cursor: default;
       background: white;
       .title {
-        color: #339E72;
+        color: #339e72;
         opacity: 1;
       }
       path {
-        fill: #339E72 !important;
+        fill: #339e72 !important;
       }
       .price {
-        color: #339E72;
+        color: #339e72;
         opacity: 1;
       }
     }
     .price {
       font-family: Mulish;
       font-weight: bold;
-      font-size: 18px;
-      color: #339E72;
+      font-size: 13px;
+      margin-bottom: 5px;
+      color: #339e72;
+      line-height: 12px;
       opacity: 1;
+      &--old {
+        color: #7c7977 !important;
+        font-size: 8px;
+        opacity: 0.4 !important;
+      }
+      &--new {
+        color: #339e72;
+      }
+    }
+    .old-price-div {
+      display: inline-block;
+      position: relative;
+      margin-top: -9px;
+      margin-right: 4px;
+    }
+    .old-price-bar {
+      background: #cac9c9;
+      height: 2px;
+      position: absolute;
+      width: 100%;
+      top: 15px;
+      left: 0px;
+      transform: rotate(-13deg);
+    }
+    .currency {
+      color: #7c7977;
+      font-weight: bold;
+      line-height: 12px;
+      font-size: 10px;
+      vertical-align: top;
+      &--new {
+        color: #339e72;
+      }
     }
     .title {
       font-family: Mulish;
@@ -212,10 +247,11 @@
     }
     .subtitle {
       font-family: Mulish;
-      font-size: 10px;
+      font-size: 8px;
       text-align: center;
-      color: #7C7977;
+      color: #7c7977;
       opacity: 0.6;
+      margin-top: 5px;
       line-height: 9px;
       height: 15px;
       margin: 0px;
@@ -246,26 +282,26 @@
   margin-bottom: 70px;
   .active {
     .circle-number {
-      border: 2px solid #339E72;
+      border: 2px solid #339e72;
       box-sizing: border-box;
-      background: #FEFEFE !important;
+      background: #fefefe !important;
     }
     span {
-      color: #339E72 !important;
+      color: #339e72 !important;
     }
   }
   .completed {
     .circle-number {
-      background: #339E72 !important;
+      background: #339e72 !important;
     }
     span {
       color: white !important;
     }
     .step-name {
-      color: #339E72 !important;
+      color: #339e72 !important;
     }
     .step-link {
-      border: 1px solid #339E72 !important;
+      border: 1px solid #339e72 !important;
     }
   }
   .step {
@@ -280,7 +316,7 @@
       font-size: 16px;
       line-height: 32px;
       text-align: center;
-      color: #C5C3C2;
+      color: #c5c3c2;
     }
   }
   .step-link {
@@ -306,7 +342,13 @@
       font-style: normal;
       font-weight: 600;
       font-size: 18px;
-      color: #A7A4A3;
+      color: #a7a4a3;
     }
   }
+}
+
+.companion-economy-message {
+  font-size: 11px;
+  margin-top: -17px;
+  color: #339e72;
 }

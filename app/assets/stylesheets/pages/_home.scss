@@ -2,38 +2,37 @@
 
 .home {
   .zip-search {
-      padding-top: 0px;
-      color: #7C7977 !important;
-      text-align: center;
-      border-radius: 10px 0px 0px 10px;
-      border-color: #F0ECE8;
-      width: 317px;
-      @include media-breakpoint-down(sm) {
-        width: 179px;
-      }
-      height: 54px;
-      background-color: white;
+    padding-top: 0px;
+    color: #7c7977 !important;
+    text-align: center;
+    border-radius: 10px 0px 0px 10px;
+    border-color: #f0ece8;
+    width: 317px;
+    @include media-breakpoint-down(sm) {
+      width: 179px;
+    }
+    height: 54px;
+    background-color: white;
   }
 
   .zip-button {
-    background: #339E72;
+    background: #339e72;
     border-radius: 0px 10px 10px 0px;
-      font-family: Mulish;
-      font-style: normal;
-      font-weight: 600;
-      font-size: 14px;
-      line-height: 21px;
-      height: 54px;
-      text-align: center;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-      color: #FFFFFF;
+    font-family: Mulish;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    height: 54px;
+    text-align: center;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #ffffff;
   }
 
-  .home-category{
+  .home-category {
     background-color: white;
     padding-top: 50px;
-
 
     h2 {
       padding-top: 60px;
@@ -41,7 +40,7 @@
       text-align: left;
       line-height: 135%;
       max-width: 448px;
-      color: #6C5C5C;
+      color: #6c5c5c;
     }
 
     .image-categorie {
@@ -55,11 +54,11 @@
       justify-content: space-between;
       margin-top: 50px;
 
-      h6{
+      h3 {
         padding-top: 30px;
         font-weight: bold;
         font-size: 18px;
-        color: #25201D;
+        color: #25201d;
         line-height: 32px;
         margin-bottom: 0px !important;
       }
@@ -69,10 +68,9 @@
         line-height: 24px;
       }
 
-
       .line {
         p {
-          color: #FF4136;
+          color: #ff4136;
           margin-top: -8px;
           padding-left: 20px;
           letter-spacing: 2.5px;
@@ -119,8 +117,13 @@
       height: 324px;
       width: 350px;
       justify-content: center;
-      border: 1px solid #FAF7F3;
-      box-shadow: 0 1px 20px rgba(0,0,0,0.07);
+      border: 1px solid #faf7f3;
+      box-shadow: 0 1px 20px rgba(0, 0, 0, 0.07);
+
+      h3 {
+        color: #25201d;
+        font-size: 18px;
+      }
 
       img {
         padding-top: 30px;
@@ -131,7 +134,7 @@
 
     .btn {
       font-family: 'Mulish', sans-serif;
-      background-color: #339E72!important;
+      background-color: #339e72 !important;
       color: white;
       font-weight: 600;
       font-size: 14px;
@@ -146,7 +149,7 @@
 
   .best-farms {
     width: 100vw;
-    background-color: #EFF2EA;
+    background-color: #eff2ea;
     text-align: center;
     padding-top: 110px;
     padding-bottom: 90px;
@@ -160,7 +163,6 @@
     text-align: center;
     padding-top: 110px;
     margin-bottom: 110px;
-
 
     .all-testimonials {
       justify-content: space-between;
@@ -181,22 +183,21 @@
         margin-top: -45px;
 
         h6 {
-          color: #6C5C5C;
+          color: #6c5c5c;
           line-height: 32px;
         }
 
         .name {
           margin-top: 10px;
           margin-bottom: 5px;
-          color: #25201D;
+          color: #25201d;
           line-height: 24px;
           font-family: 'BioRhyme', serif;
           font-size: 20px;
-
         }
 
         .text {
-          color: #7C7977;
+          color: #7c7977;
           font-weight: 600;
           font-size: 11px;
           line-height: 21px;
@@ -233,7 +234,7 @@
     .btn {
       margin-top: 24px;
       font-family: 'Mulish', sans-serif;
-      background-color: #339E72!important;
+      background-color: #339e72 !important;
       color: white;
       font-weight: 600;
       font-size: 14px;
@@ -276,8 +277,7 @@
   }
 
   .home-category {
-
-    h2 {
+    h3 {
       max-width: 350px !important;
     }
 
@@ -298,7 +298,6 @@
       }
 
       .two-products {
-
       }
 
       p {
@@ -306,11 +305,9 @@
       }
 
       a {
-
         p {
           padding-left: 10px;
           letter-spacing: 0px;
-
         }
 
         .line {
@@ -342,4 +339,3 @@
     }
   }
 }
-

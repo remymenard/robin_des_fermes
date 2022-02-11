@@ -1,18 +1,17 @@
 <%= link_to farm_path(farm), target: :_blank do  %>
   <h2><%= farm.name  %></h2>
-
-  <p class="products-number"><%= farm.products.count  %> <%= t('.products_number') %> </p>
-
+  <p class="products-number"><%= farm.products.available.count  %> <%= t('.products_number') %> </p>
   <% if @far_farms.include?(farm)  %>
     <div class="fresh-products d-flex">
       <%= image_tag "cards/flake.png", alt: "Flocon" %>
-      <p> <span> <%= farm.products.fresh.count %> <%= t('.products') %> </span><%= t('.withdrawal') %> </p>
+      <p> <span> <%= farm.products.available.fresh.count %> <%= t('.products') %> </span><%= t('.withdrawal') %> </p>
     </div>
   <% end %>
-
   <div class="d-flex photos">
     <% if farm.categories.count > 3 %>
-      <div class='category-photo'> <%= image_tag "many-categories.png", alt: "alttext" %> <p>+<%= farm.categories.count - 3  %> </p></div>
+      <div class='category-photo'> <%= image_tag "many-categories.png", alt: "alttext" %>
+        <p>+<%= farm.categories.count - 3  %> </p>
+      </div>
     <% end %>
     <% farm.categories.take(3).each do |category| %>
       <div class='category-photo'><%= cl_image_tag category.photo.key %></div>

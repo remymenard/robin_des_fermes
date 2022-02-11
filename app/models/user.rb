@@ -32,6 +32,13 @@ class User < ApplicationRecord
     [first_name.capitalize, last_name.capitalize].compact.join(' ')
   end
 
+  def is_companion
+    unless companion_ending_date.blank?
+      return companion_ending_date > Date.current
+    end
+    false
+  end
+
   private
   def subscribe_user_to_mailing_list
     if @wants_to_subscribe_mailing_list

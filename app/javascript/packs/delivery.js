@@ -26,7 +26,7 @@ export function initDeliverySelect() {
     beforeSubmit: startLoadingAnimation,
     success: (response) => {
       Datatrans.startPayment({
-        transactionId:  response["transaction"],
+        transactionId: response["transaction"],
         'loaded': () => {
           stopLoadingAnimation();
           activateConfirmButton();
@@ -51,9 +51,11 @@ function generateTotalPrice() {
 }
 
 let shippingPrice;
+let shippingPriceNotCompanion;
 
 function generateShippingPrice() {
   shippingPrice = 0;
+  shippingPriceNotCompanion = 0;
 
   $('.delivery-card input').each((_index, element) => {
     if (element.checked) {
@@ -66,6 +68,7 @@ function generateShippingPrice() {
         shippingPrice += takeawayPrice;
       } else if (deliveryType === "delivery") {
         shippingPrice += deliveryPrice;
+        shippingPriceNotCompanion += parseFloat($(element).data("deliveryNotCompanion").replace(",", "."));
       }
     }
   })
@@ -74,18 +77,26 @@ function generateShippingPrice() {
 
 function updateRecapCard() {
   const shippingPrice = generateShippingPrice();
-  const totalPrice  = generateTotalPrice();
+  const totalPrice = generateTotalPrice();
 
+  if ($('.companion-economy-message').length) {
+    if (shippingPriceNotCompanion === 0) {
+      $('.companion-economy-message').addClass('d-none');
+    } else {
+      $('.companion-economy-message').removeClass('d-none');
+    }
+    $('#price-not-companion').text(shippingPriceNotCompanion.toFixed(2).replace(".", ","));
+  }
   $('#delivery-price').text(shippingPrice)
   $('#totalPrice').text(totalPrice)
 }
 
 function activateConfirmButton() {
-  let farmOrdersCount     = document.querySelectorAll('.delivery-card').length
+  let farmOrdersCount = document.querySelectorAll('.delivery-card').length
   let userShippingChoices = document.querySelectorAll('.delivery-card input:checked').length
-  let allChoicesMade      = farmOrdersCount == userShippingChoices
+  let allChoicesMade = farmOrdersCount == userShippingChoices
 
-  if(allChoicesMade) {
+  if (allChoicesMade) {
     $('.confirm-button').each((_index, element) => {
       $(element).prop('disabled', false)
     })
@@ -94,11 +105,10 @@ function activateConfirmButton() {
 
 function startLoadingAnimation() {
   $("body").LoadingOverlay("show", {
-    imageColor  : "#339E72"
+    imageColor: "#339E72"
   });
 }
 
 function stopLoadingAnimation() {
   $("body").LoadingOverlay("hide");
 }
-

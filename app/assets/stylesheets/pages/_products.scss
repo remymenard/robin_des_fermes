@@ -1,5 +1,4 @@
 .products {
-
   .tabs-products {
     margin-top: 32px;
     border-bottom: white 1px solid;
@@ -16,23 +15,21 @@
 
     .active {
       width: 100%;
-      background-color: #D6ECE3;
+      background-color: #d6ece3;
       height: 80px;
       border-radius: 50px 50px 0 0;
 
       p {
-        color: #339E72 !important;
+        color: #339e72 !important;
       }
-
     }
 
     .delivery {
       width: 49%;
-      background-color: #FAF7F3;
+      background-color: #faf7f3;
       height: 80px;
       border-radius: 50px 50px 0 0;
-      color: #7C7977;
-
+      color: #7c7977;
 
       .image {
         margin-top: 4%;
@@ -57,8 +54,8 @@
 
     .withdrawal {
       width: 49%;
-      background-color: #FAF7F3;
-      color: #7C7977;
+      background-color: #faf7f3;
+      color: #7c7977;
       height: 80px;
       border-radius: 50px 50px 0 0;
 
@@ -87,14 +84,21 @@
     a {
       text-decoration: none !important;
     }
+    @media screen and (max-width: 771px) {
+      justify-content: center;
+    }
   }
 
   .card-product {
     position: relative;
-    border: 1px solid #FAF7F3;
-    box-shadow: 0 1px 20px rgba(0,0,0,0.07);
+    border: 1px solid #faf7f3;
+    box-shadow: 0 1px 20px rgba(0, 0, 0, 0.07);
     height: 417px;
     width: 252px;
+    @media screen and (max-width: 771px) {
+      max-width: 300px;
+      margin-right: 0;
+    }
     background-color: white;
     border-radius: 8px 8px 0px 0px;
     margin-top: 23px;
@@ -119,7 +123,7 @@
         .label {
           display: inline-block;
           margin-top: 10px;
-          background-color: #339E72;
+          background-color: #339e72;
           height: 19px;
           border-radius: 2px;
           padding-left: 5px;
@@ -136,7 +140,7 @@
         .preorder {
           display: inline-block;
           margin-top: 10px;
-          background-color: #FF4136;
+          background-color: #ff4136;
           height: 19px;
           border-radius: 2px;
           padding-left: 5px;
@@ -153,22 +157,28 @@
       }
     }
 
-
     .btn-number {
       height: 53px;
+      @media screen and (max-width: 771px) {
+        width: 100%;
+      }
       width: 252px;
-      background-color: #339E72;
+      background-color: #339e72;
       text-align: center;
       border-radius: 0px 0px 10px 10px;
       color: white;
       position: absolute;
       bottom: 0;
       left: 0;
-      text-transform: uppercase
+      text-transform: uppercase;
     }
 
     img {
       height: 248px;
+      object-fit: cover;
+      @media screen and (max-width: 771px) {
+        width: 100%;
+      }
       width: 252px;
     }
 
@@ -187,13 +197,13 @@
           h4 {
             letter-spacing: 0px !important;
             font-weight: bold;
-            color: #33B084 !important;
+            color: #33b084 !important;
             font-size: 20px;
           }
 
           p {
             font-weight: bold;
-            color: #33B084 !important;
+            color: #33b084 !important;
             margin-top: 5px;
             margin-left: 2px;
             font-size: 12px;
@@ -201,11 +211,11 @@
         }
 
         .kg-price {
-
           p {
             font-size: 12px;
-            color: #7C7977;        }
+            color: #7c7977;
           }
+        }
       }
 
       .name {
@@ -214,26 +224,26 @@
         margin-bottom: 15px;
         width: 156px;
 
-        h6 {
-          color: #25201D;
+        h6,
+        h4 {
+          letter-spacing: 1px;
+          font-weight: normal;
+          color: #25201d;
           font-size: 18px;
           font-family: 'BioRhyme', serif;
         }
 
         p {
           font-size: 12px;
-          color: #7C7977;
+          color: #7c7977;
         }
       }
-
     }
   }
 }
 
 @media screen and (max-width: 770px) {
   .products {
-    margin-top: 700px !important;
-
     .tabs-products {
       .active {
         background-image: none !important;
@@ -260,7 +270,6 @@
 
 @media screen and (max-width: 1200px) {
   .products {
-
     .tabs-products {
       .withdrawal {
         .active {
@@ -279,7 +288,6 @@
 
 @media screen and (max-width: 1000px) {
   .products {
-
     .tabs-products {
       .delivery {
         .active {
@@ -298,7 +306,6 @@
 
 @media screen and (min-width: 771px) {
   .products {
-
     .tabs-products {
       .delivery-mobile {
         display: none;

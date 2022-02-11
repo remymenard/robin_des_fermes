@@ -17,6 +17,10 @@ class FarmPolicy < ApplicationPolicy
     record.active
   end
 
+  def products_list?
+    record.active
+  end
+
   def update?
     user.admin?
   end

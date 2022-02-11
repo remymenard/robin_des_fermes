@@ -23,7 +23,7 @@
   .title {
     font-weight: bold;
     font-size: 16px;
-    margin-top: 50px;
+    line-height: 6px;
     margin-bottom: 30px;
   }
 
@@ -34,8 +34,11 @@
     margin-bottom: 30px;
   }
 
+  .image {
+    margin-top: 65px;
+  }
+
   img {
-    margin-top: 100px;
     height: 218px;
     width: 176px;
   }
@@ -60,7 +63,12 @@
       padding: 0px 10px;
     }
   }
+  .information, .community, .producers, .link {
+    margin-top: 65px;
+  }
 }
+
+
 @media screen and (max-width: 700px) {
   .footer {
 

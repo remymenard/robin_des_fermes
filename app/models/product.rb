@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :farm
   belongs_to :category
+  belongs_to :product_subcategory, optional: true
 
   has_many :farm_orders
 

@@ -19,7 +19,7 @@ module Webhooks
               if order.status == "waiting"
                 order.update(status: 'paid')
                 $tracker.track(order.buyer.id, 'Payment Made', {
-                  'Order Price' => order.price.to_s,
+                  'Order Price' => order.price_cents / 100,
                   'Order Price Currency' => order.price_currency,
                   'Order Farms Name' => order.farms.pluck(:name),
                 })
