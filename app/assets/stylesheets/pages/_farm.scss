@@ -334,7 +334,10 @@
       display: flex;
       flex-direction: column-reverse;
       align-items: end;
-
+    }
+    @media screen and (max-width: 600px) {
+      height: 48px;
+      width: 100%;
     }
     display: block;
     span {
