@@ -79,6 +79,9 @@ ActiveAdmin.register FarmOrder, as: "Commandes"  do
       row "Produits" do
         table_for resource.order_line_items do
           column "Nom", :product
+          column "Sous-Catégorie" do |item|
+            item.product.product_subcategory
+          end
           column "Prix à l'unité" do |item|
             item.product.price.to_s + item.product.price_currency
           end

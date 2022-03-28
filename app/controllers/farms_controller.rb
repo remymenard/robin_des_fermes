@@ -7,21 +7,13 @@ class FarmsController < ApplicationController
 
     @zip_code = get_zip_code_number
 
-    @url_data = {"Postal_Code" => @zip_code.to_i}.to_json
-
-    @headers = {
-      "X-Parse-Application-Id" => ENV['ZIP_CODE_CONVERTER_APPLICATION_ID'],
-      "X-Parse-REST-API-Key" => ENV['ZIP_CODE_CONVERTER_API_KEY']
-    }
-
     # HTTP CALL TO GET THE LAT LNG FROM A ZIP CODE
-    @response = HTTParty.get("https://parseapi.back4app.com/classes/SwitzerlandZipCodes_Switzerland_Zip_Code?limit=1&keys=Postal_Code,Latitude,Longitude&where=#{@url_data}",
-      headers:    @headers
-    )
+    csv = CSV.read( 'app/assets/zip_codes.csv', headers: true )
+    line = csv.find {|row| row['zip'] == @zip_code}
 
-    unless @response["results"].empty?
-      latitude = @response["results"][0]["Latitude"]
-      longitude = @response["results"][0]["Longitude"]
+    unless line.empty?
+      latitude = line["lat"]
+      longitude = line["lng"]
       @farms     = Farm.near([latitude, longitude], 200000, units: :km)
     else
       @farms = Farm.all
@@ -101,7 +93,7 @@ class FarmsController < ApplicationController
     authorize @farm
     subcategory_id = params[:subcategory_id]
     if subcategory_id.blank?
-      products_list = @farm.products.available.includes(:product_subcategory).order(:name).reorder('product_subcategories.created_at ASC')
+      products_list = default_order_products_list
     else
       subcategory = ProductSubcategory.find(subcategory_id)
       return if subcategory.farm != @farm
@@ -112,7 +104,7 @@ class FarmsController < ApplicationController
     when "name"
       products_list = products_list.sort_by{ |e| e.name.downcase }
     when "price"
-      products_list = products_list.reorder(:price_cents)
+      products_list = products_list.sort_by(&:price_cents)
     end
 
     unless params[:takeaway_only].blank?
@@ -143,13 +135,7 @@ class FarmsController < ApplicationController
       'icons/marker-orange.png'
     end
 
-    if @near_farm
-      @products_available = @farm.products.available
-    else
-      @products_available_not_fresh = @farm.products.available.not_fresh
-      @products_available = @farm.products.available
-      @products_available_all = @farm.products.available
-    end
+    @products_list = default_order_products_list
 
     @markers = @farm_show.geocoded.map do |farm|
       {
@@ -183,6 +169,13 @@ class FarmsController < ApplicationController
   end
 
   private
+
+  def default_order_products_list
+    @products_list = @farm.products.available.includes(:product_subcategory).order('product_subcategories.created_at ASC').group_by(&:product_subcategory).map do |subcategory_products|
+      subcategory_products.drop(1)[0].sort_by(&:name)
+    end
+    @products_list = @products_list.flatten
+  end
 
   def farm_params
     params.require(:farm).permit(:name, :description, :address, :lagitude, :longitude, :opening_time, :country, :city, :iban, :zip_code, :farmer_number, :regions, :accepts_take_away, :user_id, :long_description, :delivery_delay, :accepts_delivery,  photos: [], labels: [])
