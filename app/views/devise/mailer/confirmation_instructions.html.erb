@@ -21,7 +21,11 @@
       <%= link_to "Confirmer mon courriel", user_confirmation_url(confirmation_token: @token), id: "companion-button", target: :_blank %>
       <br>
       <br>
+      <br>
       Tu peux également devenir compagnon afin de bénéficier de livraisons offertes, rester informé sur nos producteurs et participer aux événements Robin des Fermes.
+      <br>
+      <br>
+      <%= link_to "Devenir Compagnon", "https://info.robindesfermes.ch/compagnon/", id: "companion-button", target: :_blank %>
       <br>
       <br>
       A bientôt <%= user.first_name %>
