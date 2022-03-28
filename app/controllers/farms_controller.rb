@@ -7,21 +7,13 @@ class FarmsController < ApplicationController
 
     @zip_code = get_zip_code_number
 
-    @url_data = {"Postal_Code" => @zip_code.to_i}.to_json
-
-    @headers = {
-      "X-Parse-Application-Id" => ENV['ZIP_CODE_CONVERTER_APPLICATION_ID'],
-      "X-Parse-REST-API-Key" => ENV['ZIP_CODE_CONVERTER_API_KEY']
-    }
-
     # HTTP CALL TO GET THE LAT LNG FROM A ZIP CODE
-    @response = HTTParty.get("https://parseapi.back4app.com/classes/SwitzerlandZipCodes_Switzerland_Zip_Code?limit=1&keys=Postal_Code,Latitude,Longitude&where=#{@url_data}",
-      headers:    @headers
-    )
+    csv = CSV.read( 'app/assets/zip_codes.csv', headers: true )
+    line = csv.find {|row| row['zip'] == @zip_code}
 
-    unless @response["results"].empty?
-      latitude = @response["results"][0]["Latitude"]
-      longitude = @response["results"][0]["Longitude"]
+    unless line.empty?
+      latitude = line["lat"]
+      longitude = line["lng"]
       @farms     = Farm.near([latitude, longitude], 200000, units: :km)
     else
       @farms = Farm.all
