@@ -7,6 +7,8 @@ class PagesController < ApplicationController
     @other_farms      = Farm.order("id asc").offset(1).all
 
     @reassurance = true
+
+    $tracker.track(session[:mixpanel_id], 'Access HomePage') unless browser.platform.name == "Unknown" || browser.name == "Unknown Browser"
   end
 
   def cgv

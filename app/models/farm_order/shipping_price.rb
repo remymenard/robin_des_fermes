@@ -1,9 +1,15 @@
 class FarmOrder
   class ShippingPrice
-    DATA = {
+    PRICE_NOT_COMPANION = {
       'takeaway' => Money.new(0,    'CHF'),
       'express'  => Money.new(290, 'CHF'),
-      'standard' => Money.new(990, 'CHF')
+      'standard' => Money.new(790, 'CHF')
+    }
+
+    PRICE_COMPANION = {
+      'takeaway' => Money.new(0,    'CHF'),
+      'express'  => Money.new(0, 'CHF'),
+      'standard' => Money.new(500, 'CHF')
     }
 
     attr_reader :price
@@ -15,19 +21,27 @@ class FarmOrder
 
     class << self
       def all
-        DATA.map { |identifier, price| self.new(identifier, price) }
+        PRICE_NOT_COMPANION.map { |identifier, price| self.new(identifier, price) }
       end
 
       def takeaway
-        new('takeaway', DATA['takeaway'])
+        new('takeaway', PRICE_NOT_COMPANION['takeaway'])
       end
 
-      def express
-        new('express', DATA['express'])
+      def express_not_companion
+        new('express', PRICE_NOT_COMPANION['express'])
       end
 
-      def standard
-        new('standard', DATA['standard'])
+      def standard_not_companion
+        new('standard', PRICE_NOT_COMPANION['standard'])
+      end
+
+      def express_companion
+        new('express', PRICE_COMPANION['express'])
+      end
+
+      def standard_companion
+        new('standard', PRICE_COMPANION['standard'])
       end
     end
   end

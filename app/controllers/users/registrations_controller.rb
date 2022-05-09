@@ -14,6 +14,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
         Order.find_by(id: cookies[:order_id]).update buyer: resource
         cookies.permanent[:user_id] = resource.id
       end
+      $tracker.alias(resource.id, session[:mixpanel_id])
+      $tracker.track(resource.id, 'Finish Signup', {
+        '$first_name' => resource.first_name,
+        '$last_name' => resource.last_name,
+        '$email' => resource.email,
+        '$phone' => resource.number_phone,
+        'Zip Code' => resource.zip_code,
+        })
+      $tracker.people.set(resource.id, {
+        'Utm Source' => session[:utm_source],
+        'Utm Medium' => session[:utm_medium],
+        'Utm Term' => session[:utm_term],
+        'Utm Content' => session[:utm_content],
+        'Utm Campaign' => session[:utm_campaign]
+      })
     end
   end
 

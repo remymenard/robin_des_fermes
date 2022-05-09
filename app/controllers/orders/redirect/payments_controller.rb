@@ -4,22 +4,30 @@ module Orders
       before_action :set_order
 
       def successful
-        order = Order.find_by(transaction_id: params["datatransTrxId"])
+        unless ENV['DATATRANS_ENV'] == 'production'
+          order = Order.find_by(transaction_id: params["datatransTrxId"])
 
-        unless order.nil?
-          if order.status == "waiting"
-            order.update(status: 'paid')
-            order.farm_orders.each do |farm_order|
-              if farm_order.contains_preorder_product?
-                farm_order.update(price: farm_order.total_price_with_shipping, status: 'preordered', waiting_for_preorder_at: Time.now, waiting_for_shipping_at: farm_order.compute_preorder_delivery_date, estimated_delivery_date: farm_order.delivery_date(current_user.zip_code))
-                schedule_reminder_mail(farm_order.delivery_date(current_user.zip_code) - 7.days, farm_order)
-              else
-                farm_order.update(price: farm_order.total_price_with_shipping, status: 'in_preparation', waiting_for_shipping_at: Time.now, estimated_delivery_date: farm_order.delivery_date(current_user.zip_code))
-                schedule_reminder_mail(farm_order.delivery_date(current_user.zip_code) - 1.day, farm_order)
+          unless order.nil?
+            if order.status == "waiting"
+              order.update(status: 'paid')
+              $tracker.track(session[:mixpanel_id], 'Payment Made', {
+                'Order Price' => order.price_cents / 100,
+                'Order Price Currency' => order.price_currency,
+                'Order Farms Name' => order.farms.pluck(:name),
+              })
+              $tracker.people.increment(session[:mixpanel_id], {
+                'Orders Count' => 1,
+              });
+              order.farm_orders.each do |farm_order|
+                if farm_order.contains_preorder_product?
+                  farm_order.update(price: farm_order.total_price_with_shipping, status: 'preordered')
+                else
+                  farm_order.update(price: farm_order.total_price_with_shipping, status: 'in_preparation')
+                end
               end
             end
-            SendOrderConfirmationMailsJob.perform_now(order)
           end
+
         end
         @reassurance = true
       end
@@ -30,6 +38,11 @@ module Orders
 
       def with_error
         @order.update(status: 'failed')
+        $tracker.track(session[:mixpanel_id], 'Payment Error', {
+          'Order Price' => @order.price_cents / 100,
+          'Order Price Currency' => @order.price_currency,
+          'Order Farms Name' => @order.farms.pluck(:name),
+        })
         redirect_to delivery_order_path(@order, payment_with_errors: true)
       end
 
@@ -38,11 +51,6 @@ module Orders
       def set_order
         @order = Order.find_by(transaction_id: params["datatransTrxId"])
         authorize [:payments, @order]
-      end
-
-      def schedule_reminder_mail(date, farm_order)
-        date += 1.day if date.beginning_of_day == Time.now.beginning_of_day
-        SendOrderReminderMailsJob.set(wait_until: date.beginning_of_day).perform_later(farm_order)
       end
     end
   end

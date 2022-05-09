@@ -11,7 +11,7 @@ class OrderMailer < ApplicationMailer
   end
 
   def takeaway_confirmation_owner
-    mail(to: @owner.email, subject: "Félicitations tu as une nouvelle commande n°#{@order.id}")
+    mail(to: @owner.email, bbc: ['info@robindesfermes.ch'], subject: "Félicitations tu as une nouvelle commande n°#{@order.id}")
   end
 
   def delivery_confirmation_customer
@@ -19,7 +19,7 @@ class OrderMailer < ApplicationMailer
   end
 
   def delivery_confirmation_owner
-    mail(to: @owner.email, subject: "Félicitations tu as une nouvelle commande n°#{@order.id}")
+    mail(to: @owner.email, bbc: ['info@robindesfermes.ch'], subject: "Félicitations tu as une nouvelle commande n°#{@order.id}")
   end
 
   def takeaway_preorder_customer
@@ -27,7 +27,7 @@ class OrderMailer < ApplicationMailer
   end
 
   def takeaway_preorder_owner
-    mail(to: @owner.email, subject: "Félicitations tu as une nouvelle commande n°#{@order.id}")
+    mail(to: @owner.email, bbc: ['info@robindesfermes.ch'], subject: "Félicitations tu as une nouvelle commande n°#{@order.id}")
   end
 
   def delivery_preorder_customer
@@ -35,7 +35,7 @@ class OrderMailer < ApplicationMailer
   end
 
   def delivery_preorder_owner
-    mail(to: @owner.email, subject: "Félicitations tu as une nouvelle commande n°#{@order.id}")
+    mail(to: @owner.email, bbc: ['info@robindesfermes.ch'], subject: "Félicitations tu as une nouvelle commande n°#{@order.id}")
   end
 
   def delivery_sent_alert_customer

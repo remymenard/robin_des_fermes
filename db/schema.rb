@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_26_172811) do
+ActiveRecord::Schema.define(version: 2022_01_09_155455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -141,6 +141,8 @@ ActiveRecord::Schema.define(version: 2021_04_26_172811) do
     t.string "farmer_number"
     t.string "farm_profil_picture"
     t.string "description_title"
+    t.integer "minimum_order_price_cents", default: 0
+    t.string "minimum_order_price_currency", default: "CHF", null: false
     t.index ["slug"], name: "index_farms_on_slug", unique: true
     t.index ["user_id"], name: "index_farms_on_user_id"
   end
@@ -200,6 +202,14 @@ ActiveRecord::Schema.define(version: 2021_04_26_172811) do
     t.index ["buyer_id"], name: "index_orders_on_buyer_id"
   end
 
+  create_table "product_subcategories", force: :cascade do |t|
+    t.string "name"
+    t.bigint "farm_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["farm_id"], name: "index_product_subcategories_on_farm_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.bigint "farm_id", null: false
     t.string "name"
@@ -224,8 +234,10 @@ ActiveRecord::Schema.define(version: 2021_04_26_172811) do
     t.string "total_weight"
     t.date "preorder_shipping_starting_at"
     t.boolean "available_for_preorder", default: false
+    t.bigint "product_subcategory_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["farm_id"], name: "index_products_on_farm_id"
+    t.index ["product_subcategory_id"], name: "index_products_on_product_subcategory_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -250,6 +262,8 @@ ActiveRecord::Schema.define(version: 2021_04_26_172811) do
     t.boolean "admin"
     t.string "address_line_2"
     t.string "number_phone"
+    t.date "companion_starting_date"
+    t.date "companion_ending_date"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -273,4 +287,5 @@ ActiveRecord::Schema.define(version: 2021_04_26_172811) do
   add_foreign_key "orders", "users", column: "buyer_id"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "farms"
+  add_foreign_key "products", "product_subcategories"
 end

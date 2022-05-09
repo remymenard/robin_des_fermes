@@ -20,6 +20,8 @@ class FarmOrder < ApplicationRecord
     greater_than_or_equal_to: 0,
   }
 
+  before_save :send_order_emails
+
   #validates :status, inclusion: { in: ["waiting", "preordered", "in_preparation", "shipped", "issue"] }
 
   before_create :set_confirm_shipped_token
@@ -66,7 +68,11 @@ class FarmOrder < ApplicationRecord
   end
 
   def delivery_price(zip_code)
-    farm.is_in_close_zone?(zip_code) ? ShippingPrice.express : ShippingPrice.standard
+    if order.buyer&.is_companion
+      farm.is_in_close_zone?(zip_code) ? ShippingPrice.express_companion : ShippingPrice.standard_companion
+    else
+      farm.is_in_close_zone?(zip_code) ? ShippingPrice.express_not_companion : ShippingPrice.standard_not_companion
+    end
   end
 
   def total_items_count
@@ -115,10 +121,11 @@ class FarmOrder < ApplicationRecord
       end
     when 'delivery'
       if farm.accepts_delivery
+        order_delivery_price = delivery_price(zip_code).price
         if farm.is_in_close_zone?(zip_code)
-          update!(status: 'waiting', takeaway_at_farm: false, standard_shipping: false, express_shipping: true, shipping_price: FarmOrder::ShippingPrice.express.price, farm_office: farm.get_correct_farm_office(zip_code))
+          update!(status: 'waiting', takeaway_at_farm: false, standard_shipping: false, express_shipping: true, shipping_price: order_delivery_price, farm_office: farm.get_correct_farm_office(zip_code))
         else
-          update!(status: 'waiting', takeaway_at_farm: false, standard_shipping: true, express_shipping: false, shipping_price: FarmOrder::ShippingPrice.standard.price)
+          update!(status: 'waiting', takeaway_at_farm: false, standard_shipping: true, express_shipping: false, shipping_price: order_delivery_price)
         end
       end
     end
@@ -154,6 +161,35 @@ class FarmOrder < ApplicationRecord
     loop do
       token = SecureRandom.hex(20)
       break token unless FarmOrder.where(confirm_shipped_token: token).exists?
+    end
+  end
+
+  def send_order_emails
+    if status_changed?
+      case status
+        when 'preordered'
+          date = delivery_date(order.buyer.zip_code) - 7.days
+          date += 1.day if date.beginning_of_day == Time.now.beginning_of_day
+          self.estimated_delivery_date = delivery_date(order.buyer.zip_code)
+          self.waiting_for_preorder_at = Time.now
+          self.waiting_for_shipping_at = compute_preorder_delivery_date
+          SendOrderConfirmationMailsJob.perform_now(self)
+          SendOrderReminderMailsJob.set(wait_until: date.beginning_of_day).perform_later(self)
+        when 'in_preparation'
+          date = delivery_date(order.buyer.zip_code) - 1.day
+          self.estimated_delivery_date = delivery_date(order.buyer.zip_code)
+          self.waiting_for_shipping_at = Time.now
+          SendOrderConfirmationMailsJob.perform_now(self)
+          SendOrderReminderMailsJob.set(wait_until: date.beginning_of_day).perform_later(self)
+        when 'ready_for_withdrawal'
+          self.shipped_at = Time.now
+          OrderMailer.with({user: order.buyer, order: self}).takeaway_ready_alert_customer.deliver_now
+          SendOrderReceivedQuestionMailsJob.set(wait: 5.days).perform_later(self)
+        when 'shipped'
+          self.shipped_at = Time.now
+          OrderMailer.with({user: order.buyer, order: self}).delivery_sent_alert_customer.deliver_now
+          SendOrderReceivedQuestionMailsJob.set(wait: 5.days).perform_later(self)
+      end
     end
   end
 end

@@ -1,7 +1,8 @@
 ActiveAdmin.register User, as: "Utilisateurs" do
   before_action :remove_password_params_if_blank, only: [:update]
 
-  permit_params :id, :email, :first_name, :last_name, :number_phone, :wants_to_subscribe_mailing_list, :photo, :password, :title, :password_confirmation, :address_line_1, :city, :zip_code, :farm_id
+  permit_params :id, :admin, :email, :first_name, :last_name, :number_phone, :wants_to_subscribe_mailing_list, :photo, :password, :title,
+  :password_confirmation, :address_line_1, :city, :zip_code, :farm_id, :companion_starting_date, :companion_ending_date
 
   form title: 'Utilisateurs' do |f|
     inputs "Renseigner un propriétaire" do
@@ -16,6 +17,17 @@ ActiveAdmin.register User, as: "Utilisateurs" do
       input :password, label: false, placeholder: "Mot de passe"
       input :password_confirmation, label: false, placeholder: "Confirmation du mot de passe"
       input :wants_to_subscribe_mailing_list, label: "L'inscrire a la newsletter"
+      input :companion_starting_date, as: :date_time_picker,
+      picker_options: {
+        timepicker: false,
+        format: 'Y-m-d'
+      }
+      input :companion_ending_date, as: :date_time_picker,
+      picker_options: {
+        timepicker: false,
+        format: 'Y-m-d'
+      }
+      input :admin, label: "Admin"
       if f.object.photo.attached?
         input :photo, as: :file, label: "Changer la photo de profil", hint: image_tag(cl_image_path(f.object.photo.key), height: 256)
       else

@@ -12,8 +12,16 @@ Rails.application.routes.draw do
   scope '(:locale)', locale: /fr/ do
     root to: 'pages#home'
     get 'faq', to: 'pages#faq'
-    resources :farms, only: [:index, :show]
-    resources :products, only: [:show]
+    resources :farms, only: [:index, :show] do
+      member do
+        patch :products_list
+      end
+    end
+    resources :products, only: [] do
+      member do
+        get :open_modal
+      end
+    end
     get 'cgv', to: 'pages#cgv'
     get 'team', to: 'pages#team'
     get 'about', to: 'pages#about'
@@ -44,6 +52,11 @@ Rails.application.routes.draw do
   end
 
   namespace :basket do
+    resources :mixpanel, only: [] do
+      collection do
+        post :open_basket
+      end
+    end
     resources :order_line_items, only: [:destroy] do
       member do
         post :increment

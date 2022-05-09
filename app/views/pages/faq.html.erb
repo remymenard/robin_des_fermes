@@ -1,7 +1,6 @@
 <div class="container">
   <div class="faq">
     <h2><%= t('.faq') %></h2>
-
     <div class="accordion" id="accordionExample">
       <div class="card">
         <div class="card-header p-0" id="headingOne">
@@ -15,7 +14,6 @@
             </button>
           </h5>
         </div>
-
         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
           <div class="card-body">
             <%= t('.reponse1') %>
@@ -30,7 +28,6 @@
           </div>
         </div>
       </div>
-
       <div class="card">
         <div class="card-header p-0" id="headingTwo">
           <h5 class="mb-0">
@@ -56,7 +53,6 @@
           </div>
         </div>
       </div>
-
       <div class="card">
         <div class="card-header p-0" id="headingThree">
           <h5 class="mb-0">
@@ -72,20 +68,29 @@
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
           <div class="card-body">
             <%= t('.reponse3') %>
-            <%= link_to  t('.link'),  "https://drakkr.atlassian.net/charte", target: :blank%>
+            <%= link_to  t('.link'),  "https://www.robindesfermes.ch/charter", target: :blank%>
             <%= t('.reponse3-2') %>
             <br>
-            <br>
-            <ul>
-              <li><%= t('.reponse3_producer') %></li>
-              <li><%= t('.reponse3_products') %></li>
-              <li><%= t('.reponse3_products_composition') %></li>
-              <li><%= t('.reponse3_hygiene') %></li>
-            </ul>
+              <h2><%= t('pages.charter.origine_title1') %> :</h2>
+              <p><u><%= t('pages.charter.origine_para1_html') %><br>
+              <br>
+              <u><%= t('pages.charter.origine_para2_html') %><br>
+              <br>
+              <u><%= t('pages.charter.origine_para3_html') %></p>
+              <h2><%= t('pages.charter.producteurs_title2') %> :</h2>
+              <p><%= t('pages.charter.producteurs_para1') %><br>
+              <%= t('pages.charter.producteurs_para2') %><br>
+              <br>
+              <%= t('pages.charter.producteurs_para3_html') %><br>
+              <br>
+              <%= t('pages.charter.producteurs_para4') %><br>
+              <br>
+              <%= t('pages.charter.producteurs_para5_html') %></p>
+              <h2><%= t('pages.charter.hygiene_title3') %></h2>
+              <p><%= t('pages.charter.hygiene_para1') %></p>
           </div>
         </div>
       </div>
-
       <div class="card">
         <div class="card-header p-0" id="headingFour">
           <h5 class="mb-0">
@@ -104,7 +109,6 @@
           </div>
         </div>
       </div>
-
       <div class="card">
         <div class="card-header p-0" id="headingFive">
           <h5 class="mb-0">
@@ -120,14 +124,15 @@
         <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
           <div class="card-body">
             <%= t('.reponse5') %>
-            <br> <br>
+            <br>
+            <br>
             <%= t('.reponse5_delivery') %>
-            <br> <br>
+            <br>
+            <br>
             <%= t('.reponse5_order') %>
           </div>
         </div>
       </div>
-
       <div class="card">
         <div class="card-header p-0" id="headingSix">
           <h5 class="mb-0">
@@ -143,24 +148,30 @@
         <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
           <div class="card-body">
             <strong> <%= t('.distribution_strong') %> </strong>
-            <br> <br>
+            <br>
+            <br>
             <%= t('.distribution') %>
-            <br> <br>
-            <%= t('.distribution_price') %>
-            <br> <br>
+            <br>
+            <br>
+            <%= t('.distribution_price', price: FarmOrder::ShippingPrice.express_not_companion.price) %>
+            <br>
+            <br>
             <strong><%= t('.shipping_strong') %></strong>
-            <br> <br>
+            <br>
+            <br>
             <%= t('.shipping') %>
-            <br> <br>
-            <%= t('.shipping_price') %>
-            <br> <br>
+            <br>
+            <br>
+            <%= t('.shipping_price', price: FarmOrder::ShippingPrice.standard_not_companion.price) %>
+            <br>
+            <br>
             <strong><%= t('.withdrawal_strong') %></strong>
-            <br> <br>
+            <br>
+            <br>
             <%= t('.withdrawal') %>
           </div>
         </div>
       </div>
-
       <div class="card">
         <div class="card-header p-0" id="headingSeven">
           <h5 class="mb-0">
@@ -176,14 +187,15 @@
         <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
           <div class="card-body">
             <%= t('.reponse7') %>
-            <br> <br>
+            <br>
+            <br>
             <%= t('.reponse7_producer') %>
-            <br> <br>
+            <br>
+            <br>
             <%= t('.response7_packaging') %>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </div>
