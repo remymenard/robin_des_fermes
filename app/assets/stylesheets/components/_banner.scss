@@ -1,15 +1,13 @@
 .banner {
-  background-image: image-url('home/Background.png');
-  background-size: cover;
-  background-position: center;
+  background-color: #F9FAF7;
   min-height: 100vh;
   text-align: center;
 
   h1 {
     margin: 0 auto;
-    line-height: 64px;
+    line-height: 45px;
     color: #25201d;
-    font-size: 54px;
+    font-size: 35px;
     max-width: 582px;
     padding-top: 15vh;
   }
@@ -17,10 +15,21 @@
   p {
     padding-top: 24px;
     margin: 0 auto;
-    font-size: 18px;
+    font-size: 16px;
     color: #25201d;
     max-width: 470px;
-    line-height: 32px;
+    line-height: 25px;
+    font-family: 'BioRhyme', serif;
+    font-weight: 300;
+
+    strong {
+      color: #339E72;
+    }
+  }
+
+  img {
+    height: 400px;
+    margin-top: 40px;
   }
 
   .search {
@@ -28,7 +37,7 @@
     justify-content: center;
 
     .btn-computer {
-      background-color: #33b084 !important;
+      background-color: #339E72 !important;
       color: white;
       font-weight: 600;
       font-family: 'Mulish', sans-serif;

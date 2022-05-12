@@ -6,16 +6,10 @@ fr:
       one_product: 'produit'
       search_placeholder: 'Où habitez-vous ?'
       search_btn: 'RECHERCHER'
-      title: 'La vente directe, droit dans le mille !'
-      sub_title1: 'Trouve le '
-      sub_title_bold1: 'produit '
-      sub_title2: 'ou '
-      sub_title_bold2: "l'exploitation "
-      sub_title3: 'de ton choix, '
-      sub_title_bold3: 'commande en quelques clics, paie en ligne '
-      sub_title4: 'et déguste ta victoire : quand '
-      sub_title_bold4: "c'est juste, "
-      sub_title5: "c'est encore meilleur!"
+      title: 'Marché de producteurs sans voleurs intermédiaires'
+      sub_title1: 'Achète tes produits en direct pour soutenir -  '
+      sub_title_bold1: 'vraiment '
+      sub_title2: '- les producteurs de ta région et ainsi encourager une consommation et une économie durables '
       viandes: 'Viandes'
       vins: 'Vins'
       vegetables: 'Légumes'
