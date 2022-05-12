@@ -26,7 +26,7 @@
 
 .navbar {
   width: 100%;
-  height: 64px;
+  height: 70px;
   background-color: #F9FAF7;
   .add-gap {
     li {
@@ -36,13 +36,15 @@
 
   .basket-user {
     display: flex;
+    margin-left: 7vw;
   }
 
   .link-navbar {
     display: flex;
   }
 
-  .text-dark {
+  .navbar-link
+   {
     color: #3C452B;
     font-family: 'BioRhyme', serif;
   }
@@ -68,10 +70,13 @@
       margin-top: 10px;
     }
   }
+
   .navbar-logo {
     width: 200px;
     @include media-breakpoint-down(lg) {
-      width: 135px;
+      width: 200px;
+      margin-top: 8px;
+      margin-right: 10px;
     }
     @include media-breakpoint-down(sm) {
       width: 32vw;
@@ -138,6 +143,8 @@
       margin-top: 0px;
     }
   }
+
+
   .items-number {
     position: absolute;
     display: inline-block;
@@ -193,6 +200,7 @@
   background: #339E72;
   z-index: 100;
   display: flex;
+  font-size: 14px;
   a {
     color: #E1F5EA;
     overflow: auto;

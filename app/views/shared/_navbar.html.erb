@@ -24,7 +24,7 @@
       <% end %>
     </a>
   </div>
-  <div class="d-flex justify-content-between add-gap" style="margin: auto;">
+  <div class="d-flex justify-content-between add-gap" style="margin-left: 15%;">
     <div id="zip_code_messages" data-title="<%= t('zip_code.title') %>" data-description="<%= t('zip_code.description') %>" data-login="<%= t('zip_code.login') %>" data-error="<%= t('zip_code.error') %>" %></div>
     <ul class="navbar-nav">
       <div class="zip-code-infos" data-signedin?="<%= user_signed_in? %>" data-login_path="<%= new_user_session_path %>" data-set_zip_code_path="<%= users_zip_code_path %>" data-token="<%= form_authenticity_token %>" ></div>
@@ -38,14 +38,14 @@
       <% end %>
       <div class="link-navbar">
         <li class="nav-item">
-          <%= link_to t('shared.navbar.mission'), about_path, class: "nav-link hidden-on-mobile text-dark" %>
+          <%= link_to t('shared.navbar.our_farmers'), farms_path, class: "nav-link hidden-on-mobile navbar-link" %>
         </li>
         <li class="nav-item">
           <%= link_to root_path do %>
             <%= image_tag "new-home/logo-home.png", class: 'navbar-logo' %>
           <% end %>
         <li class="nav-item">
-          <%= link_to t('shared.navbar.our_farmers'), farms_path, class: "nav-link hidden-on-mobile text-dark" %>
+          <%= link_to t('shared.navbar.mission'), about_path, class: "nav-link hidden-on-mobile navbar-link mission" %>
         </li>
       </div>
       <div class="basket-user">
