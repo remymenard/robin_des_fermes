@@ -1,6 +1,5 @@
 .banner {
   background-color: #F9FAF7;
-  min-height: 100vh;
   text-align: center;
 
   .btn-small-mobile {
@@ -13,6 +12,7 @@
     margin-left: -150px;
     justify-content: space-between;
     width: 100%;
+    margin-bottom: 70px;
   }
 
   .ellipse-small {
@@ -105,7 +105,7 @@
 
 }
 
-@media (max-width: 1000px) {
+@media (min-width: 750px) and (max-width: 1000px) {
   .banner {
     .btn-computer {
       display: none;
@@ -113,7 +113,8 @@
 
     .btn-mobile {
       height: 40px;
-      display: initial;
+      display: initial !important;
+      background-color: #33b084 !important;
       color: white;
       font-weight: 600;
       font-family: 'Mulish', sans-serif;
