@@ -5,6 +5,7 @@
   position: absolute !important;
   left: 0 !important;
   margin-left: 10px !important;
+  margin-top: 5px;
 }
 .margin-navbar {
   padding-right: 40px !important;
@@ -29,6 +30,7 @@
   height: 70px;
   background-color: #F9FAF7;
   .add-gap {
+    width: 100%;
     li {
       margin-left: 20px;
     }
@@ -36,7 +38,7 @@
 
   .basket-user {
     display: flex;
-    margin-left: 7vw;
+    margin-left: 9vw;
   }
 
   .link-navbar {
@@ -57,7 +59,13 @@
     display: flex;
     flex-direction: row;
     @include media-breakpoint-down(md) {
-      width: 95px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+
+      .link-navbar {
+        margin-left: -50%;
+      }
     }
   }
   .basket-icon {
@@ -76,11 +84,12 @@
     @include media-breakpoint-down(lg) {
       width: 200px;
       margin-top: 8px;
-      margin-right: 10px;
+      margin-left: 10px;
     }
     @include media-breakpoint-down(sm) {
-      width: 32vw;
-      margin-right: 20px;
+      width: 26vw;
+      margin-left: 50px;
+      margin-top: 2.5vh;
     }
   }
   /* Font Awesome Icons have variable width. Added fixed width to fix that.*/
@@ -138,7 +147,7 @@
   }
   .basket-div {
     display: flex;
-    margin-top: 9px;
+    margin-top: 22px;
     @include media-breakpoint-up(lg) {
       margin-top: 0px;
     }
@@ -247,6 +256,32 @@
   .navbar {
     .logo-mobile {
       display: none;
+    }
+  }
+}
+
+@media (max-width: 1041px) {
+  .basket-user {
+    margin-left: 6vw !important;
+  }
+}
+
+@media (min-width: 1041px) {
+  .navbar {
+    .navbar-desktop {
+      margin-left: 15%;
+    }
+  }
+}
+
+@media (min-width: 1130px) {
+  .navbar {
+    .navbar-desktop {
+      margin-left: -10%;
+    }
+
+    .navbar-logo {
+      margin-top: 2px;
     }
   }
 }
