@@ -27,11 +27,24 @@
 .navbar {
   width: 100%;
   height: 64px;
-  background-color: $primary;
+  background-color: #F9FAF7;
   .add-gap {
     li {
       margin-left: 20px;
     }
+  }
+
+  .basket-user {
+    display: flex;
+  }
+
+  .link-navbar {
+    display: flex;
+  }
+
+  .text-dark {
+    color: #3C452B;
+    font-family: 'BioRhyme', serif;
   }
   .hidden-on-mobile {
     @include media-breakpoint-down(md) {
@@ -46,10 +59,10 @@
     }
   }
   .basket-icon {
-    height: 30px;
+    height: 24px;
   }
   .profile-icon {
-    height: 24px;
+    height: 38px;
     padding: 0 0;
     @include media-breakpoint-down(md) {
       margin-top: 10px;
@@ -106,18 +119,17 @@
     color: white;
   }
   .price-text {
-    font-family: 'Mulish', sans-serif;
+    font-family: 'BioRhyme', serif;
     font-weight: bold;
-    font-size: 25px;
-    line-height: 25px;
+    font-size: 21px;
+    line-height: 21px;
     vertical-align: bottom;
-    color: #b2d7c5;
+    color: #2D3126;
   }
   .price-currency {
     font-family: 'Mulish', sans-serif;
-    font-weight: bold;
-    font-size: 11px;
-    color: #b2d7c5;
+    font-size: 10px;
+    color: #2D3126;
   }
   .basket-div {
     display: flex;
@@ -178,10 +190,11 @@
 #companion-infos-navbar {
   height: 41px;
   width: 100%;
-  background: #254638;
+  background: #339E72;
   z-index: 100;
   display: flex;
   a {
+    color: #E1F5EA;
     overflow: auto;
     white-space: nowrap;
     @include media-breakpoint-down(sm) {
@@ -199,8 +212,33 @@
       color: white;
       opacity: 0.85;
     }
+    img {
+      margin-top: 2px;
+      margin-right: 2px;
+    }
   }
   svg {
     margin-bottom: 3px;
+  }
+}
+
+@media (max-width: 500px) {
+  #companion-infos-navbar {
+    a {
+      img {
+        display: none;
+      }
+      span {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (min-width: 500px) {
+  .navbar {
+    .logo-mobile {
+      display: none;
+    }
   }
 }
