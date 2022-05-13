@@ -3,6 +3,22 @@ fr:
     user_not_authorized: "Vous n'êtes pas authorisé à effectuer cette action."
   pages:
     home:
+      statistic: 'Une répartition inégale des richesses'
+      statistic-1980: '1980'
+      statistic-1980-title: "On fait moit' moit'"
+      statistic-1980-description: "À l'époque, la répartition entre le producteur et les intermédiaires était égale."
+      statistic-2020: '2020'
+      statistic-2020-title: "Merci la mondialisation"
+      statistic-2020-description: "En 2020, ces mêmes producteurs ne touchent que  "
+      statistic-2020-description-30: "30%"
+      statistic-2020-description-strong: "du montant payé"
+      statistic-2020-description-last: "par le consommateur."
+      statistic-today: "Aujourd'hui"
+      statistic-today-title: "Notthingham à votre porte"
+      statistic-today-description: "Robin des fermes"
+      statistic-today-description-strong: "apporte de la visibilité et des outils aux producteurs"
+      statistic-today-description-last: "pour qu'ils soient plus indépendants et maître de leurs marges."
+      statistic-today-description-strong-last: "Robin des fermes veut remettre l'église au milieu du village !"
       title-marker: 'Trouve les producteurs  qui t’entourent'
       text-marker: 'Tu peux également trouver'
       text-marker-strong: 'des Tanières,'

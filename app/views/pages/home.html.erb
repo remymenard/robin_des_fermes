@@ -54,6 +54,35 @@
       </div>
     </div>
   </div>
+  <div class="wealth-distribution">
+    <div class="container">
+      <h3 class="statistic-title"><%= t('.statistic') %></h3>
+      <div class="statistic-description">
+        <%= image_tag "new-home/wealth-distribution-1980", alt: "alttext", class: "img-1980" %>
+        <div class="statistic-text">
+          <h3><span><%= t('.statistic-1980') %></span> <%= t('.statistic-1980-title') %></h3>
+          <p><%= t('.statistic-1980-description') %></p>
+        </div>
+      </div>
+
+      <div class="statistic-description">
+        <%= image_tag "new-home/wealth-distribution-2020", alt: "alttext", class: "img-2020" %>
+        <div class="statistic-text">
+          <h3><span><%= t('.statistic-2020') %></span> <%= t('.statistic-2020-title') %></h3>
+          <p><%= t('.statistic-2020-description') %><strong class="word-underline"> <%= t('.statistic-2020-description-30') %></strong><strong> <%= t('.statistic-2020-description-strong') %></strong> <%= t('.statistic-2020-description-last') %></p>
+          <%= image_tag "new-home/stroke.png", alt: "alttext", class: "stroke" %>
+        </div>
+      </div>
+
+      <div class="statistic-description">
+        <%= image_tag "new-home/wealth-distribution-today", alt: "alttext", class: "img-today" %>
+        <div class="statistic-text">
+          <h3><span><%= t('.statistic-today') %></span> <%= t('.statistic-today-title') %></h3>
+          <p><%= t('.statistic-today-description') %> <strong><%= t('.statistic-today-description-strong') %></strong> <%= t('.statistic-today-description-last') %> <strong><%= t('.statistic-today-description-strong-last') %></strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="container">
     <div class="home-category">
       <div class="food d-flex">
