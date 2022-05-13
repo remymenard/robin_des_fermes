@@ -56,6 +56,10 @@
 
   @media (max-width: 770px) {
     .home-category {
+      h3 {
+        font-size: 18px;
+      }
+
       .link-discover {
         display: flex;
         justify-content: center;
