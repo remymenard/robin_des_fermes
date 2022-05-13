@@ -31,77 +31,6 @@
     color: #ffffff;
   }
 
-  .rdf-presentation {
-    margin-top: 50px;
-    text-align: center;
-
-    h2 {
-      padding-top: 30px;
-      max-width: 450px;
-      margin: 0 auto;
-      line-height: 32px;
-    }
-
-    p {
-      max-width: 303px;
-      margin: 0 auto;
-    }
-
-    .cards-rdf {
-      padding-top: 50px;
-      justify-content: space-between;
-      width: 100%;
-      margin-bottom: 30px;
-    }
-
-    .card-rdf {
-      border-radius: 10px;
-      text-align: center;
-      height: 324px;
-      width: 350px;
-      justify-content: center;
-      border: 1px solid #faf7f3;
-      box-shadow: 0 1px 20px rgba(0, 0, 0, 0.07);
-
-      h3 {
-        color: #25201d;
-        font-size: 18px;
-      }
-
-      img {
-        padding-top: 30px;
-        padding-bottom: 30px;
-        width: 111.49px;
-      }
-    }
-
-    .btn {
-      font-family: 'Mulish', sans-serif;
-      background-color: #339e72 !important;
-      color: white;
-      font-weight: 600;
-      font-size: 14px;
-      height: 53px;
-      border-radius: 10px;
-      width: 226px;
-      letter-spacing: 2.5px;
-      line-height: 43px;
-      margin-bottom: 90px;
-    }
-  }
-
-  .best-farms {
-    width: 100vw;
-    background-color: #eff2ea;
-    text-align: center;
-    padding-top: 110px;
-    padding-bottom: 90px;
-
-    h2 {
-      padding-bottom: 50px;
-    }
-  }
-
   .testimonials {
     text-align: center;
     padding-top: 110px;
@@ -213,20 +142,10 @@
   }
 }
 
+
 @media screen and (max-width: 990px) {
-  .cards-rdf {
+  .all-testimonials {
     flex-direction: column !important;
     align-items: center !important;
-
-    .card-rdf {
-      margin-top: 30px;
-    }
-  }
-
-  @media screen and (max-width: 990px) {
-    .all-testimonials {
-      flex-direction: column !important;
-      align-items: center !important;
-    }
   }
 }

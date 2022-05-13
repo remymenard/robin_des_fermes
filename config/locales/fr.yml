@@ -3,6 +3,8 @@ fr:
     user_not_authorized: "Vous n'êtes pas authorisé à effectuer cette action."
   pages:
     home:
+      video-title: "Notre concept en bref"
+      video-description: "On t'explique tout ça vite fait en vidéo !"
       products-title: "Qu'est-ce qui te ferait plaisir ?"
       statistic: 'Une répartition inégale des richesses'
       statistic-1980: '1980'
@@ -61,7 +63,6 @@ fr:
       ordered_paragraph: 'Remplis ton panier, dis-nous si tu veux recevoir ou aller chercher ta pitance, et le tour est joué !'
       taste_paragraph: 'Ton blé dans la bonne bourse et du bon blé dans ton assiette, l’heure est à la fête !'
       know_more: 'EN SAVOIR PLUS'
-      best_farms: 'Coup d’oeil sur nos producteurs'
       products_number: 'produits'
       openning: '%{openning}'
       testimony_title: 'Ils en parlent pour nous !'

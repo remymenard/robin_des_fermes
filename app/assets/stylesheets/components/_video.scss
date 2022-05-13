@@ -1,0 +1,42 @@
+.home {
+  .video {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: #FAF7F3;
+    text-align: center;
+    font-family: 'BioRhyme', serif;
+    color: #3C452B;
+
+    iframe {
+      transform: rotate(-5deg);
+      margin: auto;
+      z-index: 2;
+      margin-top: 30px;
+      margin-left: -6%;
+    }
+
+    .img-100 {
+      width: 200px;
+      height: 200px;
+      z-index: 10;
+      margin-top: 25%;
+      margin-left: -9%;
+    }
+
+    .img-question {
+      width: 160px;
+      height: 160px;
+      margin-left: 6%;
+    }
+
+    @media (min-width: 1115px) {
+      .img-question {
+        margin-left: 15% !important;
+      }
+
+      .img-100 {
+        margin-right: 10% !important;
+      }
+    }
+  }
+}

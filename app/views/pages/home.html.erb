@@ -141,85 +141,18 @@
         <%= link_to "TOUT DÉCOUVRIR", farms_path, class: "btn btn-discover-mobile"  %>
       </div>
     </div>
-
-
-
-
-    <div class="rdf-presentation">
-      <h2><%= t('.title_rdf') %></h2>
-      <div class="d-flex cards-rdf">
-        <div class="card-rdf">
-          <%= image_tag "home/find.png", alt: "rdf" %>
-          <h3><%= t('.find') %></h3>
-          <p><%= t('.find_paragraph') %></p>
-        </div>
-        <div class="card-rdf">
-          <%= image_tag "home/ordered.png", alt: "rdf" %>
-          <h3><%= t('.ordered') %></h3>
-          <p><%= t('.ordered_paragraph') %></p>
-        </div>
-        <div class="card-rdf">
-          <%= image_tag "home/victory.png", alt: "rdf" %>
-          <h3><%= t('.taste') %></h3>
-          <p><%= t('.taste_paragraph') %></p>
-        </div>
-      </div>
-      <%= link_to t(".know_more"), about_path, class: "btn"%>
-    </div>
   </div>
-  <div class="container justify-content-center">
-    <div class="companion-block">
-      <span>Profite de réductions sur la distribution régionale,<br>
-deviens compagnon·e Robin des Fermes</span>
-    <a class="btn btn-white btn-light" href="https://info.robindesfermes.ch/compagnon/" target="_blank">EN SAVOIR PLUS</a>
-    </div>
-  </div>
-  <div class="best-farms">
+  <div class="video">
     <div class="container">
-      <h2><%= t('.best_farms') %></h2>
-      <div class="cards ">
-        <% @farms.active.take(4).each do |farm| %>
-          <%= link_to farm_path(farm) do  %>
-            <div class="card-product d-flex">
-              <div class="photo-farm">
-                <div class="labels">
-                  <% farm.labels.each do |label| %>
-                    <div class='label'>
-                      <p> <%= label.upcase  %></p>
-                    </div>
-                  <%end%>
-                </div>
-                <%= cl_image_tag(farm.farm_profil_picture&.key, crop: :fill, class: "photo") if farm.farm_profil_picture %>
-              </div>
-              <div class="cards-informations">
-                <div class="d-flex address">
-                  <%= image_tag "icons/marker_cards_farms.png", class: "marker" %>
-                  <p><%= farm.zip_code.upcase  %> <%= farm.city.upcase  %></p>
-                </div>
-                <div class="name d-flex">
-                  <h3> <%= farm.name  %></h3>
-                </div>
-                <p class="openning"><%= t('.openning', openning: farm.opening_time) %></p>
-                <p class="products-number"><%= farm.products.available.count  %>
-                  <% if farm.products.available.count == 1 %>
-                    <%= t('.one_product') %>
-                  <% else %>
-                    <%= t('.products_number') %>
-                  <% end %>
-                </p>
-                <div class="all-photos d-flex">
-                  <% farm.categories.each_with_index do |category, index| %>
-                    <div class='category-photo' data-toggle="tooltip" data-placement="top" title="<%= category.name  %>"><%= cl_image_tag category.photo.key %></div>
-                  <% end %>
-                </div>
-                <div class="categories"></div>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
+      <h3><%= t('.video-title') %></h3>
+      <p><%= t('.video-description') %></p>
+      <div class="d-flex">
+        <%= image_tag "new-home/question.png", alt: "alttext", class: "img-question" %>
+        <iframe src="https://player.vimeo.com/video/708681144?h=dc5a7b0215" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <%= image_tag "new-home/100.png", alt: "alttext", class: "img-100" %>
       </div>
     </div>
-  </div>
+  </class>
   <div class="container">
     <div class="testimonials">
       <h2><%= t('.testimony_title') %></h2>
