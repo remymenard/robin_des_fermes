@@ -85,56 +85,28 @@
   </div>
   <div class="container">
     <div class="home-category">
-      <div class="food d-flex">
-        <div class="two-products">
-          <div>
-            <%= link_to farms_path(category: "Viande & Volaille"), class: "navbar-brand" do %>
-              <div class="image-categorie">
-                <%= image_tag "categories/meat.jpg", alt: "Viande" %>
-              </div>
-              <h3><%= t('.viandes') %></h3>
-              <p><%= t('.paragraph_meat') %> </p>
-              <div class="line d-flex">
-                <%= image_tag "categories/line.png", alt: "line" %>
-                <p><%= t('.discover_meat') %> </p>
-              </div>
-            <% end %>
-          </div>
-          <div>
-            <%= link_to farms_path(category: "Fruits & Légumes"), class: "navbar-brand" do %>
-              <div class="image-categorie">
-                <%= image_tag "categories/vegetables.jpg", alt: "Lait" %>
-              </div>
-              <h3><%= t('.vegetables') %></h3>
-              <p><%= t('.paragraph_vegetables') %> </p>
-              <div class="line d-flex">
-                <%= image_tag "categories/line.png", alt: "line" %>
-                <p><%= t('.discover_vegetables') %> </p>
-              </div>
-            <% end %>
-          </div>
+      <div class="title-btn-category">
+        <h3><%= t('.products-title') %></h3>
+        <div class="link-discover">
+          <%= link_to "TOUT DÉCOUVRIR", farms_path, class: "btn btn-discover"  %>
         </div>
-        <div>
-          <h2><%= t('.products') %></h2>
-          <div>
-            <%= link_to farms_path(category: "Vins"), class: "navbar-brand" do %>
-              <div class="image-categorie">
-                <%= image_tag "categories/wine.jpg", alt: "Vin" %>
-              </div>
-              <h3><%= t('.vins') %></h3>
-              <p><%= t('.paragraph_wine') %> </p>
-              <div class="line d-flex">
-                <%= image_tag "categories/line.png", alt: "line" %>
-                <p><%= t('.discover_wine') %> </p>
-              </div>
-            <% end %>
-          </div>
-          <h2><%= t '.second_zip_code_input_title' %></h2>
-          <p><%= t '.second_zip_code_input_description' %></p>
-          <%= form_tag farms_path, method: :get, class: 'form-inline search' do %>
-            <%= text_field_tag :zip, get_zip_code_number, readonly: true, class: 'form-control zip-search zip_code_input', placeholder: t('pages.home.search_placeholder') %>
-            <%= submit_tag t(".second_zip_code_input_button"), class: "btn zip-button", name: nil %>
-          <% end %>
+      </div>
+      <div class="food">
+        <div class="card-category">
+          <%= image_tag "categories/meat.jpg", alt: "Viande" %>
+          <p><%= t('.viandes') %></p>
+        </div>
+        <div class="card-category">
+          <%= image_tag "categories/vegetables.png", alt: "Lait" %>
+          <p><%= t('.vegetables') %></p>
+        </div>
+        <div class="card-category">
+          <%= image_tag "categories/wine.png", alt: "Vin" %>
+          <p><%= t('.vins') %></p>
+        </div>
+        <div class="card-category">
+          <%= image_tag "categories/bio.jpg", alt: "Bio" %>
+          <p><%= t('.bio') %></p>
         </div>
       </div>
     </div>
