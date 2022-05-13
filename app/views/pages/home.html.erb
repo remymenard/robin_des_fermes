@@ -91,6 +91,7 @@
           <%= link_to "TOUT DÉCOUVRIR", farms_path, class: "btn btn-discover"  %>
         </div>
       </div>
+
       <div class="food">
         <div class="card-category">
           <%= image_tag "categories/meat.jpg", alt: "Viande" %>
@@ -109,7 +110,41 @@
           <p><%= t('.bio') %></p>
         </div>
       </div>
+
+      <div class="owl-carousel owl-theme">
+        <div class="item">
+          <div class="card-category">
+            <%= image_tag "categories/meat.jpg", alt: "Viande" %>
+            <p><%= t('.viandes') %></p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="card-category">
+            <%= image_tag "categories/vegetables.png", alt: "Lait" %>
+            <p><%= t('.vegetables') %></p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="card-category">
+            <%= image_tag "categories/wine.png", alt: "Vin" %>
+            <p><%= t('.vins') %></p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="card-category">
+            <%= image_tag "categories/bio.jpg", alt: "Bio" %>
+            <p><%= t('.bio') %></p>
+          </div>
+        </div>
+      </div>
+      <div class="link-discover">
+        <%= link_to "TOUT DÉCOUVRIR", farms_path, class: "btn btn-discover-mobile"  %>
+      </div>
     </div>
+
+
+
+
     <div class="rdf-presentation">
       <h2><%= t('.title_rdf') %></h2>
       <div class="d-flex cards-rdf">
