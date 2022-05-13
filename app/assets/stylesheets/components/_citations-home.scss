@@ -1,0 +1,77 @@
+.home {
+  .citation {
+    margin-top: 70px;
+    text-align: center;
+
+    .img-citations {
+      display: flex;
+      justify-content: space-between;
+
+      .img-24heures-grey {
+        width: 150px;
+      }
+
+      .img-24heures-color {
+        width: 150px;
+      }
+
+      .img-terre-nature {
+        width: 102px;
+      }
+    }
+
+    h3 {
+      color: #3C452B;
+      font-family: 'BioRhyme', serif;
+    }
+
+    .carousel {
+      height: 200px;
+      width: 90%;
+      margin: auto;
+      margin-bottom: 30px;
+
+      h2 {
+        color: #A04C46;
+        font-size: 30px;
+        font-weight: 300;
+        margin-top: 40px;
+        margin-bottom: 30px;
+      }
+    }
+
+    #carouselExampleIndicators {
+      li {
+        background-color: #FF4136;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-left: 10px;
+      }
+    }
+
+    .citation-title {
+      text-align: center;
+
+      .img-rancon {
+        display: flex;
+        justify-content: flex-end;
+
+        img {
+          height: 65px;
+          margin-top: -7%;
+        }
+      }
+    }
+
+    @media (min-width: 1115px) {
+      .img-rancon {
+
+        img {
+          margin-top: -7%;
+          margin-right: 10%;
+        }
+      }
+    }
+  }
+}

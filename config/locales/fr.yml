@@ -3,6 +3,11 @@ fr:
     user_not_authorized: "Vous n'êtes pas authorisé à effectuer cette action."
   pages:
     home:
+      citation-courrier: "Contre l’injustice et pour simplifier la vente directe"
+      citation-liberty: "Consommateur cherche producteur"
+      citation-world: "Nos lecteurs se joignent à la ligue des justiciers de Robin des Fermes"
+      citation-24hours: "Robin des Fermes veut rendre justice aux producteurs locaux d’aliments"
+      citation-title: "Ils en parlent pour nous"
       video-title: "Notre concept en bref"
       video-description: "On t'explique tout ça vite fait en vidéo !"
       products-title: "Qu'est-ce qui te ferait plaisir ?"
