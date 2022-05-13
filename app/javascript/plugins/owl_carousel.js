@@ -4,7 +4,7 @@ const Carousel = () => {
   $(document).ready(function(){
     if (document.querySelector('.home-category')) {
       $('.owl-carousel').owlCarousel({
-        stagePadding: 190,
+        stagePadding: 0,
         loop: true,
         margin:10,
         autoplay: true,
@@ -12,13 +12,13 @@ const Carousel = () => {
         autoplayHoverPause:false,
         responsive:{
           0:{
-            items:1
+            items:1.15,
           },
           600:{
-            items:1
+            items:1.15,
           },
           1000:{
-            items:1
+            items:1.15,
           }
         }
       })

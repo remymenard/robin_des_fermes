@@ -77,21 +77,17 @@
         p {
           padding-bottom: 10px;
         }
+
+        img {
+          height: 248px !important;
+          width: 270px !important;
+        }
       }
 
-      // .owl-item {
-      //   width: 335px !important;
-
-      //   .item {
-      //     height: 312px;
-      //     width: 100%;
-
-      //     img {
-      //       width: 335px !important;
-      //       height: 312px !important;
-      //     }
-      //   }
-      // }
+      .owl-carousel {
+        width: 350px !important;
+        margin: auto;
+      }
 
       .btn-discover {
         display: none;
@@ -99,7 +95,7 @@
       }
 
       .title-btn-category {
-        text-align: center;
+        justify-content: center;
       }
 
       .food {
