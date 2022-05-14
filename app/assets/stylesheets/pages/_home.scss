@@ -2,6 +2,49 @@
 
 .home {
 
+  .join {
+    .join-btn {
+      color: white;
+      background-color: #339E72;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    h3 {
+      font-family: 'BioRhyme', serif;
+      color: #2D3126;
+      margin-bottom: 30px;
+    }
+
+    p {
+      color: black;
+    }
+
+    .companion {
+      background-color: #FAF7F3;
+      padding-top: 50px;
+      padding-bottom: 100px;
+
+      img {
+        width: 40%;
+      }
+
+      .companion-image-text {
+        display: flex;
+        justify-content: between;
+
+        .companion-text {
+          margin-left: 10%;
+          margin-top: 30px;
+        }
+
+        .green-sentence {
+          color: #339E72;
+        }
+      }
+    }
+  }
+
   .zip-search {
     padding-top: 0px;
     color: #7c7977 !important;

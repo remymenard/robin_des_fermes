@@ -3,6 +3,11 @@ fr:
     user_not_authorized: "Vous n'êtes pas authorisé à effectuer cette action."
   pages:
     home:
+      join-companions-title: "Rejoins le mouvement!"
+      join-companions-description2: "Participe aux évènements réservés aux compagnon-nes et découvre l'univers de tes producteurs préférés"
+      join-companions-description-green: "Tu économises également sur tes frais de livraison"
+      join-companions-description-last: "Un chouette moyen de soutenir notre projet et lles producteur qui y sont liés"
+      join-companions-description: "On veut créer la plus grande communauté de consomm'acteurs/trices de Suisse! Rien que ça!"
       citation-courrier: "Contre l’injustice et pour simplifier la vente directe"
       citation-liberty: "Consommateur cherche producteur"
       citation-world: "Nos lecteurs se joignent à la ligue des justiciers de Robin des Fermes"

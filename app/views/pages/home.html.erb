@@ -199,6 +199,24 @@
       <%= image_tag "new-home/24heures-grey.png", alt: "alttext", class: "img-24heures-grey" %>
     </div>
   </div>
+
+  <div class="join">
+    <div class="companion">
+      <div class="container companion-image-text">
+        <%= image_tag "new-home/companion.png", alt: "alttext" %>
+        <div class="companion-text">
+          <h3><%= t('.join-companions-title') %></h3>
+          <p><%= t('.join-companions-description') %></p>
+          <p><%= t('.join-companions-description2') %></p>
+          <p class="green-sentence"><%= t('.join-companions-description-green') %></p>
+          <p><%= t('.join-companions-description-last') %></p>
+          <%= link_to "ÇA M'INTRIGUE VOTRE COMBINE", community_path, class: "btn join-btn" %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
   <div class="container">
     <div class="testimonials">
       <h2><%= t('.testimony_title') %></h2>
