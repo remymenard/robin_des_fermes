@@ -203,7 +203,7 @@
   <div class="join">
     <div class="companion">
       <div class="container companion-image-text">
-        <%= image_tag "new-home/companion.png", alt: "alttext" %>
+        <%= image_tag "new-home/companion.png", alt: "alttext", class: "img-companion" %>
         <div class="companion-text">
           <h3><%= t('.join-companions-title') %></h3>
           <p><%= t('.join-companions-description') %></p>
@@ -219,11 +219,19 @@
       <div class="container producers-image-text">
         <div class="producers-text">
           <%= image_tag "new-home/shape.png", alt: "alttext", class: "shape-img" %>
+          <div class="shape-mobile-img">
+            <%= image_tag "new-home/shape-mobile.png", alt: "alttext", class: "" %>
+          </div>
           <h3><%= t('.join-producers-title') %></h3>
           <p><%= t('.join-producers-description') %> <strong><%= t('.join-producers-description-strong') %></strong> <%= t('.join-producers-description-last') %></p>
           <%= link_to "ÇA M'INTERESSE", community_path, class: "btn join-btn" %>
         </div>
-        <%= image_tag "new-home/producers-grid.jpg", alt: "alttext", class: "producers-img" %>
+        <div class="img-mobile-desktop">
+          <div class="heart-img">
+            <%= image_tag "new-home/heart.png", alt: "alttext", class: "" %>
+          </div>
+          <%= image_tag "new-home/producers-grid.jpg", alt: "alttext", class: "producers-img" %>
+        </div>
       </div>
     </div>
 

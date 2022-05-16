@@ -29,16 +29,28 @@
     .producers {
       .producers-image-text {
         display: flex;
-        justify-content: between;
+        justify-content: space-between;
         margin-top: -5%;
         margin-bottom: 10px;
 
+        .shape-mobile-img {
+          display: none;
+        }
+
+        .heart-img {
+          display: none;
+        }
+
         .producers-text {
           margin-top: 5%;
+          width: 80%;
+        }
+        .img-mobile-desktop {
+          width: 100%;
         }
 
         .producers-img {
-          width: 50%;
+          width: 90%;
           margin-top: 20px;
           margin-left: 10%;
         }
@@ -58,14 +70,14 @@
       background-color: #FAF7F3;
       padding-top: 50px;
 
-      img {
+      .img-companion {
         width: 40%;
         z-index: 5;
       }
 
       .companion-image-text {
         display: flex;
-        justify-content: between;
+        justify-content: space-between;
 
         .companion-text {
           margin-left: 10%;
@@ -80,12 +92,22 @@
     }
 
     @media (max-width: 770px) {
+
+      .join-btn {
+        margin-bottom: 80px;
+      }
+
+      .img-vector {
+        display: none;
+      }
+
       .companion-image-text {
         flex-direction: column;
 
-        img {
+        .img-companion  {
+          margin-left: 0px !important;
+          width: 100%;
           margin: auto;
-          width: 300px;
         }
 
         .companion-text {
@@ -94,6 +116,57 @@
           margin: auto !important;
           text-align: center;
         }
+
+      }
+
+      .producers-image-text {
+        flex-direction: column-reverse;
+
+        h3 {
+          margin-top: -30px !important;
+        }
+
+        .shape-mobile-img {
+          display: flex !important;
+          justify-content: flex-start;
+
+
+          img {
+            width: 23px;
+            margin-top: 2px;
+            margin-left: 8%;
+          }
+        }
+
+        .heart-img {
+          display: flex !important;
+          justify-content: flex-end;
+          z-index: 5;
+          margin-right: 5%;
+
+          img {
+            width: 105px;
+            z-index: 5;
+            margin-top: 100px;
+          }
+        }
+
+        .shape-img {
+          display: none;
+        }
+
+        .producers-img {
+          margin-left: 0px !important;
+          width: 100% !important;
+          z-index: -5;
+          margin-top: -180px !important;
+        }
+
+        .producers-text {
+          text-align: center;
+          width: 100% !important;
+        }
+
       }
 
       h3 {
@@ -104,6 +177,14 @@
       p {
         margin-bottom: -5px;
         font-size: 14px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .shape-mobile-img {
+        img {
+          margin-left: 0px !important;
+        }
       }
     }
   }
