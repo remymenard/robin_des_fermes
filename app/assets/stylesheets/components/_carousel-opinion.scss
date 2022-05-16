@@ -62,4 +62,26 @@
       font-size: 8px;
     }
   }
+
+  @media (max-width: 770px) {
+    .carousel-control-prev-icon {
+      display: none;
+    }
+
+    .carousel {
+      height: 320px !important;
+    }
+
+    .carousel-control-next-icon {
+      display: none;
+    }
+
+    h3 {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
 }
