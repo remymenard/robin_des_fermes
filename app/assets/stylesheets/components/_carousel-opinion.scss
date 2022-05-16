@@ -5,7 +5,7 @@
     padding-bottom: 20px;
 
     .carousel {
-      height: 290px;
+      height: 320px;
 
       .carousel-control-prev-icon {
         width: 40px;
@@ -39,11 +39,14 @@
       color: #3C452B;
       padding-top: 50px;
       margin-bottom: 30px;
+      font-size: 32px;
     }
+
 
     .testimony-text {
       color: #6C5C5C;
       margin-bottom: 20px;
+      font-size: 20px;
     }
 
     .profil-img {
@@ -59,29 +62,31 @@
 
     .text {
       color: #7C7977;
-      font-size: 8px;
+      font-size:px;
     }
   }
 
   @media (max-width: 770px) {
-    .carousel-control-prev-icon {
-      display: none;
-    }
+    .testimonials {
+      .carousel-control-prev-icon {
+        display: none;
+      }
 
-    .carousel {
-      height: 320px !important;
-    }
+      .carousel {
+        height: 400px !important;
+      }
 
-    .carousel-control-next-icon {
-      display: none;
-    }
+      .carousel-control-next-icon {
+        display: none;
+      }
 
-    h3 {
-      font-size: 18px;
-    }
+      h3 {
+        font-size: 18px;
+      }
 
-    p {
-      font-size: 14px;
+      p {
+        font-size: 14px;
+      }
     }
   }
 }
