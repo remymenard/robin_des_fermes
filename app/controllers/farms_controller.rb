@@ -11,7 +11,7 @@ class FarmsController < ApplicationController
     csv = CSV.read( 'app/assets/zip_codes.csv', headers: true )
     line = csv.find {|row| row['zip'] == @zip_code}
 
-    unless line.empty?
+    unless line.nil?
       latitude = line["lat"]
       longitude = line["lng"]
       @farms     = Farm.near([latitude, longitude], 200000, units: :km)

@@ -1,0 +1,191 @@
+.home {
+  .waves {
+    background-image: url(new-home/waves.png);
+    height: 250px;
+    background-size: cover;
+    margin-top: -140px;
+    text-align: center;
+
+    h3 {
+      color: #3C452B;
+      font-family: 'BioRhyme', serif;
+      padding-top: 130px;
+    }
+  }
+
+  .direct-sale {
+    background-image: url(new-home/background-sale.png);
+    background-size: cover;
+    background-color: #E1F5EA;
+    height: 1100px;
+    margin-top: -80px;
+    text-align: center;
+
+    .grey-line {
+      display: none;
+    }
+
+    p {
+      color: #3C452B;
+      margin-bottom: 50px;
+    }
+
+    .path {
+      background-image: url(new-home/path.png);
+      background-size: cover;
+      width: 600px;
+      height: 800px;
+      margin: auto;
+      margin-top: 80px;
+
+      .path-picto {
+        width: 350px;
+        margin-top: -20px;
+
+        h3 {
+          margin-top: -20px;
+        }
+
+        .path-marker {
+          margin-left: 50px;
+        }
+
+        .img-marker {
+          margin-top: -30px;
+        }
+
+      }
+
+      .path-hand {
+        margin-left: 65%;
+      }
+
+      .path-farmer {
+        margin-left: -30%;
+
+        .img-farmer {
+          margin-top: -80px;
+        }
+      }
+
+      .path-eat {
+        margin-left: 45%;
+
+        .img-eat {
+          margin-top: -50px;
+        }
+      }
+
+      .path-return {
+        margin-left: -5%;
+      }
+
+    }
+
+    @media (min-width: 830px) and (max-width: 980px) {
+
+      .path-picto {
+        width: 250px !important;
+      }
+
+      .path-marker {
+        margin-left: 50px !important;
+      }
+
+      .img-marker {
+        margin-top: -30px !important;
+      }
+
+      .path-hand {
+        margin-left: 75% !important;
+      }
+
+      .img-hand {
+        margin-top: -60px !important;
+      }
+
+      .path-farmer {
+        margin-left: -20% !important;
+
+        .img-farmer {
+          margin-top: -120px !important;
+        }
+      }
+
+      .path-eat {
+        margin-left: 55% !important;
+
+        .img-eat {
+          margin-top: -180px !important;
+        }
+      }
+
+      .path-return {
+        margin-left: 3% !important;
+
+        .img-return {
+          margin-top: -50px !important;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 830px) {
+    .grey-line {
+      display: initial !important;
+      margin-top: 5px;
+    }
+
+    .waves {
+      margin-top: -110px !important;
+    }
+
+    .direct-sale {
+      margin-top: -155px !important;
+      height: 1250px !important;
+
+      .work-question {
+        display: none;
+      }
+
+      p {
+        margin-bottom: 0px !important;
+      }
+
+      h3 {
+        font-size: 18px !important;
+      }
+    }
+
+    .path {
+      background-image: none !important;
+      width: 100% !important;
+    }
+
+    .path-picto {
+      width: 75% !important;
+      margin-top: -70px !important;
+      margin: auto !important;
+    }
+
+    .img-marker {
+      margin-top: 20px !important;
+    }
+
+    .img-hand {
+      margin-top: -25px !important;
+    }
+
+    .img-farmer {
+      margin-top: -25px !important;
+    }
+
+    .img-eat {
+      margin-top: -25px !important;
+    }
+
+    .img-return {
+      margin-top: -25px !important;
+    }
+  }
+}

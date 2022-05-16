@@ -1,187 +1,294 @@
 <div class="home">
-  <div class="banner" >
-    <div class="container ">
-      <h1><%= t('.title') %></h1>
-      <p><%= t('.sub_title1') %> <strong><%= t('.sub_title_bold1') %></strong><%= t('.sub_title2') %><strong><%= t('.sub_title_bold2') %></strong><%= t('.sub_title3') %><strong><%= t('.sub_title_bold3') %></strong><%= t('.sub_title4') %><strong><%= t('.sub_title_bold4') %></strong><%= t('.sub_title5') %></p>
-      <%= form_tag farms_path, method: :get, class: 'form-inline search' do %>
-        <%= text_field_tag :zip, get_zip_code_number, readonly: true, class: 'form-control search zip_code_input', id: 'zip1', placeholder: "Où habitez-vous ?" %>
-        <%= submit_tag "DECOUVRIR LES PRODUCTEURS", class: "btn btn-computer", name: nil %>
-        <%= submit_tag "DECOUVRIR", class: "btn btn-mobile", name: nil %>
-      <% end %>
+  <div class="banner d-flex" >
+    <%= image_tag "new-home/big-ellipse.png", alt: "alttext", class: 'ellipse-small' %>
+    <%= image_tag "new-home/small-ellipse.png", alt: "alttext", class: 'ellipse-big' %>
+    <div class="banner-content">
+      <div class="text-banner">
+        <h1><%= t('.title1') %> <span class="strikethrough"><%= t('.title-strike') %></span> <%= t('.title2') %></h1>
+        <p><%= t('.sub_title1') %> <strong><%= t('.sub_title_bold1') %></strong><%= t('.sub_title2') %></p>
+        <%= form_tag farms_path, method: :get, class: 'form-inline search' do %>
+          <%= text_field_tag :zip, get_zip_code_number, readonly: true, class: 'form-control search zip_code_input', id: 'zip1', placeholder: "Où habites-tu ?" %>
+          <%= submit_tag "DÉCOUVRIR LES PRODUCTEURS", class: "btn btn-computer", name: nil %>
+          <%= submit_tag "DÉCOUVRIR", class: "btn btn-mobile", name: nil %>
+          <%= submit_tag "TOUT DÉCOUVRIR", class: "btn btn-small-mobile", name: nil %>
+        <% end %>
+      </div>
+
+      <%= image_tag "new-home/banner-images", alt: "alttext", class: 'img-banner' %>
+    </div>
+  </div>
+  <div class="waves">
+    <h3><%= t('.sale') %></h3>
+  </div>
+  <div class="direct-sale">
+    <p class="work-question"><%= t('.work?') %></p>
+    <div class="path">
+      <div class="path-marker path-picto">
+        <%= image_tag "new-home/icon-marker", alt: "alttext", width: 100, class: "img-marker" %>
+        <h3><%= t('.title-marker') %> </h3>
+        <p><%= t('.text-marker') %> <strong><%= t('.text-marker-strong') %></strong> <%= t('.text-marker-last') %></p>
+      </div>
+      <%= image_tag "new-home/grey-line.png", alt: "alttext", class: "grey-line" %>
+      <div class="path-hand path-picto">
+        <%= image_tag "new-home/icon-hand", alt: "alttext", width: 100, class: "img-hand" %>
+        <h3><%= t('.title-hand') %></h3>
+        <p><%= t('.text-hand') %> <strong><%= t('.text-hand-strong') %></strong> <%= t('.text-hand-last') %></p>
+      </div>
+      <%= image_tag "new-home/grey-line.png", alt: "alttext", class: "grey-line" %>
+      <div class="path-farmer path-picto">
+        <%= image_tag "new-home/icon-farmer", alt: "alttext", width: 100, class: "img-farmer"  %>
+        <h3><%= t('.title-farmer') %></h3>
+        <p><%= t('.text-farmer') %> <strong><%= t('.text-farmer-strong') %></strong></p>
+      </div>
+      <%= image_tag "new-home/grey-line.png", alt: "alttext", class: "grey-line" %>
+      <div class="path-eat path-picto">
+        <%= image_tag "new-home/icon-eat", alt: "alttext", width: 100, class: "img-eat" %>
+        <h3><%= t('.title-eat') %></h3>
+        <p><%= t('.text-eat') %> <strong><%= t('.text-eat-strong') %></strong></p>
+      </div>
+      <%= image_tag "new-home/grey-line.png", alt: "alttext", class: "grey-line" %>
+      <div class="path-return path-picto">
+        <%= image_tag "new-home/icon-return", alt: "alttext", width: 100, class: "img-return" %>
+        <h3><%= t('.title-return') %></h3>
+        <p><%= t('.text-return') %> <strong><%= t('.text-return-strong') %></strong> <%= t('.text-return-last') %></p>
+      </div>
+    </div>
+  </div>
+  <div class="wealth-distribution">
+    <div class="container">
+      <h3 class="statistic-title"><%= t('.statistic') %></h3>
+      <div class="statistic-description">
+        <%= image_tag "new-home/wealth-distribution-1980", alt: "alttext", class: "img-1980" %>
+        <div class="statistic-text">
+          <h3><span><%= t('.statistic-1980') %></span> <%= t('.statistic-1980-title') %></h3>
+          <p><%= t('.statistic-1980-description') %></p>
+        </div>
+      </div>
+
+      <div class="statistic-description">
+        <%= image_tag "new-home/wealth-distribution-2020", alt: "alttext", class: "img-2020" %>
+        <div class="statistic-text">
+          <h3><span><%= t('.statistic-2020') %></span> <%= t('.statistic-2020-title') %></h3>
+          <p><%= t('.statistic-2020-description') %><strong class="word-underline"> <%= t('.statistic-2020-description-30') %></strong><strong> <%= t('.statistic-2020-description-strong') %></strong> <%= t('.statistic-2020-description-last') %></p>
+          <%= image_tag "new-home/stroke.png", alt: "alttext", class: "stroke" %>
+        </div>
+      </div>
+
+      <div class="statistic-description">
+        <%= image_tag "new-home/wealth-distribution-today", alt: "alttext", class: "img-today" %>
+        <div class="statistic-text">
+          <h3><span><%= t('.statistic-today') %></span> <%= t('.statistic-today-title') %></h3>
+          <p><%= t('.statistic-today-description') %> <strong><%= t('.statistic-today-description-strong') %></strong> <%= t('.statistic-today-description-last') %> <strong><%= t('.statistic-today-description-strong-last') %></strong></p>
+        </div>
+      </div>
     </div>
   </div>
   <div class="container">
     <div class="home-category">
-      <div class="food d-flex">
-        <div class="two-products">
-          <div>
-            <%= link_to farms_path(category: "Viande & Volaille"), class: "navbar-brand" do %>
-              <div class="image-categorie">
-                <%= image_tag "categories/meat.jpg", alt: "Viande" %>
-              </div>
-              <h3><%= t('.viandes') %></h3>
-              <p><%= t('.paragraph_meat') %> </p>
-              <div class="line d-flex">
-                <%= image_tag "categories/line.png", alt: "line" %>
-                <p><%= t('.discover_meat') %> </p>
-              </div>
-            <% end %>
-          </div>
-          <div>
-            <%= link_to farms_path(category: "Fruits & Légumes"), class: "navbar-brand" do %>
-              <div class="image-categorie">
-                <%= image_tag "categories/vegetables.jpg", alt: "Lait" %>
-              </div>
-              <h3><%= t('.vegetables') %></h3>
-              <p><%= t('.paragraph_vegetables') %> </p>
-              <div class="line d-flex">
-                <%= image_tag "categories/line.png", alt: "line" %>
-                <p><%= t('.discover_vegetables') %> </p>
-              </div>
-            <% end %>
-          </div>
-        </div>
-        <div>
-          <h2><%= t('.products') %></h2>
-          <div>
-            <%= link_to farms_path(category: "Vins"), class: "navbar-brand" do %>
-              <div class="image-categorie">
-                <%= image_tag "categories/wine.jpg", alt: "Vin" %>
-              </div>
-              <h3><%= t('.vins') %></h3>
-              <p><%= t('.paragraph_wine') %> </p>
-              <div class="line d-flex">
-                <%= image_tag "categories/line.png", alt: "line" %>
-                <p><%= t('.discover_wine') %> </p>
-              </div>
-            <% end %>
-          </div>
-          <h2><%= t '.second_zip_code_input_title' %></h2>
-          <p><%= t '.second_zip_code_input_description' %></p>
-          <%= form_tag farms_path, method: :get, class: 'form-inline search' do %>
-            <%= text_field_tag :zip, get_zip_code_number, readonly: true, class: 'form-control zip-search zip_code_input', placeholder: t('pages.home.search_placeholder') %>
-            <%= submit_tag t(".second_zip_code_input_button"), class: "btn zip-button", name: nil %>
-          <% end %>
+      <div class="title-btn-category">
+        <h3><%= t('.products-title') %></h3>
+        <div class="link-discover">
+          <%= link_to "TOUT DÉCOUVRIR", farms_path, class: "btn btn-discover"  %>
         </div>
       </div>
-    </div>
-    <div class="rdf-presentation">
-      <h2><%= t('.title_rdf') %></h2>
-      <div class="d-flex cards-rdf">
-        <div class="card-rdf">
-          <%= image_tag "home/find.png", alt: "rdf" %>
-          <h3><%= t('.find') %></h3>
-          <p><%= t('.find_paragraph') %></p>
+
+      <div class="food">
+        <div class="card-category">
+          <%= image_tag "categories/meat.jpg", alt: "Viande" %>
+          <p><%= t('.viandes') %></p>
         </div>
-        <div class="card-rdf">
-          <%= image_tag "home/ordered.png", alt: "rdf" %>
-          <h3><%= t('.ordered') %></h3>
-          <p><%= t('.ordered_paragraph') %></p>
+        <div class="card-category">
+          <%= image_tag "categories/vegetables.png", alt: "Lait" %>
+          <p><%= t('.vegetables') %></p>
         </div>
-        <div class="card-rdf">
-          <%= image_tag "home/victory.png", alt: "rdf" %>
-          <h3><%= t('.taste') %></h3>
-          <p><%= t('.taste_paragraph') %></p>
+        <div class="card-category">
+          <%= image_tag "categories/wine.png", alt: "Vin" %>
+          <p><%= t('.vins') %></p>
+        </div>
+        <div class="card-category">
+          <%= image_tag "categories/bio.jpg", alt: "Bio" %>
+          <p><%= t('.bio') %></p>
         </div>
       </div>
-      <%= link_to t(".know_more"), about_path, class: "btn"%>
+
+      <div class="owl-carousel owl-theme">
+        <div class="item">
+          <div class="card-category">
+            <%= image_tag "categories/meat.jpg", alt: "Viande" %>
+            <p><%= t('.viandes') %></p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="card-category">
+            <%= image_tag "categories/vegetables.png", alt: "Lait" %>
+            <p><%= t('.vegetables') %></p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="card-category">
+            <%= image_tag "categories/wine.png", alt: "Vin" %>
+            <p><%= t('.vins') %></p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="card-category">
+            <%= image_tag "categories/bio.jpg", alt: "Bio" %>
+            <p><%= t('.bio') %></p>
+          </div>
+        </div>
+      </div>
+      <div class="link-discover">
+        <%= link_to "TOUT DÉCOUVRIR", farms_path, class: "btn btn-discover-mobile"  %>
+      </div>
     </div>
   </div>
-  <div class="container justify-content-center">
-    <div class="companion-block">
-      <span>Profite de réductions sur la distribution régionale,<br>
-deviens compagnon·e Robin des Fermes</span>
-    <a class="btn btn-white btn-light" href="https://info.robindesfermes.ch/compagnon/" target="_blank">EN SAVOIR PLUS</a>
-    </div>
-  </div>
-  <div class="best-farms">
+  <div class="video">
     <div class="container">
-      <h2><%= t('.best_farms') %></h2>
-      <div class="cards ">
-        <% @farms.active.take(4).each do |farm| %>
-          <%= link_to farm_path(farm) do  %>
-            <div class="card-product d-flex">
-              <div class="photo-farm">
-                <div class="labels">
-                  <% farm.labels.each do |label| %>
-                    <div class='label'>
-                      <p> <%= label.upcase  %></p>
-                    </div>
-                  <%end%>
-                </div>
-                <%= cl_image_tag(farm.farm_profil_picture&.key, crop: :fill, class: "photo") if farm.farm_profil_picture %>
-              </div>
-              <div class="cards-informations">
-                <div class="d-flex address">
-                  <%= image_tag "icons/marker_cards_farms.png", class: "marker" %>
-                  <p><%= farm.zip_code.upcase  %> <%= farm.city.upcase  %></p>
-                </div>
-                <div class="name d-flex">
-                  <h3> <%= farm.name  %></h3>
-                </div>
-                <p class="openning"><%= t('.openning', openning: farm.opening_time) %></p>
-                <p class="products-number"><%= farm.products.available.count  %>
-                  <% if farm.products.available.count == 1 %>
-                    <%= t('.one_product') %>
-                  <% else %>
-                    <%= t('.products_number') %>
-                  <% end %>
-                </p>
-                <div class="all-photos d-flex">
-                  <% farm.categories.each_with_index do |category, index| %>
-                    <div class='category-photo' data-toggle="tooltip" data-placement="top" title="<%= category.name  %>"><%= cl_image_tag category.photo.key %></div>
-                  <% end %>
-                </div>
-                <div class="categories"></div>
-              </div>
+      <h3><%= t('.video-title') %></h3>
+      <p><%= t('.video-description') %></p>
+      <div class="d-flex">
+        <%= image_tag "new-home/question.png", alt: "alttext", class: "img-question" %>
+        <iframe src="https://player.vimeo.com/video/708681144?h=dc5a7b0215" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <%= image_tag "new-home/100.png", alt: "alttext", class: "img-100" %>
+      </div>
+    </div>
+  </div>
+  <div class="citation container">
+    <div class="citation-title">
+      <h3><%= t('.citation-title') %></h3>
+      <div class="img-rancon">
+        <%= image_tag "new-home/rancon.png", alt: "alttext" %>
+      </div>
+    </div>
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <h2>«<%= t('.citation-24hours') %>.»</h2>
+        </div>
+        <div class="carousel-item">
+          <h2>«<%= t('.citation-world') %>.»</h2>
+        </div>
+        <div class="carousel-item">
+          <h2>«<%= t('.citation-liberty') %>.»</h2>
+        </div>
+        <div class="carousel-item">
+          <h2>«<%= t('.citation-courrier') %>.»</h2>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    <div class="img-citations">
+      <%= image_tag "new-home/24heures-grey.png", alt: "alttext", class: "img-24heures-grey" %>
+      <%= image_tag "new-home/terre-nature.png", alt: "alttext", class: "img-terre-nature" %>
+      <%= image_tag "new-home/24heures-color.png", alt: "alttext", class: "img-24heures-color" %>
+      <%= image_tag "new-home/terre-nature.png", alt: "alttext", class: "img-terre-nature" %>
+      <%= image_tag "new-home/24heures-grey.png", alt: "alttext", class: "img-24heures-grey" %>
+    </div>
+  </div>
+
+  <div class="join">
+    <div class="companion">
+      <div class="container companion-image-text">
+        <%= image_tag "new-home/companion.png", alt: "alttext", class: "img-companion" %>
+        <div class="companion-text">
+          <h3><%= t('.join-companions-title') %></h3>
+          <p><%= t('.join-companions-description') %></p>
+          <p><%= t('.join-companions-description2') %></p>
+          <p class="green-sentence"><%= t('.join-companions-description-green') %></p>
+          <p><%= t('.join-companions-description-last') %></p>
+          <%= link_to "ÇA M'INTRIGUE VOTRE COMBINE", community_path, class: "btn join-btn" %>
+        </div>
+      </div>
+    </div>
+    <%= image_tag "new-home/vector-white.png", alt: "alttext", class: "img-vector" %>
+    <div class="producers">
+      <div class="container producers-image-text">
+        <div class="producers-text">
+          <%= image_tag "new-home/shape.png", alt: "alttext", class: "shape-img" %>
+          <div class="shape-mobile-img">
+            <%= image_tag "new-home/shape-mobile.png", alt: "alttext", class: "" %>
+          </div>
+          <h3><%= t('.join-producers-title') %></h3>
+          <p><%= t('.join-producers-description') %> <strong><%= t('.join-producers-description-strong') %></strong> <%= t('.join-producers-description-last') %></p>
+          <%= link_to "ÇA M'INTERESSE", community_path, class: "btn join-btn" %>
+        </div>
+        <div class="img-mobile-desktop">
+          <div class="heart-img">
+            <%= image_tag "new-home/heart.png", alt: "alttext", class: "" %>
+          </div>
+          <%= image_tag "new-home/producers-grid.jpg", alt: "alttext", class: "producers-img" %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="testimonials">
+    <div class="container">
+      <h3><%= t('.testimony_title') %></h3>
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="testimonials-informations">
+              <%= image_tag "new-home/stars.png", alt: "alttext", class: "stars-img" %>
+              <p class="testimony-text"> <%= t('.testimony1') %></p>
+              <%= image_tag "testimony/pierre-carroz.png", alt: "alttext", class: "profil-img" %>
+              <p class="name">Pierre Carroz</p>
+              <p class="text"><%= t('.testimony_text1') %></p>
             </div>
-          <% end %>
-        <% end %>
+          </div>
+          <div class="carousel-item">
+            <div class="testimonials-informations">
+              <%= image_tag "new-home/stars.png", alt: "alttext", class: "stars-img" %>
+              <p class="testimony-text"> <%= t('.testimony2') %></p>
+              <%= image_tag "testimony/testimony2.png", alt: "alttext", class: "profil-img" %>
+              <p class="name">Diane Baud</p>
+              <p class="text"><%= t('.testimony_text2') %></p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="testimonials-informations">
+              <%= image_tag "new-home/stars.png", alt: "alttext", class: "stars-img" %>
+              <p class="testimony-text"> <%= t('.testimony3') %></p>
+              <%= image_tag "testimony/testimony3.png", alt: "alttext", class: "profil-img" %>
+              <p class="name">Francis Joye</p>
+              <p class="text"><%= t('.testimony_text3') %></p>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
       </div>
     </div>
   </div>
-  <div class="container">
-    <div class="testimonials">
-      <h2><%= t('.testimony_title') %></h2>
-      <div class="all-testimonials d-flex">
-        <div class="testimony">
-          <%= image_tag "home/slice.png", alt: "alttext" %>
-          <div class="testimonials-informations">
-            <h6> <%= t('.testimony1') %></h6>
-            <%= image_tag "testimony/pierre-carroz.png", alt: "alttext" %>
-            <p class="name">Pierre Carroz</p>
-            <p class="text"><%= t('.testimony_text1') %></p>
-          </div>
-        </div>
-        <div class="testimony">
-          <%= image_tag "home/slice.png", alt: "alttext" %>
-          <div class="testimonials-informations">
-            <h6> <%= t('.testimony2') %></h6>
-            <%= image_tag "testimony/testimony2.jpg", alt: "alttext" %>
-            <p class="name">Diane Baud</p>
-            <p class="text"><%= t('.testimony_text2') %></p>
-          </div>
-        </div>
-        <div class="testimony">
-          <%= image_tag "home/slice.png", alt: "alttext" %>
-          <div class="testimonials-informations">
-            <h6> <%= t('.testimony3') %></h6>
-            <%= image_tag "testimony/testimony3.jpg", alt: "alttext" %>
-            <p class="name">Francis Joye</p>
-            <p class="text"><%= t('.testimony_text3') %></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="registration">
-    <div class="container">
-      <div class="text">
-        <h2><%= t('.registration') %></h2>
-        <h6><%= t('.registration_text') %></h6>
-        <%= link_to t('.registration_btn') , "https://form.typeform.com/to/Y2rBljOl", class: "btn" %>
-      </div>
-    </div>
+  <div class="typeform">
+    <%= image_tag "new-home/robin.png", alt: "alttext" %>
+    <div data-tf-widget="uU3yJ4K2" data-tf-iframe-props="title=rdf newsletter" data-tf-medium="snippet" style="width:100%;height:400px;"></div><script src="//embed.typeform.com/next/embed.js"></script>
   </div>
 </div>
 <div id="pageInfos" data-submit-form="true"></div>

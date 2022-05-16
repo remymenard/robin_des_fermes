@@ -3,30 +3,73 @@ fr:
     user_not_authorized: "Vous n'êtes pas authorisé à effectuer cette action."
   pages:
     home:
+      join-producers-title: "Oyez, oyez, producteurs, rejoignez-nous !"
+      join-producers-description: "Tu fais partie des valeureuses personnes qui nous nourissent ou nous abreuvent ? Ne cherche pas plus loin, on te propose toute une"
+      join-producers-description-strong: "palette de prestations et d'outils pour t'aider à vendre tes produits"
+      join-producers-description-last: "plus facilement et surtout à en vendre plus."
+      join-companions-title: "Rejoins le mouvement!"
+      join-companions-description2: "Participe aux évènements réservés aux compagnon-nes et découvre l'univers de tes producteurs préférés"
+      join-companions-description-green: "Tu économises également sur tes frais de livraison"
+      join-companions-description-last: "Un chouette moyen de soutenir notre projet et lles producteur qui y sont liés"
+      join-companions-description: "On veut créer la plus grande communauté de consomm'acteurs/trices de Suisse! Rien que ça!"
+      citation-courrier: "Contre l’injustice et pour simplifier la vente directe"
+      citation-liberty: "Consommateur cherche producteur"
+      citation-world: "Nos lecteurs se joignent à la ligue des justiciers de Robin des Fermes"
+      citation-24hours: "Robin des Fermes veut rendre justice aux producteurs locaux d’aliments"
+      citation-title: "Ils en parlent pour nous"
+      video-title: "Notre concept en bref"
+      video-description: "On t'explique tout ça vite fait en vidéo !"
+      products-title: "Qu'est-ce qui te ferait plaisir ?"
+      statistic: 'Une répartition inégale des richesses'
+      statistic-1980: '1980'
+      statistic-1980-title: "On fait moit' moit'"
+      statistic-1980-description: "À l'époque, la répartition entre le producteur et les intermédiaires était égale."
+      statistic-2020: '2020'
+      statistic-2020-title: "Merci la mondialisation"
+      statistic-2020-description: "En 2020, ces mêmes producteurs ne touchent que  "
+      statistic-2020-description-30: "30%"
+      statistic-2020-description-strong: "du montant payé"
+      statistic-2020-description-last: "par le consommateur."
+      statistic-today: "Aujourd'hui"
+      statistic-today-title: "Notthingham à votre porte"
+      statistic-today-description: "Robin des fermes"
+      statistic-today-description-strong: "apporte de la visibilité et des outils aux producteurs"
+      statistic-today-description-last: "pour qu'ils soient plus indépendants et maître de leurs marges."
+      statistic-today-description-strong-last: "Robin des fermes veut remettre l'église au milieu du village !"
+      title-marker: 'Trouve les producteurs  qui t’entourent'
+      text-marker: 'Tu peux également trouver'
+      text-marker-strong: 'des Tanières,'
+      text-marker-last: 'ce sont des regroupements de plusieurs producteurs.'
+      title-hand: 'Commande en quelques clics'
+      text-hand: 'Comme un vrai justicier sur canapé !'
+      text-hand-strong: 'Livraison à dominicle ou retrait à la ferme: '
+      text-hand-last: "c'est toi qui choisis !"
+      title-farmer: "Le producteur s'occupe de ta commande"
+      text-farmer: "Et il le fait avec la banane, parce que c'est tellement plus valorisant de"
+      text-farmer-strong: "travailler directement pour le client final"
+      title-eat: "Déguste ta victoire"
+      text-eat: "Miam! Quand c'est juste, c'est encore meilleur:"
+      text-eat-strong: "nous sommes la plateforme la plus rémunératrice!"
+      title-return: 'Retourne ton contenant'
+      text-return: 'On a pensé à tout !'
+      text-return-strong: 'Évite le gaspillage '
+      text-return-last: "en retournant ton contenant, le producteur le réutilisera."
+      work?: 'Comment ça marche ?'
+      sale: 'La vente direct via Robin des Fermes'
       one_product: 'produit'
       search_placeholder: 'Où habitez-vous ?'
       search_btn: 'RECHERCHER'
-      title: 'La vente directe, droit dans le mille !'
-      sub_title1: 'Trouve le '
-      sub_title_bold1: 'produit '
-      sub_title2: 'ou '
-      sub_title_bold2: "l'exploitation "
-      sub_title3: 'de ton choix, '
-      sub_title_bold3: 'commande en quelques clics, paie en ligne '
-      sub_title4: 'et déguste ta victoire : quand '
-      sub_title_bold4: "c'est juste, "
-      sub_title5: "c'est encore meilleur!"
+      title1: 'Marché de producteurs sans'
+      title-strike: 'voleurs'
+      title2: 'intermédiaires'
+      sub_title1: 'Achète tes produits en direct pour soutenir -  '
+      sub_title_bold1: 'vraiment '
+      sub_title2: '- les producteurs de ta région et ainsi encourager une consommation et une économie durables '
       viandes: 'Viandes'
       vins: 'Vins'
       vegetables: 'Légumes'
-      products: 'Du blé, des radis, de l’oseille : les bons produits de saison au juste prix !'
+      bio: "Products BIO"
       title_rdf: 'Robin des fermes, quésaco ?'
-      discover_meat: 'Découvrez les producteurs'
-      paragraph_meat: 'Boeuf, porc, cerf… Fini la disette, mets de la bidoche dans ton assiette!'
-      discover_vegetables: 'Découvrez les producteurs'
-      paragraph_vegetables: 'Un esprit sain dans un corps sain, grâce à nos cultivateurs de verdure.'
-      discover_wine: 'Découvrez les vignerons'
-      paragraph_wine: 'Tu aimes la bonne vinaille ? Déniche les précieux breuvages de nos vignerons.'
       find: 'Trouve des produits'
       ordered: 'Commande en quelques clics'
       taste: 'Déguste ta victoire'
@@ -34,22 +77,15 @@ fr:
       ordered_paragraph: 'Remplis ton panier, dis-nous si tu veux recevoir ou aller chercher ta pitance, et le tour est joué !'
       taste_paragraph: 'Ton blé dans la bonne bourse et du bon blé dans ton assiette, l’heure est à la fête !'
       know_more: 'EN SAVOIR PLUS'
-      best_farms: 'Coup d’oeil sur nos producteurs'
       products_number: 'produits'
       openning: '%{openning}'
-      testimony_title: 'Ils en parlent pour nous !'
+      testimony_title: 'Ils parlent de Robin des Fermes'
       testimony2: "Au bureau ou dans le métro, je peux commander mes produits en un clic et soutenir ma région. Grâce à Robin des Fermes, manger local n'a jamais été si simple."
       testimony1: 'Enfin une plateforme e-commerce équitable pour tous les acteurs ! En plus d’avoir des valeurs humaines aux goût du jour, Robin des Fermes est une solution fiable et efficace'
       testimony3: 'Robin des fermes m’offre un choix de produits variés et locaux que je peux me faire livrer par la poste ou aller chercher directement à la ferme. Le tout au juste prix pour tous les acteurs concernés !'
       testimony_text3: 'ENSEIGNANT'
       testimony_text2: 'ENSEIGNANTE'
       testimony_text1: "AGENT D'ARTISTE"
-      registration: 'Oyez, oyez, producteurs, rejoignez-nous !'
-      registration_text: 'Vendez vos produits en ligne, présentez votre exploitation et élargissez votre communauté'
-      registration_btn: "JE M'INSCRIS"
-      second_zip_code_input_title: 'En manque de victuailles ?'
-      second_zip_code_input_description: 'Indique ta bourgade et découvre tous les producteurs locaux.'
-      second_zip_code_input_button: "C'EST PARTI"
     cgv:
       title: 'CONDITIONS GENERALES DE VENTES'
       article1: 'Article 1 : Traitement des données personnelles'
@@ -384,6 +420,7 @@ fr:
       your_zip_code: 'Ton code postal'
       about: 'À propos'
       our_farmers: 'Nos producteurs'
+      mission: 'Notre mission'
     footer:
       gang: 'Notre bande'
       faq: 'FAQ'
