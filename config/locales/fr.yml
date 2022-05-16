@@ -3,6 +3,10 @@ fr:
     user_not_authorized: "Vous n'êtes pas authorisé à effectuer cette action."
   pages:
     home:
+      join-producers-title: "Oyez, oyez, producteurs, rejoignez-nous !"
+      join-producers-description: "Tu fais partie des valeureuses personnes qui nous nourissent ou nous abreuvent ? Ne cherche pas plus loin, on te propose toute une"
+      join-producers-description-strong: "palette de prestations et d'outils pour t'aider à vendre tes produits"
+      join-producers-description-last: "plus facilement et surtout à en vendre plus."
       join-companions-title: "Rejoins le mouvement!"
       join-companions-description2: "Participe aux évènements réservés aux compagnon-nes et découvre l'univers de tes producteurs préférés"
       join-companions-description-green: "Tu économises également sur tes frais de livraison"

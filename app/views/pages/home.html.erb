@@ -214,6 +214,18 @@
         </div>
       </div>
     </div>
+    <%= image_tag "new-home/vector-white.png", alt: "alttext", class: "img-vector" %>
+    <div class="producers">
+      <div class="container producers-image-text">
+        <div class="producers-text">
+          <%= image_tag "new-home/shape.png", alt: "alttext", class: "shape-img" %>
+          <h3><%= t('.join-producers-title') %></h3>
+          <p><%= t('.join-producers-description') %> <strong><%= t('.join-producers-description-strong') %></strong> <%= t('.join-producers-description-last') %></p>
+          <%= link_to "ÇA M'INTERESSE", community_path, class: "btn join-btn" %>
+        </div>
+        <%= image_tag "new-home/producers-grid.jpg", alt: "alttext", class: "producers-img" %>
+      </div>
+    </div>
 
   </div>
 

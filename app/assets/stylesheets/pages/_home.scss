@@ -3,6 +3,12 @@
 .home {
 
   .join {
+    .img-vector {
+      width: 100%;
+      z-index: -5;
+      margin-top: -100px;
+    }
+
     .join-btn {
       color: white;
       background-color: #339E72;
@@ -20,13 +26,41 @@
       color: black;
     }
 
+    .producers {
+      .producers-image-text {
+        display: flex;
+        justify-content: between;
+        margin-top: -5%;
+        margin-bottom: 10px;
+
+        .producers-text {
+          margin-top: 5%;
+        }
+
+        .producers-img {
+          width: 50%;
+          margin-top: 20px;
+          margin-left: 10%;
+        }
+
+        .shape-img {
+          width: 44px;
+          margin-left: -30px;
+        }
+
+        h3 {
+          margin-top: -25px;
+        }
+      }
+    }
+
     .companion {
       background-color: #FAF7F3;
       padding-top: 50px;
-      padding-bottom: 100px;
 
       img {
         width: 40%;
+        z-index: 5;
       }
 
       .companion-image-text {
@@ -36,6 +70,7 @@
         .companion-text {
           margin-left: 10%;
           margin-top: 30px;
+          z-index: 5;
         }
 
         .green-sentence {
