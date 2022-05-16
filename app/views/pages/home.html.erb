@@ -237,46 +237,52 @@
 
   </div>
 
-  <div class="container">
-    <div class="testimonials">
-      <h2><%= t('.testimony_title') %></h2>
-      <div class="all-testimonials d-flex">
-        <div class="testimony">
-          <%= image_tag "home/slice.png", alt: "alttext" %>
-          <div class="testimonials-informations">
-            <h6> <%= t('.testimony1') %></h6>
-            <%= image_tag "testimony/pierre-carroz.png", alt: "alttext" %>
-            <p class="name">Pierre Carroz</p>
-            <p class="text"><%= t('.testimony_text1') %></p>
-          </div>
-        </div>
-        <div class="testimony">
-          <%= image_tag "home/slice.png", alt: "alttext" %>
-          <div class="testimonials-informations">
-            <h6> <%= t('.testimony2') %></h6>
-            <%= image_tag "testimony/testimony2.jpg", alt: "alttext" %>
-            <p class="name">Diane Baud</p>
-            <p class="text"><%= t('.testimony_text2') %></p>
-          </div>
-        </div>
-        <div class="testimony">
-          <%= image_tag "home/slice.png", alt: "alttext" %>
-          <div class="testimonials-informations">
-            <h6> <%= t('.testimony3') %></h6>
-            <%= image_tag "testimony/testimony3.jpg", alt: "alttext" %>
-            <p class="name">Francis Joye</p>
-            <p class="text"><%= t('.testimony_text3') %></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="registration">
+  <div class="testimonials">
     <div class="container">
-      <div class="text">
-        <h2><%= t('.registration') %></h2>
-        <h6><%= t('.registration_text') %></h6>
-        <%= link_to t('.registration_btn') , "https://form.typeform.com/to/Y2rBljOl", class: "btn" %>
+      <h3><%= t('.testimony_title') %></h3>
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="testimonials-informations">
+              <%= image_tag "new-home/stars.png", alt: "alttext", class: "stars-img" %>
+              <p class="testimony-text"> <%= t('.testimony1') %></p>
+              <%= image_tag "testimony/pierre-carroz.png", alt: "alttext", class: "profil-img" %>
+              <p class="name">Pierre Carroz</p>
+              <p class="text"><%= t('.testimony_text1') %></p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="testimonials-informations">
+              <%= image_tag "new-home/stars.png", alt: "alttext", class: "stars-img" %>
+              <p class="testimony-text"> <%= t('.testimony2') %></p>
+              <%= image_tag "testimony/testimony2.png", alt: "alttext", class: "profil-img" %>
+              <p class="name">Diane Baud</p>
+              <p class="text"><%= t('.testimony_text2') %></p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="testimonials-informations">
+              <%= image_tag "new-home/stars.png", alt: "alttext", class: "stars-img" %>
+              <p class="testimony-text"> <%= t('.testimony3') %></p>
+              <%= image_tag "testimony/testimony3.png", alt: "alttext", class: "profil-img" %>
+              <p class="name">Francis Joye</p>
+              <p class="text"><%= t('.testimony_text3') %></p>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
       </div>
     </div>
   </div>
