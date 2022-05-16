@@ -6,6 +6,11 @@
     display: none;
   }
 
+  .text-banner {
+    text-align: left !important;
+    padding-left: 8%;
+  }
+
   .banner-content {
     z-index: 10;
     display: flex;
@@ -29,7 +34,7 @@
     margin: 0 auto;
     line-height: 45px;
     color: #25201d;
-    font-size: 35px;
+    font-size: 46px;
     padding-top: 15vh;
 
     .strikethrough {
@@ -55,7 +60,6 @@
     margin: 0 auto;
     font-size: 16px;
     color: #25201d;
-    max-width: 470px;
     line-height: 25px;
     font-family: 'BioRhyme', serif;
     font-weight: 300;
@@ -73,7 +77,6 @@
 
   .search {
     padding-top: 34px;
-    justify-content: center;
 
     .btn-computer {
       background-color: #339E72 !important;
