@@ -114,9 +114,13 @@
     .owl-carousel {
       display: none;
     }
+  }
 
-    h3 {
-      font-size: 24px !important;
+  @media (max-width: 771px) {
+    .home-category {
+      h3 {
+        font-size: 24px;
+      }
     }
   }
 }
