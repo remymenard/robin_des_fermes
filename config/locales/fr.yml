@@ -3,6 +3,12 @@ fr:
     user_not_authorized: "Vous n'êtes pas authorisé à effectuer cette action."
   pages:
     home:
+      mailchimp-btn-mobile: "DEVENIR COMPAGNON"
+      mailchimp-btn: "C'EST PARTI!"
+      mailchimp-placeholder: "Quel est ton adresse e-mail ?"
+      mailchimp-title: "Si t'es arrivé.e jusqu'ici..."
+      mailchimp-subtitle: "Quelque chose nous dit que tu vas apprécier notre newsletter"
+      mailchimp-text: "Des recettes gourmandes, des nouveautés en avant premières, des astuces et tout un tas d'autres choses utiles."
       join-producers-title: "Oyez, oyez, producteurs, rejoignez-nous !"
       join-producers-description: "Tu fais partie des valeureuses personnes qui nous nourissent ou nous abreuvent ? Ne cherche pas plus loin, on te propose toute une"
       join-producers-description-strong: "palette de prestations et d'outils pour t'aider à vendre tes produits"

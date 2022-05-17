@@ -68,9 +68,13 @@
       }
     }
   }
+
   .basket-icon {
-    height: 24px;
+    height: 26px;
+    margin-right: 5px;
+    margin-bottom: -10px;
   }
+
   .profile-icon {
     height: 38px;
     padding: 0 0;
@@ -263,6 +267,11 @@
 @media (max-width: 1041px) {
   .basket-user {
     margin-left: 6vw !important;
+  }
+
+  .basket-icon {
+    margin-right: 0px !important;
+    margin-bottom: 0px !important;
   }
 }
 
