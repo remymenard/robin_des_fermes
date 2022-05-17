@@ -140,11 +140,15 @@
 
     .waves {
       margin-top: -110px !important;
+
+      h3 {
+        font-size: 24px;
+      }
     }
 
     .direct-sale {
       margin-top: -155px !important;
-      height: 1250px !important;
+      height: 1350px !important;
 
       .work-question {
         display: none;
@@ -152,10 +156,11 @@
 
       p {
         margin-bottom: 0px !important;
+        font-size: 18px !important;
       }
 
       h3 {
-        font-size: 18px !important;
+        font-size: 20px !important;
       }
     }
 

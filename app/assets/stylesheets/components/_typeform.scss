@@ -6,7 +6,6 @@
     background-image: asset-url("new-home/background-typeform.png");
     background-size: cover;
     width: 100%;
-    height: 480px;
     padding-left: 10%;
     padding-right: 10%;
 
@@ -14,6 +13,10 @@
       background-color: #339E72;
       width: 100% !important;
       margin-left: 8%;
+
+      .button-mobile {
+        display: none;
+      }
 
       .indicates-required {
         display: none;
@@ -100,6 +103,52 @@
       .tf-v1-widget {
         height: 450px !important;
         margin-top: -20px !important;
+      }
+    }
+
+    @media (max-width: 875px) {
+      flex-direction: column;
+
+      #mc_embed_signup {
+        margin-left: 0px !important;
+        margin-top: 50px;
+
+        .button-desktop {
+          display: none;
+        }
+
+        h3 {
+          text-align: center;
+          font-size: 24px;
+        }
+
+        p {
+          text-align: center;
+          font-size: 18px;
+        }
+
+        .button-mobile {
+          display: initial;
+          width: 96%;
+          border-radius: 5px !important;
+        }
+
+        .input-mailchimp {
+          flex-direction: column;
+
+        }
+
+        .mc-field-group {
+          input {
+            border-radius: 5px !important;
+          }
+        }
+      }
+
+      img {
+        height: 200px;
+        margin: auto;
+        padding-top: 50px;
       }
     }
   }

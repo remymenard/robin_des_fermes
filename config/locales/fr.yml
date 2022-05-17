@@ -3,6 +3,7 @@ fr:
     user_not_authorized: "Vous n'êtes pas authorisé à effectuer cette action."
   pages:
     home:
+      mailchimp-btn-mobile: "DEVENIR COMPAGNON"
       mailchimp-btn: "C'EST PARTI!"
       mailchimp-placeholder: "Quel est ton adresse e-mail ?"
       mailchimp-title: "Si t'es arrivé.e jusqu'ici..."
