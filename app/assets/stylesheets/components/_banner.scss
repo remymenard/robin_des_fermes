@@ -9,6 +9,7 @@
   .text-banner {
     text-align: left !important;
     padding-left: 8%;
+    padding-top: 15vh;
   }
 
   .banner-content {
@@ -35,7 +36,6 @@
     line-height: 45px;
     color: #25201d;
     font-size: 46px;
-    padding-top: 15vh;
 
     .strikethrough {
       display: inline-block;
@@ -58,7 +58,7 @@
   p {
     padding-top: 24px;
     margin: 0 auto;
-    font-size: 16px;
+    font-size: 22px;
     color: #25201d;
     line-height: 25px;
     font-family: 'BioRhyme', serif;
@@ -82,10 +82,11 @@
       background-color: #339E72 !important;
       color: white;
       font-weight: 600;
+      width: 370px;
       font-family: 'Mulish', sans-serif;
       font-size: 14px;
       height: 53px;
-      border-radius: 0px 10px 10px 0px;
+      border-radius: 0px 6px 6px 0px;
       letter-spacing: 2.5px;
       line-height: 24px;
       text-transform: uppercase;
@@ -100,13 +101,25 @@
       color: #7c7977 !important;
       text-align: center;
       height: 53px;
-      border-radius: 10px 0px 0px 10px;
+      border-radius: 6px 0px 0px 6px;
       border-color: #f0ece8;
       background-color: white;
-      width: 150px;
+      width: 250px;
     }
   }
 
+}
+
+@media (min-width: 1140px) and (max-width: 1200px) {
+  .search {
+    .btn-computer {
+      width: 300px !important;
+    }
+
+    .form-control {
+      width: 200px !important;
+    }
+  }
 }
 
 @media (min-width: 750px) and (max-width: 1140px) {
@@ -128,7 +141,7 @@
       font-family: 'Mulish', sans-serif;
       font-size: 14px;
       height: 53px;
-      border-radius: 0px 10px 10px 0px ;
+      border-radius: 0px 6px 6px 0px ;
       width: 130px;
       letter-spacing: 2.5px;
       line-height: 24px;
@@ -187,24 +200,32 @@
     }
 
     .text-banner {
+      padding-top: 0px;
       text-align: center !important;
       padding-left: 0px;
+
+      p {
+        font-size: 18px;
+      }
     }
 
     .btn-mobile {
       display: none;
     }
 
-    h1 {
+    .banner-title {
       background-image: url(new-home/banner-mobile.png);
       background-size: cover;
-      font-size: 32px;
-      line-height: 36px;
-      color: white;
       height: 200px;
       padding-top: 50px;
       padding-left: 10px;
       padding-right: 10px;
+
+      h1 {
+        font-size: 32px;
+        line-height: 36px;
+        color: white;
+      }
     }
 
     p {
