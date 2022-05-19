@@ -42,13 +42,13 @@ fr:
       statistic-today-description-strong: "apporte de la visibilité et des outils aux producteurs"
       statistic-today-description-last: "pour qu'ils soient plus indépendants et maître de leurs marges."
       statistic-today-description-strong-last: "Robin des fermes veut remettre l'église au milieu du village !"
-      title-marker: 'Trouve les producteurs  qui t’entourent'
       text-marker: 'Tu peux également trouver'
       text-marker-strong: 'des Tanières,'
+      title-marker: "Tout les producteurs qui t'entourent"
       text-marker-last: 'ce sont des regroupements de plusieurs producteurs.'
       title-hand: 'Commande en quelques clics'
       text-hand: 'Comme un vrai justicier sur canapé !'
-      text-hand-strong: 'Livraison à dominicle ou retrait à la ferme: '
+      text-hand-strong: 'Livraison à domicile ou retrait à la ferme: '
       text-hand-last: "c'est toi qui choisis !"
       title-farmer: "Le producteur s'occupe de ta commande"
       text-farmer: "Et il le fait avec la banane, parce que c'est tellement plus valorisant de"
@@ -61,7 +61,7 @@ fr:
       text-return-strong: 'Évite le gaspillage '
       text-return-last: "en retournant ton contenant, le producteur le réutilisera."
       work?: 'Comment ça marche ?'
-      sale: 'La vente direct via Robin des Fermes'
+      sale: 'La vente directe via Robin des Fermes'
       one_product: 'produit'
       search_placeholder: 'Où habitez-vous ?'
       search_btn: 'RECHERCHER'
