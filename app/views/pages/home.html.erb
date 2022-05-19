@@ -57,6 +57,7 @@
       </div>
     </div>
   </div>
+
   <div class="wealth-distribution">
     <div class="container">
       <h3 class="statistic-title"><%= t('.statistic') %></h3>
@@ -86,6 +87,7 @@
       </div>
     </div>
   </div>
+
   <div class="container">
     <div class="home-category">
       <div class="title-btn-category">
@@ -96,48 +98,70 @@
       </div>
 
       <div class="food">
-        <div class="card-category">
-          <%= image_tag "categories/meat.jpg", alt: "Viande" %>
-          <p><%= t('.viandes') %></p>
-        </div>
-        <div class="card-category">
-          <%= image_tag "categories/vegetables.png", alt: "Lait" %>
-          <p><%= t('.vegetables') %></p>
-        </div>
-        <div class="card-category">
-          <%= image_tag "categories/wine.png", alt: "Vin" %>
-          <p><%= t('.vins') %></p>
-        </div>
-        <div class="card-category">
-          <%= image_tag "categories/bio.jpg", alt: "Bio" %>
-          <p><%= t('.bio') %></p>
-        </div>
-      </div>
-
-      <div class="owl-carousel owl-theme">
-        <div class="item">
+        <%= link_to farms_path(category: "Viande & Volaille") do %>
           <div class="card-category">
             <%= image_tag "categories/meat.jpg", alt: "Viande" %>
             <p><%= t('.viandes') %></p>
           </div>
-        </div>
-        <div class="item">
+        <% end %>
+
+        <%= link_to farms_path(category: "Fruits & Légumes") do %>
           <div class="card-category">
             <%= image_tag "categories/vegetables.png", alt: "Lait" %>
             <p><%= t('.vegetables') %></p>
           </div>
-        </div>
-        <div class="item">
+        <% end %>
+
+        <%= link_to farms_path(category: "Vin") do %>
           <div class="card-category">
             <%= image_tag "categories/wine.png", alt: "Vin" %>
             <p><%= t('.vins') %></p>
           </div>
-        </div>
-        <div class="item">
+        <% end %>
+
+        <%= link_to farms_path(category: "Viande & Volaille") do %>
           <div class="card-category">
             <%= image_tag "categories/bio.jpg", alt: "Bio" %>
             <p><%= t('.bio') %></p>
           </div>
+        <% end %>
+      </div>
+
+      <div class="owl-carousel owl-theme">
+        <div class="item">
+          <%= link_to farms_path(category: "Viande & Volaille") do %>
+            <div class="card-category">
+              <%= image_tag "categories/meat.jpg", alt: "Viande" %>
+              <p><%= t('.viandes') %></p>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="item">
+          <%= link_to farms_path(category: "Fruits & Légumes") do %>
+            <div class="card-category">
+              <%= image_tag "categories/vegetables.png", alt: "Lait" %>
+              <p><%= t('.vegetables') %></p>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="item">
+          <%= link_to farms_path(category: "Vin") do %>
+            <div class="card-category">
+              <%= image_tag "categories/wine.png", alt: "Vin" %>
+              <p><%= t('.vins') %></p>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="item">
+          <%= link_to farms_path(category: "Viande & Volaille") do %>
+            <div class="card-category">
+              <%= image_tag "categories/bio.jpg", alt: "Bio" %>
+              <p><%= t('.bio') %></p>
+            </div>
+          <% end %>
         </div>
       </div>
       <div class="link-discover">
