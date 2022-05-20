@@ -1,0 +1,155 @@
+.home {
+  .citation {
+    margin-top: 70px;
+    text-align: center;
+    margin-bottom: 120px;
+
+    .img-citations {
+      display: flex;
+      justify-content: space-between;
+
+      .img-24heures-grey {
+        width: 150px;
+        height: 22px;
+        margin-top: 5px;
+      }
+
+      .img-color {
+        height: 30px;
+      }
+
+      .img-courrier {
+        width: 150px;
+        margin-top: -10px;
+      }
+
+      .img-terre-nature {
+        width: 102px;
+        height: 22px;
+        margin-top: 5px;
+      }
+    }
+
+    h3 {
+      color: #3C452B;
+      font-family: 'BioRhyme', serif;
+      font-size: 32px;
+    }
+
+    p {
+      font-size: 20px;
+    }
+
+    .carousel {
+      height: 200px;
+      width: 80%;
+      margin: auto;
+      margin-bottom: 30px;
+
+      h2 {
+        color: #A04C46;
+        font-size: 30px;
+        font-weight: 300;
+        margin-top: 40px;
+        margin-bottom: 30px;
+        height: 150px;
+      }
+    }
+
+    #carouselExampleIndicators {
+      li {
+        background-color: #FF4136;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-left: 10px;
+      }
+    }
+
+    .citation-title {
+      text-align: center;
+
+      .img-rancon {
+        display: flex;
+        justify-content: flex-end;
+
+        img {
+          height: 65px;
+          margin-top: -7%;
+        }
+      }
+    }
+
+    @media (min-width: 1115px) {
+      .img-rancon {
+
+        img {
+          margin-top: -7%;
+          margin-right: 10%;
+        }
+      }
+    }
+
+    @media (min-width: 770px) and (max-width: 993px) {
+      .carousel {
+        width: 100% !important;
+      }
+
+      .img-24heures-grey {
+        width: 130px;
+      }
+
+      .img-24heures-color {
+        width: 130px;
+      }
+
+      .img-terre-nature {
+        width: 70px;
+      }
+
+      h3 {
+        margin-right: 10%;
+      }
+    }
+
+    @media (max-width: 770px) {
+      .img-rancon {
+        img {
+          display: none;
+        }
+      }
+
+      .carousel {
+        height: 170px;
+        width: 100%;
+        margin-bottom: 20px;
+
+        h2 {
+          font-size: 24px;
+          margin-top: 20px;
+        }
+      }
+
+      .img-24heures-grey {
+        display: none;
+      }
+
+      .img-24heures-color {
+        width: 150px;
+      }
+
+      .img-terre-nature {
+        display: none;
+      }
+
+      .img-citations {
+        justify-content: center;
+      }
+
+      h3 {
+        margin-right: 0px;
+        font-size: 24px;
+      }
+    }
+  }
+}

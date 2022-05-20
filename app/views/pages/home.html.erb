@@ -1,187 +1,404 @@
 <div class="home">
-  <div class="banner" >
-    <div class="container ">
-      <h1><%= t('.title') %></h1>
-      <p><%= t('.sub_title1') %> <strong><%= t('.sub_title_bold1') %></strong><%= t('.sub_title2') %><strong><%= t('.sub_title_bold2') %></strong><%= t('.sub_title3') %><strong><%= t('.sub_title_bold3') %></strong><%= t('.sub_title4') %><strong><%= t('.sub_title_bold4') %></strong><%= t('.sub_title5') %></p>
-      <%= form_tag farms_path, method: :get, class: 'form-inline search' do %>
-        <%= text_field_tag :zip, get_zip_code_number, readonly: true, class: 'form-control search zip_code_input', id: 'zip1', placeholder: "Où habitez-vous ?" %>
-        <%= submit_tag "DECOUVRIR LES PRODUCTEURS", class: "btn btn-computer", name: nil %>
-        <%= submit_tag "DECOUVRIR", class: "btn btn-mobile", name: nil %>
-      <% end %>
-    </div>
-  </div>
-  <div class="container">
-    <div class="home-category">
-      <div class="food d-flex">
-        <div class="two-products">
-          <div>
-            <%= link_to farms_path(category: "Viande & Volaille"), class: "navbar-brand" do %>
-              <div class="image-categorie">
-                <%= image_tag "categories/meat.jpg", alt: "Viande" %>
-              </div>
-              <h3><%= t('.viandes') %></h3>
-              <p><%= t('.paragraph_meat') %> </p>
-              <div class="line d-flex">
-                <%= image_tag "categories/line.png", alt: "line" %>
-                <p><%= t('.discover_meat') %> </p>
-              </div>
-            <% end %>
-          </div>
-          <div>
-            <%= link_to farms_path(category: "Fruits & Légumes"), class: "navbar-brand" do %>
-              <div class="image-categorie">
-                <%= image_tag "categories/vegetables.jpg", alt: "Lait" %>
-              </div>
-              <h3><%= t('.vegetables') %></h3>
-              <p><%= t('.paragraph_vegetables') %> </p>
-              <div class="line d-flex">
-                <%= image_tag "categories/line.png", alt: "line" %>
-                <p><%= t('.discover_vegetables') %> </p>
-              </div>
-            <% end %>
-          </div>
+  <div class="banner d-flex" >
+    <%= image_tag "new-home/big-ellipse.png", alt: "alttext", class: 'ellipse-small' %>
+    <%= image_tag "new-home/small-ellipse.png", alt: "alttext", class: 'ellipse-big' %>
+    <div class="banner-content">
+      <div class="text-banner">
+        <div class="banner-title">
+          <h1><%= t('.title1') %></h1>
+          <h1><%= t('.without-title') %> <span class="strikethrough"><%= t('.title-strike') %></span> <%= t('.title2') %></h1>
         </div>
-        <div>
-          <h2><%= t('.products') %></h2>
-          <div>
-            <%= link_to farms_path(category: "Vins"), class: "navbar-brand" do %>
-              <div class="image-categorie">
-                <%= image_tag "categories/wine.jpg", alt: "Vin" %>
-              </div>
-              <h3><%= t('.vins') %></h3>
-              <p><%= t('.paragraph_wine') %> </p>
-              <div class="line d-flex">
-                <%= image_tag "categories/line.png", alt: "line" %>
-                <p><%= t('.discover_wine') %> </p>
-              </div>
-            <% end %>
-          </div>
-          <h2><%= t '.second_zip_code_input_title' %></h2>
-          <p><%= t '.second_zip_code_input_description' %></p>
-          <%= form_tag farms_path, method: :get, class: 'form-inline search' do %>
-            <%= text_field_tag :zip, get_zip_code_number, readonly: true, class: 'form-control zip-search zip_code_input', placeholder: t('pages.home.search_placeholder') %>
-            <%= submit_tag t(".second_zip_code_input_button"), class: "btn zip-button", name: nil %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-    <div class="rdf-presentation">
-      <h2><%= t('.title_rdf') %></h2>
-      <div class="d-flex cards-rdf">
-        <div class="card-rdf">
-          <%= image_tag "home/find.png", alt: "rdf" %>
-          <h3><%= t('.find') %></h3>
-          <p><%= t('.find_paragraph') %></p>
-        </div>
-        <div class="card-rdf">
-          <%= image_tag "home/ordered.png", alt: "rdf" %>
-          <h3><%= t('.ordered') %></h3>
-          <p><%= t('.ordered_paragraph') %></p>
-        </div>
-        <div class="card-rdf">
-          <%= image_tag "home/victory.png", alt: "rdf" %>
-          <h3><%= t('.taste') %></h3>
-          <p><%= t('.taste_paragraph') %></p>
-        </div>
-      </div>
-      <%= link_to t(".know_more"), about_path, class: "btn"%>
-    </div>
-  </div>
-  <div class="container justify-content-center">
-    <div class="companion-block">
-      <span>Profite de réductions sur la distribution régionale,<br>
-deviens compagnon·e Robin des Fermes</span>
-    <a class="btn btn-white btn-light" href="https://info.robindesfermes.ch/compagnon/" target="_blank">EN SAVOIR PLUS</a>
-    </div>
-  </div>
-  <div class="best-farms">
-    <div class="container">
-      <h2><%= t('.best_farms') %></h2>
-      <div class="cards ">
-        <% @farms.active.take(4).each do |farm| %>
-          <%= link_to farm_path(farm) do  %>
-            <div class="card-product d-flex">
-              <div class="photo-farm">
-                <div class="labels">
-                  <% farm.labels.each do |label| %>
-                    <div class='label'>
-                      <p> <%= label.upcase  %></p>
-                    </div>
-                  <%end%>
-                </div>
-                <%= cl_image_tag(farm.farm_profil_picture&.key, crop: :fill, class: "photo") if farm.farm_profil_picture %>
-              </div>
-              <div class="cards-informations">
-                <div class="d-flex address">
-                  <%= image_tag "icons/marker_cards_farms.png", class: "marker" %>
-                  <p><%= farm.zip_code.upcase  %> <%= farm.city.upcase  %></p>
-                </div>
-                <div class="name d-flex">
-                  <h3> <%= farm.name  %></h3>
-                </div>
-                <p class="openning"><%= t('.openning', openning: farm.opening_time) %></p>
-                <p class="products-number"><%= farm.products.available.count  %>
-                  <% if farm.products.available.count == 1 %>
-                    <%= t('.one_product') %>
-                  <% else %>
-                    <%= t('.products_number') %>
-                  <% end %>
-                </p>
-                <div class="all-photos d-flex">
-                  <% farm.categories.each_with_index do |category, index| %>
-                    <div class='category-photo' data-toggle="tooltip" data-placement="top" title="<%= category.name  %>"><%= cl_image_tag category.photo.key %></div>
-                  <% end %>
-                </div>
-                <div class="categories"></div>
-              </div>
-            </div>
-          <% end %>
+        <p><%= t('.sub_title1') %> <strong><%= t('.sub_title_bold1') %></strong><%= t('.sub_title2') %></p>
+        <%= form_tag farms_path, method: :get, class: 'form-inline search' do %>
+          <%= text_field_tag :zip, get_zip_code_number, readonly: true, class: 'form-control search zip_code_input', id: 'zip1', placeholder: "Où habites-tu ?" %>
+          <%= submit_tag "DÉCOUVRIR LES PRODUCTEURS", class: "btn btn-computer", name: nil %>
+          <%= submit_tag "DÉCOUVRIR", class: "btn btn-mobile", name: nil %>
+          <%= submit_tag "TOUT DÉCOUVRIR", class: "btn btn-small-mobile", name: nil %>
         <% end %>
       </div>
+
+      <%= image_tag "new-home/banner-images.png", alt: "alttext", class: 'img-banner' %>
     </div>
   </div>
-  <div class="container">
-    <div class="testimonials">
-      <h2><%= t('.testimony_title') %></h2>
-      <div class="all-testimonials d-flex">
-        <div class="testimony">
-          <%= image_tag "home/slice.png", alt: "alttext" %>
-          <div class="testimonials-informations">
-            <h6> <%= t('.testimony1') %></h6>
-            <%= image_tag "testimony/pierre-carroz.png", alt: "alttext" %>
-            <p class="name">Pierre Carroz</p>
-            <p class="text"><%= t('.testimony_text1') %></p>
-          </div>
-        </div>
-        <div class="testimony">
-          <%= image_tag "home/slice.png", alt: "alttext" %>
-          <div class="testimonials-informations">
-            <h6> <%= t('.testimony2') %></h6>
-            <%= image_tag "testimony/testimony2.jpg", alt: "alttext" %>
-            <p class="name">Diane Baud</p>
-            <p class="text"><%= t('.testimony_text2') %></p>
-          </div>
-        </div>
-        <div class="testimony">
-          <%= image_tag "home/slice.png", alt: "alttext" %>
-          <div class="testimonials-informations">
-            <h6> <%= t('.testimony3') %></h6>
-            <%= image_tag "testimony/testimony3.jpg", alt: "alttext" %>
-            <p class="name">Francis Joye</p>
-            <p class="text"><%= t('.testimony_text3') %></p>
-          </div>
-        </div>
+  <div class="waves">
+    <h3><%= t('.sale') %></h3>
+  </div>
+  <div class="direct-sale">
+    <p class="work-question"><%= t('.work?') %></p>
+    <div class="path">
+      <div class="path-marker path-picto">
+        <%= image_tag "new-home/icon-marker.png", alt: "alttext", width: 130, class: "img-marker" %>
+        <h3><%= t('.title-marker') %> </h3>
+        <p><%= t('.text-marker') %> <strong><%= t('.text-marker-strong') %></strong> <%= t('.text-marker-last') %></p>
+      </div>
+      <%= image_tag "new-home/grey-line.png", alt: "alttext", class: "grey-line" %>
+      <div class="path-hand path-picto">
+        <%= image_tag "new-home/icon-hand.png", alt: "alttext", width: 130, class: "img-hand" %>
+        <h3><%= t('.title-hand') %></h3>
+        <p><%= t('.text-hand') %> <strong><%= t('.text-hand-strong') %></strong> <%= t('.text-hand-last') %></p>
+      </div>
+      <%= image_tag "new-home/grey-line.png", alt: "alttext", class: "grey-line" %>
+      <div class="path-farmer path-picto">
+        <%= image_tag "new-home/icon-farmer.png", alt: "alttext", width: 130, class: "img-farmer"  %>
+        <h3><%= t('.title-farmer') %></h3>
+        <p><%= t('.text-farmer') %> <strong><%= t('.text-farmer-strong') %></strong></p>
+      </div>
+      <%= image_tag "new-home/grey-line.png", alt: "alttext", class: "grey-line" %>
+      <div class="path-eat path-picto">
+        <%= image_tag "new-home/icon-eat.png", alt: "alttext", width: 130, class: "img-eat" %>
+        <h3><%= t('.title-eat') %></h3>
+        <p><%= t('.text-eat') %> <strong><%= t('.text-eat-strong') %></strong></p>
+      </div>
+      <%= image_tag "new-home/grey-line.png", alt: "alttext", class: "grey-line" %>
+      <div class="path-return path-picto">
+        <%= image_tag "new-home/icon-return.png", alt: "alttext", width: 130, class: "img-return" %>
+        <h3><%= t('.title-return') %></h3>
+        <p><%= t('.text-return') %> <strong><%= t('.text-return-strong') %></strong> <%= t('.text-return-last') %></p>
       </div>
     </div>
   </div>
-  <div class="registration">
+
+  <div class="wealth-distribution">
     <div class="container">
-      <div class="text">
-        <h2><%= t('.registration') %></h2>
-        <h6><%= t('.registration_text') %></h6>
-        <%= link_to t('.registration_btn') , "https://form.typeform.com/to/Y2rBljOl", class: "btn" %>
+      <h3 class="statistic-title"><%= t('.statistic') %></h3>
+      <div class="statistic-description">
+        <%= image_tag "new-home/wealth-distribution-1980.png", alt: "alttext", class: "img-1980" %>
+        <div class="statistic-text">
+          <h3><span><%= t('.statistic-1980') %></span> <%= t('.statistic-1980-title') %></h3>
+          <p><%= t('.statistic-1980-description') %></p>
+        </div>
+      </div>
+
+      <div class="statistic-description">
+        <%= image_tag "new-home/wealth-distribution-2020.png", alt: "alttext", class: "img-2020" %>
+        <div class="statistic-text">
+          <h3><span><%= t('.statistic-2020') %></span> <%= t('.statistic-2020-title') %></h3>
+          <p><%= t('.statistic-2020-description') %><strong class="word-underline"> <%= t('.statistic-2020-description-30') %></strong><strong> <%= t('.statistic-2020-description-strong') %></strong> <%= t('.statistic-2020-description-last') %></p>
+          <%= image_tag "new-home/stroke.png", alt: "alttext", class: "stroke" %>
+        </div>
+      </div>
+
+      <div class="statistic-description">
+        <%= image_tag "new-home/wealth-distribution-today.png", alt: "alttext", class: "img-today" %>
+        <div class="statistic-text">
+          <h3><span><%= t('.statistic-today') %></span> <%= t('.statistic-today-title') %></h3>
+          <p><%= t('.statistic-today-description') %> <strong><%= t('.statistic-today-description-strong') %></strong> <%= t('.statistic-today-description-last') %> <strong><%= t('.statistic-today-description-strong-last') %></strong></p>
+        </div>
       </div>
     </div>
+  </div>
+
+  <div class="container">
+    <div class="home-category">
+      <div class="title-btn-category">
+        <h3><%= t('.products-title') %></h3>
+        <div class="link-discover">
+          <%= link_to "TOUT DÉCOUVRIR", farms_path, class: "btn btn-discover"  %>
+        </div>
+      </div>
+
+      <div class="food">
+        <%= link_to farms_path(category: "Viande & Volaille") do %>
+          <div class="card-category">
+            <%= image_tag "categories/meat.jpg", alt: "Viande" %>
+            <p><%= t('.viandes') %></p>
+          </div>
+        <% end %>
+
+        <%= link_to farms_path(category: "Fruits & Légumes") do %>
+          <div class="card-category">
+            <%= image_tag "categories/vegetables.png", alt: "Lait" %>
+            <p><%= t('.vegetables') %></p>
+          </div>
+        <% end %>
+
+        <%= link_to farms_path(category: "Vin") do %>
+          <div class="card-category">
+            <%= image_tag "categories/wine.png", alt: "Vin" %>
+            <p><%= t('.vins') %></p>
+          </div>
+        <% end %>
+
+        <%= link_to farms_path(labels: "Bio-Suisse") do %>
+          <div class="card-category">
+            <%= image_tag "categories/bio.jpg", alt: "Bio" %>
+            <p><%= t('.bio') %></p>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="owl-carousel owl-theme">
+        <div class="item">
+          <%= link_to farms_path(category: "Viande & Volaille") do %>
+            <div class="card-category">
+              <%= image_tag "categories/meat.jpg", alt: "Viande" %>
+              <p><%= t('.viandes') %></p>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="item">
+          <%= link_to farms_path(category: "Fruits & Légumes") do %>
+            <div class="card-category">
+              <%= image_tag "categories/vegetables.png", alt: "Lait" %>
+              <p><%= t('.vegetables') %></p>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="item">
+          <%= link_to farms_path(category: "Vin") do %>
+            <div class="card-category">
+              <%= image_tag "categories/wine.png", alt: "Vin" %>
+              <p><%= t('.vins') %></p>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="item">
+          <%= link_to "#" do %>
+            <div class="card-category">
+              <%= image_tag "categories/bio.jpg", alt: "Bio" %>
+              <p><%= t('.bio') %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="link-discover">
+        <%= link_to "TOUT DÉCOUVRIR", farms_path, class: "btn btn-discover-mobile"  %>
+      </div>
+    </div>
+  </div>
+  <div class="video">
+    <div class="container">
+      <h3><%= t('.video-title') %></h3>
+      <p><%= t('.video-description') %></p>
+      <div class="d-flex">
+        <%= image_tag "new-home/question.png", alt: "alttext", class: "img-question" %>
+        <iframe src="https://player.vimeo.com/video/708681144?h=dc5a7b0215" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <%= image_tag "new-home/100.png", alt: "alttext", class: "img-100" %>
+      </div>
+    </div>
+  </div>
+  <div class="citation container">
+    <div class="citation-title">
+      <h3><%= t('.citation-title') %></h3>
+      <div class="img-rancon">
+        <%= image_tag "new-home/rancon.png", alt: "alttext" %>
+      </div>
+    </div>
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <h2>«<%= t('.citation-24hours') %>.»</h2>
+          <div class="img-citations">
+            <%= image_tag "new-home/24heures-grey.png", alt: "alttext", class: "img-24heures-grey" %>
+            <%= image_tag "new-home/terre-nature.png", alt: "alttext", class: "img-terre-nature" %>
+            <%= link_to("https://www.24heures.ch/robin-des-fermes-veut-rendre-justice-aux-producteurs-locaux-daliments-729776218303")  do %>
+              <%= image_tag "new-home/24heures-color.png", alt: "alttext", class: "img-color" %>
+            <% end %>
+            <%= image_tag "new-home/terre-nature.png", alt: "alttext", class: "img-terre-nature" %>
+            <%= image_tag "new-home/24heures-grey.png", alt: "alttext", class: "img-24heures-grey" %>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <h2>«<%= t('.citation-world') %>.»</h2>
+          <div class="img-citations">
+            <%= image_tag "new-home/24heures-grey.png", alt: "alttext", class: "img-24heures-grey" %>
+            <%= image_tag "new-home/terre-nature.png", alt: "alttext", class: "img-terre-nature" %>
+            <%= link_to("https://www.terrenature.ch/nos-lecteurs-se-joignent-a-la-ligue-des-justiciers-de-robin-des-fermes/")  do %>
+              <%= image_tag "new-home/logo_terrenature.png", alt: "alttext", class: "img-color" %>
+            <% end %>
+            <%= image_tag "new-home/terre-nature.png", alt: "alttext", class: "img-terre-nature" %>
+            <%= image_tag "new-home/24heures-grey.png", alt: "alttext", class: "img-24heures-grey" %>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <h2>«<%= t('.citation-liberty') %>.»</h2>
+          <div class="img-citations">
+            <%= image_tag "new-home/24heures-grey.png", alt: "alttext", class: "img-24heures-grey" %>
+            <%= image_tag "new-home/terre-nature.png", alt: "alttext", class: "img-terre-nature" %>
+            <%= link_to("https://www.laliberte.ch/news/magazine/societe/consommateur-cherche-producteur-603882")  do %>
+              <%= image_tag "new-home/la-liberte.png", alt: "alttext", class: "img-color"%>
+            <% end %>
+            <%= image_tag "new-home/terre-nature.png", alt: "alttext", class: "img-terre-nature" %>
+            <%= image_tag "new-home/24heures-grey.png", alt: "alttext", class: "img-24heures-grey" %>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <h2>«<%= t('.citation-courrier') %>.»</h2>
+          <div class="img-citations">
+            <%= image_tag "new-home/24heures-grey.png", alt: "alttext", class: "img-24heures-grey" %>
+            <%= image_tag "new-home/terre-nature.png", alt: "alttext", class: "img-terre-nature" %>
+            <%= link_to("https://www.le-courrier.ch/jorat-%E2%80%89robin-des-fermes%E2%80%89-decoche-de-son-carquois-les-outils-digitaux/")  do %>
+              <%= image_tag "new-home/le-courrier.png", alt: "alttext", class: "img-courrier" %>
+            <% end %>
+            <%= image_tag "new-home/terre-nature.png", alt: "alttext", class: "img-terre-nature" %>
+            <%= image_tag "new-home/24heures-grey.png", alt: "alttext", class: "img-24heures-grey" %>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="join">
+    <div class="companion">
+      <div class="container companion-image-text">
+        <%= image_tag "new-home/companion.png", alt: "alttext", class: "img-companion" %>
+        <div class="companion-text">
+          <h3><%= t('.join-companions-title') %></h3>
+          <p><%= t('.join-companions-description') %></p>
+          <p><%= t('.join-companions-description2') %></p>
+          <p class="green-sentence"><%= t('.join-companions-description-green') %></p>
+          <p><%= t('.join-companions-description-last') %></p>
+          <%= link_to "ÇA M'INTRIGUE VOTRE COMBINE", "https://info.robindesfermes.ch/compagnon/", class: "btn join-btn" %>
+        </div>
+      </div>
+    </div>
+    <%= image_tag "new-home/vector-white.png", alt: "alttext", class: "img-vector" %>
+    <div class="producers">
+      <div class="container producers-image-text">
+        <div class="producers-text">
+          <%= image_tag "new-home/shape.png", alt: "alttext", class: "shape-img" %>
+          <div class="shape-mobile-img">
+            <%= image_tag "new-home/shape-mobile.png", alt: "alttext", class: "" %>
+          </div>
+          <h3><%= t('.join-producers-title') %></h3>
+          <p><%= t('.join-producers-description') %> <strong><%= t('.join-producers-description-strong') %></strong> <%= t('.join-producers-description-last') %></p>
+          <%= link_to "ÇA M'INTERESSE", producer_path, class: "btn join-btn" %>
+        </div>
+        <div class="img-mobile-desktop">
+          <div class="heart-img">
+            <%= image_tag "new-home/heart.png", alt: "alttext", class: "" %>
+          </div>
+          <%= image_tag "new-home/producers-grid.jpg", alt: "alttext", class: "producers-img" %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="testimonials">
+    <div class="container">
+      <h3><%= t('.testimony_title') %></h3>
+      <div id="carouselTestimonials" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselTestimonials" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselTestimonials" data-slide-to="1"></li>
+          <li data-target="#carouselTestimonials" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="testimonials-informations">
+              <%= image_tag "new-home/stars.png", alt: "alttext", class: "stars-img" %>
+              <p class="testimony-text"> <%= t('.testimony1') %></p>
+              <%= image_tag "testimony/pierre-carroz.png", alt: "alttext", class: "profil-img" %>
+              <p class="name">Pierre Carroz</p>
+              <p class="text"><%= t('.testimony_text1') %></p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="testimonials-informations">
+              <%= image_tag "new-home/stars.png", alt: "alttext", class: "stars-img" %>
+              <p class="testimony-text"> <%= t('.testimony2') %></p>
+              <%= image_tag "testimony/testimony2.png", alt: "alttext", class: "profil-img" %>
+              <p class="name">Diane Baud</p>
+              <p class="text"><%= t('.testimony_text2') %></p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="testimonials-informations">
+              <%= image_tag "new-home/stars.png", alt: "alttext", class: "stars-img" %>
+              <p class="testimony-text"> <%= t('.testimony3') %></p>
+              <%= image_tag "testimony/testimony3.png", alt: "alttext", class: "profil-img" %>
+              <p class="name">Francis Joye</p>
+              <p class="text"><%= t('.testimony_text3') %></p>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselTestimonials" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselTestimonials" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="typeform">
+    <%= image_tag "new-home/robin.png", alt: "alttext" %>
+    <!-- Begin Mailchimp Signup Form -->
+    <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+      #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif;  width:600px;}
+      /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
+         We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+    </style>
+    <div id="mc_embed_signup">
+      <form action="https://robindesfermes.us7.list-manage.com/subscribe/post?u=8f2a2b30c3a25d951209e6d2e&amp;id=bac2f876bf" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+          <div id="mc_embed_signup_scroll">
+        <h3><%= t('.mailchimp-title') %></h3>
+        <h3><%= t('.mailchimp-subtitle') %></h3>
+        <p><%= t('.mailchimp-text') %></p>
+      <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+      <div class="input-mailchimp">
+        <div class="mc-field-group">
+          <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="<%= t('.mailchimp-placeholder') %>">
+        </div>
+        <div id="mce-responses" class="clear">
+          <div class="response" id="mce-error-response" style="display:none"></div>
+          <div class="response" id="mce-success-response" style="display:none"></div>
+        </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+          <div  style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_8f2a2b30c3a25d951209e6d2e_bac2f876bf" tabindex="-1" value=""></div>
+          <div class="clear"><input type="submit" value="<%= t('.mailchimp-btn') %>" name="subscribe" id="mc-embedded-subscribe" class="button button-desktop"></div>
+          <div class="clear"><input type="submit" value="<%= t('.mailchimp-btn-mobile') %>" name="subscribe" id="mc-embedded-subscribe" class="button button-mobile"></div>
+        </div>
+      </div>
+      </form>
+    </div>
+    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[1]='FNAME';ftypes[1]='text';fnames[0]='EMAIL';ftypes[0]='email';fnames[2]='MMERGE2';ftypes[2]='text';fnames[3]='MMERGE3';ftypes[3]='text'; /*
+     * Translated default messages for the $ validation plugin.
+     * Locale: FR
+     */
+    $.extend($.validator.messages, {
+            required: "Ce champ est requis.",
+            remote: "Veuillez remplir ce champ pour continuer.",
+            email: "Veuillez entrer une adresse email valide.",
+            url: "Veuillez entrer une URL valide.",
+            date: "Veuillez entrer une date valide.",
+            dateISO: "Veuillez entrer une date valide (ISO).",
+            number: "Veuillez entrer un nombre valide.",
+            digits: "Veuillez entrer (seulement) une valeur numérique.",
+            creditcard: "Veuillez entrer un numéro de carte de crédit valide.",
+            equalTo: "Veuillez entrer une nouvelle fois la même valeur.",
+            accept: "Veuillez entrer une valeur avec une extension valide.",
+            maxlength: $.validator.format("Veuillez ne pas entrer plus de {0} caractères."),
+            minlength: $.validator.format("Veuillez entrer au moins {0} caractères."),
+            rangelength: $.validator.format("Veuillez entrer entre {0} et {1} caractères."),
+            range: $.validator.format("Veuillez entrer une valeur entre {0} et {1}."),
+            max: $.validator.format("Veuillez entrer une valeur inférieure ou égale à {0}."),
+            min: $.validator.format("Veuillez entrer une valeur supérieure ou égale à {0}.")
+    });}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+    <!--End mc_embed_signup-->
   </div>
 </div>
 <div id="pageInfos" data-submit-form="true"></div>
+<%= render "shared/upviral" %>
+

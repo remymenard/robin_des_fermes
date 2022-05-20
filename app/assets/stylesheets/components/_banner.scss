@@ -1,41 +1,92 @@
 .banner {
-  background-image: image-url('home/Background.png');
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
+  background-color: #F9FAF7;
   text-align: center;
+
+  .btn-small-mobile {
+    display: none;
+  }
+
+  .text-banner {
+    text-align: left !important;
+    padding-left: 8%;
+    padding-top: 15vh;
+  }
+
+  .banner-content {
+    z-index: 10;
+    display: flex;
+    margin-left: -150px;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 70px;
+  }
+
+  .ellipse-small {
+    height: 100px;
+  }
+
+  .ellipse-big {
+    height: 200px;
+    width: 200px;
+    margin-left: -90px;
+  }
 
   h1 {
     margin: 0 auto;
-    line-height: 64px;
+    line-height: 45px;
     color: #25201d;
-    font-size: 54px;
-    max-width: 582px;
-    padding-top: 15vh;
+    font-size: 46px;
+
+    .strikethrough {
+      display: inline-block;
+      position: relative;
+    }
+    .strikethrough::before {
+      content: '';
+      position: absolute;
+      left: -0.1em;
+      right: -0.1em;
+      top: 0.38em;
+      bottom: 0.38em;
+      color: red;
+      background: linear-gradient(to left top, transparent 45.5%, currentColor 47.5%, currentColor 52.5%, transparent 54.5%);
+      pointer-events: none;
+    }
+
   }
 
   p {
     padding-top: 24px;
     margin: 0 auto;
-    font-size: 18px;
+    font-size: 22px;
     color: #25201d;
-    max-width: 470px;
-    line-height: 32px;
+    line-height: 25px;
+    font-family: 'BioRhyme', serif;
+    font-weight: 300;
+
+    strong {
+      color: #339E72;
+    }
+
+  }
+
+  .img-banner {
+    height: 523px;
+    margin-top: 40px;
   }
 
   .search {
     padding-top: 34px;
-    justify-content: center;
 
     .btn-computer {
-      background-color: #33b084 !important;
+      background-color: #339E72 !important;
       color: white;
       font-weight: 600;
+      width: 370px;
       font-family: 'Mulish', sans-serif;
       font-size: 14px;
       height: 53px;
-      border-radius: 0px 10px 10px 0px;
-      width: 350px;
+      border-radius: 0px 6px 6px 0px;
       letter-spacing: 2.5px;
       line-height: 24px;
       text-transform: uppercase;
@@ -50,40 +101,39 @@
       color: #7c7977 !important;
       text-align: center;
       height: 53px;
-      border-radius: 10px 0px 0px 10px;
-      border-color: #f0ece8;
-      width: 270px;
+      border-radius: 6px 0px 0px 6px;
+      border-color: #A4A6A0;
       background-color: white;
+      width: 250px;
     }
   }
 
-  @media (max-width: 770px) {
-    .btn {
-      width: 150px !important;
-      letter-spacing: 0px !important;
-      font-size: 10px !important;
+}
+
+@media (min-width: 1140px) and (max-width: 1200px) {
+  .search {
+    .btn-computer {
+      width: 300px !important;
     }
 
     .form-control {
-      width: 180px !important;
+      width: 200px !important;
     }
   }
 }
 
-@media (max-width: 500px) {
+@media (min-width: 750px) and (max-width: 1140px) {
   .banner {
-    background-image: image-url('home/background-mobile.png') !important;
-    background-size: cover;
-    background-position: center;
-    height: 677px;
-    width: 100%;
-    margin-top: -100px;
-
     .btn-computer {
       display: none;
     }
 
+    .img-banner {
+      height: 323px;
+    }
+
     .btn-mobile {
+      height: 40px;
       display: initial !important;
       background-color: #33b084 !important;
       color: white;
@@ -91,17 +141,96 @@
       font-family: 'Mulish', sans-serif;
       font-size: 14px;
       height: 53px;
-      border-radius: 0px 10px 10px 0px;
-      width: 120px !important;
+      border-radius: 0px 6px 6px 0px ;
+      width: 130px;
       letter-spacing: 2.5px;
       line-height: 24px;
       text-transform: uppercase;
     }
 
-    h1 {
-      padding-top: 200px;
-      font-size: 32px;
-      line-height: 36px;
+    .form-control {
+      width: 130px;
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .banner {
+
+    .search {
+      flex-direction: column;
+
+      .form-control {
+        border-radius: 6px;
+        width: 75%;
+      }
+    }
+
+    .img-banner {
+      display: none;
+      width: 0px;
+    }
+
+    .btn-computer {
+      display: none;
+    }
+
+    .ellipse-small {
+      display: none;
+      width: 0px;
+    }
+
+    .ellipse-big {
+      display: none;
+      width: 0px;
+    }
+
+    .banner-content {
+      margin-left: 0px;
+    }
+
+    .btn-small-mobile {
+      height: 53px;
+      color: white;
+      width: 75%;
+      border-radius: 6px;
+      margin-top: 10px;
+      display: initial !important;
+      background-color: #33b084 !important;
+    }
+
+    .text-banner {
+      padding-top: 0px;
+      text-align: center !important;
+      padding-left: 0px;
+
+      p {
+        font-size: 18px;
+      }
+    }
+
+    .btn-mobile {
+      display: none;
+    }
+
+    .banner-title {
+      background-image: url(new-home/banner-mobile.png);
+      background-size: cover;
+      height: 200px;
+      padding-top: 50px;
+      padding-left: 10px;
+      padding-right: 10px;
+
+      h1 {
+        font-size: 32px;
+        line-height: 36px;
+        color: white;
+      }
+    }
+
+    p {
+      padding-left: 10px;
+      padding-right: 10px;
     }
   }
 }

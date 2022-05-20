@@ -1,0 +1,129 @@
+.home {
+  .home-category {
+    margin-bottom: 70px;
+     a {
+      margin-left: 20px;
+      box-shadow: 1px 1px 12px #f2f2f2;
+      width: 50%;
+     }
+
+    .title-btn-category {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 70px;
+      margin-bottom: 20px;
+
+      h3 {
+        font-size: 32px;
+        color: #3C452B;
+        font-family: 'BioRhyme', serif;
+      }
+
+      .link-discover {
+        margin-top: -10px;
+      }
+
+      .btn-discover {
+        width: 200px;
+        color: white;
+        background-color: #339E72;
+        border-radius: 5px;
+      }
+    }
+
+    .btn-discover-mobile {
+      display: none;
+    }
+
+    .food {
+      display: flex;
+      justify-content: space-between;
+
+    }
+    img {
+      width: 100%;
+      border-radius: 5px 5px 0 0;
+    }
+
+    .card-category {
+      width: 100%;
+
+
+      p {
+        color: #25201D;
+        font-family: 'BioRhyme', serif;
+        margin-left: 5px;
+        margin-top: 10px;
+        font-size: 20px;
+      }
+    }
+  }
+
+  @media (max-width: 770px) {
+    .home-category {
+      h3 {
+        font-size: 18px;
+      }
+
+      .link-discover {
+        display: flex;
+        justify-content: center;
+      }
+
+      .btn-discover-mobile {
+        display: initial !important;
+        width: 200px;
+        color: white;
+        background-color: #339E72;
+        border-radius: 5px;
+        top: 50%;
+        left: 50%;
+      }
+
+      .card-category {
+        width: 100%;
+
+        p {
+          padding-bottom: 10px;
+        }
+
+        img {
+          height: 248px !important;
+          width: 270px !important;
+        }
+      }
+
+      .owl-carousel {
+        width: 350px !important;
+        margin: auto;
+      }
+
+      .btn-discover {
+        display: none;
+
+      }
+
+      .title-btn-category {
+        justify-content: center;
+      }
+
+      .food {
+        display: none;
+      }
+    }
+  }
+
+  @media (min-width: 771px) {
+    .owl-carousel {
+      display: none;
+    }
+  }
+
+  @media (max-width: 771px) {
+    .home-category {
+      h3 {
+        font-size: 24px;
+      }
+    }
+  }
+}
