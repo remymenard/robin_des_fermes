@@ -249,4 +249,28 @@
       }
     }
   }
+
+  @media (min-width: 1650px) {
+    .direct-sale {
+      height: 1400px !important;
+    }
+
+    .path {
+      .path-farmer {
+        margin-top: -5% !important;
+      }
+
+      .path-eat {
+        margin-top: 0% !important;
+      }
+
+      .path-marker {
+        margin-left: 5% !important;
+      }
+
+      .path-return {
+        margin-top: -10% !important;
+      }
+    }
+  }
 }
