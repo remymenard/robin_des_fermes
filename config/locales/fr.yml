@@ -7,16 +7,16 @@ fr:
       mailchimp-btn: "C'EST PARTI!"
       mailchimp-placeholder: "Quel est ton adresse e-mail ?"
       mailchimp-title: "Si t'es arrivé.e jusqu'ici..."
-      mailchimp-subtitle: "Quelque chose nous dit que tu vas apprécier notre newsletter"
+      mailchimp-subtitle: "Quelque chose nous dit que tu vas apprécier notre newsletter."
       mailchimp-text: "Des recettes gourmandes, des nouveautés en avant premières, des astuces et tout un tas d'autres choses utiles."
       join-producers-title: "Oyez, oyez, producteurs, rejoignez-nous !"
       join-producers-description: "Tu fais partie des valeureuses personnes qui nous nourissent ou nous abreuvent ? Ne cherche pas plus loin, on te propose toute une"
       join-producers-description-strong: "palette de prestations et d'outils pour t'aider à vendre tes produits"
       join-producers-description-last: "plus facilement et surtout à en vendre plus."
       join-companions-title: "Rejoins le mouvement!"
-      join-companions-description2: "Participe aux évènements réservés aux compagnon-nes et découvre l'univers de tes producteurs préférés"
-      join-companions-description-green: "Tu économises également sur tes frais de livraison"
-      join-companions-description-last: "Un chouette moyen de soutenir notre projet et lles producteur qui y sont liés"
+      join-companions-description2: "Participe aux évènements réservés aux compagnon-nes et découvre l'univers de tes producteurs préférés."
+      join-companions-description-green: "Tu économises également sur tes frais de livraison."
+      join-companions-description-last: "Un chouette moyen de soutenir notre projet et lles producteur qui y sont liés."
       join-companions-description: "On veut créer la plus grande communauté de consomm'acteurs/trices de Suisse! Rien que ça!"
       citation-courrier: "Contre l’injustice et pour simplifier la vente directe"
       citation-liberty: "Consommateur cherche producteur"
@@ -42,13 +42,13 @@ fr:
       statistic-today-description-strong: "apporte de la visibilité et des outils aux producteurs"
       statistic-today-description-last: "pour qu'ils soient plus indépendants et maître de leurs marges."
       statistic-today-description-strong-last: "Robin des fermes veut remettre l'église au milieu du village !"
-      title-marker: 'Trouve les producteurs  qui t’entourent'
       text-marker: 'Tu peux également trouver'
       text-marker-strong: 'des Tanières,'
+      title-marker: "Tout les producteurs qui t'entourent"
       text-marker-last: 'ce sont des regroupements de plusieurs producteurs.'
       title-hand: 'Commande en quelques clics'
       text-hand: 'Comme un vrai justicier sur canapé !'
-      text-hand-strong: 'Livraison à dominicle ou retrait à la ferme: '
+      text-hand-strong: 'Livraison à domicile ou retrait à la ferme: '
       text-hand-last: "c'est toi qui choisis !"
       title-farmer: "Le producteur s'occupe de ta commande"
       text-farmer: "Et il le fait avec la banane, parce que c'est tellement plus valorisant de"
@@ -61,11 +61,12 @@ fr:
       text-return-strong: 'Évite le gaspillage '
       text-return-last: "en retournant ton contenant, le producteur le réutilisera."
       work?: 'Comment ça marche ?'
-      sale: 'La vente direct via Robin des Fermes'
+      sale: 'La vente directe via Robin des Fermes'
       one_product: 'produit'
       search_placeholder: 'Où habitez-vous ?'
       search_btn: 'RECHERCHER'
-      title1: 'Marché de producteurs sans'
+      title1: 'Marché de producteurs'
+      without-title: 'sans'
       title-strike: 'voleurs'
       title2: 'intermédiaires'
       sub_title1: 'Achète tes produits en direct pour soutenir -  '
@@ -74,7 +75,7 @@ fr:
       viandes: 'Viandes'
       vins: 'Vins'
       vegetables: 'Légumes'
-      bio: "Products BIO"
+      bio: "Produits BIO"
       title_rdf: 'Robin des fermes, quésaco ?'
       find: 'Trouve des produits'
       ordered: 'Commande en quelques clics'

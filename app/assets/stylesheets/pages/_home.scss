@@ -94,7 +94,7 @@
       }
     }
 
-    @media (max-width: 770px) {
+    @media (max-width: 1000px) {
       h3 {
         font-size: 24px !important;
       }
@@ -226,6 +226,27 @@
     letter-spacing: 2.5px;
     text-transform: uppercase;
     color: #ffffff;
+  }
+
+  @media (min-width: 1000px) and (max-width: 1200px) {
+    .companion {
+      .img-companion {
+        width: 450px !important;
+        height: 510px;
+      }
+    }
+  }
+
+  @media (min-width: 770px) and (max-width: 1000px) {
+    .companion {
+      .companion-image-text {
+        .img-companion  {
+          width: 50% !important;
+          margin-left: 25% !important;
+          margin-right: 25% !important;
+        }
+      }
+    }
   }
 }
 
