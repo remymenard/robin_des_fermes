@@ -35,14 +35,15 @@
     .path {
       background-image: url(new-home/path.png);
       background-size: cover;
-      width: 600px;
-      height: 800px;
+      width: 800px;
+      height: 1000px;
       margin: auto;
       margin-top: 80px;
 
       .path-picto {
-        width: 350px;
         margin-top: -20px;
+        width: 450px;
+        margin-left: 8%;
 
         h3 {
           margin-top: -20px;
@@ -59,13 +60,12 @@
       }
 
       .path-hand {
-        margin-left: 65%;
-        margin-top: -18%;
+        margin-left: 68%;
       }
 
       .path-farmer {
-        margin-left: -30%;
-        margin-top: -15%;
+        margin-left: -25%;
+        margin-top: 7%;
 
         .img-farmer {
           margin-top: -80px;
@@ -73,8 +73,8 @@
       }
 
       .path-eat {
-        margin-left: 45%;
-        margin-top: -12%;
+        margin-left: 48%;
+        margin-top: 7%;
 
         h3 {
           margin-top: -20px;
@@ -86,7 +86,8 @@
       }
 
       .path-return {
-        margin-left: -5%;
+        margin-top: -8%;
+        margin-left: -4%;
       }
 
     }
@@ -200,6 +201,52 @@
 
     .img-return {
       margin-top: -25px !important;
+    }
+  }
+
+  @media (min-width: 1650px) {
+    .waves {
+      height: 300px !important;
+      margin-top: -185px !important;
+
+      h3 {
+        padding-top: 150px !important;
+      }
+    }
+
+    .direct-sale {
+      p {
+        margin-top: 30px;
+      }
+    }
+  }
+
+  @media (min-width: 830px) and (max-width: 1190px) {
+    .path {
+      width: 600px !important;
+      height: 800px !important;
+
+      .path-picto {
+        width: 350px !important;
+      }
+
+      .path-hand {
+        margin-top: -20% !important;
+      }
+
+      .path-farmer {
+        margin-left: -30% !important;
+        margin-top: -15% !important;
+      }
+
+      .path-eat {
+        margin-left: 50% !important;
+        margin-top: -15% !important;
+      }
+
+      .path-marker {
+        margin-left: 5% !important;
+      }
     }
   }
 }

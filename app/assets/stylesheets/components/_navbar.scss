@@ -38,6 +38,18 @@
     width: 100%;
     li {
       margin-left: 20px;
+
+      a {
+        &:hover {
+          text-decoration: underline !important;
+        }
+      }
+    }
+  }
+
+  .basket-div {
+    a {
+      padding-top: 12px;
     }
   }
 
@@ -80,6 +92,7 @@
   }
 
   .basket-icon {
+    margin-top: -12px;
     height: 26px;
     margin-right: 5px;
     margin-bottom: -10px;
@@ -285,6 +298,15 @@
   }
 }
 
+
+@media (min-width: 1130px) {
+  .navbar {
+
+    .navbar-logo {
+      margin-top: 2px;
+    }
+  }
+}
 
 @media (min-width: 1130px) {
   .navbar {
