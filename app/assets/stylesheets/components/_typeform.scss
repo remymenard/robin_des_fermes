@@ -41,16 +41,25 @@
           color: #FFFFFF;
         }
 
+        input::-moz-placeholder {
+          color: #FFFFFF;
+          opacity: 1;
+        }
+
         input:focus {
           border: 1px solid #F9FAF7 !important;
         }
       }
 
       .button {
+        height: 52.9px !important;
         background-color: #F9FAF7 !important;
         border-radius: 0 5px 5px 0 !important;
         color: #339E72;
         width: 209px;
+        font-family: 'Mulish', sans-serif !important;
+        font-size: 16px !important;
+        font-weight: 800 !important;
         padding: 16px 24px 16px 55px !important;
       }
 

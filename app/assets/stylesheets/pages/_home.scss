@@ -2,6 +2,13 @@
 
 .home {
 
+  .btn {
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+  }
+
   .join {
     .img-vector {
       width: 100%;
@@ -15,6 +22,18 @@
       border-radius: 5px;
       margin-top: 10px;
       margin-bottom: 50px;
+    }
+
+    .join-companion {
+      width: 408px;
+    }
+
+    .join-companion-mobile {
+      display: none;
+    }
+
+    .join-producer {
+      width: 247px;
     }
 
     h3 {
@@ -74,7 +93,7 @@
       padding-top: 50px;
 
       .img-companion {
-        width: 40%;
+        width: 469px;
         z-index: 5;
       }
 
@@ -105,6 +124,23 @@
 
       .join-btn {
         margin-bottom: 80px;
+      }
+
+      .join-companion-desktop {
+        display: none;
+      }
+
+      .join-companion-mobile {
+        display: block !important;
+        margin-left: -10px;
+      }
+
+      .join-companion {
+        width: 329px !important;
+      }
+
+      .join-producer {
+        width: 209px !important;
       }
 
       .img-vector {
