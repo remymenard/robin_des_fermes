@@ -41,8 +41,9 @@
           color: #FFFFFF;
         }
 
-        input:-moz-placeholder {
+        input::-moz-placeholder {
           color: #FFFFFF;
+          opacity: 1;
         }
 
         input:focus {
