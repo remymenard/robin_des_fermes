@@ -41,6 +41,10 @@
           color: #FFFFFF;
         }
 
+        input:-moz-placeholder {
+          color: #FFFFFF;
+        }
+
         input:focus {
           border: 1px solid #F9FAF7 !important;
         }
