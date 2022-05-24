@@ -82,7 +82,8 @@
         <%= image_tag "new-home/wealth-distribution-today.png", alt: "alttext", class: "img-today" %>
         <div class="statistic-text">
           <h3><span><%= t('.statistic-today') %></span> <%= t('.statistic-today-title') %></h3>
-          <p><%= t('.statistic-today-description') %> <strong><%= t('.statistic-today-description-strong') %></strong> <%= t('.statistic-today-description-last') %> <strong><%= t('.statistic-today-description-strong-last') %></strong></p>
+          <p><%= t('.statistic-today-description') %> <strong><%= t('.statistic-today-description-strong') %></strong> <%= t('.statistic-today-description-last') %></p>
+          <p><strong><%= t('.statistic-today-description-strong-last') %></strong></p>
         </div>
       </div>
     </div>
@@ -264,7 +265,7 @@
           <h3><%= t('.join-companions-title') %></h3>
           <p><%= t('.join-companions-description') %></p>
           <p><%= t('.join-companions-description2') %></p>
-          <p class="green-sentence"><%= t('.join-companions-description-green') %></p>
+          <p class="green-sentence"><strong><%= t('.join-companions-description-green') %></strong></p>
           <p><%= t('.join-companions-description-last') %></p>
           <%= link_to "ÇA M'INTRIGUE VOTRE TRUC", "https://info.robindesfermes.ch/compagnon/", class: "btn join-btn join-companion join-companion-mobile" %>
           <%= link_to "ÇA M'INTRIGUE VOTRE COMBINE", "https://info.robindesfermes.ch/compagnon/", class: "btn join-btn join-companion join-companion-desktop" %>
@@ -403,5 +404,5 @@
   </div>
 </div>
 <div id="pageInfos" data-submit-form="true"></div>
-<%= render "shared/upviral" %>
+<%#= render "shared/upviral" %>
 

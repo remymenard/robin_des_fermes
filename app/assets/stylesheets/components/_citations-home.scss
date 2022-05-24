@@ -80,17 +80,32 @@
       }
     }
 
-    @media (min-width: 1115px) {
+    @media (min-width: 1200px) {
       .img-rancon {
 
         img {
           margin-top: -7%;
-          margin-right: 10%;
+          margin-right: 12%;
+        }
+      }
+    }
+
+    @media (min-width: 990px) and (max-width: 1200px) {
+      .img-rancon {
+
+        img {
+          margin-right: 5%;
         }
       }
     }
 
     @media (min-width: 770px) and (max-width: 993px) {
+      .img-rancon {
+
+        img {
+          margin-right: -5%;
+        }
+      }
       .carousel {
         width: 100% !important;
       }

@@ -12,6 +12,7 @@
 
     p {
       font-size: 20px;
+      margin-bottom: 0px !important;
 
       strong {
         color: #3C452B !important;
@@ -52,21 +53,27 @@
       .stroke {
         width: 30px;
         height: 10px;
-        margin-left: 63%;
-        margin-top: -80px;
+        margin-left: 52%;
+        margin-top: -20px;
       }
 
-      @media (min-width: 990px) {
+      @media (min-width: 990px) and (max-width: 1200px) {
         .stroke {
-          margin-left: 52%;
-          margin-top: -50px;
+          margin-left: 62% !important;
+          margin-top: -80px !important;
+        }
+      }
+
+      @media (min-width: 770px) and (max-width: 990px) {
+        .stroke {
+          margin-left: 0px !important;
         }
       }
 
       @media (min-width: 580px) and (max-width: 770px) {
         .stroke {
-          margin-left: 10%;
-          margin-top: -50px;
+          margin-left: 48%;
+          margin-top: -80px;
         }
       }
 
