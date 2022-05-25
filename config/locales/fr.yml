@@ -5,18 +5,18 @@ fr:
     home:
       mailchimp-btn-mobile: "DEVENIR COMPAGNON"
       mailchimp-btn: "C'EST PARTI!"
-      mailchimp-placeholder: "Quel est ton adresse e-mail ?"
+      mailchimp-placeholder: "Quelle est ton adresse e-mail ?"
       mailchimp-title: "Si t'es arrivé·e jusqu'ici..."
       mailchimp-subtitle: "Quelque chose nous dit que tu vas apprécier notre newsletter."
-      mailchimp-text: "Des recettes gourmandes, des nouveautés en avant premières, des astuces et tout un tas d'autres choses utiles."
+      mailchimp-text: "Des recettes gourmandes, des nouveautés en avant-premières, des astuces et tout un tas d'autres choses utiles."
       join-producers-title: "Oyez, oyez, producteurs, rejoignez-nous !"
-      join-producers-description: "Tu fais partie des valeureuses personnes qui nous nourissent ou nous abreuvent ? Ne cherche pas plus loin, on te propose toute une"
+      join-producers-description: "Tu fais partie des valeureuses personnes qui nous nourrissent ou nous abreuvent ? Ne cherche pas plus loin, on te propose toute une"
       join-producers-description-strong: "palette de prestations et d'outils pour t'aider à vendre tes produits"
       join-producers-description-last: "plus facilement et surtout à en vendre plus."
       join-companions-title: "Rejoins le mouvement!"
       join-companions-description2: "Participe aux évènements réservés aux compagnon-nes et découvre l'univers de tes producteurs préférés."
       join-companions-description-green: "Tu économises également sur tes frais de livraison."
-      join-companions-description-last: "Un chouette moyen de soutenir notre projet et lles producteur qui y sont liés."
+      join-companions-description-last: "Un chouette moyen de soutenir notre projet et les producteur qui y sont liés."
       join-companions-description: "On veut créer la plus grande communauté de consomm'acteurs/trices de Suisse! Rien que ça!"
       citation-courrier: "Contre l’injustice et pour simplifier la vente directe"
       citation-liberty: "Consommateur cherche producteur"
@@ -37,14 +37,14 @@ fr:
       statistic-2020-description-strong: "du montant payé"
       statistic-2020-description-last: "par le consommateur."
       statistic-today: "Aujourd'hui"
-      statistic-today-title: "Notthingham à votre porte"
-      statistic-today-description: "Robin des fermes"
+      statistic-today-title: "Nottingham à votre porte"
+      statistic-today-description: "Robin des Fermes"
       statistic-today-description-strong: "apporte de la visibilité et des outils aux producteurs"
-      statistic-today-description-last: "pour qu'ils soient plus indépendants et maître de leurs marges."
+      statistic-today-description-last: "pour qu'ils soient plus indépendants et maîtres de leurs marges."
       statistic-today-description-strong-last: "Robin des fermes veut remettre l'église au milieu du village !"
       text-marker: 'Tu peux également trouver'
       text-marker-strong: 'des Tanières,'
-      title-marker: "Trouves les producteurs qui t'entourent"
+      title-marker: "Trouve les producteurs qui t'entourent"
       text-marker-last: 'ce sont des regroupements de plusieurs producteurs.'
       title-hand: 'Commande en quelques clics'
       text-hand: 'Comme un vrai justicier sur canapé !'
@@ -88,7 +88,7 @@ fr:
       openning: '%{openning}'
       testimony_title: 'Ils parlent de Robin des Fermes'
       testimony2: "Au bureau ou dans le métro, je peux commander mes produits en un clic et soutenir ma région. Grâce à Robin des Fermes, manger local n'a jamais été si simple."
-      testimony1: 'Enfin une plateforme e-commerce équitable pour tous les acteurs ! En plus d’avoir des valeurs humaines aux goût du jour, Robin des Fermes est une solution fiable et efficace'
+      testimony1: 'Enfin une plateforme e-commerce équitable pour tous les acteurs ! En plus d’avoir des valeurs humaines au goût du jour, Robin des Fermes est une solution fiable et efficace'
       testimony3: 'Robin des fermes m’offre un choix de produits variés et locaux que je peux me faire livrer par la poste ou aller chercher directement à la ferme. Le tout au juste prix pour tous les acteurs concernés !'
       testimony_text3: 'ENSEIGNANT'
       testimony_text2: 'ENSEIGNANTE'
