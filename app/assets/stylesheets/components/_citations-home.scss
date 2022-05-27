@@ -2,7 +2,7 @@
   .citation {
     margin-top: 70px;
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 120px;
 
     .img-citations {
       display: flex;
@@ -10,14 +10,23 @@
 
       .img-24heures-grey {
         width: 150px;
+        height: 22px;
+        margin-top: 5px;
       }
 
-      .img-24heures-color {
+      .img-color {
+        height: 30px;
+      }
+
+      .img-courrier {
         width: 150px;
+        margin-top: -10px;
       }
 
       .img-terre-nature {
         width: 102px;
+        height: 22px;
+        margin-top: 5px;
       }
     }
 
@@ -33,7 +42,7 @@
 
     .carousel {
       height: 200px;
-      width: 90%;
+      width: 80%;
       margin: auto;
       margin-bottom: 30px;
 
@@ -43,6 +52,7 @@
         font-weight: 300;
         margin-top: 40px;
         margin-bottom: 30px;
+        height: 150px;
       }
     }
 
@@ -70,17 +80,36 @@
       }
     }
 
-    @media (min-width: 1115px) {
+    @media (min-width: 1200px) {
       .img-rancon {
 
         img {
           margin-top: -7%;
-          margin-right: 10%;
+          margin-right: 12%;
+        }
+      }
+    }
+
+    @media (min-width: 990px) and (max-width: 1200px) {
+      .img-rancon {
+
+        img {
+          margin-right: 5%;
         }
       }
     }
 
     @media (min-width: 770px) and (max-width: 993px) {
+      .img-rancon {
+
+        img {
+          margin-right: -5%;
+        }
+      }
+      .carousel {
+        width: 100% !important;
+      }
+
       .img-24heures-grey {
         width: 130px;
       }

@@ -1,6 +1,11 @@
 .home {
   .home-category {
     margin-bottom: 70px;
+     a {
+      margin-left: 20px;
+      box-shadow: 1px 1px 12px #f2f2f2;
+      width: 50%;
+     }
 
     .title-btn-category {
       display: flex;
@@ -19,10 +24,12 @@
       }
 
       .btn-discover {
-        width: 200px;
+        width: 258px;
         color: white;
         background-color: #339E72;
         border-radius: 5px;
+        padding-top: 8px;
+        padding-bottom: 8px;
       }
     }
 
@@ -41,9 +48,7 @@
     }
 
     .card-category {
-      margin-left: 20px;
-      box-shadow: 1px 1px 12px #F2F2F2;
-      width: 50%;
+      width: 100%;
 
 
       p {
@@ -69,7 +74,7 @@
 
       .btn-discover-mobile {
         display: initial !important;
-        width: 200px;
+        width: 100%;
         color: white;
         background-color: #339E72;
         border-radius: 5px;
