@@ -19,7 +19,7 @@
     "jquery": "^3.6.0",
     "jquery-form": "^4.3.0",
     "mapbox-gl": "^1.13.0",
-    "node-sass": "4.14.1",
+    "node-sass": "6.0.1",
     "noty": "3.2.0-beta",
     "owl.carousel": "^2.3.4",
     "owl.carousel2": "^2.2.1",
