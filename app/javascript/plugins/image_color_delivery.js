@@ -7,7 +7,7 @@ function imageColorDelivery() {
   const deliveryId = document.querySelector("#delivery");
   const withdrawalId = document.querySelector("#withdrawal");
 
-  elementDelivery .style.display = "none";
+  elementDelivery.style.display = "none";
   activeWithdrawal.style.display = "none";
 
   deliveryId.addEventListener("click", (event) => {
