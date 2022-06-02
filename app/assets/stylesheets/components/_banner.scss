@@ -49,7 +49,7 @@
       top: 0.38em;
       bottom: 0.38em;
       color: red;
-      background: linear-gradient(to left top, transparent 45.5%, currentColor 47.5%, currentColor 52.5%, transparent 54.5%);
+      background: linear-gradient(to left top, transparent 40%, currentColor 40.5%, currentColor 55.5%, transparent 54.5%);
       pointer-events: none;
     }
 
@@ -59,10 +59,11 @@
     padding-top: 24px;
     margin: 0 auto;
     font-size: 22px;
-    color: #25201d;
-    line-height: 25px;
+    color: #3C452B;
+    line-height: 30px;
     font-family: 'BioRhyme', serif;
     font-weight: 300;
+
 
     strong {
       color: #339E72;
