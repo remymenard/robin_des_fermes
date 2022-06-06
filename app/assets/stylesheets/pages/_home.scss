@@ -134,7 +134,6 @@
 
       .join-companion-mobile {
         display: block !important;
-        margin-left: -10px;
       }
 
       .join-companion {
@@ -159,9 +158,11 @@
         }
 
         .companion-text {
-          margin-left: 0px;
-          width: 300px;
-          margin: auto !important;
+          width: 90%;
+          margin-left: 5% !important;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
           text-align: center;
         }
 
