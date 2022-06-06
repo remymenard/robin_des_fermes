@@ -114,7 +114,7 @@
       margin-left: 10px;
     }
     @include media-breakpoint-down(sm) {
-      width: 26vw;
+      width: 30vw;
       margin-left: 50px;
       margin-top: 2.5vh;
     }
@@ -289,7 +289,7 @@
 
 @media (max-width: 1041px) {
   .basket-user {
-    margin-right: -5% !important;
+    margin-right: 2% !important;
     margin-left: 6vw !important;
   }
 

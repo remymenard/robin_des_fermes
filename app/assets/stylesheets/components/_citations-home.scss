@@ -30,7 +30,7 @@
       }
     }
 
-    h3 {
+    h2 {
       color: #3C452B;
       font-family: 'BioRhyme', serif;
       font-size: 32px;
@@ -46,13 +46,13 @@
       margin: auto;
       margin-bottom: 30px;
 
-      h2 {
-        color: #A04C46;
-        font-size: 30px;
+      h3 {
+        color: #A04C46 !important;
+        font-size: 30px !important;
         font-weight: 300;
         margin-top: 40px;
         margin-bottom: 30px;
-        height: 150px;
+        height: 170px;
       }
     }
 
@@ -135,7 +135,7 @@
       }
 
       .carousel {
-        height: 170px;
+        height: 230px;
         width: 100%;
         margin-bottom: 20px;
 
