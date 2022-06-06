@@ -1,7 +1,6 @@
 // Specific CSS for your home-page
 
 .home {
-
   .btn {
     font-family: 'Mulish', sans-serif;
     font-size: 16px;
@@ -11,6 +10,10 @@
   }
 
   .join {
+    h2 {
+      color: #2D3126 !important;
+    }
+
     .img-vector {
       width: 100%;
       z-index: -5;
@@ -35,13 +38,6 @@
 
     .join-producer {
       width: 247px;
-    }
-
-    h3 {
-      font-family: 'BioRhyme', serif;
-      color: #2D3126;
-      margin-bottom: 30px;
-      font-size: 32px;
     }
 
     p {
@@ -84,7 +80,7 @@
           margin-left: -30px;
         }
 
-        h3 {
+        h2 {
           margin-top: -25px;
         }
       }
@@ -116,7 +112,7 @@
     }
 
     @media (max-width: 1000px) {
-      h3 {
+      h2 {
         font-size: 24px !important;
       }
 
@@ -171,7 +167,7 @@
       .producers-image-text {
         flex-direction: column-reverse;
 
-        h3 {
+        h2 {
           margin-top: -30px !important;
         }
 
@@ -218,7 +214,7 @@
 
       }
 
-      h3 {
+      h2 {
         font-size: 18px;
         margin-top: 30px;
       }
