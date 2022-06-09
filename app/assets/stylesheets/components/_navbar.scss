@@ -92,7 +92,7 @@
   }
 
   .basket-icon {
-    margin-top: -12px;
+    margin-top: -6px;
     height: 26px;
     margin-right: 5px;
     margin-bottom: -10px;
@@ -110,13 +110,13 @@
     width: 200px;
     @include media-breakpoint-down(lg) {
       width: 200px;
-      margin-top: 8px;
-      margin-left: 10px;
+      margin-top: 4px;
+      margin-left: 75px;
     }
     @include media-breakpoint-down(sm) {
-      width: 30vw;
-      margin-left: 50px;
-      margin-top: 2.5vh;
+      width: 150px;
+      margin-left: 85px;
+      margin-top: 8px;
     }
   }
   /* Font Awesome Icons have variable width. Added fixed width to fix that.*/
@@ -289,6 +289,7 @@
 
 @media (max-width: 1041px) {
   .basket-user {
+    margin-top: -15px;
     margin-right: 2% !important;
     margin-left: 6vw !important;
   }
