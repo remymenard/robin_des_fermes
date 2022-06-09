@@ -30,7 +30,6 @@
       <div class="zip-code-infos" data-signedin?="<%= user_signed_in? %>" data-login_path="<%= new_user_session_path %>" data-set_zip_code_path="<%= users_zip_code_path %>" data-token="<%= form_authenticity_token %>" ></div>
       <% if !current_page?(root_path) && controller_name != "orders" %>
         <li class="nav-item px-lg-2 zip-code hidden-on-mobile" >
-          <p><%= t 'shared.navbar.your_zip_code' %></p>
           <a class="nav-link background zip-code-infos" href="#">
             <p class="text"><i class="fas fa-map-marker-alt marker"></i><%= render 'shared/zip_code_div' %></p>
           </a>

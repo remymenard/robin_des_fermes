@@ -142,7 +142,8 @@
       align-items: center;
     }
     .background {
-      margin-left: 12px;
+      margin-left: -80px;
+      margin-right: 80px;
       background-color: #174230;
       border-radius: 60px;
       padding: 4px 17px;
@@ -279,6 +280,24 @@
   }
 }
 
+@media (min-width: 990px) and (max-width: 1199.98px) {
+  .navbar {
+    .navbar-logo {
+      margin-left: 0px;
+    }
+  }
+}
+
+@media (min-width: 990px) and (max-width: 1180px) {
+  .navbar {
+    .basket-user {
+      margin-right: 0px !important;
+      margin-left: 0px !important;
+      width: 20%;
+    }
+  }
+}
+
 @media (min-width: 500px) {
   .navbar {
     .logo-mobile {
@@ -300,15 +319,6 @@
   }
 }
 
-
-@media (min-width: 1130px) {
-  .navbar {
-
-    .navbar-logo {
-      margin-top: 2px;
-    }
-  }
-}
 
 @media (min-width: 1130px) {
   .navbar {
