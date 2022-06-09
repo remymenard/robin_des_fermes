@@ -36,21 +36,49 @@
     line-height: 53px;
     color: #25201d;
     font-size: 46px;
+    font-family: 'BioRhyme';
+    font-style: normal;
+    font-weight: 400;
+
+    // .strikethrough {
+    //   display: inline-block;
+    //   position: relative;
+    // }
+    // .strikethrough::before {
+    //   content: '';
+    //   position: absolute;
+    //   left: -0.1em;
+    //   right: -0.1em;
+    //   top: 0.38em;
+    //   bottom: 0.38em;
+    //   color: red;
+    //   background: linear-gradient(to left top, transparent 40%, currentColor 40.5%, currentColor 55.5%, transparent 54.5%);
+    //   pointer-events: none;
+    // }
 
     .strikethrough {
-      display: inline-block;
-      position: relative;
-    }
-    .strikethrough::before {
-      content: '';
       position: absolute;
-      left: -0.1em;
-      right: -0.1em;
-      top: 0.38em;
-      bottom: 0.38em;
-      color: red;
-      background: linear-gradient(to left top, transparent 40%, currentColor 40.5%, currentColor 55.5%, transparent 54.5%);
-      pointer-events: none;
+      transform: translateX(-96%);
+      width: 191px;
+      top: 32px;
+    }
+
+    span {
+      position: relative
+    }
+
+    @media (max-width: 910px) {
+
+      h1 {
+        font-size: 32px;
+      }
+
+      .strikethrough {
+        width: 139px;
+        top: 24px;
+      }
+
+
     }
 
   }
@@ -212,10 +240,10 @@
     }
 
     .banner-title {
-      background-image: url(new-home/banner-mobile.png);
+      background-image: url('https://res.cloudinary.com/robin-des-fermes/image/upload/v1654781442/banner-mobile-hp_zhf696.jpg');
       background-size: cover;
       height: 200px;
-      padding-top: 30px;
+      padding-top: 60px;
       padding-left: 10px;
       padding-right: 10px;
 

@@ -5,8 +5,7 @@
     <div class="banner-content">
       <div class="text-banner">
         <div class="banner-title">
-          <h1><%= t('.title1') %></h1>
-          <h1><%= t('.without-title') %> <span class="strikethrough"><%= t('.title-strike') %></span> <%= t('.title2') %></h1>
+          <h1><%= t('.title1') %><br/><%= t('.without-title') %> <span><%= t('.title-strike') %><img class="strikethrough"  src="https://res.cloudinary.com/robin-des-fermes/image/upload/v1654689493/Vector_1_xqqiav.svg"></span> <%= t('.title2') %></h1>
         </div>
         <p><%= t('.sub_title1') %> <strong><%= t('.sub_title_bold1') %></strong><%= t('.sub_title2') %></p>
         <%= form_tag farms_path, method: :get, class: 'form-inline search' do %>
@@ -17,7 +16,7 @@
         <% end %>
       </div>
 
-      <%= image_tag "new-home/banner-images.png", alt: "alttext", class: 'img-banner' %>
+      <%= cl_image_tag "banner-images-2ef085d6c4a15228dfeab7bf2c0d22e8cbf4b9e327e818e27bf7ba03cb080fa8_1_-1-1_wsd9uj", alt: "alttext", class: 'img-banner' %>
     </div>
   </div>
   <div class="waves">
@@ -27,31 +26,31 @@
     <p class="work-question"><%= t('.work?') %></p>
     <div class="path">
       <div class="path-marker path-picto">
-        <%= image_tag "new-home/icon-marker.png", alt: "alttext", width: 130, class: "img-marker" %>
+        <%= cl_image_tag "Icon-1-trouve-le-producteur_ioumk9", alt: "alttext", width: 130, class: "img-marker" %>
         <h3><%= t('.title-marker') %> </h3>
         <p><%= t('.text-marker') %> <strong><%= t('.text-marker-strong') %></strong> <%= t('.text-marker-last') %></p>
       </div>
       <%= image_tag "new-home/grey-line.png", alt: "alttext", class: "grey-line" %>
       <div class="path-hand path-picto">
-        <%= image_tag "new-home/icon-hand.png", alt: "alttext", width: 130, class: "img-hand" %>
+        <%= cl_image_tag "Icon-2-commande_sqrxe4", alt: "alttext", width: 130, class: "img-hand" %>
         <h3><%= t('.title-hand') %></h3>
         <p><%= t('.text-hand') %> <strong><%= t('.text-hand-strong') %></strong> <%= t('.text-hand-last') %></p>
       </div>
       <%= image_tag "new-home/grey-line.png", alt: "alttext", class: "grey-line" %>
       <div class="path-farmer path-picto">
-        <%= image_tag "new-home/icon-farmer.png", alt: "alttext", width: 130, class: "img-farmer"  %>
+        <%= cl_image_tag "Icon-3-producteur_odrtwt", alt: "alttext", width: 130, class: "img-farmer"  %>
         <h3><%= t('.title-farmer') %></h3>
         <p><%= t('.text-farmer') %> <strong><%= t('.text-farmer-strong') %></strong></p>
       </div>
       <%= image_tag "new-home/grey-line.png", alt: "alttext", class: "grey-line" %>
       <div class="path-eat path-picto">
-        <%= image_tag "new-home/icon-eat.png", alt: "alttext", width: 130, class: "img-eat" %>
+        <%= cl_image_tag "Icon-4-deguste_jkyop4", alt: "alttext", width: 130, class: "img-eat" %>
         <h3><%= t('.title-eat') %></h3>
         <p><%= t('.text-eat') %> <strong><%= t('.text-eat-strong') %></strong></p>
       </div>
       <%= image_tag "new-home/grey-line.png", alt: "alttext", class: "grey-line" %>
       <div class="path-return path-picto">
-        <%= image_tag "new-home/icon-return.png", alt: "alttext", width: 130, class: "img-return" %>
+        <%= cl_image_tag "Icon-5-retourne_kyz5a9", alt: "alttext", width: 130, class: "img-return" %>
         <h3><%= t('.title-return') %></h3>
         <p><%= t('.text-return') %> <strong><%= t('.text-return-strong') %></strong> <%= t('.text-return-last') %></p>
       </div>
@@ -62,7 +61,7 @@
     <div class="container">
       <h2 class="statistic-title"><%= t('.statistic') %></h2>
       <div class="statistic-description">
-        <%= image_tag "new-home/wealth-distribution-1980.png", alt: "alttext", class: "img-1980" %>
+        <%= cl_image_tag "piece_1980_oudzx6", alt: "alttext", class: "img-1980" %>
         <div class="statistic-text">
           <h3><span><%= t('.statistic-1980') %></span> <%= t('.statistic-1980-title') %></h3>
           <p><%= t('.statistic-1980-description') %></p>
@@ -70,7 +69,7 @@
       </div>
 
       <div class="statistic-description">
-        <%= image_tag "new-home/wealth-distribution-2020.png", alt: "alttext", class: "img-2020" %>
+        <%= cl_image_tag "piece_2021_x6vw87", alt: "alttext", class: "img-2020" %>
         <div class="statistic-text">
           <h3><span><%= t('.statistic-2020') %></span> <%= t('.statistic-2020-title') %></h3>
           <p><%= t('.statistic-2020-description') %><strong class="word-underline"> <%= t('.statistic-2020-description-30') %></strong><strong> <%= t('.statistic-2020-description-strong') %></strong> <%= t('.statistic-2020-description-last') %></p>
@@ -79,7 +78,7 @@
       </div>
 
       <div class="statistic-description">
-        <%= image_tag "new-home/wealth-distribution-today.png", alt: "alttext", class: "img-today" %>
+        <%= cl_image_tag "piece_2021_x6vw87", alt: "alttext", class: "img-today" %>
         <div class="statistic-text">
           <h3><span><%= t('.statistic-today') %></span> <%= t('.statistic-today-title') %></h3>
           <p><%= t('.statistic-today-description') %> <strong><%= t('.statistic-today-description-strong') %></strong> <%= t('.statistic-today-description-last') %></p>
@@ -101,21 +100,21 @@
       <div class="food">
         <%= link_to farms_path(category: "Viande & Volaille") do %>
           <div class="card-category">
-            <%= image_tag "categories/meat.jpg", alt: "Viande" %>
+            <%= cl_image_tag "catégorie-viande_b4yciv", alt: "Viande" %>
             <p><%= t('.viandes') %></p>
           </div>
         <% end %>
 
         <%= link_to farms_path(category: "Fruits & Légumes") do %>
           <div class="card-category">
-            <%= image_tag "categories/vegetables.png", alt: "Lait" %>
+            <%= cl_image_tag "catégorie-légume_hb2jk8", alt: "Lait" %>
             <p><%= t('.vegetables') %></p>
           </div>
         <% end %>
 
         <%= link_to farms_path(category: "Vins") do %>
           <div class="card-category">
-            <%= image_tag "categories/wine.png", alt: "Vin" %>
+            <%= cl_image_tag "catégorie-vin_luuigt", alt: "Vin" %>
             <p><%= t('.vins') %></p>
           </div>
         <% end %>
@@ -132,7 +131,7 @@
         <div class="item">
           <%= link_to farms_path(category: "Viande & Volaille") do %>
             <div class="card-category">
-              <%= image_tag "categories/meat.jpg", alt: "Viande" %>
+              <%= cl_image_tag "catégorie-viande_b4yciv", alt: "Viande" %>
               <p><%= t('.viandes') %></p>
             </div>
           <% end %>
@@ -141,7 +140,7 @@
         <div class="item">
           <%= link_to farms_path(category: "Fruits & Légumes") do %>
             <div class="card-category">
-              <%= image_tag "categories/vegetables.png", alt: "Lait" %>
+              <%= cl_image_tag "catégorie-légume_hb2jk8", alt: "Lait" %>
               <p><%= t('.vegetables') %></p>
             </div>
           <% end %>
@@ -150,7 +149,7 @@
         <div class="item">
           <%= link_to farms_path(category: "Vins") do %>
             <div class="card-category">
-              <%= image_tag "categories/wine.png", alt: "Vin" %>
+              <%= cl_image_tag "catégorie-vin_luuigt", alt: "Vin" %>
               <p><%= t('.vins') %></p>
             </div>
           <% end %>
@@ -260,7 +259,7 @@
   <div class="join">
     <div class="companion">
       <div class="container companion-image-text">
-        <%= image_tag "new-home/companion.png", alt: "alttext", class: "img-companion" %>
+        <%= cl_image_tag "ferme-chalabruz-rejoints-le-mouvement_fqwroo", alt: "alttext", class: "img-companion" %>
         <div class="companion-text">
           <h2><%= t('.join-companions-title') %></h2>
           <p><%= t('.join-companions-description') %></p>
@@ -288,7 +287,7 @@
           <div class="heart-img">
             <%= image_tag "new-home/heart.png", alt: "alttext", class: "" %>
           </div>
-          <%= image_tag "new-home/producers-grid.jpg", alt: "alttext", class: "producers-img" %>
+          <%= cl_image_tag "grille-producteur_ulrubo", alt: "alttext", class: "producers-img" %>
         </div>
       </div>
     </div>
@@ -345,7 +344,7 @@
     </div>
   </div>
   <div class="typeform">
-    <%= image_tag "new-home/robin.png", alt: "alttext" %>
+    <%= cl_image_tag "robin-newsletter_tlsfpt", alt: "alttext" %>
     <!-- Begin Mailchimp Signup Form -->
     <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
     <style type="text/css">
