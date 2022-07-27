@@ -136,6 +136,7 @@
         height: 450px !important;
         margin-top: -20px !important;
       }
+
     }
 
     @media (max-width: 875px) {
@@ -144,9 +145,31 @@
       #mc_embed_signup {
         margin-left: 0px !important;
         margin-top: 50px;
+        padding: 16px; // change Ivan (alignments: more padding seems better, we put it at top level)
+
+        // change Ivan (alignments: success message needs less margin)
+        #mce-success-response {
+          margin: 0px; 
+        }
+
+        form {
+          padding: 0px !important; // change Ivan (alignments: no need for more padding)
+        }
+        
+        // change Ivan (display the button in mobile: OK)
+        #mce-responses {
+          margin-top: 0px !important;
+          margin-left: 0px !important;
+          padding: 0 0 0 4px; // a little bit less than on desktop
+        }
 
         .button-desktop {
           display: none;
+        }
+
+        // change Ivan (alignments: no need for more padding)
+        .button {
+          padding: 0px !important;
         }
 
         h3 {
@@ -161,7 +184,7 @@
 
         .button-mobile {
           display: initial;
-          width: 96%;
+          width: 100%; // change Ivan (alignments : button is 100% minus padding)
           border-radius: 5px !important;
         }
 
@@ -171,6 +194,7 @@
         }
 
         .mc-field-group {
+          width: 100% !important; // change Ivan (alignments: same, input is 100% minus padding)
           input {
             border-radius: 5px !important;
           }
