@@ -12,7 +12,7 @@
   <div class="description">
     <div class="header-description d-flex">
       <% if @farm.user.photo.key.present? %>
-        <%= cl_image_tag @farm.user.photo.key, height: 48, width: 48, crop: :fill %>
+        <%= cl_image_tag @farm.user.photo.key, height: 48, width: 48, crop: :fill, :transformation=>[{:fetch_format=>:auto}] %>
       <% end %>
       <p> <%=@farm.user.first_name.capitalize  %> <%=@farm.user.last_name.capitalize  %> </p>
     </div>
@@ -169,7 +169,7 @@
         <% end %>
       </div>
       <div class="photo">
-        <%= cl_image_tag @farm.photo_portrait.key, class: "mx-auto d-block"%>
+        <%= cl_image_tag @farm.photo_portrait.key, class: "mx-auto d-block", :transformation=>[{:fetch_format=>:auto}] %>
       </div>
     </div>
   </div>
