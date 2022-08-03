@@ -136,6 +136,7 @@
         height: 450px !important;
         margin-top: -20px !important;
       }
+
     }
 
     @media (max-width: 875px) {
@@ -144,9 +145,31 @@
       #mc_embed_signup {
         margin-left: 0px !important;
         margin-top: 50px;
+        padding: 16px; // Ivan, mailchimp form correction (alignments: more padding seems better)
+
+        // Ivan, mailchimp form correction (alignments: success message needs less margin)
+        #mce-success-response {
+          margin: 0px; 
+        }
+
+        form {
+          padding: 0px !important; // Ivan, mailchimp form correction (alignments: no need for more padding)
+        }
+        
+        // Ivan, mailchimp form correction (display the button on mobile)
+        #mce-responses {
+          margin-top: 0px !important;
+          margin-left: 0px !important;
+          padding: 0 0 0 4px; // Ivan, mailchimp form correction: we need less padding than on Desktop
+        }
 
         .button-desktop {
           display: none;
+        }
+
+        // Ivan, mailchimp form correction (alignments: no need for more padding)
+        .button {
+          padding: 0px !important;
         }
 
         h3 {
@@ -161,7 +184,7 @@
 
         .button-mobile {
           display: initial;
-          width: 96%;
+          width: 100%; // Ivan, mailchimp form correction (alignments : button is 100% minus padding)
           border-radius: 5px !important;
         }
 
@@ -171,6 +194,7 @@
         }
 
         .mc-field-group {
+          width: 100% !important; // Ivan, mailchimp form correction (alignments: same, input is 100% minus padding)
           input {
             border-radius: 5px !important;
           }
