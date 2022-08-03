@@ -91,7 +91,8 @@
       padding-top: 50px;
 
       .img-companion {
-        width: 469px;
+        max-width: 469px;
+        max-height: 575px;
         z-index: 5;
       }
 
