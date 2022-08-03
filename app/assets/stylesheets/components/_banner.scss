@@ -243,9 +243,9 @@
       background-image: url('https://res.cloudinary.com/robin-des-fermes/image/upload/f_auto/v1654781442/banner-mobile-hp_zhf696.jpg');
       background-size: cover;
       height: 200px;
-      padding-top: 60px;
-      padding-left: 10px;
-      padding-right: 10px;
+      display: flex;
+      align-items: center;
+      padding: 12px;
 
       h1 {
         font-size: 32px;
