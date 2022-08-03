@@ -32,7 +32,7 @@
                       </div>
                     <%end%>
                   </div>
-                  <%= cl_image_tag(farm.farm_profil_picture&.key, crop: :fill, class: "photo") if farm.farm_profil_picture %>
+                  <%= cl_image_tag(farm.farm_profil_picture&.key, crop: :fill, class: "photo", :transformation=>[{:fetch_format=>:auto}]) if farm.farm_profil_picture %>
                 </div>
                 <div class="cards-informations">
                   <div class="d-flex address">
@@ -52,7 +52,7 @@
                   </p>
                   <div class="all-photos d-flex">
                     <% farm.categories.each do |category| %>
-                      <div class='category-photo' data-toggle="tooltip" data-placement="top" title="<%= category.name  %>"><%= cl_image_tag category.photo.key %></div>
+                      <div class='category-photo' data-toggle="tooltip" data-placement="top" title="<%= category.name  %>"><%= cl_image_tag category.photo.key, :transformation=>[{:fetch_format=>:auto}] %></div>
                     <% end %>
                   </div>
                   <div class="categories"></div>
@@ -71,7 +71,7 @@
                       </div>
                     <%end%>
                   </div>
-                  <%= cl_image_tag(farm.farm_profil_picture&.key, crop: :fill, class: "photo") if farm.farm_profil_picture %>
+                  <%= cl_image_tag(farm.farm_profil_picture&.key, crop: :fill, class: "photo", :transformation=>[{:fetch_format=>:auto}]) if farm.farm_profil_picture %>
                 </div>
                 <div class="cards-informations">
                   <div class="d-flex address-far-farm">
@@ -97,7 +97,7 @@
                   </div>
                   <div class="all-photos d-flex">
                     <% farm.categories.each do |category| %>
-                      <div class='category-photo' data-toggle="tooltip" data-placement="top" title="<%= category.name  %>"><%= cl_image_tag category.photo.key %></div>
+                      <div class='category-photo' data-toggle="tooltip" data-placement="top" title="<%= category.name  %>"><%= cl_image_tag category.photo.key, :transformation=>[{:fetch_format=>:auto}] %></div>
                     <% end %>
                   </div>
                   <div class="categories"></div>

@@ -20,7 +20,7 @@
           <div class="product-card">
             <% product = product_basket.product %>
             <div class="product-basket">
-              <%= cl_image_tag product.photo.key, class: "product-image product-image-review" %>
+              <%= cl_image_tag product.photo.key, class: "product-image product-image-review", :transformation=>[{:fetch_format=>:auto}] %>
               <div class="product-infos">
                 <div class="left-column">
                   <div class="product-title">

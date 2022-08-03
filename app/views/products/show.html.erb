@@ -5,7 +5,7 @@
 
       <div class="photo">
         <h2><%= t('.name', name: @product.name) %> </h2>
-        <%= cl_image_tag @product.photo.key, height: 370, width: 370, crop: :fill, style: "border-radius: 8px 8px 8px 8px" %>
+        <%= cl_image_tag @product.photo.key, height: 370, width: 370, crop: :fill, style: "border-radius: 8px 8px 8px 8px", :transformation=>[{:fetch_format=>:auto}] %>
       </div>
 
       <div class="informations">
@@ -30,7 +30,7 @@
         </div>
 
         <div class="d-flex one-information">
-          <h6><%= t('.category') %></h6><p><%= cl_image_tag @product.category.photo.key %> </p>
+          <h6><%= t('.category') %></h6><p><%= cl_image_tag @product.category.photo.key, :transformation=>[{:fetch_format=>:auto}] %> </p>
         </div>
 
         <div class="d-flex one-information">

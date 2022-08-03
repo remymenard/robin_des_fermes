@@ -15,7 +15,7 @@
         <% farm_order.order_line_items.order("created_at desc").each do |product_basket| %>
           <% product = product_basket.product %>
           <div class="product-basket">
-            <%= cl_image_tag product.photo.key, class: "product-image" %>
+            <%= cl_image_tag product.photo.key, class: "product-image", :transformation=>[{:fetch_format=>:auto}] %>
             <div class="product-infos">
               <div class="left-column">
                 <div class="product-title">
