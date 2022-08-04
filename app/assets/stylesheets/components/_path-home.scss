@@ -18,9 +18,10 @@
     background-image: url(new-home/background-sale.png);
     background-size: cover;
     background-color: #E1F5EA;
-    height: 1350px;
     margin-top: -80px;
     text-align: center;
+    min-height: 1200px;
+    padding-bottom: 60px;
 
     .grey-line {
       display: none;
@@ -40,7 +41,6 @@
       background-image: url(new-home/path.png);
       background-size: cover;
       width: 800px;
-      height: 1000px;
       margin: auto;
       margin-top: 80px;
 
@@ -97,6 +97,9 @@
     }
 
     @media (min-width: 830px) and (max-width: 980px) {
+      .direct-sale {
+        min-height: auto !important;
+      }
 
       .path-picto {
         width: 250px !important;
@@ -160,7 +163,6 @@
 
     .direct-sale {
       margin-top: -155px !important;
-      height: 1550px !important;
 
       .work-question {
         display: none;
@@ -256,9 +258,6 @@
   }
 
   @media (min-width: 1650px) {
-    .direct-sale {
-      height: 1400px !important;
-    }
 
     .path {
       .path-farmer {
