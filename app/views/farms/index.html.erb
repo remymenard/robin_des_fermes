@@ -32,7 +32,7 @@
                       </div>
                     <%end%>
                   </div>
-                  <%= cl_image_tag(farm.farm_profil_picture&.key, class: "photo", :transformation=>[{:fetch_format=>:auto}]) if farm.farm_profil_picture %>
+                  <%= cl_image_tag(farm.farm_profil_picture&.key, class: "photo") if farm.farm_profil_picture %>
                 </div>
                 <div class="cards-informations">
                   <div class="d-flex address">
@@ -71,7 +71,7 @@
                       </div>
                     <%end%>
                   </div>
-                  <%= cl_image_tag(farm.farm_profil_picture&.key, class: "photo", :transformation=>[{:fetch_format=>:auto}]) if farm.farm_profil_picture %>
+                  <%= cl_image_tag(farm.farm_profil_picture&.key, class: "photo") if farm.farm_profil_picture %>
                 </div>
                 <div class="cards-informations">
                   <div class="d-flex address-far-farm">
