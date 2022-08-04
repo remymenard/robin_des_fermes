@@ -16,7 +16,10 @@
         <% end %>
       </div>
 
-      <%= cl_image_tag "banner-images-2ef085d6c4a15228dfeab7bf2c0d22e8cbf4b9e327e818e27bf7ba03cb080fa8_1_-1-1_wsd9uj", alt: "alttext", class: 'img-banner', :transformation=>[{:fetch_format=>:auto}] %>
+      <%= cl_image_tag "banner-images-2ef085d6c4a15228dfeab7bf2c0d22e8cbf4b9e327e818e27bf7ba03cb080fa8_1_-1-1_wsd9uj",
+                        alt: "Vache, producteur et productrice dans un champs, panier de légumes",
+                        class: 'img-banner', :transformation=>[{:fetch_format=>:auto}]
+      %>
     </div>
   </div>
   <div class="waves">
@@ -26,31 +29,31 @@
     <p class="work-question"><%= t('.work?') %></p>
     <div class="path">
       <div class="path-marker path-picto">
-        <%= cl_image_tag "Icon-1-trouve-le-producteur_ioumk9", alt: "alttext", width: 130, class: "img-marker", :transformation=>[{:fetch_format=>:auto}] %>
+        <%= cl_image_tag "Icon-1-trouve-le-producteur_ioumk9", alt: "Icône local", width: 130, class: "img-marker", :transformation=>[{:fetch_format=>:auto}] %>
         <h3><%= t('.title-marker') %> </h3>
         <p><%= t('.text-marker') %> <strong><%= t('.text-marker-strong') %></strong> <%= t('.text-marker-last') %></p>
       </div>
       <%= image_tag "new-home/grey-line.png", alt: "alttext", class: "grey-line" %>
       <div class="path-hand path-picto">
-        <%= cl_image_tag "Icon-2-commande_sqrxe4", alt: "alttext", width: 130, class: "img-hand", :transformation=>[{:fetch_format=>:auto}] %>
+        <%= cl_image_tag "Icon-2-commande_sqrxe4", alt: "Icône clic", width: 130, class: "img-hand", :transformation=>[{:fetch_format=>:auto}] %>
         <h3><%= t('.title-hand') %></h3>
         <p><%= t('.text-hand') %> <strong><%= t('.text-hand-strong') %></strong> <%= t('.text-hand-last') %></p>
       </div>
       <%= image_tag "new-home/grey-line.png", alt: "alttext", class: "grey-line" %>
       <div class="path-farmer path-picto">
-        <%= cl_image_tag "Icon-3-producteur_odrtwt", alt: "alttext", width: 130, class: "img-farmer", :transformation=>[{:fetch_format=>:auto}]  %>
+        <%= cl_image_tag "Icon-3-producteur_odrtwt", alt: "Icône producteur", width: 130, class: "img-farmer", :transformation=>[{:fetch_format=>:auto}]  %>
         <h3><%= t('.title-farmer') %></h3>
         <p><%= t('.text-farmer') %> <strong><%= t('.text-farmer-strong') %></strong></p>
       </div>
       <%= image_tag "new-home/grey-line.png", alt: "alttext", class: "grey-line" %>
       <div class="path-eat path-picto">
-        <%= cl_image_tag "Icon-4-deguste_jkyop4", alt: "alttext", width: 130, class: "img-eat", :transformation=>[{:fetch_format=>:auto}] %>
+        <%= cl_image_tag "Icon-4-deguste_jkyop4", alt: "Icône fourchette et cuillère", width: 130, class: "img-eat", :transformation=>[{:fetch_format=>:auto}] %>
         <h3><%= t('.title-eat') %></h3>
         <p><%= t('.text-eat') %> <strong><%= t('.text-eat-strong') %></strong></p>
       </div>
       <%= image_tag "new-home/grey-line.png", alt: "alttext", class: "grey-line" %>
       <div class="path-return path-picto">
-        <%= cl_image_tag "Icon-5-retourne_kyz5a9", alt: "alttext", width: 130, class: "img-return", :transformation=>[{:fetch_format=>:auto}] %>
+        <%= cl_image_tag "Icon-5-retourne_kyz5a9", alt: "Icône retour de livraison", width: 130, class: "img-return", :transformation=>[{:fetch_format=>:auto}] %>
         <h3><%= t('.title-return') %></h3>
         <p><%= t('.text-return') %> <strong><%= t('.text-return-strong') %></strong> <%= t('.text-return-last') %></p>
       </div>
@@ -61,7 +64,9 @@
     <div class="container">
       <h2 class="statistic-title"><%= t('.statistic') %></h2>
       <div class="statistic-description">
-        <%= cl_image_tag "piece_1980_oudzx6", alt: "alttext", class: "img-1980", :transformation=>[{:fetch_format=>:auto}] %>
+        <%= cl_image_tag "piece_1980_oudzx6", alt: "Piece de 1 francs divisée, répartition producteur et intermédiaire à  50%-50%",
+                                              class: "img-1980", :transformation=>[{:fetch_format=>:auto}]
+        %>
         <div class="statistic-text">
           <h3><span><%= t('.statistic-1980') %></span> <%= t('.statistic-1980-title') %></h3>
           <p><%= t('.statistic-1980-description') %></p>
@@ -69,7 +74,9 @@
       </div>
 
       <div class="statistic-description">
-        <%= cl_image_tag "piece_2021_x6vw87", alt: "alttext", class: "img-2020", :transformation=>[{:fetch_format=>:auto}] %>
+        <%= cl_image_tag "piece_2021_x6vw87", alt: "Piece de 1 francs divisée, répartition producteur et intermédiaire à  33%-66%",
+                                              class: "img-2020", :transformation=>[{:fetch_format=>:auto}]
+        %>
         <div class="statistic-text">
           <h3><span><%= t('.statistic-2020') %></span> <%= t('.statistic-2020-title') %></h3>
           <p><%= t('.statistic-2020-description') %><strong class="word-underline"> <%= t('.statistic-2020-description-30') %></strong><strong> <%= t('.statistic-2020-description-strong') %></strong> <%= t('.statistic-2020-description-last') %></p>
@@ -78,7 +85,9 @@
       </div>
 
       <div class="statistic-description">
-        <%= cl_image_tag "piece_2022_robin_tl44us", alt: "alttext", class: "img-today", :transformation=>[{:fetch_format=>:auto}] %>
+        <%= cl_image_tag "piece_2022_robin_tl44us", alt: "Piece de 1 francs divisée, répartition producteur et intermédiaire robin des fermes",
+                                                    class: "img-today", :transformation=>[{:fetch_format=>:auto}]
+        %>
         <div class="statistic-text">
           <h3><span><%= t('.statistic-today') %></span> <%= t('.statistic-today-title') %></h3>
           <p><%= t('.statistic-today-description') %> <strong><%= t('.statistic-today-description-strong') %></strong> <%= t('.statistic-today-description-last') %></p>
@@ -100,28 +109,28 @@
       <div class="food">
         <%= link_to farms_path(category: "Viande & Volaille") do %>
           <div class="card-category">
-            <%= cl_image_tag "catégorie-viande_b4yciv", alt: "Viande", :transformation=>[{:fetch_format=>:auto}] %>
+            <%= cl_image_tag "catégorie-viande_b4yciv", alt: "Pièce de viande de boeuf et couteau sur une planche en bois", :transformation=>[{:fetch_format=>:auto}] %>
             <p><%= t('.viandes') %></p>
           </div>
         <% end %>
 
         <%= link_to farms_path(category: "Fruits & Légumes") do %>
           <div class="card-category">
-            <%= cl_image_tag "catégorie-légume_hb2jk8", alt: "Lait", :transformation=>[{:fetch_format=>:auto}] %>
+            <%= cl_image_tag "catégorie-légume_hb2jk8", alt: "Carottes oranges et couteau sur une planche en bois", :transformation=>[{:fetch_format=>:auto}] %>
             <p><%= t('.vegetables') %></p>
           </div>
         <% end %>
 
         <%= link_to farms_path(category: "Vins") do %>
           <div class="card-category">
-            <%= cl_image_tag "catégorie-vin_luuigt", alt: "Vin", :transformation=>[{:fetch_format=>:auto}] %>
+            <%= cl_image_tag "catégorie-vin_luuigt", alt: "Bouteille et verre de vin rouge, tire-bouchon et raisin blanc", :transformation=>[{:fetch_format=>:auto}] %>
             <p><%= t('.vins') %></p>
           </div>
         <% end %>
 
         <%= link_to farms_path(labels: "Bio-Suisse") do %>
           <div class="card-category">
-            <%= image_tag "categories/bio.jpg", alt: "Bio" %>
+            <%= image_tag "categories/bio.jpg", alt: "Panier de légumes bio, tomate, poivrons, salade  persil et radis" %>
             <p><%= t('.bio') %></p>
           </div>
         <% end %>
@@ -131,7 +140,7 @@
         <div class="item">
           <%= link_to farms_path(category: "Viande & Volaille") do %>
             <div class="card-category">
-              <%= cl_image_tag "catégorie-viande_b4yciv", alt: "Viande", :transformation=>[{:fetch_format=>:auto}] %>
+              <%= cl_image_tag "catégorie-viande_b4yciv", alt: "Pièce de viande de boeuf et couteau sur une planche en bois", :transformation=>[{:fetch_format=>:auto}] %>
               <p><%= t('.viandes') %></p>
             </div>
           <% end %>
@@ -140,7 +149,7 @@
         <div class="item">
           <%= link_to farms_path(category: "Fruits & Légumes") do %>
             <div class="card-category">
-              <%= cl_image_tag "catégorie-légume_hb2jk8", alt: "Lait", :transformation=>[{:fetch_format=>:auto}] %>
+              <%= cl_image_tag "catégorie-légume_hb2jk8", alt: "Carottes oranges et couteau sur une planche en bois", :transformation=>[{:fetch_format=>:auto}] %>
               <p><%= t('.vegetables') %></p>
             </div>
           <% end %>
@@ -149,7 +158,7 @@
         <div class="item">
           <%= link_to farms_path(category: "Vins") do %>
             <div class="card-category">
-              <%= cl_image_tag "catégorie-vin_luuigt", alt: "Vin", :transformation=>[{:fetch_format=>:auto}] %>
+              <%= cl_image_tag "catégorie-vin_luuigt", alt: "Bouteille et verre de vin rouge, tire-bouchon et raisin blanc", :transformation=>[{:fetch_format=>:auto}] %>
               <p><%= t('.vins') %></p>
             </div>
           <% end %>
@@ -158,7 +167,7 @@
         <div class="item">
           <%= link_to "#" do %>
             <div class="card-category">
-              <%= image_tag "categories/bio.jpg", alt: "Bio" %>
+              <%= image_tag "categories/bio.jpg", alt: "Panier de légumes bio, tomate, poivrons, salade  persil et radis" %>
               <p><%= t('.bio') %></p>
             </div>
           <% end %>
@@ -199,49 +208,49 @@
         <div class="carousel-item active">
           <h3>«<%= t('.citation-24hours') %>.»</h3>
           <div class="img-citations">
-            <%= image_tag "new-home/24heures-grey.png", alt: "alttext", class: "img-24heures-grey" %>
-            <%= image_tag "new-home/terre-nature.png", alt: "alttext", class: "img-terre-nature" %>
+            <%= image_tag "new-home/24heures-grey.png", alt: "Logo du journal 24 heures", class: "img-24heures-grey" %>
+            <%= image_tag "new-home/terre-nature.png", alt: "Logo du journal Terre et nature", class: "img-terre-nature" %>
             <%= link_to "https://www.24heures.ch/robin-des-fermes-veut-rendre-justice-aux-producteurs-locaux-daliments-729776218303", target: :_blank  do %>
-              <%= image_tag "new-home/24heures-color.png", alt: "alttext", class: "img-color" %>
+              <%= image_tag "new-home/24heures-color.png", alt: "Logo du journal 24 heures", class: "img-color" %>
             <% end %>
-            <%= image_tag "new-home/terre-nature.png", alt: "alttext", class: "img-terre-nature" %>
-            <%= image_tag "new-home/24heures-grey.png", alt: "alttext", class: "img-24heures-grey" %>
+            <%= image_tag "new-home/terre-nature.png", alt: "Logo du journal Terre et nature", class: "img-terre-nature" %>
+            <%= image_tag "new-home/24heures-grey.png", alt: "Logo du journal 24 heures", class: "img-24heures-grey" %>
           </div>
         </div>
         <div class="carousel-item">
           <h3>«<%= t('.citation-world') %>.»</h3>
           <div class="img-citations">
-            <%= image_tag "new-home/24heures-grey.png", alt: "alttext", class: "img-24heures-grey" %>
-            <%= image_tag "new-home/terre-nature.png", alt: "alttext", class: "img-terre-nature" %>
+            <%= image_tag "new-home/24heures-grey.png", alt: "Logo du journal 24 heures", class: "img-24heures-grey" %>
+            <%= image_tag "new-home/terre-nature.png", alt: "Logo du journal Terre et nature", class: "img-terre-nature" %>
             <%= link_to "https://www.terrenature.ch/nos-lecteurs-se-joignent-a-la-ligue-des-justiciers-de-robin-des-fermes/", target: :_blank  do %>
-              <%= image_tag "new-home/logo_terrenature.png", alt: "alttext", class: "img-color" %>
+              <%= image_tag "new-home/logo_terrenature.png", alt: "Logo du journal Terre et nature", class: "img-color" %>
             <% end %>
-            <%= image_tag "new-home/terre-nature.png", alt: "alttext", class: "img-terre-nature" %>
-            <%= image_tag "new-home/24heures-grey.png", alt: "alttext", class: "img-24heures-grey" %>
+            <%= image_tag "new-home/terre-nature.png", alt: "Logo du journal Terre et nature", class: "img-terre-nature" %>
+            <%= image_tag "new-home/24heures-grey.png", alt: "Logo du journal 24 heures", class: "img-24heures-grey" %>
           </div>
         </div>
         <div class="carousel-item">
           <h3>«<%= t('.citation-liberty') %>.»</h3>
           <div class="img-citations">
-            <%= image_tag "new-home/24heures-grey.png", alt: "alttext", class: "img-24heures-grey" %>
-            <%= image_tag "new-home/terre-nature.png", alt: "alttext", class: "img-terre-nature" %>
+            <%= image_tag "new-home/24heures-grey.png", alt: "Logo du journal 24 heures", class: "img-24heures-grey" %>
+            <%= image_tag "new-home/terre-nature.png", alt: "Logo du journal Terre et nature", class: "img-terre-nature" %>
             <%= link_to "https://www.laliberte.ch/news/magazine/societe/consommateur-cherche-producteur-603882", target: :_blank  do %>
-              <%= image_tag "new-home/la-liberte.png", alt: "alttext", class: "img-color"%>
+              <%= image_tag "new-home/la-liberte.png", alt: "Logo du journal La Liberté", class: "img-color"%>
             <% end %>
-            <%= image_tag "new-home/terre-nature.png", alt: "alttext", class: "img-terre-nature" %>
-            <%= image_tag "new-home/24heures-grey.png", alt: "alttext", class: "img-24heures-grey" %>
+            <%= image_tag "new-home/terre-nature.png", alt: "Logo du journal Terre et nature", class: "img-terre-nature" %>
+            <%= image_tag "new-home/24heures-grey.png", alt: "Logo du journal 24 heures", class: "img-24heures-grey" %>
           </div>
         </div>
         <div class="carousel-item">
           <h3>«<%= t('.citation-courrier') %>.»</h3>
           <div class="img-citations">
-            <%= image_tag "new-home/24heures-grey.png", alt: "alttext", class: "img-24heures-grey" %>
-            <%= image_tag "new-home/terre-nature.png", alt: "alttext", class: "img-terre-nature" %>
+            <%= image_tag "new-home/24heures-grey.png", alt: "Logo du journal 24 heures", class: "img-24heures-grey" %>
+            <%= image_tag "new-home/terre-nature.png", alt: "Logo du journal Terre et nature", class: "img-terre-nature" %>
             <%= link_to "https://www.le-courrier.ch/jorat-%E2%80%89robin-des-fermes%E2%80%89-decoche-de-son-carquois-les-outils-digitaux/", target: :_blank  do %>
-              <%= image_tag "new-home/le-courrier.png", alt: "alttext", class: "img-courrier" %>
+              <%= image_tag "new-home/le-courrier.png", alt: "Logo du journal le courrier", class: "img-courrier" %>
             <% end %>
-            <%= image_tag "new-home/terre-nature.png", alt: "alttext", class: "img-terre-nature" %>
-            <%= image_tag "new-home/24heures-grey.png", alt: "alttext", class: "img-24heures-grey" %>
+            <%= image_tag "new-home/terre-nature.png", alt: "Logo du journal Terre et nature", class: "img-terre-nature" %>
+            <%= image_tag "new-home/24heures-grey.png", alt: "Logo du journal 24 heures", class: "img-24heures-grey" %>
           </div>
         </div>
       </div>
@@ -259,7 +268,10 @@
   <div class="join">
     <div class="companion">
       <div class="container companion-image-text">
-        <%= cl_image_tag "ferme-chalabruz-rejoints-le-mouvement_fqwroo", alt: "alttext", class: "img-companion", :transformation=>[{:fetch_format=>:auto}] %>
+        <%= cl_image_tag "ferme-chalabruz-rejoints-le-mouvement_fqwroo",
+              alt: "Jeune productrice et producteur de légumes avec leur deux enfants dans le canton de Vaud",
+              class: "img-companion", :transformation=>[{:fetch_format=>:auto}]
+        %>
         <div class="companion-text">
           <h2><%= t('.join-companions-title') %></h2>
           <p><%= t('.join-companions-description') %></p>
@@ -287,7 +299,9 @@
           <div class="heart-img">
             <%= image_tag "new-home/heart.png", alt: "alttext", class: "" %>
           </div>
-          <%= cl_image_tag "grille-producteur_ulrubo", alt: "alttext", class: "producers-img", :transformation=>[{:fetch_format=>:auto}] %>
+          <%= cl_image_tag "grille-producteur_ulrubo", alt: "Triptyque de producteur et productrice. Un vigneron, un maraicher et un éleveur de boeuf",
+                class: "producers-img", :transformation=>[{:fetch_format=>:auto}]
+          %>
         </div>
       </div>
     </div>
@@ -308,7 +322,7 @@
             <div class="testimonials-informations">
               <%= image_tag "new-home/stars.png", alt: "alttext", class: "stars-img" %>
               <p class="testimony-text"> <%= t('.testimony1') %></p>
-              <%= image_tag "testimony/pierre-carroz.png", alt: "alttext", class: "profil-img" %>
+              <%= image_tag "testimony/pierre-carroz.png", alt: "Pierre Carroz, client de Robin des Fermes", class: "profil-img" %>
               <p class="name">Pierre Carroz</p>
               <p class="text"><%= t('.testimony_text1') %></p>
             </div>
@@ -317,7 +331,7 @@
             <div class="testimonials-informations">
               <%= image_tag "new-home/stars.png", alt: "alttext", class: "stars-img" %>
               <p class="testimony-text"> <%= t('.testimony2') %></p>
-              <%= image_tag "testimony/testimony2.png", alt: "alttext", class: "profil-img" %>
+              <%= image_tag "testimony/testimony2.png", alt: "Diane Baud, cliente de Robin des Fermes", class: "profil-img" %>
               <p class="name">Diane Baud</p>
               <p class="text"><%= t('.testimony_text2') %></p>
             </div>
@@ -326,7 +340,7 @@
             <div class="testimonials-informations">
               <%= image_tag "new-home/stars.png", alt: "alttext", class: "stars-img" %>
               <p class="testimony-text"> <%= t('.testimony3') %></p>
-              <%= image_tag "testimony/testimony3.png", alt: "alttext", class: "profil-img" %>
+              <%= image_tag "testimony/testimony3.png", alt: "Francis Joye, client de Robin des fermes", class: "profil-img" %>
               <p class="name">Francis Joye</p>
               <p class="text"><%= t('.testimony_text3') %></p>
             </div>
