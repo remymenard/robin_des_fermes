@@ -18,9 +18,10 @@
     background-image: url(new-home/background-sale.png);
     background-size: cover;
     background-color: #E1F5EA;
-    height: 1350px;
     margin-top: -80px;
     text-align: center;
+    min-height: 1200px;
+    padding-bottom: 60px;
 
     .grey-line {
       display: none;
@@ -40,7 +41,6 @@
       background-image: url(new-home/path.png);
       background-size: cover;
       width: 800px;
-      height: 1000px;
       margin: auto;
       margin-top: 80px;
 
@@ -95,53 +95,7 @@
       }
 
     }
-
-    @media (min-width: 830px) and (max-width: 980px) {
-
-      .path-picto {
-        width: 250px !important;
-      }
-
-      .path-marker {
-        margin-left: 50px !important;
-      }
-
-      .img-marker {
-        margin-top: -30px !important;
-      }
-
-      .path-hand {
-        margin-left: 75% !important;
-      }
-
-      .img-hand {
-        margin-top: -130px !important;
-      }
-
-      .path-farmer {
-        margin-left: -20% !important;
-
-        .img-farmer {
-          margin-top: -120px !important;
-        }
-      }
-
-      .path-eat {
-        margin-left: 55% !important;
-
-        .img-eat {
-          margin-top: -180px !important;
-        }
-      }
-
-      .path-return {
-        margin-left: 3% !important;
-
-        .img-return {
-          margin-top: -50px !important;
-        }
-      }
-    }
+    // was there
   }
 
   @media (max-width: 830px) {
@@ -160,7 +114,6 @@
 
     .direct-sale {
       margin-top: -155px !important;
-      height: 1550px !important;
 
       .work-question {
         display: none;
@@ -255,10 +208,57 @@
     }
   }
 
-  @media (min-width: 1650px) {
+  @media (min-width: 830px) and (max-width: 980px) {
     .direct-sale {
-      height: 1400px !important;
+      min-height: auto !important;
     }
+
+    .path-picto {
+      width: 250px !important;
+    }
+
+    .path-marker {
+      margin-left: 50px !important;
+    }
+
+    .img-marker {
+      margin-top: -30px !important;
+    }
+
+    .path-hand {
+      margin-left: 75% !important;
+    }
+
+    .img-hand {
+      margin-top: -130px !important;
+    }
+
+    .path-farmer {
+      margin-left: -20% !important;
+
+      .img-farmer {
+        margin-top: -120px !important;
+      }
+    }
+
+    .path-eat {
+      margin-left: 55% !important;
+
+      .img-eat {
+        margin-top: -180px !important;
+      }
+    }
+
+    .path-return {
+      margin-left: 3% !important;
+
+      .img-return {
+        margin-top: -50px !important;
+      }
+    }
+  }
+
+  @media (min-width: 1650px) {
 
     .path {
       .path-farmer {
