@@ -69,14 +69,12 @@
             <span>A retirer à la ferme uniquement</span>
           <% end %>
         <% end %>
-        <% if false %>
-          // sorting is disabled until we improve other things
+        <%# sorting is disabled until we improve other things
           <%= select_tag :order,
               options_for_select([ [t('.product_category.by_name'), "name"], [t('.product_category.by_price'), "price"] ]),
               class: "form-control custom-select order-dropdown select2",
               prompt: t('.product_category.by_default')
           %>
-        <% end %>
       </div>
     </div>
   <% end %>
