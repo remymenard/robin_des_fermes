@@ -413,7 +413,9 @@ fr:
       product_category:
         title: 'Produits'
         all_products: 'Tous'
-        no_product_available: 'Aucun produit'
+        no_product_available: 'Aucun produit disponible à la livraison à votre domicile.'
+        show_take_away_1: ' Vous pouvez afficher les '
+        show_take_away_2: ' produits pouvant être retirées à la ferme.'
         by_name: 'Ordre alphabétique'
         by_price: 'Prix croissant'
         by_default: 'Ordre par défaut'

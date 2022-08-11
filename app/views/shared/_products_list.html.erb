@@ -1,5 +1,10 @@
 <% if products.empty? %>
-  <span><%= t('farms.show.product_category.no_product_available') %></span>
+  <p>
+    <%= t('farms.show.product_category.no_product_available') %>
+    <%= t('farms.show.product_category.show_take_away_1') %>
+    <%= nb_products_available_for_take_away %> 
+    <%= t('farms.show.product_category.show_take_away_2') %>
+  </p>
 <% else %>
   <% products.each do |product| %>
     <div class="card-product">

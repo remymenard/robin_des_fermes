@@ -137,7 +137,7 @@ class FarmsController < ApplicationController
 
     @products_list = default_order_products_list
     @nb_products_available_for_take_away = nb_products_available_for_take_away
-raise
+
     @markers = @farm_show.geocoded.map do |farm|
       {
         lat: farm.latitude,
