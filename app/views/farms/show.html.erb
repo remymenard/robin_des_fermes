@@ -66,7 +66,7 @@
         <% if @farm.accepts_take_away %>
           <%= label_tag :takeaway_only, nil do %>
             <%= show_svg('icons/delivery-bag.svg') %>
-            <span>A retirer à la ferme uniquement</span>
+            <span>A retirer à la ferme uniquement (<%= @nb_products_available_for_take_away %>)</span>
           <% end %>
         <% end %>
         <%# diabled until we improve things %>
