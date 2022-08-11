@@ -136,7 +136,8 @@ class FarmsController < ApplicationController
     end
 
     @products_list = default_order_products_list
-
+    @nb_products_available_for_take_away = nb_products_available_for_take_away
+raise
     @markers = @farm_show.geocoded.map do |farm|
       {
         lat: farm.latitude,
@@ -171,10 +172,18 @@ class FarmsController < ApplicationController
   private
 
   def default_order_products_list
-    @products_list = @farm.products.available.includes(:product_subcategory).order('product_subcategories.created_at ASC').group_by(&:product_subcategory).map do |subcategory_products|
+    # --- Ivan ---
+    farm_products = @near_farm ? @farm.products : @farm.products.where(fresh: false)
+    @products_list = farm_products.available.includes(:product_subcategory).order('product_subcategories.created_at ASC').group_by(&:product_subcategory).map do |subcategory_products|
       subcategory_products.drop(1)[0].sort_by(&:name)
     end
     @products_list = @products_list.flatten
+  end
+
+  def nb_products_available_for_take_away
+    if @products_list.empty? && @farm.accepts_take_away
+      @farm.products.available.count
+    end
   end
 
   def farm_params
