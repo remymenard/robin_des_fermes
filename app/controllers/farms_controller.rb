@@ -125,7 +125,9 @@ class FarmsController < ApplicationController
 
     @zip_code = get_zip_code_number
 
-    @near_farm = @farm.regions.include?(@zip_code)
+    # change Ivan, to review
+    @near_farm = @farm.is_in_close_zone?(@zip_code)
+    # @near_farm = @farm.regions.include?(@zip_code)
 
     near_farm_icon = current_user&.is_companion ? 'icons/marker-green.png' : 'icons/marker-purple.png'
 
