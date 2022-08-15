@@ -20,7 +20,7 @@
     background-color: #E1F5EA;
     margin-top: -80px;
     text-align: center;
-    min-height: 1200px;
+    min-height: 1400px;
     padding-bottom: 60px;
 
     .grey-line {
@@ -39,10 +39,12 @@
 
     .path {
       background-image: url(new-home/path.png);
-      background-size: cover;
+      background-size: contain;
+      background-repeat: no-repeat;
       width: 800px;
       margin: auto;
       margin-top: 80px;
+      border: 1px solid red;
 
       .path-picto {
         margin-top: -20px;
@@ -162,6 +164,13 @@
     }
   }
 
+  @media (min-width: 1190px) {
+    .path {
+      background-size: cover !important;
+      height: 1000px !important;
+      }
+  }
+
   @media (min-width: 1650px) {
     .waves {
       height: 300px !important;
@@ -180,9 +189,13 @@
   }
 
   @media (min-width: 830px) and (max-width: 1190px) {
+    .direct-sale {
+      min-height: 1200px !important;
+    }
+
     .path {
       width: 600px !important;
-      height: 800px !important;
+      height: 850px !important;
 
       .path-picto {
         width: 350px !important;
