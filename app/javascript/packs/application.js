@@ -27,16 +27,16 @@ require("channels")
 import "bootstrap";
 import 'select2'
 
-import { initMapbox } from '../plugins/init_mapbox';;
+import { initMapbox } from '../plugins/init_mapbox';
 import { initAutocomplete } from '../plugins/init_autocomplete';
 import { imageColorDelivery } from '../plugins/image_color_delivery';
 import { initAxeptio } from '../plugins/init_axeptio';
-import { initBasket } from './basket/utils/initBasket'
-import { initSelect2 } from '../plugins/init_select2'
-import { initNoty } from '../plugins/init_noty'
-import { Carousel } from '../plugins/owl_carousel'
-import { stopRecapOnFooter } from '../packs/stopRecapOnFooter'
-import { initDeliverySelect } from '../packs/delivery'
+import { initBasket } from './basket/utils/initBasket';
+import { initSelect2 } from '../plugins/init_select2';
+import { initNoty } from '../plugins/init_noty';
+import { Carousel } from '../plugins/owl_carousel';
+import { stopRecapOnFooter } from '../packs/stopRecapOnFooter';
+import { initDeliverySelect } from '../packs/delivery';
 
 document.addEventListener('DOMContentLoaded', () => {
   initAutocomplete();
