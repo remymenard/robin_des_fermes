@@ -39,7 +39,7 @@
 
     .path {
       background-image: url(new-home/path.png);
-      background-size: contain;
+      background-size: cover;
       background-repeat: no-repeat;
       width: 800px;
       margin: auto;
@@ -97,7 +97,7 @@
     }
   }
 
-  @media (max-width: 1200px) {
+  @media (max-width: 1000px) {
     .grey-line {
       display: initial !important;
       margin-top: 5px;
@@ -161,18 +161,21 @@
     }
   }
 
-  @media (min-width: 1200px) {
+  @media (min-width: 1000px) {
     .direct-sale {
-      min-height: 1400px;
+      min-height: 1350px;
     }
 
     .path {
-      background-size: cover !important;
       height: 1000px !important;
       }
   }
 
   @media (min-width: 1650px) {
+    .direct-sale {
+      min-height: 1400px;
+    }
+
     .waves {
       height: 300px !important;
       margin-top: -185px !important;
@@ -206,6 +209,40 @@
   @media (min-width: 1000px) and (max-width: 1200px) {
     .waves {
       height: 235px;
+    }
+    .direct-sale {
+      min-height: 1325px;
+    }
+    .path {
+      width: 700px !important;
+      background-size: contain !important;
+
+      .path-hand {
+        width: 350px !important;
+        margin-left: 65% !important ;
+      }
+
+      .path-farmer {
+        margin-top: -13% !important;
+      }
+
+      .img-farmer {
+        margin-left: -100px;  
+      }
+
+      .path-eat {
+        margin-top: -5% !important;
+        margin-left: 43% !important;
+
+        .img-eat {
+          margin-top: -100px;
+        }
+      }
+
+      .path-return {
+        margin-top: 8% !important;
+        margin-left: -8% !important;
+      }
     }
   }
 }
