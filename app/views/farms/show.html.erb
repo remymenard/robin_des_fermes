@@ -63,13 +63,14 @@
       </div>
       <div class="takeaway-only">
         <%= check_box_tag :takeaway_only, true, false, disabled: false, class: "d-none" %>
-        <% if @farm.accepts_take_away %>
+        <% if @farm.accepts_take_away && @near_farm == false %>
           <%= label_tag :takeaway_only, nil do %>
             <%= show_svg('icons/delivery-bag.svg') %>
-            <span>A retirer à la ferme uniquement (<%= @nb_products_available_for_take_away %>)</span>
+            <span><%= t '.filter_fresh_products.plus' %><%= @fresh_takeaway_only %><%= t '.filter_fresh_products.fresh_products' %></span>
+            <span>(<%= t '.filter_fresh_products.only_takeaway' %>)</span>
           <% end %>
         <% end %>
-        <%# diabled until we improve things %>
+        <%# disabled until we improve things %>
           <%# select_tag :order,
           options_for_select([ [t('.product_category.by_name'), "name"], [t('.product_category.by_price'), "price"] ]),
           class: "form-control custom-select order-dropdown select2",
@@ -81,7 +82,7 @@
 <div class="container products-listing">
   <div class="products" id="all-products">
     <div class="d-flex all-card-product">
-      <%= render 'shared/products_list', products: @products_list, nb_products_available_for_take_away: @nb_products_available_for_take_away %>
+      <%= render 'shared/products_list', products: @products_list, fresh_takeaway_only: @fresh_takeaway_only %>
     </div>
   </div>
 </div>
