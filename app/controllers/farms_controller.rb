@@ -92,23 +92,23 @@ class FarmsController < ApplicationController
     @farm = Farm.friendly.find(params[:id])
     authorize @farm
     subcategory_id = params[:subcategory_id]
-    if subcategory_id.blank?
-      products_list = default_order_products_list
+    puts "hereici"
+    puts params
+    puts subcategory_id
+
+    # 1. aucun filtre
+    products_list = @farm.products.available
+
+    # 2. vérification du filtre produits frais
+    if params[:takeaway_only].present?
+      products_list = @farm.products.available
     else
-      subcategory = ProductSubcategory.find(subcategory_id)
-      return if subcategory.farm != @farm
-      products_list = subcategory.products.available
+      products_list = products_list.where(fresh: false)
     end
 
-    case params[:order]
-    when "name"
-      products_list = products_list.sort_by{ |e| e.name.downcase }
-    when "price"
-      products_list = products_list.sort_by(&:price_cents)
-    end
-
-    unless params[:takeaway_only].blank?
-      products_list = products_list.fresh
+    # 3. vérification du filtre subcategories
+    if subcategory_id.present?
+      products_list = products_list.where(product_subcategory_id: subcategory_id)
     end
 
     render partial: 'shared/products_list', locals: {products: products_list}
@@ -135,8 +135,13 @@ class FarmsController < ApplicationController
       'icons/marker-orange.png'
     end
 
-    @products_list = default_order_products_list
-    @fresh_takeaway_only = @farm.accepts_take_away ? @farm.products.available.fresh.count : 0
+    if params[:fresh].present?
+      @products_list = default_order_products_list
+    else
+      @products_list = default_order_products_list
+    end
+
+    @nb_fresh_products = @farm.accepts_take_away ? @farm.products.available.fresh.count : 0
 
     @markers = @farm_show.geocoded.map do |farm|
       {
@@ -175,6 +180,13 @@ class FarmsController < ApplicationController
     # --- Ivan ---
     products = @near_farm ? @farm.products : @farm.products.where(fresh: false)
     @products_list = products.available.includes(:product_subcategory).order('product_subcategories.created_at ASC').group_by(&:product_subcategory).map do |subcategory_products|
+      subcategory_products.drop(1)[0].sort_by(&:name)
+    end
+    @products_list = @products_list.flatten
+  end
+
+  def all_order_products_list
+    @products_list = @farm.products.available.includes(:product_subcategory).order('product_subcategories.created_at ASC').group_by(&:product_subcategory).map do |subcategory_products|
       subcategory_products.drop(1)[0].sort_by(&:name)
     end
     @products_list = @products_list.flatten

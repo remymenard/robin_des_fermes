@@ -422,7 +422,8 @@ fr:
         by_price: 'Prix croissant'
         by_default: 'Ordre par défaut'
       filter_fresh_products:
-        fresh_products: ' produits frais'
+        fresh: ' frais'
+        product: ' produit'
         plus: '+'
         only_takeaway: 'uniquement retrait'
   shared:

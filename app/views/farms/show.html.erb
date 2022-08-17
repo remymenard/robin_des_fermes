@@ -63,11 +63,13 @@
       </div>
       <div class="takeaway-only">
         <%= check_box_tag :takeaway_only, true, false, disabled: false, class: "d-none" %>
+        <%# Filter below only displayed outside of the zone: outside of the zone (national shipping), fresh products are not rendered by default %>
         <% if @farm.accepts_take_away && @near_farm == false %>
           <%= label_tag :takeaway_only, nil do %>
             <%= show_svg('icons/delivery-bag.svg') %>
-            <span><%= t '.filter_fresh_products.plus' %><%= @fresh_takeaway_only %><%= t '.filter_fresh_products.fresh_products' %></span>
-            <span>(<%= t '.filter_fresh_products.only_takeaway' %>)</span>
+            <span><%= t '.filter_fresh_products.plus' %><%= @nb_fresh_products %><%= (t '.filter_fresh_products.product').pluralize(@nb_fresh_products) %><%= t '.filter_fresh_products.fresh' %></span>
+            <span>(<%= t '.filter_fresh_products.only_takeaway' %>)</span><br>
+            <span><%= show_svg('icons/delivery-bag.svg') %><%= link_to "Afficher produits frais (uniquement retrait)", farm_path(@farm, fresh: true), method: :get %></span>
           <% end %>
         <% end %>
         <%# disabled until we improve things %>
@@ -82,7 +84,7 @@
 <div class="container products-listing">
   <div class="products" id="all-products">
     <div class="d-flex all-card-product">
-      <%= render 'shared/products_list', products: @products_list, fresh_takeaway_only: @fresh_takeaway_only %>
+      <%= render 'shared/products_list', products: @products_list, nb_fresh_products: @nb_fresh_products %>
     </div>
   </div>
 </div>
