@@ -69,7 +69,6 @@
             <%= show_svg('icons/delivery-bag.svg') %>
             <span><%= t '.filter_fresh_products.plus' %><%= @nb_fresh_products %><%= (t '.filter_fresh_products.product').pluralize(@nb_fresh_products) %><%= t '.filter_fresh_products.fresh' %></span>
             <span>(<%= t '.filter_fresh_products.only_takeaway' %>)</span><br>
-            <span><%= show_svg('icons/delivery-bag.svg') %><%= link_to "Afficher produits frais (uniquement retrait)", farm_path(@farm, fresh: true), method: :get %></span>
           <% end %>
         <% end %>
         <%# disabled until we improve things %>
