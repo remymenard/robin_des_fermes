@@ -108,7 +108,7 @@ class FarmsController < ApplicationController
       products_list = products_list.where(product_subcategory_id: subcategory_id)
     end
 
-    render partial: 'shared/products_list', locals: {products: products_list}
+    render partial: 'shared/products_list', locals: {products: products_list, nb_fresh_products: find_nb_fresh_products}
   end
 
   def show
@@ -133,7 +133,7 @@ class FarmsController < ApplicationController
     end
 
     @products_list = default_order_products_list
-    @nb_fresh_products = @farm.accepts_take_away ? @farm.products.available.where(fresh: true).count : 0
+    @nb_fresh_products = find_nb_fresh_products
 
     @markers = @farm_show.geocoded.map do |farm|
       {
@@ -176,6 +176,10 @@ class FarmsController < ApplicationController
       subcategory_products.drop(1)[0].sort_by(&:name)
     end
     @products_list = @products_list.flatten
+  end
+
+  def find_nb_fresh_products
+    @farm.accepts_take_away ? @farm.products.available.where(fresh: true).count : 0
   end
 
   def farm_params
