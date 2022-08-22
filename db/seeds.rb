@@ -325,7 +325,7 @@ meat = Product.new(farm: henry, category: boucherie, name: "Meat",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
   label: ['Bio-Suisse'],
   available: true,
-  fresh: false,
+  fresh: true,
   total_weight: "20",
 )
 
@@ -359,7 +359,7 @@ meat1 = Product.new(farm: henry, category: boucherie, name: "steack",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
   label: ['Bio-Suisse'],
   available: true,
-  fresh: false,
+  fresh: true,
   total_weight: "20",
 )
 
@@ -376,7 +376,7 @@ steack = Product.new(farm: meleze, category: boucherie, name: "Steack",
   ingredients: "boeuf",
   label: ['Bio-Suisse'],
   available: true,
-  fresh: false,
+  fresh: true,
   total_weight: "20",
 )
 
@@ -393,7 +393,7 @@ chicken = Product.new(farm: henry, category: boucherie, name: "Poulet",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
   label: ['Bio-Suisse'],
   available: true,
-  fresh: false,
+  fresh: true,
   total_weight: "20",
 )
 
@@ -425,7 +425,7 @@ juice = Product.new(farm: henry, category: divers, name: "Jus de pomme",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
   label: ['Bio-Suisse'],
   available: true,
-  fresh: false,
+  fresh: true,
   total_weight: "20",
 )
 juice.photo.attach(
