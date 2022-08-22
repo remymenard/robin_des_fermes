@@ -318,6 +318,12 @@ FarmCategory.create!(category_id: divers.id,  farm: cave)
 FarmCategory.create!(category_id: divers.id,  farm: meleze)
 
 
+puts "Create products subcategories"
+sub1 = ProductSubcategory.new(name: "subcategory 1", farm: henry)
+sub1.save!
+sub2 = ProductSubcategory.new(name: "subcategory 2", farm: henry)
+sub2.save!
+
 puts "Create products"
 meat = Product.new(farm: henry, category: boucherie, name: "Meat",
   price_cents: 5, price_per_unit_cents: 10, unit: "La pièce",
@@ -326,6 +332,7 @@ meat = Product.new(farm: henry, category: boucherie, name: "Meat",
   label: ['Bio-Suisse'],
   available: true,
   fresh: true,
+  product_subcategory: sub1,
   total_weight: "20",
 )
 
@@ -360,6 +367,7 @@ meat1 = Product.new(farm: henry, category: boucherie, name: "steack",
   label: ['Bio-Suisse'],
   available: true,
   fresh: true,
+  product_subcategory: sub2,
   total_weight: "20",
 )
 
@@ -394,6 +402,7 @@ chicken = Product.new(farm: henry, category: boucherie, name: "Poulet",
   label: ['Bio-Suisse'],
   available: true,
   fresh: true,
+  product_subcategory: sub2,
   total_weight: "20",
 )
 
@@ -426,6 +435,7 @@ juice = Product.new(farm: henry, category: divers, name: "Jus de pomme",
   label: ['Bio-Suisse'],
   available: true,
   fresh: true,
+  product_subcategory: sub1,
   total_weight: "20",
 )
 juice.photo.attach(
@@ -440,7 +450,7 @@ apple_juice = Product.new(farm: cave, category: divers, name: "Jus de pomme",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
   label: ['Bio-Suisse'],
   available: true,
-  fresh: false,
+  fresh: true,
   total_weight: "20",
 )
 apple_juice.photo.attach(
@@ -457,6 +467,7 @@ honey = Product.new(farm: henry, category: divers, name: "Miel",
   label: ['Bio-Suisse'],
   available: true,
   fresh: false,
+  product_subcategory: sub1,
   total_weight: "20",
 )
 
@@ -491,6 +502,7 @@ oil = Product.new(farm: henry, category: divers, name: "Oil",
   label: ['Bio-Suisse'],
   available: true,
   fresh: false,
+  product_subcategory: sub2,
   total_weight: "20",
 )
 
@@ -524,6 +536,8 @@ potato = Product.new(farm: henry, category: divers, name: "Patate",
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
   label: ['Bio-Suisse'],
   available: true,
+  fresh: false,
+  product_subcategory: sub2,
   total_weight: "20",
 )
 
@@ -557,6 +571,8 @@ egg = Product.new(
   ingredients: "Xxxorem Ipsum is simply dummy text of the printing and typesetting industry.",
   label: ['Bio-Suisse'],
   available: true,
+  fresh: false,
+  product_subcategory: sub1,
   total_weight: "20",
 )
 
@@ -592,6 +608,7 @@ apple = Product.new(farm: henry, category: divers, name:"Pomme",
   label: ['Bio-Suisse'],
   available: true,
   fresh: false,
+  product_subcategory: sub2,
   total_weight: "20",
 )
 
