@@ -1,4 +1,5 @@
 .home {
+
   .waves {
     background-image: url(new-home/waves.png);
     height: 250px;
@@ -20,7 +21,6 @@
     background-color: #E1F5EA;
     margin-top: -80px;
     text-align: center;
-    min-height: 1200px;
     padding-bottom: 60px;
 
     .grey-line {
@@ -40,6 +40,7 @@
     .path {
       background-image: url(new-home/path.png);
       background-size: cover;
+      background-repeat: no-repeat;
       width: 800px;
       margin: auto;
       margin-top: 80px;
@@ -93,12 +94,10 @@
         margin-top: -8%;
         margin-left: -4%;
       }
-
     }
-    // was there
   }
 
-  @media (max-width: 830px) {
+  @media (max-width: 1000px) {
     .grey-line {
       display: initial !important;
       margin-top: 5px;
@@ -162,7 +161,21 @@
     }
   }
 
+  @media (min-width: 1000px) {
+    .direct-sale {
+      min-height: 1350px;
+    }
+
+    .path {
+      height: 1000px !important;
+      }
+  }
+
   @media (min-width: 1650px) {
+    .direct-sale {
+      min-height: 1400px;
+    }
+
     .waves {
       height: 300px !important;
       margin-top: -185px !important;
@@ -177,88 +190,6 @@
         margin-top: 30px;
       }
     }
-  }
-
-  @media (min-width: 830px) and (max-width: 1190px) {
-    .path {
-      width: 600px !important;
-      height: 800px !important;
-
-      .path-picto {
-        width: 350px !important;
-      }
-
-      .path-hand {
-        margin-top: -20% !important;
-      }
-
-      .path-farmer {
-        margin-left: -30% !important;
-        margin-top: -15% !important;
-      }
-
-      .path-eat {
-        margin-left: 50% !important;
-        margin-top: -15% !important;
-      }
-
-      .path-marker {
-        margin-left: 5% !important;
-      }
-    }
-  }
-
-  @media (min-width: 830px) and (max-width: 980px) {
-    .direct-sale {
-      min-height: auto !important;
-    }
-
-    .path-picto {
-      width: 250px !important;
-    }
-
-    .path-marker {
-      margin-left: 50px !important;
-    }
-
-    .img-marker {
-      margin-top: -30px !important;
-    }
-
-    .path-hand {
-      margin-left: 75% !important;
-    }
-
-    .img-hand {
-      margin-top: -130px !important;
-    }
-
-    .path-farmer {
-      margin-left: -20% !important;
-
-      .img-farmer {
-        margin-top: -120px !important;
-      }
-    }
-
-    .path-eat {
-      margin-left: 55% !important;
-
-      .img-eat {
-        margin-top: -180px !important;
-      }
-    }
-
-    .path-return {
-      margin-left: 3% !important;
-
-      .img-return {
-        margin-top: -50px !important;
-      }
-    }
-  }
-
-  @media (min-width: 1650px) {
 
     .path {
       .path-farmer {
@@ -269,12 +200,48 @@
         margin-top: 0% !important;
       }
 
-      .path-marker {
-        margin-left: 5% !important;
+      .path-return {
+        margin-top: -10% !important;
+      }
+    }
+  }
+
+  @media (min-width: 1000px) and (max-width: 1200px) {
+    .waves {
+      height: 235px;
+    }
+    .direct-sale {
+      min-height: 1325px;
+    }
+    .path {
+      width: 700px !important;
+      background-size: contain !important;
+
+      .path-hand {
+        width: 350px !important;
+        margin-left: 65% !important ;
+      }
+
+      .path-farmer {
+        margin-top: -13% !important;
+      }
+
+      .img-farmer {
+        margin-left: -100px;  
+      }
+
+      .path-eat {
+        margin-top: -5% !important;
+        margin-left: 43% !important;
+
+        .img-eat {
+          margin-top: -100px;
+        }
       }
 
       .path-return {
-        margin-top: -10% !important;
+        margin-top: 8% !important;
+        margin-left: -8% !important;
       }
     }
   }
