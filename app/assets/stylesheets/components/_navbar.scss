@@ -144,8 +144,7 @@
       align-items: center;
     }
     .background {
-      margin-left: 1rem;
-      margin-top: 0.5rem;
+      margin-left: -80px;
       background-color: #174230;
       border-radius: 60px;
       padding: 4px 17px;
@@ -280,6 +279,16 @@
       }
     }
   }
+  .menu-wrapper {
+    #sidebar-zip-code {
+      display: flex;
+      flex-direction: column;
+      .zip-code-infos {
+        margin-left: 12px !important;
+        margin-top: 6px !important;
+      }
+    }
+  }
 }
 
 @media (min-width: 990px) and (max-width: 1199.98px) {
@@ -304,6 +313,9 @@
   .navbar {
     .logo-mobile {
       display: none;
+    }
+    .link-navbar {
+      align-items: center;
     }
   }
 }
