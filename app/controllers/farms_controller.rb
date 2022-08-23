@@ -91,27 +91,24 @@ class FarmsController < ApplicationController
   def products_list
     @farm = Farm.friendly.find(params[:id])
     authorize @farm
-    subcategory_id = params[:subcategory_id]
-    if subcategory_id.blank?
-      products_list = default_order_products_list
+
+    # 1. start: aucun filtre
+    products_list = @farm.products.available
+
+    # 2. vérification du filtre produits frais
+    if params[:takeaway_only].present?
+      products_list = @farm.products.available
     else
-      subcategory = ProductSubcategory.find(subcategory_id)
-      return if subcategory.farm != @farm
-      products_list = subcategory.products.available
+      products_list = products_list.where(fresh: false)
     end
 
-    case params[:order]
-    when "name"
-      products_list = products_list.sort_by{ |e| e.name.downcase }
-    when "price"
-      products_list = products_list.sort_by(&:price_cents)
+    # 3. vérification du filtre subcategories
+    subcategory_id = params[:subcategory_id]
+    if subcategory_id.present?
+      products_list = products_list.where(product_subcategory_id: subcategory_id)
     end
 
-    unless params[:takeaway_only].blank?
-      products_list = products_list.fresh
-    end
-
-    render partial: 'shared/products_list', locals: {products: products_list}
+    render partial: 'shared/products_list', locals: {products: products_list, nb_fresh_products: find_nb_fresh_products}
   end
 
   def show
@@ -136,6 +133,7 @@ class FarmsController < ApplicationController
     end
 
     @products_list = default_order_products_list
+    @nb_fresh_products = find_nb_fresh_products
 
     @markers = @farm_show.geocoded.map do |farm|
       {
@@ -171,10 +169,17 @@ class FarmsController < ApplicationController
   private
 
   def default_order_products_list
-    @products_list = @farm.products.available.includes(:product_subcategory).order('product_subcategories.created_at ASC').group_by(&:product_subcategory).map do |subcategory_products|
+    # By defaut, we don't render fresh products outside of regional area
+    products = @near_farm ? @farm.products : @farm.products.where(fresh: false)
+
+    @products_list = products.available.includes(:product_subcategory).order('product_subcategories.created_at ASC').group_by(&:product_subcategory).map do |subcategory_products|
       subcategory_products.drop(1)[0].sort_by(&:name)
     end
     @products_list = @products_list.flatten
+  end
+
+  def find_nb_fresh_products
+    @farm.accepts_take_away ? @farm.products.available.where(fresh: true).count : 0
   end
 
   def farm_params

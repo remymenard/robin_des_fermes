@@ -63,13 +63,15 @@
       </div>
       <div class="takeaway-only">
         <%= check_box_tag :takeaway_only, true, false, disabled: false, class: "d-none" %>
-        <% if @farm.accepts_take_away %>
+        <%# Filter below only displayed outside of the zone: outside of the zone (national shipping), fresh products are not rendered by default %>
+        <% if @farm.accepts_take_away && @near_farm == false %>
           <%= label_tag :takeaway_only, nil do %>
             <%= show_svg('icons/delivery-bag.svg') %>
-            <span>A retirer à la ferme uniquement</span>
+            <span><%= t '.filter_fresh_products.plus' %><%= @nb_fresh_products %><%= (t '.filter_fresh_products.product').pluralize(@nb_fresh_products) %><%= t '.filter_fresh_products.fresh' %></span>
+            <span>(<%= t '.filter_fresh_products.only_takeaway' %>)</span><br>
           <% end %>
         <% end %>
-        <%# diabled until we improve things %>
+        <%# disabled until we improve things %>
           <%# select_tag :order,
           options_for_select([ [t('.product_category.by_name'), "name"], [t('.product_category.by_price'), "price"] ]),
           class: "form-control custom-select order-dropdown select2",
@@ -81,78 +83,80 @@
 <div class="container products-listing">
   <div class="products" id="all-products">
     <div class="d-flex all-card-product">
-      <%= render 'shared/products_list', products: @products_list %>
+      <%= render 'shared/products_list', products: @products_list, nb_fresh_products: @nb_fresh_products %>
     </div>
   </div>
 </div>
 <div class="farm-delivery" id="farm-delivery">
-  <h1><%= t('.delivery_title') %></h1>
-  <h6><%= t('.delivery_options') %></h6>
-  <div class="delivery-options d-flex">
-    <div class="delivery_option">
-      <div class="delivery-image">
-        <% if current_user&.is_companion %>
-          <%= image_tag "products/delivery-companion.png", alt: "alttext" %>
-        <% else %>
-          <%= image_tag "products/delivery.png", alt: "alttext" %>
-        <% end %>
-      </div>
-      <% if @farm.regions.include?(@zip_code) %>
-        <% if current_user&.is_companion %>
-          <span class="companion-delivery-oye">Oyé compagnons !</span>
-          <span class="companion-delivery-option-name green-text"><%= t('.delivery_regional_companion') %></span>
-        <% else %>
-          <h3 ><%= t('.delivery_regional') %></h3>
-          <div class="d-flex price justify-content-center">
-            <h6><%= FarmOrder::ShippingPrice.express_not_companion.price %></h6>
-            <span>CHF</span>
-          </div>
-        <% end %>
-        <p><%= t('.delivery_regional_description') %></p>
-      <% else %>
-        <% if current_user&.is_companion %>
-          <span class="companion-delivery-oye">Oyé compagnons !</span>
-          <span class="companion-delivery-option-name green-text"><%= t('.delivery_national_companion', price: FarmOrder::ShippingPrice.standard_companion.price) %></span>
-          <p><%= t('.delivery_national_description') %></p>
-        <% else %>
-          <h3><%= t('.delivery_national') %></h3>
-          <div class="d-flex justify-content-center price">
-            <h6><%= FarmOrder::ShippingPrice.standard_not_companion.price %></h6>
-            <span>CHF</span>
-          </div>
-          <p><%= t('.delivery_national_description') %></p>
-        <% end %>
-      <% end %>
-      <% if @near_farm %>
-        <div class="hours">
-          <% if @near_farm && @farm.delivery_date(get_zip_code_number) != nil%>
-            <p><%= t('.delivery_date_near_farm') %>  <%= I18n.l((@farm.delivery_date(get_zip_code_number)), format: "%A %d %B", locale: :'fr') %> </p>
-            <p><%= t('.delay') %> <%= I18n.l((@farm.delay_date(get_zip_code_number)), format: "%d %B", locale: :'fr') %> <%= @farm.delay_hour(get_zip_code_number).strftime("%Ih%M")  %></p>
+  <% if not @products_list.empty? %>
+    <h1><%= t('.delivery_title') %></h1>
+    <h6><%= t('.delivery_options') %></h6>
+    <div class="delivery-options d-flex">
+      <div class="delivery_option">
+        <div class="delivery-image">
+          <% if current_user&.is_companion %>
+            <%= image_tag "products/delivery-companion.png", alt: "alttext" %>
+          <% else %>
+            <%= image_tag "products/delivery.png", alt: "alttext" %>
           <% end %>
         </div>
-      <% else %>
-        <div class="hours">
-          <p class = "date"><%= t('.expected_delivery') %> <%= @date.strftime('%d')  %> <%= t('.and_delivery') %> <%= I18n.l((@date + 1 + @farm.delivery_delay.days), format: "%d %B", locale: :'fr') %>.</p>
+        <% if @farm.regions.include?(@zip_code) %>
+          <% if current_user&.is_companion %>
+            <span class="companion-delivery-oye">Oyé compagnons !</span>
+            <span class="companion-delivery-option-name green-text"><%= t('.delivery_regional_companion') %></span>
+          <% else %>
+            <h3 ><%= t('.delivery_regional') %></h3>
+            <div class="d-flex price justify-content-center">
+              <h6><%= FarmOrder::ShippingPrice.express_not_companion.price %></h6>
+              <span>CHF</span>
+            </div>
+          <% end %>
+          <p><%= t('.delivery_regional_description') %></p>
+        <% else %>
+          <% if current_user&.is_companion %>
+            <span class="companion-delivery-oye">Oyé compagnons !</span>
+            <span class="companion-delivery-option-name green-text"><%= t('.delivery_national_companion', price: FarmOrder::ShippingPrice.standard_companion.price) %></span>
+            <p><%= t('.delivery_national_description') %></p>
+          <% else %>
+            <h3><%= t('.delivery_national') %></h3>
+            <div class="d-flex justify-content-center price">
+              <h6><%= FarmOrder::ShippingPrice.standard_not_companion.price %></h6>
+              <span>CHF</span>
+            </div>
+            <p><%= t('.delivery_national_description') %></p>
+          <% end %>
+        <% end %>
+        <% if @near_farm %>
+          <div class="hours">
+            <% if @near_farm && @farm.delivery_date(get_zip_code_number) != nil%>
+              <p><%= t('.delivery_date_near_farm') %>  <%= I18n.l((@farm.delivery_date(get_zip_code_number)), format: "%A %d %B", locale: :'fr') %> </p>
+              <p><%= t('.delay') %> <%= I18n.l((@farm.delay_date(get_zip_code_number)), format: "%d %B", locale: :'fr') %> <%= @farm.delay_hour(get_zip_code_number).strftime("%Ih%M")  %></p>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="hours">
+            <p class = "date"><%= t('.expected_delivery') %> <%= @date.strftime('%d')  %> <%= t('.and_delivery') %> <%= I18n.l((@date + 1 + @farm.delivery_delay.days), format: "%d %B", locale: :'fr') %>.</p>
+          </div>
+        <% end %>
+      </div>
+      <div class="delivery_option <%= @farm.accepts_take_away ? 'yes-accept' : 'no-accept' %>  ">
+        <div class="withdrawal-image"><%= image_tag "products/withdrawal.png", alt: "alttext" %></div>
+        <div class="accept">
+          <h3><%= t('.withdrawal') %></h3>
+          <div class="price">
+            <h6>Gratuit</h6>
+          </div>
+          <p><%= t('.withdrawal_description') %></p>
+          <div class="hours">
+            <p><%= @farm.opening_time  %></p>
+          </div>
         </div>
-      <% end %>
-    </div>
-    <div class="delivery_option <%= @farm.accepts_take_away ? 'yes-accept' : 'no-accept' %>  ">
-      <div class="withdrawal-image"><%= image_tag "products/withdrawal.png", alt: "alttext" %></div>
-      <div class="accept">
-        <h3><%= t('.withdrawal') %></h3>
-        <div class="price">
-          <h6>Gratuit</h6>
-        </div>
-        <p><%= t('.withdrawal_description') %></p>
-        <div class="hours">
-          <p><%= @farm.opening_time  %></p>
+        <div class="no-withdrawal">
+          <p><%= t('.not_accept_withdrawal') %></p>
         </div>
       </div>
-      <div class="no-withdrawal">
-        <p><%= t('.not_accept_withdrawal') %></p>
-      </div>
     </div>
-  </div>
+  <% end %>
 </div>
 <%= render 'shared/product_modal' %>
 </div>

@@ -1,5 +1,15 @@
 <% if products.empty? %>
-  <span><%= t('farms.show.product_category.no_product_available') %></span>
+  <% if nb_fresh_products.positive? %>
+    <p><%# Aucun produit disponible à la livraison à votre domicile. Vous pouvez afficher les 9 produits pouvant être retirées à la ferme. %>
+      <%= t('farms.show.product_category.no_product_available_to_delivery') %>
+      <%= t('farms.show.product_category.show_take_away_1') %>
+      <strong><%= nb_fresh_products %><%= t('farms.show.product_category.show_take_away_2')%></strong>
+      <%= t('farms.show.product_category.show_take_away_3') %>
+      <i class="far fa-hand-point-up" style="font-size: 18px;"></i>
+    </p>
+    <% else %>
+      <%= t('farms.show.product_category.no_product_available') %>
+    <% end %>
 <% else %>
   <% products.each do |product| %>
     <div class="card-product">
