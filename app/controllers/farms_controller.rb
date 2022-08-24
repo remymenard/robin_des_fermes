@@ -108,6 +108,9 @@ class FarmsController < ApplicationController
       products_list = products_list.where(product_subcategory_id: subcategory_id)
     end
 
+    # 4. sorting
+    products_list = sort_products(products_list)
+
     render partial: 'shared/products_list', locals: {products: products_list, nb_fresh_products: find_nb_fresh_products}
   end
 
@@ -170,12 +173,16 @@ class FarmsController < ApplicationController
 
   def default_order_products_list
     # By defaut, we don't render fresh products outside of regional area
-    products = @near_farm ? @farm.products : @farm.products.where(fresh: false)
+    products_list = @near_farm ? @farm.products : @farm.products.where(fresh: false)
+    # we render a sorted list of products
+    sort_products(products_list)
+  end
 
-    @products_list = products.available.includes(:product_subcategory).order('product_subcategories.created_at ASC').group_by(&:product_subcategory).map do |subcategory_products|
+  def sort_products(products_list)
+    products_list = products_list.available.includes(:product_subcategory).order('product_subcategories.created_at ASC').group_by(&:product_subcategory).map do |subcategory_products|
       subcategory_products.drop(1)[0].sort_by(&:name)
     end
-    @products_list = @products_list.flatten
+    products_list = products_list.flatten
   end
 
   def find_nb_fresh_products
