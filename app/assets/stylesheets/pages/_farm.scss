@@ -271,10 +271,12 @@
   display: flex;
   width: 100%;
   align-items: center;
-  height: 98px;
+  height: 60px;
+  margin-top: 24px;
   @media screen and (min-width: 901px) {
     height: 35px;
     width: 50%;
+    margin-top: 0;
   }
   overflow-x: auto;
   overflow-y: hidden;
@@ -302,11 +304,13 @@
 .subcategories-container {
   @media screen and (max-width: 901px) {
     margin-top: -44px;
-    flex-direction: column-reverse;
+    flex-direction: column;
+    align-items: flex-start;
   }
   position: relative;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .subcategories-header {
@@ -332,12 +336,12 @@
     left: 0;
   }
   .takeaway-only {
+    label {
+      cursor: pointer;
+    }
     @media screen and (max-width: 901px) {
       display: flex;
       flex-direction: column-reverse;
-      position: absolute;
-      right: 0px;
-      top: 0px;
     }
     display: block;
     span {
