@@ -3,9 +3,10 @@
   background-color: #F9FAF7;
 
   .cards_maps {
-    justify-content: flex-end;
+    justify-content: space-between;
     @include media-breakpoint-down(lg) {
       flex-direction: column-reverse;
+      justify-content: flex-end;
     }
   }
 
@@ -15,12 +16,20 @@
     top: 0px;
     right: 0px;
     height: 100vh;
-    width: 50%;
-    @include media-breakpoint-down(lg) {
+    width: 40%;
+
+    @media (min-width: 1201px) and (max-width: 1399px) {
+      max-width: 500px !important;
+    }
+    @media (min-width: 1400px) {
+      max-width: 800px !important;
+    }
+    @media (max-width: 1200px) {
       position: relative;
       top: 0px;
-      width: 100vw;
       height: 40vh;
+      width: 100vw;
+      max-width: 100%;
     }
 
     .mapboxgl-ctrl-compass {
@@ -228,7 +237,13 @@
   }
 
   .search {
-    margin-right: 10%;
+    margin-right: 3%;
+    margin-left: 2%;
+    border: 1px solid;
+    flex-grow: 1;
+    @media (min-width: 1400px) {
+      margin-right: 5%;
+    }
 
     .select {
       margin-top: 30px;
@@ -278,6 +293,7 @@
   .farms {
     .search {
       margin-right: 0px;
+      flex-grow: 0;
       .select {
         a {
           margin-top: 20px;

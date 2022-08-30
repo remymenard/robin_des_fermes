@@ -19,6 +19,12 @@
         <% end %>
         <%= link_to t('.reset'), farms_path %>
       </div>
+      <div class="cards-container">
+        <% @farms.active.each do |farm| %>
+          <div class="card-farm">
+          </div>
+        <% end %>
+      </div>
       <div class="best-farms">
         <div class="cards-index col col-lg-6 ">
           <%# #START %>
@@ -70,6 +76,54 @@
               </div>
           <% end  %>
           <%# #END %>
+          
+          <%# OLD %>
+          <% @far_farms.active.each do |farm| %>
+            <%= link_to farm_path(farm) do  %>
+              <div class="card-product d-flex">
+                <div class="photo-farm">
+                  <div class="labels">
+                    <% farm.labels.each do |label| %>
+                      <div class='label'>
+                        <p> <%= label.upcase  %></p>
+                      </div>
+                    <%end%>
+                  </div>
+                  <%= cl_image_tag(farm.farm_profil_picture.key, class: "photo", :transformation=>[{:fetch_format=>:auto}]) if farm.farm_profil_picture %>
+                </div>
+                <div class="cards-informations">
+                  <div class="d-flex address-far-farm">
+                    <%= image_tag "icons/marker-orange.png", class: "marker" %>
+                    <p><%= farm.zip_code.upcase  %> <%= farm.city.upcase  %></p>
+                  </div>
+                  <div class="name d-flex">
+                    <h6> <%= farm.name  %></h6>
+                  </div>
+                  <p class="openning"><%= t('.openning', openning: farm.opening_time) %></p>
+                  <div class="d-flex">
+                    <p class="products-number"><%= farm.products.available.count  %>
+                      <% if farm.products.available.count == 1 %>
+                        <%= t('.one_product') %>
+                      <% else %>
+                        <%= t('.products_number') %>
+                      <% end %>
+                    </p>
+                    <div class="fresh-products d-flex">
+                      <%= image_tag "cards/flake.png", alt: "Flocon" %>
+                      <p> <span> <%= farm.products.available.fresh.count %> <%= t('.products') %> </span><%= t('.withdrawal') %> </p>
+                    </div>
+                  </div>
+                  <div class="all-photos d-flex">
+                    <% farm.categories.each do |category| %>
+                      <div class='category-photo' data-toggle="tooltip" data-placement="top" title="<%= category.name  %>"><%= cl_image_tag category.photo.key, :transformation=>[{:fetch_format=>:auto}] %></div>
+                    <% end %>
+                  </div>
+                  <div class="categories"></div>
+                </div>
+              </div>
+            <% end %>
+          <% end  %>          
+          <%# END %>
         </div>
       </div>
     </div>
