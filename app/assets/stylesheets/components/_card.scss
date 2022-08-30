@@ -76,6 +76,23 @@
     border: 1px solid #faf7f3;
     box-shadow: 0 1px 20px rgba(0, 0, 0, 0.07);
 
+    .best-products {
+      align-items: center;
+      position: absolute;
+      bottom: 4px;
+      .eye-icon {
+        height: 10px;
+      }
+      .show-hide-best-products {
+        color: $primary;
+        letter-spacing: 2.5px;
+        font-weight: 800;
+        text-transform: uppercase;
+        font-size: 10px;
+        padding-top: 4px;
+      }
+    }
+
     .fresh-products {
       img {
         width: 12px;
@@ -123,29 +140,28 @@
       .label {
         display: inline-block;
         margin-top: 10px;
-        background-color: #339e72;
+        background-color: #E1F5EA;
         height: 19px;
         border-radius: 2px;
         padding-left: 5px;
         padding-right: 5px;
 
         p {
-          color: white !important;
-          font-weight: 400 !important;
-          font-size: 11px !important;
+          color: $primary;
+          font-size: 10px !important;
+          letter-spacing: 2px;
           line-height: 21px !important;
         }
       }
     }
 
     .marker {
-      height: 18px;
-      width: 16px;
+      height: 13px;
+      width: 11px;
     }
 
     .address {
-      margin-top: 19px;
-      margin-left: 10px;
+      margin-top: 10px;
 
       img {
         margin-right: 10px;
@@ -153,17 +169,16 @@
 
       p {
         font-size: 11px;
-        color: #a633b0;
+        color: $grey-black;
         font-weight: 600;
-        letter-spacing: 2px;
+        letter-spacing: 0.5px;
         line-height: 21px;
         margin-bottom: 4px;
       }
     }
 
     .address-far-farm {
-      margin-top: 19px;
-      margin-left: 15px;
+      margin-top: 10px;
 
       img {
         margin-right: 10px;
@@ -171,14 +186,15 @@
 
       p {
         font-size: 11px;
-        color: #fd7830;
+        color: $grey-black;
         font-weight: 600;
-        letter-spacing: 2px;
+        letter-spacing: 0.5px;
         line-height: 21px;
-        margin-bottom: 4px;
+        margin-bottom: 1px;
       }
     }
     .name {
+      margin-bottom: 6px;
       flex-wrap: wrap;
       h6,
       h3 {
@@ -187,7 +203,6 @@
         letter-spacing: 0px;
         color: #25201d;
         margin-right: 7px;
-        margin-left: 15px;
         margin-bottom: 4px;
       }
 
@@ -196,20 +211,40 @@
       }
     }
 
-    .openning {
+    .delivery {
+      background: rgba(51, 158, 114, 0.2);
+      border-radius: 2px;
+      flex-direction: row;
+      align-items: center;
+      padding: 6px;
+      font-size: 10px;
+      color: $primary;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 700;
+      // width: 216px;
+      height: 27px;
+        .icon {
+          height: 12px;
+        }
+        .text {
+          margin-left: 10px;
+          text-align: justify;
+        }
+    }
+
+    .description {
+      margin-top: 12px;
       line-height: 21px;
       color: #25201d;
-      margin-left: 15px;
-      margin-bottom: 4px;
       font-size: 14px !important;
     }
 
     .products-number {
-      margin-left: 15px;
       color: #25201d;
       opacity: 0.6;
-      margin-bottom: 4px;
-      font-size: 14px !important;
+      margin-left: 12px;
+      font-size: small;
     }
 
     .all-photos {

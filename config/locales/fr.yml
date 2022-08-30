@@ -366,6 +366,7 @@ fr:
       regional_delivery_description: 'Reçois tes produits à la maison, la livraison est assurée par le producteur ou par ton office de poste régional.'
       national_delivery_name: 'Expédition nationale'
       national_delivery_description: 'Reçois tes produits à la maison, la livraison est assurée par la poste. Les produits frais ne sont pas disponibles avec cette option.'
+      show_hide_best_products: "Afficher les produits phares"
     show:
       delay: 'Délai de commande:'
       delivery_date_near_farm: 'Tu seras livré le '
