@@ -5,7 +5,7 @@
     .card-farm {
       height: 450px;
       max-width: 850px;
-      border: 1px solid red;
+      border: 1px dashed red;
       margin: 12px;
 
       @media (max-width: 650px) {
