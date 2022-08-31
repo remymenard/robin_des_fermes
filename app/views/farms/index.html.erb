@@ -22,6 +22,26 @@
       <div class="cards-container">
         <% @farms.active.each do |farm| %>
           <div class="card-farm">
+            <div class="card-farm-header d-flex border">
+              <div class="card-farm-photo border border-dark">
+                <div class="photo-farm toggle-radius">
+                  <div class="labels">
+                    <% farm.labels.each do |label| %>
+                      <div class='label'>
+                        <p> <%= label.upcase  %></p>
+                      </div>
+                    <%end%>
+                  </div>
+                  <%= cl_image_tag(farm.farm_profil_picture.key, class: "photo", :transformation=>[{:fetch_format=>:auto}]) if farm.farm_profil_picture %>
+                </div>
+              </div>
+              <div class="card-farm-content border border-dark">
+              Découvrez les merveilleux crus de la Cave l’Abbatiale, produits par une équipe jeune et dynamique.
+              </div>
+            </div>
+            <div class="card-farm-carousel toggle-carrousel border">
+            bottom
+            </div>
           </div>
         <% end %>
       </div>
