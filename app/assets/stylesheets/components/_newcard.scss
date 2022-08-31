@@ -7,11 +7,12 @@
   min-height: 100px;
   max-width: 850px;
   border: 1px dashed red;
-  margin: 12px;
+  margin-top: 30px;
 
   @media (max-width: 650px) {
     width: 330px;
     margin: 0 auto;
+    margin-top: 30px;
   }
   @media (min-width: 650px) and (max-width: 1200px) {
     min-width: 600px;
@@ -77,9 +78,30 @@
 
 .card-farm-carousel {
   height: 225px;
+  padding: 16px 0 16px 16px;
+
+  @media (max-width: 650px) {
+    padding: 8px 0 8px 8px;
+  }
 }
 
 .toggle-carrousel {
   display: none;
 }
 
+.address-marker {
+  height: 13px;
+  width: 11px;
+}
+
+.farm-address {
+  margin: 10px;
+  font-size: 11px;
+  color: $grey-black;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+
+  img {
+    margin-right: 10px;
+  }
+}

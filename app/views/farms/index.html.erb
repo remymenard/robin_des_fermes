@@ -24,7 +24,7 @@
           <div class="card-farm">
             <div class="card-farm-header d-flex border">
               <div class="card-farm-photo border border-dark">
-                <div class="photo-farm toggle-radius">
+                <div class="photo-farm"> <%# toggle-radius %>
                   <div class="labels">
                     <% farm.labels.each do |label| %>
                       <div class='label'>
@@ -36,10 +36,13 @@
                 </div>
               </div>
               <div class="card-farm-content border border-dark">
-              Découvrez les merveilleux crus de la Cave l’Abbatiale, produits par une équipe jeune et dynamique.
+                <div class="d-flex align-items-center farm-address">
+                  <%= cl_image_tag("marker-green", alt: "icone verte", :effect=>"colorize", :color=>"#000000", class: "address-marker") %>
+                  <div><%= farm.zip_code  %> <%= farm.city  %></div>
+                </div>
               </div>
             </div>
-            <div class="card-farm-carousel toggle-carrousel border">
+            <div class="card-farm-carousel border"> <%# toggle-carousel %>
             bottom
             </div>
           </div>
