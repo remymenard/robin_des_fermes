@@ -268,7 +268,7 @@
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 576px) {
   #companion-infos-navbar {
     a {
       img {
@@ -288,6 +288,12 @@
         margin-top: 6px !important;
       }
     }
+  }
+}
+
+@media (max-width: 989px) {
+  .background {
+    margin-left: 0 !important;
   }
 }
 
