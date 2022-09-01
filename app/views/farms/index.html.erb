@@ -80,56 +80,6 @@
       </div>
       <div class="best-farms">
         <div class="cards-index col col-lg-6 ">
-          <%# #START %>
-          <% @farms.active.each do |farm| %>
-              <div class="card-product d-flex">
-                <div class="photo-farm">
-                  <div class="labels">
-                    <% farm.labels.each do |label| %>
-                      <div class='label'>
-                        <p> <%= label.upcase  %></p>
-                      </div>
-                    <%end%>
-                  </div>
-                  <%= cl_image_tag(farm.farm_profil_picture.key, class: "photo", :transformation=>[{:fetch_format=>:auto}]) if farm.farm_profil_picture %>
-                </div>
-                <div class="cards-informations pl-4">
-                  <div class="d-flex align-items-center address">
-                    <%= cl_image_tag("marker-green", alt: "icone verte", :effect=>"colorize", :color=>"#000000", class: "marker") %>
-                    <p><%= farm.zip_code  %> <%= farm.city  %></p>
-                  </div>
-                  <div class="name d-flex">
-                    <h6> <%= farm.name  %></h6>
-                  </div>
-                  <div class="d-flex align-items-center justify-content-start">
-                    <div class="delivery d-flex">
-                      <%= image_tag "icons/delivery-truck.png", alt: "delivery-truck icon", class: "icon" %>
-                      <div class="text">livraison standard · 4.90 CHF</div>
-                    </div>
-                    <div class="delivery-infos">
-                      <div class="products-number"><%= farm.products.available.count  %>
-                        <% if farm.products.available.count == 1 %>
-                          <%= t('.one_product') %>
-                        <% else %>
-                          <%= t('.products_number') %>
-                        <% end %>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="description"><%= farm.description %></div>
-                  <div class="best-products d-flex">
-                    <div>
-                      <%= image_tag "icons/eye.png", alt: "eye icon", class: "eye-icon" %>
-                    </div>
-                    <div class="show-hide-best-products">
-                      <%= t('.show_hide_best_products') %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-          <% end  %>
-          <%# #END %>
-          
           <%# OLD %>
           <% @far_farms.active.each do |farm| %>
             <%= link_to farm_path(farm) do  %>
