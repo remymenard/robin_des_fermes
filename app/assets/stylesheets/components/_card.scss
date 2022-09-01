@@ -76,22 +76,7 @@
     border: 1px solid #faf7f3;
     box-shadow: 0 1px 20px rgba(0, 0, 0, 0.07);
 
-    .best-products {
-      align-items: center;
-      position: absolute;
-      bottom: 4px;
-      .eye-icon {
-        height: 10px;
-      }
-      .show-hide-best-products {
-        color: $primary;
-        letter-spacing: 2.5px;
-        font-weight: 800;
-        text-transform: uppercase;
-        font-size: 10px;
-        padding-top: 4px;
-      }
-    }
+
 
     .fresh-products {
       img {
@@ -211,41 +196,7 @@
       }
     }
 
-    .delivery {
-      background: rgba(51, 158, 114, 0.2);
-      border-radius: 2px;
-      flex-direction: row;
-      align-items: center;
-      padding: 6px;
-      font-size: 10px;
-      color: $primary;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      font-weight: 700;
-      // width: 216px;
-      height: 27px;
-        .icon {
-          height: 12px;
-        }
-        .text {
-          margin-left: 10px;
-          text-align: justify;
-        }
-    }
 
-    .description {
-      margin-top: 12px;
-      line-height: 21px;
-      color: #25201d;
-      font-size: 14px !important;
-    }
-
-    .products-number {
-      color: #25201d;
-      opacity: 0.6;
-      margin-left: 12px;
-      font-size: small;
-    }
 
     .all-photos {
       flex-direction: row-reverse;

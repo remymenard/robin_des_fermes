@@ -36,9 +36,39 @@
                 </div>
               </div>
               <div class="card-farm-content border border-dark">
-                <div class="d-flex align-items-center farm-address">
-                  <%= cl_image_tag("marker-green", alt: "icone verte", :effect=>"colorize", :color=>"#000000", class: "address-marker") %>
+                <div class="d-flex address">
+                  <%= cl_image_tag("marker-green", alt: "icone verte", :effect=>"colorize", :color=>"#3C452B", class: "marker") %>
                   <div><%= farm.zip_code  %> <%= farm.city  %></div>
+                </div>
+                <div class="name">
+                  <%= farm.name %>
+                </div>
+                <%# truck with delivery infos %>
+                <div class="d-flex delivery">
+                  <div class="delivery-price d-flex">
+                    <%= image_tag "icons/delivery-truck.png", alt: "delivery-truck icon", class: "icon" %>
+                    <div class="text">livraison standard · 4.90 CHF</div>
+                  </div>
+                  <div class="products-number"><%= farm.products.available.count  %>
+                    <% if farm.products.available.count == 1 %>
+                      <%= t('.one_product') %>
+                    <% else %>
+                      <%= t('.products_number') %>
+                    <% end %>
+                  </div>
+                </div>
+                <%# description %>
+                <div class="description">
+                  <%= farm.description %>
+                </div>
+                <%# show/hide best products %>
+                <div class="best-products d-flex">
+                  <div>
+                    <%= image_tag "icons/eye.png", alt: "eye icon", class: "eye-icon" %>
+                  </div>
+                  <div class="show-hide-best-products">
+                    <%= t('.show_hide_best_products') %>
+                  </div>
                 </div>
               </div>
             </div>
