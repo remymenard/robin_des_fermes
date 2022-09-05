@@ -1,10 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // list of all farms (items)
+  // list of all carousels (items)
   const items = document.querySelectorAll('.show-hide-best-products');
-
-  // toggle the first element
-  toggleCarousel(items[0]);
-
+  
   // add eventListener on all items
   items.forEach((item) => {
     item.addEventListener("click", () => {

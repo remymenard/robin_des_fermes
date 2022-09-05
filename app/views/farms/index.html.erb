@@ -20,7 +20,7 @@
         <%= link_to t('.reset'), farms_path %>
       </div>
       <div class="cards-container">
-        <% @farms.active.each do |farm| %>
+        <% @farms.active.each_with_index do |farm, index| %>
           <div class="card-farm">
             <div class="card-farm-header d-flex border">
               <div class="card-farm-photo border border-dark">
@@ -72,7 +72,7 @@
                 </div>
               </div>
             </div>
-            <div class="card-farm-carousel toggle-carrousel border"> <%# toggle-carousel %>
+            <div class="card-farm-carousel <%= "hide-carousel" if index > 0 %> ">
             bottom
             </div>
           </div>
