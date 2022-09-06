@@ -302,8 +302,7 @@
 @media screen and (max-width: 650px) {
   .farms {
     .search {
-      margin-right: 0;
-      margin-left: 0;
+      margin: 0 auto;
       flex-grow: 0;
       .select {
         a {

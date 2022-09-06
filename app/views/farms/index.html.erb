@@ -71,7 +71,11 @@
                     <%= image_tag "icons/eye.png", alt: "eye icon", class: "eye-icon" %>
                   </div>
                   <div class="show-hide-best-products">
-                    <%= t('.show_hide_best_products') %>
+                  <% if index > 0 %>
+                    <%= t('.show_best_products') %>
+                  <% else %>
+                    <%= t('.hide_best_products') %>
+                  <% end %>
                   </div>
                 </div>
               </div>

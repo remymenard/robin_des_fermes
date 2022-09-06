@@ -11,10 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// function to toggle an item
+
 function toggleCarousel(childElement) {
+  // Carousel toggle
   const parentElement = $(childElement).parents()[3];
   $(parentElement).find(".card-farm-carousel").slideToggle("slow");
+  // we toggle the link innerText too
+  toggleText(childElement);
 };
 
 // function to toggle border bottom left radius
@@ -22,3 +25,12 @@ function toggleRadius(childElement) {
   const parentElement = $(childElement).parents()[3];
   $(parentElement).find(".photo").toggleClass("hide-radius-left");
 };
+
+function toggleText(element) {
+  if (element.innerText.startsWith("MASQUER")) {
+    element.innerText = "AFFICHER LES PRODUITS PHARES";
+  } else {
+    element.innerText = "MASQUER LES PRODUITS PHARES";
+  }
+};
+
