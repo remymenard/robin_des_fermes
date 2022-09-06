@@ -22,8 +22,8 @@
       <div class="cards-container">
         <% @farms.active.each_with_index do |farm, index| %>
           <div class="card-farm">
-            <div class="card-farm-header d-flex border">
-              <div class="card-farm-photo border border-dark">
+            <div class="card-farm-header d-flex">
+              <div class="card-farm-photo">
                 <div class="photo-farm"> <%# toggle-radius %>
                   <div class="labels">
                     <% farm.labels.each do |label| %>
@@ -35,7 +35,7 @@
                   <%= cl_image_tag(farm.farm_profil_picture.key, class: "photo", :transformation=>[{:fetch_format=>:auto}]) if farm.farm_profil_picture %>
                 </div>
               </div>
-              <div class="card-farm-content border border-dark">
+              <div class="card-farm-content">
                 <div class="d-flex address">
                   <%= cl_image_tag("marker-green", alt: "icone verte", :effect=>"colorize", :color=>"#3C452B", class: "marker") %>
                   <div><%= farm.zip_code  %> <%= farm.city  %></div>
@@ -73,7 +73,16 @@
               </div>
             </div>
             <div class="card-farm-carousel <%="hide-carousel" if index > 0 %>"> <%# we let the first one open %>
-            bottom
+              <div class="owl-carousel owl-theme">
+                <div class="carousel-element border"><h4>1</h4></div>
+                <div class="carousel-element border"><h4>2</h4></div>
+                <div class="carousel-element border"><h4>3</h4></div>
+                <div class="carousel-element border"><h4>4</h4></div>
+                <div class="carousel-element border"><h4>5</h4></div>
+                <div class="carousel-element border"><h4>6</h4></div>
+                <div class="carousel-element border"><h4>7</h4></div>
+                <div class="carousel-element border"><h4>8</h4></div>
+              </div>
             </div>
           </div>
         <% end %>

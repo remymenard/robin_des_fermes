@@ -22,7 +22,16 @@ const Carousel = () => {
           }
         }
       })
-    }else{
+    }
+    else if (document.querySelector('.card-farm-carousel')) {
+      $('.owl-carousel').owlCarousel({
+      loop:true,
+      margin: 10,
+      nav: true,
+      autoWidth: true
+      })
+    }
+    else {
       $('.owl-carousel').owlCarousel({
         responsive : {
           0 : {
