@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // function to toggle an item
-const toggleCarousel = (childElement) => {
+function toggleCarousel(childElement) {
   const parentElement = $(childElement).parents()[3];
   $(parentElement).find(".card-farm-carousel").slideToggle("slow");
 };
