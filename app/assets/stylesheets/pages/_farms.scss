@@ -34,6 +34,9 @@
       height: 40vh;
       top: 0px;
     }
+    @media (max-width: 650px) {
+      display: none;
+    }
 
     .mapboxgl-ctrl-compass {
       display: none !important;
@@ -242,10 +245,14 @@
   .search {
     margin-right: 3%;
     margin-left: 2%;
-    border: 1px solid;
+    // border: 1px solid;
+    width: 95%;
     flex-grow: 1;
     @media (min-width: 1400px) {
       margin-right: 5%;
+    }
+    @media (min-width: 1200px) {
+      width: 60%;
     }
 
     .select {
@@ -292,7 +299,7 @@
   }
 }
 
-@media screen and (max-width: 612px) {
+@media screen and (max-width: 650px) {
   .farms {
     .search {
       margin-right: 0;
