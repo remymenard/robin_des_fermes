@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   items.forEach((item) => {
     item.addEventListener("click", () => {
       toggleCarousel(item);
+      toggleRadius(item);
     });
   });
 });
@@ -15,3 +16,11 @@ function toggleCarousel(childElement) {
   const parentElement = $(childElement).parents()[3];
   $(parentElement).find(".card-farm-carousel").slideToggle("slow");
 };
+
+// function to toggle border bottom left radius
+function toggleRadius(childElement) {
+  const parentElement = $(childElement).parents()[3];
+  $(parentElement).find(".photo").toggleClass("hide-radius-left");
+};
+
+

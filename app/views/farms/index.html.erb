@@ -32,7 +32,11 @@
                       </div>
                     <%end%>
                   </div>
-                  <%= cl_image_tag(farm.farm_profil_picture.key, class: "photo", :transformation=>[{:fetch_format=>:auto}]) if farm.farm_profil_picture %>
+                  <% if index.equal? 0 %>
+                    <%= cl_image_tag(farm.farm_profil_picture.key, class: "photo hide-radius-left", :transformation=>[{:fetch_format=>:auto}]) if farm.farm_profil_picture %>
+                    <% else %>
+                    <%= cl_image_tag(farm.farm_profil_picture.key, class: "photo", :transformation=>[{:fetch_format=>:auto}]) if farm.farm_profil_picture %>
+                  <% end %>
                 </div>
               </div>
               <div class="card-farm-content">

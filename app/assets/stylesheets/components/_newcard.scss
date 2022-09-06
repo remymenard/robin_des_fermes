@@ -32,10 +32,10 @@
 } // end card-farm
 
 .photo-farm {
-  border-radius: 10px 0 0 10px;
+  // border-radius: 10px 0 0 10px;
   position: relative;
 
-  img {
+  .photo {
     border-radius: 10px 0 0 10px;
     object-fit: cover;
     height: 222px;
@@ -70,13 +70,8 @@
     }
   }
 
-} // end photo-farm
-
-.toggle-radius {
-  img {
-    border-radius: 10px 0 0 0 !important
-  }
 }
+
 
 .card-farm-carousel {
   height: 240px;
@@ -204,7 +199,7 @@
   letter-spacing: 2.5px;
   font-weight: 800;
   text-transform: uppercase;
-  font-size: 10px;
+  font-size: 11px;
   padding-top: 4px;
   margin-left: 8px;
   cursor: pointer;
@@ -222,5 +217,8 @@
   .best-products {
     position: absolute;
     bottom: 8px;
+  }
+  .hide-radius-left {
+    border-bottom-left-radius: 0px !important;
   }
 }
