@@ -25,10 +25,11 @@ const Carousel = () => {
     }
     else if (document.querySelector('.card-farm-carousel')) {
       $('.owl-carousel').owlCarousel({
-      loop:true,
+      loop: true,
       margin: 10,
       nav: true,
-      autoWidth: true
+      autoWidth: true,
+      navText : ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"]
       })
     }
     else {

@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   // list of all carousels (items)
   const items = document.querySelectorAll('.show-hide-best-products');
-  
+
   // add eventListener on all items
   items.forEach((item) => {
     item.addEventListener("click", () => {
@@ -22,5 +22,3 @@ function toggleRadius(childElement) {
   const parentElement = $(childElement).parents()[3];
   $(parentElement).find(".photo").toggleClass("hide-radius-left");
 };
-
-
