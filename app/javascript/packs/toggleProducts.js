@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function toggleCarousel(childElement) {
   // Carousel toggle
   const parentElement = $(childElement).parents()[3];
-  $(parentElement).find(".card-farm-carousel").slideToggle("slow");
+  $(parentElement).find(".card-farm-carousel").slideToggle();
   // we toggle the link innerText too
   toggleText(childElement);
 };

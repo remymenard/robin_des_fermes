@@ -82,14 +82,28 @@
             </div>
             <div class="card-farm-carousel <%="hide-carousel" if index > 0 %>"> <%# we let the first one open %>
               <div class="owl-carousel">
-                <div class="carousel-element border"><h4>1</h4></div>
-                <div class="carousel-element border"><h4>2</h4></div>
-                <div class="carousel-element border"><h4>3</h4></div>
-                <div class="carousel-element border"><h4>4</h4></div>
-                <div class="carousel-element border"><h4>5</h4></div>
-                <div class="carousel-element border"><h4>6</h4></div>
-                <div class="carousel-element border"><h4>7</h4></div>
-                <div class="carousel-element border"><h4>8</h4></div>
+                <% farm.products.each_with_index do |product, index| %>
+                  <div class="carousel-element">
+                    <div><%= cl_image_tag product.photo.key, class: "photo" %></div>
+                    <div class="carousel-container">
+                      <div class="name"><%= product.name %></div>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <div class="conditioning"><%= product.conditioning %></div>
+                        <div class="price"><%= product.price %>.-</div>
+                      </div>
+                      <div class="add-to-cart d-flex">
+                        <div class="counter d-flex">
+                          <div class="button" id="minus">-</div>
+                          <div class="button" id="cart-counter">1</div>
+                          <div class="button" id="plus">+</div>
+                        </div>
+                        <div class="cart-icon d-flex">
+                          <i class="fas fa-shopping-cart"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
               </div>
             </div>
           </div>

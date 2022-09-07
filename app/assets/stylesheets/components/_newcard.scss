@@ -74,6 +74,10 @@
   height: 240px;
   padding: 12px 0 12px 9px;
 
+  @media (min-width: 650px) {
+    padding-top: 20px;
+  }
+
   .owl-stage {
     left: 0;
   }
@@ -83,26 +87,22 @@
   }
 
   .owl-prev {
-    font-weight: 900;
-    background-color: lightgray;
-    padding-right: 6px;
-    padding-left: 4px;
+    display: none;
   }
 
   .owl-next {
     font-weight: 900;
-    background-color: lightgray;
-    padding-right: 4px;
-    padding-left: 6px;
+    background-color: white;
+    padding: 2px 8px;
   }
 
   .owl-nav {
     display: flex;
-    top: 90px;
+    top: 40px;
     position: absolute;
-    justify-content: space-between;
+    justify-content: flex-end;
     width: 100%;
-    padding-right: 10px;
+    padding: 0 15px 0 5px;
   }
 
   @media (max-width: 650px) {
@@ -237,6 +237,98 @@
 .carousel-element {
   height: 216px;
   width: 160px;
+  
+  img {
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  .carousel-container {
+    margin: 8px 2px;
+  }
+
+  .name {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    color: $dark-black;
+  }
+
+  .conditioning {
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 14px;
+    color: $text-gray;
+  }
+
+  .price {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 25px;
+    letter-spacing: 1.5px;
+  }
+
+  .add-to-cart {
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+
+    .add-to-cart-button {
+      justify-content: center;
+      align-items: center;
+    }
+
+    .cart-icon {
+      justify-content: center;
+      align-items: center;
+      background-color: $primary;
+      border-radius: 4px;
+      color: white;
+      margin-right: 4px;
+      font-size: 11px;
+      height: 42px;
+      width: 42px;
+      cursor: pointer;
+    }
+  }
+
+  .counter {
+    justify-content: flex-start;
+
+    .button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 42px;
+      font-weight: 800;
+      font-size: 18px;
+      border: 1px solid $text-gray;
+    }
+
+    #cart-counter {
+      font-size: 14px;
+      border: 1px solid #D2D2D0;
+      border-left: 0px;
+      border-right: 0px;
+    }
+
+    #minus {
+      border: 1px solid #D2D2D0;
+      border-bottom-left-radius: 4px;
+      border-top-left-radius: 4px;
+      cursor: pointer;
+    }
+
+    #plus {
+      border: 1px solid #D2D2D0;
+      border-bottom-right-radius: 4px;
+      border-top-right-radius: 4px;
+      cursor: pointer;
+    }
+  }
+
 }
 
 @media (min-width: 650px) {
