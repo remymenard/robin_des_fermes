@@ -4,15 +4,19 @@
 }
 
 .card-farm {
-  max-width: 1031px;
+  max-width: 1031px; // 6 products
   margin-top: 40px;
   background: #FFFFFF;
   border: 1px solid rgba(164, 166, 160, 0.2);
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.06);
   border-radius: 8px;
 
+  @media (max-width: 1200px) {
+    max-width: 860px; // 5 products
+  }
+
   @media (max-width: 650px) {
-    width: 349px;
+    width: 349px; // 2 products
     margin: 0 auto;
     margin-top: 40px;
   }

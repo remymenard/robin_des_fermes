@@ -26,9 +26,16 @@
       height: 40vh;
       top: 0px;
     }
-    
+
     @media (max-width: 650px) {
       display: none;
+    }
+
+    @media (min-width: 2000px) {
+      position: sticky;
+      width: 60%;
+      height: 91vh;
+      top: 9vh;
     }
 
     .mapboxgl-ctrl-compass {
