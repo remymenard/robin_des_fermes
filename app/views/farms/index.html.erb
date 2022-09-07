@@ -93,9 +93,9 @@
                       </div>
                       <div class="add-to-cart d-flex">
                         <div class="counter d-flex">
-                          <div class="button" id="minus">-</div>
-                          <div class="button" id="cart-counter">1</div>
-                          <div class="button" id="plus">+</div>
+                          <div class="button minus">-</div>
+                          <div class="button cart-counter">1</div>
+                          <div class="button plus">+</div>
                         </div>
                         <div class="cart-icon d-flex">
                           <i class="fas fa-shopping-cart"></i>
@@ -227,3 +227,7 @@
     <div id="pageInfos" data-zip-code-defined=<%= zip_code_set? %> data-submit-form="true"></div>
     <%= javascript_pack_tag 'mapInfos' %>
     <%= javascript_pack_tag 'toggleProducts' %>
+    <%= javascript_pack_tag 'counter' %>
+
+
+
