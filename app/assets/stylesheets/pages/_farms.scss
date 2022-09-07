@@ -11,22 +11,14 @@
   }
 
   #map {
-    right: 0px;
 
-    @media (min-width: 1200px) and (max-width: 1400px) {
-      position: sticky; // small desktop: map is on the right side and sticks to the top
-      max-width: 500px !important;
-      width: 40%;
-      height: 91vh;
-      top: 9vh;
-    }
-    @media (min-width: 1400px) {
-      position: sticky; // big desktop: map is on the right side and sticks to the top
-      max-width: 800px !important;
+    @media (min-width: 1200px) {
+      position: sticky;
       width: 35%;
       height: 91vh;
       top: 9vh;
     }
+
     @media (max-width: 1200px) {
       position: relative; // ipad or mobile: map is on top of the page
       width: 100vw;
@@ -34,6 +26,7 @@
       height: 40vh;
       top: 0px;
     }
+    
     @media (max-width: 650px) {
       display: none;
     }
@@ -245,15 +238,6 @@
   .search {
     margin-right: 3%;
     margin-left: 2%;
-    // border: 1px solid;
-    width: 95%;
-    flex-grow: 1;
-    @media (min-width: 1400px) {
-      margin-right: 5%;
-    }
-    @media (min-width: 1200px) {
-      width: 60%;
-    }
 
     .select {
       margin-top: 30px;
@@ -303,7 +287,6 @@
   .farms {
     .search {
       margin: 0 auto;
-      flex-grow: 0;
       .select {
         a {
           margin-top: 20px;
@@ -313,6 +296,14 @@
       select {
         margin-top: 20px;
       }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .farms {
+    .search {
+      width: 60%;
     }
   }
 }
