@@ -17,17 +17,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 function increase(item) {
-  const parentElement = $(item).parents()[1];
-  const str = $(parentElement).find(".cart-counter")[0].innerText;
-  const counter = parseInt(str);
+  let parentElement = $(item).parents()[1];
+  let str = $(parentElement).find(".cart-counter")[0].innerText;
+  let counter = parseInt(str);
   $(parentElement).find(".cart-counter")[0].innerText = counter + 1;
 };
 
 
 function decrease(item) {
-  const parentElement = $(item).parents()[1];
-  const str = $(parentElement).find(".cart-counter")[0].innerText;
-  const counter = parseInt(str);
+  let parentElement = $(item).parents()[1];
+  let str = $(parentElement).find(".cart-counter")[0].innerText;
+  let counter = parseInt(str);
   if (counter > 1) {
     $(parentElement).find(".cart-counter")[0].innerText = counter - 1;
   };

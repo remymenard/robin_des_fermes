@@ -82,9 +82,9 @@
             </div>
             <div class="card-farm-carousel <%="hide-carousel" if index > 0 %>"> <%# we let the first one open %>
               <div class="owl-carousel">
-                <% farm.products.each_with_index do |product, index| %>
+                <% farm.products.take(9).each_with_index do |product, index| %>
                   <div class="carousel-element">
-                    <div><%= cl_image_tag product.photo.key, class: "photo" %></div>
+                    <div><%= cl_image_tag product.photo.key %></div>
                     <div class="carousel-container">
                       <div class="name"><%= product.name %></div>
                       <div class="d-flex justify-content-between align-items-center">
@@ -93,14 +93,22 @@
                       </div>
                       <div class="add-to-cart d-flex">
                         <div class="counter d-flex">
-                          <div class="button minus">-</div>
-                          <div class="button cart-counter">1</div>
-                          <div class="button plus">+</div>
+                          <div class="minus button">-</div>
+                          <div class="cart-counter button">1</div>
+                          <div class="plus button">+</div>
                         </div>
                         <div class="cart-icon d-flex">
                           <i class="fas fa-shopping-cart"></i>
                         </div>
                       </div>
+                    </div>
+                  </div>
+                <% end %>
+                <%# we add another element to see all farm products %>
+                <%= link_to farm_path(farm) do  %>
+                  <div class="carousel-element" id="last">
+                    <div class="d-flex" id="all">
+                      <div><%= t('.see_all_products') %></div>
                     </div>
                   </div>
                 <% end %>
