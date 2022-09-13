@@ -98,7 +98,8 @@
                           <div class="plus button">+</div>
                         </div>
                         <div class="cart-icon d-flex">
-                          <i class="fas fa-shopping-cart"></i>
+                          <%# <i class="fas fa-shopping-cart"></i> %>
+                          <button class="fas fa-shopping-cart add-product-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" >
                         </div>
                       </div>
                     </div>
@@ -236,6 +237,4 @@
     <%= javascript_pack_tag 'mapInfos' %>
     <%= javascript_pack_tag 'toggleProducts' %>
     <%= javascript_pack_tag 'counter' %>
-
-
-
+    <%= javascript_pack_tag 'add' %>
