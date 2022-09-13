@@ -59,7 +59,7 @@ Rails.application.routes.draw do
     end
     resources :order_line_items, only: [:destroy] do
       member do
-        post :increment
+        post :increment, path: "increment/:qty", defaults: {qty: 1}
         post :decrement
       end
     end

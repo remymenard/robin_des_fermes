@@ -8,9 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
       const nbProducts = getNbProducts(button);
-      Array.from({ length: nbProducts }, () => {
-        sendAjaxRequest(e, "POST");
-      });
+      sendAjaxRequest(e, "POST", nbProducts);
     });
   });
 });
@@ -22,11 +20,12 @@ function getNbProducts(childElement) {
   return parseInt(str);
 };
 
-function sendAjaxRequest(e, requestType, reloadPage = false) {
+function sendAjaxRequest(e, requestType, nbProducts, reloadPage = false) {
   e.preventDefault();
-  const hrefPath = $(e.target).data("path");
+  const default_suffix = "increment/1";
+  const new_suffix = "increment/" + nbProducts;
+  let hrefPath = $(e.target).data("path").replace(default_suffix, new_suffix);
   const token = $(e.target).data("token");
-  console.log(hrefPath);
   $.ajax({
     data: {
       authenticity_token: token,
