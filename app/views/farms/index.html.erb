@@ -124,7 +124,7 @@
             </div>
           <% end %>
         <% end %>
-        <%# regional delivery %>
+        <%# national delivery %>
         <% @far_farms.active.each_with_index do |farm, index| %>
           <% if farm.all_available_products.count > 0 %>
             <div class="card-farm">
@@ -181,16 +181,12 @@
                       <%= image_tag "icons/eye.png", alt: "eye icon", class: "eye-icon" %>
                     </div>
                     <div class="show-hide-best-products">
-                    <% if index > 0 %>
                       <%= t('.show_best_products') %>
-                    <% else %>
-                      <%= t('.hide_best_products') %>
-                    <% end %>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="card-farm-carousel <%="hide-carousel" if index > 0 %>"> <%# we let the first one open %>
+              <div class="card-farm-carousel hide-carousel">
                 <div class="owl-carousel">
                   <% farm.not_fresh_available_products.take(9).each_with_index do |product, index| %>
                     <div class="carousel-element">
