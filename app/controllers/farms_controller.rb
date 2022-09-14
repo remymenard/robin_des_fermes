@@ -4,7 +4,6 @@ class FarmsController < ApplicationController
 
   def index
     @categories = Category.all
-
     @zip_code = get_zip_code_number
 
     # HTTP CALL TO GET THE LAT LNG FROM A ZIP CODE

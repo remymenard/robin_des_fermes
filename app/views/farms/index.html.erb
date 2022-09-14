@@ -20,154 +20,214 @@
         <%= link_to t('.reset'), farms_path %>
       </div>
       <div class="cards-container">
+        <%# local delivery %>
         <% @farms.active.each_with_index do |farm, index| %>
-          <div class="card-farm">
-            <div class="card-farm-header d-flex">
-              <div class="card-farm-photo">
-                <div class="photo-farm"> <%# toggle-radius %>
-                  <div class="labels">
-                    <% farm.labels.each do |label| %>
-                      <div class='label'>
-                        <p> <%= label.upcase  %></p>
-                      </div>
-                    <%end%>
-                  </div>
-                  <% if index.equal? 0 %>
-                    <%= cl_image_tag(farm.farm_profil_picture.key, class: "photo hide-radius-left", :transformation=>[{:fetch_format=>:auto}]) if farm.farm_profil_picture %>
-                    <% else %>
-                    <%= cl_image_tag(farm.farm_profil_picture.key, class: "photo", :transformation=>[{:fetch_format=>:auto}]) if farm.farm_profil_picture %>
-                  <% end %>
-                </div>
-              </div>
-              <div class="card-farm-content">
-                <div class="d-flex address">
-                  <%= cl_image_tag("marker-green", alt: "icone verte", :effect=>"colorize", :color=>"#3C452B", class: "marker") %>
-                  <div><%= farm.zip_code  %> <%= farm.city  %></div>
-                </div>
-                <div class="name">
-                  <%= farm.name %>
-                </div>
-                <%# truck with delivery infos %>
-                <div class="d-flex delivery">
-                  <div class="delivery-price d-flex">
-                    <%= image_tag "icons/delivery-truck.png", alt: "delivery-truck icon", class: "icon" %>
-                    <div class="text">livraison standard · 4.90 CHF</div>
-                  </div>
-                  <div class="products-number"><%= farm.products.available.count  %>
-                    <% if farm.products.available.count == 1 %>
-                      <%= t('.one_product') %>
-                    <% else %>
-                      <%= t('.products_number') %>
+          <% if farm.all_available_products.count > 0 %>
+            <div class="card-farm">
+              <div class="card-farm-header d-flex">
+                <div class="card-farm-photo">
+                  <div class="photo-farm"> <%# toggle-radius %>
+                    <div class="labels">
+                      <% farm.labels.each do |label| %>
+                        <div class='label'>
+                          <p> <%= label.upcase  %></p>
+                        </div>
+                      <%end%>
+                    </div>
+                    <% if index.equal? 0 %>
+                      <%= cl_image_tag(farm.farm_profil_picture.key, class: "photo hide-radius-left", :transformation=>[{:fetch_format=>:auto}]) if farm.farm_profil_picture %>
+                      <% else %>
+                      <%= cl_image_tag(farm.farm_profil_picture.key, class: "photo", :transformation=>[{:fetch_format=>:auto}]) if farm.farm_profil_picture %>
                     <% end %>
                   </div>
                 </div>
-                <%# description %>
-                <div class="description">
-                  <%= farm.description %>
-                </div>
-                <%# show/hide best products %>
-                <div class="best-products d-flex">
-                  <div>
-                    <%= image_tag "icons/eye.png", alt: "eye icon", class: "eye-icon" %>
+                <div class="card-farm-content">
+                  <div class="d-flex address">
+                    <%= cl_image_tag("marker-green", alt: "icone verte", :effect=>"colorize", :color=>"#3C452B", class: "marker") %>
+                    <div><%= farm.zip_code  %> <%= farm.city  %></div>
                   </div>
-                  <div class="show-hide-best-products">
-                  <% if index > 0 %>
-                    <%= t('.show_best_products') %>
-                  <% else %>
-                    <%= t('.hide_best_products') %>
-                  <% end %>
+                  <div class="name">
+                    <%= farm.name %>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div class="card-farm-carousel <%="hide-carousel" if index > 0 %>"> <%# we let the first one open %>
-              <div class="owl-carousel">
-                <% farm.products.take(9).each_with_index do |product, index| %>
-                  <div class="carousel-element">
-                    <div><%= cl_image_tag product.photo.key %></div>
-                    <div class="carousel-container">
-                      <div class="name"><%= product.name %></div>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <div class="conditioning"><%= product.conditioning %></div>
-                        <div class="price"><%= product.price %>.-</div>
-                      </div>
-                      <div class="add-to-cart d-flex">
-                        <div class="counter d-flex">
-                          <div class="minus button">-</div>
-                          <div class="cart-counter button">1</div>
-                          <div class="plus button">+</div>
-                        </div>
-                        <div class="cart-icon d-flex">
-                          <%# <i class="fas fa-shopping-cart"></i> %>
-                          <button class="fas fa-shopping-cart add-product-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" >
-                        </div>
-                      </div>
+                  <%# truck with delivery infos %>
+                  <div class="d-flex delivery">
+                    <div class="delivery-price-local d-flex">
+                      <%= image_tag "icons/delivery-truck.png", alt: "delivery-truck icon", class: "icon" %>
+                      <% if current_user&.is_companion %>
+                        <div class="text"><%= t('.local_delivery_companion') %></div>
+                      <% else %>
+                        <div class="text"><%= t('.local_delivery') %></div>
+                      <% end %>
                     </div>
-                  </div>
-                <% end %>
-                <%# we add another element to see all farm products %>
-                <%= link_to farm_path(farm) do  %>
-                  <div class="carousel-element" id="last">
-                    <div class="d-flex" id="all">
-                      <div><%= t('.see_all_products') %></div>
-                    </div>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-      <div class="best-farms">
-        <div class="cards-index col col-lg-6 ">
-          <%# OLD %>
-          <% @far_farms.active.each do |farm| %>
-            <%= link_to farm_path(farm) do  %>
-              <div class="card-product d-flex">
-                <div class="photo-farm">
-                  <div class="labels">
-                    <% farm.labels.each do |label| %>
-                      <div class='label'>
-                        <p> <%= label.upcase  %></p>
-                      </div>
-                    <%end%>
-                  </div>
-                  <%= cl_image_tag(farm.farm_profil_picture.key, class: "photo", :transformation=>[{:fetch_format=>:auto}]) if farm.farm_profil_picture %>
-                </div>
-                <div class="cards-informations">
-                  <div class="d-flex address-far-farm">
-                    <%= image_tag "icons/marker-orange.png", class: "marker" %>
-                    <p><%= farm.zip_code.upcase  %> <%= farm.city.upcase  %></p>
-                  </div>
-                  <div class="name d-flex">
-                    <h6> <%= farm.name  %></h6>
-                  </div>
-                  <p class="openning"><%= t('.openning', openning: farm.opening_time) %></p>
-                  <div class="d-flex">
-                    <p class="products-number"><%= farm.products.available.count  %>
+                    <div class="products-number"><%= farm.products.available.count  %>
                       <% if farm.products.available.count == 1 %>
                         <%= t('.one_product') %>
                       <% else %>
                         <%= t('.products_number') %>
                       <% end %>
-                    </p>
-                    <div class="fresh-products d-flex">
-                      <%= image_tag "cards/flake.png", alt: "Flocon" %>
-                      <p> <span> <%= farm.products.available.fresh.count %> <%= t('.products') %> </span><%= t('.withdrawal') %> </p>
                     </div>
                   </div>
-                  <div class="all-photos d-flex">
-                    <% farm.categories.each do |category| %>
-                      <div class='category-photo' data-toggle="tooltip" data-placement="top" title="<%= category.name  %>"><%= cl_image_tag category.photo.key, :transformation=>[{:fetch_format=>:auto}] %></div>
-                    <% end %>
+                  <%# description %>
+                  <div class="description">
+                    <%= farm.description %>
                   </div>
-                  <div class="categories"></div>
+                  <%# show/hide best products %>
+                  <div class="best-products d-flex">
+                    <div>
+                      <%= image_tag "icons/eye.png", alt: "eye icon", class: "eye-icon" %>
+                    </div>
+                    <div class="show-hide-best-products">
+                    <% if index > 0 %>
+                      <%= t('.show_best_products') %>
+                    <% else %>
+                      <%= t('.hide_best_products') %>
+                    <% end %>
+                    </div>
+                  </div>
                 </div>
               </div>
-            <% end %>
-          <% end  %>          
-          <%# END %>
-        </div>
+              <div class="card-farm-carousel <%="hide-carousel" if index > 0 %>"> <%# we let the first one open %>
+                <div class="owl-carousel">
+                  <% farm.all_available_products.take(9).each_with_index do |product, index| %>
+                    <div class="carousel-element">
+                      <div><%= cl_image_tag product.photo.key %></div>
+                      <div class="carousel-container">
+                        <div class="name"><%= product.name %></div>
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="conditioning"><%= product.conditioning %></div>
+                          <div class="price"><%= product.price %>.-</div>
+                        </div>
+                        <div class="add-to-cart d-flex">
+                          <div class="counter d-flex">
+                            <div class="minus button">-</div>
+                            <div class="cart-counter button">1</div>
+                            <div class="plus button">+</div>
+                          </div>
+                          <div class="cart-icon d-flex">
+                            <%# <i class="fas fa-shopping-cart"></i> %>
+                            <button class="fas fa-shopping-cart add-product-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                  <%# we add another element to see all farm products %>
+                  <%= link_to farm_path(farm) do  %>
+                    <div class="carousel-element" id="last">
+                      <div class="d-flex" id="all">
+                        <div><%= t('.see_all_products') %></div>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+        <%# regional delivery %>
+        <% @far_farms.active.each_with_index do |farm, index| %>
+          <% if farm.all_available_products.count > 0 %>
+            <div class="card-farm">
+              <div class="card-farm-header d-flex">
+                <div class="card-farm-photo">
+                  <div class="photo-farm"> <%# toggle-radius %>
+                    <div class="labels">
+                      <% farm.labels.each do |label| %>
+                        <div class='label'>
+                          <p> <%= label.upcase  %></p>
+                        </div>
+                      <%end%>
+                    </div>
+                    <% if index.equal? 0 %>
+                      <%= cl_image_tag(farm.farm_profil_picture.key, class: "photo hide-radius-left", :transformation=>[{:fetch_format=>:auto}]) if farm.farm_profil_picture %>
+                      <% else %>
+                      <%= cl_image_tag(farm.farm_profil_picture.key, class: "photo", :transformation=>[{:fetch_format=>:auto}]) if farm.farm_profil_picture %>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="card-farm-content">
+                  <div class="d-flex address">
+                    <%= cl_image_tag("marker-green", alt: "icone verte", :effect=>"colorize", :color=>"#3C452B", class: "marker") %>
+                    <div><%= farm.zip_code  %> <%= farm.city  %></div>
+                  </div>
+                  <div class="name">
+                    <%= farm.name %>
+                  </div>
+                  <%# truck with delivery infos %>
+                  <div class="d-flex delivery">
+                    <div class="delivery-price-national d-flex">
+                      <%= image_tag "icons/delivery-truck-orange.png", alt: "delivery-truck icon", class: "icon" %>
+                      <% if current_user&.is_companion %>
+                        <div class="text"><%= t('.national_delivery_companion') %></div>
+                      <% else %>
+                        <div class="text"><%= t('.national_delivery') %></div>
+                      <% end %>
+                    </div>
+                    <div class="products-number">
+                      <% if farm.not_fresh_available_products.count > 1 %>
+                        <%= farm.not_fresh_available_products.count %><%= t('.multiple_products_deliverable') %><%= farm.all_available_products.count %>
+                      <% else %>
+                        <%= farm.not_fresh_available_products.count %><%= t('.one_product_deliverable') %><%= farm.all_available_products.count %>
+                      <% end %>
+                    </div>
+                  </div>
+                  <%# description %>
+                  <div class="description">
+                    <%= farm.description %>
+                  </div>
+                  <%# show/hide best products %>
+                  <div class="best-products d-flex">
+                    <div>
+                      <%= image_tag "icons/eye.png", alt: "eye icon", class: "eye-icon" %>
+                    </div>
+                    <div class="show-hide-best-products">
+                    <% if index > 0 %>
+                      <%= t('.show_best_products') %>
+                    <% else %>
+                      <%= t('.hide_best_products') %>
+                    <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card-farm-carousel <%="hide-carousel" if index > 0 %>"> <%# we let the first one open %>
+                <div class="owl-carousel">
+                  <% farm.not_fresh_available_products.take(9).each_with_index do |product, index| %>
+                    <div class="carousel-element">
+                      <div><%= cl_image_tag product.photo.key %></div>
+                      <div class="carousel-container">
+                        <div class="name"><%= product.name %></div>
+                        <div class="d-flex justify-content-between align-items-center">
+                          <div class="conditioning"><%= product.conditioning %></div>
+                          <div class="price"><%= product.price %>.-</div>
+                        </div>
+                        <div class="add-to-cart d-flex">
+                          <div class="counter d-flex">
+                            <div class="minus button">-</div>
+                            <div class="cart-counter button">1</div>
+                            <div class="plus button">+</div>
+                          </div>
+                          <div class="cart-icon d-flex">
+                            <%# <i class="fas fa-shopping-cart"></i> %>
+                            <button class="fas fa-shopping-cart add-product-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% end %>
+                  <%# we add another element to see all farm products %>
+                  <%= link_to farm_path(farm) do  %>
+                    <div class="carousel-element" id="last">
+                      <div class="d-flex" id="all">
+                        <div><%= t('.see_all_products') %></div>
+                      </div>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
     </div>
     <div id="map"
@@ -238,3 +298,4 @@
     <%= javascript_pack_tag 'toggleProducts' %>
     <%= javascript_pack_tag 'counter' %>
     <%= javascript_pack_tag 'addToBasketFromIndex' %>
+</div>

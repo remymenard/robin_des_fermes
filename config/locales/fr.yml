@@ -359,6 +359,8 @@ fr:
       adress: 'Adresse : '
       open: 'Ouvertures : '
       products: 'produits'
+      one_product_deliverable: ' produit livrable sur '
+      multiple_products_deliverable: ' produits livrables sur '
       products_number: 'produits'
       withdrawal: 'en retrait uniquement'
       regional_delivery_name: 'Distribution régionale'
@@ -369,6 +371,10 @@ fr:
       show_best_products: "Afficher les produits phares"
       hide_best_products: "Masquer les produits phares"
       see_all_products: "Voir tous les produits"
+      local_delivery_companion: "livraison locale gratuite"
+      local_delivery: "livraison locale · 2.90 CHF"
+      national_delivery_companion: "livraison nationale 5.00 CHF"
+      national_delivery: "livraison nationale 7.90 CHF"
     show:
       delay: 'Délai de commande:'
       delivery_date_near_farm: 'Tu seras livré le '
