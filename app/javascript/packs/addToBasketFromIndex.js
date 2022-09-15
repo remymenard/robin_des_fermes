@@ -4,21 +4,27 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // list of all buttons
   const buttons = document.querySelectorAll('.add-product-to-basket');
-  const modal = document.getElementById('cart-modal-container');
-  const closeNotificationButton = document.getElementById('close-cart-modal');
+  const modalContainer = document.getElementById('cart-modal-container');
+  //const closeButton = document.getElementById('');
 
   // add eventListener on all cart buttons
   buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
       const nbProducts = getNbProducts(button);
       sendAjaxRequest(e, "POST", nbProducts);
-      // show modal
-      $(modal).css('display', 'block');
+      $(modalContainer).css('display', 'block');
     });
   });
 
-  closeNotificationButton.addEventListener("click", () => {
-    $(modal).css('display', 'none');
+/*   closeButton.addEventListener("click", () => {
+    $(modalContainer).css('display', 'none');
+  }); */
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.addEventListener("click", (event) => {
+    if (event.target == modalContainer) {
+      modalContainer.style.display = "none";
+    }
   });
 
 });
