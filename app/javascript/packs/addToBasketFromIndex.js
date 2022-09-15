@@ -20,12 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
     $(modalContainer).css('display', 'none');
   }); */
 
-  // When the user clicks anywhere outside of the modal, close it
-  window.addEventListener("click", (event) => {
-    if (event.target == modalContainer) {
-      modalContainer.style.display = "none";
-    }
-  });
+  // When the user clicks anywhere outside of the modal, close it: other method to write an eventlistener
+  window.onclick = function(event) {
+    closeModal(event, modalContainer);
+  };
 
 });
 
@@ -34,6 +32,12 @@ function getNbProducts(childElement) {
   const parentElement = $(childElement).parents()[2];
   const str = $(parentElement).find(".cart-counter")[0].innerText;
   return parseInt(str);
+};
+
+function closeModal(event, modalName) {
+  if (event.target == modalName) {
+    modalName.style.display = "none";
+  }
 };
 
 function sendAjaxRequest(e, requestType, nbProducts, reloadPage = false) {
