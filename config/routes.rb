@@ -57,6 +57,12 @@ Rails.application.routes.draw do
         post :open_basket
       end
     end
+
+    # route /basket/product/:product_id/order_line_items
+    # resources :product do 
+    #   resources :order_line_items, only: [:create]
+    # end
+
     resources :order_line_items, only: [:destroy] do
       member do
         post :increment, path: "increment/:qty", defaults: {qty: 1}
@@ -64,6 +70,8 @@ Rails.application.routes.draw do
       end
     end
   end
+
+
 
   namespace :orders do
     namespace :mails do

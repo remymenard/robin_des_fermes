@@ -6,7 +6,7 @@ module Basket
       @product = Product.find params["id"]
       @order   = current_order
       qty = params["qty"].to_i
-
+  
       @item_in_basket = OrderLineItem.find_by(order: @order, product: @product)
 
       if @product && @order

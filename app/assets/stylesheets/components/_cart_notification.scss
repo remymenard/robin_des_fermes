@@ -1,0 +1,60 @@
+#cart-notification {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
+  width: 330px;
+  top: 10px;
+  left: 10px;
+  position: fixed;
+  z-index: 999999;
+  border-radius: 8px;
+  filter: drop-shadow(0px 154px 62px rgba(48, 55, 34, 0.03)) drop-shadow(0px 87px 52px rgba(48, 55, 34, 0.09)) drop-shadow(0px 38px 38px rgba(48, 55, 34, 0.15)) drop-shadow(0px 10px 21px rgba(48, 55, 34, 0.18)) drop-shadow(0px 0px 0px rgba(48, 55, 34, 0.18));
+}
+
+.cart-top {
+  padding: 16px;
+}
+
+#close-cart-notification {
+  position: absolute;
+  right: 16px;
+  top: 8px;
+  font-size: 20px;
+  color: $text-gray;
+  cursor: pointer;
+}
+
+.cart-notification-hidden {
+  display: none;
+}
+
+.msg-added-to-cart {
+  color: $text-gray;
+  font-size: 14px;
+  line-height: 21px;
+  margin-bottom: 8px;
+}
+
+#product-added-to-cart {
+  color: $dark-black;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 12px;
+}
+
+#add-to-basket-button {
+  padding: 8px 40px;
+  border-radius: 4px;
+  background-color: $primary;
+  width: 100%;
+  height: 37px;
+  border: 0;  
+  color: white;
+  font-family: Mulish;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}

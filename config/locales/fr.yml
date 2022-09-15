@@ -364,7 +364,7 @@ fr:
       products_number: 'produits'
       withdrawal: 'en retrait uniquement'
       regional_delivery_name: 'Distribution régionale'
-      regional_delivery_name_companion: 'Distribution régionale offerte'
+      regional_delivery_name_companion: 'Distribution locale gratuite'
       regional_delivery_description: 'Reçois tes produits à la maison, la livraison est assurée par le producteur ou par ton office de poste régional.'
       national_delivery_name: 'Expédition nationale'
       national_delivery_description: 'Reçois tes produits à la maison, la livraison est assurée par la poste. Les produits frais ne sont pas disponibles avec cette option.'
