@@ -1,11 +1,11 @@
 import {updateNavbarInfos} from '../packs/basket/utils/updateNavbarInfos';
 
 document.addEventListener('DOMContentLoaded', () => {
-
+  
   // list of all buttons
   const buttons = document.querySelectorAll('.add-product-to-basket');
-  const notification = document.getElementById('cart-notification');
-  const closeNotificationButton = document.getElementById('close-cart-notification');
+  const modal = document.getElementById('cart-modal-container');
+  const closeNotificationButton = document.getElementById('close-cart-modal');
 
   // add eventListener on all cart buttons
   buttons.forEach((button) => {
@@ -13,12 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const nbProducts = getNbProducts(button);
       sendAjaxRequest(e, "POST", nbProducts);
       // show modal
-      $(notification).css('display', 'flex');
+      $(modal).css('display', 'block');
     });
   });
 
   closeNotificationButton.addEventListener("click", () => {
-    $(notification).css('display', 'none');
+    $(modal).css('display', 'none');
   });
 
 });
