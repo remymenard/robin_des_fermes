@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     button.addEventListener("click", (e) => {
       const nbProducts = getNbProducts(button);
       sendAjaxRequest(e, "POST", nbProducts);
-      $(modalContainer).css('display', 'block');
+      $(modalContainer).css('display', 'flex');
     });
   });
 
