@@ -67,8 +67,7 @@
         <% if @farm.accepts_take_away && @near_farm == false %>
           <%= label_tag :takeaway_only, nil do %>
             <%= show_svg('icons/delivery-bag.svg') %>
-            <span><%= t '.filter_fresh_products.plus' %><%= @nb_fresh_products %><%= (t '.filter_fresh_products.product').pluralize(@nb_fresh_products) %><%= t '.filter_fresh_products.fresh' %></span>
-            <span>(<%= t '.filter_fresh_products.only_takeaway' %>)</span><br>
+            <span><%= t '.filter_fresh_products.fresh_products' %></span>
           <% end %>
         <% end %>
         <%# disabled until we improve things %>
