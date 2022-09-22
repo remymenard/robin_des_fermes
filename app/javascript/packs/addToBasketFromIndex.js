@@ -11,7 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
   buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
       const nbProducts = getNbProducts(button);
+      // update basket
       sendAjaxRequest(e, "POST", nbProducts);
+      // update modal + open modal
+      sendAjaxRequestModal(e, "POST");
       $(modalContainer).css('display', 'flex');
     });
   });
@@ -47,7 +50,6 @@ function sendAjaxRequest(e, requestType, nbProducts, reloadPage = false) {
   let hrefPath = $(e.target).data("path").replace(default_suffix, new_suffix);
   const token = $(e.target).data("token");
 
-  console.log($(e.target).data("path"));
   console.log(hrefPath);
 
   $.ajax({
@@ -62,6 +64,28 @@ function sendAjaxRequest(e, requestType, nbProducts, reloadPage = false) {
       } else {
         $("#basket").html(answer);
         updateNavbarInfos();
+      }
+    }
+  })
+};
+
+function sendAjaxRequestModal(e, requestType, reloadPage = false) {
+  e.preventDefault();
+  const token = $(e.target).data("token");
+  let hrefPath = "new_route";
+  console.log(hrefPath);
+
+  $.ajax({
+    data: {
+      authenticity_token: token,
+    },
+    url: hrefPath,
+    type: requestType,
+    success: (answer) => {
+      if (reloadPage) {
+        location.reload();
+      } else {
+        $("#cart-modal-container").html(answer);
       }
     }
   })
