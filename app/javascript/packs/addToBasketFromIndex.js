@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // update basket
       sendAjaxRequest(e, "POST", nbProducts);
       // update modal + open modal
-      sendAjaxRequestModal(e, "POST");
+      //sendAjaxRequestModal(e, "POST");
       $(modalContainer).css('display', 'flex');
     });
   });
@@ -67,27 +67,23 @@ function sendAjaxRequest(e, requestType, nbProducts, reloadPage = false) {
       }
     }
   })
-};
-
-function sendAjaxRequestModal(e, requestType, reloadPage = false) {
-  e.preventDefault();
-  const token = $(e.target).data("token");
-  let hrefPath = "new_route";
-  console.log(hrefPath);
 
   $.ajax({
     data: {
       authenticity_token: token,
     },
-    url: hrefPath,
+    url: "/basket/order_line_items/16/update_modal",
     type: requestType,
     success: (answer) => {
       if (reloadPage) {
         location.reload();
       } else {
         $("#cart-modal-container").html(answer);
+        console.log(answer);
       }
     }
   })
+
 };
+
 

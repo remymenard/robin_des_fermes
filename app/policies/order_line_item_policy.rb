@@ -16,4 +16,8 @@ class OrderLineItemPolicy < ApplicationPolicy
   def destroy?
     true
   end
+
+  def update_modal?
+    true
+  end
 end

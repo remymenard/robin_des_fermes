@@ -90,5 +90,15 @@ module Basket
         render partial: 'shared/basket'
       end
     end
+
+    def update_modal
+      @product = Product.find params["id"]
+      authorize @product
+      puts @product
+      @test = "hhhh"
+      puts "my_debug"
+      render partial: 'shared/update_modal'
+    end
+
   end
 end
