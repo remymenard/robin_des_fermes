@@ -91,26 +91,35 @@ class FarmsController < ApplicationController
   def products_list
     @farm = Farm.friendly.find(params[:id])
     authorize @farm
+    @near_farm = @farm.regions.include?(get_zip_code_number)
 
     # 1. start: aucun filtre
     products_list = @farm.products.available
 
-    # 2. vérification du filtre produits frais
-    if params[:takeaway_only].present?
-      products_list = @farm.products.available
-    else
-      products_list = products_list.where(fresh: false)
-    end
-
-    # 3. vérification du filtre subcategories
+    # 2. vérification du filtre subcategories
     subcategory_id = params[:subcategory_id]
     if subcategory_id.present?
       products_list = products_list.where(product_subcategory_id: subcategory_id)
     end
+    
+    # 3. en livraison locale, on trie et render tous les produits et on sort de la méthode
+    if @near_farm
+      products_list = sort_products(products_list)
+      render partial: 'shared/products_list', locals: {products: products_list, nb_fresh_products: find_nb_fresh_products}
+      return
+    end
 
-    # 4. sorting
-    products_list = sort_products(products_list)
-
+    # 4. on traite les cas de livraison régionale. 3 cas
+      # a. producteur accepte retrait && filtre non activé ? ==> produits secs / non frais
+      # b. producteur accepte retrait && filtre activé ==> tous produits. 
+      # c. producteur accepte pas le retrait ==> produits secs / non frais
+    if @farm.accepts_take_away && params[:takeaway_only].present?
+      products_list = sort_products(products_list)
+    else
+      products_list = products_list.where(fresh: false)
+      products_list = sort_products(products_list)
+    end
+    # dans tous les cas on render
     render partial: 'shared/products_list', locals: {products: products_list, nb_fresh_products: find_nb_fresh_products}
   end
 

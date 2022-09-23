@@ -416,16 +416,13 @@ fr:
         no_product_available: 'Aucun produit disponible.'
         no_product_available_to_delivery: 'Aucun produit disponible à la livraison à votre domicile.'
         show_take_away_1: ' Vous pouvez afficher les '
-        show_take_away_2: ' produits'
+        show_take_away_2: ' produits frais '
         show_take_away_3: ' pouvant être retirées à la ferme.'
         by_name: 'Ordre alphabétique'
         by_price: 'Prix croissant'
         by_default: 'Ordre par défaut'
       filter_fresh_products:
-        fresh: ' frais'
-        product: ' produit'
-        plus: '+'
-        only_takeaway: 'uniquement retrait'
+        fresh_products: 'Produits frais (uniquement retrait)'
   shared:
     navbar:
       log_in_href: 'Me Connecter'
