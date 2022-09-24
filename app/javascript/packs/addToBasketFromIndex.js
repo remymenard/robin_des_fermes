@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // list of all buttons
   const buttons = document.querySelectorAll('.add-product-to-basket');
   const basketModal = document.getElementById('basket-modal-container');
-  //const closeButton = document.getElementById('');
+  const closeButton = document.getElementById('close-basket-modal');
 
   // add eventListener on all cart buttons
   buttons.forEach((button) => {
@@ -21,14 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
       sendAjaxRequestModal(e, "POST", basketModal);
     });
   });
+  
+  // event to close when click outside of basket modal
+  window.onclick = function() {
+    closeWindow(basketModal);
+  };
 
-/*   closeButton.addEventListener("click", () => {
-    closeModal(event, basketModal);
-  }); */
-
-  // When the user clicks anywhere outside of the modal, close it: other method to write an eventlistener
-  window.onclick = function(event) {
-    closeModal(event, basketModal);
+  // event to close when click on close button
+  closeButton.onclick = function() {
+    closeWindow(basketModal);
   };
 
 });
@@ -40,10 +41,8 @@ function getNbProducts(childElement) {
   return parseInt(str);
 };
 
-function closeModal(event, modalName) {
-  if (event.target == modalName) {
-    modalName.style.display = "none";
-  }
+function closeWindow(window) {
+    window.style.display = "none";
 };
 
 function sendAjaxRequest(e, requestType, nbProducts, reloadPage = false) {

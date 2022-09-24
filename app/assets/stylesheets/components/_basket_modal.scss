@@ -18,15 +18,14 @@
   padding: 16px;
   border-radius: 8px;
   filter: drop-shadow(0px 154px 62px rgba(48, 55, 34, 0.03)) drop-shadow(0px 87px 52px rgba(48, 55, 34, 0.09)) drop-shadow(0px 38px 38px rgba(48, 55, 34, 0.15)) drop-shadow(0px 10px 21px rgba(48, 55, 34, 0.18)) drop-shadow(0px 0px 0px rgba(48, 55, 34, 0.18));
-}
-
-#close-cart-modal {
-  position: absolute;
-  right: 16px;
-  top: 8px;
-  font-size: 20px;
-  color: $text-gray;
-  cursor: pointer;
+  #close-basket-modal {
+    position: absolute;
+    right: 16px;
+    top: 8px;
+    font-size: 20px;
+    color: $text-gray;
+    cursor: pointer;
+  }
 }
 
 .hidden-element {
