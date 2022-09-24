@@ -17,7 +17,7 @@ class OrderLineItemPolicy < ApplicationPolicy
     true
   end
 
-  def update_modal?
+  def basket_modal?
     true
   end
 end

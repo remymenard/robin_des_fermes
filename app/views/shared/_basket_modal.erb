@@ -1,0 +1,5 @@
+<div id="basket-modal-content">
+  <% product = Product.find(@last_added.product_id) %>
+  <% farm = Farm.find(product.farm_id) %>
+  <%= farm.name %>
+</div>

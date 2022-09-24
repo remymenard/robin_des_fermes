@@ -4,28 +4,31 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // list of all buttons
   const buttons = document.querySelectorAll('.add-product-to-basket');
-  const modalContainer = document.getElementById('cart-modal-container');
+  const basketModal = document.getElementById('basket-modal-container');
   //const closeButton = document.getElementById('');
 
   // add eventListener on all cart buttons
   buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
+
+      //nb products to add to basket
       const nbProducts = getNbProducts(button);
-      // update basket
+      
+      // we update basket
       sendAjaxRequest(e, "POST", nbProducts);
-      // update modal + open modal
-      //sendAjaxRequestModal(e, "POST");
-      $(modalContainer).css('display', 'flex');
+
+      // we update basket-modal + open basket-modal
+      sendAjaxRequestModal(e, "POST", basketModal);
     });
   });
 
 /*   closeButton.addEventListener("click", () => {
-    $(modalContainer).css('display', 'none');
+    closeModal(event, basketModal);
   }); */
 
   // When the user clicks anywhere outside of the modal, close it: other method to write an eventlistener
   window.onclick = function(event) {
-    closeModal(event, modalContainer);
+    closeModal(event, basketModal);
   };
 
 });
@@ -49,9 +52,8 @@ function sendAjaxRequest(e, requestType, nbProducts, reloadPage = false) {
   const new_suffix = "increment/" + nbProducts;
   let hrefPath = $(e.target).data("path").replace(default_suffix, new_suffix);
   const token = $(e.target).data("token");
-
   console.log(hrefPath);
-
+  
   $.ajax({
     data: {
       authenticity_token: token,
@@ -67,23 +69,28 @@ function sendAjaxRequest(e, requestType, nbProducts, reloadPage = false) {
       }
     }
   })
+};
+
+function sendAjaxRequestModal(e, requestType, modal, reloadPage = false) {
+  e.preventDefault();
+  console.log($(e.target).data("path"));
+  let hrefPath = $(e.target).data("path").replace("increment/1", "basket_modal")
+  console.log(hrefPath);
+  const token = $(e.target).data("token");
 
   $.ajax({
     data: {
       authenticity_token: token,
     },
-    url: "/basket/order_line_items/16/update_modal",
+    url: hrefPath,
     type: requestType,
     success: (answer) => {
       if (reloadPage) {
         location.reload();
       } else {
-        $("#cart-modal-container").html(answer);
-        console.log(answer);
+        $("#basket-modal-container").html(answer);
+        $(modal).css('display', 'flex');
       }
     }
   })
-
 };
-
-
