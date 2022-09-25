@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // /basket/order_line_items/product_id/increment/1 replaced by
       // /basket/order_line_items/product_id/basket_modal/nbProducts
       sendAjaxRequest(e, "POST", nbProducts, "basket_modal", "#basket-modal-container", basketModal);
+
     });
   });
   
@@ -66,9 +67,13 @@ function sendAjaxRequest(e, requestType, nbProducts, replaceBy, id, modal) {
     url: hrefPath,
     type: requestType,
     success: (answer) => {
-        $(id).html(answer);
-        if (modal == "") updateNavbarInfos();
-        if (modal != "") $(modal).css('display', 'flex');
+        if (modal == "") {
+          $(id).html(answer);
+          updateNavbarInfos();
+        } else {
+          $(id).html(answer);
+          $(modal).css('display', 'flex');
+        }
     }
   })
 };

@@ -11,12 +11,8 @@
 }
 
 #basket-modal-content {
-  background-color: white;
   position: relative;
   width: 360px;
-  height: 130px;
-  padding: 16px;
-  border-radius: 8px;
   filter: drop-shadow(0px 154px 62px rgba(48, 55, 34, 0.03)) drop-shadow(0px 87px 52px rgba(48, 55, 34, 0.09)) drop-shadow(0px 38px 38px rgba(48, 55, 34, 0.15)) drop-shadow(0px 10px 21px rgba(48, 55, 34, 0.18)) drop-shadow(0px 0px 0px rgba(48, 55, 34, 0.18));
   #close-basket-modal {
     position: absolute;
@@ -33,11 +29,21 @@
 }
 
 .top-component {
-
+  background-color: white;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding: 12px 16px;
 }
 
 .bottom-component {
-  background-color: $text-gray;
+  background-color: #F6F6F6;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  padding: 12px 16px;
+  .txt {
+    font-size: 13px;
+    color: $dark-black;
+  }
 }
 
 
@@ -48,12 +54,10 @@
   margin-bottom: 8px;
 }
 
-.product-added-to-cart {
+#product-added {
   color: $primary;
   font-weight: 700;
   font-size: 16px;
-  line-height: 18px;
-  margin-bottom: 4px;
 }
 
 

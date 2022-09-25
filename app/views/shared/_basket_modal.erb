@@ -2,11 +2,14 @@
 <% farm = Farm.find(product.farm_id) %>
 
 <div id="basket-modal-content">
-  <div id="close-basket-modal"><i class="fas fa-times"></i></div>
-  <div class="msg-added-to-cart"><%= t "basket_modal.added" %></div>
-  <div class="product-added-to-cart">
-    <%= @last_added.quantity %>
-    <%= " x " %>
-    <%= product.name %>
+
+  <div class="top-component">
+    <div id="close-basket-modal"><i class="fas fa-times"></i></div>
+    <div class="msg-added-to-cart"><%= t "basket_modal.added" %></div>
+    <div id="product-added"><%= "#{product.name} (total : #{@last_added.quantity})" %></div>
+  </div>
+
+  <div class="bottom-component">
+    <div class="txt">Plus que <b>12 CHF</b> pour atteindre le minimum chez ce producteur.</div>
   </div>
 </div>
