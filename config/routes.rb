@@ -70,7 +70,7 @@ Rails.application.routes.draw do
       member do
         post :increment, path: "increment/:qty", defaults: {qty: 1}
         post :decrement
-        post :basket_modal
+        post :basket_modal, path: "basket_modal/:qty", defaults: {qty: 1}
       end
     end
   end

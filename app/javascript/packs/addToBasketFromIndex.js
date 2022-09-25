@@ -13,12 +13,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
       //nb products to add to basket
       const nbProducts = getNbProducts(button);
-      
-      // we update basket
-      sendAjaxRequest(e, "POST", nbProducts);
 
-      // we update basket-modal + open basket-modal
-      sendAjaxRequestModal(e, "POST", basketModal);
+      // basket, route replacement :
+      // /basket/order_line_items/product_id/increment/1 replaced by
+      // /basket/order_line_items/product_id/increment/nbProducts
+      sendAjaxRequest(e, "POST", nbProducts, "increment", "#basket", "");
+
+      // basket modal, route replacement :
+      // /basket/order_line_items/product_id/increment/1 replaced by
+      // /basket/order_line_items/product_id/basket_modal/nbProducts
+      sendAjaxRequest(e, "POST", nbProducts, "basket_modal", "#basket-modal-container", basketModal);
     });
   });
   
@@ -28,9 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // event to close when click on close button
-  closeButton.onclick = function() {
-    closeWindow(basketModal);
-  };
+  if (closeButton) {
+    closeButton.onclick = function() {
+      closeWindow(basketModal);
+    };
+  }
 
 });
 
@@ -45,13 +51,13 @@ function closeWindow(window) {
     window.style.display = "none";
 };
 
-function sendAjaxRequest(e, requestType, nbProducts, reloadPage = false) {
+function sendAjaxRequest(e, requestType, nbProducts, replaceBy, id, modal) {
   e.preventDefault();
-  const default_suffix = "increment/1";
-  const new_suffix = "increment/" + nbProducts;
-  let hrefPath = $(e.target).data("path").replace(default_suffix, new_suffix);
+  const default_suffix = 'increment/1';
+  const new_suffix = `${replaceBy}/${nbProducts}`;
+
+  const hrefPath = $(e.target).data("path").replace(default_suffix, new_suffix);
   const token = $(e.target).data("token");
-  console.log(hrefPath);
   
   $.ajax({
     data: {
@@ -60,36 +66,10 @@ function sendAjaxRequest(e, requestType, nbProducts, reloadPage = false) {
     url: hrefPath,
     type: requestType,
     success: (answer) => {
-      if (reloadPage) {
-        location.reload();
-      } else {
-        $("#basket").html(answer);
-        updateNavbarInfos();
-      }
+        $(id).html(answer);
+        if (modal == "") updateNavbarInfos();
+        if (modal != "") $(modal).css('display', 'flex');
     }
   })
 };
 
-function sendAjaxRequestModal(e, requestType, modal, reloadPage = false) {
-  e.preventDefault();
-  console.log($(e.target).data("path"));
-  let hrefPath = $(e.target).data("path").replace("increment/1", "basket_modal")
-  console.log(hrefPath);
-  const token = $(e.target).data("token");
-
-  $.ajax({
-    data: {
-      authenticity_token: token,
-    },
-    url: hrefPath,
-    type: requestType,
-    success: (answer) => {
-      if (reloadPage) {
-        location.reload();
-      } else {
-        $("#basket-modal-container").html(answer);
-        $(modal).css('display', 'flex');
-      }
-    }
-  })
-};

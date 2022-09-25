@@ -1,6 +1,12 @@
+<% product = Product.find(@last_added.product_id) %>
+<% farm = Farm.find(product.farm_id) %>
+
 <div id="basket-modal-content">
   <div id="close-basket-modal"><i class="fas fa-times"></i></div>
-  <% product = Product.find(@last_added.product_id) %>
-  <% farm = Farm.find(product.farm_id) %>
-  <%= farm.name %>
+  <div class="msg-added-to-cart"><%= t "basket_modal.added" %></div>
+  <div class="product-added-to-cart">
+    <%= @last_added.quantity %>
+    <%= " x " %>
+    <%= product.name %>
+  </div>
 </div>

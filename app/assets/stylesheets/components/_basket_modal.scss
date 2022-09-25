@@ -32,6 +32,15 @@
   display: none;
 }
 
+.top-component {
+
+}
+
+.bottom-component {
+  background-color: $text-gray;
+}
+
+
 .msg-added-to-cart {
   color: $text-gray;
   font-size: 14px;
@@ -39,13 +48,14 @@
   margin-bottom: 8px;
 }
 
-#product-added-to-cart {
-  color: $dark-black;
+.product-added-to-cart {
+  color: $primary;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 18px;
-  margin-bottom: 12px;
+  margin-bottom: 4px;
 }
+
 
 .action-button {
   padding: 8px 40px;

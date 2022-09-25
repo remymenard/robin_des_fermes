@@ -565,6 +565,9 @@ fr:
     total: 'TOTAL'
     validate: 'VALIDER MON PANIER'
     continue: 'Continuer mes achats'
+  basket_modal:
+    added: "Ajouté au panier ! "
+    sold: "Vendu par: "
   users:
     delivery_infos:
       edit:
