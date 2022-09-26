@@ -17,12 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
       // basket, route replacement :
       // /basket/order_line_items/product_id/increment/1 replaced by
       // /basket/order_line_items/product_id/increment/nbProducts
-      sendAjaxRequest(e, "POST", nbProducts, "increment", "#basket", "");
+      sendAjaxRequest(e, nbProducts, "increment", "#basket", "");
 
       // basket modal, route replacement :
       // /basket/order_line_items/product_id/increment/1 replaced by
       // /basket/order_line_items/product_id/basket_modal/nbProducts
-      sendAjaxRequest(e, "POST", nbProducts, "basket_modal", "#basket-modal-container", basketModal);
+      sendAjaxRequest(e, nbProducts, "basket_modal", "#basket-modal-container", basketModal);
 
     });
   });
@@ -52,7 +52,7 @@ function closeWindow(window) {
     window.style.display = "none";
 };
 
-function sendAjaxRequest(e, requestType, nbProducts, replaceBy, id, modal) {
+function sendAjaxRequest(e, nbProducts, replaceBy, id, modal) {
   e.preventDefault();
   const default_suffix = 'increment/1';
   const new_suffix = `${replaceBy}/${nbProducts}`;
@@ -65,7 +65,7 @@ function sendAjaxRequest(e, requestType, nbProducts, replaceBy, id, modal) {
       authenticity_token: token,
     },
     url: hrefPath,
-    type: requestType,
+    type: "POST",
     success: (answer) => {
         if (modal == "") {
           $(id).html(answer);
