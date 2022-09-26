@@ -12,7 +12,7 @@
 
 #basket-modal-content {
   position: relative;
-  width: 360px;
+  width: 330px;
   filter: drop-shadow(0px 154px 62px rgba(48, 55, 34, 0.03)) drop-shadow(0px 87px 52px rgba(48, 55, 34, 0.09)) drop-shadow(0px 38px 38px rgba(48, 55, 34, 0.15)) drop-shadow(0px 10px 21px rgba(48, 55, 34, 0.18)) drop-shadow(0px 0px 0px rgba(48, 55, 34, 0.18));
   #close-basket-modal {
     position: absolute;
@@ -40,12 +40,18 @@
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   padding: 12px 16px;
-  .txt-not-filled {
-    font-size: 13px;
-    color: $dark-black;
-  }
 }
 
+.not-filled {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .txt {
+    font-size: 13px;
+    color: $dark-black;
+    margin-bottom: 16px;
+  }
+}
 
 .msg-added-to-cart {
   color: $text-gray;
@@ -60,6 +66,20 @@
   font-size: 16px;
 }
 
+.btn-see-farm {
+    background-color: $primary;
+    color: white;
+    border-radius: 4px;
+    padding: 12px;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    font-weight: bolder;
+    width: 95%;
+    text-align: center;
+    margin-bottom: 4px;
+    margin-top: 4px;
+}
 
 .action-button {
   padding: 8px 40px;
@@ -74,4 +94,32 @@
   font-size: 12px;
   letter-spacing: 2.5px;
   text-transform: uppercase;
+}
+
+#progress {
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 4px;
+  #numbers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: $text-gray;
+    font-size: 12px;
+    margin-bottom: 4px;
+    #icon {
+      height: 16px;
+    }
+  }
+  #bar {
+    background-color: lightgray;
+    height: 4px;
+    border-radius: 12px;
+    #front {
+      background-color: $primary;
+      width: 50%;
+      height: 4px;
+      border-radius: 4px;
+    }
+  }
 }

@@ -29,6 +29,7 @@ const Carousel = () => {
       margin: 10,
       nav: true,
       autoWidth: true,
+      touchDrag: false,
       navText : ["<i class='fa fa-chevron-left'></i>","<i class='fa fa-chevron-right'></i>"]
       })
     }
