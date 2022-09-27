@@ -2,13 +2,16 @@ import {updateNavbarInfos} from '../packs/basket/utils/updateNavbarInfos';
 require("gasparesganga-jquery-loading-overlay");
 
 document.addEventListener('DOMContentLoaded', () => {
-  
-  // list of all buttons
-  const buttons = document.querySelectorAll('.add-product-to-basket');
-  const basketModal = document.getElementById('basket-modal-container');
-  const closeButton = document.getElementById('close-basket-modal');
+
+  // add eventListener on close button
+  const closePopup = document.getElementById("popupclose");
+  closePopup.onclick = function() {
+    $("#overlay").removeClass('show');
+    $("#popup").removeClass('show');
+  };
 
   // add eventListener on all cart buttons
+  const buttons = document.querySelectorAll('.add-product-to-basket');
   buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
 
@@ -18,28 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
       // basket, route replacement :
       // /basket/order_line_items/product_id/increment/1 replaced by
       // /basket/order_line_items/product_id/increment/nbProducts
-      sendAjaxRequest(e, nbProducts, "increment", "#basket", "");
+      sendAjaxRequest(e, nbProducts, "increment", false);
 
       // basket modal, route replacement :
       // /basket/order_line_items/product_id/increment/1 replaced by
       // /basket/order_line_items/product_id/basket_modal/nbProducts
-      sendAjaxRequest(e, nbProducts, "basket_modal", "#basket-modal-container", basketModal);
+      sendAjaxRequest(e, nbProducts, "basket_modal", true);
 
     });
   });
-  
-  // event to close when click outside of basket modal
-  window.onclick = function() {
-    closeWindow(basketModal);
-  };
-
-  // event to close when click on close button
-  if (closeButton) {
-    closeButton.onclick = function() {
-      closeWindow(basketModal);
-    };
-  }
-
 });
 
 // this function gets the counter (nb products to add to basket)
@@ -49,11 +39,8 @@ function getNbProducts(childElement) {
   return parseInt(str);
 };
 
-function closeWindow(window) {
-    window.style.display = "none";
-};
 
-function sendAjaxRequest(e, nbProducts, replaceBy, id, modal) {
+function sendAjaxRequest(e, nbProducts, replaceBy, modal) {
   e.preventDefault();
   
   // animate button
@@ -73,8 +60,14 @@ function sendAjaxRequest(e, nbProducts, replaceBy, id, modal) {
     url: hrefPath,
     type: "POST",
     success: (answer) => {
-      $(id).html(answer);
-      modal == "" ? updateNavbarInfos() : $(modal).css('display', 'flex');
+      if (modal == true) {
+        $("#popupcontent").html(answer);
+        $("#overlay").addClass('show');
+        $("#popup").addClass('show');
+      } else {
+        $("#basket").html(answer);
+        updateNavbarInfos();
+      }
       $(e.target).LoadingOverlay("hide");
     },
     error: () => {

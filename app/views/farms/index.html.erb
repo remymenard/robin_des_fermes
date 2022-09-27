@@ -1,5 +1,14 @@
 <div class="farms">
-  <div id="basket-modal-container" class="hidden-element"></div>
+
+	<div data-pop="pop-in" id="popup">
+    <div class="popupcontrols">
+      <span id="popupclose">&times;</span>
+    </div>
+    <div id="popupcontent">
+    </div>
+	</div>
+	<div id="overlay"></div>
+
   <div class="d-flex cards_maps">
     <div class="search">
       <div class="d-flex select justify-content-between">
@@ -106,7 +115,7 @@
                           </div>
                           <div class="cart-icon d-flex">
                             <%# <i class="fas fa-shopping-cart"></i> %>
-                            <button class="fas fa-shopping-cart add-product-to-basket" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" >
+                            <button class="fas fa-shopping-cart add-product-to-basket" id="button" data-path="<%= increment_basket_order_line_item_path(product)%>" data-token="<%= form_authenticity_token %>" >
                           </div>
                         </div>
                       </div>

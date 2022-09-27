@@ -568,6 +568,7 @@ fr:
   basket_modal:
     added: "Ajouté au panier ! "
     sold: "Vendu par: "
+    go_to_farm: "Voir le producteur"
   users:
     delivery_infos:
       edit:

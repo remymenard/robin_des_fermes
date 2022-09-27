@@ -5,19 +5,16 @@
 <% gap = farm_order.farm.minimum_order_missing_price(farm_order) %>
 <% progress = farm_order.price_cents / (farm.minimum_order_price_cents / 100) rescue 0 %>
 
-<div id="basket-modal-content">
-  <%# white component %>
+<div class="popup-inner-content">
   <div class="top-component">
-    <div id="close-basket-modal"><i class="fas fa-times"></i></div>
     <div class="msg-added-to-cart"><%= t "basket_modal.added" %></div>
     <div id="product-added"><%= "#{quantity} x #{product.name}" %></div>
   </div>
-  <%# grey component %>
   <div class="bottom-component">
     <% if minimum_reached %>
-      <div class="txt-filled">Minimum atteint !</div>
+      <%= render partial: "shared/basket_modal_components/filled", locals: {farm: farm} %>
     <% else %>
-      <div>NOT FILLED</div>
+      <%= render partial: "shared/basket_modal_components/not_filled", locals: {farm: farm, gap: gap, progress: progress.round} %>
     <% end %>
   </div>
 </div>
