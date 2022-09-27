@@ -1,4 +1,5 @@
 import {updateNavbarInfos} from '../packs/basket/utils/updateNavbarInfos';
+require("gasparesganga-jquery-loading-overlay");
 
 document.addEventListener('DOMContentLoaded', () => {
   
@@ -54,12 +55,17 @@ function closeWindow(window) {
 
 function sendAjaxRequest(e, nbProducts, replaceBy, id, modal) {
   e.preventDefault();
+  
+  // animate button
+  $(e.target).LoadingOverlay("show", { imageColor: "#339E72" });
+
+  // get correct route (see above)
   const default_suffix = 'increment/1';
   const new_suffix = `${replaceBy}/${nbProducts}`;
-
   const hrefPath = $(e.target).data("path").replace(default_suffix, new_suffix);
   const token = $(e.target).data("token");
-  
+
+  // fire ajax request  
   $.ajax({
     data: {
       authenticity_token: token,
@@ -67,13 +73,12 @@ function sendAjaxRequest(e, nbProducts, replaceBy, id, modal) {
     url: hrefPath,
     type: "POST",
     success: (answer) => {
-        if (modal == "") {
-          $(id).html(answer);
-          updateNavbarInfos();
-        } else {
-          $(id).html(answer);
-          $(modal).css('display', 'flex');
-        }
+      $(id).html(answer);
+      modal == "" ? updateNavbarInfos() : $(modal).css('display', 'flex');
+      $(e.target).LoadingOverlay("hide");
+    },
+    error: () => {
+      $(e.target).LoadingOverlay("hide");
     }
   })
 };
