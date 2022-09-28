@@ -3,7 +3,7 @@
   <div id="progress">
     <div id="numbers">
       <div id="start"><%= image_tag "icons/basket_progress_bar.png", alt: "basket-icon", id: "icon" %></div>
-      <div id="end"><%= farm.minimum_order_price_cents %></div>
+      <div id="end"><%= Money.new(farm.minimum_order_price_cents) %> CHF</div>
     </div>
     <div id="bar">
       <div id="front" style="width: <%= progress %>%;"></div>
