@@ -35,29 +35,31 @@
           <% if farm.all_available_products.count > 0 %>
             <div class="card-farm">
               <div class="card-farm-header d-flex">
-                <div class="card-farm-photo">
-                  <div class="photo-farm"> <%# toggle-radius %>
-                    <div class="labels">
-                      <% farm.labels.each do |label| %>
-                        <div class='label'>
-                          <p> <%= label.upcase  %></p>
-                        </div>
-                      <%end%>
+                <%= link_to farm_path(farm) do  %>
+                  <div class="card-farm-photo">
+                    <div class="photo-farm"> <%# toggle-radius %>
+                      <div class="labels">
+                        <% farm.labels.each do |label| %>
+                          <div class='label'>
+                            <p> <%= label.upcase  %></p>
+                          </div>
+                        <%end%>
+                      </div>
+                      <% if index.equal? 0 %>
+                        <%= cl_image_tag(farm.farm_profil_picture.key, class: "photo hide-radius-left", :transformation=>[{:fetch_format=>:auto}]) if farm.farm_profil_picture %>
+                        <% else %>
+                        <%= cl_image_tag(farm.farm_profil_picture.key, class: "photo", :transformation=>[{:fetch_format=>:auto}]) if farm.farm_profil_picture %>
+                      <% end %>
                     </div>
-                    <% if index.equal? 0 %>
-                      <%= cl_image_tag(farm.farm_profil_picture.key, class: "photo hide-radius-left", :transformation=>[{:fetch_format=>:auto}]) if farm.farm_profil_picture %>
-                      <% else %>
-                      <%= cl_image_tag(farm.farm_profil_picture.key, class: "photo", :transformation=>[{:fetch_format=>:auto}]) if farm.farm_profil_picture %>
-                    <% end %>
                   </div>
-                </div>
+                <% end %>
                 <div class="card-farm-content">
                   <div class="d-flex address">
                     <%= cl_image_tag("marker-green", alt: "icone verte", :effect=>"colorize", :color=>"#3C452B", class: "marker") %>
                     <div><%= farm.zip_code  %> <%= farm.city  %></div>
                   </div>
                   <div class="name">
-                    <%= farm.name %>
+                    <%= link_to farm.name, farm_path(farm) %>
                   </div>
                   <%# truck with delivery infos %>
                   <div class="d-flex delivery">
@@ -139,25 +141,27 @@
           <% if farm.all_available_products.count > 0 %>
             <div class="card-farm">
               <div class="card-farm-header d-flex">
-                <div class="card-farm-photo">
-                  <div class="photo-farm"> <%# toggle-radius %>
-                    <div class="labels">
-                      <% farm.labels.each do |label| %>
-                        <div class='label'>
-                          <p> <%= label.upcase  %></p>
-                        </div>
-                      <%end%>
+                <%= link_to farm_path(farm) do  %>
+                  <div class="card-farm-photo">
+                    <div class="photo-farm"> <%# toggle-radius %>
+                      <div class="labels">
+                        <% farm.labels.each do |label| %>
+                          <div class='label'>
+                            <p> <%= label.upcase  %></p>
+                          </div>
+                        <%end%>
+                      </div>
+                      <%= cl_image_tag(farm.farm_profil_picture.key, class: "photo", :transformation=>[{:fetch_format=>:auto}]) if farm.farm_profil_picture %>
                     </div>
-                    <%= cl_image_tag(farm.farm_profil_picture.key, class: "photo", :transformation=>[{:fetch_format=>:auto}]) if farm.farm_profil_picture %>
                   </div>
-                </div>
+                <% end %>
                 <div class="card-farm-content">
                   <div class="d-flex address">
                     <%= cl_image_tag("marker-green", alt: "icone verte", :effect=>"colorize", :color=>"#3C452B", class: "marker") %>
                     <div><%= farm.zip_code  %> <%= farm.city  %></div>
                   </div>
                   <div class="name">
-                    <%= farm.name %>
+                    <%= link_to farm.name, farm_path(farm) %>
                   </div>
                   <%# truck with delivery infos %>
                   <div class="d-flex delivery">
