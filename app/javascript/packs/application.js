@@ -51,10 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
   imageColorDelivery();
 });
 
-// document.addEventListener('turbolinks:load', () => {
-// }); when do we need this ?
-
-
 $(document).on('turbolinks:before-cache', function() {
   $(".owl-carousel").owlCarousel('destroy');
 });
