@@ -1,0 +1,21 @@
+<div class="filled">
+  <div class="txt">Vous avez atteint le montant minimum de commande chez <b><%= farm.name %> !</b></div>
+  <div id="progress">
+    <div id="numbers">
+      <div id="start"><%= image_tag "icons/basket_progress_bar.png", alt: "basket-icon", id: "icon" %></div>
+      <div id="end"><%= Money.new(farm.minimum_order_price_cents) %></div>
+    </div>
+    <div id="bar">
+      <div id="front" style="width: 100%;"></div>
+      <div id="back"></div>
+    </div>
+  </div>
+  <div id="button">
+    <div>
+      <%= link_to t("basket.validate"), review_order_path(current_order), id: "basket-modal-button-primary" %>
+    </div>
+    <div class="mt-4 d-flex justify-content-center">
+      <%= link_to t("basket_modal.go_to_farm"), farm_path(farm), id: "basket-modal-button-secondary" %>
+    </div>
+  </div>
+</div>

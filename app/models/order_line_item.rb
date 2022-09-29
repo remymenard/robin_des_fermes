@@ -13,8 +13,8 @@ class OrderLineItem < ApplicationRecord
     greater_than_or_equal_to: 0,
   }
 
-  def increment_quantity
-    self.quantity += 1
+  def increment_quantity(qty)
+    self.quantity += qty
     compute_total_price
   end
 

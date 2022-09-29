@@ -1,0 +1,20 @@
+<% product = Product.find(@last_added.product_id) %>
+<% farm = Farm.find(product.farm_id) %>
+<% farm_order = current_order.farm_orders.where(farm_id: farm.id).first %>
+<% minimum_reached = farm_order.farm.minimum_order_reached?(farm_order) %>
+<% gap = farm_order.farm.minimum_order_missing_price(farm_order) %>
+<% progress = farm_order.price_cents / (farm.minimum_order_price_cents / 100) rescue 0 %>
+
+<div class="popup-inner-content">
+  <div class="top-component">
+    <div class="msg-added-to-cart"><%= t "basket_modal.added" %></div>
+    <div id="product-added"><%= "#{quantity} x #{product.name}" %></div>
+  </div>
+  <div class="bottom-component">
+    <% if minimum_reached %>
+      <%= render partial: "shared/basket_modal_components/filled", locals: {farm: farm} %>
+    <% else %>
+      <%= render partial: "shared/basket_modal_components/not_filled", locals: {farm: farm, gap: gap, progress: progress.round} %>
+    <% end %>
+  </div>
+</div>

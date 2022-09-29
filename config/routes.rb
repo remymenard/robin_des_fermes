@@ -57,13 +57,25 @@ Rails.application.routes.draw do
         post :open_basket
       end
     end
+
+    # route pour mettre à jour la modal (lorsqu'on ajoute un item au panier depuis l'index producteurs)
+    # post '/update_modal', to: 'modal#udpate_modal'
+
+    # autre manière de réaliser ce qui est fait aux lignes 69 à 75
+    # route /basket/product/:product_id/order_line_items
+    # resources :product do 
+    #   resources :order_line_items, only: [:create]
+    # end
     resources :order_line_items, only: [:destroy] do
       member do
-        post :increment
+        post :increment, path: "increment/:qty", defaults: {qty: 1}
         post :decrement
+        post :basket_modal, path: "basket_modal/:qty", defaults: {qty: 1}
       end
     end
   end
+
+
 
   namespace :orders do
     namespace :mails do

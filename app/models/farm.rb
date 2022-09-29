@@ -121,6 +121,18 @@ class Farm < ApplicationRecord
     [address, zip_code, city, country].compact.join(', ')
   end
 
+  def fresh_available_products
+    self.products.available.where(fresh: true)
+  end
+
+  def not_fresh_available_products
+    self.products.available.where(fresh: false)
+  end
+
+  def all_available_products
+    self.products.available
+  end
+
   private
 
   def set_regions

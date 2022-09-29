@@ -3,24 +3,39 @@
   background-color: #F9FAF7;
 
   .cards_maps {
-    justify-content: flex-end;
+    justify-content: space-between;
     @include media-breakpoint-down(lg) {
       flex-direction: column-reverse;
+      justify-content: flex-end;
     }
   }
 
   #map {
-    //margin-right: -350px;
-    position: sticky;
-    top: 0px;
-    right: 0px;
-    height: 100vh;
-    width: 50%;
-    @include media-breakpoint-down(lg) {
-      position: relative;
-      top: 0px;
+
+    @media (min-width: 1200px) {
+      position: sticky;
+      width: 35%;
+      height: 91vh;
+      top: 9vh;
+    }
+
+    @media (max-width: 1200px) {
+      position: relative; // ipad or mobile: map is on top of the page
       width: 100vw;
+      max-width: 100%;
       height: 40vh;
+      top: 0px;
+    }
+
+    @media (max-width: 650px) {
+      display: none;
+    }
+
+    @media (min-width: 2000px) {
+      position: sticky;
+      width: 60%;
+      height: 91vh;
+      top: 9vh;
     }
 
     .mapboxgl-ctrl-compass {
@@ -223,12 +238,13 @@
 
 
   p {
-    font-size: 17px;
+    // font-size: 17px;
     padding-left: 7px;
   }
 
   .search {
-    margin-right: 10%;
+    margin-right: 3%;
+    margin-left: 2%;
 
     .select {
       margin-top: 30px;
@@ -274,10 +290,10 @@
   }
 }
 
-@media screen and (max-width: 612px) {
+@media screen and (max-width: 650px) {
   .farms {
     .search {
-      margin-right: 0px;
+      margin: 0 auto;
       .select {
         a {
           margin-top: 20px;
@@ -287,6 +303,14 @@
       select {
         margin-top: 20px;
       }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .farms {
+    .search {
+      width: 60%;
     }
   }
 }
