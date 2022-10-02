@@ -811,3 +811,13 @@ order = Order.create!(buyer: user1, price_cents: 100, price_currency: 4)
 
 farm_order = FarmOrder.create!(order: order, farm: henry, express_shipping: true, price_cents: 100, shipping_price: 9)
 #AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+# setting FarmOffices and Farm regions
+for i in 1..Farm.count
+	farm_office = FarmOffice.first
+	farm_office.farm_id = i
+	farm_office.save!
+	farm = Farm.find(i)
+	farm.regions = ["1852", "1853", "1856", "1860", "1867"]
+	farm.save!
+end
