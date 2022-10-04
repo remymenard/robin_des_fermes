@@ -803,21 +803,20 @@ office109 = Office.create!(name: "Vevey 1 Distribution", regions: [1800, 1801, 1
 office110 = Office.create!(name: "Vuiteboeuf", regions: [1416, 1417, 1417, 1418, 1420, 1421, 1421, 1423, 1423, 1423, 1423, 1424, 1425, 1426, 1426, 1427, 1428, 1428, 1429, 1430, 1431, 1431, 1432, 1432, 1433, 1434, 1435, 1436, 1436, 1437, 1438, 1439, 1441, 1442, 1443, 1443, 1443, 1445, 1446, 1450, 1450, 1450, 1452, 1453, 1453, 1454, 1454])
 office111 = Office.create!(name: "Yverdon Distribution", regions: [1400, 1400, 1404, 1404, 1405, 1406, 1407, 1407, 1407, 1407, 1408, 1409, 1412, 1412, 1413, 1415, 1415, 1422, 1462, 1463, 1464, 1464])
 
-farm_office = FarmOffice.create!(office: office1, farm: henry, delivery_day: 1, delivery_deadline_day: 3, delivery_deadline_hour: Time.now)
-farm_office2 = FarmOffice.create!(office: office1, farm: jonas, delivery_day: 1, delivery_deadline_day: 3, delivery_deadline_hour: Time.now)
-farm_office3 = FarmOffice.create!(office: office1, farm: meleze, delivery_day: 1, delivery_deadline_day: 3, delivery_deadline_hour: Time.now)
+farm_office1 = FarmOffice.create!(office: office1, farm: henry, delivery_day: 1, delivery_deadline_day: 3, delivery_deadline_hour: Time.now)
+farm_office2 = FarmOffice.create!(office: office2, farm: jonas, delivery_day: 1, delivery_deadline_day: 3, delivery_deadline_hour: Time.now)
+farm_office3 = FarmOffice.create!(office: office3, farm: meleze, delivery_day: 1, delivery_deadline_day: 3, delivery_deadline_hour: Time.now)
+farm_office4 = FarmOffice.create!(office: office4, farm: cave, delivery_day: 1, delivery_deadline_day: 3, delivery_deadline_hour: Time.now)
+farm_office5 = FarmOffice.create!(office: office5, farm: gallien, delivery_day: 1, delivery_deadline_day: 3, delivery_deadline_hour: Time.now)
 
 order = Order.create!(buyer: user1, price_cents: 100, price_currency: 4)
 
 farm_order = FarmOrder.create!(order: order, farm: henry, express_shipping: true, price_cents: 100, shipping_price: 9)
 #AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
-# setting FarmOffices and Farm regions
+# setting regions at Farm level
 for i in 1..Farm.count
-	farm_office = FarmOffice.first
-	farm_office.farm_id = i
-	farm_office.save!
 	farm = Farm.find(i)
-	farm.regions = ["1852", "1853", "1856", "1860", "1867"]
+	farm.regions = Office.find(i).regions
 	farm.save!
 end
