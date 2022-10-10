@@ -130,6 +130,7 @@ puts "creation des fermes"
 
 henry = Farm.new(name: "Famille Henry", user: user_henry, labels: ['Bio-Suisse'],
   address: 'Route du Village 62', delivery_delay: 2,
+  minimum_order_price_cents: 4000,
   regions: ["1852", "1853", "1856", "1860", "1867", "1867", "1867"],
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   accepts_take_away: true, city: "Vulliens", zip_code: "1085", country: "france",
@@ -162,12 +163,13 @@ henry.farm_profil_picture.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm.png')),
   filename: 'farm4.png'
 )
-
+henry.regions = Office.first.regions
 henry.save
 
 file2 = File.open(Rails.root.join('db/fixtures/farms/farm.png'))
 meleze = Farm.new(name: "La ferme du Mélèze", user: user1, labels: ['Bio-Suisse'],
   address: 'Rte des Granges 4', city: "Ropraz", zip_code: "1088", delivery_delay: 2,
+  minimum_order_price_cents: 1000,
   regions: ["1852", "1853", "1856", "1860", "1867", "1867", "1867"],
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   accepts_take_away: false, country: "france",
@@ -195,7 +197,7 @@ meleze.farm_profil_picture.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm.png')),
   filename: 'farm4.png'
 )
-
+meleze.regions = Office.first.regions
 meleze.save!
 
 file3 = File.open(Rails.root.join('db/fixtures/farms/farm3.png'))
@@ -203,6 +205,7 @@ file3 = File.open(Rails.root.join('db/fixtures/farms/farm3.png'))
 
 jonas = Farm.new(name: "La Ferme de Jonas", user: user1, labels: ['Bio-Suisse'],
   regions: ["1852", "1853", "1856", "1860", "1867", "1867", "1867"],
+  minimum_order_price_cents: 4000,
   address: 'Chemin de la Chapelle 3',  city: "Carrouge", zip_code: "1084", country: "france", delivery_delay: 2,
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   accepts_take_away: false,
@@ -232,13 +235,14 @@ jonas.farm_profil_picture.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm.png')),
   filename: 'farm4.png'
 )
-
+jonas.regions = Office.first.regions
 jonas.save!
 
 file4 = File.open(Rails.root.join('db/fixtures/farms/farm1.png'))
 
 cave = Farm.new(name: "La Cave de l'Abbatiale", user: user1, labels: ['Bio-Suisse'],
   address: 'Chemin de Montagny', city: "Aran", zip_code: "1091", delivery_delay: 2,
+  minimum_order_price_cents: 2000,
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   accepts_take_away: false, country: "france",
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
@@ -267,12 +271,13 @@ cave.farm_profil_picture.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm.png')),
   filename: 'farm4.png'
 )
-
+cave.regions = Office.first.regions
 cave.save!
 
 file5 = File.open(Rails.root.join('db/fixtures/farms/farm2.png'))
 gallien = Farm.new(name: "Le Domaine du Gallien", user: user1, labels: ['Bio-Suisse'],
   address: 'Rte du village 15', city: "Carrouge", zip_code: "1084", delivery_delay: 2,
+  minimum_order_price_cents: 4000,
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   accepts_take_away: false, country: "france",
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
@@ -301,7 +306,7 @@ gallien.farm_profil_picture.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm.png')),
   filename: 'farm4.png'
 )
-
+gallien.regions = Office.first.regions
 gallien.save!
 
 Farm.update(delivery_delay: 3)
@@ -814,9 +819,3 @@ order = Order.create!(buyer: user1, price_cents: 100, price_currency: 4)
 farm_order = FarmOrder.create!(order: order, farm: henry, express_shipping: true, price_cents: 100, shipping_price: 9)
 #AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
-# setting regions at Farm level
-for i in 1..Farm.count
-	farm = Farm.find(i)
-	farm.regions = Office.find(i).regions
-	farm.save!
-end
