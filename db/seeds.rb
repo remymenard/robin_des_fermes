@@ -817,4 +817,4 @@ farm_office5 = FarmOffice.create!(office: office5, farm: gallien, delivery_day: 
 order = Order.create!(buyer: user1, price_cents: 100, price_currency: 4)
 
 farm_order = FarmOrder.create!(order: order, farm: henry, express_shipping: true, price_cents: 100, shipping_price: 9)
-# #AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+#AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
