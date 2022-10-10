@@ -92,7 +92,7 @@ module Basket
     end
 
     def basket_modal
-      sleep 0.1 # we need a small waiting time: the order line item must be persisted in the DB
+      sleep 0.5 # we need a small waiting time: the order line item must be persisted in the DB
       @last_added = OrderLineItem.find_by(order_id: current_order.id, product_id: params[:id])
       authorize @last_added
       render partial: 'shared/basket_modal_popup', locals: {quantity: params["qty"].to_i}
