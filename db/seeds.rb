@@ -104,16 +104,16 @@ user_henry.photo.attach(
 user_henry.save!
 
 user1 = User.new(
-  email: "maelie@drakkr.com",
+  email: "ivan@perroud.me",
   password: "password",
-  first_name: "Mark",
-  last_name: "Boucher",
-  address_line_1: "6 boulevard adolphe",
-  city: "nantes",
-  zip_code: "1852",
+  first_name: "Ivan",
+  last_name: "Perroud",
+  address_line_1: "Chemin de Bonlieu 11",
+  city: "Fribourg",
+  zip_code: "1700",
   title: "M",
   admin: true,
-  number_phone: "06 44 63 71 11",
+  number_phone: "079 331 32 04",
 )
 
 user1.skip_confirmation!
