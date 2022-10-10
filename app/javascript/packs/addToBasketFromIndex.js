@@ -14,20 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const buttons = document.querySelectorAll('.add-product-to-basket');
   buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
-
-      //nb products to add to basket
       const nbProducts = getNbProducts(button);
-
-      // basket, route replacement :
-      // /basket/order_line_items/product_id/increment/1 replaced by
-      // /basket/order_line_items/product_id/increment/nbProducts
-      sendAjaxRequest(e, nbProducts, "increment", false);
-
-      // basket modal, route replacement :
-      // /basket/order_line_items/product_id/increment/1 replaced by
-      // /basket/order_line_items/product_id/basket_modal/nbProducts
-      sendAjaxRequest(e, nbProducts, "basket_modal", true);
-
+      // run main ajax request
+      sendAjaxRequest(e, nbProducts);
     });
   });
 });
@@ -40,19 +29,16 @@ function getNbProducts(childElement) {
 };
 
 
-function sendAjaxRequest(e, nbProducts, replaceBy, modal) {
+function sendAjaxRequest(e, nbProducts) {
   e.preventDefault();
-  
-  // animate button
   $(e.target).LoadingOverlay("show", { imageColor: "#339E72" });
 
-  // get correct route (see above)
+  // route replacement with nb products to add to basket
   const default_suffix = 'increment/1';
-  const new_suffix = `${replaceBy}/${nbProducts}`;
+  const new_suffix = `increment/${nbProducts}`;
   const hrefPath = $(e.target).data("path").replace(default_suffix, new_suffix);
   const token = $(e.target).data("token");
-
-  // fire ajax request  
+ 
   $.ajax({
     data: {
       authenticity_token: token,
@@ -60,14 +46,12 @@ function sendAjaxRequest(e, nbProducts, replaceBy, modal) {
     url: hrefPath,
     type: "POST",
     success: (answer) => {
-      if (modal == true) {
-        $("#popupcontent").html(answer);
-        $("#overlay").addClass('show');
-        $("#popup").addClass('show');
-      } else {
-        $("#basket").html(answer);
-        updateNavbarInfos();
-      }
+      $("#popupcontent").html(answer);
+      $("#overlay").addClass('show');
+      $("#popup").addClass('show');
+      $("#basket").html(answer);
+      updateNavbarInfos();
+      sendAjaxRequestModal(e, nbProducts)
       $(e.target).LoadingOverlay("hide");
     },
     error: () => {
@@ -76,3 +60,31 @@ function sendAjaxRequest(e, nbProducts, replaceBy, modal) {
   })
 };
 
+// basket modal, route replacement :
+// /basket/order_line_items/product_id/increment/1 replaced by
+// /basket/order_line_items/product_id/basket_modal/nbProducts
+function sendAjaxRequestModal(e, nbProducts) {
+  e.preventDefault();
+
+  // get correct route (see above)
+  const default_suffix = 'increment/1';
+  const new_suffix = `basket_modal/${nbProducts}`;
+  const hrefPath = $(e.target).data("path").replace(default_suffix, new_suffix);
+  const token = $(e.target).data("token");
+
+  $.ajax({
+    data: {
+      authenticity_token: token,
+    },
+    url: hrefPath,
+    type: "POST",
+    success: (answer) => {
+      $("#popupcontent").html(answer);
+      $("#overlay").addClass('show');
+      $("#popup").addClass('show');
+    },
+    error: () => {
+      console.log("error");
+    }
+  })
+};

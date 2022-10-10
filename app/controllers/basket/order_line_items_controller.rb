@@ -93,8 +93,6 @@ module Basket
 
     def basket_modal
       @quantity = params["qty"].to_i
-      # we need a small waiting time: the order line item must be persisted in the DB
-      sleep 0.5
       @last_added = OrderLineItem.find_by(order_id: current_order.id, product_id: params[:id])
       authorize @last_added
       @product = Product.find(@last_added.product_id)
