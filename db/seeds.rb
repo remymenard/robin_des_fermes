@@ -163,7 +163,7 @@ henry.farm_profil_picture.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm.png')),
   filename: 'farm4.png'
 )
-henry.regions = Office.first.regions
+
 henry.save
 
 file2 = File.open(Rails.root.join('db/fixtures/farms/farm.png'))
@@ -197,7 +197,7 @@ meleze.farm_profil_picture.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm.png')),
   filename: 'farm4.png'
 )
-meleze.regions = Office.first.regions
+
 meleze.save!
 
 file3 = File.open(Rails.root.join('db/fixtures/farms/farm3.png'))
@@ -235,7 +235,7 @@ jonas.farm_profil_picture.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm.png')),
   filename: 'farm4.png'
 )
-jonas.regions = Office.first.regions
+
 jonas.save!
 
 file4 = File.open(Rails.root.join('db/fixtures/farms/farm1.png'))
@@ -271,7 +271,7 @@ cave.farm_profil_picture.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm.png')),
   filename: 'farm4.png'
 )
-cave.regions = Office.first.regions
+
 cave.save!
 
 file5 = File.open(Rails.root.join('db/fixtures/farms/farm2.png'))
@@ -306,7 +306,7 @@ gallien.farm_profil_picture.attach(
   io: File.open(Rails.root.join('db/fixtures/farms/farm.png')),
   filename: 'farm4.png'
 )
-gallien.regions = Office.first.regions
+
 gallien.save!
 
 Farm.update(delivery_delay: 3)
@@ -817,5 +817,4 @@ farm_office5 = FarmOffice.create!(office: office5, farm: gallien, delivery_day: 
 order = Order.create!(buyer: user1, price_cents: 100, price_currency: 4)
 
 farm_order = FarmOrder.create!(order: order, farm: henry, express_shipping: true, price_cents: 100, shipping_price: 9)
-#AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
-
+# #AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
