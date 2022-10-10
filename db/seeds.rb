@@ -104,16 +104,16 @@ user_henry.photo.attach(
 user_henry.save!
 
 user1 = User.new(
-  email: "maelie@drakkr.com",
+  email: "ivan@perroud.me",
   password: "password",
-  first_name: "Mark",
-  last_name: "Boucher",
-  address_line_1: "6 boulevard adolphe",
-  city: "nantes",
-  zip_code: "1852",
+  first_name: "Ivan",
+  last_name: "Perroud",
+  address_line_1: "Chemin de Bonlieu 11",
+  city: "Fribourg",
+  zip_code: "1700",
   title: "M",
   admin: true,
-  number_phone: "06 44 63 71 11",
+  number_phone: "079 331 32 04",
 )
 
 user1.skip_confirmation!
@@ -130,6 +130,7 @@ puts "creation des fermes"
 
 henry = Farm.new(name: "Famille Henry", user: user_henry, labels: ['Bio-Suisse'],
   address: 'Route du Village 62', delivery_delay: 2,
+  minimum_order_price_cents: 4000,
   regions: ["1852", "1853", "1856", "1860", "1867", "1867", "1867"],
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   accepts_take_away: true, city: "Vulliens", zip_code: "1085", country: "france",
@@ -168,6 +169,7 @@ henry.save
 file2 = File.open(Rails.root.join('db/fixtures/farms/farm.png'))
 meleze = Farm.new(name: "La ferme du Mélèze", user: user1, labels: ['Bio-Suisse'],
   address: 'Rte des Granges 4', city: "Ropraz", zip_code: "1088", delivery_delay: 2,
+  minimum_order_price_cents: 1000,
   regions: ["1852", "1853", "1856", "1860", "1867", "1867", "1867"],
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   accepts_take_away: false, country: "france",
@@ -203,6 +205,7 @@ file3 = File.open(Rails.root.join('db/fixtures/farms/farm3.png'))
 
 jonas = Farm.new(name: "La Ferme de Jonas", user: user1, labels: ['Bio-Suisse'],
   regions: ["1852", "1853", "1856", "1860", "1867", "1867", "1867"],
+  minimum_order_price_cents: 4000,
   address: 'Chemin de la Chapelle 3',  city: "Carrouge", zip_code: "1084", country: "france", delivery_delay: 2,
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   accepts_take_away: false,
@@ -239,6 +242,7 @@ file4 = File.open(Rails.root.join('db/fixtures/farms/farm1.png'))
 
 cave = Farm.new(name: "La Cave de l'Abbatiale", user: user1, labels: ['Bio-Suisse'],
   address: 'Chemin de Montagny', city: "Aran", zip_code: "1091", delivery_delay: 2,
+  minimum_order_price_cents: 2000,
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   accepts_take_away: false, country: "france",
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
@@ -273,6 +277,7 @@ cave.save!
 file5 = File.open(Rails.root.join('db/fixtures/farms/farm2.png'))
 gallien = Farm.new(name: "Le Domaine du Gallien", user: user1, labels: ['Bio-Suisse'],
   address: 'Rte du village 15', city: "Carrouge", zip_code: "1084", delivery_delay: 2,
+  minimum_order_price_cents: 4000,
   description: "Le domaine a été acquis en 1926 par Oscar Savary, originaire de Payerne. Nous sommes aujourd’hui la 4ème génération à exploiter le domaine qui s’est agrandit au cours des générations.",
   accepts_take_away: false, country: "france",
   opening_time: "Du mardi au samedi — 10h à 13h / 14h à 19h", active: true, long_description: "La production laitière était la principale source de revenus jusqu’en 2011 ou l’arrêt de cette production, prise à contre cœur, a été décidée en raison d’un prix du lait dérisoire payé au producteur. C’est alors qu’il a fallu révaluer les productions de la ferme. C’est pourquoi aujourd’hui la ferme s’est orientée vers la vente directe ainsi que la sensibilisation de l’agriculture d’aujourd’hui aux petits et grands n’ayant pas de liens directs avec le monde agricole.")
@@ -803,9 +808,11 @@ office109 = Office.create!(name: "Vevey 1 Distribution", regions: [1800, 1801, 1
 office110 = Office.create!(name: "Vuiteboeuf", regions: [1416, 1417, 1417, 1418, 1420, 1421, 1421, 1423, 1423, 1423, 1423, 1424, 1425, 1426, 1426, 1427, 1428, 1428, 1429, 1430, 1431, 1431, 1432, 1432, 1433, 1434, 1435, 1436, 1436, 1437, 1438, 1439, 1441, 1442, 1443, 1443, 1443, 1445, 1446, 1450, 1450, 1450, 1452, 1453, 1453, 1454, 1454])
 office111 = Office.create!(name: "Yverdon Distribution", regions: [1400, 1400, 1404, 1404, 1405, 1406, 1407, 1407, 1407, 1407, 1408, 1409, 1412, 1412, 1413, 1415, 1415, 1422, 1462, 1463, 1464, 1464])
 
-farm_office = FarmOffice.create!(office: office1, farm: henry, delivery_day: 1, delivery_deadline_day: 3, delivery_deadline_hour: Time.now)
-farm_office2 = FarmOffice.create!(office: office1, farm: jonas, delivery_day: 1, delivery_deadline_day: 3, delivery_deadline_hour: Time.now)
-farm_office3 = FarmOffice.create!(office: office1, farm: meleze, delivery_day: 1, delivery_deadline_day: 3, delivery_deadline_hour: Time.now)
+farm_office1 = FarmOffice.create!(office: office1, farm: henry, delivery_day: 1, delivery_deadline_day: 3, delivery_deadline_hour: Time.now)
+farm_office2 = FarmOffice.create!(office: office2, farm: jonas, delivery_day: 1, delivery_deadline_day: 3, delivery_deadline_hour: Time.now)
+farm_office3 = FarmOffice.create!(office: office3, farm: meleze, delivery_day: 1, delivery_deadline_day: 3, delivery_deadline_hour: Time.now)
+farm_office4 = FarmOffice.create!(office: office4, farm: cave, delivery_day: 1, delivery_deadline_day: 3, delivery_deadline_hour: Time.now)
+farm_office5 = FarmOffice.create!(office: office5, farm: gallien, delivery_day: 1, delivery_deadline_day: 3, delivery_deadline_hour: Time.now)
 
 order = Order.create!(buyer: user1, price_cents: 100, price_currency: 4)
 
