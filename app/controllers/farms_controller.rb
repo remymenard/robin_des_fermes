@@ -52,7 +52,7 @@ class FarmsController < ApplicationController
     @farms = policy_scope(@farms).active
     @far_farms = policy_scope(@far_farms).active
 
-    @near_farm_icon_url = current_user&.is_companion ? 'icons/marker-green.png' : 'icons/marker-purple.png'
+    @near_farm_icon_url = current_user&.is_companion ? 'icons/marker-green.png' : 'icons/marker-green.png'
 
     @nearby_markers = @farms.geocoded.map do |farm|
       {
@@ -135,7 +135,7 @@ class FarmsController < ApplicationController
 
     @near_farm = @farm.regions.include?(@zip_code)
 
-    near_farm_icon = current_user&.is_companion ? 'icons/marker-green.png' : 'icons/marker-purple.png'
+    near_farm_icon = current_user&.is_companion ? 'icons/marker-green.png' : 'icons/marker-green.png'
 
     marker_icon_path = if @near_farm
       near_farm_icon
