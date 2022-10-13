@@ -92,10 +92,16 @@ module Basket
     end
 
     def basket_modal
-      sleep 0.5 # we need a small waiting time: the order line item must be persisted in the DB
+      @quantity = params["qty"].to_i
       @last_added = OrderLineItem.find_by(order_id: current_order.id, product_id: params[:id])
+      @product = Product.find(@last_added.product_id)
+      @farm = Farm.find(@product.farm_id)
+      farm_order = current_order.farm_orders.where(farm_id: @farm.id).first
+      @minimum_reached = farm_order.farm.minimum_order_reached?(farm_order)
+      @gap = farm_order.farm.minimum_order_missing_price(farm_order)
+      @progress = farm_order.price_cents / (@farm.minimum_order_price_cents / 100) rescue 0
+      render partial: 'shared/basket_modal_popup'
       authorize @last_added
-      render partial: 'shared/basket_modal_popup', locals: {quantity: params["qty"].to_i}
     end
 
   end
