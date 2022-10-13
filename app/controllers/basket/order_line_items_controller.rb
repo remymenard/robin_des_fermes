@@ -94,7 +94,6 @@ module Basket
     def basket_modal
       @quantity = params["qty"].to_i
       @last_added = OrderLineItem.find_by(order_id: current_order.id, product_id: params[:id])
-      authorize @last_added
       @product = Product.find(@last_added.product_id)
       @farm = Farm.find(@product.farm_id)
       farm_order = current_order.farm_orders.where(farm_id: @farm.id).first
@@ -102,6 +101,7 @@ module Basket
       @gap = farm_order.farm.minimum_order_missing_price(farm_order)
       @progress = farm_order.price_cents / (@farm.minimum_order_price_cents / 100) rescue 0
       render partial: 'shared/basket_modal_popup'
+      authorize @last_added
     end
 
   end
